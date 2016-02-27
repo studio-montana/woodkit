@@ -27,9 +27,14 @@ class WoodkitUploader {
 
 	// Get information regarding our plugin from API
 	private function getRepoReleaseInfo() {
-		if ( !empty( $this->APIResult ) ) {
+
+		$key = woodkit_get_option("key-activation");
+		
+		if (empty($key))
 			return;
-		}
+		
+		if (!empty($this->APIResult))
+			return;
 
 		$reload = true;
 		$now = new DateTime();
@@ -48,6 +53,7 @@ class WoodkitUploader {
 			$url = add_query_arg(array("api-action" => "latestrelease"), $url);
 			$url = add_query_arg(array("api-package" => WOODKIT_PLUGIN_NAME), $url);
 			$url = add_query_arg(array("api-host" => get_site_url()), $url);
+			$url = add_query_arg(array("api-key" => $key), $url);
 			$remote_result = wp_remote_retrieve_body(wp_remote_get($url));
 			if (!empty($remote_result)) {
 				$this->APIResult = @json_decode($remote_result);
