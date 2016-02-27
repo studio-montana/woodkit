@@ -1,0 +1,131 @@
+@CHARSET "UTF-8";
+/**
+ * WALL Tool
+ * @package WordPress
+ * @subpackage Woodkit
+ * @since Woodkit 1.0
+ * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+ */
+ 
+#wall-presentation-setup .wall-item-setup {
+	position: absolute;
+	top: 6px;
+	right: 12px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 3px 0;
+	z-index: 999;
+}
+
+#wall-presentation-setup .wall-item-setup .field-icon
+	{
+	text-align: center;
+	padding: 0 3px 0 6px;
+}
+
+.wall.list .entry-thumbnail{
+	height: 200px;
+}
+
+/**
+ * WALL ELEMENTS
+*/
+#wall-elements .column-left{
+	padding: 24px;
+	width: 152px;
+}
+#wall-elements-list li,
+#wall-elements-new li{
+	position: relative;
+	width: 200px;
+	height: 200px;
+	border: 1px solid #555;
+	margin: 0 12px 12px 0;
+	float: left;
+	cursor: move;
+	overflow: hidden;
+}
+
+#wall-elements-new li.add-new-element{
+	cursor: pointer;
+	border: none;
+}
+
+#wall-elements-new li.add-new-element .add-new-element-content,
+#wall-elements-list li .remove-element{
+	width: 80px;
+	height: 80px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -40px 0 0 -40px;
+	text-align: center;
+	background: transparent;
+	border: 2px solid #555;
+}
+
+#wall-elements-new li.add-new-element:hover .add-new-element-content{
+	background: #555;
+}
+
+#wall-elements-list li .remove-element i,
+#wall-elements-new li.add-new-element .add-new-element-content > i{
+	font-size: 1rem;
+	color: #555;
+	padding-top: 32px;
+}
+
+#wall-elements-new li.add-new-element:hover .add-new-element-content > i{
+	color: #fff;
+}
+
+#wall-elements-list li > i{
+	opacity: 0;
+}
+
+#wall-elements-list li:hover > i{
+	opacity: 1;
+}
+
+#wall-elements-list li .thumb{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#wall-elements-list li .video{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#wall-elements-list li .title{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-size: 1rem;
+	background: #fff;
+	border-top: 1px solid #555;
+	color: #000;
+	margin: 0;
+	padding: 6px;
+	text-align: center;
+}
+
+#wall-elements-list li .excerpt{
+	font-size: 0.7rem;
+	color: #000;
+	margin: 0;
+	padding: 6px;
+}

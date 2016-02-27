@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+/**
+ * GALLERY Tool
+ * @package WordPress
+ * @subpackage Woodkit
+ * @since Woodkit 1.0
+ * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+ */
+
+.fancybox-title{
+	text-align: center;
+}
+
+.fancybox-skin {
+	border-radius: 0;
+}
+
+.fancybox-title-inside-wrap {
+	padding: 0.25em 0;
+}
+
+.fancybox-close {
+	display: none;
+}
+
+.fancybox-title h1 {
+	font-size: 1.4rem;
+	font-weight: normal;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+}
+
+.fancybox-title div {
+	font-size: 1.4rem;
+	font-weight: normal;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+}

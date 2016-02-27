@@ -1,0 +1,1636 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom\n"
+"POT-Creation-Date: 2016-02-27 12:17+0100\n"
+"PO-Revision-Date: 2016-02-27 12:18+0100\n"
+"Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
+"Language-Team: Sébastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
+"com artcyril@gmail.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Projecustom-Id-Version: Bancassurances Theme WP\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../core/commons/custom-fields.php:36
+msgid "Customize"
+msgstr "Personnaliser"
+
+#: ../core/commons/templates.php:34
+msgid "Sticky"
+msgstr "Autocollant"
+
+#: ../core/commons/templates.php:40 ../core/commons/templates.php:46
+msgid ", "
+msgstr ", "
+
+#: ../core/commons/templates.php:55
+#, php-format
+msgid "View all posts by %s"
+msgstr "Voir tous les articles de %s"
+
+#: ../core/commons/templates.php:77
+#, php-format
+msgid "Permalink to %s"
+msgstr "Lien vers %s"
+
+#: ../core/commons/utils.php:471
+msgid "Invalid URL..."
+msgstr "URL invalide"
+
+#: ../core/commons/utils.php:540
+msgid "Invalid Format..."
+msgstr "Format invalide"
+
+#: ../core/commons/utils.php:540
+msgid "are supported"
+msgstr "sont supportés"
+
+#: ../core/commons/utils.php:557
+msgid "january"
+msgstr "janvier"
+
+#: ../core/commons/utils.php:559
+msgid "february"
+msgstr "février"
+
+#: ../core/commons/utils.php:561
+msgid "march"
+msgstr "mars"
+
+#: ../core/commons/utils.php:563
+msgid "april"
+msgstr "avril"
+
+#: ../core/commons/utils.php:565 ../core/commons/utils.php:602
+msgid "may"
+msgstr "mai"
+
+#: ../core/commons/utils.php:567
+msgid "june"
+msgstr "juin"
+
+#: ../core/commons/utils.php:569
+msgid "july"
+msgstr "juillet"
+
+#: ../core/commons/utils.php:571
+msgid "august"
+msgstr "août"
+
+#: ../core/commons/utils.php:573
+msgid "september"
+msgstr "septembre"
+
+#: ../core/commons/utils.php:575
+msgid "october"
+msgstr "octobre"
+
+#: ../core/commons/utils.php:577
+msgid "november"
+msgstr "novembre"
+
+#: ../core/commons/utils.php:579
+msgid "december"
+msgstr "décembre"
+
+#: ../core/commons/utils.php:594
+msgid "jan"
+msgstr "jan"
+
+#: ../core/commons/utils.php:596
+msgid "feb"
+msgstr "fév"
+
+#: ../core/commons/utils.php:598
+#, fuzzy
+msgid "mar"
+msgstr "mars"
+
+#: ../core/commons/utils.php:600
+msgid "apr"
+msgstr "avr"
+
+#: ../core/commons/utils.php:604
+#, fuzzy
+msgid "jun"
+msgstr "juin"
+
+#: ../core/commons/utils.php:606
+msgid "jul"
+msgstr "juil"
+
+#: ../core/commons/utils.php:608
+#, fuzzy
+msgid "aug"
+msgstr "août"
+
+#: ../core/commons/utils.php:610
+msgid "sept"
+msgstr "sept"
+
+#: ../core/commons/utils.php:612
+msgid "oct"
+msgstr "oct"
+
+#: ../core/commons/utils.php:614
+msgid "nov"
+msgstr "nov"
+
+#: ../core/commons/utils.php:616
+msgid "dec"
+msgstr "déc"
+
+#: ../core/commons/config/config-options.php:66
+#, fuzzy
+msgid "Woodkit settings"
+msgstr "Paramètres espace privé"
+
+#: ../core/commons/config/config-options.php:94
+#, fuzzy
+msgid "Activation"
+msgstr "Activer failtoban"
+
+#: ../core/commons/config/config-options.php:101
+msgid "enter your key"
+msgstr "saisissez vitre clé"
+
+#: ../core/commons/config/config-options.php:183
+msgid "YOUR KEY"
+msgstr "VOTRE CLÉ"
+
+#: ../core/commons/config/config-options.php:183
+#: ../core/commons/config/config.php:196
+msgid "Get key"
+msgstr "Obtenir une clé"
+
+#: ../core/commons/config/config.php:193
+msgid "Setup"
+msgstr "Réglages"
+
+#: ../core/commons/config/config.php:195 ../core/tools/login/login.php:59
+msgid "Register"
+msgstr "Enregistrement"
+
+#: ../core/commons/postpicker/postpicker.php:35
+msgid "Done"
+msgstr "Ok"
+
+#: ../core/commons/postpicker/postpicker.php:36
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:125
+msgid "Order"
+msgstr "Tri"
+
+#: ../core/commons/postpicker/templates/postpicker-items.php:54
+msgid "No entry"
+msgstr "Aucune entrée"
+
+#: ../core/templates/dashboard/infos.php:28
+msgid "Thanks for using woodkit."
+msgstr "Merci d'utiliser woodkit."
+
+#: ../core/templates/dashboard/infos.php:29
+msgid ""
+"Woodkit offers you lots of awesome tools to improve your experience on "
+"wordpress, on the Web. SEO, security, private site, social publication, ..."
+msgstr ""
+"Woodkit vous offre de nombreux outils afin d'améliorer votre expérience sur "
+"wordpress, sur le Web. SEO, sécurité, site privé, publication sur les "
+"réseaux, ..."
+
+#: ../core/templates/dashboard/infos.php:30
+msgid "You can discover and manage tools"
+msgstr "Vous pouvez découvrir et paramétrer les outils"
+
+#: ../core/templates/dashboard/infos.php:30
+msgid "here"
+msgstr "ici"
+
+#: ../core/templates/dashboard/infos.php:31
+msgid "Do you need some"
+msgstr "Voulez-vous quelques"
+
+#: ../core/templates/dashboard/infos.php:31
+#, fuzzy
+msgid "documentation"
+msgstr "Navigation des commentaires"
+
+#: ../core/tools/backgroundimage/config.php:49
+#: ../core/tools/breadcrumb/config.php:38 ../core/tools/display/config.php:48
+#: ../core/tools/event/config.php:42 ../core/tools/excerpt/config.php:48
+#: ../core/tools/gallery/config.php:48 ../core/tools/login/config.php:50
+#: ../core/tools/logo/config.php:50 ../core/tools/pagination/config.php:48
+#: ../core/tools/portfolio/config.php:42 ../core/tools/private/config.php:42
+#: ../core/tools/seo/config.php:48 ../core/tools/shortcodes/config.php:48
+#: ../core/tools/video/config.php:51 ../core/tools/wall/config.php:48
+#, fuzzy
+msgid "active"
+msgstr "Activer"
+
+#: ../core/tools/backgroundimage/config.php:50
+#: ../core/tools/video/config.php:52
+msgid "auto insert"
+msgstr "intégration automatique"
+
+#: ../core/tools/backgroundimage/config.php:77
+msgid "otherwise, you can insert this code directly in your theme templates :"
+msgstr ""
+"sinon, vous pouvez intégrer le code suivant directement dans vos templates : "
+
+#: ../core/tools/backgroundimage/load.php:31
+#: ../core/tools/backgroundimage/inc/customizer.php:45
+#: ../core/tools/login/inc/customizer.php:46
+msgid "Background image"
+msgstr "Image de fond"
+
+#: ../core/tools/backgroundimage/load.php:36
+msgid "setup background image on your site and/or post-types"
+msgstr "paramétrez l'image de fond de votre site, de vos contenus"
+
+#: ../core/tools/backgroundimage/custom-fields/backgroundimage.php:42
+#: ../core/tools/backgroundimage/inc/customizer.php:35
+msgid "Background Image"
+msgstr "Image de fond"
+
+#: ../core/tools/backgroundimage/custom-fields/templates/backgroundimage.php:25
+msgid "BACKGROUNDIMAGE"
+msgstr "Image de fond"
+
+#: ../core/tools/backgroundimage/custom-fields/templates/backgroundimage.php:68
+#: ../core/tools/seo/custom-fields/templates/seo.php:119
+msgid "Choose image"
+msgstr "Choisir une image"
+
+#: ../core/tools/backgroundimage/custom-fields/templates/backgroundimage.php:69
+msgid "Delete"
+msgstr "Supprimer"
+
+#: ../core/tools/backgroundimage/custom-fields/templates/backgroundimage.php:110
+msgid "Choose document"
+msgstr "Choisir un document"
+
+#: ../core/tools/backgroundimage/custom-fields/templates/backgroundimage.php:112
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:29
+#: ../core/tools/seo/custom-fields/templates/seo.php:121
+msgid "Ok"
+msgstr "Ok"
+
+#: ../core/tools/breadcrumb/breadcrumb.php:64
+#: ../core/tools/breadcrumb/breadcrumb.php:75
+msgid "Home"
+msgstr "Accueil"
+
+#: ../core/tools/breadcrumb/breadcrumb.php:121
+msgid "search"
+msgstr "recherche"
+
+#: ../core/tools/breadcrumb/breadcrumb.php:126
+#: ../core/tools/breadcrumb/breadcrumb.php:129
+#: ../core/tools/breadcrumb/breadcrumb.php:132
+msgid "Archive "
+msgstr "Archive "
+
+#: ../core/tools/breadcrumb/breadcrumb.php:135
+msgid "Author"
+msgstr "auteur"
+
+#: ../core/tools/breadcrumb/breadcrumb.php:138
+msgid "Blog archives"
+msgstr "Archives du blog"
+
+#: ../core/tools/breadcrumb/breadcrumb.php:141
+msgid "Search results"
+msgstr "Résultat de recherche"
+
+#: ../core/tools/breadcrumb/config.php:53
+msgid "use this code in your theme templates :"
+msgstr "intégrez ce code dans vos templates : "
+
+#: ../core/tools/breadcrumb/load.php:31
+msgid "Bread crumb"
+msgstr ""
+
+#: ../core/tools/breadcrumb/load.php:36
+msgid "Bread crumb tool"
+msgstr ""
+
+#: ../core/tools/cookies/load.php:31
+msgid "Cookies"
+msgstr ""
+
+#: ../core/tools/cookies/load.php:36
+msgid "Cookies tool"
+msgstr ""
+
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:28
+msgid ""
+"By continuing your visit to this site, you accept the use of cookies or "
+"other tracers"
+msgstr ""
+"En continuant votre visite sur ce site, vous acceptez l'utilisation de "
+"cookies et autres traceurs"
+
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:28
+msgid "More about"
+msgstr "En savoir plus"
+
+#: ../core/tools/display/config.php:63
+msgid "use these codes in your theme templates :"
+msgstr "intégrez ces codes dans vos templates : "
+
+#: ../core/tools/display/load.php:31
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:36
+msgid "Display"
+msgstr "Afficher"
+
+#: ../core/tools/display/load.php:36
+msgid ""
+"allows you to hide title, hide thumbnail, set alternative title, set badge, "
+"set subtitle, ..."
+msgstr ""
+"vous permet de cacher un titre, cacher l'image à la une, saisir un titre "
+"alternatif, un badge, un sous-titre, …"
+
+#: ../core/tools/display/custom-fields/templates/display.php:27
+msgid "General options"
+msgstr "Options générales"
+
+#: ../core/tools/display/custom-fields/templates/display.php:33
+#, fuzzy
+msgid "Customized title"
+msgstr "Titre alternatif"
+
+#: ../core/tools/display/custom-fields/templates/display.php:41
+msgid "Replace native title"
+msgstr "Remplace le titre natif"
+
+#: ../core/tools/display/custom-fields/templates/display.php:45
+msgid "Subtitle"
+msgstr "Sous-titre"
+
+#: ../core/tools/display/custom-fields/templates/display.php:56
+#, fuzzy
+msgid "Hide title/customized title"
+msgstr "Cacher le titre de cette page"
+
+#: ../core/tools/display/custom-fields/templates/display.php:64
+#, fuzzy
+msgid "Hide title or woodkit title except in lists"
+msgstr "Cacher le titre de cette page excepté dans les listes"
+
+#: ../core/tools/display/custom-fields/templates/display.php:68
+msgid "Hide thumbnail"
+msgstr "Cacher l'image à la une"
+
+#: ../core/tools/display/custom-fields/templates/display.php:76
+msgid "Hide thumbnail except in lists"
+msgstr "Cacher l'image à la une excepté dans les listes"
+
+#: ../core/tools/display/custom-fields/templates/display.php:80
+msgid "Badge"
+msgstr "Badge"
+
+#: ../core/tools/display/custom-fields/templates/display.php:88
+msgid "Add awesome badge for new stuff !"
+msgstr "Add awesome badge for new stuff !"
+
+#: ../core/tools/display/custom-fields/templates/display.php:92
+msgid "Badge's text"
+msgstr "Texte du badge"
+
+#: ../core/tools/display/custom-fields/templates/display.php:98
+msgid "new"
+msgstr "nouveau"
+
+#: ../core/tools/event/event.php:42
+msgid "Event properties"
+msgstr "Propriétés de l'évènement"
+
+#: ../core/tools/event/event.php:82 ../core/tools/event/event.php:87
+#: ../core/tools/event/load.php:31
+#: ../core/tools/event/widgets/tool-event-widget.class.php:34
+#: ../core/tools/event/widgets/tool-event-widget.class.php:72
+msgid "Events"
+msgstr "Évènements"
+
+#: ../core/tools/event/event.php:83
+msgid "Event"
+msgstr "Évènement"
+
+#: ../core/tools/event/event.php:84
+msgid "Add Event"
+msgstr "Ajouter un évènement"
+
+#: ../core/tools/event/event.php:85
+msgid "Edit Event"
+msgstr "Editer un évènement"
+
+#: ../core/tools/event/event.php:86
+msgid "New Event"
+msgstr "Nouvel évènement"
+
+#: ../core/tools/event/event.php:88
+msgid "Look Event"
+msgstr "Voir un évènement"
+
+#: ../core/tools/event/event.php:89
+msgid "Search Events"
+msgstr "Rechercher un évènement"
+
+#: ../core/tools/event/event.php:90
+msgid "No Event found"
+msgstr "Aucun évènement trouvé"
+
+#: ../core/tools/event/event.php:91
+msgid "No Event found in trash"
+msgstr "Aucun évènement trouvé dans la corbeille"
+
+#: ../core/tools/event/event.php:109
+msgid "Event Types"
+msgstr "Types d'évènement"
+
+#: ../core/tools/event/event.php:110 ../core/tools/event/event.php:119
+msgid "Event Type"
+msgstr "Type d'évènement"
+
+#: ../core/tools/event/event.php:111
+msgid "Search Event Type"
+msgstr "Recherche un type d'évènement"
+
+#: ../core/tools/event/event.php:112
+msgid "All Event Types"
+msgstr "Tous les types d'évènement"
+
+#: ../core/tools/event/event.php:113 ../core/tools/event/event.php:114
+msgid "Event Type's parent"
+msgstr "Type d'évènement parent"
+
+#: ../core/tools/event/event.php:115
+msgid "Edit Event Type"
+msgstr "Editer un type d'évènement"
+
+#: ../core/tools/event/event.php:116
+msgid "Update Event Type"
+msgstr "Mettre à jour un type d'évènement"
+
+#: ../core/tools/event/event.php:117
+msgid "Add Event Type"
+msgstr "Ajouter un type d'évènement"
+
+#: ../core/tools/event/event.php:118 ../core/tools/portfolio/portfolio.php:68
+#: ../core/tools/secure/inc/contactform7/captchanum.php:96
+msgid "Name"
+msgstr "Nom"
+
+#: ../core/tools/event/event.php:210
+#: ../core/tools/event/templates/template-event-fields.php:31
+msgid "Begin"
+msgstr "Début"
+
+#: ../core/tools/event/event.php:211
+#: ../core/tools/event/templates/template-event-fields.php:103
+msgid "End"
+msgstr "Fin"
+
+#: ../core/tools/event/load.php:36
+#, fuzzy
+msgid "manage events"
+msgstr "choisir vos éléments"
+
+#: ../core/tools/event/templates/template-event-fields.php:55
+#: ../core/tools/event/templates/template-event-fields.php:127
+msgid "dd/mm/yyyy"
+msgstr "jj/mm/aaaa"
+
+#: ../core/tools/event/widgets/tool-event-widget.class.php:37
+msgid "Show upcoming events"
+msgstr "Affiche les évènements à venir"
+
+#: ../core/tools/event/widgets/templates/tool-event-widget-form.php:27
+#: ../core/tools/social/widgets/templates/tool-social-widget-form.php:32
+msgid "Title"
+msgstr "Titre"
+
+#: ../core/tools/event/widgets/templates/tool-event-widget-form.php:31
+#, fuzzy
+msgid "Number"
+msgstr "Nombre"
+
+#: ../core/tools/event/widgets/templates/tool-event-widget-output-event.php:75
+#: ../core/tools/event/widgets/templates/tool-event-widget-output-event.php:77
+msgid "to"
+msgstr "au"
+
+#: ../core/tools/event/widgets/templates/tool-event-widget-output-event.php:111
+msgid "Comment"
+msgstr "Commentaire"
+
+#: ../core/tools/event/widgets/templates/tool-event-widget-output-event.php:111
+msgid "One comment"
+msgstr "Un commentaire"
+
+#: ../core/tools/event/widgets/templates/tool-event-widget-output-event.php:111
+#, php-format
+msgid "See % comments"
+msgstr "Voir % commentaires"
+
+#: ../core/tools/event/widgets/templates/tool-event-widget-output.php:67
+msgid "No upcoming event"
+msgstr "aucun évènement à venir"
+
+#: ../core/tools/excerpt/load.php:31
+msgid "Excerpt"
+msgstr ""
+
+#: ../core/tools/excerpt/load.php:36
+msgid "specify customized excerpt on your post-types"
+msgstr ""
+
+#: ../core/tools/excerpt/custom-fields/templates/excerpt.php:27
+#, fuzzy
+msgid "Customized excerpt"
+msgstr "Description alternative"
+
+#: ../core/tools/excerpt/custom-fields/templates/excerpt.php:28
+msgid "Let empty to get automatic excerpt from content"
+msgstr "Laisser vide pour obtenir le résumé automatique"
+
+#: ../core/tools/gallery/load.php:31
+#, fuzzy
+msgid "Gallery"
+msgstr "Options de la galerie"
+
+#: ../core/tools/gallery/load.php:36
+msgid "customize wp gallery appearence"
+msgstr ""
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:27
+msgid "Gallery options"
+msgstr "Options de la galerie"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:28
+msgid "customize inner content galleries"
+msgstr "personnaliser les galeries de votre contenu"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:34
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:187
+msgid "Presentation"
+msgstr "Présentation"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:39
+msgid "classic"
+msgstr "classic"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:40
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:193
+msgid "slider"
+msgstr "slider"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:41
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:192
+msgid "masonry"
+msgstr "masonry"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:42
+msgid "random grid"
+msgstr "grille aléatoire"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:51
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:304
+msgid "Autoplay"
+msgstr "Autoplay"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:63
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:315
+msgid "Thumb navigation"
+msgstr "Navigation par vignette"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:75
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:326
+msgid "Carousel"
+msgstr "Carousel"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:87
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:355
+msgid "Carousel item width"
+msgstr "Largeur des items du carousel"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:102
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:369
+msgid "Carousel item margin"
+msgstr "Marge des items du carousel"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:117
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:221
+msgid "Height"
+msgstr "Hauteur"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:132
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:235
+msgid "Format"
+msgstr "Format"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:137
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:240
+msgid "square"
+msgstr "carré"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:138
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:241
+msgid "portrait"
+msgstr "portrait"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:139
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:242
+msgid "landscape"
+msgstr "paysage"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:148
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:251
+msgid "Max width"
+msgstr "Largeur max."
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:153
+msgid "fully responsive"
+msgstr "adaptée"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:154
+msgid "customized"
+msgstr "Personnalisé"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:169
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:277
+msgid "Max height"
+msgstr "Hauteur max."
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:176
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:284
+msgid "Auto"
+msgstr "Auto"
+
+#: ../core/tools/gallery/custom-fields/templates/gallery.php:190
+msgid "Disable fancybox"
+msgstr "Désactiver fancybox"
+
+#: ../core/tools/gallery/inc/customizer.php:36
+msgid "FancyBox"
+msgstr "FancyBox"
+
+#: ../core/tools/gallery/inc/customizer.php:43
+msgid "Disable"
+msgstr "Désactiver"
+
+#: ../core/tools/gallery/inc/customizer.php:44
+msgid "disable fancybox on this site"
+msgstr "désactiver fancybox sur tout le site"
+
+#: ../core/tools/googleanalytics/config.php:32
+msgid "make your site trackable by Google Analytics"
+msgstr ""
+
+#: ../core/tools/googleanalytics/config.php:41
+msgid "code"
+msgstr ""
+
+#: ../core/tools/googleanalytics/load.php:31
+msgid "Google Analytics"
+msgstr ""
+
+#: ../core/tools/googleanalytics/load.php:36
+msgid "Google Analytics tool"
+msgstr ""
+
+#: ../core/tools/login/config.php:41
+msgid "customize login page appearence"
+msgstr ""
+
+#: ../core/tools/login/config.php:41 ../core/tools/logo/config.php:35
+#: ../core/tools/wip/config.php:32
+msgid "manage here "
+msgstr ""
+
+#: ../core/tools/login/load.php:31
+msgid "Login"
+msgstr "Identifiant"
+
+#: ../core/tools/login/load.php:36
+#, fuzzy
+msgid "Login tool"
+msgstr "Options d'identification"
+
+#: ../core/tools/login/login.php:51
+#, fuzzy
+msgid "login"
+msgstr "Identifiant"
+
+#: ../core/tools/login/login.php:51
+msgid "password"
+msgstr "mot de passe"
+
+#: ../core/tools/login/login.php:51
+#, fuzzy
+msgid "email"
+msgstr "mail"
+
+#: ../core/tools/login/inc/customizer.php:36
+#, fuzzy
+msgid "Login page"
+msgstr "Identifiant"
+
+#: ../core/tools/logo/config.php:35
+#, fuzzy
+msgid "customize logo"
+msgstr "Personnalisé"
+
+#: ../core/tools/logo/config.php:65 ../core/tools/pagination/config.php:63
+msgid "insert this code in your theme templates :"
+msgstr ""
+
+#: ../core/tools/logo/load.php:31 ../core/tools/logo/inc/customizer.php:35
+msgid "Logo"
+msgstr "Logo"
+
+#: ../core/tools/logo/load.php:36
+msgid "customize your site logo"
+msgstr ""
+
+#: ../core/tools/menu/load.php:31
+msgid "Menu"
+msgstr ""
+
+#: ../core/tools/menu/load.php:36
+msgid "Menu tool"
+msgstr ""
+
+#: ../core/tools/pagination/load.php:31
+#, fuzzy
+msgid "Pagination"
+msgstr "Options de pagination"
+
+#: ../core/tools/pagination/load.php:36
+msgid "intelligent pagination for all post-types"
+msgstr ""
+
+#: ../core/tools/pagination/custom-fields/templates/display-pagination.php:27
+msgid "Pagination options"
+msgstr "Options de pagination"
+
+#: ../core/tools/pagination/custom-fields/templates/display-pagination.php:33
+msgid "Display pagination"
+msgstr "Afficher la pagination"
+
+#: ../core/tools/portfolio/load.php:31
+#: ../core/tools/portfolio/portfolio.php:33
+msgid "Portfolio"
+msgstr "Portfolio"
+
+#: ../core/tools/portfolio/load.php:36
+#, fuzzy
+msgid "manage your portfolios"
+msgstr "choisir vos éléments"
+
+#: ../core/tools/portfolio/portfolio.php:32
+#: ../core/tools/portfolio/portfolio.php:37
+msgid "Portfolios"
+msgstr "Portfolios"
+
+#: ../core/tools/portfolio/portfolio.php:34
+msgid "Add Portfolio"
+msgstr "Ajouter un portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:35
+msgid "Edit Portfolio"
+msgstr "Editer un portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:36
+msgid "New Portfolio"
+msgstr "Nouveau portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:38
+msgid "Look Portfolio"
+msgstr "Voir un portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:39
+msgid "Search Portfolios"
+msgstr "Rechercher un portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:40
+msgid "No Portfolio found"
+msgstr "Aucun portfolio trouvé"
+
+#: ../core/tools/portfolio/portfolio.php:41
+msgid "No Portfolio found in trash"
+msgstr "Aucun portfolio trouvé dans la corbeille"
+
+#: ../core/tools/portfolio/portfolio.php:59
+msgid "Portfolio Types"
+msgstr "Types de portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:60
+#: ../core/tools/portfolio/portfolio.php:69
+msgid "Portfolio Type"
+msgstr "Type de portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:61
+msgid "Search Portfolio Type"
+msgstr "Rechercher un type de portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:62
+msgid "All Portfolio Types"
+msgstr "Tous les types de portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:63
+#: ../core/tools/portfolio/portfolio.php:64
+msgid "Portfolio Type's parent"
+msgstr "Type de portfolio parent"
+
+#: ../core/tools/portfolio/portfolio.php:65
+msgid "Edit Portfolio Type"
+msgstr "Editer un type de portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:66
+msgid "Update Portfolio Type"
+msgstr "Mettre à jour un type de portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:67
+msgid "Add Portfolio Type"
+msgstr "Ajouter un type de portfolio"
+
+#: ../core/tools/portfolio/portfolio.php:88
+msgid "Thumb"
+msgstr "Vignette"
+
+#: ../core/tools/private/load.php:31
+#, fuzzy
+msgid "Private"
+msgstr "Zone privée"
+
+#: ../core/tools/private/load.php:36
+msgid "make your site private (Intranet) or just few pages"
+msgstr ""
+
+#: ../core/tools/private/private.php:121 ../core/tools/private/private.php:122
+msgid "sign out"
+msgstr "déconnexion"
+
+#: ../core/tools/private/inc/options-fields.php:55
+#: ../core/tools/private/inc/options.php:37
+msgid "Private settings"
+msgstr "Paramètres espace privé"
+
+#: ../core/tools/private/inc/options-fields.php:61
+msgid "You want to"
+msgstr "Vous voulez"
+
+#: ../core/tools/private/inc/options-fields.php:68
+#, fuzzy
+msgid "do nothing"
+msgstr "rien"
+
+#: ../core/tools/private/inc/options-fields.php:69
+#, fuzzy
+msgid "go private this site"
+msgstr "Site privé"
+
+#: ../core/tools/private/inc/options-fields.php:70
+msgid "go private few elements"
+msgstr "rendre privé quelques éléments"
+
+#: ../core/tools/private/inc/options-fields.php:77
+#: ../core/tools/wip/inc/customizer.php:53
+msgid "Message"
+msgstr "Message"
+
+#: ../core/tools/private/inc/options-fields.php:83
+msgid "Private area"
+msgstr "Zone privée"
+
+#: ../core/tools/private/inc/options.php:37
+#, fuzzy
+msgid "Private site"
+msgstr "Site privé"
+
+#: ../core/tools/private/templates/tool-private-template.php:90
+msgid "sign in"
+msgstr "connexion"
+
+#: ../core/tools/secure/config.php:46
+#, fuzzy
+msgid "Captcha active"
+msgstr "Captcha"
+
+#: ../core/tools/secure/config.php:47
+msgid "FailToBan active"
+msgstr ""
+
+#: ../core/tools/secure/config.php:62
+msgid ""
+"add captcha on login, register and comment forms (Woocommerce supported)"
+msgstr ""
+"ajoute un captcha sur les formulaires de login, d'inscription et de "
+"commentaire (Woocommerce supporté)"
+
+#: ../core/tools/secure/config.php:75
+msgid ""
+"block gross power hacking on login, register and comment forms (Woocommerce "
+"supported)"
+msgstr ""
+"bloque les attaque par force brute sur les formulaires de login, "
+"d'inscription et de commentaire (Woocommerce supporté)"
+
+#: ../core/tools/secure/load.php:31
+#, fuzzy
+msgid "Secure"
+msgstr "Sécurité"
+
+#: ../core/tools/secure/load.php:36
+#, fuzzy
+msgid "make your site secure"
+msgstr "Rendre votre site privé"
+
+#: ../core/tools/secure/inc/captcha.php:56
+msgid "Captcha"
+msgstr "Captcha"
+
+#: ../core/tools/secure/inc/captcha.php:91
+#: ../core/tools/secure/inc/failtoban.php:80
+msgid "ERROR"
+msgstr "ERREUR"
+
+#: ../core/tools/secure/inc/captcha.php:91
+#: ../core/tools/secure/inc/captcha.php:102
+#: ../core/tools/secure/inc/captcha.php:112
+#: ../core/tools/secure/inc/captcha.php:152
+#: ../core/tools/secure/inc/captcha.php:211
+#: ../core/tools/secure/inc/failtoban.php:80
+msgid "invalid captcha"
+msgstr "captcha invalide"
+
+#: ../core/tools/secure/inc/captcha.php:130
+msgid "<strong>ERROR</strong>: invalid captcha"
+msgstr "<strong>ERREUR</strong>: captcha invalide"
+
+#: ../core/tools/secure/inc/captcha.php:187
+msgid "Please solve the problem. This is an anti-spam security check."
+msgstr "Saisissez le résultat de l'addition. Ceci est une sécurité anti-spam."
+
+#: ../core/tools/secure/inc/failtoban.php:91
+#: ../core/tools/secure/inc/failtoban.php:101
+#: ../core/tools/secure/inc/failtoban.php:139
+#: ../core/tools/secure/inc/failtoban.php:193
+msgid "Too many tries - please wait 1min"
+msgstr "Trop de tentatives - merci d'attendre 1min"
+
+#: ../core/tools/secure/inc/failtoban.php:119
+msgid "<strong>ERROR</strong>: Too many tries - please wait 1min"
+msgstr "<strong>ERREUR</strong>: Trop de tentatives - merci d'attendre 1min"
+
+#: ../core/tools/secure/inc/contactform7/captchanum.php:77
+msgid "numeric captcha"
+msgstr "captcha numéric"
+
+#: ../core/tools/secure/inc/contactform7/captchanum.php:84
+msgid "Generate a form-tag for a numeric captcha."
+msgstr "Génère un captcha numérique"
+
+#: ../core/tools/secure/inc/contactform7/captchanum.php:94
+msgid "Field type"
+msgstr "Type de champ"
+
+#: ../core/tools/secure/inc/contactform7/captchanum.php:108
+msgid "Insert Tag"
+msgstr "Insérer de champ"
+
+#: ../core/tools/secure/inc/contactform7/captchanum.php:113
+#, php-format
+msgid ""
+"To use the value input through this field in a mail field, you need to "
+"insert the corresponding mail-tag (%s) into the field on the Mail tab."
+msgstr ""
+"Pour utiliser cette valeur dans les champ du mail, vous devez insérer le tag "
+"(%s) dans le corps du mail de l'onglet Mail."
+
+#: ../core/tools/seo/load.php:31
+#: ../core/tools/seo/custom-fields/templates/seo.php:27
+msgid "SEO"
+msgstr "SEO"
+
+#: ../core/tools/seo/load.php:36
+msgid "optimize your site SEO and control your social publications"
+msgstr ""
+
+#: ../core/tools/seo/custom-fields/templates/seo-term.php:32
+#: ../core/tools/seo/custom-fields/templates/seo.php:34
+msgid "Meta-title"
+msgstr "Meta-titre"
+
+#: ../core/tools/seo/custom-fields/templates/seo-term.php:41
+#: ../core/tools/seo/custom-fields/templates/seo.php:44
+msgid "Meta-description"
+msgstr "Meta-description"
+
+#: ../core/tools/seo/custom-fields/templates/seo-term.php:50
+#: ../core/tools/seo/custom-fields/templates/seo.php:54
+msgid "Meta-keyword"
+msgstr "Meta-mot-clé"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:27
+msgid "look at sitemap.xml"
+msgstr "voir le sitemap.xml"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:37
+msgid "content title used by default"
+msgstr "titre utilisé par défaut"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:47
+msgid "site description used by default"
+msgstr "description du site utilisé par défaut"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:57
+msgid "separate keywords by comma"
+msgstr "séparer les mots-clés par une virgule"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:66
+msgid "Open Graph"
+msgstr "Open Graph"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:66
+msgid "Social network publication"
+msgstr "Publication sur les réseaux sociaux"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:73
+msgid "OpenGraph-title"
+msgstr "OpenGraph-titre"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:76
+msgid "meta-title used by default"
+msgstr "meta-titre utilisé par défaut"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:83
+msgid "OpenGraph-description"
+msgstr "OpenGraph-description"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:86
+msgid "meta-description used by default"
+msgstr "meta-description utilisée par défaut"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:96
+msgid "OpenGraph-image"
+msgstr "OpenGraph-image"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:99
+msgid "featured image used by default"
+msgstr "image à la une utilisée par défaut"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:102
+msgid "Choose"
+msgstr "Choisir"
+
+#: ../core/tools/seo/custom-fields/templates/seo.php:103
+msgid "Remove"
+msgstr "Supprimer"
+
+#: ../core/tools/seo/inc/customizer.php:123
+#, php-format
+msgid "page %s"
+msgstr "page %s"
+
+#: ../core/tools/shortcodes/load.php:31
+#, fuzzy
+msgid "Shortcodes"
+msgstr "Icons shortcodes"
+
+#: ../core/tools/shortcodes/load.php:36
+msgid "add few shortcodes on your html editor"
+msgstr ""
+
+#: ../core/tools/shortcodes/exergue/exergue.php:85
+msgid "Exergue"
+msgstr "Exergue"
+
+#: ../core/tools/shortcodes/heightspace/heightspace.php:86
+msgid "Height Space"
+msgstr "Espace en hauteur"
+
+#: ../core/tools/shortcodes/icons/icons.php:101
+msgid "Icons"
+msgstr "Icons"
+
+#: ../core/tools/shortcodes/icons/icons.php:106
+msgid "Icons shortcodes"
+msgstr "Icons shortcodes"
+
+#: ../core/tools/social/load.php:31
+#: ../core/tools/social/widgets/tool-social-widget.class.php:34
+msgid "Social"
+msgstr "Social"
+
+#: ../core/tools/social/load.php:36
+#, fuzzy
+msgid "Social tool"
+msgstr "Social"
+
+#: ../core/tools/social/widgets/tool-social-widget.class.php:37
+msgid "Show socials links"
+msgstr "Afficher les liens sociaux"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-form.php:97
+#, fuzzy
+msgid "backgrounded"
+msgstr "Image de fond"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:36
+msgid "facebook"
+msgstr "facebook"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:43
+msgid "twitter"
+msgstr "twitter"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:50
+msgid "google+"
+msgstr "google+"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:57
+msgid "linkedin"
+msgstr "linkedin"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:64
+msgid "behance"
+msgstr "behance"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:71
+msgid "pinterest"
+msgstr "pinterest"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:78
+msgid "instagram"
+msgstr "instagram"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:85
+msgid "vimeo"
+msgstr "vimeo"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:92
+msgid "youtube"
+msgstr "youtube"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:99
+msgid "dribbble"
+msgstr "dribbble"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:106
+msgid "tumblr"
+msgstr "tumblr"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:113
+msgid "flickr"
+msgstr "flickr"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:120
+msgid "soundcloud"
+msgstr "soundcloud"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:127
+msgid "mail"
+msgstr "mail"
+
+#: ../core/tools/social/widgets/templates/tool-social-widget-output.php:134
+msgid "download"
+msgstr "téléchargement"
+
+#: ../core/tools/video/config.php:53
+#, fuzzy
+msgid "default width"
+msgstr "Largeur max."
+
+#: ../core/tools/video/config.php:54
+#, fuzzy
+msgid "default height"
+msgstr "Hauteur max."
+
+#: ../core/tools/video/config.php:81
+msgid ""
+"replace featured image if exists, otherwise, you can insert this code "
+"directly in your theme templates :"
+msgstr ""
+
+#: ../core/tools/video/load.php:31
+#, fuzzy
+msgid "Video"
+msgstr "aucune vidéo"
+
+#: ../core/tools/video/load.php:36
+msgid "featured video on your post-types"
+msgstr ""
+
+#: ../core/tools/video/custom-fields/featured-video.php:40
+msgid "Featured Video"
+msgstr "Vidéo à la une"
+
+#: ../core/tools/video/custom-fields/templates/featured-video.php:34
+msgid "Url"
+msgstr "Url"
+
+#: ../core/tools/wall/load.php:31
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:29
+msgid "Wall"
+msgstr "Mur"
+
+#: ../core/tools/wall/load.php:36
+msgid "display any post-types on your post-types"
+msgstr ""
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:30
+msgid "insert elements in this"
+msgstr "afficher des éléments dans "
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:41
+msgid "nothing"
+msgstr "rien"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:50
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:262
+msgid "customized…"
+msgstr "Personnalisé..."
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:55
+msgid "manage your elements"
+msgstr "choisir vos éléments"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:62
+msgid "Type"
+msgstr "Type"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:67
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:155
+#: ../core/tools/wall/templates/tool-wall-display.php:264
+#: ../core/tools/wall/templates/tool-wall-display.php:361
+msgid "All"
+msgstr "Tous"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:105
+msgid "Order by"
+msgstr "Trier par"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:110
+msgid "no order"
+msgstr "aucun tri"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:111
+msgid "id"
+msgstr "id"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:112
+msgid "author"
+msgstr "autheur"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:113
+msgid "title"
+msgstr "titre"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:114
+msgid "date"
+msgstr "date"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:115
+msgid "last modified date"
+msgstr "date de dernière modif."
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:116
+msgid "random"
+msgstr "aléatoire"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:117
+msgid "num. order"
+msgstr "numéro ordre"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:130
+msgid "descendant"
+msgstr "descendant"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:131
+msgid "ascendant"
+msgstr "ascendant"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:139
+msgid "Number limit"
+msgstr "Nombre maximum"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:150
+msgid "Children of"
+msgstr "Fils de"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:156
+msgid "First level"
+msgstr "Premier niveau"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:173
+msgid "Position"
+msgstr "Position"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:178
+msgid "after content"
+msgstr "après le contenu"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:179
+msgid "before content"
+msgstr "avant le contenu"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:194
+msgid "list"
+msgstr "liste"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:195
+msgid "grid"
+msgstr "grille"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:203
+msgid "Columns"
+msgstr "Colonnes"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:208
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:342
+msgid "1"
+msgstr "1"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:209
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:343
+msgid "2"
+msgstr "2"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:210
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:344
+msgid "3"
+msgstr "3"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:211
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:345
+msgid "4"
+msgstr "4"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:212
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:346
+msgid "5"
+msgstr "5"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:213
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:347
+msgid "6"
+msgstr "6"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:256
+msgid "100%"
+msgstr "100%"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:257
+msgid "50%"
+msgstr "50%"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:258
+msgid "33%"
+msgstr "33%"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:259
+msgid "25%"
+msgstr "25%"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:260
+msgid "20%"
+msgstr "20%"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:261
+msgid "16%"
+msgstr "16%"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:293
+msgid "Display filters"
+msgstr "Afficher les filtres"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:337
+#, fuzzy
+msgid "Carousel columns"
+msgstr "Colonnes"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:422
+msgid "Update wall"
+msgstr "Mettre à jour le mur"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:423
+msgid "Order elements"
+msgstr "Ordonner les éléments"
+
+#: ../core/tools/wall/templates/tool-wall-display.php:481
+msgid "No presentation found !"
+msgstr "Aucune présentation trouvée"
+
+#: ../core/tools/wall/templates/tool-wall-template-isotope-video.php:52
+#: ../core/tools/wall/templates/tool-wall-template-masonry-video.php:61
+#: ../core/tools/wall/templates/tool-wall-template-slider-video.php:52
+msgid "more"
+msgstr "plus"
+
+#: ../core/tools/wip/config.php:32
+msgid ""
+"close your site for maintenance or update. Customize wip page appearence"
+msgstr ""
+
+#: ../core/tools/wip/load.php:31
+msgid "WIP"
+msgstr ""
+
+#: ../core/tools/wip/load.php:36
+msgid "close your site for maintenance or updates"
+msgstr ""
+
+#: ../core/tools/wip/inc/customizer.php:36
+msgid "Work In Progress"
+msgstr "Site en maintenance"
+
+#: ../core/tools/wip/inc/customizer.php:43
+msgid "Active"
+msgstr "Activer"
+
+#: ../core/tools/wip/inc/customizer.php:44
+msgid "only logged in user can look you site"
+msgstr "seuls les utilisateurs connectés peuvent voir votre site"
+
+#: ../core/tools/woocommerce/load.php:31
+msgid "WooCommerce"
+msgstr ""
+
+#: ../core/tools/woocommerce/load.php:36
+msgid "WooCommerce tool"
+msgstr ""
+
+#~ msgid "Copyright"
+#~ msgstr "Copyright"
+
+#~ msgid "Enable comments"
+#~ msgstr "Activer les commentaires"
+
+#~ msgid "Code"
+#~ msgstr "Code"
+
+#~ msgid "Activate captcha"
+#~ msgstr "Activer captcha"
+
+#~ msgid "Main menu"
+#~ msgstr "Menu principal"
+
+#~ msgid "Sidebar"
+#~ msgstr "Sidebar"
+
+#~ msgid "Shown in your site"
+#~ msgstr "Affiché dans votre site"
+
+#~ msgid ""
+#~ "We couldn't find the page you were looking for. This is either because"
+#~ msgstr "La page n'existe plus. Cela peut provenir des raisons suivantes"
+
+#~ msgid ""
+#~ "There is an error in the URL entered into your web browser. Please check "
+#~ "the URL and try again"
+#~ msgstr "Il y a une erreur dans l'url de votre navigateur"
+
+#~ msgid "The page you are looking for has been moved or deleted"
+#~ msgstr "La page que vous cherchez a été déplacée ou supprimée"
+
+#~ msgid "You can return to our homepage by"
+#~ msgstr "Retour vers l'accueil en"
+
+#~ msgid "clicking here"
+#~ msgstr "cliquant ici"
+
+#~ msgid "or you can try searching for the content you are seeking"
+#~ msgstr "ou rechercher votre contenu"
+
+#~ msgid "Archives %s"
+#~ msgstr "Archives %s"
+
+#~ msgid "Archives"
+#~ msgstr "Archives"
+
+#~ msgid "About %s"
+#~ msgstr "À propos %s"
+
+#~ msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+#~ msgstr "Voir tous les articles de %s <span class=\"meta-nav\">&rarr;</span>"
+
+#~ msgid "All posts by %s"
+#~ msgstr "Tous les articles de %s"
+
+#~ msgid "&larr; Older Comments"
+#~ msgstr "&larr; Anciens commentaires"
+
+#~ msgid "Newer Comments &rarr;"
+#~ msgstr "Commentaires récents &rarr;"
+
+#~ msgid "Comments are closed."
+#~ msgstr "Les commentaires sont fermés"
+
+#~ msgid "No result"
+#~ msgstr "Aucun résultat"
+
+#~ msgid "No content"
+#~ msgstr "Aucun contenu"
+
+#~ msgid "Read more <span class=\"meta-nav\">&rarr;</span>"
+#~ msgstr "Lire la suite <span class=\"meta-nav\">&rarr;</span>"
+
+#~ msgid "Pages:"
+#~ msgstr "Pages:"
+
+#~ msgid "Page"
+#~ msgstr "Page"
+
+#~ msgid "'%s' results"
+#~ msgstr "Résultats pour '%s'"
+
+#~ msgid "Archives: %s"
+#~ msgstr "Archives: %s"
+
+#~ msgid "%s Archives"
+#~ msgstr "%s Archives"
+
+#~ msgid "This content doesn't exists anymore."
+#~ msgstr "Ce contenu n'existe plus"
+
+#~ msgid "hh:mm"
+#~ msgstr "hh:mm"
+
+#~ msgid "Private Site"
+#~ msgstr "Site privé"
+
+#~ msgid "Password"
+#~ msgstr "Mot de passe"
+
+#~ msgid "unknown account"
+#~ msgstr "compte inconnu"
+
+#~ msgid ""
+#~ "Default values are used when nothing is recoverable (blog page for "
+#~ "example)"
+#~ msgstr ""
+#~ "Ces valeurs par défaut sont utilisées quand aucune autre donnée n'est "
+#~ "utilisable (page blog par exemple)"
+
+#~ msgid "Default meta-title"
+#~ msgstr "Meta-titre par défaut"
+
+#~ msgid "Default meta-description"
+#~ msgstr "Meta-description par défaut"
+
+#~ msgid "Default meta-keywords"
+#~ msgstr "Meta-mot-clé par défaut"
+
+#~ msgid "work in progress"
+#~ msgstr "site en maintenance"
+
+#~ msgid "you can drag and drop element to order them."
+#~ msgstr "vous pouvez glisser et déposer les éléments pour les ordonner"
+
+#~ msgid "use"
+#~ msgstr "utiliser"
+
+#~ msgid "to add element."
+#~ msgstr "pour ajouter un élément"
+
+#~ msgid "to remove element."
+#~ msgstr "pour supprimer un élément"
+
+#~ msgid "LOGIN"
+#~ msgstr "IDENTIFIANT"
+
+#~ msgid "PASSWORD"
+#~ msgstr "MOT DE PASSE"
+
+#~ msgid "Initial height"
+#~ msgstr "Hauteur initiale"
+
+#~ msgid ""
+#~ "Resolve this addition and put the result in field. It's a secure field to "
+#~ "be sure your are not a robot."
+#~ msgstr ""
+#~ "Saisisez le résultat de l'addition. Cette sécurité permet de s'assurer "
+#~ "que vous n'êtes pas un robot."
+
+#, fuzzy
+#~ msgid "RESULT OF"
+#~ msgstr "RESULTAT DE*"
+
+#, fuzzy
+#~ msgid "No thumb navigation"
+#~ msgstr "Navigation par vignette"
+
+#~ msgid "no thumb"
+#~ msgstr "aucune vignette"
+
+#~ msgid "Alalah le gros test !"
+#~ msgstr "Alalah le gros test ! (FR)"

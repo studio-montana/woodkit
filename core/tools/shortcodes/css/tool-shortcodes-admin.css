@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+/**
+ * SHORTCODES Tool
+ * @package WordPress
+ * @subpackage Woodkit
+ * @since Woodkit 1.0
+ * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+ */
+.tool-shortcodes-insert-shortcode {
+	width: 36px;
+	text-align: center;
+}
+
+.tool-shortcodes-icons-box {
+	position: absolute;
+	left: 24px;
+	z-index: 999;
+	display: none;
+	padding: 24px;
+	background: #fff;
+	max-width: 618px;
+	width: 100%;
+	border: 1px solid #ccc;
+}
+
+.tool-shortcodes-icons-box-close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	cursor: pointer;
+	font-size: 1.3rem;
+}
+
+.tool-shortcodes-icons-box-familly-title{
+	position: relative;
+	padding-left: 18px;
+	font-size: 1.2rem;
+	line-height: 1.7rem;
+	margin: 12px 0;
+	cursor: pointer;
+}
+
+.tool-shortcodes-icons-box-familly-title i{
+	position: absolute;
+	top: 5px;
+	left: 0;
+	font-size: 1.3rem;
+}
+
+.tool-shortcodes-icons-box-familly-content {
+	width: 100%;
+	height: 300px;
+	overflow: scroll;
+	display: none; /* managed by js */
+}
+
+.tool-shortcodes-icons-insert-action {
+	width: 36px;
+	height: 36px;
+	margin: 1px;
+	text-align: center;
+}

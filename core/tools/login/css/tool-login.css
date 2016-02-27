@@ -1,0 +1,234 @@
+@CHARSET "UTF-8";
+
+/* Placeholder text color -- selectors need to be separate to work. */
+
+::-webkit-input-placeholder {
+	color: rgba(124, 124, 124, 1);
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1rem;
+}
+
+:-moz-placeholder {
+	color: rgba(124, 124, 124, 1);
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1rem
+}
+
+::-moz-placeholder {
+	color: rgba(124, 124, 124, 1);
+	opacity: 1; /* Since FF19 lowers the opacity of the placeholder by default */
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1rem
+}
+
+:-ms-input-placeholder {
+	color: rgba(124, 124, 124, 1);
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1rem;
+}
+
+html{
+	background: #000;
+}
+
+body.login{
+	background: none;
+	padding: 0 0 0 0;
+	height: auto;
+}
+
+#login {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	margin: 0 0 0 -160px;
+	padding: 0;
+	width: 320px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.login-interim #login,
+.interim-login #login,
+iframe #login {
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.login .message{
+	background: transparent;
+	border: none;
+	text-align: center;
+    box-shadow: none;
+    padding: 24px 24px 0 24px;
+	color: #ccc;
+	font-weight: 300;
+}
+
+.login #login_error{
+	background: transparent;
+	border: none;
+	text-align: center;
+    box-shadow: none;
+    padding: 24px 24px 0 24px;
+	color: #ccc;
+	font-weight: 300;
+}
+
+.login form {
+    background: transparent;
+    box-shadow: none;
+    margin-top: 0;
+	padding: 17px 24px 0 24px;
+}
+
+.login form input[type='text'],
+.login form input[type='password'],
+.login form input[type='email'],
+.login form input[type='number'],
+.login form input[type='submit'].button-large{
+    height: 60px;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+	width: 100%;
+	padding: 3px;
+	margin: 0 0 3px 0;
+	text-align: center;
+	border: none;
+	font-weight: 300;
+	background: #fff;
+}
+.login form input[type='text']:focus,
+.login form input[type='password']:focus,
+.login form input[type='email']:focus,
+.login form input[type='number']:focus,
+.login form input[type='submit'].button-large:focus{
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.login form input[type='submit'].button-large{
+	background: #000;
+	border: none;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	text-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	text-transform: uppercase;
+
+}
+
+.login form input[type='submit'].button-large:hover{
+	color: #FA9140;
+}
+
+.login form .button.active, .login form .button.active:hover, .login form .button:active {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+}
+
+.login form p{
+}
+
+.login label{
+    color: rgba(255, 255, 255, 1);
+}
+
+.login h1{
+	display: none;
+}
+
+.login #nav,
+.login form .forgetmenot{
+}
+
+.login form .forgetmenot{
+	position: absolute;
+	bottom: 6px;
+	right: 0;
+	left: 0;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+.login #nav{
+	position: relative;
+	text-align: center;
+	padding: 0;
+	margin: 12px 0 0 0;
+	padding: 12px 24px 0 24px;
+	border-top: 1px solid #000;
+}
+
+.login #nav a{
+	color: #ccc;
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-weight: 300;
+}
+
+.login #nav a.registration-url,
+.login-action-register #nav a:first-child,
+.login-action-lostpassword #nav a:first-child{
+	background: #000;
+	color: #fff;
+	text-transform: uppercase;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+	width: 100%;
+	padding: 17px 0;
+	margin: 0 0 12px 0;
+	font-weight: 300;
+}
+
+.login #nav a:hover, .login #nav a:focus, .login #nav a:active{
+	color: #FA9140;
+	text-decoration: none;
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.login #backtoblog{
+	display: none;
+}
+.login form .forgetmenot label{
+	color: #ccc;
+}
+.login form .forgetmenot input{
+	background-color: #ccc;
+	border-color: #777;
+}
+
+#login form p.captcha-error{
+	text-align: center;
+	color: #ccc;
+	font-weight: 300;
+	margin-bottom: 3px;
+}
+
+.login #registerform #reg_passmail {
+	color: #ccc;
+	text-align: center;
+	font-weight: 300;
+	margin: 12px 0;
+}
+
+.login #registerform br.clear {
+	display: none;
+}
+
