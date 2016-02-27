@@ -36,7 +36,8 @@ class WoodkitUploader {
 		$last_update = get_option('woodkit-last-update-latest-release', null);
 		$latestrelease = get_option('woodkit-latest-release', null);
 		if ($last_update != null){
-			$last_update->add(new DateInterval('PT1H'));
+			if (defined('WOODKIT_API_INTERVAL'))
+				$last_update->add(new DateInterval(WOODKIT_API_INTERVAL));
 			if ($last_update > $now){
 				$reload = false;
 			}

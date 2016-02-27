@@ -53,6 +53,7 @@ define('WOODKIT_PLUGIN_FONTS_FOLDER', 'fonts/');
 
 define('WOODKIT_DOCUMENTATION_URL', 'http://lab.studio-montana.com/documentation/woodkit/');
 define('WOODKIT_API_URL', 'http://api.studio-montana.com');
+define('WOODKIT_API_INTERVAL', 'PT5S');
 
 /**
  * Woodkit PLUGIN DEFINITION

@@ -76,7 +76,8 @@ function woodkit_is_registered(){
 			$last_update = get_option('woodkit-activated-update', null);
 			$now = new DateTime();
 			if ($last_update != null){
-				$last_update->add(new DateInterval('PT1H'));
+				if (defined('WOODKIT_API_INTERVAL'))
+					$last_update->add(new DateInterval(WOODKIT_API_INTERVAL));
 				if ($last_update > $now){
 					$already_activated = true;
 				}
