@@ -27,6 +27,7 @@ function seo_auto_update_xmlsitemap(){
 	seo_update_xmlsitemap($availables_post_types);
 }
 add_action("save_post", "seo_auto_update_xmlsitemap");
+add_action("deleted_post", "seo_auto_update_xmlsitemap");
 
 function seo_get_xmlsitemap_url($params = ""){
 	return get_bloginfo('url').'/sitemap.xml'.$params;
