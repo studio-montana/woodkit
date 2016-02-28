@@ -2,9 +2,10 @@
 
 .cookies-legislation-container {
 	position: fixed;
-	top: 0;
+	top: auto;
 	left: 0;
 	right: 0;
+	bottom: 0;
 	background: #000;
 	color: #fff;
 	width: 100%;
@@ -22,6 +23,8 @@
 	font-size: 1em;
 	font-weight: normal;
 	border: 1px solid #fff;
+	color: #fff;
+	background: #000;
 }
 
 .cookies-legislation-container #cookies-accept-condition:hover {

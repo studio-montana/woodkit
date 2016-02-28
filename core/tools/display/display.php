@@ -76,9 +76,7 @@ endif;
 
 if (!function_exists("woodkit_display_thumbnail")):
 /**
- * display post subtitle
-* @param string $before
-* @param string $after
+ * display post thumbnail
 */
 function woodkit_display_thumbnail($post_id = null, $size = 'post-thumbnail', $attr = '' , $display = true, $test_hide_property = true, $before = '<div class="entry-thumbnail">', $after = '</div>'){
 	$res = '';
