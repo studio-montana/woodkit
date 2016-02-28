@@ -1,0 +1,6 @@
+# exclude logs
+log/*
+
+# exclude mac files
+.DS_Store
+
