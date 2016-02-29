@@ -37,7 +37,7 @@ var gold_number = 1.618;
 					$isotope.isotope({
 						itemSelector : item_selector,
 						resizable : false,
-						layout: 'masonry',
+						layout : 'masonry',
 						masonry : {
 							columnWidth : larg
 						}
@@ -60,16 +60,16 @@ var gold_number = 1.618;
 				$isotope.isotope({
 					itemSelector : item_selector,
 					resizable : false,
-					layout: 'masonry',
+					layout : 'masonry',
 					masonry : {
 						columnWidth : larg
 					}
 				});
 			}
-		}else{
+		} else {
 			$isotope.isotope({
 				itemSelector : item_selector,
-				layout: 'masonry',
+				layout : 'masonry',
 				masonry : {
 					columnWidth : 1
 				}
@@ -106,7 +106,7 @@ var gold_number = 1.618;
 					$classic.isotope({
 						itemSelector : item_selector,
 						resizable : false,
-						layout: 'masonry',
+						layout : 'masonry',
 						masonry : {
 							columnWidth : larg
 						}
@@ -129,16 +129,16 @@ var gold_number = 1.618;
 				$classic.isotope({
 					itemSelector : item_selector,
 					resizable : false,
-					layout: 'masonry',
+					layout : 'masonry',
 					masonry : {
 						columnWidth : larg
 					}
 				});
 			}
-		}else{
+		} else {
 			$classic.isotope({
 				itemSelector : item_selector,
-				layout: 'masonry',
+				layout : 'masonry',
 				masonry : {
 					columnWidth : 1
 				}
@@ -169,7 +169,7 @@ var gold_number = 1.618;
 				if (empty(columns) || columns == 0) {
 					columns = 1;
 				}
-				if (columns > gallery_columns){
+				if (columns > gallery_columns) {
 					columns = gallery_columns;
 				}
 				var width_unite = item_width / columns;
@@ -186,11 +186,11 @@ var gold_number = 1.618;
 			}
 		}
 	}
-
+	
 	/**
-	 * ISOTOPE & MASONRY & CLASSIC GALLERY ON WIDOW RESIZE
+	 * UPDATE ISOTOPE & MASONRY & CLASSIC GALLERY
 	 */
-	function on_woodkit_resize_gallery_timer() {
+	function woodkit_refresh_galleries() {
 		$(".isotope[data-columns]").each(function(i) {
 			woodkit_resize_isotope_items($(this), '.isotope-item');
 		});
@@ -201,10 +201,21 @@ var gold_number = 1.618;
 			woodkit_resize_classic_items($(this), '.classic-item');
 		});
 	}
+
+	/**
+	 * ISOTOPE & MASONRY & CLASSIC GALLERY ON WIDOW RESIZE
+	 */
 	var woodkit_resize_gallery_timer = null;
 	$(window).resize(function() {
 		clearTimeout(woodkit_resize_gallery_timer);
-		woodkit_resize_gallery_timer = setTimeout(on_woodkit_resize_gallery_timer, 300);
+		woodkit_resize_gallery_timer = setTimeout(woodkit_refresh_galleries, 300);
+	});
+
+	/**
+	 * ISOTOPE & MASONRY & CLASSIC GALLERY ON WIDOW RESIZE
+	 */
+	$(window).load(function() {
+		woodkit_refresh_galleries();
 	});
 
 	/**
