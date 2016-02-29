@@ -26,7 +26,7 @@ defined('ABSPATH') or die("Go Away!");
  * CONSTANTS
 */
 define('WOODKIT_CONFIG_OPTIONS', 'woodkit_config_options');
-define('WOODKIT_CONFIG_GET_KEY_URL', 'http://api.studio-montana.com/?action=getkey&package=woodkit');
+define('WOODKIT_CONFIG_GET_KEY_URL', WOODKIT_API_URL.'/contact/');
 
 /**
  * GLOBALS
