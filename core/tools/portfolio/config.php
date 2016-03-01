@@ -35,7 +35,7 @@ function tool_portfolio_get_config_options_section_description(){
 }
 
 function tool_portfolio_get_config_options_section_documentation_url(){
-	return WOODKIT_DOCUMENTATION_URL.'#portfolio';
+	return WOODKIT_URL_DOCUMENTATION.'#portfolio';
 }
 
 function tool_portfolio_get_config_options_fields($additional_fields){

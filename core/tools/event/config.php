@@ -35,7 +35,7 @@ function tool_event_get_config_options_section_description(){
 }
 
 function tool_event_get_config_options_section_documentation_url(){
-	return WOODKIT_DOCUMENTATION_URL.'#event';
+	return WOODKIT_URL_DOCUMENTATION.'#event';
 }
 
 function tool_event_get_config_options_fields($additional_fields){

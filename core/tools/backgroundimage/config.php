@@ -27,7 +27,7 @@ function tool_backgroundimage_get_config_options_section_description(){
 }
 
 function tool_backgroundimage_get_config_options_section_documentation_url(){
-	return WOODKIT_DOCUMENTATION_URL.'#backgroundimage';
+	return WOODKIT_URL_DOCUMENTATION.'#backgroundimage';
 }
 
 function tool_backgroundimage_is_active($active){

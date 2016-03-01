@@ -39,8 +39,8 @@ class WoodkitUploader {
 		$last_update = get_option('woodkit-last-update-latest-release', null);
 		$latestrelease = get_option('woodkit-latest-release', null);
 		if ($last_update != null){
-			if (defined('WOODKIT_API_INTERVAL'))
-				$last_update->add(new DateInterval(WOODKIT_API_INTERVAL));
+			if (defined('WOODKIT_INTERVAL_API'))
+				$last_update->add(new DateInterval(WOODKIT_INTERVAL_API));
 			if ($last_update > $now){
 				$reload = false;
 			}
@@ -49,7 +49,7 @@ class WoodkitUploader {
 		if ($reload){
 			trace("reload !");
 			$key = woodkit_get_option("key-activation");
-			$url = WOODKIT_API_URL;
+			$url = WOODKIT_URL_API;
 			$url = add_query_arg(array("api-action" => "latestrelease"), $url);
 			$url = add_query_arg(array("api-package" => WOODKIT_PLUGIN_NAME), $url);
 			$url = add_query_arg(array("api-host" => get_site_url()), $url);

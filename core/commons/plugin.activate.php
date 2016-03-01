@@ -22,7 +22,7 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
-$url = WOODKIT_API_URL;
+$url = WOODKIT_URL_API;
 $url = add_query_arg(array("api-action" => "install"), $url);
 $url = add_query_arg(array("api-package" => WOODKIT_PLUGIN_NAME), $url);
 $url = add_query_arg(array("api-host" => get_site_url()), $url);

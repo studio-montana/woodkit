@@ -41,7 +41,7 @@ function tool_shortcodes_get_config_options_section_description(){
 }
 
 function tool_shortcodes_get_config_options_section_documentation_url(){
-	return WOODKIT_DOCUMENTATION_URL.'#shortcodes';
+	return WOODKIT_URL_DOCUMENTATION.'#shortcodes';
 }
 
 function tool_shortcodes_get_config_options_fields($additional_fields){

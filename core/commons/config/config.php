@@ -26,7 +26,7 @@ defined('ABSPATH') or die("Go Away!");
  * CONSTANTS
 */
 define('WOODKIT_CONFIG_OPTIONS', 'woodkit_config_options');
-define('WOODKIT_CONFIG_GET_KEY_URL', WOODKIT_API_URL.'/contact/');
+define('WOODKIT_CONFIG_GET_KEY_URL', 'http://lab.studio-montana.com/contact/');
 
 /**
  * GLOBALS
@@ -76,8 +76,8 @@ function woodkit_is_registered(){
 			$last_update = get_option('woodkit-activated-update', null);
 			$now = new DateTime();
 			if ($last_update != null){
-				if (defined('WOODKIT_API_INTERVAL'))
-					$last_update->add(new DateInterval(WOODKIT_API_INTERVAL));
+				if (defined('WOODKIT_INTERVAL_API'))
+					$last_update->add(new DateInterval(WOODKIT_INTERVAL_API));
 				if ($last_update > $now){
 					$already_activated = true;
 				}
@@ -90,7 +90,7 @@ function woodkit_is_registered(){
 			}
 			if ($reload){
 				$woodkit_config_ac = false;
-				$url = WOODKIT_API_URL;
+				$url = WOODKIT_URL_API;
 				$url = add_query_arg(array("api-action" => "active"), $url);
 				$url = add_query_arg(array("api-package" => WOODKIT_PLUGIN_NAME), $url);
 				$url = add_query_arg(array("api-host" => get_site_url()), $url);

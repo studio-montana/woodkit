@@ -41,7 +41,7 @@ function tool_excerpt_get_config_options_section_description(){
 }
 
 function tool_excerpt_get_config_options_section_documentation_url(){
-	return WOODKIT_DOCUMENTATION_URL.'#excerpt';
+	return WOODKIT_URL_DOCUMENTATION.'#excerpt';
 }
 
 function tool_excerpt_get_config_options_fields($additional_fields){

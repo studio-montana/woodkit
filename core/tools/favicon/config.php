@@ -37,7 +37,7 @@ function tool_favicon_get_config_options_section_description(){
 }
 
 function tool_favicon_get_config_options_section_documentation_url(){
-	return WOODKIT_DOCUMENTATION_URL.'#favicon';
+	return WOODKIT_URL_DOCUMENTATION.'#favicon';
 }
 
 function tool_favicon_woodkit_config_default_values($default_values){

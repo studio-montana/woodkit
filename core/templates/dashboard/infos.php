@@ -28,6 +28,6 @@ defined('ABSPATH') or die("Go Away!");
 	<p><?php _e("Thanks for using woodkit."); ?></p>
 	<p><?php _e("Woodkit offers you lots of awesome tools to improve your experience on wordpress, on the Web. SEO, security, private site, social publication, ..."); ?></p>
 	<p><?php _e("You can discover and manage tools"); ?>&nbsp;<a href="<?php echo esc_url(get_admin_url(null, 'options-general.php?page=woodkit_options')); ?>"><?php _e("here"); ?></a>.</p>
-	<p><?php _e("Do you need some"); ?>&nbsp;<a href="<?php echo esc_url(WOODKIT_DOCUMENTATION_URL); ?>" target="_blank"><?php _e("documentation"); ?></a> ?</p>
+	<p><?php _e("Do you need some"); ?>&nbsp;<a href="<?php echo esc_url(WOODKIT_URL_DOCUMENTATION); ?>" target="_blank"><?php _e("documentation"); ?></a> ?</p>
 	<p style="text-align: right;"><a href="<?php echo esc_url("http://www.studio-montana.com"); ?>" target="_blank">Studio Montana</a></p>
 </div>
