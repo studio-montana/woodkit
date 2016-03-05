@@ -95,10 +95,6 @@ defined('ABSPATH') or die("Go Away!");
 				<?php echo $subtitle; ?>
 			</h2>
 		<?php } ?>
-
-		<div class="entry-meta">
-			<?php woodkit_entry_meta(); ?>
-		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
 	<div class="entry-summary">
