@@ -95,7 +95,7 @@ function woodkit_is_registered(){
 				$url = add_query_arg(array("api-package" => WOODKIT_PLUGIN_NAME), $url);
 				$url = add_query_arg(array("api-host" => get_site_url()), $url);
 				$url = add_query_arg(array("api-key" => $key), $url);
-				$request_body = wp_remote_retrieve_body( wp_remote_get( $url ) );
+				$request_body = wp_remote_retrieve_body(wp_remote_get($url));
 				if (!empty($request_body)) {
 					$request_body = @json_decode($request_body);
 					if (isset($request_body->active) && $request_body->active == true)
@@ -190,12 +190,7 @@ if (is_admin()){
 	function woodkit_plugin_action_links( $links ) {
 		global $pagenow;
 		if($pagenow == 'plugins.php'){
-			if (woodkit_is_registered()){
-				$links[] = '<a href="'.esc_url(get_admin_url(null, 'options-general.php?page=woodkit_options')).'">'.__("Setup", WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
-			}else{
-				$links[] = '<a href="'.esc_url(get_admin_url(null, 'options-general.php?page=woodkit_options')).'">'.__("Register", WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
-				$links[] = '<a href="'.esc_url(WOODKIT_CONFIG_GET_KEY_URL).'" target="_blank">'.__("Get key", WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
-			}
+			$links[] = '<a href="'.esc_url(get_admin_url(null, 'options-general.php?page=woodkit_options')).'">'.__("Setup", WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
 		}
 		return $links;
 	}

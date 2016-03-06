@@ -47,7 +47,6 @@ class WoodkitUploader {
 		}
 
 		if ($reload){
-			trace("reload !");
 			$key = woodkit_get_option("key-activation");
 			$url = WOODKIT_URL_API;
 			$url = add_query_arg(array("api-action" => "latestrelease"), $url);
@@ -55,7 +54,6 @@ class WoodkitUploader {
 			$url = add_query_arg(array("api-host" => get_site_url()), $url);
 			$url = add_query_arg(array("api-key" => $key), $url);
 			$remote_result = wp_remote_retrieve_body(wp_remote_get($url));
-			trace("reload - result : ".$remote_result);
 			if (!empty($remote_result)) {
 				$this->APIResult = @json_decode($remote_result);
 				// update release
@@ -76,6 +74,9 @@ class WoodkitUploader {
 	public function setTransitent( $transient ) {
 
 		if (!is_object($transient))
+			return $transient;
+		
+		if (!woodkit_is_registered())
 			return $transient;
 
 		if (!isset($transient->response) || !is_array($transient->response))

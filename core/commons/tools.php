@@ -80,7 +80,7 @@ function woodkit_get_registered_tools($reload = false){
 	global $registered_tools;
 	if ($reload || empty($registered_tools)){
 		$registered_tools = array();
-		if (woodkit_is_registered()){
+		// if (woodkit_is_registered()){
 			$available_tools = woodkit_get_available_tools();
 			if (!empty($available_tools)){
 				foreach ($available_tools as $tool){
@@ -90,7 +90,7 @@ function woodkit_get_registered_tools($reload = false){
 					}
 				}
 			}
-		}
+		// }
 	}
 	return $registered_tools;
 }

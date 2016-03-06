@@ -91,7 +91,7 @@ class WoodkitOptions {
 
 		add_settings_section(
 		'woodkit_settings_key_activation_id', // ID
-		__("Activation"), // Title
+		__("Activation (to get plugin updates)", WOODKIT_PLUGIN_TEXT_DOMAIN), // Title
 		array( $this, 'print_section_key_activation_info' ), // Callback
 		'woodkit-admin' // Page
 		);
@@ -108,31 +108,31 @@ class WoodkitOptions {
 
 		// --- Tools
 
-		if (woodkit_is_registered()){
+		// if (woodkit_is_registered()){
 
-			$tools = woodkit_get_available_tools();
-			foreach ($tools as $tool){
-				$fields = array();
-				$fields = apply_filters("woodkit_config_options_fields_tool_".$tool['slug'], $fields);
+		$tools = woodkit_get_available_tools();
+		foreach ($tools as $tool){
+			$fields = array();
+			$fields = apply_filters("woodkit_config_options_fields_tool_".$tool['slug'], $fields);
 
+			if (!empty($fields)){
+
+				// tool section
+				$callback = null;
+				if (function_exists("tool_".$tool['slug']."_get_config_options_section_description"))
+					$callback = "tool_".$tool['slug']."_get_config_options_section_description";
+				$documentation_link = "";
+				if (function_exists("tool_".$tool['slug']."_get_config_options_section_documentation_url"))
+					$documentation_link = '<a class="tool-documentation" href="'.call_user_func("tool_".$tool['slug']."_get_config_options_section_documentation_url").'" target="_blank"><i class="fa fa-info-circle"></i></a>';
+				add_settings_section(
+				'woodkit_settings_tool_'.$tool['slug'].'_id', // ID
+				$tool['name'].$documentation_link, // Title
+				$callback, // Callback
+				'woodkit-admin' // Page
+				);
+
+				// tool fields
 				if (!empty($fields)){
-
-					// tool section
-					$callback = null;
-					if (function_exists("tool_".$tool['slug']."_get_config_options_section_description"))
-						$callback = "tool_".$tool['slug']."_get_config_options_section_description";
-					$documentation_link = "";
-					if (function_exists("tool_".$tool['slug']."_get_config_options_section_documentation_url"))
-						$documentation_link = '<a class="tool-documentation" href="'.call_user_func("tool_".$tool['slug']."_get_config_options_section_documentation_url").'" target="_blank"><i class="fa fa-info-circle"></i></a>';
-					add_settings_section(
-					'woodkit_settings_tool_'.$tool['slug'].'_id', // ID
-					$tool['name'].$documentation_link, // Title
-					$callback, // Callback
-					'woodkit-admin' // Page
-					);
-
-					// tool fields
-					if (!empty($fields)){
 						foreach ($fields as $field){
 							add_settings_field(
 							$field['slug'], // ID
@@ -145,9 +145,9 @@ class WoodkitOptions {
 							$this->fields[] = $field['slug'];
 						}
 					}
-				}
 			}
 		}
+		//}
 	}
 
 
