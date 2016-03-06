@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+<?php
 /**
  * @package Woodkit
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
@@ -20,26 +20,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-body.wip {
-	margin: 0;
-	text-align: center;
-	font-family: Helvetica;
-	background: #000;
-}
+defined('ABSPATH') or die("Go Away!");
 
-body.wip h1 {
-	margin: 0 0 1.2rem 0;
-}
+/**
+ * CONSTANTS
+*/
+define('SPLASHSCREEN_TOOL_NAME', 'splashscreen');
 
-#wip-page {
-	margin: 0 auto;
-	margin-top: 10%;
-	padding: 24px 0;
-	max-width: 320px;
-	position: relative;
-	color: #fff;
+function tool_splashscreen_get_name($tool_name = ""){
+	return __("Splash Screen", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
+add_filter("woodkit_get_tool_name_".SPLASHSCREEN_TOOL_NAME, "tool_splashscreen_get_name", 1, 1);
 
-#wip-page .wip-message {
-	margin: 24px 0;
+function tool_splashscreen_get_description($tool_description = ""){
+	return __("setup splash screen on your site (use during front side site loading)", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
+add_filter("woodkit_get_tool_description_".SPLASHSCREEN_TOOL_NAME, "tool_splashscreen_get_description", 1, 1);
+
+function tool_splashscreen_activate(){
+	require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SPLASHSCREEN_TOOL_NAME.'/'.SPLASHSCREEN_TOOL_NAME.'.php');
+}
+add_action("woodkit_tool_activate_".SPLASHSCREEN_TOOL_NAME, "tool_splashscreen_activate");
