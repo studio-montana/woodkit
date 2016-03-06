@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Custom\n"
 "POT-Creation-Date: 2016-02-27 12:17+0100\n"
-"PO-Revision-Date: 2016-02-27 12:18+0100\n"
+"PO-Revision-Date: 2016-03-06 09:11+0100\n"
 "Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
 "Language-Team: Sébastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
 "com artcyril@gmail.com>\n"
@@ -159,7 +159,7 @@ msgstr "Activer failtoban"
 
 #: ../core/commons/config/config-options.php:101
 msgid "enter your key"
-msgstr "saisissez vitre clé"
+msgstr "saisissez votre clé"
 
 #: ../core/commons/config/config-options.php:183
 msgid "YOUR KEY"
@@ -550,7 +550,7 @@ msgstr ""
 
 #: ../core/tools/excerpt/load.php:36
 msgid "specify customized excerpt on your post-types"
-msgstr ""
+msgstr "saisissez un résumé personnalisé sur vos contenus"
 
 #: ../core/tools/excerpt/custom-fields/templates/excerpt.php:27
 #, fuzzy
@@ -568,7 +568,7 @@ msgstr "Options de la galerie"
 
 #: ../core/tools/gallery/load.php:36
 msgid "customize wp gallery appearence"
-msgstr ""
+msgstr "personnalisez l'apparence de vos galeries wordpress"
 
 #: ../core/tools/gallery/custom-fields/templates/gallery.php:27
 msgid "Gallery options"
@@ -692,7 +692,7 @@ msgstr "désactiver fancybox sur tout le site"
 
 #: ../core/tools/googleanalytics/config.php:32
 msgid "make your site trackable by Google Analytics"
-msgstr ""
+msgstr "surveillez les statistiques de votre site grâce à Google Analytics"
 
 #: ../core/tools/googleanalytics/config.php:41
 msgid "code"
@@ -708,7 +708,7 @@ msgstr ""
 
 #: ../core/tools/login/config.php:41
 msgid "customize login page appearence"
-msgstr ""
+msgstr "personnalisez l'apparence de votre page d'identification"
 
 #: ../core/tools/login/config.php:41 ../core/tools/logo/config.php:35
 #: ../core/tools/wip/config.php:32
@@ -750,7 +750,7 @@ msgstr "Personnalisé"
 
 #: ../core/tools/logo/config.php:65 ../core/tools/pagination/config.php:63
 msgid "insert this code in your theme templates :"
-msgstr ""
+msgstr "insérez ce code dans vos templates"
 
 #: ../core/tools/logo/load.php:31 ../core/tools/logo/inc/customizer.php:35
 msgid "Logo"
@@ -758,7 +758,7 @@ msgstr "Logo"
 
 #: ../core/tools/logo/load.php:36
 msgid "customize your site logo"
-msgstr ""
+msgstr "personnalisez le logo de votre site"
 
 #: ../core/tools/menu/load.php:31
 msgid "Menu"
@@ -775,7 +775,7 @@ msgstr "Options de pagination"
 
 #: ../core/tools/pagination/load.php:36
 msgid "intelligent pagination for all post-types"
-msgstr ""
+msgstr "pagination intelligente pour tous vos contenus"
 
 #: ../core/tools/pagination/custom-fields/templates/display-pagination.php:27
 msgid "Pagination options"
@@ -873,7 +873,7 @@ msgstr "Zone privée"
 
 #: ../core/tools/private/load.php:36
 msgid "make your site private (Intranet) or just few pages"
-msgstr ""
+msgstr "rendre votre site privé ou quelques pages seulement (Intranet)"
 
 #: ../core/tools/private/private.php:121 ../core/tools/private/private.php:122
 msgid "sign out"
@@ -1024,6 +1024,8 @@ msgstr "SEO"
 #: ../core/tools/seo/load.php:36
 msgid "optimize your site SEO and control your social publications"
 msgstr ""
+"optimisez le référencement de votre site et contrôlez vos publications sur "
+"les réseaux sociaux"
 
 #: ../core/tools/seo/custom-fields/templates/seo-term.php:32
 #: ../core/tools/seo/custom-fields/templates/seo.php:34
