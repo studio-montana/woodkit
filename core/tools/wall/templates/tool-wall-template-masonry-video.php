@@ -44,22 +44,24 @@ $class = join(' ', get_post_class($class));
 $class = wall_sanitize_wall_item_classes($class);
 ?>
 <li class="masonry-item template-video <?php echo $class; ?>" style="<?php echo $style; ?>" data-columns="1">
-	<div class="inner-item video" style="width: 100%; height: 100%;">
-	
-		<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
-			
-		<?php
-		if (video_has_featured_video(get_the_ID())){
-			 echo video_get_featured_video(get_the_ID(), "100%", "100%");
-		}else if(is_admin()){
-			?>
-			<div class="no-content"	><i class="fa fa-ban"></i></div>
+	<div class="inner-item-wrapper">
+		<div class="inner-item video" style="width: 100%; height: 100%;">
+		
+			<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
+				
 			<?php
-		}
-		?>
-		<?php if (!is_admin()){ ?>
-		<div class="has-more"><a class="post-link" href="<?php the_permalink(); ?>" title="<?php echo esc_attr(__("more", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>"><?php _e("more", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
-		<?php } ?>
+			if (video_has_featured_video(get_the_ID())){
+				 echo video_get_featured_video(get_the_ID(), "100%", "100%");
+			}else if(is_admin()){
+				?>
+				<div class="no-content"	><i class="fa fa-ban"></i></div>
+				<?php
+			}
+			?>
+			<?php if (!is_admin()){ ?>
+			<div class="has-more"><a class="post-link" href="<?php the_permalink(); ?>" title="<?php echo esc_attr(__("more", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>"><?php _e("more", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
+			<?php } ?>
+		</div>
 	</div>
 	<?php if (is_admin()){
 		echo $wall_args['meta_wall_admin_item_code'];

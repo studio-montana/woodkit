@@ -195,8 +195,8 @@ class WoodkitUploader {
 		$result['destination'] = $pluginFolder;
 
 		// Re-activate plugin if needed
-		if ( $wasActivated ) {
-			$activate = activate_plugin( $this->slug );
+		if ($wasActivated) {
+			$activate = activate_plugin($this->slug);
 		}
 
 		return $result;

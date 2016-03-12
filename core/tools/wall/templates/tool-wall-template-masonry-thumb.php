@@ -83,17 +83,19 @@ $class = wall_sanitize_wall_item_classes($class);
 	<?php if (!is_admin()){ ?>
 	<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>
-		<div class="inner-item thumb" style="<?php echo $style_thumb; ?>">
-	
-			<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
-			
-			<div class="has-mask">
-				<?php if (function_exists("woodkit_display_title")) woodkit_display_title(get_the_ID(), true, false, '<div class="title">', '</div>'); else the_title('<div class="title">', '</div>'); ?>
+		<div class="inner-item-wrapper" style="width: 100%; height: 100%;">
+			<div class="inner-item thumb" style="<?php echo $style_thumb; ?>">
+		
+				<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
+				
+				<div class="has-mask">
+					<?php if (function_exists("woodkit_display_title")) woodkit_display_title(get_the_ID(), true, false, '<div class="title">', '</div>'); else the_title('<div class="title">', '</div>'); ?>
+				</div>
+				<div class="has-infos">
+					<?php if (function_exists("woodkit_display_title")) woodkit_display_title(get_the_ID(), true, false, '<div class="title">', '</div>'); else the_title('<div class="title">', '</div>'); ?>
+				</div>
+				<?php if (!$has_thumb && is_admin()){ ?><div class="no-content"><i class="fa fa-ban"></i></div><?php } ?>
 			</div>
-			<div class="has-infos">
-				<?php if (function_exists("woodkit_display_title")) woodkit_display_title(get_the_ID(), true, false, '<div class="title">', '</div>'); else the_title('<div class="title">', '</div>'); ?>
-			</div>
-			<?php if (!$has_thumb && is_admin()){ ?><div class="no-content"><i class="fa fa-ban"></i></div><?php } ?>
 		</div>
 	<?php if (!is_admin()){ ?>
 	</a>
