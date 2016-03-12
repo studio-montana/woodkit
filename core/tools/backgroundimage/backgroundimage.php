@@ -166,7 +166,7 @@ function woodkit_backgroundimage($auto_insert = false){
 	if (!empty($url_backgroundimage)){
 		$variable_styles = "";
 		if ($auto_insert)
-			$variable_styles = " position: fixed; z-index: -100;";
+			$variable_styles = " position: fixed;";
 		else
 			$variable_styles = " position: absolute;";
 		?>
@@ -182,6 +182,7 @@ function woodkit_backgroundimage($auto_insert = false){
 			left: 0;
 			width: 100%;
 			height: 100%;
+			z-index: -100;
 			<?php echo $variable_styles; ?>">
 	<?php
 	if (!empty($background_color_code)){
