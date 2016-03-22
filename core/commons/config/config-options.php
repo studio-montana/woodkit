@@ -106,6 +106,25 @@ class WoodkitOptions {
 
 		$this->fields[] = "key-activation";
 
+		// --- Metabox position
+
+		add_settings_section(
+		'woodkit_settings_metabox_position_id', // ID
+		__("Metabox position", WOODKIT_PLUGIN_TEXT_DOMAIN), // Title
+		array( $this, 'print_section_metabox_position_info' ), // Callback
+		'woodkit-admin' // Page
+		);
+
+		add_settings_field(
+		'key-metabox-position-id', // ID
+		__("position", WOODKIT_PLUGIN_TEXT_DOMAIN), // Title
+		array( $this, 'print_setting_metabox_position' ), // Callback
+		'woodkit-admin', // Page
+		'woodkit_settings_metabox_position_id' // Section
+		);
+
+		$this->fields[] = "metabox_position";
+
 		// --- Tools
 
 		// if (woodkit_is_registered()){
@@ -181,6 +200,34 @@ class WoodkitOptions {
 		if (isset($this->options['key-activation']))
 			$value = $this->options['key-activation'];
 		echo '<input placeholder="'.__("YOUR KEY", WOODKIT_PLUGIN_TEXT_DOMAIN).'" type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[key-activation]" value="'.$value.'" /><a href="'.esc_url(WOODKIT_CONFIG_GET_KEY_URL).'" target="_blank" class="button primary">'.__('Get key', WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
+	}
+
+	/**
+	 * Print the Section text
+	 */
+	public function print_section_metabox_position_info(){
+	}
+
+	function print_setting_metabox_position(){
+		$value = "";
+		// TODO display message if key is invalid
+		if (isset($this->options['metabox-position']))
+			$value = $this->options['metabox-position'];
+		$default_selected = "";
+		$high_selected = "";
+		$low_selected = "";
+		if ($value == "high")
+			$high_selected = 'selected="selected"';
+		else if ($value == "low")
+			$low_selected = 'selected="selected"';
+		else
+			$default_selected = 'selected="selected"';
+		
+		echo '<select name="'.WOODKIT_CONFIG_OPTIONS.'[metabox-position]">';
+		echo '<option value="default" '.$default_selected.'>'.__("default", WOODKIT_PLUGIN_TEXT_DOMAIN).'</option>';
+		echo '<option value="high" '.$high_selected.'>'.__("high position", WOODKIT_PLUGIN_TEXT_DOMAIN).'</option>';
+		echo '<option value="low" '.$low_selected.'>'.__("low position", WOODKIT_PLUGIN_TEXT_DOMAIN).'</option>';
+		echo '</select>';
 	}
 }
 
