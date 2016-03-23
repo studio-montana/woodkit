@@ -273,7 +273,7 @@ function tool_wall_use_shortcode($atts, $content = null, $name='') {
 	$output .= '</div>';
 	return $output;
 }
-add_shortcode('toolwall', 'tool_wall_use_shortcode');
+add_shortcode('woodkit_wall', 'tool_wall_use_shortcode');
 
 if (!function_exists("wall_get_post_types_options")):
 /**
@@ -459,4 +459,18 @@ function wall_sanitize_wall_item_classes($classes){
 	return $classes;
 }
 endif;
+
+add_action('vc_before_init', 'tool_wall_visual_composer_support' );
+/**
+ * Visual Composer Wall shortcode support
+*/
+function tool_wall_visual_composer_support() {
+	vc_map( array(
+		"name" => __("Woodkit Wall", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		"base" => "woodkit_wall",
+		"description" => __("Insert defined wall for this content", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		"class" => "",
+		"category" => __("Content", WOODKIT_PLUGIN_TEXT_DOMAIN)
+	) );
+}
 
