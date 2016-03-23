@@ -34,7 +34,7 @@ $height = $wall_args['meta_wall_display_presentation_initial_height'];
 	<?php if (!is_admin()){ ?>
 	<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>
-		<div class="inner-item-wrapper">
+		<div class="inner-item-wrapper" style="<?php echo $style; ?>">
 			<div class="inner-item content" style="<?php echo $style; ?>">
 		
 				<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>

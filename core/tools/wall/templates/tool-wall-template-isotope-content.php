@@ -34,7 +34,7 @@ $height = 250*$wall_args['wall_item_height_selected']; /* override by js */
 	<?php if (!is_admin()){ ?>
 	<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>
-		<div class="inner-item-wrapper">
+		<div class="inner-item-wrapper" style="<?php echo $style; ?>">
 			<div class="inner-item content" style="<?php echo $style; ?>">
 		
 				<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
