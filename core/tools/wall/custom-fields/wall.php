@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,7 @@ defined('ABSPATH') or die("Go Away!");
 
 /**
  * CONSTANTS
- */
+*/
 define('META_WALL_DISPLAY_POST_TYPE', 'meta_wall_display_post_type');
 define('META_WALL_DISPLAY_IDS', 'meta_wall_display_ids');
 define('META_WALL_DISPLAY_POSITION', 'meta_wall_display_position');
@@ -231,9 +231,9 @@ endif;
 
 if (!function_exists("wall_filter_the_content")):
 function wall_filter_the_content($content){
-	if (in_array(get_post_type(get_the_ID()), get_displayed_post_types()) && (is_single(get_the_ID()) || is_page(get_the_ID()))){ // never for search, listing, ...
+	$meta_wall_display_position = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POSITION, true);
+	if (($meta_wall_display_position == "before-content" || $meta_wall_display_position == "after-content") && in_array(get_post_type(get_the_ID()), get_displayed_post_types()) && (is_single(get_the_ID()) || is_page(get_the_ID()))){ // never for search, listing, ...
 		$meta_wall_display_post_type = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POST_TYPE, true);
-		$meta_wall_display_position = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POSITION, true);
 		if (!empty($meta_wall_display_post_type) && $meta_wall_display_post_type != '0'){
 			$content = '<div class="content-with-wall-wrapper"><div class="content-with-wall">'.$content.'</div></div>';
 			ob_start();
@@ -251,6 +251,29 @@ function wall_filter_the_content($content){
 }
 add_filter('the_content','wall_filter_the_content', 99); // make sur it the last called filter, otherwise : you'll get WP Gallery like "[gallery ids="12,11,10,9,8,7,6,5"]",
 endif;
+
+/**
+ * Make shortcode
+ */
+function tool_wall_use_shortcode($atts, $content = null, $name='') {
+	$output = '<div class="wall-shortcode">';
+	$atts = shortcode_atts(array(), $atts);
+	$meta_wall_display_position = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POSITION, true);
+	if ($meta_wall_display_position == "use-shortcode" && in_array(get_post_type(get_the_ID()), get_displayed_post_types()) && (is_single(get_the_ID()) || is_page(get_the_ID()))){ // never for search, listing, ...
+		$meta_wall_display_post_type = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POST_TYPE, true);
+		if (!empty($meta_wall_display_post_type) && $meta_wall_display_post_type != '0'){
+			ob_start();
+			$wall_template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-display.php');
+			if (!empty($wall_template))
+				include($wall_template);
+			$output .= ob_get_contents();
+			ob_end_clean();
+		}
+	}
+	$output .= '</div>';
+	return $output;
+}
+add_shortcode('toolwall', 'tool_wall_use_shortcode');
 
 if (!function_exists("wall_get_post_types_options")):
 /**
@@ -380,8 +403,8 @@ endif;
 if (!function_exists("wall_get_default_template")):
 /**
  * retrieve default templates for specified post
- * @param number $post_id
- * @return string
+* @param number $post_id
+* @return string
 */
 function wall_get_default_template($post_id = null){
 	if ($post_id == null)
@@ -400,8 +423,8 @@ endif;
 if (!function_exists("wall_secure_meta_values")):
 /**
  * securize all wall meta values
- * @param string $template_name
- */
+* @param string $template_name
+*/
 function wall_securize_meta_values($values = array()){
 	if (!isset($values['meta_wall_display_presentation_format']))
 		$values['meta_wall_display_presentation_format'] = "square";
