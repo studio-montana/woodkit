@@ -153,7 +153,8 @@ if (!empty($posts)){
 						ob_end_clean();
 					}
 					$template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-template-slider-'.$template_selected.'.php');
-					include($template);
+					if (!empty($template))
+						include($template);
 					wp_reset_postdata();
 				} ?>
 			</ul>
@@ -313,7 +314,8 @@ if (!empty($posts)){
 						ob_end_clean();
 					}
 					$template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-template-masonry-'.$template_selected.'.php');
-					include($template);
+					if (!empty($template))
+						include($template);
 					wp_reset_postdata();
 				} ?>
 			</ul>
@@ -449,7 +451,8 @@ if (!empty($posts)){
 					}
 					
 					$template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-template-isotope-'.$template_selected.'.php');
-					include($template);
+					if (!empty($template))
+						include($template);
 					wp_reset_postdata();
 				} ?>
 			</ul>

@@ -372,6 +372,7 @@ function wall_get_available_templates(){
 	$templates = array("thumb", "content");
 	if (woodkit_is_registered_tool('video'))
 		$templates[] = "video";
+	$templates = apply_filters("woodkit-tool-wall-available-templates", $templates);
 	return $templates;
 }
 endif;
@@ -391,6 +392,7 @@ function wall_get_default_template($post_id = null){
 	}else if (has_post_thumbnail($post_id)){
 		$template = "thumb";
 	}
+	$template = apply_filters("woodkit-tool-wall-default-template", $template, $post_id);
 	return $template;
 }
 endif;
