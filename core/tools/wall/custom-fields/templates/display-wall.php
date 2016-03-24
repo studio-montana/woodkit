@@ -84,10 +84,10 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 							}
 							if (!empty($tax_post_types)){
 								if (!empty($terms)){
-									$tax_options .= '<optgroup label="'.esc_attr($tax_labels->name).'">';
+									$tax_options .= '<optgroup label="'.esc_attr($tax_labels->name).'" data-slug="'.esc_attr($tax->name).'">';
 									foreach ($terms as $term){
-										$selected = !empty($meta) && $meta == $term->slug ? 'selected="selected"' : '';
-										$tax_options .= '<option value="'.$term->slug.'" data-tax="'.$tax->name.'" data-post-type="'.$tax_post_types.'" '.$selected.'>'.$term->name.'</option>';
+										$selected = !empty($meta) && $meta == $tax->name.'|'.$term->slug ? 'selected="selected"' : '';
+										$tax_options .= '<option value="'.$tax->name.'|'.$term->slug.'" data-tax="'.$tax->name.'" data-post-type="'.$tax_post_types.'" '.$selected.'>'.$term->name.'</option>';
 									}
 									$tax_options .= '</optgroup>';
 								}
@@ -571,7 +571,8 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 				$("#<?php echo META_WALL_DISPLAY_TERM_SLUG; ?> option").each(function(i){
 					if ($(this).attr('value') == '0' || $(this).data('post-type') == post_type){
 						$(this).prop("disabled", false);
-						if ($(this).attr('selected') == 'selected'){
+						// old code : if ($(this).attr('selected') == 'selected'){
+						if ($(this).attr('value') == $("*[name='<?php echo META_WALL_DISPLAY_TERM_SLUG; ?>']").val()){
 							has_selected_value = true;
 						}
 					}else{

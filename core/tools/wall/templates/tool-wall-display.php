@@ -61,11 +61,16 @@ $posts = array();
 if (post_type_exists($wall_args['meta_wall_display_post_type'])){ // dynamic list
 	$args = array("post_type" => $wall_args['meta_wall_display_post_type'], "orderby" => $wall_args['meta_wall_display_orderby'], "order" => $wall_args['meta_wall_display_order']);
 	if (!empty($wall_args['meta_wall_display_tax']) && !empty($wall_args['meta_wall_display_term_slug']) && $wall_args['meta_wall_display_term_slug'] != '0'){
+		$selected_terms = $wall_args['meta_wall_display_term_slug']; // structure like tax-slug|term-slug
+		$selected_terms_array = explode("|", $wall_args['meta_wall_display_term_slug']);
+		if (!empty($selected_terms_array) && count($selected_terms_array) > 1){
+			$selected_terms = $selected_terms_array[1];
+		}
 		$args['tax_query'] = array(
 				array(
 						'taxonomy' => $wall_args['meta_wall_display_tax'],
 						'field'    => 'slug',
-						'terms'    => $wall_args['meta_wall_display_term_slug'],
+						'terms'    => $selected_terms,
 				),
 		);
 	}
