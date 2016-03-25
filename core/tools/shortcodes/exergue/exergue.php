@@ -41,7 +41,7 @@ function tool_shortcodes_exergue($atts, $content = null, $name='') {
 			"style"	=> ''
 	), $atts );
 	$style = sanitize_text_field($atts['style']);
-	$output = '<div class="shortcode-exergue" style="'.$style.'">'.do_shortcode($content).'</div>';
+	$output = '<div class="shortcode-exergue-wrapper"><div class="shortcode-exergue" style="'.$style.'">'.do_shortcode($content).'</div></div>';
 	return $output;
 }
 add_shortcode('exergue', 'tool_shortcodes_exergue');
