@@ -59,6 +59,8 @@ function tool_breadcrumb($args = array(), $display = true){
 	$id_front_page = get_option('page_on_front');
 
 	$defaults = array(
+			'before' => '',
+			'after' => '',
 			'seperator' => '<li class="separator"><i class="fa fa-caret-right"></i></li>',
 			'final' => '<li class="final"></li>',
 			'home-item' => __("Home", WOODKIT_PLUGIN_TEXT_DOMAIN)
@@ -68,7 +70,7 @@ function tool_breadcrumb($args = array(), $display = true){
 	$separator = $args['seperator'];
 	$final = $args['final'];
 
-	$res = '<ul class="tool-breadcrumb">';
+	$res = $args['before'].'<ul class="tool-breadcrumb">';
 
 	// -------------------- home
 	$home_url = esc_url(home_url('/'));
@@ -141,7 +143,7 @@ function tool_breadcrumb($args = array(), $display = true){
 			$res .= '<li class="breadcrumb-item current">'.__('Search results', WOODKIT_PLUGIN_TEXT_DOMAIN); $res .= '</li>'.$final;
 		}
 	}
-	$res .= '</ul><div style="clear: both"></div>';
+	$res .= '</ul>'.$args['after'].'<div style="clear: both"></div>';
 
 	if ($display == true){
 		echo $res;
