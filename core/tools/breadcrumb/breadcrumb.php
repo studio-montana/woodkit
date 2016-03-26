@@ -74,7 +74,11 @@ function tool_breadcrumb($args = array(), $display = true){
 
 	// -------------------- home
 	$home_url = esc_url(home_url('/'));
-	$res .= '<li class="breadcrumb-item home"><a href="'.$home_url.'" title="'.__("Home", WOODKIT_PLUGIN_TEXT_DOMAIN).'">'.$args['home-item'].'</a></li>';
+	$home_class = " home";
+	if (is_front_page()){ // site home page
+		$home_class .= " current";
+	}
+	$res .= '<li class="breadcrumb-item'.$home_class.'"><a href="'.$home_url.'" title="'.__("Home", WOODKIT_PLUGIN_TEXT_DOMAIN).'">'.$args['home-item'].'</a></li>';
 	if (is_front_page()){ // site home page
 		$res .= $final;
 	}else if (!is_home()){ // site inner page
