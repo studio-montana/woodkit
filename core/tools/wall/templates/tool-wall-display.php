@@ -243,7 +243,7 @@ if (!empty($posts)){
 								moveSlides: 1,
 							<?php }
 							if ($display_slider_nav){ ?>
-								pagerWoodkit: '#slider-wall-thumb-nav-<?php echo get_the_ID(); ?>',
+								pagerCustom: '#slider-wall-thumb-nav-<?php echo get_the_ID(); ?>',
 							<?php } ?>
 						});
 				});

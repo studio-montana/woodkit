@@ -22,21 +22,21 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
-if ($meta_gallery_presentation == 'slider'){
+if ($meta_media_presentation == 'slider'){
 	$display_slider_nav = false;
-	if (empty($meta_gallery_presentation_slider_carousel) || $meta_gallery_presentation_slider_carousel != 'on'){ // no thumb navigation in carousel mode
-		if (!empty($meta_gallery_presentation_slider_thumb_nav) && $meta_gallery_presentation_slider_thumb_nav == 'on'){
+	if (empty($meta_media_presentation_slider_carousel) || $meta_media_presentation_slider_carousel != 'on'){ // no thumb navigation in carousel mode
+		if (!empty($meta_media_presentation_slider_thumb_nav) && $meta_media_presentation_slider_thumb_nav == 'on'){
 			$display_slider_nav = true;
 		}
 	}
 	?>
-	<div class="gallery tool-gallery slider-wrapper" id="slider-wrapper-<?php echo $gallery_post_count; ?>" style="display: none;">
-		<ul id="slider-gallery-<?php echo $gallery_post_count; ?>" class="gallery tool-gallery slider<?php if (!empty($meta_gallery_presentation_slider_carousel) && $meta_gallery_presentation_slider_carousel == 'on'){ echo " slider-carousel"; } ?>" data-columns="<?php echo $columns; ?>">
+	<div class="gallery-wrapper tool-media slider-wrapper" id="slider-wrapper-<?php echo $media_post_count; ?>" style="display: none;">
+		<ul id="slider-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media slider<?php if (!empty($meta_media_presentation_slider_carousel) && $meta_media_presentation_slider_carousel == 'on'){ echo " slider-carousel"; } ?>" data-columns="<?php echo $columns; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
 				$img = wp_get_attachment_image_src($id, 'full');
 				$class = ' attachment attachment-'.$id;
-				$height = $meta_gallery_presentation_height;
+				$height = $meta_media_presentation_height;
 				$style = "width: 100%; height: ".$height."px;";
 				$style .= "background:	url('$img[0]') no-repeat center center;";
 				$style .= " -webkit-background-size: cover;";
@@ -47,21 +47,19 @@ if ($meta_gallery_presentation == 'slider'){
 				$style .= "overflow: hidden;";
 				$a_class = "";
 				$data_fancybox_title = "";
-				$meta_disable_fancybox = get_theme_mod("gallery_fancybox_state");
-				if (empty($meta_disable_fancybox) || $meta_disable_fancybox != 1){
-					if (empty($meta_gallery_disable_fancybox) || $meta_gallery_disable_fancybox != 'on'){
-						$a_class .= " fancybox";
-						if (!empty($attachment->post_title)){
-							$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
-						}
-						if (!empty($attachment->post_excerpt)){
-							$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
-						}
+				$media_fancybox_active = woodkit_get_option('tool-media-fancybox-active');
+				if (!empty($media_fancybox_active) && $media_fancybox_active == 'on'){
+					$a_class .= " fancybox";
+					if (!empty($attachment->post_title)){
+						$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
+					}
+					if (!empty($attachment->post_excerpt)){
+						$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
 					}
 				}
 				?>
 				<li class="slider-item wp-gallery-item<?php echo $class; ?>" style="height: auto; width: auto;">
-					<a class="<?php echo $a_class; ?>" rel="group" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
+					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style; ?>">
 							<div class="has-mask">
 								<?php if (!empty($attachment->post_title)){ ?>
@@ -87,13 +85,13 @@ if ($meta_gallery_presentation == 'slider'){
 			?>
 		</ul>
 		<?php if ($display_slider_nav){ ?>
-		<div id="slider-gallery-thumb-nav-wrapper-<?php echo $gallery_post_count; ?>" class="slider-thumb-nav-wrapper" style="display: none;">
+		<div id="slider-gallery-thumb-nav-wrapper-<?php echo $media_post_count; ?>" class="slider-thumb-nav-wrapper" style="display: none;">
 			<div class="slider-thumb-nav-control slider-thumb-nav-prev"><i class="fa fa-chevron-left"></i></div>
-			<div id="slider-gallery-thumb-nav-<?php echo $gallery_post_count; ?>" class="slider-thumb-nav">
+			<div id="slider-gallery-thumb-nav-<?php echo $media_post_count; ?>" class="slider-thumb-nav">
 				<?php
 				$cp_attachment = 0;
 				foreach ($attachments as $id => $attachment) {
-					$img = wp_get_attachment_image_src($id, 'tool-gallery-slider-nav-thumb');
+					$img = wp_get_attachment_image_src($id, 'tool-media-slider-nav-thumb');
 					$class = ' attachment attachment-'.$id;
 					$style = "background: url('$img[0]') no-repeat center center;";
 					$style .= " -webkit-background-size: cover;";
@@ -109,20 +107,20 @@ if ($meta_gallery_presentation == 'slider'){
 				}
 				?>
 			</div>
-			<div class="slider-thumb-nav-control slider-thumb-nav-next"><i class="fa fa-chevron-right"></i></div>
+			<div class="slider-gallery-nav-control slider-thumb-nav-next"><i class="fa fa-chevron-right"></i></div>
 		</div>
 		<?php 
 		}
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
-				$('#slider-wrapper-<?php echo $gallery_post_count; ?>').fadeIn();
-				$('#slider-gallery-<?php echo $gallery_post_count; ?>').bxSlider({
+				$('#slider-wrapper-<?php echo $media_post_count; ?>').fadeIn();
+				$('#slider-gallery-<?php echo $media_post_count; ?>').bxSlider({
 						onSliderLoad: function(){
 							<?php if ($display_slider_nav){ ?>
-							$("#slider-gallery-thumb-nav-wrapper-<?php echo $gallery_post_count; ?>").fadeIn();
-								$("#slider-gallery-thumb-nav-wrapper-<?php echo $gallery_post_count; ?>").woodkit_slider_thumb_nav({
-									items_container_selector : '#slider-gallery-thumb-nav-<?php echo $gallery_post_count; ?>',
+							$("#slider-gallery-thumb-nav-wrapper-<?php echo $media_post_count; ?>").fadeIn();
+								$("#slider-gallery-thumb-nav-wrapper-<?php echo $media_post_count; ?>").woodkit_slider_thumb_nav({
+									items_container_selector : '#slider-gallery-thumb-nav-<?php echo $media_post_count; ?>',
 									item_selector : '.slider-thumb-nav-item',
 									prev_control_selector : '.slider-thumb-nav-prev',
 									next_control_selector : '.slider-thumb-nav-next'
@@ -134,33 +132,33 @@ if ($meta_gallery_presentation == 'slider'){
 						autoHover : true,
 						prevText : '',
 						nextText : '',
-						<?php if (!empty($meta_gallery_presentation_slider_autoplay) && $meta_gallery_presentation_slider_autoplay == 'on'){ ?>
+						<?php if (!empty($meta_media_presentation_slider_autoplay) && $meta_media_presentation_slider_autoplay == 'on'){ ?>
 							auto: true,
 						<?php } ?>
-						<?php if (!empty($meta_gallery_presentation_slider_carousel) && $meta_gallery_presentation_slider_carousel == 'on'){ ?>
+						<?php if (!empty($meta_media_presentation_slider_carousel) && $meta_media_presentation_slider_carousel == 'on'){ ?>
 							minSlides: parseInt(<?php echo $columns; ?>),
 							maxSlides: parseInt(<?php echo $columns; ?>),
-							slideWidth: parseInt(<?php echo $meta_gallery_presentation_slider_carousel_item_width; ?>),
-							slideMargin: parseInt(<?php echo $meta_gallery_presentation_slider_carousel_item_margin; ?>),
+							slideWidth: parseInt(<?php echo $meta_media_presentation_slider_carousel_item_width; ?>),
+							slideMargin: parseInt(<?php echo $meta_media_presentation_slider_carousel_item_margin; ?>),
 							moveSlides: 1,
 						<?php }
 						if ($display_slider_nav){ ?>
-							pagerWoodkit: '#slider-gallery-thumb-nav-<?php echo $gallery_post_count; ?>',
+							pagerCustom: '#slider-gallery-thumb-nav-<?php echo $media_post_count; ?>',
 						<?php } ?>
 					});
 			});
 		</script>
 	</div>
 	<?php
-}else if ($meta_gallery_presentation == 'masonry'){?>
-	<div class="gallery tool-gallery masonry-wrapper">
+}else if ($meta_media_presentation == 'masonry'){?>
+	<div class="gallery-wrapper tool-media masonry-wrapper">
 		<?php 
 		$data_columns = "";
-		if ($meta_gallery_presentation_masonry_width != "customized"){
+		if ($meta_media_presentation_masonry_width != "customized"){
 			$data_columns ='data-columns="'.$columns.'"';
 		}
 		?>
-		<ul id="masonry-gallery-<?php echo $gallery_post_count; ?>" class="gallery tool-gallery masonry" <?php echo $data_columns; ?>>
+		<ul id="masonry-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media masonry" <?php echo $data_columns; ?>>
 			<?php
 			foreach ($attachments as $id => $attachment) {
 				$ratio = "";
@@ -172,15 +170,15 @@ if ($meta_gallery_presentation == 'slider'){
 				
 				// attachement
 				$img = wp_get_attachment_image_src($id, 'full');
-				$thumb = wp_get_attachment_image_src($id, 'tool-gallery-thumb');
+				$thumb = wp_get_attachment_image_src($id, 'tool-media-thumb');
 				list($img_src, $img_width, $img_height) = $img;
 				list($thumb_src, $thumb_width, $thumb_height) = $thumb;
 				$ratio = $thumb_height / $thumb_width;
 				
 				// sizes
-				$width = $meta_gallery_presentation_masonry_width_customized;
-				$height = $meta_gallery_presentation_masonry_height;				
-				if ($meta_gallery_presentation_masonry_width == "customized"){
+				$width = $meta_media_presentation_masonry_width_customized;
+				$height = $meta_media_presentation_masonry_height;				
+				if ($meta_media_presentation_masonry_width == "customized"){
 					$style .= "max-width: ".$width."px;";
 					$style .= "width: 100%;";
 					$proportional_height = floor(($thumb_height*$width)/$thumb_width);
@@ -212,21 +210,19 @@ if ($meta_gallery_presentation == 'slider'){
 				
 				// classes / data
 				$class .= " attachment attachment-$id";
-				$meta_disable_fancybox = get_theme_mod("gallery_fancybox_state");
-				if (empty($meta_disable_fancybox) || $meta_disable_fancybox != 1){
-					if (empty($meta_gallery_disable_fancybox) || $meta_gallery_disable_fancybox != 'on'){
-						$a_class .= " fancybox";
-						if (!empty($attachment->post_title)){
-							$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
-						}
-						if (!empty($attachment->post_excerpt)){
-							$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
-						}
+				$media_fancybox_active = woodkit_get_option('tool-media-fancybox-active');
+				if (!empty($media_fancybox_active) && $media_fancybox_active == 'on'){
+					$a_class .= " fancybox";
+					if (!empty($attachment->post_title)){
+						$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
+					}
+					if (!empty($attachment->post_excerpt)){
+						$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
 					}
 				}
 				?>
 				<li class="masonry-item wp-gallery-item<?php echo $class; ?>" style="<?php echo $style; ?>" data-ratio-width-height="<?php echo $ratio; ?>" data-columns="1">
-					<a class="<?php echo $a_class; ?>" rel="group" href="<?php echo $img_src; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
+					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img_src; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style_thumb; ?>">
 							<div class="has-mask">
 								<?php if (!empty($attachment->post_title)){ ?>
@@ -254,27 +250,27 @@ if ($meta_gallery_presentation == 'slider'){
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
 
-				// isotope apply after trigger by woodkit-gallery.js 
-				var $masonry = $('#masonry-gallery-<?php echo $gallery_post_count; ?>');
+				// isotope apply after trigger by woodkit-media.js 
+				var $masonry = $('#masonry-gallery-<?php echo $media_post_count; ?>');
 
-				// trigger on gallery-isotope-ready event (use by woodkit-gallery.js)
+				// trigger on media-isotope-ready event (use by woodkit-media.js)
 				$(document).trigger('gallery-isotope-ready', [$masonry, '.masonry-item']);
 			});
 		</script>
 	</div>
 <?php
-}else if ($meta_gallery_presentation == 'grid'){ ?>
-	<div class="gallery tool-gallery isotope-wrapper">
-		<ul id="isotope-gallery-<?php echo $gallery_post_count; ?>" class="gallery tool-gallery isotope" data-columns="<?php echo $columns; ?>">
+}else if ($meta_media_presentation == 'grid'){ ?>
+	<div class="gallery-wrapper tool-media isotope-wrapper">
+		<ul id="isotope-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media isotope" data-columns="<?php echo $columns; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
 				$img = wp_get_attachment_image_src($id, 'full');
-				$thumb = wp_get_attachment_image_src($id, 'tool-gallery-thumb');
+				$thumb = wp_get_attachment_image_src($id, 'tool-media-thumb');
 				// sizes (random - values can only be double from initial setup)
 				$rand_columns = rand(1, 2);
 				$width = (100/$columns)*$rand_columns;
 				$rand_lines = rand(1, 2);
-				$height = $meta_gallery_presentation_height * $rand_lines;
+				$height = $meta_media_presentation_height * $rand_lines;
 				// styles
 				$class = ' attachment attachment-'.$id;
 				$style = "width: 100%; height: 100%;";
@@ -287,21 +283,19 @@ if ($meta_gallery_presentation == 'slider'){
 				$style .= "overflow: hidden;";
 				$a_class = "";
 				$data_fancybox_title = "";
-				$meta_disable_fancybox = get_theme_mod("gallery_fancybox_state");
-				if (empty($meta_disable_fancybox) || $meta_disable_fancybox != 1){
-					if (empty($meta_gallery_disable_fancybox) || $meta_gallery_disable_fancybox != 'on'){
-						$a_class .= " fancybox";
-						if (!empty($attachment->post_title)){
-							$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
-						}
-						if (!empty($attachment->post_excerpt)){
-							$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
-						}
+				$media_fancybox_active = woodkit_get_option('tool-media-fancybox-active');
+				if (!empty($media_fancybox_active) && $media_fancybox_active == 'on'){
+					$a_class .= " fancybox";
+					if (!empty($attachment->post_title)){
+						$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
+					}
+					if (!empty($attachment->post_excerpt)){
+						$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
 					}
 				}
 				?>
-				<li class="isotope-item wp-gallery-item<?php echo $class; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>%;" data-format="<?php echo $meta_gallery_presentation_format; ?>" data-columns="<?php echo $rand_columns; ?>" data-lines="<?php echo $rand_lines; ?>" data-width="" data-height="<?php echo $height; ?>" >
-					<a class="<?php echo $a_class; ?>" rel="group" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
+				<li class="isotope-item wp-gallery-item<?php echo $class; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>%;" data-format="<?php echo $meta_media_presentation_format; ?>" data-columns="<?php echo $rand_columns; ?>" data-lines="<?php echo $rand_lines; ?>" data-width="" data-height="<?php echo $height; ?>" >
+					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style; ?>">
 							<div class="has-mask">
 								<?php if (!empty($attachment->post_title)){ ?>
@@ -329,22 +323,22 @@ if ($meta_gallery_presentation == 'slider'){
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
 
-				// isotope apply after trigger by woodkit-gallery.js 
-				var $isotope = $('#isotope-gallery-<?php echo $gallery_post_count; ?>');
+				// isotope apply after trigger by woodkit-media.js 
+				var $isotope = $('#isotope-gallery-<?php echo $media_post_count; ?>');
 
-				// trigger on gallery-isotope-ready event (use by woodkit-gallery.js)
+				// trigger on media-isotope-ready event (use by woodkit-media.js)
 				$(document).trigger('gallery-isotope-ready', [$isotope, '.isotope-item']);
 			});
 		</script>
 	</div>
 	<?php
 }else{ ?>
-	<div class="gallery tool-gallery classic-wrapper">
-		<ul id="classic-gallery-<?php echo $gallery_post_count; ?>" class="gallery tool-gallery classic" data-columns="<?php echo $columns; ?>">
+	<div class="gallery-wrapper tool-media classic-wrapper">
+		<ul id="classic-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media classic" data-columns="<?php echo $columns; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
 				$img = wp_get_attachment_image_src($id, 'full');
-				$thumb = wp_get_attachment_image_src($id, 'tool-gallery-thumb');
+				$thumb = wp_get_attachment_image_src($id, 'tool-media-thumb');
 				$class = ' attachment attachment-'.$id;
 				$width = 100 / $columns;
 				$style = "width: 100%; height: 100%;";
@@ -357,21 +351,19 @@ if ($meta_gallery_presentation == 'slider'){
 				$style .= "overflow: hidden;";
 				$a_class = "";
 				$data_fancybox_title = "";
-				$meta_disable_fancybox = get_theme_mod("gallery_fancybox_state");
-				if (empty($meta_disable_fancybox) || $meta_disable_fancybox != 1){
-					if (empty($meta_gallery_disable_fancybox) || $meta_gallery_disable_fancybox != 'on'){
-						$a_class .= "fancybox";
-						if (!empty($attachment->post_title)){
-							$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
-						}
-						if (!empty($attachment->post_excerpt)){
-							$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
-						}
+				$media_fancybox_active = woodkit_get_option('tool-media-fancybox-active');
+				if (!empty($media_fancybox_active) && $media_fancybox_active == 'on'){
+					$a_class .= " fancybox";
+					if (!empty($attachment->post_title)){
+						$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
+					}
+					if (!empty($attachment->post_excerpt)){
+						$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
 					}
 				}
 				?>
-				<li class="classic-item wp-gallery-item<?php echo $class; ?>" style="width: <?php echo $width; ?>%;" data-columns="1" data-format="<?php echo $meta_gallery_presentation_format; ?>">
-					<a class="<?php echo $a_class; ?>" rel="group" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
+				<li class="classic-item wp-gallery-item<?php echo $class; ?>" style="width: <?php echo $width; ?>%;" data-columns="1" data-format="<?php echo $meta_media_presentation_format; ?>">
+					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style; ?>">
 							<div class="has-mask">
 								<?php if (!empty($attachment->post_title)){ ?>
@@ -399,15 +391,15 @@ if ($meta_gallery_presentation == 'slider'){
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
 				// set data-width and data-height attributes (used to calculate propotional height by responsive javascript)
-				$('#classic-gallery-<?php echo $gallery_post_count; ?> .classic-item').each(function(i){
+				$('#classic-gallery-<?php echo $media_post_count; ?> .classic-item').each(function(i){
 					$(this).attr('data-width', $(this).width());
 					$(this).css('height', $(this).width()+"px"); // square présentation 
 					$(this).attr('data-height', $(this).height());
 				});
-				// isotope apply after trigger by woodkit-gallery.js 
-				var $classic = $('#classic-gallery-<?php echo $gallery_post_count; ?>');
+				// isotope apply after trigger by woodkit-media.js 
+				var $classic = $('#classic-gallery-<?php echo $media_post_count; ?>');
 				
-				// trigger on gallery-classic-ready event (use by woodkit-gallery.js) 
+				// trigger on media-classic-ready event (use by woodkit-media.js) 
 				$(document).trigger('gallery-classic-ready', [$classic, '.classic-item']);
 			});
 		</script>

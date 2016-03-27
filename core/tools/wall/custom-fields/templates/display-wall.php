@@ -699,7 +699,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 								}else{
 									if (presentation_slider_thumb_nav == 'on'){
 										options = $.extend({
-											pagerWoodkit: '.tool-wall.admin.slider-thumb-nav'
+											pagerCustom: '.tool-wall.admin.slider-thumb-nav'
 										}, options);
 									}
 								}

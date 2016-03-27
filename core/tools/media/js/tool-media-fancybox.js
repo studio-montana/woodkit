@@ -1,5 +1,5 @@
 /**
- * GALLERY Tool
+ * MEDIA Tool
  * 
  * @package WordPress
  * @subpackage Woodkit

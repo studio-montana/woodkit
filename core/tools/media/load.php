@@ -25,19 +25,19 @@ defined('ABSPATH') or die("Go Away!");
 /**
  * CONSTANTS
  */
-define('GALLERY_TOOL_NAME', 'gallery');
+define('MEDIA_TOOL_NAME', 'media');
 
-function tool_gallery_get_name($tool_name = ""){
-	return __("Gallery", WOODKIT_PLUGIN_TEXT_DOMAIN);
+function tool_media_get_name($tool_name = ""){
+	return __("Media", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
-add_filter("woodkit_get_tool_name_".GALLERY_TOOL_NAME, "tool_gallery_get_name", 1, 1);
+add_filter("woodkit_get_tool_name_".MEDIA_TOOL_NAME, "tool_media_get_name", 1, 1);
 
-function tool_gallery_get_description($tool_description = ""){
-	return __("customize wp gallery appearence", WOODKIT_PLUGIN_TEXT_DOMAIN);
+function tool_media_get_description($tool_description = ""){
+	return __("customize wp media appearence", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
-add_filter("woodkit_get_tool_description_".GALLERY_TOOL_NAME, "tool_gallery_get_description", 1, 1);
+add_filter("woodkit_get_tool_description_".MEDIA_TOOL_NAME, "tool_media_get_description", 1, 1);
 
-function tool_gallery_activate(){
-	require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.GALLERY_TOOL_NAME.'/'.GALLERY_TOOL_NAME.'.php');
+function tool_media_activate(){
+	require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.MEDIA_TOOL_NAME.'/'.MEDIA_TOOL_NAME.'.php');
 }
-add_action("woodkit_tool_activate_".GALLERY_TOOL_NAME, "tool_gallery_activate");
+add_action("woodkit_tool_activate_".MEDIA_TOOL_NAME, "tool_media_activate");
