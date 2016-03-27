@@ -139,7 +139,7 @@ if (!function_exists("woodkit_backgroundimage")):
  * Display background image/color/opacity
 * @param boolean $auto_insert : boolean - do not specify true if you use this method manualy in your template theme
 */
-function woodkit_backgroundimage($auto_insert = false){
+function woodkit_backgroundimage($position = 'absolute', $background_attachement = 'scroll', $z_index = '-999'){
 	$id_post = null;
 	if (is_home()){ // blog page
 		$id_post = get_option('page_for_posts');
@@ -165,12 +165,10 @@ function woodkit_backgroundimage($auto_insert = false){
 
 	if (!empty($url_backgroundimage)){
 		$variable_styles = "";
-		if ($auto_insert)
-			$variable_styles = " position: fixed;";
-		else
-			$variable_styles = " position: absolute;";
+		$variable_styles .= " position: $position;";
+		$variable_styles .= " z-index: $z_index;";
 		?>
-<div id="tool-backgroundimage" class="<?php echo $class; ?>" style="background: url('<?php echo $url_backgroundimage; ?>') no-repeat center center fixed;
+<div class="tool-backgroundimage" class="<?php echo $class; ?>" style="background: url('<?php echo $url_backgroundimage; ?>') no-repeat center center <?php echo $background_attachement; ?>;
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
@@ -182,24 +180,21 @@ function woodkit_backgroundimage($auto_insert = false){
 			left: 0;
 			width: 100%;
 			height: 100%;
-			z-index: -100;
 			<?php echo $variable_styles; ?>">
 	<?php
 	if (!empty($background_color_code)){
 ?>
-	<div id="tool-backgroundimage-color"
+	<div class="tool-backgroundimage-color"
 		style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(<?php echo $background_color_code; ?>, <?php echo $background_color_opacity; ?>);"></div>
 	<?php } ?>
 </div>
 <?php
 	}else if (!empty($background_color_code)){
 		$variable_styles = "";
-		if ($auto_insert)
-			$variable_styles = " position: fixed; z-index: -100;";
-		else
-			$variable_styles = " position: absolute;";
+		$variable_styles .= " position: $position;";
+		$variable_styles .= " z-index: $z_index;";
 		?>
-<div id="tool-backgroundimage-color"
+<div class="tool-backgroundimage-color"
 		style="top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(<?php echo $background_color_code; ?>, <?php echo $background_color_opacity; ?>);<?php echo $variable_styles; ?>"></div>
 <?php
 	}
@@ -214,7 +209,7 @@ if (!function_exists("woodkit_backgroundimage_autoinsert")):
 function woodkit_backgroundimage_autoinsert($auto_insert = false){
 	$backgroundimage_autoinsert = woodkit_get_option('tool-backgroundimage-auto-insert');
 	if (!empty($backgroundimage_autoinsert) && $backgroundimage_autoinsert == 'on'){
-		woodkit_backgroundimage(true);
+		woodkit_backgroundimage('fixed', 'fixed');
 	}
 }
 add_action('wp_footer', 'woodkit_backgroundimage_autoinsert');
