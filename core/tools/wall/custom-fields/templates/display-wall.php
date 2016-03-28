@@ -87,7 +87,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 									$tax_options .= '<optgroup label="'.esc_attr($tax_labels->name).'" data-slug="'.esc_attr($tax->name).'">';
 									foreach ($terms as $term){
 										$selected = !empty($meta) && $meta == $tax->name.'|'.$term->slug ? 'selected="selected"' : '';
-										$tax_options .= '<option value="'.$tax->name.'|'.$term->slug.'" data-tax="'.$tax->name.'" data-post-type="'.$tax_post_types.'" '.$selected.'>'.$term->name.'</option>';
+										$tax_options .= '<option value="'.esc_attr($tax->name.'|'.$term->slug).'" data-tax="'.esc_attr($tax->name).'" data-post-type="'.esc_attr($tax_post_types).'" '.$selected.'>'.$term->name.'</option>';
 									}
 									$tax_options .= '</optgroup>';
 								}

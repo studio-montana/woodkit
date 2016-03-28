@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -23,8 +23,13 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
+ * REQUIREMENTS
+*/
+require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/custom-fields/breadcrumb.php');
+
+/**
  * Enqueue styles for the front end.
- */
+*/
 function tool_breadcrumb_woodkit_front_enqueue_styles_tools($dependencies) {
 
 	$css_breadcrumb = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/css/tool-breadcrumb.css');
@@ -32,6 +37,17 @@ function tool_breadcrumb_woodkit_front_enqueue_styles_tools($dependencies) {
 		wp_enqueue_style('tool-breadcrumb-css', $css_breadcrumb, $dependencies, '1.0');
 }
 add_action('woodkit_front_enqueue_styles_tools', 'tool_breadcrumb_woodkit_front_enqueue_styles_tools');
+
+/**
+ * Enqueue styles for the back end.
+*/
+function tool_breadcrumb_woodkit_admin_enqueue_styles_tools($dependencies) {
+
+	$css_breadcrumb = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/css/tool-breadcrumb-admin.css');
+	if (!empty($css_breadcrumb))
+		wp_enqueue_style('tool-breadcrumb-admin-css', $css_breadcrumb, $dependencies, '1.0');
+}
+add_action('woodkit_admin_enqueue_styles_tools', 'tool_breadcrumb_woodkit_admin_enqueue_styles_tools');
 
 function tool_breadcrumb_get_the_title($post_id = null){
 	if (empty($post_id))
@@ -52,7 +68,7 @@ function tool_breadcrumb_get_the_title($post_id = null){
  * }
  * @param string $display : true to display, otherwise return result
  * @return string
-*/
+ */
 function tool_breadcrumb($args = array(), $display = true){
 
 	$id_blog_page = get_option('page_for_posts');
@@ -76,9 +92,11 @@ function tool_breadcrumb($args = array(), $display = true){
 	$home_url = esc_url(home_url('/'));
 	$home_class = " home";
 	if (is_front_page()){ // site home page
+		$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator);
 		$home_class .= " current";
 	}
 	$res .= '<li class="breadcrumb-item'.$home_class.'"><a href="'.$home_url.'" title="'.__("Home", WOODKIT_PLUGIN_TEXT_DOMAIN).'">'.$args['home-item'].'</a></li>';
+
 	if (is_front_page()){ // site home page
 		$res .= $final;
 	}else if (!is_home()){ // site inner page
@@ -159,11 +177,19 @@ function tool_breadcrumb($args = array(), $display = true){
 
 function tool_breadcrumb_post_ancestors($id_post, $separator){
 	$output = '';
-	$ancestors = get_post_ancestors($id_post);
-	if ($ancestors){
-		sort($ancestors, -1);
-		foreach ($ancestors as $ancestor ) {
-			$output .= '<li class="breadcrumb-item"><a href="'.get_permalink($ancestor).'" title="'.esc_attr(tool_breadcrumb_get_the_title($ancestor)).'">'.tool_breadcrumb_get_the_title($ancestor).'</a></li>'.$separator;
+	$breadcrumb_type = get_post_meta($id_post, META_BREADCRUMB_TYPE, true);
+
+	// customized breadcrumb
+	if (!empty($breadcrumb_type) && $breadcrumb_type == 'customized'){
+		$output .= tool_breadcrumb_customized($id_post, $separator);
+	}else{
+		// classic breadcrumb
+		$ancestors = get_post_ancestors($id_post);
+		if ($ancestors){
+			sort($ancestors, -1);
+			foreach ($ancestors as $ancestor ) {
+				$output .= '<li class="breadcrumb-item"><a href="'.get_permalink($ancestor).'" title="'.esc_attr(tool_breadcrumb_get_the_title($ancestor)).'">'.tool_breadcrumb_get_the_title($ancestor).'</a></li>'.$separator;
+			}
 		}
 	}
 	return $output;
@@ -180,5 +206,82 @@ function tool_breadcrumb_term_ancestors($id, $taxonomy, $separator){
 		}
 	}
 	return $output;
+}
+
+function tool_breadcrumb_customized($id_post, $separator){
+	$output = '';
+	$breadcrumb_items = get_post_meta($id_post, META_BREADCRUMB_CUSTOM_ITEMS, true);
+	if (!empty($breadcrumb_items)){
+		$breadcrumb_items = json_decode($breadcrumb_items, true);
+		if (!empty($breadcrumb_items)){
+			foreach ($breadcrumb_items as $breadcrumb_item){
+				$parts = explode("|", $breadcrumb_item);
+				if (count($parts) == 3){
+					$type = $parts[0];
+					$type_slug = $parts[1];
+					$id = $parts[2];
+					if (!empty($type) && !empty($type_slug) && !empty($id) && is_numeric($id)){
+						if ($type == 'post'){
+							$post = get_post($id);
+							if ($post){
+								$output .= '<li class="breadcrumb-item"><a href="'.get_the_permalink($post).'">'.get_the_title($post).'</a></li>'.$separator;
+							}
+						}else if ($type == 'tax'){
+							$term = get_term($id);
+							if ($term){
+								$output .= '<li class="breadcrumb-item"><a href="'.get_term_link($term).'">'.$term->name.'</a></li>'.$separator;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return $output;
+}
+
+function tool_breadcrumb_get_breadcrumb_options($id_selected = null){
+	$options = '';
+	// post-types
+	$selectable_posttypes = get_displayed_post_types();
+	$selectable_posttypes = apply_filters("tool_breadcrumb_selectable_posttypes", $selectable_posttypes);
+	if (!empty($selectable_posttypes)){
+		foreach ($selectable_posttypes as $posttype){
+			$args = array(
+					'posts_per_page'   => -1,
+					'orderby'          => 'title',
+					'order'            => 'DESC',
+					'post_type'        => $posttype,
+					'suppress_filters' => false
+			);
+			$posts = get_posts($args);
+			if (!empty($posts)){
+				$options .= '<optgroup label="'.esc_attr($posttype).'">';
+				foreach ($posts as $post){
+					$selected = !empty($id_selected) && $id_selected == esc_attr('post|'.$posttype.'|'.$post->ID) ? 'selected="selected"' : '';
+					$options .= '<option value="'.esc_attr('post|'.$posttype.'|'.$post->ID).'" '.$selected.'>'.$post->post_title.'</option>';
+				}
+				$options .= '</optgroup>';
+			}
+		}
+	}
+	// taxonomies
+	$taxonomies = get_taxonomies(array('public' => true), 'objects', 'and');
+	$taxonomies = apply_filters("tool_breadcrumb_selectable_taxonomies", $taxonomies);
+	if (!empty($taxonomies)) {
+		foreach ($taxonomies  as $tax) {
+			$terms = get_terms($tax->name);
+			if (!empty($terms)){
+				$tax_labels = get_taxonomy_labels($tax);
+				$options .= '<optgroup label="'.esc_attr($tax_labels->name).'">';
+				foreach ($terms as $term){
+					$selected = !empty($id_selected) && $id_selected == esc_attr('tax|'.$tax->name.'|'.$term->term_id) ? 'selected="selected"' : '';
+					$options .= '<option value="'.esc_attr('tax|'.$tax->name.'|'.$term->term_id).'" '.$selected.'>'.$term->name.'</option>';
+				}
+				$options .= '</optgroup>';
+			}
+		}
+	}
+	return $options;
 }
 
