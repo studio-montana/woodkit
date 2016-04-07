@@ -131,10 +131,14 @@ function woodkit_admin_scripts_styles() {
 	// jQuery DatePicker
 	wp_enqueue_script('jquery-ui-datepicker');
 	
+	// Wordpress Color Picker
+	wp_enqueue_style('wp-color-picker');
+    wp_enqueue_script('wp-color-picker');
+	
 	// Fontawesome
 	$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'fontawesome/fontawesome-4.4.0.css');
 	if (!empty($css_fontawesome)){
-		wp_enqueue_style('woodkit-admin-css-fontawesome', $css_fontawesome, array(), '4.4.0');
+		wp_enqueue_style('woodkit-admin-css-fontawesome', $css_fontawesome, array('wp-color-picker'), '4.4.0');
 	}
 
 	// Loads jquery-ui stylesheet (used by date jquery-ui-datepicker)
@@ -171,7 +175,7 @@ function woodkit_admin_scripts_styles() {
 	// Loads Utils
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils))
-		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery'), '1.0', true);
+		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery', 'wp-color-picker'), '1.0', true);
 
 	// Loads Isotope JavaScript file
 	$js_isotope = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'isotope/isotope.pkgd.min.js');
@@ -203,6 +207,9 @@ function woodkit_admin_scripts_styles() {
 
 	// wp.media JavaScript in Admin environnement (widget, posts, ...)
 	wp_enqueue_media();
+	
+	// Action after woodkit enqueue admin scripts
+	do_action("woodkit_admin_enqueue_scripts_after");
 
 }
 add_action('admin_enqueue_scripts', 'woodkit_admin_scripts_styles');

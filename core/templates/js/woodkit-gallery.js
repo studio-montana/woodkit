@@ -33,7 +33,7 @@ var gold_number = 1.618;
 						});
 					}
 					// isotope columnWidth
-					var larg = $isotope[0].getBoundingClientRect().width / window_matrice.columns
+					var larg = $isotope[0].getBoundingClientRect().width / window_matrice.columns;
 					$isotope.isotope({
 						itemSelector : item_selector,
 						resizable : false,
@@ -56,7 +56,7 @@ var gold_number = 1.618;
 					woodkit_resize_gallery_items_height($(this), isotope_data_columns);
 				});
 				// isotope columnWidth
-				var larg = $isotope[0].getBoundingClientRect().width / isotope_data_columns
+				var larg = $isotope[0].getBoundingClientRect().width / isotope_data_columns;
 				$isotope.isotope({
 					itemSelector : item_selector,
 					resizable : false,
@@ -102,7 +102,7 @@ var gold_number = 1.618;
 						});
 					}
 					// isotope columnWidth
-					var larg = $classic[0].getBoundingClientRect().width / window_matrice.columns
+					var larg = $classic[0].getBoundingClientRect().width / window_matrice.columns;
 					$classic.isotope({
 						itemSelector : item_selector,
 						resizable : false,
@@ -125,7 +125,7 @@ var gold_number = 1.618;
 					woodkit_resize_gallery_items_height($(this), classic_data_columns);
 				});
 				// isotope columnWidth
-				var larg = $classic[0].getBoundingClientRect().width / classic_data_columns
+				var larg = $classic[0].getBoundingClientRect().width / classic_data_columns;
 				$classic.isotope({
 					itemSelector : item_selector,
 					resizable : false,

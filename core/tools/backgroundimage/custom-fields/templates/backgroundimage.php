@@ -74,17 +74,21 @@ if (empty($meta_backgroundcolor_opacity)){
 </div>
 <table class="backgroundcolor-input">
 	<tr>
-		<td valign="middle">
+		<td valign="middle" colspan="2">
 			<label for="<?php echo BACKGROUNDCOLOR_CODE; ?>">Color</label>
 		</td>
-		<td valign="middle">
+	</tr>
+	<tr>
+		<td valign="middle" colspan="2">
 			<input type="color" name="<?php echo BACKGROUNDCOLOR_CODE; ?>" id="<?php echo BACKGROUNDCOLOR_CODE; ?>" value="<?php echo $meta_backgroundcolor_code; ?>" />
 		</td>
 	</tr>
 	<tr>
-		<td valign="middle">
+		<td valign="middle" colspan="2">
 			<label for="<?php echo BACKGROUNDCOLOR_OPACITY; ?>">Opacity</label>
 		</td>
+	</tr>
+	<tr>
 		<td valign="middle">
 			<input type="range" min="0" max="100" name="<?php echo BACKGROUNDCOLOR_OPACITY; ?>" id="<?php echo BACKGROUNDCOLOR_OPACITY; ?>" value="<?php echo $meta_backgroundcolor_opacity; ?>" />
 		</td>
@@ -96,7 +100,10 @@ if (empty($meta_backgroundcolor_opacity)){
 
 
 <script type="text/javascript">
-	jQuery(document).ready(function($){		
+	jQuery(document).ready(function($){
+		$("input[name='<?php echo BACKGROUNDCOLOR_CODE; ?>']").wpColorPicker({change: function(event, ui){
+				background_change_color($);
+			}});
 		$('.choose-backgroundimage').click(function(e) {
 			var woodkit_uploader;
 	        e.preventDefault();
