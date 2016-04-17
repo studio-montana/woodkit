@@ -75,6 +75,7 @@ var gold_number = 1.618;
 				}
 			});
 		}
+		$(document).trigger('gallery-isotope-resized', [$isotope, item_selector]);
 	}
 
 	/**
@@ -144,6 +145,7 @@ var gold_number = 1.618;
 				}
 			});
 		}
+		$(document).trigger('gallery-classic-resized', [$classic, item_selector]);
 	}
 
 	/**
