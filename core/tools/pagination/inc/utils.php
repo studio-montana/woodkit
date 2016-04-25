@@ -77,7 +77,7 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 			$args['post_parent'] = wp_get_post_parent_id(get_the_ID()); // keep hierarchical context... navigate only in brothers
 
 			// tax_query
-			if (empty($args['include_tax'])){
+			if (!isset($args['include_tax'])){
 				$args['include_tax'] = true;
 			}
 			if ($args['include_tax'] == true){
