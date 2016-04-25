@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -40,7 +40,7 @@ if (!function_exists("pagination")):
 function woodkit_pagination($args = array(), $display = true, $before_links = '', $after_links = '', $text_link_previous = '', $text_link_next = '', $before_previous_link = '', $after_previous_link = '', $before_next_link = '', $after_next_link = ''){
 	$meta_display_pagination = get_post_meta(get_the_ID(), META_PAGINATION_DISPLAY_PAGINATION, true);
 	if (empty($meta_display_pagination) || $meta_display_pagination == 'on'){
-		
+
 		// content args
 		$content_args = array();
 		$content_args['before_links'] = $before_links;
@@ -60,7 +60,7 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 		$after_previous_link = $content_args['after_previous_link'];
 		$before_next_link = $content_args['before_next_link'];
 		$after_next_link = $content_args['after_next_link'];
-		
+
 		$res = '';
 		$type = get_post_type();
 		if (!empty($type)){
@@ -76,6 +76,42 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 				$args['suppress_filters'] = FALSE; // keep current language posts (WPML compatibility)
 			$args['post_parent'] = wp_get_post_parent_id(get_the_ID()); // keep hierarchical context... navigate only in brothers
 
+			// tax_query
+			if (empty($args['include_tax'])){
+				$args['include_tax'] = true;
+			}
+			if ($args['include_tax'] == true){
+				$tax_query_terms = array();
+				$taxes = get_taxonomies(array(), false);
+				foreach ($taxes as $tax){
+					$tax_post_type = $tax->object_type;
+					foreach ($tax_post_type as $tpt){
+						if ($tpt == $type){
+							$post_terms = get_the_terms(get_the_ID(), $tax->name);
+							if (!empty($post_terms)){
+								$tax_query_terms_values = array();
+								foreach ($post_terms as $post_term){
+									$tax_query_terms_values[] = $post_term->slug;
+								}
+								$tax_query_terms[] = array(
+										'taxonomy' => $tax->name,
+										'field'    => 'slug',
+										'terms'    => $tax_query_terms_values
+								);
+							}
+						}
+					}
+				}
+				if (!empty($tax_query_terms)){
+					$tax_query = array();
+					$tax_query['relation'] = 'AND';
+					foreach ($tax_query_terms as $tax_query_term){
+						$tax_query[] = $tax_query_term;
+					}
+					$args['tax_query'] = $tax_query;
+				}
+			}
+			
 			$post_types = get_posts($args);
 			$prev = null;
 			$next = null;
