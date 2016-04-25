@@ -69,7 +69,7 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 			if (empty($args['orderby']))
 				$args['orderby'] = "date";
 			if (empty($args['order']))
-				$args['order'] = 'ASC';
+				$args['order'] = 'DESC';
 			if (empty($args['numberposts']))
 				$args['numberposts'] = -1;
 			if (empty($args['suppress_filters']))
