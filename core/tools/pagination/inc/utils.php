@@ -40,6 +40,27 @@ if (!function_exists("pagination")):
 function woodkit_pagination($args = array(), $display = true, $before_links = '', $after_links = '', $text_link_previous = '', $text_link_next = '', $before_previous_link = '', $after_previous_link = '', $before_next_link = '', $after_next_link = ''){
 	$meta_display_pagination = get_post_meta(get_the_ID(), META_PAGINATION_DISPLAY_PAGINATION, true);
 	if (empty($meta_display_pagination) || $meta_display_pagination == 'on'){
+		
+		// content args
+		$content_args = array();
+		$content_args['before_links'] = $before_links;
+		$content_args['after_links'] = $after_links;
+		$content_args['text_link_previous'] = $text_link_previous;
+		$content_args['text_link_next'] = $text_link_next;
+		$content_args['before_previous_link'] = $before_previous_link;
+		$content_args['after_previous_link'] = $after_previous_link;
+		$content_args['before_next_link'] = $before_next_link;
+		$content_args['after_next_link'] = $after_next_link;
+		$content_args = apply_filters("woodkit_pagination_content_args", $content_args);
+		$before_links = $content_args['before_links'];
+		$after_links = $content_args['after_links'];
+		$text_link_previous = $content_args['text_link_previous'];
+		$text_link_next = $content_args['text_link_next'];
+		$before_previous_link = $content_args['before_previous_link'];
+		$after_previous_link = $content_args['after_previous_link'];
+		$before_next_link = $content_args['before_next_link'];
+		$after_next_link = $content_args['after_next_link'];
+		
 		$res = '';
 		$type = get_post_type();
 		if (!empty($type)){
