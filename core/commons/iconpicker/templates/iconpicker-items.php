@@ -41,16 +41,20 @@ if (!empty($postypes)){
 				<div class="icons-box-container">
 					<?php 
 					$icons = apply_filters("iconpicker_icons_add", array());
-					foreach ($icons as $familly => $icon){
+					foreach ($icons as $familly => $icons){
 						?>
 					<div class="icons-box-familly">
 						<div class="icons-box-familly-title">
 							<h2><?php echo $familly; ?></h2>
 						</div>
 						<div class="icons-box-familly-content">
-							<?php foreach ($icons[$familly] as $icon){ ?>
-								<span class="button icon-item" data-icon="<?php echo $icon; ?>"><i class="<?php echo $icon; ?>"></i></span>
-							<?php } ?>
+							<?php foreach ($icons as $icon){ 
+								foreach ($icon as $class => $name){
+									?>
+									<span class="button icon-item" data-icon-name="<?php echo esc_attr($name); ?>" data-icon-class="<?php echo esc_attr($class); ?>"><i class="<?php echo esc_attr($class); ?>"></i></span>
+									<?php 
+								}
+							} ?>
 						</div>
 						<hr />
 					</div>
@@ -60,13 +64,6 @@ if (!empty($postypes)){
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript">
-		(function($) {
-			$(document).ready(function(){
-				
-			});
-		})(jQuery);
-		</script>
 	</div>
 <?php
 }

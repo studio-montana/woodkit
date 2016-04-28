@@ -109,7 +109,7 @@
 				$pickercontent.append($(response).text());
 				// on click
 				$pickercontent.find(".icon-item").on('click', function(e) {
-					plugin.onpick($(this).data('icon'));
+					plugin.onpick($(this).data('icon-class'));
 				});
 				plugin.trigger_oncontentupdated();
 			}).fail(function() {
