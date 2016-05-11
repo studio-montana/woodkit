@@ -74,11 +74,16 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 				$args['numberposts'] = -1;
 			if (empty($args['suppress_filters']))
 				$args['suppress_filters'] = FALSE; // keep current language posts (WPML compatibility)
-			$args['post_parent'] = wp_get_post_parent_id(get_the_ID()); // keep hierarchical context... navigate only in brothers
+			if (empty($args['post_parent']))
+				$args['post_parent'] = wp_get_post_parent_id(get_the_ID()); // keep hierarchical context... navigate only in brothers
 
 			// tax_query
 			if (!isset($args['include_tax'])){
-				$args['include_tax'] = true;
+				if (woodkit_get_option('tool-pagination-taxnav-active', woodkit_get_option_default_value('tool-pagination-taxnav-active')) == 'on'){
+					$args['include_tax'] = true;
+				}else{
+					$args['include_tax'] = false;
+				}
 			}
 			if ($args['include_tax'] == true){
 				$tax_query_terms = array();

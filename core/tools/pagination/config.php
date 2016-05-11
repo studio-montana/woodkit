@@ -32,6 +32,7 @@ add_filter("woodkit_is_tool_pagination_active", "tool_pagination_is_active", 1, 
 
 function tool_pagination_woodkit_config_default_values($default_values){
 	$default_values["tool-pagination-active"] = "on";
+	$default_values["tool-pagination-taxnav-active"] = "on";
 	return $default_values;
 }
 add_filter("woodkit_config_default_values", "tool_pagination_woodkit_config_default_values");
@@ -46,6 +47,7 @@ function tool_pagination_get_config_options_section_documentation_url(){
 
 function tool_pagination_get_config_options_fields($additional_fields){
 	$additional_fields[] = array("slug" => "tool-pagination-active", "callback" => "tool_pagination_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-pagination-taxnav-active", "callback" => "tool_pagination_get_config_options_field_taxnav_active", "title" => __("include taxonomies", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
 add_filter("woodkit_config_options_fields_tool_pagination", "tool_pagination_get_config_options_fields", 1, 1);
@@ -61,4 +63,17 @@ function tool_pagination_get_config_options_field_active($args){
 		$checked = ' checked="checked"';
 	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-pagination-active]" '.$checked.' />';
 	echo '<p class="field-description">'.__('insert this code in your theme templates :', WOODKIT_PLUGIN_TEXT_DOMAIN).'<br /><code style="font-size: 0.7rem;">&lt;?php woodkit_pagination(); ?&gt;</code></p>';
+}
+
+function tool_pagination_get_config_options_field_taxnav_active($args){
+	$options = $args['options'];
+	$active = false;
+	$value = "off";
+	if (isset($options['tool-pagination-taxnav-active']))
+		$value = $options['tool-pagination-taxnav-active'];
+	$checked = '';
+	if ($value == 'on')
+		$checked = ' checked="checked"';
+	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-pagination-taxnav-active]" '.$checked.' />';
+	echo '<p class="field-description">'.__('include taxonomies context if appropriate', WOODKIT_PLUGIN_TEXT_DOMAIN).'</p>';
 }

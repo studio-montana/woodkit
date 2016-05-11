@@ -162,7 +162,7 @@ endif;
 if (!function_exists("woodkit_get_option_default_values")):
 /**
  * retrieve woodkit option default values
-* @return multiple : option value - null if doesn't exists
+* @return multiple : option values - null if doesn't exists
 */
 function woodkit_get_option_default_values(){
 	global $woodkit_config_default_values;
@@ -171,6 +171,20 @@ function woodkit_get_option_default_values(){
 		$woodkit_config_default_values = apply_filters("woodkit_config_default_values", $woodkit_config_default_values);
 	}
 	return $woodkit_config_default_values;
+}
+endif;
+
+if (!function_exists("woodkit_get_option_default_value")):
+/**
+ * retrieve woodkit option default value for slug
+* @return multiple : option value - null if doesn't exists
+*/
+function woodkit_get_option_default_value($slug){
+	$default = null;
+	$defaults = woodkit_get_option_default_values();
+	if (isset($defaults[$slug]))
+		$default = $defaults[$slug];
+	return $default;
 }
 endif;
 
