@@ -38,7 +38,8 @@ if (!function_exists("pagination")):
 * @return string : HTML link
 */
 function woodkit_pagination($args = array(), $display = true, $before_links = '', $after_links = '', $text_link_previous = '', $text_link_next = '', $before_previous_link = '', $after_previous_link = '', $before_next_link = '', $after_next_link = ''){
-	$meta_display_pagination = get_post_meta(get_the_ID(), META_PAGINATION_DISPLAY_PAGINATION, true);
+	$current_post_id = get_the_ID();
+	$meta_display_pagination = get_post_meta($current_post_id, META_PAGINATION_DISPLAY_PAGINATION, true);
 	if (empty($meta_display_pagination) || $meta_display_pagination == 'on'){
 
 		// content args
@@ -67,7 +68,7 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 
 			$args['post_type'] = $type;
 			if (empty($args['orderby']))
-				$args['orderby'] = "date";
+				$args['orderby'] = array('menu_order' => 'ASC', 'date' => 'ASC');
 			if (empty($args['order']))
 				$args['order'] = 'DESC';
 			if (empty($args['numberposts']))
@@ -75,7 +76,7 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 			if (empty($args['suppress_filters']))
 				$args['suppress_filters'] = FALSE; // keep current language posts (WPML compatibility)
 			if (empty($args['post_parent']))
-				$args['post_parent'] = wp_get_post_parent_id(get_the_ID()); // keep hierarchical context... navigate only in brothers
+				$args['post_parent'] = wp_get_post_parent_id($current_post_id); // keep hierarchical context... navigate only in brothers
 
 			// tax_query
 			if (!isset($args['include_tax'])){
@@ -92,7 +93,7 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 					$tax_post_type = $tax->object_type;
 					foreach ($tax_post_type as $tpt){
 						if ($tpt == $type){
-							$post_terms = get_the_terms(get_the_ID(), $tax->name);
+							$post_terms = get_the_terms($current_post_id, $tax->name);
 							if (!empty($post_terms)){
 								$tax_query_terms_values = array();
 								foreach ($post_terms as $post_term){
@@ -116,52 +117,76 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 					$args['tax_query'] = $tax_query;
 				}
 			}
-			
-			$post_types = get_posts($args);
-			$prev = null;
-			$next = null;
-			$stop = false;
-			$first = null;
-			$last = null;
-			foreach ($post_types as $p){
-				if ($first == null)
-					$first = $p;
-				if (!$stop){
-					if (get_the_ID() == $p->ID)
-						$stop = true;
-					else
-						$prev = $p;
-				}else{
-					if ($next == null)
-						$next = $p;
-				}
-				$last = $p;
-			}
 
-			if ($prev == null && $last != null && $last->ID != get_the_ID()){
-				$prev = $last;
-			}
-			if ($prev != null){
-				$res .= $before_previous_link.'<a class="pagination pagination-previous" href="'.get_the_permalink($prev->ID).'">';
-				if (!empty($text_link_previous)){
-					$res .= $text_link_previous;
-				}else{
-					$res .= $prev->post_title;
-				}
-				$res .= '</a>'.$after_previous_link;
-			}
+			$nav_posts = get_posts($args);
 
-			if ($next == null && $first != null && $first->ID != get_the_ID()){
-				$next = $first;
-			}
-			if ($next != null){
-				$res .= $before_next_link.'<a class="pagination pagination-next" href="'.get_the_permalink($next->ID).'">';
-				if (!empty($text_link_next)){
-					$res .= $text_link_next;
-				}else{
-					$res .= $next->post_title;
+			if (!empty($nav_posts)){
+				// current post is in result ?
+				$current_in_result = false;
+				foreach ($nav_posts as $nav_post){
+					if ($current_post_id == $nav_post->ID){
+						$current_in_result = true;
+						break;
+					}
 				}
-				$res .= '</a>'.$after_next_link;
+
+				$prev_post_nav = null;
+				$next_post_nav = null;
+				$first_post_nav = null;
+				$last_post_nav = null;
+				if (!$current_in_result){
+					// current post isn't in result -> just navigate to next post and last if loop
+					if (count($nav_posts) > 0){
+						$next_post_nav = $nav_posts[0]; // first post
+						$last_post_nav = $nav_posts[count($nav_posts)-1]; // last post
+					}
+				}else{
+					// current post is in result -> standard navigation
+					$stop = false;
+					foreach ($nav_posts as $nav_post){
+						if ($first_post_nav == null)
+							$first_post_nav = $nav_post;
+						if (!$stop){
+							if ($current_post_id == $nav_post->ID)
+								$stop = true;
+							else
+								$prev_post_nav = $nav_post;
+						}else{
+							if ($next_post_nav == null)
+								$next_post_nav = $nav_post;
+						}
+						$last_post_nav = $nav_post;
+					}
+				}
+				// loop
+				if (woodkit_get_option('tool-pagination-loop-active', woodkit_get_option_default_value('tool-pagination-loop-active')) == 'on'){
+					if ($prev_post_nav == null && $last_post_nav != null && $last_post_nav->ID != $current_post_id){
+						$prev_post_nav = $last_post_nav;
+					}
+					if ($next_post_nav == null && $first_post_nav != null && $first_post_nav->ID != $current_post_id){
+						$next_post_nav = $first_post_nav;
+					}
+				}
+
+				if ($prev_post_nav != null){
+					$res .= $before_previous_link.'<a class="pagination pagination-previous" href="'.get_the_permalink($prev_post_nav->ID).'">';
+					if (!empty($text_link_previous)){
+						$res .= $text_link_previous;
+					}else{
+						$res .= $prev_post_nav->post_title;
+					}
+					$res .= '</a>'.$after_previous_link;
+				}
+
+				if ($next_post_nav != null){
+					$res .= $before_next_link.'<a class="pagination pagination-next" href="'.get_the_permalink($next_post_nav->ID).'">';
+					if (!empty($text_link_next)){
+						$res .= $text_link_next;
+					}else{
+						$res .= $next_post_nav->post_title;
+					}
+					$res .= '</a>'.$after_next_link;
+				}
 			}
 		}
 
