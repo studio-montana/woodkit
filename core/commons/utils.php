@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -78,12 +78,16 @@ if (!function_exists("get_displayed_post_types")):
 * @param $sort : alphabetic sorting
 * @return array:
 */
-function get_displayed_post_types($sort = false){
+function get_displayed_post_types($sort = false, $only_public = true){
 	$displayed_post_types = array();
 	foreach (get_post_types() as $post_type){
 		if ($post_type !=  "attachment" &&  $post_type !=  "revision" && $post_type !=  "nav_menu_item"){
 			$post_type_object = get_post_type_object($post_type);
-			if ($post_type_object->public == 1){
+			if ($only_public == true){
+				if ($post_type_object->public == 1){
+					$displayed_post_types[] = $post_type;
+				}
+			}else{
 				$displayed_post_types[] = $post_type;
 			}
 		}
@@ -670,12 +674,12 @@ endif;
 if (!function_exists("hex_to_rgb")):
 /**
  * Convert a hexa decimal color code to its RGB equivalent
- *
- * @param string $hexStr (hexadecimal color value)
- * @param boolean $returnAsString (if set true, returns the value separated by the separator character. Otherwise returns associative array)
- * @param string $seperator (to separate RGB values. Applicable only if second parameter is true.)
- * @return array or string (depending on second parameter. Returns False if invalid hex color value)
- */
+*
+* @param string $hexStr (hexadecimal color value)
+* @param boolean $returnAsString (if set true, returns the value separated by the separator character. Otherwise returns associative array)
+* @param string $seperator (to separate RGB values. Applicable only if second parameter is true.)
+* @return array or string (depending on second parameter. Returns False if invalid hex color value)
+*/
 function hex_to_rgb($hexStr, $returnAsString = false, $seperator = ',') {
 	$hexStr = preg_replace("/[^0-9A-Fa-f]/", '', $hexStr); // Gets a proper hex string
 	$rgbArray = array();
