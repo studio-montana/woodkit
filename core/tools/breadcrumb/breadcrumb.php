@@ -92,7 +92,7 @@ function tool_breadcrumb($args = array(), $display = true){
 	$home_url = esc_url(home_url('/'));
 	$home_class = " home";
 	if (is_front_page()){ // site home page
-		$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator);
+		$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator, array(get_the_ID()));
 		$home_class .= " current";
 	}
 	$res .= '<li class="breadcrumb-item'.$home_class.'"><a href="'.$home_url.'" title="'.__("Home", WOODKIT_PLUGIN_TEXT_DOMAIN).'">'.$args['home-item'].'</a></li>';
@@ -109,17 +109,17 @@ function tool_breadcrumb($args = array(), $display = true){
 	if (!is_front_page()){
 		if (is_home() && !empty($id_front_page)) {
 			if (!empty($id_blog_page) && is_numeric($id_blog_page)){
-				$res .= tool_breadcrumb_post_ancestors($id_blog_page, $separator);
+				$res .= tool_breadcrumb_post_ancestors($id_blog_page, $separator, array($id_blog_page));
 				$res .= '<li class="breadcrumb-item current"><a href="'.get_permalink($id_blog_page).'" title="'.esc_attr(tool_breadcrumb_get_the_title($id_blog_page)).'">'.tool_breadcrumb_get_the_title($id_blog_page).'</a></li>'.$final;
 			}
 		}else if (is_single()) {
 			if (get_post_type() == 'post'){ // blog article - display blog page if is different of front page and if front page is set
 				if (!empty($id_blog_page) && is_numeric($id_blog_page) && !empty($id_front_page) && $id_blog_page != $id_front_page){
-					$res .= tool_breadcrumb_post_ancestors($id_blog_page, $separator);
+					$res .= tool_breadcrumb_post_ancestors($id_blog_page, $separator, array($id_blog_page));
 					$res .= '<li class="breadcrumb-item current"><a href="'.get_permalink($id_blog_page).'" title="'.esc_attr(tool_breadcrumb_get_the_title($id_blog_page)).'">'.tool_breadcrumb_get_the_title($id_blog_page).'</a></li>'.$separator;
 				}
 			}
-			$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator);
+			$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator, array(get_the_ID()));
 			$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.esc_attr(tool_breadcrumb_get_the_title()).'">'.tool_breadcrumb_get_the_title().'</a></li>'.$final;
 		}else if (is_category()) {
 			$categories = get_the_category();
@@ -137,7 +137,7 @@ function tool_breadcrumb($args = array(), $display = true){
 				$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.esc_attr($current_term->name).'">'.$current_term->name.'</a></li>'.$final;
 			}
 		}else if(is_page()) {
-			$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator);
+			$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator, array(get_the_ID()));
 			$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.esc_attr(tool_breadcrumb_get_the_title()).'">'.tool_breadcrumb_get_the_title().'</a></li>'.$final;
 		}else if(is_404()){
 			$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.esc_attr(tool_breadcrumb_get_the_title()).'">404</a></li>'.$final;
@@ -174,21 +174,54 @@ function tool_breadcrumb($args = array(), $display = true){
 	}
 }
 
-
-function tool_breadcrumb_post_ancestors($id_post, $separator){
+function tool_breadcrumb_post_ancestors($id_post, $separator, $existing_ids_in_breadcrumb = array()){
 	$output = '';
 	$breadcrumb_type = get_post_meta($id_post, META_BREADCRUMB_TYPE, true);
-
-	// customized breadcrumb
 	if (!empty($breadcrumb_type) && $breadcrumb_type == 'customized'){
-		$output .= tool_breadcrumb_customized($id_post, $separator);
+		$output .= tool_breadcrumb_customized_post_ancestors($id_post, $separator, $existing_ids_in_breadcrumb);
 	}else{
 		// classic breadcrumb
-		$ancestors = get_post_ancestors($id_post);
-		if ($ancestors){
-			sort($ancestors, -1);
-			foreach ($ancestors as $ancestor ) {
-				$output .= '<li class="breadcrumb-item"><a href="'.get_permalink($ancestor).'" title="'.esc_attr(tool_breadcrumb_get_the_title($ancestor)).'">'.tool_breadcrumb_get_the_title($ancestor).'</a></li>'.$separator;
+		$id_post_parent = wp_get_post_parent_id($id_post);
+		if ($id_post_parent && is_numeric($id_post_parent) && !in_array($id_post_parent, $existing_ids_in_breadcrumb)){
+			$existing_ids_in_breadcrumb[] = $id_post_parent;
+			$output .= tool_breadcrumb_post_ancestors($id_post_parent, $separator, $existing_ids_in_breadcrumb);
+			$output .= '<li class="breadcrumb-item"><a href="'.get_permalink($id_post_parent).'" title="'.esc_attr(tool_breadcrumb_get_the_title($id_post_parent)).'">'.tool_breadcrumb_get_the_title($id_post_parent).'</a></li>'.$separator;
+		}
+	}
+	return $output;
+}
+
+function tool_breadcrumb_customized_post_ancestors($id_post, $separator, $existing_ids_in_breadcrumb = array()){
+	$output = '';
+	$breadcrumb_items = get_post_meta($id_post, META_BREADCRUMB_CUSTOM_ITEMS, true);
+	if (!empty($breadcrumb_items)){
+		$breadcrumb_items = json_decode($breadcrumb_items, true);
+		if (!empty($breadcrumb_items)){
+			foreach ($breadcrumb_items as $breadcrumb_item){
+				$parts = explode("|", $breadcrumb_item);
+				if (count($parts) == 3){
+					$type = $parts[0];
+					$type_slug = $parts[1];
+					$id = $parts[2];
+					if (!in_array($id, $existing_ids_in_breadcrumb)){
+						if (!empty($type) && !empty($type_slug) && !empty($id) && is_numeric($id)){
+							if ($type == 'post'){
+								$post = get_post($id);
+								if ($post){
+									$existing_ids_in_breadcrumb[] = $id;
+									$output .= tool_breadcrumb_post_ancestors($id, $separator, $existing_ids_in_breadcrumb);
+									$output .= '<li class="breadcrumb-item"><a href="'.get_the_permalink($post).'">'.get_the_title($post).'</a></li>'.$separator;
+								}
+							}else if ($type == 'tax'){
+								$term = get_term($id);
+								if ($term){
+									$output .= tool_breadcrumb_term_ancestors($id, $type_slug, $separator);
+									$output .= '<li class="breadcrumb-item"><a href="'.get_term_link($term).'">'.$term->name.'</a></li>'.$separator;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -206,82 +239,5 @@ function tool_breadcrumb_term_ancestors($id, $taxonomy, $separator){
 		}
 	}
 	return $output;
-}
-
-function tool_breadcrumb_customized($id_post, $separator){
-	$output = '';
-	$breadcrumb_items = get_post_meta($id_post, META_BREADCRUMB_CUSTOM_ITEMS, true);
-	if (!empty($breadcrumb_items)){
-		$breadcrumb_items = json_decode($breadcrumb_items, true);
-		if (!empty($breadcrumb_items)){
-			foreach ($breadcrumb_items as $breadcrumb_item){
-				$parts = explode("|", $breadcrumb_item);
-				if (count($parts) == 3){
-					$type = $parts[0];
-					$type_slug = $parts[1];
-					$id = $parts[2];
-					if (!empty($type) && !empty($type_slug) && !empty($id) && is_numeric($id)){
-						if ($type == 'post'){
-							$post = get_post($id);
-							if ($post){
-								$output .= '<li class="breadcrumb-item"><a href="'.get_the_permalink($post).'">'.get_the_title($post).'</a></li>'.$separator;
-							}
-						}else if ($type == 'tax'){
-							$term = get_term($id);
-							if ($term){
-								$output .= '<li class="breadcrumb-item"><a href="'.get_term_link($term).'">'.$term->name.'</a></li>'.$separator;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	return $output;
-}
-
-function tool_breadcrumb_get_breadcrumb_options($id_selected = null){
-	$options = '';
-	// post-types
-	$selectable_posttypes = get_displayed_post_types();
-	$selectable_posttypes = apply_filters("tool_breadcrumb_selectable_posttypes", $selectable_posttypes);
-	if (!empty($selectable_posttypes)){
-		foreach ($selectable_posttypes as $posttype){
-			$args = array(
-					'posts_per_page'   => -1,
-					'orderby'          => 'title',
-					'order'            => 'DESC',
-					'post_type'        => $posttype,
-					'suppress_filters' => false
-			);
-			$posts = get_posts($args);
-			if (!empty($posts)){
-				$options .= '<optgroup label="'.esc_attr($posttype).'">';
-				foreach ($posts as $post){
-					$selected = !empty($id_selected) && $id_selected == esc_attr('post|'.$posttype.'|'.$post->ID) ? 'selected="selected"' : '';
-					$options .= '<option value="'.esc_attr('post|'.$posttype.'|'.$post->ID).'" '.$selected.'>'.$post->post_title.'</option>';
-				}
-				$options .= '</optgroup>';
-			}
-		}
-	}
-	// taxonomies
-	$taxonomies = get_taxonomies(array('public' => true), 'objects', 'and');
-	$taxonomies = apply_filters("tool_breadcrumb_selectable_taxonomies", $taxonomies);
-	if (!empty($taxonomies)) {
-		foreach ($taxonomies  as $tax) {
-			$terms = get_terms($tax->name);
-			if (!empty($terms)){
-				$tax_labels = get_taxonomy_labels($tax);
-				$options .= '<optgroup label="'.esc_attr($tax_labels->name).'">';
-				foreach ($terms as $term){
-					$selected = !empty($id_selected) && $id_selected == esc_attr('tax|'.$tax->name.'|'.$term->term_id) ? 'selected="selected"' : '';
-					$options .= '<option value="'.esc_attr('tax|'.$tax->name.'|'.$term->term_id).'" '.$selected.'>'.$term->name.'</option>';
-				}
-				$options .= '</optgroup>';
-			}
-		}
-	}
-	return $options;
 }
 

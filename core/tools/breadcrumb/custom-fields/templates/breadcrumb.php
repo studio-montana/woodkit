@@ -73,7 +73,7 @@ defined('ABSPATH') or die("Go Away!");
 									<span class="following"><i class="fa fa-long-arrow-down"></i></span>
 									<select id="breadcrumbs-select-<?php echo $nb_breadcrumbs; ?>" name="breadcrumbs-select-<?php echo $nb_breadcrumbs; ?>" class="breadcrumbs-select">
 										<option value="0"><?php _e("Choose element", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-										<?php echo tool_breadcrumb_get_breadcrumb_options($breadcrumb); ?>
+										<?php echo woodkit_get_posts_options($breadcrumb); ?>
 									</select>
 									<span class="button delete-breadcrumb-item" data-id="<?php echo $nb_breadcrumbs; ?>"><i class="fa fa-times"></i></span>
 								</div>
@@ -88,7 +88,7 @@ defined('ABSPATH') or die("Go Away!");
 							<span class="following"><i class="fa fa-long-arrow-down"></i></span>
 							<select id="breadcrumbs-select-<?php echo $nb_breadcrumbs; ?>" name="breadcrumbs-select-<?php echo $nb_breadcrumbs; ?>" class="breadcrumbs-select">
 								<option value="0"><?php _e("Choose element", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-								<?php echo tool_breadcrumb_get_breadcrumb_options(); ?>
+								<?php echo woodkit_get_posts_options(); ?>
 							</select>
 							<span class="button delete-breadcrumb-item" data-id="<?php echo $nb_breadcrumbs; ?>"><i class="fa fa-times"></i></span>
 						</div>
@@ -107,7 +107,7 @@ defined('ABSPATH') or die("Go Away!");
 								new_breadcrumb_item += '<span class="following"><i class="fa fa-long-arrow-down"></i></span>';
 								new_breadcrumb_item += '<select id="breadcrumbs-select-'+nb_breadcrumbs+'" name="breadcrumbs-select-'+nb_breadcrumbs+'" class="breadcrumbs-select">';
 								new_breadcrumb_item += '<option value="0"><?php _e("Choose element", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>';
-								new_breadcrumb_item += '<?php echo str_replace("'", "\'", tool_breadcrumb_get_breadcrumb_options()); ?>';
+								new_breadcrumb_item += '<?php echo str_replace("'", "\'", woodkit_get_posts_options()); ?>';
 								new_breadcrumb_item += '</select>';
 								new_breadcrumb_item += '<span class="button delete-breadcrumb-item" data-id="'+nb_breadcrumbs+'"><i class="fa fa-times"></i></span>';
 								new_breadcrumb_item += '</div>';

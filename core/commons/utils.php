@@ -698,3 +698,104 @@ function hex_to_rgb($hexStr, $returnAsString = false, $seperator = ',') {
 	return $returnAsString ? implode($seperator, $rgbArray) : $rgbArray; // returns the rgb string or the associative array
 }
 endif;
+
+/**
+ * retrieve posts options
+ * @param string $id_selected
+ * @param string $available_posttypes
+ * @param string $available_taxonomies
+ * @param string $only_public
+ * @return string
+ */
+function woodkit_get_posts_options($id_selected = null, $available_posttypes = null, $available_taxonomies = null, $only_public = true){
+	$options = '';
+	// post-types
+	$selectable_posttypes = get_displayed_post_types(false, $only_public);
+	if (!is_array($available_posttypes)){
+		$selectable_posttypes = apply_filters("woodkit_get_posts_options_selectable_posttypes", $selectable_posttypes);
+	}
+	if (!empty($selectable_posttypes)){
+		foreach ($selectable_posttypes as $posttype){
+			$valid = false;
+			if (!is_array($available_posttypes)){
+				$valid = true;
+			}else{
+				if (in_array($posttype, $available_posttypes))
+					$valid = true;
+			}
+			if ($valid == true){
+				$args = array(
+						'posts_per_page'   => -1,
+						'orderby'          => 'title',
+						'order'            => 'DESC',
+						'post_type'        => $posttype,
+						'suppress_filters' => false,
+						'post_parent'	   => 0
+				);
+				$posts = get_posts($args);
+				if (!empty($posts)){
+					$options .= '<optgroup label="'.esc_attr($posttype).'">';
+					foreach ($posts as $post){
+						$selected = !empty($id_selected) && $id_selected == esc_attr('post|'.$posttype.'|'.$post->ID) ? 'selected="selected"' : '';
+						$options .= '<option value="'.esc_attr('post|'.$posttype.'|'.$post->ID).'" '.$selected.'>'.$post->post_title.'</option>';
+						$options .= woodkit_get_posts_options_children($id_selected, $post->ID, $posttype, 1);
+					}
+					$options .= '</optgroup>';
+				}
+			}
+		}
+	}
+	// taxonomies
+	$taxonomies = get_taxonomies(array('public' => true), 'objects', 'and');
+	if (!is_array($available_taxonomies))
+		$taxonomies = apply_filters("woodkit_get_posts_options_selectable_taxonomies", $taxonomies);
+	if (!empty($taxonomies)) {
+		foreach ($taxonomies  as $tax) {
+			$valid = false;
+			if (!is_array($available_taxonomies)){
+				$valid = true;
+			}else{
+				if (in_array($tax->name, $available_taxonomies))
+					$valid = true;
+			}
+			if ($valid == true){
+				$terms = get_terms($tax->name);
+				if (!empty($terms)){
+					$tax_labels = get_taxonomy_labels($tax);
+					$options .= '<optgroup label="'.esc_attr($tax_labels->name).'">';
+					foreach ($terms as $term){
+						$selected = !empty($id_selected) && $id_selected == esc_attr('tax|'.$tax->name.'|'.$term->term_id) ? 'selected="selected"' : '';
+						$options .= '<option value="'.esc_attr('tax|'.$tax->name.'|'.$term->term_id).'" '.$selected.'>'.$term->name.'</option>';
+					}
+					$options .= '</optgroup>';
+				}
+			}
+		}
+	}
+	return $options;
+}
+
+function woodkit_get_posts_options_children($id_selected = null, $id_post_parent, $posttype, $level = 0){
+	$options = '';
+	$args = array(
+			'posts_per_page'   => -1,
+			'orderby'          => 'title',
+			'order'            => 'DESC',
+			'post_type'        => $posttype,
+			'suppress_filters' => false,
+			'post_parent'	   => $id_post_parent
+	);
+	$posts = get_posts($args);
+	if (!empty($posts)){
+		foreach ($posts as $post){
+			$title = $post->post_title;
+			for ($cp_level = 0; $cp_level < $level ; $cp_level++){
+				$title = "- ".$title;
+			}
+			$selected = !empty($id_selected) && $id_selected == esc_attr('post|'.$posttype.'|'.$post->ID) ? 'selected="selected"' : '';
+			$options .= '<option value="'.esc_attr('post|'.$posttype.'|'.$post->ID).'" '.$selected.'>'.$title.'</option>';
+			$options .= woodkit_get_posts_options_children($id_selected, $post->ID, $posttype, ($level+1));
+		}
+	}
+	return $options;
+}
