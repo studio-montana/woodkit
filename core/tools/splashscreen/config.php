@@ -27,7 +27,7 @@ function tool_splashscreen_get_config_options_section_description(){
 }
 
 function tool_splashscreen_get_config_options_section_documentation_url(){
-	return WOODKIT_URL_DOCUMENTATION.'#splashscreen';
+	return WOODKIT_URL_DOCUMENTATION.'/splashscreen';
 }
 
 function tool_splashscreen_is_active($active){

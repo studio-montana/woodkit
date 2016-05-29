@@ -43,7 +43,7 @@ function tool_pagination_get_config_options_section_description(){
 }
 
 function tool_pagination_get_config_options_section_documentation_url(){
-	return WOODKIT_URL_DOCUMENTATION.'#pagination';
+	return WOODKIT_URL_DOCUMENTATION.'/pagination';
 }
 
 function tool_pagination_get_config_options_fields($additional_fields){

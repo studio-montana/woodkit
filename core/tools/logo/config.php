@@ -37,7 +37,7 @@ function tool_logo_get_config_options_section_description(){
 }
 
 function tool_logo_get_config_options_section_documentation_url(){
-	return WOODKIT_URL_DOCUMENTATION.'#logo';
+	return WOODKIT_URL_DOCUMENTATION.'/logo-du-site';
 }
 
 function tool_logo_woodkit_config_default_values($default_values){

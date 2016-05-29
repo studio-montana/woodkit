@@ -27,7 +27,7 @@ function tool_display_get_config_options_section_description(){
 }
 
 function tool_display_get_config_options_section_documentation_url(){
-	return WOODKIT_URL_DOCUMENTATION.'#display';
+	return WOODKIT_URL_DOCUMENTATION.'/options-generales-daffichage';
 }
 
 function tool_display_is_active($active){

@@ -43,7 +43,7 @@ function tool_login_get_config_options_section_description(){
 }
 
 function tool_login_get_config_options_section_documentation_url(){
-	return WOODKIT_URL_DOCUMENTATION.'#login';
+	return WOODKIT_URL_DOCUMENTATION.'/identification';
 }
 
 function tool_login_get_config_options_fields($additional_fields){

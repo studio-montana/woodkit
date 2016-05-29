@@ -41,7 +41,7 @@ function tool_seo_get_config_options_section_description(){
 }
 
 function tool_seo_get_config_options_section_documentation_url(){
-	return WOODKIT_URL_DOCUMENTATION.'#seo';
+	return WOODKIT_URL_DOCUMENTATION.'/seo-referencement';
 }
 
 function tool_seo_get_config_options_fields($additional_fields){

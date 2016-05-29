@@ -23,7 +23,7 @@
 defined('ABSPATH') or die("Go Away!");
 
 function tool_breadcrumb_get_config_options_section_documentation_url(){
-	return WOODKIT_URL_DOCUMENTATION.'#breadcrumb';
+	return WOODKIT_URL_DOCUMENTATION.'/fil-dariane';
 }
 
 function tool_breadcrumb_is_active($active){

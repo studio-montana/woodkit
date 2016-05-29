@@ -36,10 +36,6 @@ function tool_favicon_get_config_options_section_description(){
 	echo '</p>';
 }
 
-function tool_favicon_get_config_options_section_documentation_url(){
-	return WOODKIT_URL_DOCUMENTATION.'#favicon';
-}
-
 function tool_favicon_woodkit_config_default_values($default_values){
 	$default_values["tool-favicon-active"] = "on";
 	return $default_values;
