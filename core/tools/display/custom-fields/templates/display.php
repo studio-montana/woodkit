@@ -53,7 +53,7 @@ defined('ABSPATH') or die("Go Away!");
 			</tr>
 			<tr valign="top">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_DISPLAY_HIDE_TITLE; ?>"><?php _e('Hide title/customized title', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_DISPLAY_HIDE_TITLE; ?>"><?php _e('Hide title', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php 

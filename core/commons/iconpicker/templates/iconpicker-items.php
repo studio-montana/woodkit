@@ -32,7 +32,7 @@ if (!empty($postypes)){
 	<div class="results">
 		<div class="column column-left">
 			<h1 class="title">
-				<?php _e("Icons shortcodes", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+				<?php _e("Icons", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
 			</h1>
 			<!-- TODO search field ! -->
 		</div>

@@ -22,7 +22,7 @@
  */
 defined('ABSPATH') or die("Go Away!");
 ?>
-<label class="hidden" for="page_template"><?php _e('BACKGROUNDIMAGE', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+<label class="hidden" for="page_template"><?php _e('Background Image', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
 
 <input type="hidden" name="<?php echo BACKGROUNDIMAGE_NONCE_BACKGROUNDIMAGE_ACTION; ?>" value="<?php echo wp_create_nonce(BACKGROUNDIMAGE_NONCE_BACKGROUNDIMAGE_ACTION);?>" />
 
