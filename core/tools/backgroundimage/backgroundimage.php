@@ -43,7 +43,7 @@ function backgroundimage_get_url($id_post = null){
 			$id_post = $_queried_post->ID;
 		}
 	}
-	if ($id_post && (is_single() || is_page() || is_home())){
+	if ($id_post && (is_single() || is_page() || is_home() || (function_exists("is_shop") && is_shop()))){
 		$url_backgroundimage = get_post_meta($id_post, BACKGROUNDIMAGE_URL, true);
 	}
 	if (empty($url_backgroundimage)){
@@ -70,7 +70,7 @@ function backgroundimage_is_default($id_post = null){
 		}
 	}
 	// background image
-	if ($id_post && (is_single() || is_page() || is_home())){
+	if ($id_post && (is_single() || is_page() || is_home() || (function_exists("is_shop") && is_shop()))){
 		$post_meta = get_post_meta($id_post, BACKGROUNDIMAGE_URL, true);
 		if (!empty($post_meta)){
 			$default = false;
@@ -95,7 +95,7 @@ function backgroundimage_get_color($id_post = null){
 			$id_post = $_queried_post->ID;
 		}
 	}
-	if ($id_post && (is_single() || is_page() || is_home())){
+	if ($id_post && (is_single() || is_page() || is_home() || (function_exists("is_shop") && is_shop()))){
 		$background_color_code = get_post_meta($id_post, BACKGROUNDCOLOR_CODE, true);
 		if (!empty($background_color_code)){
 			$background_color_code = hex_to_rgb($background_color_code, true);
@@ -120,7 +120,7 @@ function backgroundimage_get_color_opacity($id_post = null){
 			$id_post = $_queried_post->ID;
 		}
 	}
-	if ($id_post && (is_single() || is_page() || is_home())){
+	if ($id_post && (is_single() || is_page() || is_home() || (function_exists("is_shop") && is_shop()))){
 		$background_color_opacity = get_post_meta($id_post, BACKGROUNDCOLOR_OPACITY, true);
 	}
 	if (empty($background_color_opacity))
@@ -143,6 +143,8 @@ function woodkit_backgroundimage($position = 'absolute', $background_attachement
 	$id_post = null;
 	if (is_home()){ // blog page
 		$id_post = get_option('page_for_posts');
+	}else if(function_exists("is_shop") && is_shop()){
+		$id_post = get_option('woocommerce_shop_page_id');
 	}else if (!is_404()){
 		$_queried_post = get_queried_object();
 		if ($_queried_post)
