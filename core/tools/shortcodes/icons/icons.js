@@ -49,7 +49,7 @@
 		 */
 		getInfo : function() {
 			return {
-				longname : 'Woodkit Icons',
+				longname : 'Woodkit Icons Shortcode',
 				author : 'Studio Montana',
 				authorurl : 'http://lab.studio-montana.com',
 				infourl : 'http://lab.studio-montana.com',

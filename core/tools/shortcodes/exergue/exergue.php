@@ -23,15 +23,41 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
- * Register admin scripts on tinymce load
- */
-function tool_shortcodes_exergue_tiny_mce_plugins($plugins) {
+ * Register shortcode to TinyMce
+*/
+function tool_shortcodes_exergue_init() {
 	if (tool_shortcodes_exergue_has_permissions() && tool_shortcodes_exergue_is_edit_screen()) {
-		wp_enqueue_script('tool-shortcodes-script-exergue', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.SHORTCODES_TOOL_NAME.'/exergue/exergue.js', array('jquery'), '1.0');
+		add_filter('mce_external_plugins', 'tool_shortcodes_exergue_tiny_mce_plugins');
+		add_filter('mce_buttons', 'tool_shortcodes_exergue_tiny_mce_plugins_buttons');
 	}
-	return $plugins;
 }
-add_filter('tiny_mce_plugins', 'tool_shortcodes_exergue_tiny_mce_plugins');
+add_action('init', 'tool_shortcodes_exergue_init');
+
+/**
+ * Register mce plugin button
+*/
+function tool_shortcodes_exergue_tiny_mce_plugins_buttons($buttons) {
+	$buttons[] = 'toolshortcodesexergue';
+	return $buttons;
+}
+add_filter('mce_buttons', 'tool_shortcodes_exergue_tiny_mce_plugins_buttons');
+
+/**
+ * Register mce plugin javascript
+*/
+function tool_shortcodes_exergue_tiny_mce_plugins($plugin_array) {
+	$plugin_array['toolshortcodesexergue'] = WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.SHORTCODES_TOOL_NAME.'/exergue/exergue.js';
+	return $plugin_array;
+}
+
+/**
+ * Register external javascript
+ */
+function tool_shortcodes_exergue_admin_head() {
+	if (tool_shortcodes_exergue_has_permissions() && tool_shortcodes_exergue_is_edit_screen()) {
+	}
+}
+add_action('admin_head', 'tool_shortcodes_exergue_admin_head');
 
 /**
  * Make shortcode
@@ -64,27 +90,4 @@ function tool_shortcodes_exergue_has_permissions() {
 	if (current_user_can('edit_posts') && current_user_can('edit_pages'))
 		return true;
 	return false;
-}
-
-/**
- * Add buttons to TimyMCE
- */
-function tool_shortcodes_exergue_add_editor_buttons() {
-	if (!tool_shortcodes_exergue_has_permissions() || !tool_shortcodes_exergue_is_edit_screen())
-		return false;
-	add_action('media_buttons', 'tool_shortcodes_exergue_add_button', 100);
-}
-add_action('admin_init', 'tool_shortcodes_exergue_add_editor_buttons');
-
-/**
- * Add shortcode button to TimyMCE
-*/
-function tool_shortcodes_exergue_add_button($id_editor = null) {
-	?>
-<span class="tool-shortcodes-insert-shortcode tool-shortcodes-exergue-insert-shortcode button"
-	title="<?php _e('Exergue', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>"
-	data-id-editor="<?php echo $id_editor; ?>">
-	<i class="fa fa-star"></i>
-</span>
-<?php
 }

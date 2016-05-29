@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -23,15 +23,41 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
- * Register admin scripts on tinymce load
- */
-function tool_shortcodes_heightspace_tiny_mce_plugins($plugins) {
+ * Register shortcode to TinyMce
+*/
+function tool_shortcodes_heightspace_init() {
 	if (tool_shortcodes_heightspace_has_permissions() && tool_shortcodes_heightspace_is_edit_screen()) {
-		wp_enqueue_script('tool-shortcodes-script-heightspace', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.SHORTCODES_TOOL_NAME.'/heightspace/heightspace.js', array('jquery'), '1.0');
+		add_filter('mce_external_plugins', 'tool_shortcodes_heightspace_tiny_mce_plugins');
+		add_filter('mce_buttons', 'tool_shortcodes_heightspace_tiny_mce_plugins_buttons');
 	}
-	return $plugins;
 }
-add_filter('tiny_mce_plugins', 'tool_shortcodes_heightspace_tiny_mce_plugins');
+add_action('init', 'tool_shortcodes_heightspace_init');
+
+/**
+ * Register mce plugin button
+*/
+function tool_shortcodes_heightspace_tiny_mce_plugins_buttons($buttons) {
+	$buttons[] = 'toolshortcodesheightspace';
+	return $buttons;
+}
+add_filter('mce_buttons', 'tool_shortcodes_heightspace_tiny_mce_plugins_buttons');
+
+/**
+ * Register mce plugin javascript
+*/
+function tool_shortcodes_heightspace_tiny_mce_plugins($plugin_array) {
+	$plugin_array['toolshortcodesheightspace'] = WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.SHORTCODES_TOOL_NAME.'/heightspace/heightspace.js';
+	return $plugin_array;
+}
+
+/**
+ * Register external javascript
+ */
+function tool_shortcodes_heightspace_admin_head() {
+	if (tool_shortcodes_heightspace_has_permissions() && tool_shortcodes_heightspace_is_edit_screen()) {
+	}
+}
+add_action('admin_head', 'tool_shortcodes_heightspace_admin_head');
 
 /**
  * Make shortcode
@@ -39,9 +65,11 @@ add_filter('tiny_mce_plugins', 'tool_shortcodes_heightspace_tiny_mce_plugins');
 function tool_shortcodes_heightspace($atts, $content = null, $name='') {
 	$atts = shortcode_atts( array(
 			"height"	=> '36px',
+			"style"	=> '',
 	), $atts );
 	$height = sanitize_text_field($atts['height']);
-	$output = '<span class="shortcode-heightspace" style=" display: block; width: 100%; height:'.$height.';">'.do_shortcode($content).'</span>';
+	$style = sanitize_text_field($atts['style']);
+	$output = '<span class="shortcode-heightspace" style="display: block; width: 100%; height:'.$height.'; '.$style.'">'.do_shortcode($content).'</span>';
 	return $output;
 }
 add_shortcode('heightspace', 'tool_shortcodes_heightspace');
@@ -65,27 +93,4 @@ function tool_shortcodes_heightspace_has_permissions() {
 	if (current_user_can('edit_posts') && current_user_can('edit_pages'))
 		return true;
 	return false;
-}
-
-/**
- * Add buttons to TimyMCE
- */
-function tool_shortcodes_heightspace_add_editor_buttons() {
-	if (!tool_shortcodes_heightspace_has_permissions() || !tool_shortcodes_heightspace_is_edit_screen())
-		return false;
-	add_action('media_buttons', 'tool_shortcodes_heightspace_add_button', 100);
-}
-add_action('admin_init', 'tool_shortcodes_heightspace_add_editor_buttons');
-
-/**
- * Add shortcode button to TimyMCE
-*/
-function tool_shortcodes_heightspace_add_button($id_editor = null) {
-	?>
-<span class="tool-shortcodes-insert-shortcode tool-shortcodes-heightspace-insert-shortcode button"
-	title="<?php _e('Height Space', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>"
-	data-id-editor="<?php echo $id_editor; ?>">
-	<i class="fa fa-arrows-v"></i>
-</span>
-<?php
 }
