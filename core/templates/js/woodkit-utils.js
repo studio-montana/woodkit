@@ -61,7 +61,7 @@ function get_url_parameter(param) {
 	});
 
 	if (param) {
-		return vars[param] ? vars[param] : null;
+		return vars[param] ? decodeURIComponent(vars[param]) : null;
 	}
 	return vars;
 }
