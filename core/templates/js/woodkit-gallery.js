@@ -75,7 +75,7 @@ var gold_number = 1.618;
 				}
 			});
 		}
-		$(document).trigger('gallery-isotope-resized', [$isotope, item_selector]);
+		$(document).trigger('gallery-isotope-resized', [ $isotope, item_selector ]);
 	}
 
 	/**
@@ -145,7 +145,7 @@ var gold_number = 1.618;
 				}
 			});
 		}
-		$(document).trigger('gallery-classic-resized', [$classic, item_selector]);
+		$(document).trigger('gallery-classic-resized', [ $classic, item_selector ]);
 	}
 
 	/**
@@ -188,7 +188,7 @@ var gold_number = 1.618;
 			}
 		}
 	}
-	
+
 	/**
 	 * UPDATE ISOTOPE & MASONRY & CLASSIC GALLERY
 	 */
@@ -235,3 +235,20 @@ var gold_number = 1.618;
 	});
 
 })(jQuery);
+
+
+
+/**
+ * Debounce timer for wall filter search field
+ */
+var woodkit_search_debounce_timeout;
+function woodkit_search_debounce(e, $field, fn, threshold) {
+	if (woodkit_search_debounce_timeout) {
+		clearTimeout(woodkit_search_debounce_timeout);
+	}
+	function delayed() {
+		fn(e, $field);
+		woodkit_search_debounce_timeout = null;
+	}
+	woodkit_search_debounce_timeout = setTimeout(delayed, threshold || 100);
+}

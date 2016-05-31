@@ -254,7 +254,7 @@ if (!empty($posts)){
 		?>
 		<div class="wall tool-wall masonry-wrapper <?php if (is_admin()){ echo ' admin'; } ?>">
 			<?php
-			if ($wall_args['meta_wall_display_presentation_filtering'] == 'on'){
+			if ($wall_args['meta_wall_display_presentation_filtering'] == 'tax'){
 				$taxonomies = array();
 				$tax_terms = array();
 				foreach ($posts as $post){
@@ -275,6 +275,12 @@ if (!empty($posts)){
 						<?php } ?>
 					</ul>
 				<?php }
+			}else if($wall_args['meta_wall_display_presentation_filtering'] == 'search'){
+				?>
+				<div class="masonry-wall-search-field-wrapper">
+					<input type="search" class="masonry-wall-search-field" <?php if (is_admin()){ echo 'id="admin-masonry-wall-search-field"'; }else{ echo 'id="masonry-wall-search-field-'.get_the_ID().'"'; } ?> placeholder="<?php _e('Search', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+				</div>
+				<?php
 			}
 			
 			$data_columns = "";
@@ -333,6 +339,9 @@ if (!empty($posts)){
 					var $masonry = $('#masonry-wall-<?php echo get_the_ID(); ?>');
 					
 					// filtres 
+					<?php
+					if ($wall_args['meta_wall_display_presentation_filtering'] == 'tax'){
+					?>
 					$('#masonry-wall-filter-<?php echo get_the_ID(); ?> li').click(function() {
 						var selector = $(this).attr('data-filter');
 						$masonry.isotope({
@@ -342,6 +351,25 @@ if (!empty($posts)){
 						$(this).addClass('active');
 						return false;
 					});
+					<?php 
+					}else if ($wall_args['meta_wall_display_presentation_filtering'] == 'search'){
+					?>
+					$('#masonry-wall-search-field-<?php echo get_the_id(); ?>').keyup(function(e){
+						if (e.which == 13 || e.keyCode == 13){ // enter key haven't to submit any form
+							e.preventDefault();
+							return false; 
+						}
+						woodkit_search_debounce(e, $(this), function(e, $field) {
+							var qsRegex = new RegExp($field.val(), 'gi');
+							$masonry.isotope({
+								filter: function() {
+									return qsRegex ? $(this).text().match(qsRegex) : true;
+								}
+							})},200);
+					});
+					<?php 
+					}
+					?>
 
 					// trigger on gallery-isotope-ready event (use by woodkit-gallery.js)
 					$(document).trigger('gallery-isotope-ready', [$masonry, '.masonry-item']);
@@ -352,7 +380,7 @@ if (!empty($posts)){
 		?>
 		<div class="wall tool-wall isotope-wrapper <?php if (is_admin()){ echo ' admin'; } ?>">
 			<?php
-			if ($wall_args['meta_wall_display_presentation_filtering'] == 'on'){
+			if ($wall_args['meta_wall_display_presentation_filtering'] == 'tax'){
 				$taxonomies = array();
 				$tax_terms = array();
 				foreach ($posts as $post){
@@ -373,6 +401,12 @@ if (!empty($posts)){
 						<?php } ?>
 					</ul>
 				<?php }
+			}else if($wall_args['meta_wall_display_presentation_filtering'] == 'search'){
+				?>
+				<div class="isotope-wall-search-field-wrapper">
+					<input type="search" class="isotope-wall-search-field" <?php if (is_admin()){ echo 'id="admin-isotope-wall-search-field"'; }else{ echo 'id="isotope-wall-search-field-'.get_the_ID().'"'; } ?> placeholder="<?php _e('Search', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+				</div>
+				<?php
 			}
 			?>
 			<ul <?php if (is_admin()){ echo 'id="admin-isotope-wall"'; }else{ echo 'id="isotope-wall-'.get_the_ID().'"'; } ?> class="wall tool-wall isotope <?php echo $wall_args['meta_wall_display_presentation']; ?><?php if (is_admin()){ echo ' admin'; } ?>" data-columns="<?php echo $wall_args['meta_wall_display_presentation_columns']; ?>">
@@ -470,6 +504,9 @@ if (!empty($posts)){
 					var $isotope = $('#isotope-wall-<?php echo get_the_ID(); ?>');
 
 					// filtres 
+					<?php
+					if ($wall_args['meta_wall_display_presentation_filtering'] == 'tax'){
+					?>
 					$('#isotope-wall-filter-<?php echo get_the_ID(); ?> li').click(function() {
 						var selector = $(this).attr('data-filter');
 						$isotope.isotope({
@@ -479,6 +516,25 @@ if (!empty($posts)){
 						$(this).addClass('active');
 						return false;
 					});
+					<?php 
+					}else if ($wall_args['meta_wall_display_presentation_filtering'] == 'search'){
+					?>
+					$('#isotope-wall-search-field-<?php echo get_the_id(); ?>').keyup(function(e){
+						if (e.which == 13 || e.keyCode == 13){ // enter key haven't to submit any form
+							e.preventDefault();
+							return false; 
+						}
+						woodkit_search_debounce(e, $(this), function(e, $field) {
+							var qsRegex = new RegExp($field.val(), 'gi');
+							$isotope.isotope({
+								filter: function() {
+									return qsRegex ? $(this).text().match(qsRegex) : true;
+								}
+							})},200);
+					});
+					<?php 
+					}
+					?>
 
 					// trigger on gallery-isotope-ready event (use by woodkit-gallery.js)
 					$(document).trigger('gallery-isotope-ready', [$isotope, '.isotope-item']);

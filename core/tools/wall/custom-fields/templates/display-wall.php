@@ -291,11 +291,19 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options display-wall-isotope-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>">-&nbsp;<?php _e('Display filters', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>">-&nbsp;<?php _e('Filters as', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
 				</th>
 				<td valign="middle">
-					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_FILTERING, true); ?>
-					<input type="checkbox" class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>" <?php if (!empty($meta) && $meta == 'on'){ echo 'checked="checked"'; }?> />
+					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_FILTERING, true);
+					if (!empty($meta) && $meta == 'on'){ // for old support
+						$meta = 'tax';
+					}
+					?>
+					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>">
+						<option value="none" <?php if (empty($meta) || $meta == 'none'){ echo 'selected="selected"'; }?>><?php _e("none", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="tax" <?php if (!empty($meta) && $meta == 'tax'){ echo 'selected="selected"'; }?>><?php _e("taxonomies", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="search" <?php if (!empty($meta) && $meta == 'search'){ echo 'selected="selected"'; }?>><?php _e("search field", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+					</select>
 				</td>
 				<td valign="middle"></td>
 				<td valign="middle"></td>
@@ -555,7 +563,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 					$(".display-wall-filtering-options").fadeIn();
 				}else{
 					$(".display-wall-filtering-options").fadeOut(0);
-					$("*[name='<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>']").prop('checked', false);
+					$("*[name='<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>']").val('none');
 				}
 			}
 			function update_wall_tax_value(){
@@ -619,10 +627,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 				var number = $("*[name='<?php echo META_WALL_DISPLAY_NUMBER; ?>']").val();
 				var parent = $("*[name='<?php echo META_WALL_DISPLAY_PARENT; ?>']").val();
 				var presentation = $("*[name='<?php echo META_WALL_DISPLAY_PRESENTATION; ?>']").val();
-				var presentation_filtering = '';
-				if ($("*[name='<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>']").is(":checked")){
-					presentation_filtering = 'on';
-				}
+				var presentation_filtering = $("*[name='<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>']").val();
 				var presentation_slider_autoplay = '';
 				if ($("*[name='<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_AUTOPLAY; ?>']").is(":checked")){
 					presentation_slider_autoplay = 'on';
@@ -705,28 +710,64 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 								}
 								$slider = $('.tool-wall.admin.slider').bxSlider(options);
 							}else if (presentation == 'masonry'){
-								$wall_masonry = $('#admin-masonry-wall');
-								$('#admin-masonry-wall-filter li').click(function() {
-									var selector = $(this).attr('data-filter');
-									$wall_masonry.isotope({
-										filter : selector
+								var $wall_masonry = $('#admin-masonry-wall');
+
+								if(presentation_filtering == 'tax'){
+									$('#admin-masonry-wall-filter li').click(function() {
+										var selector = $(this).attr('data-filter');
+										$wall_masonry.isotope({
+											filter : selector
+										});
+										$('#admin-masonry-wall-filter li').removeClass('active');
+										$(this).addClass('active');
+										return false;
 									});
-									$('#admin-masonry-wall-filter li').removeClass('active');
-									$(this).addClass('active');
-									return false;
-								});
+								}else if(presentation_filtering == 'search'){
+									$('#admin-masonry-wall-search-field').keyup(function(e){
+										if (e.which == 13 || e.keyCode == 13){ // enter key haven't to submit any form
+											e.preventDefault();
+											return false; 
+										}
+										woodkit_search_debounce(e, $(this), function(e, $field) {
+											var qsRegex = new RegExp($field.val(), 'gi');
+											$wall_masonry.isotope({
+												filter: function() {
+													return qsRegex ? $(this).text().match(qsRegex) : true;
+												}
+											})},200);
+									});
+								}
+								
 								$(document).trigger('gallery-isotope-ready', [$wall_masonry, '.masonry-item']); // use woodkit-gallery.js 
 							}else{
-								$wall_isotope = $('#admin-isotope-wall');
-								$('#admin-isotope-wall-filter li').click(function() {
-									var selector = $(this).attr('data-filter');
-									$wall_isotope.isotope({
-										filter : selector
+								var $wall_isotope = $('#admin-isotope-wall');
+
+								if(presentation_filtering == 'tax'){
+									$('#admin-isotope-wall-filter li').click(function() {
+										var selector = $(this).attr('data-filter');
+										$wall_isotope.isotope({
+											filter : selector
+										});
+										$('#admin-isotope-wall-filter li').removeClass('active');
+										$(this).addClass('active');
+										return false;
 									});
-									$('#admin-isotope-wall-filter li').removeClass('active');
-									$(this).addClass('active');
-									return false;
-								});
+								}else if(presentation_filtering == 'search'){
+									$('#admin-isotope-wall-search-field').keyup(function(e){
+										if (e.which == 13 || e.keyCode == 13){ // enter key haven't to submit any form
+											e.preventDefault();
+											return false; 
+										}
+										woodkit_search_debounce(e, $(this), function(e, $field) {
+											var qsRegex = new RegExp($field.val(), 'gi');
+											$wall_isotope.isotope({
+												filter: function() {
+													return qsRegex ? $(this).text().match(qsRegex) : true;
+												}
+											})},200);
+									});
+								}
+								
 								$(document).trigger('gallery-isotope-ready', [$wall_isotope, '.isotope-item']); // use woodkit-gallery.js 
 							}
 							$("#wall-presentation-setup").fadeIn();

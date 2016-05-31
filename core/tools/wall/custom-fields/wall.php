@@ -444,6 +444,10 @@ function wall_securize_meta_values($values = array()){
 		$values['meta_wall_display_presentation_setup'] = stripslashes($values['meta_wall_display_presentation_setup']);
 		$values['meta_wall_display_presentation_setup'] = json_decode($values['meta_wall_display_presentation_setup'], true);
 	}
+	// old version support
+	if (!empty($wall_args['meta_wall_display_presentation_filtering']) && $wall_args['meta_wall_display_presentation_filtering'] == 'on'){
+		$wall_args['meta_wall_display_presentation_filtering'] = 'tax';
+	}
 	return $values;
 }
 endif;
