@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -23,9 +23,21 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
- * Add embed html container
+ * CONSTANTS
  */
-add_filter('embed_oembed_html', 'woodkit_wrap_embed_with_div', 10, 3);
-function woodkit_wrap_embed_with_div($html, $url, $attr) {
-	return '<div class="embed-container">'.$html.'</div>';
+define('GOOGLEMAPS_TOOL_NAME', 'googlemaps');
+
+function tool_googlemaps_get_name($tool_name = ""){
+	return __("GoogleMaps", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
+add_filter("woodkit_get_tool_name_".GOOGLEMAPS_TOOL_NAME, "tool_googlemaps_get_name", 1, 1);
+
+function tool_googlemaps_get_description($tool_description = ""){
+	return __("add googlemaps tool on your html editor (shortcode)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+}
+add_filter("woodkit_get_tool_description_".GOOGLEMAPS_TOOL_NAME, "tool_googlemaps_get_description", 1, 1);
+
+function tool_googlemaps_activate(){
+	require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEMAPS_TOOL_NAME.'/'.GOOGLEMAPS_TOOL_NAME.'.php');
+}
+add_action("woodkit_tool_activate_".GOOGLEMAPS_TOOL_NAME, "tool_googlemaps_activate");

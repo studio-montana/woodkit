@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -23,9 +23,17 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
- * Add embed html container
- */
-add_filter('embed_oembed_html', 'woodkit_wrap_embed_with_div', 10, 3);
-function woodkit_wrap_embed_with_div($html, $url, $attr) {
-	return '<div class="embed-container">'.$html.'</div>';
+ * register JS
+*/
+function tool_googlemaps_googlemapsgenerator_admin_enqueue_scripts(){
+	$googlemapsgenerator_js_file = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEMAPS_TOOL_NAME.'/googlemapsgenerator/googlemapsgenerator.js');
+	if (!empty($googlemapsgenerator_js_file)){
+		wp_enqueue_script('script-tool-googlemaps-googlemapsgenerator', $googlemapsgenerator_js_file, array('jquery'), "1.0");
+		wp_localize_script('script-tool-googlemaps-googlemapsgenerator', 'Googlemapsgenerator', array(
+		'doneButtonText' => __("Ok", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		)
+		);
+	}
 }
+add_action('admin_enqueue_scripts', 'tool_googlemaps_googlemapsgenerator_admin_enqueue_scripts');
+

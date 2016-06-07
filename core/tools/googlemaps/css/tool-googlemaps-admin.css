@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+/**
+ * GOOGLEMAPS Tool
+ * @package WordPress
+ * @subpackage Woodkit
+ * @since Woodkit 1.0
+ * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+ */
+.googlemapsgenerator-title{
+	text-align: center;
+	font-size: 18px;	
+}
+#googlemapsgenerator-fields{
+	max-width: 400px;
+	width: 100%;
+	margin: 48px auto;
+	background: #F4F4F4;
+}
+#googlemapsgenerator-fields tr{
+	
+}
+#googlemapsgenerator-fields tr td{
+	padding: 12px;
+}
+#googlemapsgenerator-fields tr td input, #googlemapsgenerator-fields tr td select{
+	width: 100%;
+}
+
+#googlemapsgenerator-fields tr td input{
+	padding: 6px;
+}

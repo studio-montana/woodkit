@@ -62,7 +62,6 @@ function tool_shortcodes_icons_admin_head() {
 			if (tool_shortcode_iconpicker == null) {
 				tool_shortcode_iconpicker = jQuery("body").iconpicker({
 					onpick: function(icon){
-						console.log("on pick : "+icon);
 						on_icon_pick.call(null, ed, ed_selection, icon);
 					}
 				});
