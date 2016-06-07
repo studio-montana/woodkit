@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom\n"
-"POT-Creation-Date: 2016-05-29 17:56+0100\n"
-"PO-Revision-Date: 2016-05-29 17:59+0100\n"
+"POT-Creation-Date: 2016-06-07 20:41+0100\n"
+"PO-Revision-Date: 2016-06-07 20:43+0100\n"
 "Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
 "Language-Team: Sébastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
 "com artcyril@gmail.com>\n"
@@ -223,9 +223,9 @@ msgstr "documentation"
 #: ../core/tools/backgroundimage/config.php:49
 #: ../core/tools/breadcrumb/config.php:38 ../core/tools/display/config.php:48
 #: ../core/tools/event/config.php:42 ../core/tools/excerpt/config.php:48
-#: ../core/tools/favicon/config.php:46 ../core/tools/login/config.php:50
-#: ../core/tools/logo/config.php:50 ../core/tools/media/config.php:49
-#: ../core/tools/pagination/config.php:50
+#: ../core/tools/favicon/config.php:46 ../core/tools/googlemaps/config.php:48
+#: ../core/tools/login/config.php:50 ../core/tools/logo/config.php:50
+#: ../core/tools/media/config.php:49 ../core/tools/pagination/config.php:50
 #: ../core/tools/portfolio/config.php:42 ../core/tools/private/config.php:42
 #: ../core/tools/seo/config.php:48 ../core/tools/shortcodes/config.php:48
 #: ../core/tools/splashscreen/config.php:48 ../core/tools/video/config.php:51
@@ -274,6 +274,7 @@ msgstr "Choisir un document"
 
 #: ../core/tools/backgroundimage/custom-fields/templates/backgroundimage.php:119
 #: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:29
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:33
 #: ../core/tools/seo/custom-fields/templates/seo.php:121
 msgid "Ok"
 msgstr "Ok"
@@ -539,6 +540,7 @@ msgid "Show upcoming events"
 msgstr "Affiche les évènements à venir"
 
 #: ../core/tools/event/widgets/templates/tool-event-widget-form.php:27
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:27
 #: ../core/tools/social/widgets/templates/tool-social-widget-form.php:32
 msgid "Title"
 msgstr "Titre"
@@ -625,6 +627,76 @@ msgstr ""
 msgid "Google Analytics tool"
 msgstr "Module Google Analytics"
 
+#: ../core/tools/googlemaps/config.php:49
+msgid "API KEY"
+msgstr "Clé API"
+
+#: ../core/tools/googlemaps/config.php:71
+msgid "Get google maps API KEY"
+msgstr "Obtenir une clé API google maps"
+
+#: ../core/tools/googlemaps/config.php:72
+#, fuzzy
+msgid "shortcode in your theme templates :"
+msgstr "intégrez ce code dans vos templates : "
+
+#: ../core/tools/googlemaps/load.php:31
+msgid "GoogleMaps"
+msgstr ""
+
+#: ../core/tools/googlemaps/load.php:36
+#, fuzzy
+msgid "add googlemaps tool on your html editor (shortcode)"
+msgstr "Ajoute des shortcode à votre éditeur"
+
+#: ../core/tools/googlemaps/widgets/tool-googlemaps-widget.class.php:34
+#: ../core/tools/googlemaps/widgets/tool-googlemaps-widget.class.php:105
+msgid "Google Maps"
+msgstr ""
+
+#: ../core/tools/googlemaps/widgets/tool-googlemaps-widget.class.php:37
+msgid "Show Google Maps"
+msgstr "Affiche une Google Maps"
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:31
+msgid "Address"
+msgstr "Adresse"
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:35
+msgid "Marker Title"
+msgstr "Titre du marker"
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:40
+msgid "Zoom"
+msgstr ""
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:63
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:62
+msgid "Type"
+msgstr "Type"
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:74
+msgid "Width"
+msgstr "Largeur"
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:78
+#: ../core/tools/media/custom-fields/templates/media.php:117
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:222
+msgid "Height"
+msgstr "Hauteur"
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:82
+msgid "Disable default UI"
+msgstr "Désactiver l'interface"
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:85
+msgid "false"
+msgstr "non"
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:86
+msgid "true"
+msgstr "oui"
+
 #: ../core/tools/login/config.php:41
 msgid "customize login page appearence"
 msgstr "personnalisez l'apparence de votre page d'identification"
@@ -709,34 +781,29 @@ msgid "random grid"
 msgstr "grille aléatoire"
 
 #: ../core/tools/media/custom-fields/templates/media.php:51
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:305
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:313
 msgid "Autoplay"
 msgstr "Autoplay"
 
 #: ../core/tools/media/custom-fields/templates/media.php:63
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:316
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:324
 msgid "Thumb navigation"
 msgstr "Navigation par vignette"
 
 #: ../core/tools/media/custom-fields/templates/media.php:75
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:327
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:335
 msgid "Carousel"
 msgstr "Carousel"
 
 #: ../core/tools/media/custom-fields/templates/media.php:87
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:356
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:364
 msgid "Carousel item width"
 msgstr "Largeur des items du carousel"
 
 #: ../core/tools/media/custom-fields/templates/media.php:102
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:370
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:378
 msgid "Carousel item margin"
 msgstr "Marge des items du carrousel"
-
-#: ../core/tools/media/custom-fields/templates/media.php:117
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:222
-msgid "Height"
-msgstr "Hauteur"
 
 #: ../core/tools/media/custom-fields/templates/media.php:132
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:236
@@ -1280,15 +1347,15 @@ msgstr "Mur"
 msgid "display any post-types on your post-types"
 msgstr "affiche tout type de contenu sur tout type de contenu"
 
-#: ../core/tools/wall/custom-fields/wall.php:469
+#: ../core/tools/wall/custom-fields/wall.php:473
 msgid "Woodkit Wall"
 msgstr ""
 
-#: ../core/tools/wall/custom-fields/wall.php:471
+#: ../core/tools/wall/custom-fields/wall.php:475
 msgid "Insert defined wall for this content"
 msgstr "Insérer le wall dans ce contenu"
 
-#: ../core/tools/wall/custom-fields/wall.php:473
+#: ../core/tools/wall/custom-fields/wall.php:477
 msgid "Content"
 msgstr "Contenu"
 
@@ -1309,14 +1376,10 @@ msgstr "Personnalisé..."
 msgid "manage your elements"
 msgstr "choisir vos éléments"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:62
-msgid "Type"
-msgstr "Type"
-
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:67
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:155
 #: ../core/tools/wall/templates/tool-wall-display.php:270
-#: ../core/tools/wall/templates/tool-wall-display.php:368
+#: ../core/tools/wall/templates/tool-wall-display.php:396
 msgid "All"
 msgstr "Tous"
 
@@ -1413,32 +1476,32 @@ msgid "Columns"
 msgstr "Colonnes"
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:209
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:343
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:351
 msgid "1"
 msgstr "1"
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:210
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:344
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:352
 msgid "2"
 msgstr "2"
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:211
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:345
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:353
 msgid "3"
 msgstr "3"
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:212
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:346
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:354
 msgid "4"
 msgstr "4"
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:213
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:347
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:355
 msgid "5"
 msgstr "5"
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:214
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:348
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:356
 msgid "6"
 msgstr "6"
 
@@ -1467,22 +1530,42 @@ msgid "16%"
 msgstr "16%"
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:294
-msgid "Display filters"
-msgstr "Afficher les filtres"
+msgid "Filters as"
+msgstr "Filtres"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:338
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:303
+msgid "none"
+msgstr "aucun"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:304
+#, fuzzy
+msgid "taxonomies"
+msgstr "inclure les taxonomies"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:305
+#, fuzzy
+msgid "search field"
+msgstr "recherche"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:346
 msgid "Carousel columns"
 msgstr "colonnes du caroussel"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:423
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:431
 msgid "Update wall"
 msgstr "Mettre à jour le mur"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:424
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:432
 msgid "Order elements"
 msgstr "Ordonner les éléments"
 
-#: ../core/tools/wall/templates/tool-wall-display.php:489
+#: ../core/tools/wall/templates/tool-wall-display.php:281
+#: ../core/tools/wall/templates/tool-wall-display.php:407
+#, fuzzy
+msgid "Search"
+msgstr "recherche"
+
+#: ../core/tools/wall/templates/tool-wall-display.php:545
 msgid "No presentation found !"
 msgstr "Aucune présentation trouvée"
 
@@ -1518,6 +1601,9 @@ msgstr "Activer"
 #: ../core/tools/wip/inc/customizer.php:44
 msgid "only logged in user can look you site"
 msgstr "seuls les utilisateurs connectés peuvent voir votre site"
+
+#~ msgid "Display filters"
+#~ msgstr "Afficher les filtres"
 
 #~ msgid "BACKGROUNDIMAGE"
 #~ msgstr "Image de fond"
