@@ -107,12 +107,6 @@ function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 	?>
 	<div style="overflow:hidden; width:<?php echo $width; ?>; height:<?php echo $height; ?>;">
 		<div id='<?php echo $id; ?>' class="googlemaps-canvas" style="width:<?php echo $width; ?>; height:<?php echo $height; ?>;"></div>
-		<div>
-			<small><a href="http://embedgooglemaps.com">google maps carte</a></small>
-		</div>
-		<div>
-			<small><a href="http://youtubeembedcode.com">embed youtube code</a></small>
-		</div>
 	</div>
 	<script type="text/javascript">
 		google.maps.event.addDomListener(window, 'load', function(){
