@@ -61,15 +61,15 @@ function tool_googlemaps_shortcode_admin_head() {
 		function tool_googlemaps_shortcode_open(ed, ed_selection, on_googlemaps_generated){
 			if (tool_googlemaps_shortcode == null) {
 				tool_googlemaps_shortcode = jQuery("body").googlemapsgenerator({
-					ondone: function(id, adress, title, zoom, type, width, height, style){
-						on_googlemaps_generated.call(null, ed, ed_selection, id, adress, title, zoom, type, width, height, style);
+					ondone: function(id, adress, title, zoom, type, width, height, disabledefaultui, style){
+						on_googlemaps_generated.call(null, ed, ed_selection, id, adress, title, zoom, type, width, height, disabledefaultui, style);
 					}
 				});
 				tool_googlemaps_shortcode.open();
 			} else {
 				tool_googlemaps_shortcode.options({
-					ondone: function(id, adress, title, zoom, type, width, height, style){
-						on_googlemaps_generated.call(null, ed, ed_selection, id, adress, title, zoom, type, width, height, style);
+					ondone: function(id, adress, title, zoom, type, width, height, disabledefaultui, style){
+						on_googlemaps_generated.call(null, ed, ed_selection, id, adress, title, zoom, type, width, height, disabledefaultui, style);
 					}
 				});
 				tool_googlemaps_shortcode.open();
@@ -86,13 +86,14 @@ add_action('admin_head', 'tool_googlemaps_shortcode_admin_head');
 */
 function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 	$atts = shortcode_atts( array(
-			"id"		=> '',
+			"id"		=> 'gmaps1',
 			"adress"	=> '',
 			"title"		=> '',
-			"type"		=> '',
-			"zoom"		=> '',
-			"width"		=> '',
-			"height"	=> '',
+			"type"		=> 'ROADMAP',
+			"zoom"		=> '12',
+			"width"		=> '100%',
+			"height"	=> '400px',
+			"disabledefaultui"	=> 'false',
 			"style"		=> ''
 	), $atts );
 	$id = sanitize_text_field($atts['id']);
@@ -102,6 +103,7 @@ function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 	$height = sanitize_text_field($atts['height']);
 	$style = sanitize_text_field($atts['style']);
 	$zoom = sanitize_text_field($atts['zoom']);
+	$disabledefaultui = sanitize_text_field($atts['disabledefaultui']);
 	$type = "google.maps.MapTypeId.".sanitize_text_field($atts['type']);
 	ob_start();
 	?>
@@ -110,7 +112,7 @@ function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 	</div>
 	<script type="text/javascript">
 		google.maps.event.addDomListener(window, 'load', function(){
-			var map = new google.maps.Map(document.getElementById('<?php echo $id; ?>'), {zoom:<?php echo $zoom; ?>, mapTypeId: <?php echo $type; ?>});
+			var map = new google.maps.Map(document.getElementById('<?php echo $id; ?>'), {zoom:<?php echo $zoom; ?>, mapTypeId: <?php echo $type; ?>, disableDefaultUI: <?php echo $disabledefaultui; ?>});
 			geocode_adress(map, new google.maps.Geocoder(), "<?php echo $adress; ?>", "<?php echo $title; ?>");
 		});
 	</script>

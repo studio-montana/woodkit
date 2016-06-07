@@ -78,6 +78,11 @@ class tool_googlemaps_widget extends WP_Widget {
 		else
 			$gmapsheight = '200px';
 
+		if (isset( $instance['gmapsdisabledefaultui'] ))
+			$gmapsdisabledefaultui = $instance['gmapsdisabledefaultui'];
+		else
+			$gmapsdisabledefaultui = 'false';
+
 		echo $args['before_widget'];
 
 		echo $args['before_title'];
@@ -129,6 +134,11 @@ class tool_googlemaps_widget extends WP_Widget {
 		else
 			$gmapsheight = '200px';
 
+		if (isset( $instance['gmapsdisabledefaultui'] ))
+			$gmapsdisabledefaultui = $instance['gmapsdisabledefaultui'];
+		else
+			$gmapsdisabledefaultui = 'false';
+
 		// Widget admin form
 		$template = locate_ressource('/'.WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEMAPS_TOOL_NAME.'/widgets/templates/tool-googlemaps-widget-form.php');
 		if (!empty($template))
@@ -145,6 +155,7 @@ class tool_googlemaps_widget extends WP_Widget {
 		$instance['gmapstype'] = ( ! empty( $new_instance['gmapstype'] ) ) ? strip_tags( $new_instance['gmapstype'] ) : '';
 		$instance['gmapswidth'] = ( ! empty( $new_instance['gmapswidth'] ) ) ? strip_tags( $new_instance['gmapswidth'] ) : '';
 		$instance['gmapsheight'] = ( ! empty( $new_instance['gmapsheight'] ) ) ? strip_tags( $new_instance['gmapsheight'] ) : '';
+		$instance['gmapsdisabledefaultui'] = ( ! empty( $new_instance['gmapsdisabledefaultui'] ) ) ? strip_tags( $new_instance['gmapsdisabledefaultui'] ) : '';
 		return $instance;
 	}
 }

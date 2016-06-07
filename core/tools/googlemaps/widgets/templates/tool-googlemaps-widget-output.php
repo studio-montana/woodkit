@@ -32,7 +32,7 @@ defined('ABSPATH') or die("Go Away!");
 	</div>
 	<script type="text/javascript">
 		google.maps.event.addDomListener(window, 'load', function(){
-			var map = new google.maps.Map(document.getElementById('<?php echo $gmapsid; ?>'), {zoom:<?php echo $gmapszoom; ?>, mapTypeId: <?php echo $gmapstype; ?>});
+			var map = new google.maps.Map(document.getElementById('<?php echo $gmapsid; ?>'), {zoom:<?php echo $gmapszoom; ?>, mapTypeId: <?php echo $gmapstype; ?>, disableDefaultUI: <?php echo $gmapsdisabledefaultui; ?>});
 			geocode_adress(map, new google.maps.Geocoder(), "<?php echo $gmapsaddress; ?>", "<?php echo $gmapstitle; ?>");
 		});
 	</script>

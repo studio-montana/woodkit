@@ -57,6 +57,7 @@ defined('ABSPATH') or die("Go Away!");
 				<option value="15" <?php if ($gmapszoom == "15"){ ?>selected="selected" <?php } ?>>15</option>
 				<option value="16" <?php if ($gmapszoom == "16"){ ?>selected="selected" <?php } ?>>16</option>
 			</select>
+		</td>
 	</tr>
 	<tr>
 		<td><label for="<?php echo $this->get_field_id('gmapstype'); ?>"><?php _e('Type', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
@@ -67,6 +68,7 @@ defined('ABSPATH') or die("Go Away!");
 				<option value="HYBRID" <?php if ($gmapstype == "HYBRID"){ ?>selected="selected" <?php } ?>>HYBRID</option>
 				<option value="TERRAIN" <?php if ($gmapstype == "TERRAIN"){ ?>selected="selected" <?php } ?>>TERRAIN</option>
 			</select>
+		</td>
 	</tr>
 	<tr>
 		<td><label for="<?php echo $this->get_field_id('gmapswidth'); ?>"><?php _e('Width', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
@@ -75,5 +77,14 @@ defined('ABSPATH') or die("Go Away!");
 	<tr>
 		<td><label for="<?php echo $this->get_field_id('gmapsheight'); ?>"><?php _e('Height', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
 		<td><input type="text" name="<?php echo $this->get_field_name('gmapsheight'); ?>" id="<?php echo $this->get_field_id('gmapsheight'); ?>" value="<?php echo esc_attr($gmapsheight); ?>" /></td>
+	</tr>
+	<tr>
+		<td><label for="<?php echo $this->get_field_id('gmapsdisabledefaultui'); ?>"><?php _e('Disable default UI', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
+		<td>
+			<select name="<?php echo $this->get_field_name('gmapsdisabledefaultui'); ?>" id="<?php echo $this->get_field_id('gmapsdisabledefaultui'); ?>">
+				<option value="false" <?php if (empty($gmapsdisabledefaultui) || $gmapsdisabledefaultui == "false"){ ?>selected="selected" <?php } ?>><?php _e("false", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+				<option value="true" <?php if ($gmapsdisabledefaultui == "true"){ ?>selected="selected" <?php } ?>><?php _e("true", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+			</select>
+		</td>
 	</tr>
 </table>
