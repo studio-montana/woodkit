@@ -31,6 +31,18 @@ function tool_googlemaps_googlemapsgenerator_admin_enqueue_scripts(){
 		wp_enqueue_script('script-tool-googlemaps-googlemapsgenerator', $googlemapsgenerator_js_file, array('jquery'), "1.0");
 		wp_localize_script('script-tool-googlemaps-googlemapsgenerator', 'Googlemapsgenerator', array(
 		'doneButtonText' => __("Ok", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'address_text' => __("Address", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'title_text' => __("Marker Title", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'zoom_text' => __("Zoom", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'type_text' => __("Type", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'width_text' => __("Width", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'height_text' => __("Height", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'zoomcontrol_text' => __("Zoom control", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'streetviewcontrol_text' => __("StreetView control", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'scalecontrol_text' => __("Scale control", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'maptypecontrol_text' => __("Type control", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'rotatecontrol_text' => __("Rotate control", WOODKIT_PLUGIN_TEXT_DOMAIN),
+		'scrollwheel_text' => __("Scroll wheel", WOODKIT_PLUGIN_TEXT_DOMAIN)
 		)
 		);
 	}

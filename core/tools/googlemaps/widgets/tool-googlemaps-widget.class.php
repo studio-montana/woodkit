@@ -77,11 +77,36 @@ class tool_googlemaps_widget extends WP_Widget {
 			$gmapsheight = $instance['gmapsheight'];
 		else
 			$gmapsheight = '200px';
-
-		if (isset( $instance['gmapsdisabledefaultui'] ))
-			$gmapsdisabledefaultui = $instance['gmapsdisabledefaultui'];
+		
+		if (isset( $instance['gmapszoomcontrol'] ))
+			$gmapszoomcontrol = $instance['gmapszoomcontrol'];
 		else
-			$gmapsdisabledefaultui = 'false';
+			$gmapszoomcontrol = 'true';
+		
+		if (isset( $instance['gmapsstreetviewcontrol'] ))
+			$gmapsstreetviewcontrol = $instance['gmapsstreetviewcontrol'];
+		else
+			$gmapsstreetviewcontrol = 'false';
+		
+		if (isset( $instance['gmapsscalecontrol'] ))
+			$gmapsscalecontrol = $instance['gmapsscalecontrol'];
+		else
+			$gmapsscalecontrol = 'false';
+		
+		if (isset( $instance['gmapsmaptypecontrol'] ))
+			$gmapsmaptypecontrol = $instance['gmapsmaptypecontrol'];
+		else
+			$gmapsmaptypecontrol = 'true';
+		
+		if (isset( $instance['gmapsrotatecontrol'] ))
+			$gmapsrotatecontrol = $instance['gmapsrotatecontrol'];
+		else
+			$gmapsrotatecontrol = 'false';
+		
+		if (isset( $instance['gmapsscrollwheel'] ))
+			$gmapsscrollwheel = $instance['gmapsscrollwheel'];
+		else
+			$gmapsscrollwheel = 'true';
 
 		echo $args['before_widget'];
 
@@ -133,11 +158,36 @@ class tool_googlemaps_widget extends WP_Widget {
 			$gmapsheight = $instance['gmapsheight'];
 		else
 			$gmapsheight = '200px';
-
-		if (isset( $instance['gmapsdisabledefaultui'] ))
-			$gmapsdisabledefaultui = $instance['gmapsdisabledefaultui'];
+		
+		if (isset( $instance['gmapszoomcontrol'] ))
+			$gmapszoomcontrol = $instance['gmapszoomcontrol'];
 		else
-			$gmapsdisabledefaultui = 'false';
+			$gmapszoomcontrol = 'true';
+		
+		if (isset( $instance['gmapsstreetviewcontrol'] ))
+			$gmapsstreetviewcontrol = $instance['gmapsstreetviewcontrol'];
+		else
+			$gmapsstreetviewcontrol = 'false';
+		
+		if (isset( $instance['gmapsscalecontrol'] ))
+			$gmapsscalecontrol = $instance['gmapsscalecontrol'];
+		else
+			$gmapsscalecontrol = 'false';
+		
+		if (isset( $instance['gmapsmaptypecontrol'] ))
+			$gmapsmaptypecontrol = $instance['gmapsmaptypecontrol'];
+		else
+			$gmapsmaptypecontrol = 'true';
+		
+		if (isset( $instance['gmapsrotatecontrol'] ))
+			$gmapsrotatecontrol = $instance['gmapsrotatecontrol'];
+		else
+			$gmapsrotatecontrol = 'false';
+		
+		if (isset( $instance['gmapsscrollwheel'] ))
+			$gmapsscrollwheel = $instance['gmapsscrollwheel'];
+		else
+			$gmapsscrollwheel = 'true';
 
 		// Widget admin form
 		$template = locate_ressource('/'.WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEMAPS_TOOL_NAME.'/widgets/templates/tool-googlemaps-widget-form.php');
@@ -155,7 +205,12 @@ class tool_googlemaps_widget extends WP_Widget {
 		$instance['gmapstype'] = ( ! empty( $new_instance['gmapstype'] ) ) ? strip_tags( $new_instance['gmapstype'] ) : '';
 		$instance['gmapswidth'] = ( ! empty( $new_instance['gmapswidth'] ) ) ? strip_tags( $new_instance['gmapswidth'] ) : '';
 		$instance['gmapsheight'] = ( ! empty( $new_instance['gmapsheight'] ) ) ? strip_tags( $new_instance['gmapsheight'] ) : '';
-		$instance['gmapsdisabledefaultui'] = ( ! empty( $new_instance['gmapsdisabledefaultui'] ) ) ? strip_tags( $new_instance['gmapsdisabledefaultui'] ) : '';
+		$instance['gmapszoomcontrol'] = ( ! empty( $new_instance['gmapszoomcontrol'] ) ) ? strip_tags( $new_instance['gmapszoomcontrol'] ) : '';
+		$instance['gmapsstreetviewcontrol'] = ( ! empty( $new_instance['gmapsstreetviewcontrol'] ) ) ? strip_tags( $new_instance['gmapsstreetviewcontrol'] ) : '';
+		$instance['gmapsscalecontrol'] = ( ! empty( $new_instance['gmapsscalecontrol'] ) ) ? strip_tags( $new_instance['gmapsscalecontrol'] ) : '';
+		$instance['gmapsmaptypecontrol'] = ( ! empty( $new_instance['gmapsmaptypecontrol'] ) ) ? strip_tags( $new_instance['gmapsmaptypecontrol'] ) : '';
+		$instance['gmapsrotatecontrol'] = ( ! empty( $new_instance['gmapsrotatecontrol'] ) ) ? strip_tags( $new_instance['gmapsrotatecontrol'] ) : '';
+		$instance['gmapsscrollwheel'] = ( ! empty( $new_instance['gmapsscrollwheel'] ) ) ? strip_tags( $new_instance['gmapsscrollwheel'] ) : '';
 		return $instance;
 	}
 }

@@ -61,15 +61,15 @@ function tool_googlemaps_shortcode_admin_head() {
 		function tool_googlemaps_shortcode_open(ed, ed_selection, on_googlemaps_generated){
 			if (tool_googlemaps_shortcode == null) {
 				tool_googlemaps_shortcode = jQuery("body").googlemapsgenerator({
-					ondone: function(id, adress, title, zoom, type, width, height, disabledefaultui, style){
-						on_googlemaps_generated.call(null, ed, ed_selection, id, adress, title, zoom, type, width, height, disabledefaultui, style);
+					ondone: function(id, adress, title, zoom, type, width, height, zoomcontrol, streetviewcontrol, scalecontrol, maptypecontrol, rotatecontrol, scrollwheel, style){
+						on_googlemaps_generated.call(null, ed, ed_selection, id, adress, title, zoom, type, width, height, zoomcontrol, streetviewcontrol, scalecontrol, maptypecontrol, rotatecontrol, scrollwheel, style);
 					}
 				});
 				tool_googlemaps_shortcode.open();
 			} else {
 				tool_googlemaps_shortcode.options({
-					ondone: function(id, adress, title, zoom, type, width, height, disabledefaultui, style){
-						on_googlemaps_generated.call(null, ed, ed_selection, id, adress, title, zoom, type, width, height, disabledefaultui, style);
+					ondone: function(id, adress, title, zoom, type, width, height, zoomcontrol, streetviewcontrol, scalecontrol, maptypecontrol, rotatecontrol, scrollwheel, style){
+						on_googlemaps_generated.call(null, ed, ed_selection, id, adress, title, zoom, type, width, height, zoomcontrol, streetviewcontrol, scalecontrol, maptypecontrol, rotatecontrol, scrollwheel, style);
 					}
 				});
 				tool_googlemaps_shortcode.open();
@@ -94,6 +94,12 @@ function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 			"width"		=> '100%',
 			"height"	=> '400px',
 			"disabledefaultui"	=> 'false',
+			"zoomcontrol" => 'true',
+			"streetviewcontrol" => 'true',
+			"scalecontrol" => 'false',
+			"maptypecontrol" => 'true',
+			"rotatecontrol" => 'false',
+			"scrollwheel" => 'true',
 			"style"		=> ''
 	), $atts );
 	$id = sanitize_text_field($atts['id']);
@@ -103,7 +109,12 @@ function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 	$height = sanitize_text_field($atts['height']);
 	$style = sanitize_text_field($atts['style']);
 	$zoom = sanitize_text_field($atts['zoom']);
-	$disabledefaultui = sanitize_text_field($atts['disabledefaultui']);
+	$zoomcontrol = sanitize_text_field($atts['zoomcontrol']);
+	$streetviewcontrol = sanitize_text_field($atts['streetviewcontrol']);
+	$scalecontrol = sanitize_text_field($atts['scalecontrol']);
+	$maptypecontrol = sanitize_text_field($atts['maptypecontrol']);
+	$rotatecontrol = sanitize_text_field($atts['rotatecontrol']);
+	$scrollwheel = sanitize_text_field($atts['scrollwheel']);
 	$type = "google.maps.MapTypeId.".sanitize_text_field($atts['type']);
 	ob_start();
 	?>
@@ -111,9 +122,11 @@ function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 		<div id='<?php echo $id; ?>' class="googlemaps-canvas" style="width:<?php echo $width; ?>; height:<?php echo $height; ?>;"></div>
 	</div>
 	<script type="text/javascript">
-		google.maps.event.addDomListener(window, 'load', function(){
-			var map = new google.maps.Map(document.getElementById('<?php echo $id; ?>'), {zoom:<?php echo $zoom; ?>, mapTypeId: <?php echo $type; ?>, disableDefaultUI: <?php echo $disabledefaultui; ?>});
-			geocode_adress(map, new google.maps.Geocoder(), "<?php echo $adress; ?>", "<?php echo $title; ?>");
+		jQuery(document).ready(function($){
+			google.maps.event.addDomListener(window, 'load', function(){
+				var map = new google.maps.Map(document.getElementById('<?php echo $id; ?>'), {zoom:<?php echo $zoom; ?>, mapTypeId: <?php echo $type; ?>, zoomControl: <?php echo $zoomcontrol; ?>, streetViewControl: <?php echo $streetviewcontrol; ?>, scaleControl: <?php echo $scalecontrol; ?>, mapTypeControl: <?php echo $maptypecontrol; ?>, rotateControl: <?php echo $rotatecontrol; ?>, scrollwheel: <?php echo $scrollwheel; ?>});
+				geocode_adress(map, new google.maps.Geocoder(), "<?php echo $adress; ?>", "<?php echo $title; ?>");
+			});
 		});
 	</script>
 	<?php

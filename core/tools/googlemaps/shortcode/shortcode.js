@@ -17,8 +17,8 @@
 			});
 
 			ed.addCommand('toolgooglemapsshortcode', function() {
-				tool_googlemaps_shortcode_open(ed, ed.selection.getContent(), function(ed, ed_selection, id, adress, title, zoom, type, width, height, disabledefaultui, style) {
-					var return_text = '[googlemaps id="'+id+'" adress="'+adress+'" title="'+title+'" zoom="'+zoom+'" type="'+type+'" width="'+width+'" height="'+height+'" disabledefaultui="'+disabledefaultui+'" style="'+style+'" /]';
+				tool_googlemaps_shortcode_open(ed, ed.selection.getContent(), function(ed, ed_selection, id, adress, title, zoom, type, width, height, zoomcontrol, streetviewcontrol, scalecontrol, maptypecontrol, rotatecontrol, scrollwheel, style) {
+					var return_text = '[googlemaps id="'+id+'" adress="'+adress+'" title="'+title+'" zoom="'+zoom+'" type="'+type+'" width="'+width+'" height="'+height+'" zoomcontrol="'+zoomcontrol+'" streetviewcontrol="'+streetviewcontrol+'" scalecontrol="'+scalecontrol+'" maptypecontrol="'+maptypecontrol+'" rotatecontrol="'+rotatecontrol+'" scrollwheel="'+scrollwheel+'" style="'+style+'" /]';
 					if (!empty(ed_selection)) {
 						return_text += ed_selection;
 					}

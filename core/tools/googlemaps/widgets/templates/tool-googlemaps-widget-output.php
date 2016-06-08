@@ -31,10 +31,12 @@ defined('ABSPATH') or die("Go Away!");
 		<div id='<?php echo $gmapsid; ?>' class="googlemaps-canvas" style="width:<?php echo $gmapswidth; ?>; height:<?php echo $gmapsheight; ?>;"></div>
 	</div>
 	<script type="text/javascript">
+	jQuery(document).ready(function($){
 		google.maps.event.addDomListener(window, 'load', function(){
-			var map = new google.maps.Map(document.getElementById('<?php echo $gmapsid; ?>'), {zoom:<?php echo $gmapszoom; ?>, mapTypeId: <?php echo $gmapstype; ?>, disableDefaultUI: <?php echo $gmapsdisabledefaultui; ?>});
+			var map = new google.maps.Map(document.getElementById('<?php echo $gmapsid; ?>'), {zoom:<?php echo $gmapszoom; ?>, mapTypeId: <?php echo $gmapstype; ?>, zoomControl:<?php echo $gmapszoomcontrol; ?>, streetViewControl:<?php echo $gmapsstreetviewcontrol; ?>, scaleControl:<?php echo $gmapsscalecontrol; ?>, mapTypeControl:<?php echo $gmapsmaptypecontrol; ?>, rotateControl:<?php echo $gmapsrotatecontrol; ?>, scrollwheel:<?php echo $gmapsscrollwheel; ?>});
 			geocode_adress(map, new google.maps.Geocoder(), "<?php echo $gmapsaddress; ?>", "<?php echo $gmapstitle; ?>");
 		});
+	});
 	</script>
 
 </div>

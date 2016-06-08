@@ -79,11 +79,56 @@ defined('ABSPATH') or die("Go Away!");
 		<td><input type="text" name="<?php echo $this->get_field_name('gmapsheight'); ?>" id="<?php echo $this->get_field_id('gmapsheight'); ?>" value="<?php echo esc_attr($gmapsheight); ?>" /></td>
 	</tr>
 	<tr>
-		<td><label for="<?php echo $this->get_field_id('gmapsdisabledefaultui'); ?>"><?php _e('Disable default UI', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
+		<td><label for="<?php echo $this->get_field_id('gmapszoomcontrol'); ?>"><?php _e('Zoom control', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
 		<td>
-			<select name="<?php echo $this->get_field_name('gmapsdisabledefaultui'); ?>" id="<?php echo $this->get_field_id('gmapsdisabledefaultui'); ?>">
-				<option value="false" <?php if (empty($gmapsdisabledefaultui) || $gmapsdisabledefaultui == "false"){ ?>selected="selected" <?php } ?>><?php _e("false", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-				<option value="true" <?php if ($gmapsdisabledefaultui == "true"){ ?>selected="selected" <?php } ?>><?php _e("true", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+			<select name="<?php echo $this->get_field_name('gmapszoomcontrol'); ?>" id="<?php echo $this->get_field_id('gmapszoomcontrol'); ?>">
+				<option value="true" <?php if (empty($gmapszoomcontrol) || $gmapszoomcontrol == "true"){ ?>selected="selected" <?php } ?>><?php _e("true", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+				<option value="false" <?php if ($gmapszoomcontrol == "false"){ ?>selected="selected" <?php } ?>><?php _e("false", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td><label for="<?php echo $this->get_field_id('gmapsstreetviewcontrol'); ?>"><?php _e('StreetView control', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
+		<td>
+			<select name="<?php echo $this->get_field_name('gmapsstreetviewcontrol'); ?>" id="<?php echo $this->get_field_id('gmapsstreetviewcontrol'); ?>">
+				<option value="true" <?php if (empty($gmapsstreetviewcontrol) || $gmapsstreetviewcontrol == "true"){ ?>selected="selected" <?php } ?>><?php _e("true", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+				<option value="false" <?php if ($gmapsstreetviewcontrol == "false"){ ?>selected="selected" <?php } ?>><?php _e("false", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td><label for="<?php echo $this->get_field_id('gmapsscalecontrol'); ?>"><?php _e('Scale control', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
+		<td>
+			<select name="<?php echo $this->get_field_name('gmapsscalecontrol'); ?>" id="<?php echo $this->get_field_id('gmapsscalecontrol'); ?>">
+				<option value="false" <?php if (empty($gmapsscalecontrol) || $gmapsscalecontrol == "false"){ ?>selected="selected" <?php } ?>><?php _e("false", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+				<option value="true" <?php if ($gmapsscalecontrol == "true"){ ?>selected="selected" <?php } ?>><?php _e("true", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td><label for="<?php echo $this->get_field_id('gmapsmaptypecontrol'); ?>"><?php _e('Type control', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
+		<td>
+			<select name="<?php echo $this->get_field_name('gmapsmaptypecontrol'); ?>" id="<?php echo $this->get_field_id('gmapsmaptypecontrol'); ?>">
+				<option value="true" <?php if (empty($gmapsmaptypecontrol) || $gmapsmaptypecontrol == "true"){ ?>selected="selected" <?php } ?>><?php _e("true", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+				<option value="false" <?php if ($gmapsmaptypecontrol == "false"){ ?>selected="selected" <?php } ?>><?php _e("false", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td><label for="<?php echo $this->get_field_id('gmapsrotatecontrol'); ?>"><?php _e('Rotate control', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
+		<td>
+			<select name="<?php echo $this->get_field_name('gmapsrotatecontrol'); ?>" id="<?php echo $this->get_field_id('gmapsrotatecontrol'); ?>">
+				<option value="false" <?php if (empty($gmapsrotatecontrol) || $gmapsrotatecontrol == "false"){ ?>selected="selected" <?php } ?>><?php _e("false", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+				<option value="true" <?php if ($gmapsrotatecontrol == "true"){ ?>selected="selected" <?php } ?>><?php _e("true", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td><label for="<?php echo $this->get_field_id('gmapsscrollwheel'); ?>"><?php _e('Scroll wheel', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label></td>
+		<td>
+			<select name="<?php echo $this->get_field_name('gmapsscrollwheel'); ?>" id="<?php echo $this->get_field_id('gmapsscrollwheel'); ?>">
+				<option value="true" <?php if (empty($gmapsscrollwheel) || $gmapsscrollwheel == "true"){ ?>selected="selected" <?php } ?>><?php _e("true", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+				<option value="false" <?php if ($gmapsscrollwheel == "false"){ ?>selected="selected" <?php } ?>><?php _e("false", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
 			</select>
 		</td>
 	</tr>

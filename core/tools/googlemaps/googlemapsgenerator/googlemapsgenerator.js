@@ -14,7 +14,19 @@
 			multi_select : false,
 			ondone : null, // function(args)
 			onclose : null, // function()
-			done_button_text : Googlemapsgenerator.doneButtonText
+			done_button_text : Googlemapsgenerator.doneButtonText,
+			address_text : Googlemapsgenerator.address_text,
+			title_text : Googlemapsgenerator.title_text,
+			zoom_text : Googlemapsgenerator.zoom_text,
+			type_text : Googlemapsgenerator.type_text,
+			width_text : Googlemapsgenerator.width_text,
+			height_text : Googlemapsgenerator.height_text,
+			zoomcontrol_text : Googlemapsgenerator.zoomcontrol_text,
+			streetviewcontrol_text : Googlemapsgenerator.streetviewcontrol_text,
+			scalecontrol_text : Googlemapsgenerator.scalecontrol_text,
+			maptypecontrol_text : Googlemapsgenerator.maptypecontrol_text,
+			rotatecontrol_text : Googlemapsgenerator.rotatecontrol_text,
+			scrollwheel_text : Googlemapsgenerator.scrollwheel_text
 		}, options);
 
 		var $body = $("body");
@@ -62,16 +74,33 @@
 				plugin.done();
 			});
 			// generator content
-			$generatorcontent.append('<h1 class="googlemapsgenerator-title">GoogleMaps generator</h1>');
+			$generatorcontent.append('<h1 class="googlemapsgenerator-title">GoogleMaps</h1>');
 			$generatorcontent.append('<table id="googlemapsgenerator-fields"></table>');
 			$generatorcontent_fields = $("#googlemapsgenerator-fields");
-			$generatorcontent_fields.append('<tr><td colspan="2"><input type="text" name="address" placeholder="Address" /></td></tr>');
-			$generatorcontent_fields.append('<tr><td colspan="2"><input type="text" name="title" placeholder="Marker title" /></td></tr>');
-			$generatorcontent_fields.append('<tr><td>map zoom : </td><td><select name="zoom"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12" selected="selected">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option></select></td></tr>');
-			$generatorcontent_fields.append('<tr><td>Map type : </td><td><select name="type"><option value="ROADMAP" selected="selected">ROADMAP</option><option value="SATELLITE">SATELLITE</option><option value="HYBRID">HYBRID</option><option value="TERRAIN">TERRAIN</option></select></td></tr>');
-			$generatorcontent_fields.append('<tr><td>Width</td><td><input type="text" name="width" value="100%" /></td></tr>');
-			$generatorcontent_fields.append('<tr><td>Height</td><td><input type="text" name="height" value="400px" /></td></tr>');
-			$generatorcontent_fields.append('<tr><td>Disable default UI : </td><td><select name="disabledefaultui"><option value="false" selected="selected">false</option><option value="true">true</option></select></td></tr>');
+			$generatorcontent_fields.append('<tr><td colspan="2"><input type="text" name="address" placeholder="' + settings['address_text'] + '" /></td></tr>');
+			$generatorcontent_fields.append('<tr><td colspan="2"><input type="text" name="title" placeholder="' + settings['title_text'] + '" /></td></tr>');
+			$generatorcontent_fields
+					.append('<tr><td>'
+							+ settings['zoom_text']
+							+ ' : </td><td><select name="zoom"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12" selected="selected">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option></select></td></tr>');
+			$generatorcontent_fields
+					.append('<tr><td>'
+							+ settings['type_text']
+							+ ' : </td><td><select name="type"><option value="ROADMAP" selected="selected">ROADMAP</option><option value="SATELLITE">SATELLITE</option><option value="HYBRID">HYBRID</option><option value="TERRAIN">TERRAIN</option></select></td></tr>');
+			$generatorcontent_fields.append('<tr><td>' + settings['width_text'] + '</td><td><input type="text" name="width" value="100%" /></td></tr>');
+			$generatorcontent_fields.append('<tr><td>' + settings['height_text'] + '</td><td><input type="text" name="height" value="400px" /></td></tr>');
+			$generatorcontent_fields.append('<tr><td>' + settings['zoomcontrol_text']
+					+ ' : </td><td><select name="zoomcontrol"><option value="true" selected="selected">true</option><option value="false">false</option></select></td></tr>');
+			$generatorcontent_fields.append('<tr><td>' + settings['streetviewcontrol_text']
+					+ ' : </td><td><select name="streetviewcontrol"><option value="true" selected="selected">true</option><option value="false">false</option></select></td></tr>');
+			$generatorcontent_fields.append('<tr><td>' + settings['scalecontrol_text']
+					+ ' : </td><td><select name="scalecontrol"><option value="false" selected="selected">false</option><option value="true">true</option></select></td></tr>');
+			$generatorcontent_fields.append('<tr><td>' + settings['maptypecontrol_text']
+					+ ' : </td><td><select name="maptypecontrol"><option value="true" selected="selected">true</option><option value="false">false</option></select></td></tr>');
+			$generatorcontent_fields.append('<tr><td>' + settings['rotatecontrol_text']
+					+ ' : </td><td><select name="rotatecontrol"><option value="false" selected="selected">false</option><option value="true">true</option></select></td></tr>');
+			$generatorcontent_fields.append('<tr><td>' + settings['scrollwheel_text']
+					+ ' : </td><td><select name="scrollwheel"><option value="true" selected="selected">true</option><option value="false">false</option></select></td></tr>');
 		}
 
 		/**
@@ -100,19 +129,25 @@
 		}
 
 		plugin.done = function() {
-			var id = "gmaps"+new Date().getTime();
+			var id = "gmaps" + new Date().getTime();
 			var adress = $("#googlemapsgenerator-fields input[name='address']").val();
 			var title = $("#googlemapsgenerator-fields input[name='title']").val();
 			var zoom = $("#googlemapsgenerator-fields select[name='zoom']").val();
 			var type = $("#googlemapsgenerator-fields select[name='type']").val();
 			var width = $("#googlemapsgenerator-fields input[name='width']").val();
 			var height = $("#googlemapsgenerator-fields input[name='height']").val();
-			var disabledefaultui = $("#googlemapsgenerator-fields select[name='disabledefaultui']").val();
+			var zoomcontrol = $("#googlemapsgenerator-fields select[name='zoomcontrol']").val();
+			var streetviewcontrol = $("#googlemapsgenerator-fields select[name='streetviewcontrol']").val();
+			var scalecontrol = $("#googlemapsgenerator-fields select[name='scalecontrol']").val();
+			var maptypecontrol = $("#googlemapsgenerator-fields select[name='maptypecontrol']").val();
+			var rotatecontrol = $("#googlemapsgenerator-fields select[name='rotatecontrol']").val();
+			var scrollwheel = $("#googlemapsgenerator-fields select[name='scrollwheel']").val();
+
 			adress = adress.replace(new RegExp('"', 'g'), '');
 			title = title.replace(new RegExp('"', 'g'), '');
 			width = width.replace(new RegExp('"', 'g'), '');
 			height = height.replace(new RegExp('"', 'g'), '');
-			plugin.trigger_ondone(id, adress, title, zoom, type, width, height, disabledefaultui, "");
+			plugin.trigger_ondone(id, adress, title, zoom, type, width, height, zoomcontrol, streetviewcontrol, scalecontrol, maptypecontrol, rotatecontrol, scrollwheel, "");
 			plugin.close();
 		}
 
@@ -125,9 +160,9 @@
 		/**
 		 * trigger ondone
 		 */
-		plugin.trigger_ondone = function(id, adress, title, zoom, type, width, height, disabledefaultui, style) {
+		plugin.trigger_ondone = function(id, adress, title, zoom, type, width, height, zoomcontrol, streetviewcontrol, scalecontrol, maptypecontrol, rotatecontrol, scrollwheel, style) {
 			if (isset(settings['ondone']) && $.isFunction(settings['ondone'])) {
-				settings['ondone'].call(null, id, adress, title, zoom, type, width, height, disabledefaultui, style);
+				settings['ondone'].call(null, id, adress, title, zoom, type, width, height, zoomcontrol, streetviewcontrol, scalecontrol, maptypecontrol, rotatecontrol, scrollwheel, style);
 			}
 		};
 
