@@ -48,6 +48,8 @@ define('META_WALL_DISPLAY_PRESENTATION_FORMAT', 'meta_wall_display_presentation_
 define('META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH', 'meta_wall_display_presentation_masonry_width');
 define('META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH_WOODKITIZED', 'meta_wall_display_presentation_masonry_width_customized');
 define('META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT', 'meta_wall_display_presentation_masonry_height');
+define('META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL', 'meta_wall_display_presentation_margin_vertical');
+define('META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL', 'meta_wall_display_presentation_margin_horizontal');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP', 'meta_wall_display_presentation_setup');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_WIDTH_', 'meta_wall_display_presentation_setup_width_');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_HEIGHT_', 'meta_wall_display_presentation_setup_height_');
@@ -211,6 +213,18 @@ function wall_save_post($post_id){
 			update_post_meta($post_id, META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT, sanitize_text_field($_POST[META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT]));
 		}else{
 			delete_post_meta($post_id, META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT);
+		}
+		// META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL
+		if (!empty($_POST[META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL]) && is_numeric($_POST[META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL])){
+			update_post_meta($post_id, META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL, sanitize_text_field($_POST[META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL]));
+		}else{
+			delete_post_meta($post_id, META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL);
+		}
+		// META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL
+		if (!empty($_POST[META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL]) && is_numeric($_POST[META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL])){
+			update_post_meta($post_id, META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL, sanitize_text_field($_POST[META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL]));
+		}else{
+			delete_post_meta($post_id, META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL);
 		}
 		// META_WALL_DISPLAY_PRESENTATION
 		if (!empty($_POST[META_WALL_DISPLAY_PRESENTATION])){
@@ -444,6 +458,10 @@ function wall_securize_meta_values($values = array()){
 		$values['meta_wall_display_presentation_setup'] = stripslashes($values['meta_wall_display_presentation_setup']);
 		$values['meta_wall_display_presentation_setup'] = json_decode($values['meta_wall_display_presentation_setup'], true);
 	}
+	if (!isset($values['meta_wall_display_presentation_margin_vertical']) || !is_numeric($values['meta_wall_display_presentation_margin_vertical']))
+		$values['meta_wall_display_presentation_margin_vertical'] = 0;
+	if (!isset($values['meta_wall_display_presentation_margin_horizontal']) || !is_numeric($values['meta_wall_display_presentation_margin_horizontal']))
+		$values['meta_wall_display_presentation_margin_horizontal'] = 0;
 	// old version support
 	if (!empty($wall_args['meta_wall_display_presentation_filtering']) && $wall_args['meta_wall_display_presentation_filtering'] == 'on'){
 		$wall_args['meta_wall_display_presentation_filtering'] = 'tax';
@@ -470,11 +488,11 @@ add_action('vc_before_init', 'tool_wall_visual_composer_support' );
 */
 function tool_wall_visual_composer_support() {
 	vc_map( array(
-		"name" => __("Woodkit Wall", WOODKIT_PLUGIN_TEXT_DOMAIN),
-		"base" => "woodkit_wall",
-		"description" => __("Insert defined wall for this content", WOODKIT_PLUGIN_TEXT_DOMAIN),
-		"class" => "",
-		"category" => __("Content", WOODKIT_PLUGIN_TEXT_DOMAIN)
+	"name" => __("Woodkit Wall", WOODKIT_PLUGIN_TEXT_DOMAIN),
+	"base" => "woodkit_wall",
+	"description" => __("Insert defined wall for this content", WOODKIT_PLUGIN_TEXT_DOMAIN),
+	"class" => "",
+	"category" => __("Content", WOODKIT_PLUGIN_TEXT_DOMAIN)
 	) );
 }
 

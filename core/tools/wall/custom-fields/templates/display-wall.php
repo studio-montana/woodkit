@@ -199,6 +199,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 				<td valign="middle"></td>
 				<td valign="middle"></td>
 			</tr>
+			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-isotope-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
 					for="<?php echo META_WALL_DISPLAY_PRESENTATION_COLUMNS; ?>">-&nbsp;<?php _e('Columns', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
@@ -217,6 +218,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 				<td valign="middle"></td>
 				<td valign="middle"></td>
 			</tr>
+			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-slider-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
 					for="<?php echo META_WALL_DISPLAY_PRESENTATION_INITIAL_HEIGHT; ?>">-&nbsp;<?php _e('Height', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
@@ -231,6 +233,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 				<td valign="middle">px</td>
 				<td valign="middle"></td>
 			</tr>
+			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-isotope-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
 					for="<?php echo META_WALL_DISPLAY_PRESENTATION_FORMAT; ?>">-&nbsp;<?php _e('Format', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
@@ -289,6 +292,39 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 				</td>
 				<td valign="middle" class="display-wall-masonry-options-customized-height">px</td>
 			</tr>
+			
+			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options display-wall-isotope-options">
+				<th class="metabox_label_column" align="left" valign="middle"><label
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL; ?>">-&nbsp;<?php _e('Vertical margin', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+				</th>
+				<td valign="middle">
+					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL, true); 
+					if (empty($meta) || !is_numeric($meta))
+						$meta = "0";
+					?>
+					<input class="wall-update-presentation-setup" type="number" size="4" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL; ?>" value="<?php echo $meta; ?>" />
+					px
+				</td>
+				<td valign="middle"><?php _e("between elements", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></td>
+				<td valign="middle"></td>
+			</tr>
+			
+			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options display-wall-isotope-options">
+				<th class="metabox_label_column" align="left" valign="middle"><label
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>">-&nbsp;<?php _e('Horizontal margin', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+				</th>
+				<td valign="middle">
+					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL, true); 
+					if (empty($meta) || !is_numeric($meta))
+						$meta = "0";
+					?>
+					<input class="wall-update-presentation-setup" type="number" size="4" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>" value="<?php echo $meta; ?>" />
+					px
+				</td>
+				<td valign="middle"><?php _e("between elements", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></td>
+				<td valign="middle"></td>
+			</tr>
+			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options display-wall-isotope-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
 					for="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>">-&nbsp;<?php _e('Filters as', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
@@ -656,6 +692,8 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 						presentation_masonry_height = "250";
 					}
 				}
+				var presentation_margin_vertical = $("*[name='<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL; ?>']").val();
+				var presentation_margin_horizontal = $("*[name='<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>']").val();
 				var current_post_id = <?php echo get_the_ID(); ?>;
 				wait($("#tool-wall-display-wall"));
 				get_wall_presentation_results(
@@ -683,6 +721,8 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 						presentation_masonry_width,
 						presentation_masonry_width_customized,
 						presentation_masonry_height,
+						presentation_margin_vertical,
+						presentation_margin_horizontal,
 						function(response){
 							unwait($("#tool-wall-display-wall"));
 							$("#wall-presentation-setup").html($(response).text());

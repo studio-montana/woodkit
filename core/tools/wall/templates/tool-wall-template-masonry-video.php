@@ -30,6 +30,7 @@ if ($wall_args['meta_wall_display_presentation_masonry_width'] == "customized"){
 }else{
 	$style .= "width: ".(100/$wall_args['meta_wall_display_presentation_masonry_width'])."%;";
 }
+$style .= "padding: 0 0 ".$wall_args['meta_wall_display_presentation_margin_vertical']."px ".$wall_args['meta_wall_display_presentation_margin_horizontal']."px;";
 if (video_has_featured_video(get_the_ID())){
 	if (empty($wall_args["meta_wall_display_presentation_masonry_height"]) || !is_numeric($wall_args["meta_wall_display_presentation_masonry_height"])){
 		$style .= " height: auto;";

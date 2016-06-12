@@ -50,8 +50,12 @@ $class = wall_sanitize_wall_item_classes($class);
 
 $width = 100/$wall_args['meta_wall_display_presentation_columns']*$wall_args['wall_item_width_selected'];
 $height = 250*$wall_args['wall_item_height_selected']; /* override by js */
+
+$style_li = "";
+$style_li .= "height: ".$height."px; width: ".$width."%;";
+$style_li .= "padding: 0 0 ".$wall_args['meta_wall_display_presentation_margin_vertical']."px ".$wall_args['meta_wall_display_presentation_margin_horizontal']."px;";
 ?>
-<li class="isotope-item template-thumb <?php echo $class; ?>"style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>%;" data-format="<?php echo $wall_args['meta_wall_display_presentation_format']; ?>" data-columns="<?php echo $wall_args['wall_item_width_selected']; ?>" data-lines="<?php echo $wall_args['wall_item_height_selected']; ?>">
+<li class="isotope-item template-thumb <?php echo $class; ?>"style="<?php echo $style_li; ?>" data-format="<?php echo $wall_args['meta_wall_display_presentation_format']; ?>" data-columns="<?php echo $wall_args['wall_item_width_selected']; ?>" data-lines="<?php echo $wall_args['wall_item_height_selected']; ?>">
 	<?php if (!is_admin()){ ?>
 	<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>

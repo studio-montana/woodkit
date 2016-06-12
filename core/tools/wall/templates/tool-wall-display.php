@@ -47,6 +47,8 @@ if (!is_admin()){
 	$wall_args['meta_wall_display_presentation_masonry_width'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH, true);
 	$wall_args['meta_wall_display_presentation_masonry_width_customized'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH_WOODKITIZED, true);
 	$wall_args['meta_wall_display_presentation_masonry_height'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT, true);
+	$wall_args['meta_wall_display_presentation_margin_vertical'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL, true);
+	$wall_args['meta_wall_display_presentation_margin_horizontal'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL, true);
 	$wall_args['meta_wall_display_presentation_setup'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_SETUP, true);
 }else{
 	// $wall_args must be defined by the calling script (same array keys)
@@ -288,8 +290,11 @@ if (!empty($posts)){
 				$data_columns ='data-columns="'.$wall_args['meta_wall_display_presentation_masonry_width'].'"';
 			}
 			
+			$style = "";
+			$style .= "margin: 0 0 0 -".$wall_args['meta_wall_display_presentation_margin_horizontal']."px";
+			
 			?>
-			<ul <?php if (is_admin()){ echo 'id="admin-masonry-wall"'; }else{ echo 'id="masonry-wall-'.get_the_ID().'"'; } ?> class="wall tool-wall masonry <?php echo $wall_args['meta_wall_display_presentation']; ?><?php if (is_admin()){ echo ' admin'; } ?>"  <?php echo $data_columns; ?>>
+			<ul <?php if (is_admin()){ echo 'id="admin-masonry-wall"'; }else{ echo 'id="masonry-wall-'.get_the_ID().'"'; } ?> class="wall tool-wall masonry <?php echo $wall_args['meta_wall_display_presentation']; ?><?php if (is_admin()){ echo ' admin'; } ?>"  <?php echo $data_columns; ?> style="<?php echo $style;?>">
 				<?php
 				global $post;
 				foreach ($posts as $post){
@@ -408,8 +413,12 @@ if (!empty($posts)){
 				</div>
 				<?php
 			}
+			
+			$style = "";
+			$style .= "margin: 0 0 0 -".$wall_args['meta_wall_display_presentation_margin_horizontal']."px";
+			
 			?>
-			<ul <?php if (is_admin()){ echo 'id="admin-isotope-wall"'; }else{ echo 'id="isotope-wall-'.get_the_ID().'"'; } ?> class="wall tool-wall isotope <?php echo $wall_args['meta_wall_display_presentation']; ?><?php if (is_admin()){ echo ' admin'; } ?>" data-columns="<?php echo $wall_args['meta_wall_display_presentation_columns']; ?>">
+			<ul <?php if (is_admin()){ echo 'id="admin-isotope-wall"'; }else{ echo 'id="isotope-wall-'.get_the_ID().'"'; } ?> class="wall tool-wall isotope <?php echo $wall_args['meta_wall_display_presentation']; ?><?php if (is_admin()){ echo ' admin'; } ?>" data-columns="<?php echo $wall_args['meta_wall_display_presentation_columns']; ?>" style="<?php echo $style;?>">
 				<?php
 				global $post;
 				foreach ($posts as $post){

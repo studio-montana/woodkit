@@ -206,7 +206,11 @@
 }
 
 .masonry-item .no-content {
-	height: 150px;
+	min-height: 150px;
+}
+
+.masonry-item.no-video .inner-item-wrapper{
+	height: 100%;
 }
 
 .masonry-item .no-content i,.isotope-item .no-content i,.slider-item .no-content i

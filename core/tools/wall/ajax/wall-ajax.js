@@ -30,7 +30,9 @@ function get_wall_presentation_results(
 		meta_wall_display_presentation_format, 
 		meta_wall_display_presentation_masonry_width,  
 		meta_wall_display_presentation_masonry_width_customized, 
-		meta_wall_display_presentation_masonry_height, 
+		meta_wall_display_presentation_masonry_height,
+		meta_wall_display_presentation_margin_vertical,
+		meta_wall_display_presentation_margin_horizontal, 
 		success, 
 		failure) {
 	jQuery.post(GalleryAjax.ajaxUrl, {
@@ -59,7 +61,9 @@ function get_wall_presentation_results(
 		'meta_wall_display_presentation_format' : meta_wall_display_presentation_format,
 		'meta_wall_display_presentation_masonry_width' : meta_wall_display_presentation_masonry_width,
 		'meta_wall_display_presentation_masonry_width_customized' : meta_wall_display_presentation_masonry_width_customized,
-		'meta_wall_display_presentation_masonry_height' : meta_wall_display_presentation_masonry_height
+		'meta_wall_display_presentation_masonry_height' : meta_wall_display_presentation_masonry_height,
+		'meta_wall_display_presentation_margin_vertical' : meta_wall_display_presentation_margin_vertical,
+		'meta_wall_display_presentation_margin_horizontal' : meta_wall_display_presentation_margin_horizontal
 	}, function(response) {
 		success.call(null, response);
 	}).fail(function() {

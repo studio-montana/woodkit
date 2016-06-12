@@ -31,6 +31,7 @@ if ($wall_args['meta_wall_display_presentation_masonry_width'] == "customized"){
 	$style .= "width: ".(100/$wall_args['meta_wall_display_presentation_masonry_width'])."%;";
 }
 $style .= " height: auto;";
+$style .= "padding: 0 0 ".$wall_args['meta_wall_display_presentation_margin_vertical']."px ".$wall_args['meta_wall_display_presentation_margin_horizontal']."px;";
 $class = join(' ', get_post_class($class));
 $class = wall_sanitize_wall_item_classes($class);
 ?>

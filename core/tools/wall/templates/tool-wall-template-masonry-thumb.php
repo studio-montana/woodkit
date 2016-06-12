@@ -78,6 +78,7 @@ if (!$has_thumb){
 }
 $class = join(' ', get_post_class($class));
 $class = wall_sanitize_wall_item_classes($class);
+$style .= "padding: 0 0 ".$wall_args['meta_wall_display_presentation_margin_vertical']."px ".$wall_args['meta_wall_display_presentation_margin_horizontal']."px;";
 ?>
 <li class="masonry-item template-thumb <?php echo $class; ?>" style="<?php echo $style; ?>" data-ratio-width-height="<?php echo $ratio; ?>" data-columns="1">
 	<?php if (!is_admin()){ ?>
