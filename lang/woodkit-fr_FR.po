@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom\n"
-"POT-Creation-Date: 2016-06-07 20:41+0100\n"
-"PO-Revision-Date: 2016-06-07 20:43+0100\n"
+"POT-Creation-Date: 2016-06-12 21:06+0100\n"
+"PO-Revision-Date: 2016-06-12 21:07+0100\n"
 "Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
 "Language-Team: Sébastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
 "com artcyril@gmail.com>\n"
@@ -649,8 +649,71 @@ msgstr ""
 msgid "add googlemaps tool on your html editor (shortcode)"
 msgstr "Ajoute des shortcode à votre éditeur"
 
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:34
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:31
+msgid "Address"
+msgstr "Adresse"
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:35
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:35
+msgid "Marker Title"
+msgstr "Titre du marker"
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:36
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:40
+msgid "Zoom"
+msgstr ""
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:37
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:63
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:62
+msgid "Type"
+msgstr "Type"
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:38
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:74
+msgid "Width"
+msgstr "Largeur"
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:39
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:78
+#: ../core/tools/media/custom-fields/templates/media.php:117
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:224
+msgid "Height"
+msgstr "Hauteur"
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:40
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:82
+msgid "Zoom control"
+msgstr "Contrôle zooml"
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:41
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:91
+msgid "StreetView control"
+msgstr "Contrôle StreeView"
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:42
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:100
+msgid "Scale control"
+msgstr "Contrôle redimens."
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:43
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:109
+msgid "Type control"
+msgstr "Contrôle type"
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:44
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:118
+msgid "Rotate control"
+msgstr "Contrôle rotation"
+
+#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:45
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:127
+msgid "Scroll wheel"
+msgstr "Scroll souris"
+
 #: ../core/tools/googlemaps/widgets/tool-googlemaps-widget.class.php:34
-#: ../core/tools/googlemaps/widgets/tool-googlemaps-widget.class.php:105
+#: ../core/tools/googlemaps/widgets/tool-googlemaps-widget.class.php:130
 msgid "Google Maps"
 msgstr ""
 
@@ -658,44 +721,23 @@ msgstr ""
 msgid "Show Google Maps"
 msgstr "Affiche une Google Maps"
 
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:31
-msgid "Address"
-msgstr "Adresse"
-
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:35
-msgid "Marker Title"
-msgstr "Titre du marker"
-
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:40
-msgid "Zoom"
-msgstr ""
-
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:63
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:62
-msgid "Type"
-msgstr "Type"
-
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:74
-msgid "Width"
-msgstr "Largeur"
-
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:78
-#: ../core/tools/media/custom-fields/templates/media.php:117
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:222
-msgid "Height"
-msgstr "Hauteur"
-
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:82
-msgid "Disable default UI"
-msgstr "Désactiver l'interface"
-
 #: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:85
-msgid "false"
-msgstr "non"
-
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:86
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:94
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:104
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:112
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:122
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:130
 msgid "true"
 msgstr "oui"
+
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:86
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:95
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:103
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:113
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:121
+#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:131
+msgid "false"
+msgstr "non"
 
 #: ../core/tools/login/config.php:41
 msgid "customize login page appearence"
@@ -781,52 +823,52 @@ msgid "random grid"
 msgstr "grille aléatoire"
 
 #: ../core/tools/media/custom-fields/templates/media.php:51
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:313
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:349
 msgid "Autoplay"
 msgstr "Autoplay"
 
 #: ../core/tools/media/custom-fields/templates/media.php:63
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:324
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:360
 msgid "Thumb navigation"
 msgstr "Navigation par vignette"
 
 #: ../core/tools/media/custom-fields/templates/media.php:75
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:335
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:371
 msgid "Carousel"
 msgstr "Carousel"
 
 #: ../core/tools/media/custom-fields/templates/media.php:87
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:364
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:400
 msgid "Carousel item width"
 msgstr "Largeur des items du carousel"
 
 #: ../core/tools/media/custom-fields/templates/media.php:102
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:378
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:414
 msgid "Carousel item margin"
 msgstr "Marge des items du carrousel"
 
 #: ../core/tools/media/custom-fields/templates/media.php:132
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:236
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:239
 msgid "Format"
 msgstr "Format"
 
 #: ../core/tools/media/custom-fields/templates/media.php:137
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:241
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:244
 msgid "square"
 msgstr "carré"
 
 #: ../core/tools/media/custom-fields/templates/media.php:138
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:242
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:245
 msgid "portrait"
 msgstr "portrait"
 
 #: ../core/tools/media/custom-fields/templates/media.php:139
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:243
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:246
 msgid "landscape"
 msgstr "paysage"
 
 #: ../core/tools/media/custom-fields/templates/media.php:148
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:252
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:255
 msgid "Max width"
 msgstr "Largeur max."
 
@@ -835,12 +877,12 @@ msgid "fully responsive"
 msgstr "adaptée"
 
 #: ../core/tools/media/custom-fields/templates/media.php:169
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:278
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:281
 msgid "Max height"
 msgstr "Hauteur max."
 
 #: ../core/tools/media/custom-fields/templates/media.php:176
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:285
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:288
 msgid "Auto"
 msgstr "Auto"
 
@@ -1347,15 +1389,15 @@ msgstr "Mur"
 msgid "display any post-types on your post-types"
 msgstr "affiche tout type de contenu sur tout type de contenu"
 
-#: ../core/tools/wall/custom-fields/wall.php:473
+#: ../core/tools/wall/custom-fields/wall.php:491
 msgid "Woodkit Wall"
 msgstr ""
 
-#: ../core/tools/wall/custom-fields/wall.php:475
+#: ../core/tools/wall/custom-fields/wall.php:493
 msgid "Insert defined wall for this content"
 msgstr "Insérer le wall dans ce contenu"
 
-#: ../core/tools/wall/custom-fields/wall.php:477
+#: ../core/tools/wall/custom-fields/wall.php:495
 msgid "Content"
 msgstr "Contenu"
 
@@ -1368,7 +1410,7 @@ msgid "nothing"
 msgstr "rien"
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:50
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:263
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:266
 msgid "customized…"
 msgstr "Personnalisé..."
 
@@ -1378,8 +1420,8 @@ msgstr "choisir vos éléments"
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:67
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:155
-#: ../core/tools/wall/templates/tool-wall-display.php:270
-#: ../core/tools/wall/templates/tool-wall-display.php:396
+#: ../core/tools/wall/templates/tool-wall-display.php:272
+#: ../core/tools/wall/templates/tool-wall-display.php:401
 msgid "All"
 msgstr "Tous"
 
@@ -1471,106 +1513,118 @@ msgstr "liste"
 msgid "grid"
 msgstr "grille"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:204
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:205
 msgid "Columns"
 msgstr "Colonnes"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:209
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:351
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:210
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:387
 msgid "1"
 msgstr "1"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:210
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:352
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:211
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:388
 msgid "2"
 msgstr "2"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:211
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:353
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:212
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:389
 msgid "3"
 msgstr "3"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:212
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:354
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:213
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:390
 msgid "4"
 msgstr "4"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:213
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:355
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:214
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:391
 msgid "5"
 msgstr "5"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:214
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:356
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:215
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:392
 msgid "6"
 msgstr "6"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:257
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:260
 msgid "100%"
 msgstr "100%"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:258
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:261
 msgid "50%"
 msgstr "50%"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:259
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:262
 msgid "33%"
 msgstr "33%"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:260
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:263
 msgid "25%"
 msgstr "25%"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:261
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:264
 msgid "20%"
 msgstr "20%"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:262
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:265
 msgid "16%"
 msgstr "16%"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:294
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:298
+msgid "Vertical margin"
+msgstr "Marge verticale"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:308
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:324
+msgid "between elements"
+msgstr "entre les éléments"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:314
+msgid "Horizontal margin"
+msgstr "Marge horizontale"
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:330
 msgid "Filters as"
 msgstr "Filtres"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:303
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:339
 msgid "none"
 msgstr "aucun"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:304
-#, fuzzy
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:340
 msgid "taxonomies"
-msgstr "inclure les taxonomies"
+msgstr "taxonomies"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:305
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:341
 #, fuzzy
 msgid "search field"
 msgstr "recherche"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:346
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:382
 msgid "Carousel columns"
 msgstr "colonnes du caroussel"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:431
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:467
 msgid "Update wall"
 msgstr "Mettre à jour le mur"
 
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:432
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:468
 msgid "Order elements"
 msgstr "Ordonner les éléments"
 
-#: ../core/tools/wall/templates/tool-wall-display.php:281
-#: ../core/tools/wall/templates/tool-wall-display.php:407
+#: ../core/tools/wall/templates/tool-wall-display.php:283
+#: ../core/tools/wall/templates/tool-wall-display.php:412
 #, fuzzy
 msgid "Search"
 msgstr "recherche"
 
-#: ../core/tools/wall/templates/tool-wall-display.php:545
+#: ../core/tools/wall/templates/tool-wall-display.php:554
 msgid "No presentation found !"
 msgstr "Aucune présentation trouvée"
 
-#: ../core/tools/wall/templates/tool-wall-template-isotope-video.php:53
-#: ../core/tools/wall/templates/tool-wall-template-masonry-video.php:62
+#: ../core/tools/wall/templates/tool-wall-template-isotope-video.php:57
+#: ../core/tools/wall/templates/tool-wall-template-masonry-video.php:63
 #: ../core/tools/wall/templates/tool-wall-template-slider-video.php:53
 msgid "more"
 msgstr "plus"
@@ -1601,6 +1655,9 @@ msgstr "Activer"
 #: ../core/tools/wip/inc/customizer.php:44
 msgid "only logged in user can look you site"
 msgstr "seuls les utilisateurs connectés peuvent voir votre site"
+
+#~ msgid "Disable default UI"
+#~ msgstr "Désactiver l'interface"
 
 #~ msgid "Display filters"
 #~ msgstr "Afficher les filtres"
