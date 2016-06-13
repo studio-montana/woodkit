@@ -28,7 +28,7 @@ class tool_googlemaps_widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 				// Base ID of your widget
-				'tool-googlemaps',
+				'toolgooglemaps',
 
 				// Widget name will appear in UI
 				__("Google Maps", WOODKIT_PLUGIN_TEXT_DOMAIN),

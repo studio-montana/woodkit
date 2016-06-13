@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+/**
+ * WIDGETMANAGER Tool
+ * @package WordPress
+ * @subpackage Woodkit
+ * @since Woodkit 1.0
+ * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+ */
+
+.widgets-area-item{
+	border: 1px solid #F5F5F5;
+}
+
+.widgets-area-item .section-title{
+	background: #F7F7F7;
+	padding: 12px;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.widgets-area-item .widget-items{
+	padding: 12px;
+}
+
+.widgets-area-item .widget-items .widget-item{
+	border: 1px solid #F7F7F7;
+	margin: 0 0 12px 0;
+}
+
+.widgets-area-item .widget-items .widget-item .widget-name{
+	background: #F7F7F7;
+	padding: 9px;
+	font-weight: 600;
+	font-size: 13px;
+	position: relative;
+	cursor: pointer;
+}
+
+.widgets-area-item .widget-items .widget-item .widget-name:hover, .widgets-area-item .widget-items .widget-item .widget-name:focus, .widgets-area-item .widget-items .widget-item .widget-name:active{
+	background: #F4F4F4;
+}
+
+.widgets-area-item .widget-items .widget-item .widget-name .control{
+	position: absolute;
+	top: 10px;
+	right: 12px;
+	font-size: 18px;
+}
+
+.widgets-area-item .widget-items .widget-item .widget-item-options{
+	padding: 12px;
+}
