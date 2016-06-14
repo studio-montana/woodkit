@@ -67,9 +67,9 @@
 			$generator.append('<div id="googlemapsgenerator-content" class="woodkit-modal-box-content"></div>');
 			$generatorcontent = $("#googlemapsgenerator-content");
 			// footer
-			$generator.append('<div id="postpicker-footer" class="woodkit-modal-box-footer"></div>');
-			$("#postpicker-footer").append('<span id="postpicker-done" class="button button-primary button-large">' + settings['done_button_text'] + '</span>');
-			$generatordone = $("#postpicker-done");
+			$generator.append('<div id="googlemapsgenerator-footer" class="woodkit-modal-box-footer"></div>');
+			$("#googlemapsgenerator-footer").append('<span id="googlemapsgenerator-done" class="button button-primary button-large">' + settings['done_button_text'] + '</span>');
+			$generatordone = $("#googlemapsgenerator-done");
 			$generatordone.on('click', function(e) {
 				plugin.done();
 			});

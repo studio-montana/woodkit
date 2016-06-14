@@ -172,6 +172,11 @@ function woodkit_admin_scripts_styles() {
 	if (!empty($css_admin))
 		wp_enqueue_style('woodkit-admin-style', $css_admin, array('woodkit-admin-css-isotope', 'woodkit-admin-css-slider', 'woodkit-admin-css-jquery-ui'), '1.2');
 
+	// Loads Cookies jQuery plugin
+	$js_cookies = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'cookies/jquery.cookie.js');
+	if (!empty($js_cookies))
+		wp_enqueue_script('woodkit-script-cookies', $js_cookies, array('jquery'), '1.4.1', true);
+
 	// Loads Utils
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils))

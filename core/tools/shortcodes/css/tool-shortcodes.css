@@ -1,1 +1,88 @@
 @CHARSET "UTF-8";
+
+.shortcode-columns {
+	position: relative;
+	float: left;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.shortcode-columns+p {
+	display: none; /* for automatic empty <p/> generate by WP */
+}
+
+.shortcode-columns.col_clear {
+	float: none;
+	clear: both;
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	width: 100%;
+	overflow: hidden;
+}
+
+.col_one {
+	width: 100%;
+}
+
+.col_one_half {
+	width: 50%;
+}
+
+.col_one_third {
+	width: 33.3%;
+}
+
+.col_two_third {
+	width: 66.6%;
+}
+
+.col_one_fourth {
+	width: 25%;
+}
+
+.col_three_fourth {
+	width: 75%;
+}
+
+.col_one_fifth {
+	width: 20%;
+}
+
+.col_two_fifth {
+	width: 40%;
+}
+
+.col_three_fifth {
+	width: 60%;
+}
+
+.col_four_fifth {
+	width: 80%;
+}
+
+.col_one_sixth {
+	width: 16.6%;
+}
+
+.col_five_sixth {
+	width: 83.4%;
+}
+
+/**
+ * Responsive
+ */
+@media screen and (max-width:800px) {
+	.col_one,.col_one_half,.col_one_third,.col_two_third,.col_one_fourth,.col_three_fourth,.col_one_fifth,.col_two_fifth,.col_three_fifth,.col_four_fifth,.col_one_sixth,.col_five_sixth
+		{
+		clear: both;
+		float: none;
+		display: block;
+		width: 100%;
+	}
+}
