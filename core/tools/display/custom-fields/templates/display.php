@@ -75,6 +75,24 @@ defined('ABSPATH') or die("Go Away!");
 				</td>
 				<td valign="middle"><em><?php _e("Hide thumbnail except in lists", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></em></td>
 			</tr>
+			<?php 
+			if (woodkit_is_registered_tool('video')){
+			?>
+			<tr valign="top">
+				<th class="metabox_label_column" align="left" valign="middle"><label
+					for="<?php echo META_DISPLAY_HIDE_FEATURED_VIDEO; ?>"><?php _e('Hide featured video', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+				</th>
+				<td valign="middle">
+					<?php 
+					$meta = get_post_meta(get_the_ID(), META_DISPLAY_HIDE_FEATURED_VIDEO, true);
+					?>
+					<input type="checkbox" id="<?php echo META_DISPLAY_HIDE_FEATURED_VIDEO; ?>" name="<?php echo META_DISPLAY_HIDE_FEATURED_VIDEO; ?>" <?php if (!empty($meta) && $meta == 'on'){ echo 'checked="checked"'; }?> />
+				</td>
+				<td valign="middle"><em><?php _e("Hide featured video except in lists", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></em></td>
+			</tr>
+			<?php 
+			}
+			?>
 			<tr valign="top">
 				<th class="metabox_label_column" align="left" valign="middle"><label
 					for="<?php echo META_DISPLAY_BADGED; ?>"><?php _e("Badge", WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>

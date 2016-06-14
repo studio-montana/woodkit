@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -67,20 +67,23 @@ endif;
 if (!function_exists("tool_video_post_thumbnail_filter")):
 /**
  * replace thumbnail by featured video if exists and if has auto-insert configuration
- * @param unknown $html
- * @param unknown $post_id
- * @param unknown $post_thumbnail_id
- * @param unknown $size
- * @param unknown $attr
- */
+* @param unknown $html
+* @param unknown $post_id
+* @param unknown $post_thumbnail_id
+* @param unknown $size
+* @param unknown $attr
+*/
 function tool_video_post_thumbnail_filter($html, $post_id, $post_thumbnail_id, $size, $attr){
 	$auto_insert = woodkit_get_option("tool-video-auto-insert");
 	if (!empty($auto_insert) && $auto_insert == 'on'){
-		$video_embed = video_get_featured_video($post_id);
-		if (!empty($video_embed))
-			$html = '<div class="featured-video">'.$video_embed.'</div>';
+		$hide_featured_video = @get_post_meta($post_id, META_DISPLAY_HIDE_FEATURED_VIDEO, true);
+		if (empty($hide_featured_video) || $hide_featured_video != 'on'){
+			$video_embed = video_get_featured_video($post_id);
+			if (!empty($video_embed))
+				$html = '<div class="featured-video">'.$video_embed.'</div>';
+			$html = apply_filters("post_featured_video_html", $html, $post_id, $post_thumbnail_id, $size, $attr);
+		}
 	}
-	$html = apply_filters("post_featured_video_html", $html, $post_id, $post_thumbnail_id, $size, $attr);
 	return $html;
 }
 add_filter('post_thumbnail_html', "tool_video_post_thumbnail_filter", 1, 5);

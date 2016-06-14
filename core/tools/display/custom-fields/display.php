@@ -29,6 +29,7 @@ define('META_DISPLAY_HIDE_TITLE', 'meta_display_hide_title');
 define('META_DISPLAY_CUSTOMTITLE', 'meta_display_customtitle');
 define('META_DISPLAY_SUBTITLE', 'meta_display_subtitle');
 define('META_DISPLAY_HIDE_THUMBNAIL', 'meta_display_hide_content');
+define('META_DISPLAY_HIDE_FEATURED_VIDEO', 'meta_display_hide_featured_video');
 define('META_DISPLAY_BADGED', 'meta_display_badged');
 define('META_DISPLAY_BADGE_TEXT', 'meta_display_badge_text');
 
@@ -79,6 +80,12 @@ function display_save_post($post_id){
 			update_post_meta($post_id, META_DISPLAY_HIDE_THUMBNAIL, sanitize_text_field($_POST[META_DISPLAY_HIDE_THUMBNAIL]));
 		}else{
 			delete_post_meta($post_id, META_DISPLAY_HIDE_THUMBNAIL);
+		}
+		// META_DISPLAY_HIDE_FEATURED_VIDEO
+		if (!empty($_POST[META_DISPLAY_HIDE_FEATURED_VIDEO])){
+			update_post_meta($post_id, META_DISPLAY_HIDE_FEATURED_VIDEO, sanitize_text_field($_POST[META_DISPLAY_HIDE_FEATURED_VIDEO]));
+		}else{
+			delete_post_meta($post_id, META_DISPLAY_HIDE_FEATURED_VIDEO);
 		}
 		// META_DISPLAY_BADGED
 		if (!empty($_POST[META_DISPLAY_BADGED])){

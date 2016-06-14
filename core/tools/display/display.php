@@ -90,6 +90,7 @@ function woodkit_display_thumbnail($post_id = null, $size = 'post-thumbnail', $a
 			$res = $before.get_the_post_thumbnail($post_id, $size, $attr).$after;
 		}
 	}
+	$res = apply_filters('post_thumbnail_html', $res, $post_id, get_post_thumbnail_id($post_id), $size, $attr);
 	if ($display)
 		echo $res;
 	else
