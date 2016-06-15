@@ -180,6 +180,31 @@ defined('ABSPATH') or die("Go Away!");
 				</td>
 				<td valign="middle" class="display-media-masonry-options-customized-height">px</td>
 			</tr>
+			
+			<tr valign="top" class="display-media-options display-media-classic-options display-media-grid-options display-media-masonry-options">
+				<th class="metabox_label_column" align="left" valign="middle"><label
+					for="<?php echo META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL; ?>"><?php _e('Margins', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+				</th>
+				<td valign="middle">
+					<i class="fa fa-arrows-h"></i>
+					<?php $meta = get_post_meta(get_the_ID(), META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL, true); 
+					if (empty($meta) || !is_numeric($meta))
+						$meta = "0";
+					?>
+					<input type="number" size="4" id="<?php echo META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL; ?>" name="<?php echo META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL; ?>" value="<?php echo $meta; ?>" />
+					px
+				</td>
+				<td valign="middle">
+					<i class="fa fa-arrows-v"></i>
+					<?php $meta = get_post_meta(get_the_ID(), META_MEDIA_PRESENTATION_MARGIN_VERTICAL, true); 
+					if (empty($meta) || !is_numeric($meta))
+						$meta = "0";
+					?>
+					<input type="number" size="4" id="<?php echo META_MEDIA_PRESENTATION_MARGIN_VERTICAL; ?>" name="<?php echo META_MEDIA_PRESENTATION_MARGIN_VERTICAL; ?>" value="<?php echo $meta; ?>" />
+					px
+				</td>
+				<td valign="middle"></td>
+			</tr>
 		</table>
 		<script type="text/javascript">
 		(function($) {

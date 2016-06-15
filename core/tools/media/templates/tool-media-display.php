@@ -22,6 +22,13 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
+$style_ul = "";
+$style_li = "";
+if (!empty($meta_media_presentation_margin_horizontal) && is_numeric($meta_media_presentation_margin_horizontal) && !empty($meta_media_presentation_margin_vertical) && is_numeric($meta_media_presentation_margin_vertical)){
+	$style_ul .= "margin: 0 0 -".$meta_media_presentation_margin_vertical."px -".$meta_media_presentation_margin_horizontal."px;";
+	$style_li .= "padding: 0 0 ".$meta_media_presentation_margin_vertical."px ".$meta_media_presentation_margin_horizontal."px;";
+}
+
 if ($meta_media_presentation == 'slider'){
 	$display_slider_nav = false;
 	if (empty($meta_media_presentation_slider_carousel) || $meta_media_presentation_slider_carousel != 'on'){ // no thumb navigation in carousel mode
@@ -158,7 +165,7 @@ if ($meta_media_presentation == 'slider'){
 			$data_columns ='data-columns="'.$columns.'"';
 		}
 		?>
-		<ul id="masonry-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media masonry" <?php echo $data_columns; ?>>
+		<ul id="masonry-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media masonry" <?php echo $data_columns; ?> style="<?php echo $style_ul; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
 				$ratio = "";
@@ -220,8 +227,9 @@ if ($meta_media_presentation == 'slider'){
 						$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
 					}
 				}
+				$style_li .= $style;
 				?>
-				<li class="masonry-item wp-gallery-item<?php echo $class; ?>" style="<?php echo $style; ?>" data-ratio-width-height="<?php echo $ratio; ?>" data-columns="1">
+				<li class="masonry-item wp-gallery-item<?php echo $class; ?>" style="<?php echo $style_li; ?>" data-ratio-width-height="<?php echo $ratio; ?>" data-columns="1">
 					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img_src; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style_thumb; ?>">
 							<div class="has-mask">
@@ -261,7 +269,7 @@ if ($meta_media_presentation == 'slider'){
 <?php
 }else if ($meta_media_presentation == 'grid'){ ?>
 	<div class="gallery-wrapper tool-media isotope-wrapper">
-		<ul id="isotope-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media isotope" data-columns="<?php echo $columns; ?>">
+		<ul id="isotope-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media isotope" data-columns="<?php echo $columns; ?>" style="<?php echo $style_ul; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
 				$img = wp_get_attachment_image_src($id, 'full');
@@ -293,8 +301,9 @@ if ($meta_media_presentation == 'slider'){
 						$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
 					}
 				}
+				$style_li .= "height: ".$height."px; width: ".$width."%;";
 				?>
-				<li class="isotope-item wp-gallery-item<?php echo $class; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>%;" data-format="<?php echo $meta_media_presentation_format; ?>" data-columns="<?php echo $rand_columns; ?>" data-lines="<?php echo $rand_lines; ?>" data-width="" data-height="<?php echo $height; ?>" >
+				<li class="isotope-item wp-gallery-item<?php echo $class; ?>" style="<?php echo $style_li; ?>" data-format="<?php echo $meta_media_presentation_format; ?>" data-columns="<?php echo $rand_columns; ?>" data-lines="<?php echo $rand_lines; ?>" data-width="" data-height="<?php echo $height; ?>" >
 					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style; ?>">
 							<div class="has-mask">
@@ -334,7 +343,7 @@ if ($meta_media_presentation == 'slider'){
 	<?php
 }else{ ?>
 	<div class="gallery-wrapper tool-media classic-wrapper">
-		<ul id="classic-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media classic" data-columns="<?php echo $columns; ?>">
+		<ul id="classic-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media classic" data-columns="<?php echo $columns; ?>" style="<?php echo $style_ul; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
 				$img = wp_get_attachment_image_src($id, 'full');
@@ -361,8 +370,9 @@ if ($meta_media_presentation == 'slider'){
 						$data_fancybox_title .= "<div>".$attachment->post_excerpt."</div>";
 					}
 				}
+				$style_li .= "width: ".$width."%;";
 				?>
-				<li class="classic-item wp-gallery-item<?php echo $class; ?>" style="width: <?php echo $width; ?>%;" data-columns="1" data-format="<?php echo $meta_media_presentation_format; ?>">
+				<li class="classic-item wp-gallery-item<?php echo $class; ?>" style="<?php echo $style_li; ?>" data-columns="1" data-format="<?php echo $meta_media_presentation_format; ?>">
 					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style; ?>">
 							<div class="has-mask">

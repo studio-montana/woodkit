@@ -272,8 +272,9 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 						$meta = "250";
 					?>
 					<input class="wall-update-presentation-setup" type="number" size="4" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH_WOODKITIZED; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH_WOODKITIZED; ?>" value="<?php echo $meta; ?>" />
+					px
 				</td>
-				<td valign="middle" class="display-wall-masonry-options-customized-width">px</td>
+				<td valign="middle" class="display-wall-masonry-options-customized-width"></td>
 			</tr>
 			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options">
@@ -288,32 +289,18 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 					<input type="checkbox" class="wall-update-presentation-setup" id="display-wall-masonry-auto-height" <?php if (empty($meta)){ echo ' checked="checked"'; } ?> />&nbsp;<label for="display-wall-masonry-auto-height"><?php _e("Auto", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
 				</td>
 				<td valign="middle" class="display-wall-masonry-options-customized-height">
-					<input class="wall-update-presentation-setup" type="text" size="4" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT; ?>" value="<?php echo $meta; ?>" />
-				</td>
-				<td valign="middle" class="display-wall-masonry-options-customized-height">px</td>
-			</tr>
-			
-			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options display-wall-isotope-options">
-				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL; ?>">-&nbsp;<?php _e('Vertical margin', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
-				</th>
-				<td valign="middle">
-					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL, true); 
-					if (empty($meta) || !is_numeric($meta))
-						$meta = "0";
-					?>
-					<input class="wall-update-presentation-setup" type="number" size="4" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL; ?>" value="<?php echo $meta; ?>" />
+					<input class="wall-update-presentation-setup" type="number" size="4" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT; ?>" value="<?php echo $meta; ?>" />
 					px
 				</td>
-				<td valign="middle"><?php _e("between elements", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></td>
-				<td valign="middle"></td>
+				<td valign="middle" class="display-wall-masonry-options-customized-height"></td>
 			</tr>
 			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options display-wall-isotope-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>">-&nbsp;<?php _e('Horizontal margin', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>">-&nbsp;<?php _e('Margins', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
 				</th>
 				<td valign="middle">
+					<i class="fa fa-arrows-h"></i>
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL, true); 
 					if (empty($meta) || !is_numeric($meta))
 						$meta = "0";
@@ -321,7 +308,15 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 					<input class="wall-update-presentation-setup" type="number" size="4" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>" value="<?php echo $meta; ?>" />
 					px
 				</td>
-				<td valign="middle"><?php _e("between elements", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></td>
+				<td valign="middle">
+					<i class="fa fa-arrows-v"></i>
+					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL, true); 
+					if (empty($meta) || !is_numeric($meta))
+						$meta = "0";
+					?>
+					<input class="wall-update-presentation-setup" type="number" size="4" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL; ?>" value="<?php echo $meta; ?>" />
+					px
+				</td>
 				<td valign="middle"></td>
 			</tr>
 			

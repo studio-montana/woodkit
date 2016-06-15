@@ -42,6 +42,8 @@ define('META_MEDIA_PRESENTATION_SLIDER_THUMB_NAV', 'meta_media_presentation_slid
 define('META_MEDIA_PRESENTATION_MASONRY_WIDTH', 'meta_media_initial_max_width');
 define('META_MEDIA_PRESENTATION_MASONRY_WIDTH_WOODKITIZED', 'meta_media_initial_max_width_customized');
 define('META_MEDIA_PRESENTATION_MASONRY_HEIGHT', 'meta_media_initial_max_height');
+define('META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL', 'meta_media_margin_horizontal');
+define('META_MEDIA_PRESENTATION_MARGIN_VERTICAL', 'meta_media_margin_vertical');
 
 
 if (!function_exists("media_add_inner_meta_boxes")):
@@ -149,6 +151,18 @@ function media_save_post($post_id){
 		}else{
 			delete_post_meta($post_id, META_MEDIA_PRESENTATION_MASONRY_HEIGHT);
 		}
+		// META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL
+		if (!empty($_POST[META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL]) && is_numeric($_POST[META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL])){
+			update_post_meta($post_id, META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL, sanitize_text_field($_POST[META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL]));
+		}else{
+			delete_post_meta($post_id, META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL);
+		}
+		// META_MEDIA_PRESENTATION_MARGIN_VERTICAL
+		if (!empty($_POST[META_MEDIA_PRESENTATION_MARGIN_VERTICAL]) && is_numeric($_POST[META_MEDIA_PRESENTATION_MARGIN_VERTICAL])){
+			update_post_meta($post_id, META_MEDIA_PRESENTATION_MARGIN_VERTICAL, sanitize_text_field($_POST[META_MEDIA_PRESENTATION_MARGIN_VERTICAL]));
+		}else{
+			delete_post_meta($post_id, META_MEDIA_PRESENTATION_MARGIN_VERTICAL);
+		}
 	}
 }
 add_action("customfields_save_post", "media_save_post");
@@ -175,6 +189,8 @@ function media_post_gallery($output, $attr) {
 		$meta_media_presentation_masonry_width = get_post_meta(get_the_ID(), META_MEDIA_PRESENTATION_MASONRY_WIDTH, true);
 		$meta_media_presentation_masonry_width_customized = get_post_meta(get_the_ID(), META_MEDIA_PRESENTATION_MASONRY_WIDTH_WOODKITIZED, true);
 		$meta_media_presentation_masonry_height = get_post_meta(get_the_ID(), META_MEDIA_PRESENTATION_MASONRY_HEIGHT, true);
+		$meta_media_presentation_margin_horizontal = get_post_meta(get_the_ID(), META_MEDIA_PRESENTATION_MARGIN_HORIZONTAL, true);
+		$meta_media_presentation_margin_vertical = get_post_meta(get_the_ID(), META_MEDIA_PRESENTATION_MARGIN_VERTICAL, true);
 		$output = "";
 		global $media_post_count;
 		global $post;
