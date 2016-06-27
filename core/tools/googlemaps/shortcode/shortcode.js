@@ -13,7 +13,7 @@
 			ed.addButton('toolgooglemapsshortcode', {
 				title : 'GoogleMaps',
 				cmd : 'toolgooglemapsshortcode',
-				icon : 'none fa fa-map-o'
+				icon : 'none fa fa-map-marker'
 			});
 
 			ed.addCommand('toolgooglemapsshortcode', function() {

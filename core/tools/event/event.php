@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,7 @@ defined('ABSPATH') or die("Go Away!");
 
 /**
  * CONSTANTS
- */
+*/
 define('EVENT_NONCE_ACTION', 'event_nonce_action');
 
 /**
@@ -199,6 +199,30 @@ function save_event_post_type($post_id){
 	}else{
 		delete_post_meta($post_id, "meta_event_date_end");
 	}
+	// meta_event_locate_address
+	if (isset($_POST["meta_event_locate_address"]) && !empty($_POST["meta_event_locate_address"])){
+		update_post_meta($post_id, "meta_event_locate_address", sanitize_text_field($_POST["meta_event_locate_address"]));
+	}else{
+		delete_post_meta($post_id, "meta_event_locate_address");
+	}
+	// meta_event_locate_cp
+	if (isset($_POST["meta_event_locate_cp"]) && !empty($_POST["meta_event_locate_cp"])){
+		update_post_meta($post_id, "meta_event_locate_cp", sanitize_text_field($_POST["meta_event_locate_cp"]));
+	}else{
+		delete_post_meta($post_id, "meta_event_locate_cp");
+	}
+	// meta_event_locate_city
+	if (isset($_POST["meta_event_locate_city"]) && !empty($_POST["meta_event_locate_city"])){
+		update_post_meta($post_id, "meta_event_locate_city", sanitize_text_field($_POST["meta_event_locate_city"]));
+	}else{
+		delete_post_meta($post_id, "meta_event_locate_city");
+	}
+	// meta_event_locate_country
+	if (isset($_POST["meta_event_locate_country"]) && !empty($_POST["meta_event_locate_country"])){
+		update_post_meta($post_id, "meta_event_locate_country", sanitize_text_field($_POST["meta_event_locate_country"]));
+	}else{
+		delete_post_meta($post_id, "meta_event_locate_country");
+	}
 }
 endif;
 
@@ -250,6 +274,34 @@ function build_event_columns($column, $post_id){
 }
 add_action( 'manage_event_posts_woodkit_column' , 'build_event_columns', 10, 2 );
 endif;
+
+/**
+ * retieve upcomping events (from date_from to date_to)
+ * @param string $date_from : null for now
+ * @param string $date_to : null for 100 years after date_from
+ * @param string $meta_args
+ * @param unknown $args
+ * @return array of upcomping events
+ */
+function get_event_post_types_upcoming($date_from = null, $date_to = null, $meta_args = null, $args=array()){
+	if (!isset($date_from) || empty($date_from)){
+		$date_from = time();
+	}
+	if (!isset($date_to) || empty($date_to)){
+		$date_to = $date_from + ((((365*100)*60)*60)*24);
+	}
+	$args['orderby'] = 'meta_value_num';
+	$args['meta_key'] = 'meta_event_date_begin';
+	$args['order'] = 'ASC';
+	$args['meta_query'] = array(
+			array(
+					'key' => 'meta_event_date_begin',
+					'value' => array($date_from, $date_to),
+					'compare' => 'BETWEEN'
+			)
+	);
+	return get_event_post_types($meta_args, $args);
+}
 
 /**
  * renvoi les post-type event

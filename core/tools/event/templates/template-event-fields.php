@@ -33,7 +33,7 @@ defined('ABSPATH') or die("Go Away!");
 			</tr>
 			<tr valign="top">
 				<?php 
-				$meta_date_begin = !empty($post) ? get_post_meta($post->ID, "meta_event_date_begin", true) : "";
+				$meta_date_begin = get_post_meta(get_the_ID(), "meta_event_date_begin", true);
 				$meta_date_begin_s = "";
 				$meta_hour_begin = "";
 				$meta_minute_begin = "";
@@ -105,7 +105,7 @@ defined('ABSPATH') or die("Go Away!");
 			</tr>
 			<tr valign="top">
 				<?php 
-				$meta_date_end = !empty($post) ? get_post_meta($post->ID, "meta_event_date_end", true) : "";
+				$meta_date_end = get_post_meta(get_the_ID(), "meta_event_date_end", true);
 				$meta_date_end_s = "";
 				$meta_hour_end = "";
 				$meta_minute_end = "";
@@ -163,6 +163,48 @@ defined('ABSPATH') or die("Go Away!");
 						<option value="30" <?php if ($meta_minute_end == '30'){ echo ' selected="selected"'; } ?>>30</option>
 						<option value="45" <?php if ($meta_minute_end == '45'){ echo ' selected="selected"'; } ?>>45</option>
 					</select>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td colspan="2">
+					<hr />
+				</td>
+			</tr>
+			<tr valign="top">
+				<th colspan="2" class="metabox_label_column" align="left" valign="middle"><label
+					for="meta_event_locate_address"><?php _e('Location', WOODKIT_PLUGIN_TEXT_DOMAIN); ?><i class="fa fa-map-marker" style="margin-left: 6px;"></i></label>
+				</th>
+			</tr>
+			<tr valign="top">
+				<?php 
+				$meta_locate_address = get_post_meta(get_the_ID(), "meta_event_locate_address", true);
+				?>
+				<td valign="middle" colspan="2">
+					<input type="text" placeholder="<?php echo esc_attr(__("Address", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>" name="meta_event_locate_address" id="meta_event_locate_address" value="<?php echo $meta_locate_address; ?>" />
+				</td>
+			</tr>
+			<tr valign="top">
+				<?php 
+				$meta_locate_cp = get_post_meta(get_the_ID(), "meta_event_locate_cp", true);
+				?>
+				<td valign="middle" colspan="2">
+					<input type="text" placeholder="<?php echo esc_attr(__("CP", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>" name="meta_event_locate_cp" id="meta_event_locate_cp" value="<?php echo $meta_locate_cp; ?>" />
+				</td>
+			</tr>
+			<tr valign="top">
+				<?php 
+				$meta_locate_city = get_post_meta(get_the_ID(), "meta_event_locate_city", true);
+				?>
+				<td valign="middle" colspan="2">
+					<input type="text" placeholder="<?php echo esc_attr(__("City", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>" name="meta_event_locate_city" id="meta_event_locate_city" value="<?php echo $meta_locate_city; ?>" />
+				</td>
+			</tr>
+			<tr valign="top">
+				<?php 
+				$meta_locate_country = get_post_meta(get_the_ID(), "meta_event_locate_country", true);
+				?>
+				<td valign="middle" colspan="2">
+					<input type="text" placeholder="<?php echo esc_attr(__("Country", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>" name="meta_event_locate_country" id="meta_event_locate_country" value="<?php echo $meta_locate_country; ?>" />
 				</td>
 			</tr>
 		</table>
