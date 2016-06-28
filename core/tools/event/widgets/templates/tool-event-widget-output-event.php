@@ -41,43 +41,7 @@ defined('ABSPATH') or die("Go Away!");
 		</h1>
 		
 		<?php 
-		$date_s = "";
-		if (get_post_type() == 'event'){
-			$meta_date_begin = get_post_meta(get_the_ID(), "meta_event_date_begin", true);
-			$meta_date_begin_s = "";
-			$meta_day_begin_s = "";
-			$meta_month_begin_s = "";
-			$meta_year_begin_s = "";
-			if (!empty($meta_date_begin) && is_numeric($meta_date_begin)){
-				$meta_day_begin_s = strftime("%d",$meta_date_begin);
-				$meta_month_begin_s = get_textual_month($meta_date_begin);
-				$meta_date_begin_s = $meta_day_begin_s." ".$meta_month_begin_s;
-				$meta_year_begin_s = strftime("%Y",$meta_date_begin);
-			}
-				
-			$meta_date_end = get_post_meta(get_the_ID(), "meta_event_date_end", true);
-			$meta_date_end_s = "";
-			$meta_day_end_s = "";
-			$meta_month_end_s = "";
-			$meta_year_end_s = "";
-			if (!empty($meta_date_end) && is_numeric($meta_date_end)){
-				$meta_day_end_s = strftime("%d",$meta_date_end);
-				$meta_month_end_s = get_textual_month($meta_date_end);
-				$meta_date_end_s = $meta_day_end_s." ".$meta_month_end_s;
-				$meta_year_end_s = strftime("%Y",$meta_date_end);
-			}
-			
-			$date_s = "";
-			if ($meta_date_begin_s == $meta_date_end_s){
-				$date_s = $meta_day_begin_s." ".$meta_month_begin_s." ".$meta_year_begin_s;
-			}else{
-				if ($meta_year_begin_s == $meta_year_end_s){
-					$date_s = $meta_day_begin_s." ".$meta_month_begin_s." ".__("to", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ".$meta_month_end_s." ".$meta_year_end_s;
-				}else{
-					$date_s = $meta_day_begin_s." ".$meta_month_begin_s." ".$meta_year_begin_s." ".__("to", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ".$meta_month_end_s." ".$meta_year_end_s;
-				}
-			}
-		}
+		$date_s = get_event_date_pretty(get_the_ID());
 		if (!empty($date_s)){
 			?>
 			<div class="entry-date">
