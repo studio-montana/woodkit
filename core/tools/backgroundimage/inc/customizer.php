@@ -32,9 +32,9 @@ defined('ABSPATH') or die("Go Away!");
 function backgroundimage_customize_register($wp_customize_manager) {
 	// ------ background section
 	$wp_customize_manager->add_section('backgroundimage_customizer', array(
-			'title' => __( 'Background Image', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+			'title' => __('Background Image', WOODKIT_PLUGIN_TEXT_DOMAIN),
 	) );
-
+	
 	// background image
 	$wp_customize_manager->add_setting('backgroundimage_image', array('transport'=>'refresh'));
 	$wp_customize_manager->add_control(
@@ -48,5 +48,27 @@ function backgroundimage_customize_register($wp_customize_manager) {
 					)
 			)
 	);
+	
+	// background color
+	$wp_customize_manager->add_setting('backgroundimage_color', array('default' => '#ffffff', 'transport'=>'refresh'));
+	$wp_customize_manager->add_control(
+			new WP_Customize_Color_Control(
+					$wp_customize_manager,
+					'woodkit_backgroundimage_color',
+					array(
+							'label'      => __('Background color', WOODKIT_PLUGIN_TEXT_DOMAIN),
+							'section'    => 'backgroundimage_customizer',
+							'settings'   => 'backgroundimage_color',
+					) )
+	);
+	
+	// background opacity
+	$wp_customize_manager->add_setting('backgroundimage_opacity', array('default' => '0', 'transport'=>'refresh'));
+	$wp_customize_manager->add_control('backgroundimage_opacity', array(
+			'type' => 'number',
+			'section' => 'backgroundimage_customizer',
+			'label' => __('Opacity', WOODKIT_PLUGIN_TEXT_DOMAIN),
+			'description' => __('expressed in %', WOODKIT_PLUGIN_TEXT_DOMAIN),
+	) );
 }
 add_action('customize_register', 'backgroundimage_customize_register');
