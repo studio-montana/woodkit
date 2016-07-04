@@ -50,10 +50,22 @@ $class = wall_sanitize_wall_item_classes($class);
 
 $width = 100;
 $height = $wall_args['meta_wall_display_presentation_initial_height'];
+
+$link = "";
+if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()])){
+	$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
+}
+if (empty($link)){
+	$link = get_the_permalink();
+}
+$link_blank = "";
+if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()])){
+	$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()];
+}
 ?>
 <li class="slider-item template-thumb <?php echo $class; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>%;">
 	<?php if (!is_admin()){ ?>
-	<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>
 		<div class="inner-item-wrapper" style="width: 100%; height: 100%;">
 			<div class="inner-item thumb" style="<?php echo $style; ?>">

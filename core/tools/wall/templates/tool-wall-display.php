@@ -154,6 +154,24 @@ if (!empty($posts)){
 									</select>
 								</td>
 							</tr>
+							<tr>
+								<td class="field-icon"><i class="fa fa-link"></i></td>
+								<td class="field custom-link">
+									<?php 
+									$link = "";
+									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()]))
+										$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
+									?>
+									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									<i class="fa fa-share"></i>
+									<?php 
+									$link_blank = "";
+									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()]))
+										$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()];
+									?>
+									<input type="checkbox" class="wall-presentation-link-blank save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID(); ?>" <?php if ($link_blank == 'on'){ ?> checked="checked"<?php } ?> />
+								</td>
+							</tr>
 						</table>
 						<?php
 						$wall_args["meta_wall_admin_item_code"] = ob_get_contents();
@@ -324,6 +342,24 @@ if (!empty($posts)){
 									</select>
 								</td>
 							</tr>
+							<tr>
+								<td class="field-icon"><i class="fa fa-link"></i></td>
+								<td class="field custom-link">
+									<?php 
+									$link = "";
+									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()]))
+										$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
+									?>
+									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									<i class="fa fa-share"></i>
+									<?php 
+									$link_blank = "";
+									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()]))
+										$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()];
+									?>
+									<input type="checkbox" class="wall-presentation-link-blank save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID(); ?>" <?php if ($link_blank == 'on'){ ?> checked="checked"<?php } ?> />
+								</td>
+							</tr>
 						</table>
 						<?php
 						$wall_args["meta_wall_admin_item_code"] = ob_get_contents();
@@ -490,6 +526,24 @@ if (!empty($posts)){
 										<?php
 									} ?>
 									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="field-icon"><i class="fa fa-link"></i></td>
+								<td class="field custom-link">
+									<?php 
+									$link = "";
+									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()]))
+										$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
+									?>
+									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									<i class="fa fa-share"></i>
+									<?php 
+									$link_blank = "";
+									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()]))
+										$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()];
+									?>
+									<input type="checkbox" class="wall-presentation-link-blank save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID(); ?>" <?php if ($link_blank == 'on'){ ?> checked="checked"<?php } ?> />
 								</td>
 							</tr>
 						</table>

@@ -54,6 +54,8 @@ define('META_WALL_DISPLAY_PRESENTATION_SETUP', 'meta_wall_display_presentation_s
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_WIDTH_', 'meta_wall_display_presentation_setup_width_');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_HEIGHT_', 'meta_wall_display_presentation_setup_height_');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_TEMPLATE_', 'meta_wall_display_presentation_setup_template_');
+define('META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_', 'meta_wall_display_presentation_setup_link_');
+define('META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_', 'meta_wall_display_presentation_setup_link_blank_');
 
 if (!function_exists("wall_add_inner_meta_boxes")):
 /**

@@ -853,6 +853,35 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 						saved_templates.push($(this).attr('name'));
 					}
 				});
+				var saved_links = []; // avoid to save cloned select 
+				$(".wall-presentation-link").each(function(i){
+					console.log("name : "+$(this).attr('name'));
+					if ($.inArray($(this).attr('name'), saved_links) < 0){
+						if (setup == ''){
+							setup += '{';
+						}else{
+							setup += ',';
+						}
+						setup += '"'+$(this).attr('name')+'":"'+$(this).val()+'"';
+						saved_links.push($(this).attr('name'));
+					}
+				});
+				var saved_links_blank = []; // avoid to save cloned select 
+				$(".wall-presentation-link-blank").each(function(i){
+					if ($.inArray($(this).attr('name'), saved_links_blank) < 0){
+						if (setup == ''){
+							setup += '{';
+						}else{
+							setup += ',';
+						}
+						if ($(this).is(":checked")){
+							setup += '"'+$(this).attr('name')+'":"on"';
+						} else{
+							setup += '"'+$(this).attr('name')+'":"off"';
+						}	
+						saved_links_blank.push($(this).attr('name'));
+					}
+				});
 				setup += "}";
 				$("input[name='<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP; ?>']").val(setup);
 				// TODO - known bug : the last item template of slider isn't saved because is select is cloned... No solution for now :(
