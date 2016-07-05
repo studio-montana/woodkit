@@ -25,8 +25,20 @@ defined('ABSPATH') or die("Go Away!");
 
 <div id="cookies-legislation-box" class="cookies-legislation-container" style="display: none; z-index: 10000;">
 	<div class="cookies-legislation-content">
-		<span><?php _e("By continuing your visit to this site, you accept the use of cookies or other tracers", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>.&nbsp;<a href="http://www.cnil.fr/vos-obligations/sites-web-cookies-et-autres-traceurs/que-dit-la-loi/" target="_blank"><?php _e("More about", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></span>
-		<button id="cookies-accept-condition"><?php _e('Ok', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></button>
+		<span>
+			<?php 
+			$text_content = __("By continuing your visit to this site, you accept the use of cookies or other tracers", WOODKIT_PLUGIN_TEXT_DOMAIN).'.&nbsp;<a href="http://www.cnil.fr/vos-obligations/sites-web-cookies-et-autres-traceurs/que-dit-la-loi/" target="_blank">'.__("More about", WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
+			$text_content = apply_filters("woodkit_tool_cookies_text_content", $text_content);
+			echo $text_content;
+			?>
+		</span>
+		<button id="cookies-accept-condition">
+			<?php 
+			$button_content = __('Ok', WOODKIT_PLUGIN_TEXT_DOMAIN);
+			$button_content = apply_filters("woodkit_tool_cookies_button_content", $button_content);
+			echo $button_content;
+			?>
+		</button>
 	</div>
 </div>
 <script type="text/javascript">

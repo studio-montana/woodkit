@@ -105,7 +105,6 @@ function tool_shortcodes_columns($atts, $content = null, $name='') {
 	$output = str_replace("<p><div", "<div", $output);
 	$output = str_replace("</div></p>", "</div>", $output);
 	$output = str_replace('<div class="shortcode-columns-content"></p>', '<div class="shortcode-columns-content">', $output);
-	trace_info("outut : ".$output);
 	return $output;
 }
 add_shortcode('col_one', 'tool_shortcodes_columns');
