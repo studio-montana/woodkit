@@ -502,7 +502,7 @@ function tool_wall_visual_composer_support() {
 function wall_get_wall_item_title($item_id, $wall_args, $test_hide_property = false, $before = '<div class="title">', $after = '</div>'){
 	$title = "";
 	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()])){
-		$title = $before.$wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()].$after;
+		$title = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()];
 	}
 	if (empty($title)){
 		if (function_exists("woodkit_display_title")){
@@ -510,6 +510,8 @@ function wall_get_wall_item_title($item_id, $wall_args, $test_hide_property = fa
 		}else{
 			$title = the_title($before, $after, false); 
 		}
+	}else{
+		$title = $before.$title.$after;
 	}
 	return $title;
 }
