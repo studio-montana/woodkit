@@ -825,7 +825,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 						}else{
 							setup += ',';
 						}
-						setup += '"'+$(this).attr('name')+'":"'+$(this).val()+'"';
+						setup += '"'+$(this).attr('name')+'":"'+escapeSpecialChars($(this).val())+'"';
 						saved_widths.push($(this).attr('name'));
 					}
 				});
@@ -837,7 +837,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 						}else{
 							setup += ',';
 						}
-						setup += '"'+$(this).attr('name')+'":"'+$(this).val()+'"';
+						setup += '"'+$(this).attr('name')+'":"'+escapeSpecialChars($(this).val())+'"';
 						saved_height.push($(this).attr('name'));
 					}
 				});
@@ -849,20 +849,31 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 						}else{
 							setup += ',';
 						}
-						setup += '"'+$(this).attr('name')+'":"'+$(this).val()+'"';
+						setup += '"'+$(this).attr('name')+'":"'+escapeSpecialChars($(this).val())+'"';
 						saved_templates.push($(this).attr('name'));
+					}
+				});
+				var saved_titles = []; // avoid to save cloned select 
+				$(".wall-presentation-title").each(function(i){
+					if ($.inArray($(this).attr('name'), saved_titles) < 0){
+						if (setup == ''){
+							setup += '{';
+						}else{
+							setup += ',';
+						}
+						setup += '"'+$(this).attr('name')+'":"'+escapeSpecialChars($(this).val())+'"';
+						saved_titles.push($(this).attr('name'));
 					}
 				});
 				var saved_links = []; // avoid to save cloned select 
 				$(".wall-presentation-link").each(function(i){
-					console.log("name : "+$(this).attr('name'));
 					if ($.inArray($(this).attr('name'), saved_links) < 0){
 						if (setup == ''){
 							setup += '{';
 						}else{
 							setup += ',';
 						}
-						setup += '"'+$(this).attr('name')+'":"'+$(this).val()+'"';
+						setup += '"'+$(this).attr('name')+'":"'+escapeSpecialChars($(this).val())+'"';
 						saved_links.push($(this).attr('name'));
 					}
 				});

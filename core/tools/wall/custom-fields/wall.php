@@ -54,6 +54,7 @@ define('META_WALL_DISPLAY_PRESENTATION_SETUP', 'meta_wall_display_presentation_s
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_WIDTH_', 'meta_wall_display_presentation_setup_width_');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_HEIGHT_', 'meta_wall_display_presentation_setup_height_');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_TEMPLATE_', 'meta_wall_display_presentation_setup_template_');
+define('META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_', 'meta_wall_display_presentation_setup_title_');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_', 'meta_wall_display_presentation_setup_link_');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_', 'meta_wall_display_presentation_setup_link_blank_');
 
@@ -496,5 +497,39 @@ function tool_wall_visual_composer_support() {
 	"class" => "",
 	"category" => __("Content", WOODKIT_PLUGIN_TEXT_DOMAIN)
 	) );
+}
+
+function wall_get_wall_item_title($item_id, $wall_args, $test_hide_property = false, $before = '<div class="title">', $after = '</div>'){
+	$title = "";
+	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()])){
+		$title = $before.$wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()].$after;
+	}
+	if (empty($title)){
+		if (function_exists("woodkit_display_title")){
+			$title = woodkit_display_title(get_the_ID(), false, $test_hide_property, $before, $after);
+		}else{
+			$title = the_title($before, $after, false); 
+		}
+	}
+	return $title;
+}
+
+function wall_get_wall_item_link($item_id, $wall_args){
+	$link = "";
+	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()])){
+		$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
+	}
+	if (empty($link)){
+		$link = get_the_permalink();
+	}
+	return $link;
+}
+
+function wall_get_wall_item_link_blank($item_id, $wall_args){
+	$link_blank = "";
+	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()])){
+		$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()];
+	}
+	return $link_blank;
 }
 

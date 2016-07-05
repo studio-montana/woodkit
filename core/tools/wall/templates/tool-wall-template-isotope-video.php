@@ -38,17 +38,9 @@ $style = "";
 $style .= "height: ".$height."px; width: ".$width."%;";
 $style .= "padding: 0 0 ".$wall_args['meta_wall_display_presentation_margin_vertical']."px ".$wall_args['meta_wall_display_presentation_margin_horizontal']."px;";
 
-$link = "";
-if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()])){
-	$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
-}
-if (empty($link)){
-	$link = get_the_permalink();
-}
-$link_blank = "";
-if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()])){
-	$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()];
-}
+$title = wall_get_wall_item_title(get_the_ID(), $wall_args);
+$link = wall_get_wall_item_link(get_the_ID(), $wall_args);
+$link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
 <li class="isotope-item template-video <?php echo $class; ?>"style="<?php echo $style; ?>" data-format="<?php echo $wall_args['meta_wall_display_presentation_format']; ?>" data-columns="<?php echo $wall_args['wall_item_width_selected']; ?>" data-lines="<?php echo $wall_args['wall_item_height_selected']; ?>">
 	<div class="inner-item-wrapper">

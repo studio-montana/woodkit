@@ -155,6 +155,17 @@ if (!empty($posts)){
 								</td>
 							</tr>
 							<tr>
+								<td class="field-icon"><i class="fa fa-header"></i></td>
+								<td class="field custom-title">
+									<?php 
+									$title = "";
+									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()]))
+										$title = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()];
+									?>
+									<input type="text" style="width: 100%;" class="wall-presentation-title save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID(); ?>" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e("customized title", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+								</td>
+							</tr>
+							<tr>
 								<td class="field-icon"><i class="fa fa-link"></i></td>
 								<td class="field custom-link">
 									<?php 
@@ -163,7 +174,7 @@ if (!empty($posts)){
 										$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
 									?>
 									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
-									<i class="fa fa-share"></i>
+									<i class="fa fa-long-arrow-up link-blank-icon"></i>
 									<?php 
 									$link_blank = "";
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()]))
@@ -343,6 +354,17 @@ if (!empty($posts)){
 								</td>
 							</tr>
 							<tr>
+								<td class="field-icon"><i class="fa fa-header"></i></td>
+								<td class="field custom-title">
+									<?php 
+									$title = "";
+									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()]))
+										$title = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()];
+									?>
+									<input type="text" style="width: 100%;" class="wall-presentation-title save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID(); ?>" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e("customized title", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+								</td>
+							</tr>
+							<tr>
 								<td class="field-icon"><i class="fa fa-link"></i></td>
 								<td class="field custom-link">
 									<?php 
@@ -351,7 +373,7 @@ if (!empty($posts)){
 										$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
 									?>
 									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
-									<i class="fa fa-share"></i>
+									<i class="fa fa-long-arrow-up link-blank-icon"></i>
 									<?php 
 									$link_blank = "";
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()]))
@@ -529,6 +551,17 @@ if (!empty($posts)){
 								</td>
 							</tr>
 							<tr>
+								<td class="field-icon"><i class="fa fa-header"></i></td>
+								<td class="field custom-title">
+									<?php 
+									$title = "";
+									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()]))
+										$title = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()];
+									?>
+									<input type="text" style="width: 100%;" class="wall-presentation-title save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID(); ?>" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e("customized title", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+								</td>
+							</tr>
+							<tr>
 								<td class="field-icon"><i class="fa fa-link"></i></td>
 								<td class="field custom-link">
 									<?php 
@@ -537,7 +570,7 @@ if (!empty($posts)){
 										$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
 									?>
 									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
-									<i class="fa fa-share"></i>
+									<i class="fa fa-long-arrow-up link-blank-icon"></i>
 									<?php 
 									$link_blank = "";
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()]))

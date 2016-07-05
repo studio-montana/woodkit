@@ -9,8 +9,8 @@
  
 #wall-presentation-setup .wall-item-setup {
 	position: absolute;
-	top: 6px;
-	right: 12px;
+	top: 3px;
+	right: 3px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -18,6 +18,14 @@
 	background: rgba(255, 255, 255, 0.8);
 	padding: 3px 0;
 	z-index: 999;
+}
+
+#wall-presentation-setup .wall-item-setup .field input[type='text']
+	{
+	padding: 3px 6px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #wall-presentation-setup .wall-item-setup .field-icon
@@ -38,21 +46,24 @@
 
 #wall-presentation-setup .wall-item-setup .field.custom-link input[type='text']
 	{
-	padding: 3px 32px 3px 6px;
+	padding-right: 32px;
 }
 
 #wall-presentation-setup .wall-item-setup .field.custom-link input[type='checkbox']
 	{
 	position: absolute;
-	right: 14px;
-	top: 4px;
+	right: 6px;
+	top: 6px;
 }
 
-#wall-presentation-setup .wall-item-setup .field.custom-link i
+#wall-presentation-setup .wall-item-setup .field.custom-link i.link-blank-icon
 	{
 	position: absolute;
-	right: 3px;
-	top: 4px;
+	right: 5px;
+	top: 5px;
+	-ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
 }
 
 .wall.list .entry-thumbnail{

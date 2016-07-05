@@ -35,17 +35,9 @@ $style .= "padding: 0 0 ".$wall_args['meta_wall_display_presentation_margin_vert
 $class = join(' ', get_post_class($class));
 $class = wall_sanitize_wall_item_classes($class);
 
-$link = "";
-if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()])){
-	$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
-}
-if (empty($link)){
-	$link = get_the_permalink();
-}
-$link_blank = "";
-if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()])){
-	$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()];
-}
+$title = wall_get_wall_item_title(get_the_ID(), $wall_args);
+$link = wall_get_wall_item_link(get_the_ID(), $wall_args);
+$link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
 <li class="masonry-item template-content <?php echo $class; ?>" style="<?php echo $style; ?>" data-autoresponsive="true" data-columns="1">
 	<?php if (!is_admin()){ ?>
@@ -62,7 +54,7 @@ if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_P
 					}else if (has_post_thumbnail(get_the_ID())){
 						?><div class="thumb"><?php the_post_thumbnail('tool-wall-thumb'); ?></div><?php 
 					}?>
-					<?php if (function_exists("woodkit_display_title")) woodkit_display_title(get_the_ID(), true, false, '<div class="title">', '</div>'); else the_title('<div class="title">', '</div>'); ?>
+					<?php echo $title; ?>
 					<div class="excerpt"><?php the_excerpt(); ?></div>
 				</div>
 				<div class="has-infos">
@@ -71,7 +63,7 @@ if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_P
 					}else if (has_post_thumbnail(get_the_ID())){
 						?><div class="thumb"><?php the_post_thumbnail('tool-wall-thumb'); ?></div><?php 
 					}?>
-					<?php if (function_exists("woodkit_display_title")) woodkit_display_title(get_the_ID(), true, false, '<div class="title">', '</div>'); else the_title('<div class="title">', '</div>'); ?>
+					<?php echo $title; ?>
 					<div class="excerpt"><?php the_excerpt(); ?></div>
 				</div>
 			</div>
