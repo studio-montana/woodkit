@@ -97,6 +97,9 @@ function tool_shortcodes_columns($atts, $content = null, $name='') {
 	}
 	$style = sanitize_text_field($atts['style']);
 	$class = "shortcode-columns ".$name." ".sanitize_text_field($atts['class']);
+	if (endsWith($init_name, "_last")){
+		$class .= " last";
+	}
 	$output = '<div class="'.$class.'" style="'.$style.'"><div class="shortcode-columns-content">'.do_shortcode($content).'</div></div>';
 	if (endsWith($init_name, "_last")){
 		$output .= '<div class="shortcode-columns col_clear"></div>';
