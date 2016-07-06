@@ -28,6 +28,9 @@
 
 .col_one {
 	width: 100%;
+	float: none;
+	clear: both;
+	display: block;
 }
 
 .col_one_half {
