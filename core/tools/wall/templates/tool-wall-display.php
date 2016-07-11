@@ -379,7 +379,7 @@ if (!empty($posts)){
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()]))
 										$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()];
 									?>
-									<input type="checkbox" class="wall-presentation-link-blank save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID(); ?>" <?php if ($link_blank == 'on'){ ?> checked="checked"<?php } ?> />
+									<input type="checkbox" title="open in new tab" class="wall-presentation-link-blank save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID(); ?>" <?php if ($link_blank == 'on'){ ?> checked="checked"<?php } ?> />
 								</td>
 							</tr>
 						</table>

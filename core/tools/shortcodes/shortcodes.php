@@ -38,7 +38,7 @@ function tool_shortcodes_woodkit_front_enqueue_styles_tools($dependencies) {
 
 	$css_shortcodes = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SHORTCODES_TOOL_NAME.'/css/tool-shortcodes.css');
 	if (!empty($css_shortcodes))
-		wp_enqueue_style('tool-shortcodes-css', $css_shortcodes, $dependencies, '1.0');
+		wp_enqueue_style('tool-shortcodes-css', $css_shortcodes, $dependencies, '1.1');
 }
 add_action('woodkit_front_enqueue_styles_tools', 'tool_shortcodes_woodkit_front_enqueue_styles_tools');
 
@@ -49,6 +49,6 @@ function tool_shortcodes_woodkit_admin_enqueue_styles_tools($dependencies) {
 
 	$css_shortcodes = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SHORTCODES_TOOL_NAME.'/css/tool-shortcodes-admin.css');
 	if (!empty($css_shortcodes))
-		wp_enqueue_style('tool-shortcodes-css', $css_shortcodes, $dependencies, '1.0');
+		wp_enqueue_style('tool-shortcodes-css', $css_shortcodes, $dependencies, '1.1');
 }
 add_action('woodkit_admin_enqueue_styles_tools', 'tool_shortcodes_woodkit_admin_enqueue_styles_tools');

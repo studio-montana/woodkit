@@ -1,0 +1,127 @@
+/**
+ * @package Woodkit
+ * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+ * License: GPL2
+ * Text Domain: woodkit
+ *
+ * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License, version 2, as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+/**
+ * Divi modules - Icon button
+ */
+.woodkit_et_pb_icon_button{
+	display: block;
+	position: relative;
+	width: 150px;
+	height: 150px;
+	margin: 0 auto !important;
+	-webkit-transition: background-color 200ms linear !important;
+    -moz-transition: background-color 200ms linear !important;
+    -o-transition: background-color 200ms linear !important;
+    -ms-transition: background-color 200ms linear !important;
+    transition: background-color 200ms linear !important;
+    
+	-webkit-transition: border-color 200ms linear !important;
+    -moz-transition: border-color 200ms linear !important;
+    -o-transition: border-color 200ms linear !important;
+    -ms-transition: border-color 200ms linear !important;
+    transition: border-color 200ms linear !important;
+}
+
+.woodkit_et_pb_icon_button i{
+	-webkit-transition: color 200ms linear !important;
+    -moz-transition: color 200ms linear !important;
+    -o-transition: color 200ms linear !important;
+    -ms-transition: color 200ms linear !important;
+    transition: color 200ms linear !important;
+}
+
+/**
+ * Divi modules - Contact Form 7
+ */
+
+#et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7 table,.wpcf7 table tr,
+#et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7 table tr td {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7 table tr td {
+	padding: 12px 0;
+	position: relative;
+}
+
+#et_builder_outer_content .woodkit_et_pb_contactform7 input[type="text"],
+#et_builder_outer_content .woodkit_et_pb_contactform7 input[type="password"],
+#et_builder_outer_content .woodkit_et_pb_contactform7 input[type="number"],
+#et_builder_outer_content .woodkit_et_pb_contactform7 input[type="submit"],
+#et_builder_outer_content .woodkit_et_pb_contactform7 input[type="email"],
+#et_builder_outer_content .woodkit_et_pb_contactform7 textarea {
+    height: auto;
+    border: 1px solid #777;
+	padding: 0 12px;
+	line-height: 1.5;
+	min-height: 40px;
+}
+
+#et_builder_outer_content .woodkit_et_pb_contactform7 textarea {
+	padding: 12px;
+}
+
+#et_builder_outer_content .woodkit_et_pb_contactform7 span.wpcf7-not-valid-tip{
+	color: #f00;
+	padding-top: 6px;
+	display: block;
+	margin-top: 12px;
+	font-weight: 200;
+}
+
+#et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7  div.wpcf7-mail-sent-ok {
+	border: none;
+	font-weight: 300;
+	text-align: center;
+}
+
+#et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7  div.wpcf7-mail-sent-ok:before {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "\f00c";
+	margin-right: 6px;
+}
+
+#et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7  div.wpcf7-validation-errors {
+	border: none;
+	display: none !important;
+}
+
+#et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7 .wpcf7-not-valid-tip:before,
+#et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7 div.wpcf7-validation-errors:before
+	{
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "\f00d";
+	margin-right: 6px;
+}
