@@ -15,7 +15,7 @@
 
 (function($) {
 
-	$(document).ready(function() {
+	$(window).load(function() {
 
 		/**
 		 * Divi modules - Icon button - center icons
@@ -24,7 +24,7 @@
 			$(this).css("position", "absolute");
 			$(this).css("top", "50%");
 			$(this).css("left", "50%");
-			$(this).css("margin", "-" + ($(this).outerHeight() / 2) + "px 0 0 -" + ($(this).outerWidth() / 2) + "px");
+			$(this).css("margin", "-" + ($(this).height() / 2) + "px 0 0 -" + ($(this).width() / 2) + "px");
 		});
 
 	});
