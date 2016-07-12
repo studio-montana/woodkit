@@ -16,7 +16,22 @@
 (function($) {
 
 	$(document).ready(function() {
+		
+		/**
+		 * Trigger on Divi modal box opened
+		 */
+		$(document).on("DOMNodeInserted", function(e) {
+			if ($(".et_pb_modal_settings_container").length > 0) { // Divi modal box load
+				if ($(e.target).attr('class') == 'et_pb_modal_settings_container') {
+					$(document).trigger("woodkit-on-divi-modal-box-opened", [e]);
+				}
+			}
+		});
 
+		/**
+		 * Renderers
+		 */
+		
 		var woodkit_font_iconpicker = {};
 		window.woodkit_et_builder = {};
 		var woodkit_iconpicker = null;
@@ -29,7 +44,7 @@
 				var template = $('#woodkit-et-builder-font-iconpicker-template').html();
 				return template;
 			},
-			woodkit_font_icon_dom_node_inserted : function(e) {
+			woodkit_font_icon_dom_node_inserted : function() {
 				if ($("#et_pb_module_icon").length > 0){
 					if ($("#woodkit-et-font-icon-preview").length > 0) {
 						$("#woodkit-et-font-icon-preview i").attr('class', $("#et_pb_module_icon").val());
@@ -59,21 +74,13 @@
 			}
 		};
 		$.extend(window.woodkit_et_builder, woodkit_font_iconpicker);
-
-		/**
-		 * Activation
-		 */
 		window.woodkit_et_builder.woodkit_font_icon_activate();
-
-		/**
-		 * On template load actions
-		 */
-		$(document).on("DOMNodeInserted", function(e) {
-			window.woodkit_et_builder.woodkit_font_icon_dom_node_inserted(e);
+		$(document).on("woodkit-on-divi-modal-box-opened", function(e) {
+			window.woodkit_et_builder.woodkit_font_icon_dom_node_inserted();
 		});
-
+		
 		/**
-		 * Other field renderer
+		 *  Other field renderer ...
 		 */
 
 	});

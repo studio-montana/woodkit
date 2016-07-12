@@ -31,6 +31,10 @@
 	line-height: normal !important;
 }
 
+.iris-picker .iris-strip{
+	width: 16px !important;
+}
+
 /**
  * Font Icon renderer
  */
