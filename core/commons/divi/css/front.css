@@ -23,7 +23,7 @@
 /**
  * Divi modules - Icon button
  */
-.woodkit_et_pb_icon_button{
+.woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button{
 	display: block;
 	position: relative;
 	width: 150px;
@@ -42,7 +42,22 @@
     transition: border-color 200ms linear !important;
 }
 
-.woodkit_et_pb_icon_button i{
+.woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button i{
+	-webkit-transition: color 200ms linear !important;
+    -moz-transition: color 200ms linear !important;
+    -o-transition: color 200ms linear !important;
+    -ms-transition: color 200ms linear !important;
+    transition: color 200ms linear !important;
+}
+
+.woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button_content{
+	max-width: 150px;
+	padding: 12px 0;
+	margin: 0 auto !important;
+}
+
+.woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button_content .title,
+.woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button_content .text{
 	-webkit-transition: color 200ms linear !important;
     -moz-transition: color 200ms linear !important;
     -o-transition: color 200ms linear !important;

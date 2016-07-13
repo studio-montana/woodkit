@@ -36,6 +36,15 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 				'module_link',
 				'module_link_url',
 				'module_link_url_blank',
+				'module_content',
+				'module_title_orientation',
+				'module_text_orientation',
+				'module_title',
+				'module_text',
+				'module_title_color',
+				'module_title_color_focus',
+				'module_text_color',
+				'module_text_color_focus',
 				'module_bgcolor',
 				'module_bgcolor_focus',
 				'module_color',
@@ -51,16 +60,23 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		);
 
 		$this->fields_defaults = array(
-				'module_link_url'			=> array('off'),
+				'module_link_url'				=> array('off'),
 				'module_link_url_blank'			=> array('off'),
-				'module_color'				=> array('#000000'),
-				'module_color_focus'		=> array('#000000'),
-				'module_radius'				=> array('3'),
-				'module_icon_size'			=> array('50'),
-				'module_border'				=> array('off'),
-				'module_border_size'		=> array('2'),
-				'module_border_color'		=> array('#000000'),
-				'module_border_color_focus'	=> array('#000000'),
+				'module_color'					=> array('#000000'),
+				'module_color_focus'			=> array('#000000'),
+				'module_content'				=> array('off'),
+				'module_title_orientation'		=> array('center'),
+				'module_text_orientation'		=> array('center'),
+				'module_title_color'			=> array('#000000'),
+				'module_title_color_focus'		=> array('#000000'),
+				'module_text_color'				=> array('#000000'),
+				'module_text_color_focus'		=> array('#000000'),
+				'module_radius'					=> array('3'),
+				'module_icon_size'				=> array('50'),
+				'module_border'					=> array('off'),
+				'module_border_size'			=> array('2'),
+				'module_border_color'			=> array('#000000'),
+				'module_border_color_focus'		=> array('#000000'),
 		);
 	}
 
@@ -130,6 +146,94 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 						'option_category'		=> 'color_option',
 						'custom_color'      => true,
 						'default'         => '#000000',
+				),
+				'module_content' => array(
+						'label'					=> esc_html__('Content', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'					=> 'yes_no_button',
+						'option_category'		=> 'configuration',
+						'options'         => array(
+								'off' => esc_html__('No', WOODKIT_PLUGIN_TEXT_DOMAIN),
+								'on'  => esc_html__('Yes', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						),
+						'default'         => 'off',
+						'affects' => array(
+								'#et_pb_module_title',
+								'#et_pb_module_title_color',
+								'#et_pb_module_title_color_focus',
+								'#et_pb_module_title_orientation',
+								'#et_pb_module_text',
+								'#et_pb_module_text_color',
+								'#et_pb_module_text_color_focus',
+								'#et_pb_module_text_orientation',
+						),
+				),
+				'module_title' => array(
+						'label'           => esc_html__('Title', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'            => 'text',
+						'option_category' => 'configuration',
+						'depends_show_if' => 'on',
+				),
+				'module_title_orientation' => array(
+						'label'             => esc_html__('Title Orientation', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'              => 'select',
+						'option_category'   => 'configuration',
+						'options'           => array(
+								'left'   => esc_html__('Left', WOODKIT_PLUGIN_TEXT_DOMAIN),
+								'center' => esc_html__('Center', WOODKIT_PLUGIN_TEXT_DOMAIN),
+								'right'  => esc_html__('Right', WOODKIT_PLUGIN_TEXT_DOMAIN),
+								'justify'  => esc_html__('Justify', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						),
+						'depends_show_if' => 'on',
+				),
+				'module_title_color' => array(
+						'label'					=> esc_html__('Title color', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'					=> 'color-alpha',
+						'option_category' 		=> 'color_option',
+						'custom_color'      => true,
+						'default'         => '#000000',
+						'depends_show_if' => 'on',
+				),
+				'module_title_color_focus' => array(
+						'label'					=> esc_html__('Title color on focus', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'					=> 'color-alpha',
+						'option_category' 		=> 'color_option',
+						'custom_color'      => true,
+						'default'         => '#000000',
+						'depends_show_if' => 'on',
+				),
+				'module_text' => array(
+						'label'           => esc_html__('Text', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'            => 'textarea',
+						'option_category' => 'configuration',
+						'depends_show_if' => 'on',
+				),
+				'module_text_orientation' => array(
+						'label'             => esc_html__('Text Orientation', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'              => 'select',
+						'option_category'   => 'configuration',
+						'options'           => array(
+								'left'   => esc_html__('Left', WOODKIT_PLUGIN_TEXT_DOMAIN),
+								'center' => esc_html__('Center', WOODKIT_PLUGIN_TEXT_DOMAIN),
+								'right'  => esc_html__('Right', WOODKIT_PLUGIN_TEXT_DOMAIN),
+								'justify'  => esc_html__('Justify', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						),
+						'depends_show_if' => 'on',
+				),
+				'module_text_color' => array(
+						'label'					=> esc_html__('Text color', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'					=> 'color-alpha',
+						'option_category' 		=> 'color_option',
+						'custom_color'      => true,
+						'default'         => '#000000',
+						'depends_show_if' => 'on',
+				),
+				'module_text_color_focus' => array(
+						'label'					=> esc_html__('Text color on focus', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'					=> 'color-alpha',
+						'option_category' 		=> 'color_option',
+						'custom_color'      => true,
+						'default'         => '#000000',
+						'depends_show_if' => 'on',
 				),
 				/* Advanced */
 				'module_bgcolor' => array(
@@ -223,6 +327,15 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		$module_link				= $this->shortcode_atts['module_link'];
 		$module_link_url			= $this->shortcode_atts['module_link_url'];
 		$module_link_url_blank		= $this->shortcode_atts['module_link_url_blank'];
+		$module_content				= $this->shortcode_atts['module_content'];
+		$module_title_orientation	= $this->shortcode_atts['module_title_orientation'];
+		$module_text_orientation	= $this->shortcode_atts['module_text_orientation'];
+		$module_title				= $this->shortcode_atts['module_title'];
+		$module_text				= $this->shortcode_atts['module_text'];
+		$module_title_color			= $this->shortcode_atts['module_title_color'];
+		$module_title_color_focus	= $this->shortcode_atts['module_title_color_focus'];
+		$module_text_color			= $this->shortcode_atts['module_text_color'];
+		$module_text_color_focus	= $this->shortcode_atts['module_text_color_focus'];
 		$module_bgcolor				= $this->shortcode_atts['module_bgcolor'];
 		$module_bgcolor_focus		= $this->shortcode_atts['module_bgcolor_focus'];
 		$module_color				= $this->shortcode_atts['module_color'];
@@ -238,9 +351,10 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 
 		$module_class = ET_Builder_Element::add_module_order_class($module_class, $function_name);
 
+		// icon background
 		if ( '' !== $module_bgcolor ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%%.woodkit_et_pb_icon_button',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button',
 			'declaration' => sprintf(
 			'background-color: %1$s;',
 			esc_html( $module_bgcolor )
@@ -248,9 +362,10 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			) );
 		}
 
+		// icon background focus
 		if ('' !== $module_bgcolor_focus ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%%.woodkit_et_pb_icon_button:hover, %%order_class%%.woodkit_et_pb_icon_button:focus, %%order_class%%.woodkit_et_pb_icon_button:active',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button',
 			'declaration' => sprintf(
 			'background-color: %1$s;',
 			esc_html($module_bgcolor_focus)
@@ -258,10 +373,11 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			) );
 		}
 
+		// icon border
 		if ('on' === $module_border) {
 			if ('' !== $module_border_size && '' !== $module_border_color) {
 				ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%%.woodkit_et_pb_icon_button',
+				'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button',
 				'declaration' => sprintf(
 				'border: %1$s solid %2$s;',
 				esc_html( $module_border_size )."px", esc_html( $module_border_color )
@@ -270,7 +386,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			}
 			if ('' !== $module_border_size && '' !== $module_border_color_focus ) {
 				ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%%.woodkit_et_pb_icon_button:hover, %%order_class%%.woodkit_et_pb_icon_button:focus, %%order_class%%.woodkit_et_pb_icon_button:active',
+				'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button',
 				'declaration' => sprintf(
 				'border-color: %1$s;',
 				esc_html($module_border_color_focus)
@@ -279,9 +395,10 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			}
 		}
 
+		// icon color
 		if ('' !== $module_color ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%%.woodkit_et_pb_icon_button i',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button i',
 			'declaration' => sprintf(
 			'color: %1$s;',
 			esc_html( $module_color )
@@ -289,9 +406,10 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			) );
 		}
 
+		// icon color focus
 		if ('' !== $module_color_focus ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%%.woodkit_et_pb_icon_button:hover i, %%order_class%%.woodkit_et_pb_icon_button:focus i, %%order_class%%.woodkit_et_pb_icon_button:active i',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button i, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button i, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button i',
 			'declaration' => sprintf(
 			'color: %1$s;',
 			esc_html($module_color_focus)
@@ -299,9 +417,10 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			) );
 		}
 
+		// icon size
 		if ('' !== $module_icon_size) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%%.woodkit_et_pb_icon_button i',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button i',
 			'declaration' => sprintf(
 			'font-size: %1$s;',
 			esc_html( $module_icon_size )."px"
@@ -309,9 +428,10 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			) );
 		}
 
+		// icon radius
 		if ('' !== $module_radius ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%%.woodkit_et_pb_icon_button',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button',
 			'declaration' => sprintf(
 			'border-radius: %1$s; -webkit-border-radius: %1$s; -moz-border-radius: %1$s;',
 			esc_html($module_radius)."%"
@@ -319,19 +439,98 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			) );
 		}
 
+		// title color
+		if ('on' === $module_content && '' !== $module_title && '' !== $module_title_color){
+			ET_Builder_Element::set_style( $function_name, array(
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button_content .title',
+			'declaration' => sprintf(
+			'color: %1$s;',
+			esc_html( $module_title_color )
+			),
+			) );
+		}
+
+		// title color focus
+		if ('on' === $module_content && '' !== $module_title && '' !== $module_title_color_focus){
+			ET_Builder_Element::set_style( $function_name, array(
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button_content .title, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button_content .title, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button_content .title',
+			'declaration' => sprintf(
+			'color: %1$s;',
+			esc_html( $module_title_color_focus )
+			),
+			) );
+		}
+		
+		// title orientation
+		if ('' !== $module_title_orientation){
+			ET_Builder_Element::set_style( $function_name, array(
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button_content .title',
+			'declaration' => sprintf(
+			'text-align: %1$s;',
+			esc_html( $module_title_orientation )
+			),
+			) );
+		}
+
+		// text color
+		if ('on' === $module_content && '' !== $module_text && '' !== $module_text_color){
+			ET_Builder_Element::set_style( $function_name, array(
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button_content .text',
+			'declaration' => sprintf(
+			'color: %1$s;',
+			esc_html( $module_text_color )
+			),
+			) );
+		}
+
+		// text color focus
+		if ('on' === $module_content && '' !== $module_text && '' !== $module_text_color_focus){
+			ET_Builder_Element::set_style( $function_name, array(
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button_content .text, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button_content .text, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button_content .text',
+			'declaration' => sprintf(
+			'color: %1$s;',
+			esc_html( $module_text_color_focus )
+			),
+			) );
+		}
+		
+		// text orientation
+		if ('' !== $module_text_orientation){
+			ET_Builder_Element::set_style( $function_name, array(
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button_content .text',
+			'declaration' => sprintf(
+			'text-align: %1$s;',
+			esc_html( $module_text_orientation )
+			),
+			) );
+		}
+
 		$this->shortcode_content = et_builder_replace_code_content_entities($this->shortcode_content);
 
-		$output = '<div class="woodkit_et_pb_icon_button_wrapper">';
+		$output = '<div class="woodkit_et_pb_icon_button_wrapper '.esc_attr($module_class).'">';
 
 		if ('on' === $module_link){
 			$target = "";
 			if ('on' === $module_link_url_blank)
 				$target = 'target="_blank"';
-			$output .= '<a href="'.$module_link_url.'" '.$target.' class="woodkit_et_pb_icon_button '.esc_attr($module_class).'">';
+			$output .= '<a href="'.$module_link_url.'" '.$target.' class="woodkit_et_pb_icon_button_container">';
 		}else{
-			$output .= '<div class="woodkit_et_pb_icon_button '.esc_attr($module_class).'">';
+			$output .= '<div class="woodkit_et_pb_icon_button_container">';
 		}
-		$output .= '<i class="'.$module_icon.'">'.$this->shortcode_content.'</i>';
+
+		$output .= '<div class="woodkit_et_pb_icon_button"><i class="'.$module_icon.'">'.$this->shortcode_content.'</i></div>';
+
+		if ('on' === $module_content && ('' !== $module_text || '' !== $module_title)) {
+			$output .= '<div class="woodkit_et_pb_icon_button_content">';
+			if ('' !== $module_title) {
+				$output .= '<h2 class="title">'.$module_title.'</h2>';
+			}
+			if ('' !== $module_text) {
+				$output .= '<div class="text">'.$module_text.'</div>';
+			}
+			$output .= '</div>';
+		}
+
 		if ('on' === $module_link){
 			$output .= '</a>';
 		}else{
