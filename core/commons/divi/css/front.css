@@ -52,7 +52,7 @@
 
 .woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button_content{
 	max-width: 150px;
-	padding: 12px 0;
+	padding: 12px 0 !important;
 	margin: 0 auto !important;
 }
 

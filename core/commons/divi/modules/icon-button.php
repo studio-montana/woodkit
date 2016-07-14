@@ -56,7 +56,8 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 				'module_border_color_focus',
 				'module_icon_size',
 				'module_icon',
-				'module_class'
+				'module_class',
+				'admin_label',
 		);
 
 		$this->fields_defaults = array(
@@ -234,6 +235,11 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 						'custom_color'      => true,
 						'default'         => '#000000',
 						'depends_show_if' => 'on',
+				),
+				'admin_label' => array(
+						'label'       => esc_html__( 'Admin Label', 'et_builder' ),
+						'type'        => 'text',
+						'description' => esc_html__( 'This will change the label of the module in the builder for easy identification.', 'et_builder' ),
 				),
 				/* Advanced */
 				'module_bgcolor' => array(
