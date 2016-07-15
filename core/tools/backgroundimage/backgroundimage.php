@@ -97,6 +97,10 @@ function backgroundimage_get_color($id_post = null){
 	}
 	if ($id_post && (is_single() || is_page() || is_home() || (function_exists("is_shop") && is_shop()))){
 		$background_color_code = get_post_meta($id_post, BACKGROUNDCOLOR_CODE, true);
+		$background_color_opacity = get_post_meta($id_post, BACKGROUNDCOLOR_OPACITY, true);
+		if (empty($background_color_opacity) || $background_color_opacity == 0){
+			$background_color_code = '';
+		}
 	}
 	if (empty($background_color_code)){
 		$background_color_code = get_theme_mod('backgroundimage_color');

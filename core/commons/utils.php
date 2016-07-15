@@ -22,6 +22,19 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
+if (!function_exists("woodkit_get_image_id_for_url")):
+/**
+ * retrieve image id for image url
+ * @param unknown $image_url
+ * @return Ambigous <Ambigous <string, NULL>>
+ */
+function woodkit_get_image_id_for_url($image_url) {
+	global $wpdb;
+	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url));
+	return $attachment[0];
+}
+endif;
+
 if (!function_exists("locate_web_ressource")):
 /**
  * Retrieve the URI of the highest priority template file which exists.
