@@ -44,6 +44,8 @@ defined('ABSPATH') or die("Go Away!");
 						foreach ($widgets as $widget_id){
 							$widget = $GLOBALS['wp_registered_widgets'][$widget_id];
 							$widget_obj = $widget['callback'][0];
+							// IMPORTANT - I don't why $widget_obj->id not always good id (in case of two same declaratino widget : the id is the last id...)
+							$widget_obj->id = $widget_id;
 							$hide_field_name = TOOL_WIDGETMANAGER_HIDE_WIDGET_.$sidebar_id.$widget_obj->id;
 							$hide_field_value = @get_post_meta($post->ID, $hide_field_name, true);
 							$checked = '';
