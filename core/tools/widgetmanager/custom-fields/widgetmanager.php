@@ -61,6 +61,8 @@ function widgetmanager_save_post($post_id){
 				foreach ($widgets as $widget_id){
 					$widget = $GLOBALS['wp_registered_widgets'][$widget_id];
 					$widget_obj = $widget['callback'][0];
+					// IMPORTANT - I don't why $widget_obj->id not always good id (in case of two same declaratino widget : the id is the last id...) - I fixe it strongly
+					$widget_obj->id = $widget_id;
 					// HIDE
 					if (isset($_POST[TOOL_WIDGETMANAGER_HIDE_WIDGET_.$sidebar_id.$widget_obj->id])){
 						update_post_meta($post_id, TOOL_WIDGETMANAGER_HIDE_WIDGET_.$sidebar_id.$widget_obj->id, sanitize_text_field($_POST[TOOL_WIDGETMANAGER_HIDE_WIDGET_.$sidebar_id.$widget_obj->id]));
