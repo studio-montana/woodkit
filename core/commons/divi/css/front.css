@@ -29,6 +29,7 @@
 	width: 150px;
 	height: 150px;
 	margin: 0 auto !important;
+	overflow: hidden;
 	-webkit-transition: background-color 200ms linear !important;
     -moz-transition: background-color 200ms linear !important;
     -o-transition: background-color 200ms linear !important;
