@@ -427,7 +427,9 @@ function wall_get_default_template($post_id = null){
 	if ($post_id == null)
 		$post_id = get_the_ID();
 	$template = "content";
-	if (woodkit_is_registered_tool('video') && video_has_featured_video($post_id)){
+	if (get_post_type($post_id) == "attachment" && startsWith(get_post_mime_type($post_id), 'image')){
+		$template = "thumb";
+	}else if (woodkit_is_registered_tool('video') && video_has_featured_video($post_id)){
 		$template = "video";
 	}else if (has_post_thumbnail($post_id)){
 		$template = "thumb";
@@ -520,6 +522,9 @@ function wall_get_wall_item_link($item_id, $wall_args){
 	$link = "";
 	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()])){
 		$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
+	}
+	if (empty($link) && get_post_type(get_the_ID()) == "attachment" && startsWith(get_post_mime_type(get_the_ID()), 'image')){
+		$link = wp_get_attachment_url(get_the_ID());
 	}
 	if (empty($link)){
 		$link = get_the_permalink();

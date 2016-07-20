@@ -23,7 +23,8 @@
 defined('ABSPATH') or die("Go Away!");
 
 if (empty($postypes)){
-	$postypes = get_displayed_post_types(true);
+	$postypes = get_displayed_post_types(true, true, array("revision", "nav_menu_item"));
+	$postypes = apply_filters("woodkit_postpicker_available_posttypes", $postypes);
 }
 global $post;
 
@@ -57,20 +58,26 @@ if (!empty($postypes)){
 							<?php
 							foreach ($posts as $post){
 								setup_postdata($post);
-								?>
-								<li class="post-item" data-id="<?php echo get_the_ID()?>">
-									<?php 
-									$postpick_item_template = locate_ressource(WOODKIT_PLUGIN_COMMONS_FOLDER.'/postpicker/templates/postpicker-item.php');
-									if (!empty($postpick_item_template))
-										include($postpick_item_template);
+								$available = true;
+								if (get_post_type() == "attachment" && !startsWith(get_post_mime_type(), 'image')){ // only attachment images
+									$available = false;
+								}
+								if ($available == true){
 									?>
-									<div class="selected-box">
-										<i class="fa fa-check added"></i>
-										<i class="fa fa-minus remove"></i>
-									</div>
-									<div class="selectable-area"></div>
-								</li>
-								<?php
+									<li class="post-item" data-id="<?php echo get_the_ID()?>">
+										<?php 
+										$postpick_item_template = locate_ressource(WOODKIT_PLUGIN_COMMONS_FOLDER.'/postpicker/templates/postpicker-item.php');
+										if (!empty($postpick_item_template))
+											include($postpick_item_template);
+										?>
+										<div class="selected-box">
+											<i class="fa fa-check added"></i>
+											<i class="fa fa-minus remove"></i>
+										</div>
+										<div class="selectable-area"></div>
+									</li>
+									<?php
+								}
 								wp_reset_postdata();
 							} ?>
 						</ul>

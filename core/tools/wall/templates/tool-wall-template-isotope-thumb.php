@@ -24,27 +24,33 @@ defined('ABSPATH') or die("Go Away!");
 
 $class = "";
 $style = "width: 100%; height: 100%;";
+
 $has_thumb = false;
+$thumbnail = null;
+$is_attachment = false;
 if (has_post_thumbnail(get_the_ID())){
 	$thumbnail_id = get_post_thumbnail_id(get_the_ID());
 	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'tool-wall-thumb');
-	if ($thumbnail) {
-		$has_thumb = true;
-		list($thumbnail_src, $thumbnail_width, $thumbnail_height) = $thumbnail;
-		$style .= "background:	url('$thumbnail_src') no-repeat center center;";
-		$style .= "-webkit-background-size: cover;";
-		$style .= "-moz-background-size: cover;";
-		$style .= "-o-background-size: cover;";
-		$style .= "-ms-background-size: cover;";
-		$style .= "background-size: cover;";
-		$style .= "overflow: hidden;";
-	}
+}else if (get_post_type(get_the_ID()) == "attachment" && startsWith(get_post_mime_type(get_the_ID()), 'image')){
+	$is_attachment = true;
+	$thumbnail_id = get_the_ID();
+	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'tool-wall-thumb');
 }
-if ($has_thumb){
+if (!empty($thumbnail)){
+	$has_thumb = true;
+	list($thumbnail_src, $thumbnail_width, $thumbnail_height) = $thumbnail;
+	$style .= "background:	url('$thumbnail_src') no-repeat center center;";
+	$style .= "-webkit-background-size: cover;";
+	$style .= "-moz-background-size: cover;";
+	$style .= "-o-background-size: cover;";
+	$style .= "-ms-background-size: cover;";
+	$style .= "background-size: cover;";
+	$style .= "overflow: hidden;";
 	$class .= " has-thumb";
 }else{
 	$class .= " no-thumb";
 }
+
 $class = join(' ', get_post_class($class));
 $class = wall_sanitize_wall_item_classes($class);
 
@@ -61,7 +67,7 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
 <li class="isotope-item template-thumb <?php echo $class; ?>"style="<?php echo $style_li; ?>" data-format="<?php echo $wall_args['meta_wall_display_presentation_format']; ?>" data-columns="<?php echo $wall_args['wall_item_width_selected']; ?>" data-lines="<?php echo $wall_args['wall_item_height_selected']; ?>">
 	<?php if (!is_admin()){ ?>
-	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> title="<?php echo esc_attr(get_the_title()); ?>">
+	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> class="<?php if ($is_attachment){ echo " fancybox"; } ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>
 		<div class="inner-item-wrapper" style="width: 100%; height: 100%;">
 			<div class="inner-item thumb" style="<?php echo $style; ?>">

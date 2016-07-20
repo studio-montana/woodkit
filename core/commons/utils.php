@@ -91,10 +91,10 @@ if (!function_exists("get_displayed_post_types")):
 * @param $sort : alphabetic sorting
 * @return array:
 */
-function get_displayed_post_types($sort = false, $only_public = true){
+function get_displayed_post_types($sort = false, $only_public = true, $exclude = array("attachment", "revision", "nav_menu_item")){
 	$displayed_post_types = array();
 	foreach (get_post_types() as $post_type){
-		if ($post_type !=  "attachment" &&  $post_type !=  "revision" && $post_type !=  "nav_menu_item"){
+		if (!in_array($post_type, $exclude)){
 			$post_type_object = get_post_type_object($post_type);
 			if ($only_public == true){
 				if ($post_type_object->public == 1){

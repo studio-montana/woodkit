@@ -26,44 +26,52 @@ $ratio = "";
 $style = "";
 $class = "";
 $style_thumb = "width: 100%; height: 100%;";
-$has_thumb = false;
 $width = $wall_args['meta_wall_display_presentation_masonry_width_customized'];
 $height = $wall_args['meta_wall_display_presentation_masonry_height'];
+
+$has_thumb = false;
+$thumbnail = null;
+$is_attachment = false;
 if (has_post_thumbnail(get_the_ID())){
 	$thumbnail_id = get_post_thumbnail_id(get_the_ID());
 	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'tool-wall-thumb');
-	if ($thumbnail) {
-		$has_thumb = true;
-		list($thumbnail_src, $thumbnail_width, $thumbnail_height) = $thumbnail;
-		$ratio = $thumbnail_height / $thumbnail_width;
-		if ($wall_args['meta_wall_display_presentation_masonry_width'] == "customized"){
-			$style .= "max-width: ".$width."px;";
-			$style .= "width: 100%;";
-			$proportional_height = floor(($thumbnail_height*$width)/$thumbnail_width);
-			if (!empty($height) && is_numeric($height) && $proportional_height > $height){
-				$style .= "height: ".$height."px;";
-			}else{
-				$style .= "height: ".$proportional_height."px;";
-			}
-		}else{
-			$style .= "width: ".(100/$wall_args['meta_wall_display_presentation_masonry_width'])."%;";
-			$temp_width = floor($thumbnail_width * ((100 / $wall_args['meta_wall_display_presentation_masonry_width']) / 100));
-			$proportional_height = floor(($thumbnail_height*$temp_width)/$thumbnail_width);
-			if (!empty($height) && is_numeric($height) && $proportional_height > $height){
-				$style .= "height: ".$height."px;";
-			}else{
-				$style .= "height: ".$proportional_height."px;";
-			}
-		}
-		$style_thumb .= "background:	url('$thumbnail_src') no-repeat center center;";
-		$style_thumb .= "-webkit-background-size: cover;";
-		$style_thumb .= "-moz-background-size: cover;";
-		$style_thumb .= "-o-background-size: cover;";
-		$style_thumb .= "-ms-background-size: cover;";
-		$style_thumb .= "background-size: cover;";
-		$style_thumb .= "overflow: hidden;";
-	}
+}else if (get_post_type(get_the_ID()) == "attachment" && startsWith(get_post_mime_type(get_the_ID()), 'image')){
+	$is_attachment = true;
+	$thumbnail_id = get_the_ID();
+	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'tool-wall-thumb');
 }
+if ($thumbnail) {
+	$has_thumb = true;
+	list($thumbnail_src, $thumbnail_width, $thumbnail_height) = $thumbnail;
+	$ratio = $thumbnail_height / $thumbnail_width;
+	if ($wall_args['meta_wall_display_presentation_masonry_width'] == "customized"){
+		$style .= "max-width: ".$width."px;";
+		$style .= "width: 100%;";
+		$proportional_height = floor(($thumbnail_height*$width)/$thumbnail_width);
+		if (!empty($height) && is_numeric($height) && $proportional_height > $height){
+			$style .= "height: ".$height."px;";
+		}else{
+			$style .= "height: ".$proportional_height."px;";
+		}
+	}else{
+		$style .= "width: ".(100/$wall_args['meta_wall_display_presentation_masonry_width'])."%;";
+		$temp_width = floor($thumbnail_width * ((100 / $wall_args['meta_wall_display_presentation_masonry_width']) / 100));
+		$proportional_height = floor(($thumbnail_height*$temp_width)/$thumbnail_width);
+		if (!empty($height) && is_numeric($height) && $proportional_height > $height){
+			$style .= "height: ".$height."px;";
+		}else{
+			$style .= "height: ".$proportional_height."px;";
+		}
+	}
+	$style_thumb .= "background:	url('$thumbnail_src') no-repeat center center;";
+	$style_thumb .= "-webkit-background-size: cover;";
+	$style_thumb .= "-moz-background-size: cover;";
+	$style_thumb .= "-o-background-size: cover;";
+	$style_thumb .= "-ms-background-size: cover;";
+	$style_thumb .= "background-size: cover;";
+	$style_thumb .= "overflow: hidden;";
+}
+
 if (!$has_thumb){
 	if ($wall_args['meta_wall_display_presentation_masonry_width'] == "customized"){
 		$style .= "max-width: ".$wall_args['meta_wall_display_presentation_masonry_width_customized']."px;";
@@ -86,7 +94,7 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
 <li class="masonry-item template-thumb <?php echo $class; ?>" style="<?php echo $style; ?>" data-ratio-width-height="<?php echo $ratio; ?>" data-columns="1">
 	<?php if (!is_admin()){ ?>
-	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> title="<?php echo esc_attr(get_the_title()); ?>">
+	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> class="<?php if ($is_attachment){ echo " fancybox"; } ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>
 		<div class="inner-item-wrapper" style="width: 100%; height: 100%;">
 			<div class="inner-item thumb" style="<?php echo $style_thumb; ?>">
