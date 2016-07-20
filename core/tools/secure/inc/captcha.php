@@ -134,9 +134,9 @@ function secure_captcha_comment_validate($comment_post_ID){
 /**
  * generic form field
  */
-function secure_captcha_generic_form_field($field_name = "", $display = true){
+function secure_captcha_generic_form_field($field_name = "", $display = true, $use_placeholder = true, $use_label = false){
 	if (empty($field_name)) $field_name = SECURE_CAPTCHA_FIELD;
-	$field = secure_captcha_generate_field($field_name);
+	$field = secure_captcha_generate_field($field_name, $use_placeholder, $use_label);
 	if ($display)
 		echo $field;
 	else
@@ -157,7 +157,7 @@ function secure_captcha_generic_form_validate($field_name = "", $errors = array(
 /**
  * generate captcha field
  */
-function secure_captcha_generate_field($field_name){
+function secure_captcha_generate_field($field_name, $use_placeholder = true, $use_label = false){
 	$field = "";
 	$is_validated = woodkit_session_get($field_name.'-validate', "");
 	$old_result = woodkit_session_get($field_name.'-result', "");
@@ -182,7 +182,14 @@ function secure_captcha_generate_field($field_name){
 		$input_classes .= ' error ';
 	}
 	$field .= '<span class="input-wrapper tool-secure-input-wrapper">';
-	$field .= '<input class="'.$input_classes.'" size="20" type="number" id="'.$field_name.'" name="'.$field_name.'" placeholder="'.$captcha_1." + ".$captcha_2.'" />';
+	if ($use_label == true){
+		$field .= '<label class="tool-secure-input-label" for="'.$field_name.'">'.$captcha_1." + ".$captcha_2.'</label>';
+	}
+	$placeholder = '';
+	if ($use_placeholder == true){
+		$placeholder =  'placeholder="'.$captcha_1." + ".$captcha_2.'"';
+	}
+	$field .= '<input class="'.$input_classes.'" size="20" type="number" id="'.$field_name.'" name="'.$field_name.'" '.$placeholder.' />';
 	$field .= '<span class="fa fa-question-circle tool-secure-show-info"></span>';
 	$field .= '<span class="tool-secure-info-text">'.__("Please solve the problem. This is an anti-spam security check.", WOODKIT_PLUGIN_TEXT_DOMAIN).'</span>';
 	$field .= '</span>';

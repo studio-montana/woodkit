@@ -115,7 +115,7 @@ add_action('pre_comment_on_post', 'secure_comment_validate', 1, 1);
 /**
  * CONTACTFORM7 TOOL uses this action to display captchanum field
 */
-add_filter('tool_contactform7_captchanum_field', 'secure_contactform7_form_field', 1, 1);
+add_filter('tool_contactform7_captchanum_field', 'secure_contactform7_form_field', 1, 3);
 
 /**
  * CONTACTFORM7 TOOL uses this action to validate captchanum field
@@ -276,13 +276,13 @@ function secure_comment_validate($comment_post_ID){
 /**
  * called when CONTACTFORM7 TOOL displays captchanum field
  */
-function secure_contactform7_form_field($field_name){
+function secure_contactform7_form_field($field_name, $use_placeholder, $use_label){
 	$field = "";
 	if (secure_is_failtoban_active()){
 		$field .= secure_failtoban_generic_form_field(false);
 	}
 	if (secure_is_captcha_active()){
-		$field .= secure_captcha_generic_form_field($field_name, false);
+		$field .= secure_captcha_generic_form_field($field_name, false, $use_placeholder, $use_label);
 	}
 	return $field;
 }

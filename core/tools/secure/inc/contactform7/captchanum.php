@@ -42,9 +42,20 @@ function wpcf7_captchanum_shortcode_handler($tag) {
 	$tag = new WPCF7_Shortcode($tag);
 	if (empty($tag->name))
 		return '';
+	
+	$use_placeholder = false;
+	if ($tag->has_option('useplaceholder')) {
+		$use_placeholder = true;
+	}
+	
+	$use_label = false;
+	if ($tag->has_option('uselabel')) {
+		$use_label = true;
+	}
+	
 	$validation_error = wpcf7_get_validation_error($tag->name);
 	$html = '<span class="wpcf7-form-control-wrap '.sanitize_html_class($tag->name).'">';
-	$html .= apply_filters('tool_contactform7_captchanum_field', $tag->name);
+	$html .= apply_filters('tool_contactform7_captchanum_field', $tag->name, $use_placeholder, $use_label);
 	$html .= '</span>';
 	return $html;
 }
@@ -91,10 +102,16 @@ function wpcf7_tag_generator_captchanum( $contact_form, $args = '' ) {
 <table class="form-table">
 <tbody>
 	<tr>
-	<th scope="row"><?php echo esc_html( __( 'Field type', 'contact-form-7' ) ); ?></th>
-	<tr>
 	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-name' ); ?>"><?php echo esc_html( __( 'Name', 'contact-form-7' ) ); ?></label></th>
 	<td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr( $args['content'] . '-name' ); ?>" /></td>
+	</tr>
+	<tr>
+	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-useplaceholder' ); ?>"><?php echo esc_html( __( 'Use placeholder', 'contact-form-7' ) ); ?></label></th>
+	<td><input type="checkbox" name="useplaceholder" class="tg-useplaceholder option" id="<?php echo esc_attr( $args['content'] . '-useplaceholder' ); ?>" checked="checked" /></td>
+	</tr>
+	<tr>
+	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-uselabel' ); ?>"><?php echo esc_html( __( 'Use label', 'contact-form-7' ) ); ?></label></th>
+	<td><input type="checkbox" name="uselabel" class="tg-uselabel option" id="<?php echo esc_attr( $args['content'] . '-uselabel' ); ?>" /></td>
 	</tr>
 </tbody>
 </table>
