@@ -53,6 +53,10 @@ function wpcf7_captchanum_shortcode_handler($tag) {
 		$use_label = true;
 	}
 	
+	if ($use_placeholder == false && $use_label == false){ // old version support
+		$use_placeholder = true;
+	}
+	
 	$validation_error = wpcf7_get_validation_error($tag->name);
 	$html = '<span class="wpcf7-form-control-wrap '.sanitize_html_class($tag->name).'">';
 	$html .= apply_filters('tool_contactform7_captchanum_field', $tag->name, $use_placeholder, $use_label);
