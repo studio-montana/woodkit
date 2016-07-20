@@ -25,6 +25,8 @@ defined('ABSPATH') or die("Go Away!");
 $ratio = "";
 $style = "";
 $class = "";
+$class_a= "";
+$rel_a= "";
 $style_thumb = "width: 100%; height: 100%;";
 $width = $wall_args['meta_wall_display_presentation_masonry_width_customized'];
 $height = $wall_args['meta_wall_display_presentation_masonry_height'];
@@ -35,7 +37,7 @@ $is_attachment = false;
 if (has_post_thumbnail(get_the_ID())){
 	$thumbnail_id = get_post_thumbnail_id(get_the_ID());
 	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'tool-wall-thumb');
-}else if (get_post_type(get_the_ID()) == "attachment" && startsWith(get_post_mime_type(get_the_ID()), 'image')){
+}else if (wall_is_available_attachment_item(get_the_ID())){
 	$is_attachment = true;
 	$thumbnail_id = get_the_ID();
 	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'tool-wall-thumb');
@@ -71,6 +73,10 @@ if ($thumbnail) {
 	$style_thumb .= "background-size: cover;";
 	$style_thumb .= "overflow: hidden;";
 }
+if ($is_attachment){
+	$class_a .= " fancybox";
+	$rel_a .= " group-wall";
+}
 
 if (!$has_thumb){
 	if ($wall_args['meta_wall_display_presentation_masonry_width'] == "customized"){
@@ -94,7 +100,7 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
 <li class="masonry-item template-thumb <?php echo $class; ?>" style="<?php echo $style; ?>" data-ratio-width-height="<?php echo $ratio; ?>" data-columns="1">
 	<?php if (!is_admin()){ ?>
-	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> class="<?php if ($is_attachment){ echo " fancybox"; } ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> class="<?php echo $class_a ?>" rel="<?php echo $rel_a; ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>
 		<div class="inner-item-wrapper" style="width: 100%; height: 100%;">
 			<div class="inner-item thumb" style="<?php echo $style_thumb; ?>">

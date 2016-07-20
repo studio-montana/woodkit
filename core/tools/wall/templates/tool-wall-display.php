@@ -109,7 +109,9 @@ if (!empty($posts)){
 			global $post;
 			foreach ($posts as $post){
 				setup_postdata($post);
-				get_template_part('content', 'resume');
+				$template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-template-list.php');
+				if (!empty($template))
+					include($template);
 				wp_reset_postdata();
 			} ?>
 		</div>

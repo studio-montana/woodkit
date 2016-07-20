@@ -503,12 +503,12 @@ function tool_wall_visual_composer_support() {
 
 function wall_get_wall_item_title($item_id, $wall_args, $test_hide_property = false, $before = '<div class="title">', $after = '</div>'){
 	$title = "";
-	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()])){
-		$title = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()];
+	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.$item_id])){
+		$title = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.$item_id];
 	}
 	if (empty($title)){
 		if (function_exists("woodkit_display_title")){
-			$title = woodkit_display_title(get_the_ID(), false, $test_hide_property, $before, $after);
+			$title = woodkit_display_title($item_id, false, $test_hide_property, $before, $after);
 		}else{
 			$title = the_title($before, $after, false); 
 		}
@@ -520,11 +520,11 @@ function wall_get_wall_item_title($item_id, $wall_args, $test_hide_property = fa
 
 function wall_get_wall_item_link($item_id, $wall_args){
 	$link = "";
-	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()])){
-		$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
+	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.$item_id])){
+		$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.$item_id];
 	}
-	if (empty($link) && get_post_type(get_the_ID()) == "attachment" && startsWith(get_post_mime_type(get_the_ID()), 'image')){
-		$link = wp_get_attachment_url(get_the_ID());
+	if (empty($link) && wall_is_available_attachment_item($item_id)){
+		$link = wp_get_attachment_url($item_id);
 	}
 	if (empty($link)){
 		$link = get_the_permalink();
@@ -534,9 +534,16 @@ function wall_get_wall_item_link($item_id, $wall_args){
 
 function wall_get_wall_item_link_blank($item_id, $wall_args){
 	$link_blank = "";
-	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()])){
-		$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.get_the_ID()];
+	if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.$item_id])){
+		$link_blank = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_.$item_id];
 	}
 	return $link_blank;
+}
+
+function wall_is_available_attachment_item($item_id){
+	if (get_post_type($item_id) == "attachment" && startsWith(get_post_mime_type($item_id), 'image')){
+		return true;
+	}
+	return false;
 }
 
