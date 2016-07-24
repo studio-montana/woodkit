@@ -98,7 +98,7 @@ if ($meta_media_presentation == 'slider'){
 				<?php
 				$cp_attachment = 0;
 				foreach ($attachments as $id => $attachment) {
-					$img = wp_get_attachment_image_src($id, 'tool-media-slider-nav-thumb');
+					$img = wp_get_attachment_image_src($id, 'woodkit-150-150');
 					$class = ' attachment attachment-'.$id;
 					$style = "background: url('$img[0]') no-repeat center center;";
 					$style .= " -webkit-background-size: cover;";
@@ -177,7 +177,7 @@ if ($meta_media_presentation == 'slider'){
 				
 				// attachement
 				$img = wp_get_attachment_image_src($id, 'full');
-				$thumb = wp_get_attachment_image_src($id, 'tool-media-thumb');
+				$thumb = wp_get_attachment_image_src($id, 'woodkit-400');
 				list($img_src, $img_width, $img_height) = $img;
 				list($thumb_src, $thumb_width, $thumb_height) = $thumb;
 				$ratio = $thumb_height / $thumb_width;
@@ -273,7 +273,7 @@ if ($meta_media_presentation == 'slider'){
 			<?php
 			foreach ($attachments as $id => $attachment) {
 				$img = wp_get_attachment_image_src($id, 'full');
-				$thumb = wp_get_attachment_image_src($id, 'tool-media-thumb');
+				$thumb = wp_get_attachment_image_src($id, 'woodkit-400');
 				// sizes (random - values can only be double from initial setup)
 				$rand_columns = rand(1, 2);
 				$width = (100/$columns)*$rand_columns;
@@ -347,7 +347,7 @@ if ($meta_media_presentation == 'slider'){
 			<?php
 			foreach ($attachments as $id => $attachment) {
 				$img = wp_get_attachment_image_src($id, 'full');
-				$thumb = wp_get_attachment_image_src($id, 'tool-media-thumb');
+				$thumb = wp_get_attachment_image_src($id, 'woodkit-400');
 				$class = ' attachment attachment-'.$id;
 				$width = 100 / $columns;
 				$style = "width: 100%; height: 100%;";

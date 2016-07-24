@@ -212,7 +212,7 @@ if (!empty($posts)){
 							$style = '';
 							if (has_post_thumbnail(get_the_ID())){
 								$thumbnail_id = get_post_thumbnail_id(get_the_ID());
-								$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'tool-wall-slider-nav-thumb');
+								$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'woodkit-150-150');
 								if ($thumbnail) {
 									$has_thumbnail = true;
 									list($thumbnail_src, $thumbnail_width, $thumbnail_height) = $thumbnail;

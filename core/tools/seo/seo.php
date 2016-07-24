@@ -28,20 +28,6 @@ defined('ABSPATH') or die("Go Away!");
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/custom-fields/seo.php');
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/xmlsitemap/xmlsitemap.php');
 
-/**
- * called after woodkit_setup_theme core function
-*/
-function tool_seo_setup_theme_action(){
-
-	// seo image sizes
-	add_image_size('tool-seo-thumb', 600);
-
-	// can be override
-	do_action('after_tool_seo_setup_theme_action');
-
-}
-add_action("woodkit_after_setup_theme", "tool_seo_setup_theme_action");
-
 if (!function_exists("seo_document_title_parts")):
 /**
  * Filter the site meta title.
@@ -427,7 +413,7 @@ function woodkit_seo_get_meta_publication_image($display = true) {
 			}else{ // default (post thumbnail)
 				if (has_post_thumbnail($_queried_post->ID)){
 					$thumb_id = get_post_thumbnail_id($_queried_post->ID);
-					$thumb = wp_get_attachment_image_src($thumb_id, 'tool-seo-thumb');
+					$thumb = wp_get_attachment_image_src($thumb_id, 'woodkit-600');
 					if ($thumb) {
 						list($thumb_src, $thumb_width, $thumb_height) = $thumb;
 						if (!empty($thumb_src)){

@@ -26,7 +26,7 @@ defined('ABSPATH') or die("Go Away!");
 	<?php 
 	if (get_post_type() == "attachment"){
 		if (startsWith(get_post_mime_type(), "image/")){
-			$image = wp_get_attachment_image_src(get_the_ID(), 'full');
+			$image = wp_get_attachment_image_src(get_the_ID(), 'woodkit-300');
 			if ($image){
 				$style_wrapper = " min-width : 50px;";
 				$style_wrapper .= " min-height : 50px;";
@@ -63,7 +63,7 @@ defined('ABSPATH') or die("Go Away!");
 			if (has_post_thumbnail()){
 				$attach_id = get_post_thumbnail_id(get_the_ID());
 				if ($attach_id){
-					$image = wp_get_attachment_image_src($attach_id, 'full');
+					$image = wp_get_attachment_image_src($attach_id, 'woodkit-300');
 					if ($image){
 						$style_wrapper = " min-width : 50px;";
 						$style_wrapper .= " min-height : 50px;";

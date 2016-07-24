@@ -58,21 +58,6 @@ function tool_media_woodkit_front_enqueue_scripts_tools($dependencies) {
 }
 add_action('woodkit_front_enqueue_scripts_tools', 'tool_media_woodkit_front_enqueue_scripts_tools');
 
-/**
- * called after woodkit_setup_theme core function
-*/
-function tool_media_setup_theme_action(){
-
-	// media image sizes
-	add_image_size('tool-media-thumb', 500);
-	add_image_size('tool-media-slider-nav-thumb', 150, 150, true);
-
-	// can be override
-	do_action('after_tool_media_setup_theme_action');
-
-}
-add_action("woodkit_after_setup_theme", "tool_media_setup_theme_action");
-
 function tool_media_image_send_to_editor($html, $id, $caption, $title, $align, $url, $size, $alt = '' ){
 
 	$media_fancybox_active = woodkit_get_option('tool-media-fancybox-active');

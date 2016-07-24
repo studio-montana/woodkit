@@ -49,18 +49,3 @@ function tool_wall_woodkit_admin_enqueue_styles_tools($dependencies) {
 		wp_enqueue_style('tool-wall-css', $css_wall, $dependencies, '1.0');
 }
 add_action('woodkit_admin_enqueue_styles_tools', 'tool_wall_woodkit_admin_enqueue_styles_tools');
-
-/**
- * called after woodkit_setup_theme core function
-*/
-function tool_wall_setup_theme_action(){
-
-	// wall image sizes
-	add_image_size('tool-wall-thumb', 500);
-	add_image_size('tool-wall-slider-nav-thumb', 150, 150, true);
-
-	// can be override
-	do_action('after_tool_wall_setup_theme_action');
-
-}
-add_action("woodkit_after_setup_theme", "tool_wall_setup_theme_action");
