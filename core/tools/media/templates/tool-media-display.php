@@ -41,7 +41,7 @@ if ($meta_media_presentation == 'slider'){
 		<ul id="slider-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media slider<?php if (!empty($meta_media_presentation_slider_carousel) && $meta_media_presentation_slider_carousel == 'on'){ echo " slider-carousel"; } ?>" data-columns="<?php echo $columns; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
-				$img = wp_get_attachment_image_src($id, 'full');
+				$img = wp_get_attachment_image_src($id, 'woodkit-1200');
 				$class = ' attachment attachment-'.$id;
 				$height = $meta_media_presentation_height;
 				$style = "width: 100%; height: ".$height."px;";

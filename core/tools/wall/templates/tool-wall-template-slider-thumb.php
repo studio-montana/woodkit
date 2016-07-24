@@ -29,11 +29,11 @@ $thumbnail = null;
 $is_attachment = false;
 if (has_post_thumbnail(get_the_ID())){
 	$thumbnail_id = get_post_thumbnail_id(get_the_ID());
-	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
+	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'woodkit-1200');
 }else if (wall_is_available_attachment_item(get_the_ID())){
 	$is_attachment = true;
 	$thumbnail_id = get_the_ID();
-	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
+	$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'woodkit-1200');
 }
 if (!empty($thumbnail)){
 	$has_thumb = true;
