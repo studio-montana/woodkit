@@ -28,12 +28,12 @@ defined('ABSPATH') or die("Go Away!");
 define('MEDIA_TOOL_NAME', 'media');
 
 function tool_media_get_name($tool_name = ""){
-	return __("Media", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Wordpress galleries", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_name_".MEDIA_TOOL_NAME, "tool_media_get_name", 1, 1);
 
 function tool_media_get_description($tool_description = ""){
-	return __("customize wp media appearence", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Customize Wordpress galleries", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".MEDIA_TOOL_NAME, "tool_media_get_description", 1, 1);
 

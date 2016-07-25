@@ -33,7 +33,7 @@ function tool_shortcodes_get_name($tool_name = ""){
 add_filter("woodkit_get_tool_name_".SHORTCODES_TOOL_NAME, "tool_shortcodes_get_name", 1, 1);
 
 function tool_shortcodes_get_description($tool_description = ""){
-	return __("add few shortcodes on your html editor", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Add few shortcodes on your html editor: icons, columns, anchors...", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".SHORTCODES_TOOL_NAME, "tool_shortcodes_get_description", 1, 1);
 

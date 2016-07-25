@@ -46,7 +46,7 @@ function tool_wall_get_config_options_section_documentation_url(){
 
 function tool_wall_get_config_options_fields($additional_fields){
 	$additional_fields[] = array("slug" => "tool-wall-active", "callback" => "tool_wall_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
-	$additional_fields[] = array("slug" => "tool-wall-imagesize", "callback" => "tool_wall_get_config_options_field_imagesize", "title" => __("image size", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-wall-imagesize", "callback" => "tool_wall_get_config_options_field_imagesize", "title" => __("thumbnails size", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
 add_filter("woodkit_config_options_fields_tool_wall", "tool_wall_get_config_options_fields", 1, 1);

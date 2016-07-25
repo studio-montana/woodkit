@@ -32,7 +32,7 @@ add_filter("woodkit_is_tool_logo_active", "tool_logo_is_active", 1, 1);
 
 function tool_logo_get_config_options_section_description(){
 	echo '<p class="tool-description">';
-	printf( '%s, <a class="field-info" href="'.esc_url(get_admin_url(null, 'customize.php')).'">%s</a>', __("customize logo", WOODKIT_PLUGIN_TEXT_DOMAIN), __("manage here ", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	printf( '%s, <a class="field-info" href="'.esc_url(get_admin_url(null, 'customize.php')).'">%s</a>', __("Add logo to your site", WOODKIT_PLUGIN_TEXT_DOMAIN), __("manage here ", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	echo '</p>';
 }
 

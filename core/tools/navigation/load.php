@@ -28,12 +28,12 @@ defined('ABSPATH') or die("Go Away!");
 define('NAVIGATION_TOOL_NAME', 'navigation');
 
 function tool_navigation_get_name($tool_name = ""){
-	return __("Navigation", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Navigation widget", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_name_".NAVIGATION_TOOL_NAME, "tool_navigation_get_name", 1, 1);
 
 function tool_navigation_get_description($tool_description = ""){
-	return __("Contextual Navigation Widget", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Contextual navigation widget", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".NAVIGATION_TOOL_NAME, "tool_navigation_get_description", 1, 1);
 

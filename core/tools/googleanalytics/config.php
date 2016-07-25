@@ -28,9 +28,6 @@ function tool_googleanalytics_is_active($active){
 add_filter("woodkit_is_tool_googleanalytics_active", "tool_googleanalytics_is_active", 1, 1);
 
 function tool_googleanalytics_get_config_options_section_description(){
-	echo '<p class="tool-description">';
-	_e("make your site trackable by Google Analytics", WOODKIT_PLUGIN_TEXT_DOMAIN);
-	echo '</p>';
 }
 
 function tool_googleanalytics_get_config_options_section_documentation_url(){

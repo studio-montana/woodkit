@@ -28,12 +28,12 @@ defined('ABSPATH') or die("Go Away!");
 define('LOGIN_TOOL_NAME', 'login');
 
 function tool_login_get_name($tool_name = ""){
-	return __("Login", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Login page", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_name_".LOGIN_TOOL_NAME, "tool_login_get_name", 1, 1);
 
 function tool_login_get_description($tool_description = ""){
-	return __("Login tool", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Login page tool", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".LOGIN_TOOL_NAME, "tool_login_get_description", 1, 1);
 

@@ -33,7 +33,7 @@ function tool_event_get_name($tool_name = ""){
 add_filter("woodkit_get_tool_name_".EVENT_TOOL_NAME, "tool_event_get_name", 1, 1);
 
 function tool_event_get_description($tool_description = ""){
-	return __("manage events", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Events manager", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".EVENT_TOOL_NAME, "tool_event_get_description", 1, 1);
 

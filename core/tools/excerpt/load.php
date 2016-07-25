@@ -33,7 +33,7 @@ function tool_excerpt_get_name($tool_name = ""){
 add_filter("woodkit_get_tool_name_".EXCERPT_TOOL_NAME, "tool_excerpt_get_name", 1, 1);
 
 function tool_excerpt_get_description($tool_description = ""){
-	return __("specify customized excerpt on your post-types", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Add a custom excerpt to your posts", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".EXCERPT_TOOL_NAME, "tool_excerpt_get_description", 1, 1);
 

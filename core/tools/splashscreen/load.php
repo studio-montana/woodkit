@@ -33,7 +33,7 @@ function tool_splashscreen_get_name($tool_name = ""){
 add_filter("woodkit_get_tool_name_".SPLASHSCREEN_TOOL_NAME, "tool_splashscreen_get_name", 1, 1);
 
 function tool_splashscreen_get_description($tool_description = ""){
-	return __("setup splash screen on your site (use during front side site loading)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Add loading page to your site", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".SPLASHSCREEN_TOOL_NAME, "tool_splashscreen_get_description", 1, 1);
 

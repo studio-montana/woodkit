@@ -33,7 +33,7 @@ function tool_backgroundimage_get_name($tool_name = ""){
 add_filter("woodkit_get_tool_name_".BACKGROUNDIMAGE_TOOL_NAME, "tool_backgroundimage_get_name", 1, 1);
 
 function tool_backgroundimage_get_description($tool_description = ""){
-	return __("setup background image on your site and/or post-types", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Add background image to your site and posts", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".BACKGROUNDIMAGE_TOOL_NAME, "tool_backgroundimage_get_description", 1, 1);
 

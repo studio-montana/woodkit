@@ -28,12 +28,12 @@ defined('ABSPATH') or die("Go Away!");
 define('WIDGETMANAGER_TOOL_NAME', 'widgetmanager');
 
 function tool_widgetmanager_get_name($tool_name = ""){
-	return __("Widget manager", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Widgets manager", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_name_".WIDGETMANAGER_TOOL_NAME, "tool_widgetmanager_get_name", 1, 1);
 
 function tool_widgetmanager_get_description($tool_description = ""){
-	return __("Customize your widgets sidebars on each post type", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Customize your widgets on each posts", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".WIDGETMANAGER_TOOL_NAME, "tool_widgetmanager_get_description", 1, 1);
 

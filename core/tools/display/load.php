@@ -33,7 +33,7 @@ function tool_display_get_name($tool_name = ""){
 add_filter("woodkit_get_tool_name_".DISPLAY_TOOL_NAME, "tool_display_get_name", 1, 1);
 
 function tool_display_get_description($tool_description = ""){
-	return __("allows you to hide title, hide thumbnail, set alternative title, set badge, set subtitle, ...", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Hide title, thumbnail, set alternative title, badge, subtitle...", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".DISPLAY_TOOL_NAME, "tool_display_get_description", 1, 1);
 

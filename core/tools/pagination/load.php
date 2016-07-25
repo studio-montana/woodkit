@@ -33,7 +33,7 @@ function tool_pagination_get_name($tool_name = ""){
 add_filter("woodkit_get_tool_name_".PAGINATION_TOOL_NAME, "tool_pagination_get_name", 1, 1);
 
 function tool_pagination_get_description($tool_description = ""){
-	return __("intelligent pagination for all post-types", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Intelligent pagination for all post", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".PAGINATION_TOOL_NAME, "tool_pagination_get_description", 1, 1);
 

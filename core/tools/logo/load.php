@@ -33,7 +33,7 @@ function tool_logo_get_name($tool_name = ""){
 add_filter("woodkit_get_tool_name_".LOGO_TOOL_NAME, "tool_logo_get_name", 1, 1);
 
 function tool_logo_get_description($tool_description = ""){
-	return __("customize your site logo", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Add logo to your site", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".LOGO_TOOL_NAME, "tool_logo_get_description", 1, 1);
 

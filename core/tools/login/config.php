@@ -38,7 +38,7 @@ add_filter("woodkit_config_default_values", "tool_login_woodkit_config_default_v
 
 function tool_login_get_config_options_section_description(){
 	echo '<p class="tool-description">';
-	printf( '%s, <a class="field-info" href="'.esc_url(get_admin_url(null, 'customize.php')).'">%s</a>', __("customize login page appearence", WOODKIT_PLUGIN_TEXT_DOMAIN), __("manage here ", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	printf( '%s, <a class="field-info" href="'.esc_url(get_admin_url(null, 'customize.php')).'">%s</a>', __("Customize login page", WOODKIT_PLUGIN_TEXT_DOMAIN), __("manage here ", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	echo '</p>';
 }
 

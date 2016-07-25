@@ -59,7 +59,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-options-list display-wall-options-list-dynamic">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_TERM_SLUG; ?>">-&nbsp;<?php _e('Type', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_TERM_SLUG; ?>">-&nbsp;<?php _e('Category', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_TERM_SLUG, true); ?>

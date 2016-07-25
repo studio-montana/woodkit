@@ -91,14 +91,14 @@ class WoodkitOptions {
 
 		add_settings_section(
 		'woodkit_settings_key_activation_id', // ID
-		__("Activation (to get plugin updates)", WOODKIT_PLUGIN_TEXT_DOMAIN), // Title
+		__("Woodkit activation", WOODKIT_PLUGIN_TEXT_DOMAIN), // Title
 		array( $this, 'print_section_key_activation_info' ), // Callback
 		'woodkit-admin' // Page
 		);
 
 		add_settings_field(
 		'key-activation-id', // ID
-		__("enter your key", WOODKIT_PLUGIN_TEXT_DOMAIN), // Title
+		__("Enter your key", WOODKIT_PLUGIN_TEXT_DOMAIN), // Title
 		array( $this, 'print_setting_key_activation' ), // Callback
 		'woodkit-admin', // Page
 		'woodkit_settings_key_activation_id' // Section
@@ -117,7 +117,7 @@ class WoodkitOptions {
 
 		add_settings_field(
 		'key-metabox-position-id', // ID
-		__("position", WOODKIT_PLUGIN_TEXT_DOMAIN), // Title
+		__("Position", WOODKIT_PLUGIN_TEXT_DOMAIN), // Title
 		array( $this, 'print_setting_metabox_position' ), // Callback
 		'woodkit-admin', // Page
 		'woodkit_settings_metabox_position_id' // Section
@@ -192,6 +192,7 @@ class WoodkitOptions {
 	 * Print the Section text
 	 */
 	public function print_section_key_activation_info(){
+		echo '<p class="tool-description">'.__("get Woodkit updates", WOODKIT_PLUGIN_TEXT_DOMAIN).'</p>';
 	}
 
 	function print_setting_key_activation(){
@@ -199,7 +200,7 @@ class WoodkitOptions {
 		// TODO display message if key is invalid
 		if (isset($this->options['key-activation']))
 			$value = $this->options['key-activation'];
-		echo '<input placeholder="'.__("YOUR KEY", WOODKIT_PLUGIN_TEXT_DOMAIN).'" type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[key-activation]" value="'.$value.'" /><a href="'.esc_url(WOODKIT_CONFIG_GET_KEY_URL).'" target="_blank" class="button primary">'.__('Get key', WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
+		echo '<input placeholder="'.__("YOUR KEY", WOODKIT_PLUGIN_TEXT_DOMAIN).'" type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[key-activation]" value="'.$value.'" /><a href="'.esc_url(WOODKIT_CONFIG_GET_KEY_URL).'" target="_blank" class="button primary get-a-key">'.__('Get key', WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
 	}
 
 	/**
@@ -210,7 +211,6 @@ class WoodkitOptions {
 
 	function print_setting_metabox_position(){
 		$value = "";
-		// TODO display message if key is invalid
 		if (isset($this->options['metabox-position']))
 			$value = $this->options['metabox-position'];
 		$default_selected = "";

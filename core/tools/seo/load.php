@@ -28,12 +28,12 @@ defined('ABSPATH') or die("Go Away!");
 define('SEO_TOOL_NAME', 'seo');
 
 function tool_seo_get_name($tool_name = ""){
-	return __("SEO", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("SEO - OpenGraph", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_name_".SEO_TOOL_NAME, "tool_seo_get_name", 1, 1);
 
 function tool_seo_get_description($tool_description = ""){
-	return __("optimize your site SEO and control your social publications", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Optimize your site SEO and manage your social publications", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".SEO_TOOL_NAME, "tool_seo_get_description", 1, 1);
 

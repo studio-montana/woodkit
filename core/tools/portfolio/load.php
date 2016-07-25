@@ -28,12 +28,12 @@ defined('ABSPATH') or die("Go Away!");
 define('PORTFOLIO_TOOL_NAME', 'portfolio');
 
 function tool_portfolio_get_name($tool_name = ""){
-	return __("Portfolio", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Portfolios", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_name_".PORTFOLIO_TOOL_NAME, "tool_portfolio_get_name", 1, 1);
 
 function tool_portfolio_get_description($tool_description = ""){
-	return __("manage your portfolios", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Portfolios manager", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".PORTFOLIO_TOOL_NAME, "tool_portfolio_get_description", 1, 1);
 
