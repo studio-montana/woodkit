@@ -56,6 +56,7 @@ if (!is_admin()){
 $wall_args['available_isotope_widths'] = wall_get_available_isotope_widths($wall_args['meta_wall_display_presentation_columns']);
 $wall_args['available_isotope_heights'] = wall_get_available_isotope_heights($wall_args['meta_wall_display_presentation_columns']);
 $wall_args['available_templates'] = wall_get_available_templates();
+$wall_args['image_size'] = woodkit_get_option('tool-wall-imagesize');
 $wall_args = wall_securize_meta_values($wall_args);
 
 $posts = array();

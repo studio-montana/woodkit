@@ -49,18 +49,18 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 				
 				<div class="has-mask">
 					<?php if (function_exists("woodkit_display_thumbnail")){
-						woodkit_display_thumbnail(get_the_ID(), 'woodkit-400', '', true, false, '<div class="thumb">', '</div>'); 
+						woodkit_display_thumbnail(get_the_ID(), $wall_args['image_size'], '', true, false, '<div class="thumb">', '</div>'); 
 					}else if (has_post_thumbnail(get_the_ID())){
-						?><div class="thumb"><?php the_post_thumbnail('woodkit-400'); ?></div><?php 
+						?><div class="thumb"><?php the_post_thumbnail($wall_args['image_size']); ?></div><?php 
 					}?>
 					<?php echo $title; ?>
 					<div class="excerpt"><?php the_excerpt(); ?></div>
 				</div>
 				<div class="has-infos">
 					<?php if (function_exists("woodkit_display_thumbnail")){
-						woodkit_display_thumbnail(get_the_ID(), 'woodkit-400', '', true, false, '<div class="thumb">', '</div>'); 
+						woodkit_display_thumbnail(get_the_ID(), $wall_args['image_size'], '', true, false, '<div class="thumb">', '</div>'); 
 					}else if (has_post_thumbnail(get_the_ID())){
-						?><div class="thumb"><?php the_post_thumbnail('woodkit-400'); ?></div><?php 
+						?><div class="thumb"><?php the_post_thumbnail($wall_args['image_size']); ?></div><?php 
 					}?>
 					<?php echo $title; ?>
 					<div class="excerpt"><?php the_excerpt(); ?></div>

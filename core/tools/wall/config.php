@@ -46,6 +46,7 @@ function tool_wall_get_config_options_section_documentation_url(){
 
 function tool_wall_get_config_options_fields($additional_fields){
 	$additional_fields[] = array("slug" => "tool-wall-active", "callback" => "tool_wall_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-wall-imagesize", "callback" => "tool_wall_get_config_options_field_imagesize", "title" => __("image size", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
 add_filter("woodkit_config_options_fields_tool_wall", "tool_wall_get_config_options_fields", 1, 1);
@@ -60,4 +61,26 @@ function tool_wall_get_config_options_field_active($args){
 	if ($value == 'on')
 		$checked = ' checked="checked"';
 	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-wall-active]" '.$checked.' />';
+}
+
+function tool_wall_get_config_options_field_imagesize($args){
+	$options = $args['options'];
+	$active = false;
+	$value = "";
+	if (isset($options['tool-wall-imagesize']))
+		$value = $options['tool-wall-imagesize'];
+	$available_sizes = Woodkit::get_image_sizes();
+	echo '<select name="'.WOODKIT_CONFIG_OPTIONS.'[tool-wall-imagesize]">';
+	if (!empty($available_sizes)){
+		$first = true;
+		foreach ($available_sizes as $size_slug => $size_args){
+			$selected = "";
+			if ((empty($value) && $first) || $value == $size_slug){
+				$selected = 'selected="selected"';
+			}
+			echo '<option value="'.$size_slug.'" '.$selected.'>'.$size_args['label'].'</option>';
+			$first = false;
+		}
+	}
+	echo '</select>';
 }

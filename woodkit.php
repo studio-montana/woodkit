@@ -4,7 +4,7 @@
  * Plugin Name: Woodkit
  * Plugin URI: http://www.studio-montana.com/product/woodkit
  * Description: Multitool experience for WP | SEO, security, masonry, private site, social publication, ...
- * Version: 1.1.60
+ * Version: 1.1.61
  * Author: Studio Montana
  * Author URI: http://www.studio-montana.com/
  * License: GPL2
@@ -70,41 +70,41 @@ if(!class_exists('Woodkit')){
 		public function __construct(){
 
 			load_plugin_textdomain('woodkit', false, dirname( plugin_basename( __FILE__ ) ).'/lang/' );
-				
+
 			do_action("woodkit_before_requires");
-				
+
 			/** utils */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'session.php');
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'comparators.php');
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'utils.php');
-				
+
 			/** installer */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_INSTALLER_FOLDER.'installer.class.php');
 
 			/** config */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_CONFIG_FOLDER.'config.php');
-				
+
 			/** woodkit fields */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'custom-fields.php');
-				
+
 			/** pickers */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'postpicker/postpicker.php');
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'iconpicker/iconpicker.php');
-				
+
 			/** embed */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'embed.php');
-				
+
 			/** tools */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'tools.php');
-				
+
 			/** localstorage */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_LOCALSTORAGE_FOLDER.'localstorage.php');
-				
+
 			/** divi */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'divi.php');
-				
+
 			do_action("woodkit_after_requires");
-				
+
 			add_action("init", array('Woodkit', 'init'));
 
 		}
@@ -122,7 +122,7 @@ if(!class_exists('Woodkit')){
 		public static function deactivate(){
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'plugin.deactivate.php');
 		}
-		
+
 		public static function get_info($name){
 			$plugin_data = get_plugin_data(__FILE__);
 			return $plugin_data[$name];
@@ -132,14 +132,63 @@ if(!class_exists('Woodkit')){
 		 * Init
 		 */
 		public static function init() {
-				
+
 			do_action("woodkit_before_init");
-			
-			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'image-sizes.php');
 				
+			Woodkit::set_image_sizes();
+
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_CORE_FOLDER.'init.php');
-				
+
 			do_action("woodkit_after_init");
+		}
+
+		public static function set_image_sizes(){
+			$sizes = Woodkit::get_image_sizes();
+			if (!empty($sizes)){
+				foreach ($sizes as $size_slug => $size_args){
+					add_image_size($size_slug, $size_args['width'], $size_args['height'], $size_args['crop']);
+				}
+			}
+		}
+
+		public static function get_image_sizes(){
+			$sizes = array();
+			$sizes['woodkit-1200'] = array(
+					"label" => __("1200px", WOODKIT_PLUGIN_TEXT_DOMAIN),
+					"width" => 1200,
+					"height" => 0,
+					"crop" => true);
+			$sizes['woodkit-1024'] = array(
+					"label" => __("1024px", WOODKIT_PLUGIN_TEXT_DOMAIN),
+					"width" => 1024,
+					"height" => 0,
+					"crop" => true);
+			$sizes['woodkit-800'] = array(
+					"label" => __("800px", WOODKIT_PLUGIN_TEXT_DOMAIN),
+					"width" => 800,
+					"height" => 0,
+					"crop" => true);
+			$sizes['woodkit-600'] = array(
+					"label" => __("600px", WOODKIT_PLUGIN_TEXT_DOMAIN),
+					"width" => 600,
+					"height" => 0,
+					"crop" => true);
+			$sizes['woodkit-400'] = array(
+					"label" => __("400px", WOODKIT_PLUGIN_TEXT_DOMAIN),
+					"width" => 400,
+					"height" => 0,
+					"crop" => true);
+			$sizes['woodkit-300'] = array(
+					"label" => __("300px", WOODKIT_PLUGIN_TEXT_DOMAIN),
+					"width" => 300,
+					"height" => 0,
+					"crop" => true);
+			$sizes['woodkit-150-150'] = array(
+					"label" => __("150x150px", WOODKIT_PLUGIN_TEXT_DOMAIN),
+					"width" => 150,
+					"height" => 150,
+					"crop" => true);
+			return $sizes;
 		}
 
 	}
