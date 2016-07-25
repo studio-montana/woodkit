@@ -68,6 +68,6 @@ function tool_googlemaps_get_config_options_field_apikey($args){
 	$value = "";
 	if (isset($options['tool-googlemaps-apikey']))
 		$value = $options['tool-googlemaps-apikey'];
-	echo '<input type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-googlemaps-apikey]" value="'.$value.'" /><a style="margin-left: 12px;" href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">'.__("Get google maps API KEY", WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
+	echo '<input type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-googlemaps-apikey]" value="'.$value.'" /><a class="button primary get-a-key google-maps-key" style="margin-left: 12px;" href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">'.__("Get google maps API KEY", WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
 	echo '<p class="field-description">'.__('shortcode in your theme templates :', WOODKIT_PLUGIN_TEXT_DOMAIN).'<br /><code style="font-size: 0.7rem;">&lt;?php echo do_shortcode(\'[googlemaps id="gmaps1465" adress="" title="" type="ROADMAP" width="100%" height="400px" style="" /]\'); ?&gt;</code></p>';
 }
