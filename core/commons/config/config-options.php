@@ -67,6 +67,7 @@ class WoodkitOptions {
 	</h2>
 	<form method="post" action="options.php">
 		<?php
+		submit_button();
 		// This prints out all hidden setting fields
 		settings_fields( 'woodkit_option_group' );
 		do_settings_sections( 'woodkit-admin' );
