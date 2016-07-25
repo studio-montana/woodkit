@@ -110,7 +110,6 @@
 #et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7  div.wpcf7-mail-sent-ok {
 	border: none;
 	font-weight: 300;
-	text-align: center;
 }
 
 #et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7  div.wpcf7-mail-sent-ok:before {
@@ -126,7 +125,6 @@
 
 #et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7  div.wpcf7-validation-errors {
 	border: none;
-	display: none !important;
 }
 
 #et_builder_outer_content .woodkit_et_pb_contactform7 .wpcf7 .wpcf7-not-valid-tip:before,

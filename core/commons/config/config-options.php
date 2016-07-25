@@ -46,12 +46,13 @@ class WoodkitOptions {
 	 */
 	public function add_plugin_page(){
 		// This page will be under "Settings"
-		add_options_page(
+		add_menu_page(
 		'Settings Admin',
 		'Woodkit',
 		'manage_options',
 		'woodkit_options',
-		array( $this, 'create_admin_page' )
+		array( $this, 'create_admin_page' ),
+		'none'
 		);
 	}
 
@@ -62,7 +63,7 @@ class WoodkitOptions {
 		?>
 <div class="wrap">
 	<h2>
-		<i class="fa fa-gears"></i>&nbsp;
+		<i class="fa fa-rocket"></i>&nbsp;
 		<?php _e("Woodkit settings", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
 	</h2>
 	<form method="post" action="options.php">

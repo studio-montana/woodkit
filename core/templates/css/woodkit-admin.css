@@ -35,8 +35,11 @@
 
 
 /** ---- DIVI INSPIRATION ---- **/
-.custom-fields-section-header {
+#woodkit-customfields .custom-fields-section-header {
     margin: 0 !important;
+}
+
+#woodkit-customfields h2.hndle.ui-sortable-handle {
 }
 
 #woodkit-customfields .inside{
@@ -44,16 +47,19 @@
 	padding: 0;
 }
 
-.custom-fields-section-header h3 {
-	font-weight: 100 !important;
-    font-size:18px;
+#woodkit-customfields .custom-fields-section-header h3 {
+	font-weight: 400;
+    font-size: 18px;
     color: #fff;
     background-color: #114C7F;/*#6C2EB9*/
-    padding: 25px !important;
+    padding: 20px;
     border-bottom: 0;
     line-height: 18px;
     position: relative;
-    margin: 0 !important;
+    margin: 0;
+       border-radius: 4px 4px;
+    -moz-border-radius: 4px 4px;
+    -webkit-border-radius: 4px 4px;
 }
 
 .custom-fields-section {
@@ -66,9 +72,25 @@
     padding: 12px !important;
 }
 
-/** settings **/
 
-.settings_page_woodkit_options .wrap>h2:first-child {
+/**
+ * WOODKIT CONFIG OPTIONS
+ */
+.menu-top .toplevel_page_woodkit_options .wp-menu-image.dashicons-before:before{
+	display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f135";
+}
+
+.toplevel_page_woodkit_options #wpcontent{
+	background: #fff;
+}
+/* --------------------- */
+.toplevel_page_woodkit_options .wrap>h2:first-child {
     font-weight: 100;
     font-size: 24px;
     color: #000;
@@ -79,7 +101,7 @@
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
-.settings_page_woodkit_options form {
+.toplevel_page_woodkit_options form {
 	max-width: 900px;
 	background-color: #FFFFFF;
     overflow: hidden;
@@ -92,7 +114,7 @@
     margin-top: 25px;
 }
 
-.settings_page_woodkit_options form h2 {
+.toplevel_page_woodkit_options form h2 {
 	font-weight: 100 !important;
     font-size: 18px;
     color: #fff;
@@ -108,49 +130,49 @@
     border-top: 0;
 }
 
-.settings_page_woodkit_options form h2 .tool-documentation {
+.toplevel_page_woodkit_options form h2 .tool-documentation {
 	margin-right: 0;
 	float: right;
 	color: #FFF;
 	font-size: 1.2rem;
 }
 
-.settings_page_woodkit_options form h2 .tool-documentation:hover {
+.toplevel_page_woodkit_options form h2 .tool-documentation:hover {
 	color: #00C3AA;
 }
 
-.settings_page_woodkit_options form p.tool-description {
+.toplevel_page_woodkit_options form p.tool-description {
     padding: 10px 20px 0;
     margin: 0 !important;
 }
 
-.settings_page_woodkit_options form p.tool-description:before {
+.toplevel_page_woodkit_options form p.tool-description:before {
     font: normal normal normal 2px/1 FontAwesome;
     font-size: inherit;
     content: "\f105\00a0\00a0";
 }
 
-.settings_page_woodkit_options form input[type='checkbox'] {
+.toplevel_page_woodkit_options form input[type='checkbox'] {
     margin: 0 20px 0 0;
 }
 
 
-.settings_page_woodkit_options form p.field-description {
+.toplevel_page_woodkit_options form p.field-description {
     padding: 0;
     margin: 0;
 }
 
 
-.settings_page_woodkit_options form .form-table  {
+.toplevel_page_woodkit_options form .form-table  {
     padding: 20px 40px; /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    HAD DIV BEFORE TABLE */
     margin: 0;
     display: none; 
     width: auto;
 }
 
-.settings_page_woodkit_options form .tool-description,
-.settings_page_woodkit_options form .form-table,
-.settings_page_woodkit_options form p.submit { display: block; -webkit-animation: helloworld .7s; animation: helloworld .7s; }
+.toplevel_page_woodkit_options form .tool-description,
+.toplevel_page_woodkit_options form .form-table,
+.toplevel_page_woodkit_options form p.submit { display: block; -webkit-animation: helloworld .7s; animation: helloworld .7s; }
 
 
 /*------------------------------------------------*/
@@ -160,17 +182,17 @@
 @keyframes helloworld { 0% {-ms-transform: translate(-20px,0); -webkit-transform: translate(-20px,0); transform: translate(-20px,0); opacity: 0;} 100% { -ms-transform: translate(0,0); -webkit-transform: translate(0,0); transform: translate(0,0); opacity: 1;} }
 
 
-.settings_page_woodkit_options form .form-table td,.settings_page_woodkit_options form .form-table th {
+.toplevel_page_woodkit_options form .form-table td,.toplevel_page_woodkit_options form .form-table th {
 	vertical-align: baseline;
 	padding: 6px 0 !important;
 }
 
-.settings_page_woodkit_options form .form-table th {
+.toplevel_page_woodkit_options form .form-table th {
 }
 
-.settings_page_woodkit_options form input[type='text'],
-.settings_page_woodkit_options form select,
-.settings_page_woodkit_options form textarea {
+.toplevel_page_woodkit_options form input[type='text'],
+.toplevel_page_woodkit_options form select,
+.toplevel_page_woodkit_options form textarea {
 	border: none;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -185,21 +207,21 @@
     width: 200px;
 }
 
-.settings_page_woodkit_options form input[type='text']:focus,
-.settings_page_woodkit_options form select:focus,
-.settings_page_woodkit_options form textarea:focus,
-.settings_page_woodkit_options form select:focus {
+.toplevel_page_woodkit_options form input[type='text']:focus,
+.toplevel_page_woodkit_options form select:focus,
+.toplevel_page_woodkit_options form textarea:focus,
+.toplevel_page_woodkit_options form select:focus {
 	-webkit-transition: background .1s;
     -moz-transition: background .1s;
     transition: background .1s;
 	background-color: #E0E5EA
 }
 
-.settings_page_woodkit_options form select {
+.toplevel_page_woodkit_options form select {
 	height: 40px;
 }
 
-.settings_page_woodkit_options form a.button {
+.toplevel_page_woodkit_options form a.button {
     color: #FFF;
     background-color: #00C3AA;
     -webkit-box-shadow: none;
@@ -218,15 +240,15 @@
     overflow: hidden;
 }
 
-.settings_page_woodkit_options form a.button,
-.settings_page_woodkit_options form a.button:before,
-.settings_page_woodkit_options form input.button {
+.toplevel_page_woodkit_options form a.button,
+.toplevel_page_woodkit_options form a.button:before,
+.toplevel_page_woodkit_options form input.button {
 	transition: all 0.3s; 
 	-moz-transition: all 0.3s; 
 	-webkit-transition: all 0.3s;
 }
 
-.settings_page_woodkit_options form a.button.get-a-key:before {
+.toplevel_page_woodkit_options form a.button.get-a-key:before {
 	position: absolute;
     background-color: #656b72;
     width: 32px;
@@ -243,23 +265,23 @@
     font-size: 22px;
 }
 
-.settings_page_woodkit_options form a.button.get-a-key:hover { 
+.toplevel_page_woodkit_options form a.button.get-a-key:hover { 
 	background-color: #4D565F !important;
 	color: #FFF;
 	padding: 0 10px 0 52px;
 }
 
-.settings_page_woodkit_options form a.button.get-a-key:hover:before { 
+.toplevel_page_woodkit_options form a.button.get-a-key:hover:before { 
 	left: 0px;
 }
 
 
-.settings_page_woodkit_options form p.submit {
-	margin: 10px 0 40px 20px;
+.toplevel_page_woodkit_options form p.submit {
+	margin: 10px 0 40px 0;
 	padding: 0;
 }
 
-.settings_page_woodkit_options form p.submit input.button {
+.toplevel_page_woodkit_options form p.submit input.button {
     color: #FFF;
     background-color: #00C3AA;
     -webkit-box-shadow: none;
@@ -276,63 +298,54 @@
     text-shadow: none;
 }
 
-.settings_page_woodkit_options form p.submit input.button:hover { 
+.toplevel_page_woodkit_options form p.submit input.button:hover { 
 	background-color: #4D565F !important;
 	color: #FFF;
 }
 
-.settings_page_woodkit_options form code {
+.toplevel_page_woodkit_options form code {
 	display: inline-block;
 	margin: 3px 0 0;
 	font-family: monospace;
 }
+/* --------------------- */
 
-
-/** ---- END DIVI INSPIRATION ---- **/
-
-
-
-
-
-/**
- * WOODKIT CONFIG OPTIONS
- */
-.settings_page_woodkit_options form {
-	max-width: 900px;
+.toplevel_page_woodkit_options form p.submit {
+	text-align: right;
 }
 
-.settings_page_woodkit_options form h2 {
+.toplevel_page_woodkit_options form h2 {
 	padding: 24px 0 0 0;
 	/*border-top: 1px solid #ddd;*/
 }
 
-.settings_page_woodkit_options form h2 .tool-documentation {
+.toplevel_page_woodkit_options form h2 .tool-documentation {
 	margin-right: 0;
 	float: right;
 	color: #FFF;
 	font-size: 1.2rem;
 }
 
-.settings_page_woodkit_options form .tool-description {
+.toplevel_page_woodkit_options form .tool-description {
 	font-size: 0.8rem;
 }
 
-.settings_page_woodkit_options form .form-table {
+.toplevel_page_woodkit_options form .form-table {
 	background: #fff;
 }
 
-.settings_page_woodkit_options form .form-table .field-description {
+.toplevel_page_woodkit_options form .form-table .field-description {
 	font-size: 0.8rem;
 	margin-top: 12px;
 }
 
-.settings_page_woodkit_options form .form-table td,.settings_page_woodkit_options form .form-table th
+.toplevel_page_woodkit_options form .form-table td,.toplevel_page_woodkit_options form .form-table th
 	{
 	vertical-align: baseline;
 	padding: 12px;
 }
 
-.settings_page_woodkit_options form .form-table th {
+.toplevel_page_woodkit_options form .form-table th {
 	font-weight: normal;
 }
 
@@ -355,6 +368,10 @@
 
 .custom-fields-section-header em a{
 	color: #fff;
+}
+
+.custom-fields-section-content * em {
+	color: #114C7F;
 }
 
 .custom-fields-section-content {
