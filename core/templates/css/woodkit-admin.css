@@ -39,6 +39,11 @@
     margin: 0 !important;
 }
 
+#woodkit-customfields .inside{
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+
 .custom-fields-section-header h3 {
 	font-weight: 100 !important;
     font-size:18px;
@@ -49,25 +54,16 @@
     line-height: 18px;
     position: relative;
     margin: 0 !important;
-    border-radius: 4px 4px 0 0;
-    -moz-border-radius: 4px 4px 0 0;
-    -webkit-border-radius: 4px 4px 0 0;
 }
 
 .custom-fields-section {
 	border-bottom: 0 !important;
     padding: 0 !important;
-    margin: 20px 0 0 0;
+    margin: 0 0 20px 0;
 }
 
 .custom-fields-section-content {
-    padding: 20px !important;
-    border-radius: 0 0 4px 4px;
-    -moz-border-radius: 0 0 4px 4px;
-    -webkit-border-radius: 0 0 4px 4px;
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #ccc;
+    padding: 12px !important;
 }
 
 /** settings **/
@@ -357,6 +353,10 @@
 	font-size: 12px;
 }
 
+.custom-fields-section-header em a{
+	color: #fff;
+}
+
 .custom-fields-section-content {
 	
 }
@@ -388,6 +388,12 @@
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
+}
+
+.custom-fields-section-content .fields input[type='number']
+	{
+	max-width: 70px;
+	width: 100%;
 }
 
 .custom-fields-section-side .custom-fields-section-content .fields select,.custom-fields-section-side .custom-fields-section-content .fields input[type='text']

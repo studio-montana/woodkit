@@ -24,10 +24,9 @@ defined('ABSPATH') or die("Go Away!");
 ?>
 <div id="tool-media-display-media" class="custom-fields-section">
 	<header class="custom-fields-section-header">
-		<h3><?php _e('Media options', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h3>
+		<h3><?php _e('Wordpress Gallery', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h3>
 	</header>
 	<div class="custom-fields-section-content">
-		<h4 style="margin-left: 12px;"><?php _e('Wordpress Gallery', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h4>
 		<table class="fields">
 			<tr valign="top">
 				<th class="metabox_label_column" align="left" valign="middle"><label

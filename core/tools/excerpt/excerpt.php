@@ -26,3 +26,14 @@ defined('ABSPATH') or die("Go Away!");
  * REQUIREMENTS
  */
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.EXCERPT_TOOL_NAME.'/custom-fields/excerpt.php');
+
+/**
+ * Enqueue styles for the back end.
+*/
+function tool_excerpt_woodkit_admin_enqueue_styles_tools($dependencies) {
+
+	$css_excerpt = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.EXCERPT_TOOL_NAME.'/css/tool-excerpt-admin.css');
+	if (!empty($css_excerpt))
+		wp_enqueue_style('tool-excerpt-admin-css', $css_excerpt, $dependencies, '1.0');
+}
+add_action('woodkit_admin_enqueue_styles_tools', 'tool_excerpt_woodkit_admin_enqueue_styles_tools');

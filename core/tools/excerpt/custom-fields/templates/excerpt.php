@@ -24,8 +24,10 @@ defined('ABSPATH') or die("Go Away!");
 ?>
 <div id="tool-excerpt-general" class="custom-fields-section">
 	<header class="custom-fields-section-header">
-		<h3><?php _e("Customized excerpt", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h3>
-		<em style="margin-left: 12px;"><?php _e("Let empty to get automatic excerpt from content", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></em>
+		<h3>
+			<?php _e("Customized excerpt", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+			<em style="margin-left: 12px;">(<?php _e("Let empty to get automatic excerpt from content", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>)</em>
+		</h3>
 	</header>
 	<div class="custom-fields-section-content">
 		<table class="fields" style="width: 100%;">

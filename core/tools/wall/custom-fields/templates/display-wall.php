@@ -26,8 +26,10 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 ?>
 <div id="tool-wall-display-wall" class="custom-fields-section">
 	<header class="custom-fields-section-header">
-		<h3><?php _e('Wall', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h3>
-		<em style="margin-left: 12px;"><?php _e('insert elements in this', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> <?php echo $current_post_type_label->singular_name;?></em>
+		<h3>
+			<?php _e('Wall', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+			<em style="margin-left: 12px;">(<?php _e('insert elements in this', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> <?php echo $current_post_type_label->singular_name;?>)</em>
+		</h3>
 	</header>
 	<div class="custom-fields-section-content">
 		<table class="fields">
