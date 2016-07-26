@@ -33,7 +33,7 @@ function tool_googlemaps_get_name($tool_name = ""){
 add_filter("woodkit_get_tool_name_".GOOGLEMAPS_TOOL_NAME, "tool_googlemaps_get_name", 1, 1);
 
 function tool_googlemaps_get_description($tool_description = ""){
-	return __("Add a GoogleMaps shortcode to your content editor", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	return __("Add a GoogleMaps shortcode to your content editor (not recommended with Divi Builder, this will generate javascript conficts)", WOODKIT_PLUGIN_TEXT_DOMAIN);
 }
 add_filter("woodkit_get_tool_description_".GOOGLEMAPS_TOOL_NAME, "tool_googlemaps_get_description", 1, 1);
 
