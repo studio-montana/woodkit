@@ -74,7 +74,7 @@ function splashscreen_customize_register($wp_customize_manager) {
 	);
 
 	// splashscreen text
-	$wp_customize_manager->add_setting('splashscreen_text', array('default' => bloginfo('name'), 'transport'=>'refresh'));
+	$wp_customize_manager->add_setting('splashscreen_text', array('default' => __("Loading", WOODKIT_PLUGIN_TEXT_DOMAIN), 'transport'=>'theme_mod'));
 	$wp_customize_manager->add_control('splashscreen_text', array(
 			'label'      => __('Text', WOODKIT_PLUGIN_TEXT_DOMAIN ),
 			'section'    => 'splashscreen_customizer',
