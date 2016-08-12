@@ -30,25 +30,41 @@
 	height: 150px;
 	margin: 0 auto !important;
 	overflow: hidden;
+	/* background transition */
 	-webkit-transition: background-color 200ms linear !important;
     -moz-transition: background-color 200ms linear !important;
     -o-transition: background-color 200ms linear !important;
     -ms-transition: background-color 200ms linear !important;
     transition: background-color 200ms linear !important;
-    
+	/* color transition */
 	-webkit-transition: border-color 200ms linear !important;
     -moz-transition: border-color 200ms linear !important;
     -o-transition: border-color 200ms linear !important;
     -ms-transition: border-color 200ms linear !important;
     transition: border-color 200ms linear !important;
+    /* flex */
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
 }
 
 .woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button i{
+	/* color transition */
 	-webkit-transition: color 200ms linear !important;
     -moz-transition: color 200ms linear !important;
     -o-transition: color 200ms linear !important;
     -ms-transition: color 200ms linear !important;
     transition: color 200ms linear !important;
+    /* flex */
+    -webkit-align-self: center;
+    -moz-align-self: center;
+    -ms-align-self: center;
+    align-self: center;
 }
 
 .woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button_content{

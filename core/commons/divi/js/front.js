@@ -17,16 +17,6 @@
 
 	$(window).load(function() {
 
-		/**
-		 * Divi modules - Icon button - center icons
-		 */
-		$(".woodkit_et_pb_icon_button i").each(function(i) {
-			$(this).css("position", "absolute");
-			$(this).css("top", "50%");
-			$(this).css("left", "50%");
-			$(this).css("margin", "-" + ($(this).height() / 2) + "px 0 0 -" + ($(this).width() / 2) + "px");
-		});
-
 	});
 
 })(jQuery);
