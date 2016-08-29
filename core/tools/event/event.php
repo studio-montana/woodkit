@@ -102,6 +102,9 @@ function add_event_post_type(){
 			'rewrite'           => array('slug' => _x('evenement-type', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
 	);
 	register_taxonomy('eventtype', array( 'event' ), $args);
+	
+	do_action("tool_event_add_post_type_after", "event");
+	
 }
 add_action('init', 'add_event_post_type');
 endif;
@@ -228,7 +231,7 @@ function build_event_columns($column, $post_id){
 			break;
 	}
 }
-add_action( 'manage_event_posts_woodkit_column' , 'build_event_columns', 10, 2 );
+add_action( 'manage_event_posts_custom_column' , 'build_event_columns', 10, 2 );
 endif;
 
 /**
