@@ -32,35 +32,11 @@ define('EVENT_NONCE_ACTION', 'event_nonce_action');
 */
 require_once (WOODKIT_PLUGIN_PATH.'/'.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.EVENT_TOOL_NAME.'/widgets/tool-event-widget.class.php');
 
-if (!function_exists("tool_event_admin_init")):
 /**
- * Hooks the WP admin_init action to add metaboxe customfields on post-type
-*
-* @return void
+ * This action is called by Woodkit when metabox is display on post-type
+ * @param unknown $post
 */
-function tool_event_admin_init() {
-	add_meta_box('tool-event-properties', '<i class="dashicons dashicons-calendar-alt" style="margin-right: 6px; font-size: 1.3rem;"></i>'.__( 'Event properties', WOODKIT_PLUGIN_TEXT_DOMAIN), 'tool_event_add_inner_meta_boxes', 'event', 'side', 'high');
-}
-add_action('admin_init', 'tool_event_admin_init');
-endif;
-
-if (!function_exists("tool_event_add_inner_meta_boxes")):
-/**
- * Hooks the WP admin_init action to add metaboxe customfields on post-type
-*
-* @return void
-*/
-function tool_event_add_inner_meta_boxes() {
-	include(locate_ressource('/'.WOODKIT_PLUGIN_TOOLS_FOLDER.EVENT_TOOL_NAME.'/templates/template-event-fields.php'));
-}
-endif;
-
-if (!function_exists("event_add_inner_meta_boxes")):
-/**
- * This action is called by Woodkit when metabox is displayed on post-type
-* @param unknown $post
-*/
-function event_add_inner_meta_boxes($post){
+function tool_event_add_inner_meta_boxes($post){
 	$id_blog_page = get_option('page_for_posts');
 	if ($id_blog_page != get_the_ID()){
 		if (get_post_type($post) == 'event'){
@@ -68,8 +44,7 @@ function event_add_inner_meta_boxes($post){
 		}
 	}
 }
-//add_action("customfields_add_inner_meta_boxes", "event_add_inner_meta_boxes");
-endif;
+add_action("customfields_add_inner_meta_boxes_top", "tool_event_add_inner_meta_boxes", 1);
 
 if (!function_exists("add_event_post_type")):
 /**
@@ -127,104 +102,85 @@ function add_event_post_type(){
 			'rewrite'           => array('slug' => _x('evenement-type', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
 	);
 	register_taxonomy('eventtype', array( 'event' ), $args);
-
-	add_action('save_post', 'save_event_post_type');
 }
 add_action('init', 'add_event_post_type');
 endif;
 
-if (!function_exists("save_event_post_type")):
 /**
- * save event's woodkit fields
-*/
-function save_event_post_type($post_id){
-
-	// verify if this is an auto save routine.
-	// If it is our form has not been submitted, so we dont want to do anything
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-		return;
-	// verify if this post-type is available and editable.
-	$is_post_available = false;
-	$post_type = null;
-	if (isset($_POST['post_type']) && !empty($_POST['post_type'])){
-		$post_type = $_POST['post_type'];
-	}
-	if (empty($post_type))
-		return;
-	if ($post_type != 'event' || !current_user_can('edit_post', $post_id ))
-		return;
-	if (!isset($_POST[EVENT_NONCE_ACTION]) || !wp_verify_nonce($_POST[EVENT_NONCE_ACTION], EVENT_NONCE_ACTION))
-		return;
-
-
-	// meta_event_date_begin
-	if (isset($_POST["meta_event_date_begin"]) && !empty($_POST["meta_event_date_begin"])){
-		if (isset($_POST["meta_event_hour_begin"]) && !empty($_POST["meta_event_hour_begin"])){
-			$hour_begin = $_POST["meta_event_hour_begin"];
+ * This action is called by Woodkit when post-type is saved
+ * @param int $post_id
+ */
+function tool_event_save_post($post_id){
+	if ($_POST['post_type'] == 'event'){
+		// meta_event_date_begin
+		if (isset($_POST["meta_event_date_begin"]) && !empty($_POST["meta_event_date_begin"])){
+			if (isset($_POST["meta_event_hour_begin"]) && !empty($_POST["meta_event_hour_begin"])){
+				$hour_begin = $_POST["meta_event_hour_begin"];
+			}else{
+				$hour_begin = "08";
+			}
+			if (isset($_POST["meta_event_minute_begin"]) && !empty($_POST["meta_event_minute_begin"])){
+				$minute_begin = $_POST["meta_event_minute_begin"];
+			}else{
+				$minute_begin = "00";
+			}
+			// transform date to timestamp
+			$date_begin = DateTime::createFromFormat('d/m/Y H:i', $_POST["meta_event_date_begin"]." ".$hour_begin.":".$minute_begin);
+			if ($date_begin)
+				update_post_meta($post_id, "meta_event_date_begin", $date_begin->getTimestamp());
+			else
+				delete_post_meta($post_id, "meta_event_date_begin");
 		}else{
-			$hour_begin = "08";
-		}
-		if (isset($_POST["meta_event_minute_begin"]) && !empty($_POST["meta_event_minute_begin"])){
-			$minute_begin = $_POST["meta_event_minute_begin"];
-		}else{
-			$minute_begin = "00";
-		}
-		// transform date to timestamp
-		$date_begin = DateTime::createFromFormat('d/m/Y H:i', $_POST["meta_event_date_begin"]." ".$hour_begin.":".$minute_begin);
-		if ($date_begin)
-			update_post_meta($post_id, "meta_event_date_begin", $date_begin->getTimestamp());
-		else
 			delete_post_meta($post_id, "meta_event_date_begin");
-	}else{
-		delete_post_meta($post_id, "meta_event_date_begin");
-	}
-	// meta_event_date_end
-	if (isset($_POST["meta_event_date_end"]) && !empty($_POST["meta_event_date_end"])){
-		if (isset($_POST["meta_event_hour_end"]) && !empty($_POST["meta_event_hour_end"])){
-			$hour_end = $_POST["meta_event_hour_end"];
-		}else{
-			$hour_end = "18";
 		}
-		if (isset($_POST["meta_event_minute_end"]) && !empty($_POST["meta_event_minute_end"])){
-			$minute_end = $_POST["meta_event_minute_end"];
+		// meta_event_date_end
+		if (isset($_POST["meta_event_date_end"]) && !empty($_POST["meta_event_date_end"])){
+			if (isset($_POST["meta_event_hour_end"]) && !empty($_POST["meta_event_hour_end"])){
+				$hour_end = $_POST["meta_event_hour_end"];
+			}else{
+				$hour_end = "18";
+			}
+			if (isset($_POST["meta_event_minute_end"]) && !empty($_POST["meta_event_minute_end"])){
+				$minute_end = $_POST["meta_event_minute_end"];
+			}else{
+				$minute_end = "00";
+			}
+			// transform date to timestamp
+			$date_end = DateTime::createFromFormat('d/m/Y H:i', $_POST["meta_event_date_end"]." ".$hour_end.":".$minute_end);
+			if ($date_end)
+				update_post_meta($post_id, "meta_event_date_end", $date_end->getTimestamp());
+			else
+				delete_post_meta($post_id, "meta_event_date_end");
 		}else{
-			$minute_end = "00";
-		}
-		// transform date to timestamp
-		$date_end = DateTime::createFromFormat('d/m/Y H:i', $_POST["meta_event_date_end"]." ".$hour_end.":".$minute_end);
-		if ($date_end)
-			update_post_meta($post_id, "meta_event_date_end", $date_end->getTimestamp());
-		else
 			delete_post_meta($post_id, "meta_event_date_end");
-	}else{
-		delete_post_meta($post_id, "meta_event_date_end");
-	}
-	// meta_event_locate_address
-	if (isset($_POST["meta_event_locate_address"]) && !empty($_POST["meta_event_locate_address"])){
-		update_post_meta($post_id, "meta_event_locate_address", sanitize_text_field($_POST["meta_event_locate_address"]));
-	}else{
-		delete_post_meta($post_id, "meta_event_locate_address");
-	}
-	// meta_event_locate_cp
-	if (isset($_POST["meta_event_locate_cp"]) && !empty($_POST["meta_event_locate_cp"])){
-		update_post_meta($post_id, "meta_event_locate_cp", sanitize_text_field($_POST["meta_event_locate_cp"]));
-	}else{
-		delete_post_meta($post_id, "meta_event_locate_cp");
-	}
-	// meta_event_locate_city
-	if (isset($_POST["meta_event_locate_city"]) && !empty($_POST["meta_event_locate_city"])){
-		update_post_meta($post_id, "meta_event_locate_city", sanitize_text_field($_POST["meta_event_locate_city"]));
-	}else{
-		delete_post_meta($post_id, "meta_event_locate_city");
-	}
-	// meta_event_locate_country
-	if (isset($_POST["meta_event_locate_country"]) && !empty($_POST["meta_event_locate_country"])){
-		update_post_meta($post_id, "meta_event_locate_country", sanitize_text_field($_POST["meta_event_locate_country"]));
-	}else{
-		delete_post_meta($post_id, "meta_event_locate_country");
+		}
+		// meta_event_locate_address
+		if (isset($_POST["meta_event_locate_address"]) && !empty($_POST["meta_event_locate_address"])){
+			update_post_meta($post_id, "meta_event_locate_address", sanitize_text_field($_POST["meta_event_locate_address"]));
+		}else{
+			delete_post_meta($post_id, "meta_event_locate_address");
+		}
+		// meta_event_locate_cp
+		if (isset($_POST["meta_event_locate_cp"]) && !empty($_POST["meta_event_locate_cp"])){
+			update_post_meta($post_id, "meta_event_locate_cp", sanitize_text_field($_POST["meta_event_locate_cp"]));
+		}else{
+			delete_post_meta($post_id, "meta_event_locate_cp");
+		}
+		// meta_event_locate_city
+		if (isset($_POST["meta_event_locate_city"]) && !empty($_POST["meta_event_locate_city"])){
+			update_post_meta($post_id, "meta_event_locate_city", sanitize_text_field($_POST["meta_event_locate_city"]));
+		}else{
+			delete_post_meta($post_id, "meta_event_locate_city");
+		}
+		// meta_event_locate_country
+		if (isset($_POST["meta_event_locate_country"]) && !empty($_POST["meta_event_locate_country"])){
+			update_post_meta($post_id, "meta_event_locate_country", sanitize_text_field($_POST["meta_event_locate_country"]));
+		}else{
+			delete_post_meta($post_id, "meta_event_locate_country");
+		}
 	}
 }
-endif;
+add_action("customfields_save_post", "tool_event_save_post");
 
 if (!function_exists("define_event_columns")):
 /**
