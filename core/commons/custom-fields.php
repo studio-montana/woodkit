@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -37,7 +37,8 @@ function customfields_admin_init() {
 	if (empty($metabox_position))
 		$metabox_position = "default";
 	foreach ($customfields_posttypes_available as $post_type){
-		add_meta_box('woodkit-customfields', '<i class="fa fa-rocket" style="margin-right: 6px; font-size: 1.3rem;"></i>'.__('Page options', WOODKIT_PLUGIN_TEXT_DOMAIN), 'customfields_add_inner_meta_boxes', $post_type, 'normal', $metabox_position);
+		$post_type_obj = get_post_type_object($post_type);
+		add_meta_box('woodkit-customfields', '<i class="fa fa-rocket" style="margin-right: 6px; font-size: 1.3rem;"></i>'.$post_type_obj->labels->singular_name.' '.__('options', WOODKIT_PLUGIN_TEXT_DOMAIN), 'customfields_add_inner_meta_boxes', $post_type, 'normal', $metabox_position);
 	}
 }
 add_action('admin_init', 'customfields_admin_init');
@@ -50,11 +51,13 @@ if (!function_exists("customfields_add_inner_meta_boxes")):
 */
 function customfields_add_inner_meta_boxes($post) {
 	?>
-	<input type="hidden" name="<?php echo CUSTOMFIELDS_NONCE_ACTION; ?>" value="<?php echo wp_create_nonce(CUSTOMFIELDS_NONCE_ACTION);?>" />
-	<?php
-	do_action("customfields_add_inner_meta_boxes_top", $post);
-	do_action("customfields_add_inner_meta_boxes", $post);
-	do_action("customfields_add_inner_meta_boxes_bottom", $post);
+<input
+	type="hidden" name="<?php echo CUSTOMFIELDS_NONCE_ACTION; ?>"
+	value="<?php echo wp_create_nonce(CUSTOMFIELDS_NONCE_ACTION);?>" />
+<?php
+do_action("customfields_add_inner_meta_boxes_top", $post);
+do_action("customfields_add_inner_meta_boxes", $post);
+do_action("customfields_add_inner_meta_boxes_bottom", $post);
 }
 endif;
 
