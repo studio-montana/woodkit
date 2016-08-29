@@ -52,7 +52,9 @@ function customfields_add_inner_meta_boxes($post) {
 	?>
 	<input type="hidden" name="<?php echo CUSTOMFIELDS_NONCE_ACTION; ?>" value="<?php echo wp_create_nonce(CUSTOMFIELDS_NONCE_ACTION);?>" />
 	<?php
+	do_action("customfields_add_inner_meta_boxes_top", $post);
 	do_action("customfields_add_inner_meta_boxes", $post);
+	do_action("customfields_add_inner_meta_boxes_bottom", $post);
 }
 endif;
 

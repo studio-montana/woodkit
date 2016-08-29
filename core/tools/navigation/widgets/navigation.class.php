@@ -99,6 +99,7 @@ class toolnavigation_widget extends WP_Widget {
 				'orderby' => $orderby,
 				'order'     => $order,
 				'post_status' => 'publish',
+				'posts_per_page' => '-1'
 
 		);
 		$query = new WP_Query($args);
