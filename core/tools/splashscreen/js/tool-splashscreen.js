@@ -16,7 +16,7 @@
 	$(window).load(function(e) {
 		if ($("#splashscreen").length > 0) {
 			if ($("#splashscreen").is(":visible")) {
-				$("#splashscreen").fadeOut();
+				$("#splashscreen").fadeOut(parseInt(ToolSplascreen.fadeoutspeed));
 			}
 		}
 	});

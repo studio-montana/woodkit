@@ -40,12 +40,14 @@ add_filter("woodkit_is_tool_splashscreen_active", "tool_splashscreen_is_active",
 
 function tool_splashscreen_woodkit_config_default_values($default_values){
 	$default_values["tool-splashscreen-active"] = "on";
+	$default_values["tool-splashscreen-fadeoutspeed"] = "300";
 	return $default_values;
 }
 add_filter("woodkit_config_default_values", "tool_splashscreen_woodkit_config_default_values");
 
 function tool_splashscreen_get_config_options_fields($additional_fields){
 	$additional_fields[] = array("slug" => "tool-splashscreen-active", "callback" => "tool_splashscreen_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-splashscreen-fadeoutspeed", "callback" => "tool_splashscreen_get_config_options_field_fadeoutspeed", "title" => __("fadeout speed", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
 add_filter("woodkit_config_options_fields_tool_splashscreen", "tool_splashscreen_get_config_options_fields", 1, 1);
@@ -61,4 +63,13 @@ function tool_splashscreen_get_config_options_field_active($args){
 		$checked = ' checked="checked"';
 	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-splashscreen-active]" '.$checked.' />';
 	echo '<p class="field-description">'.__('insert this code in your theme templates :', WOODKIT_PLUGIN_TEXT_DOMAIN).'<br /><code style="font-size: 0.7rem;">&lt;?php woodkit_splashscreen(); ?&gt;</code></p>';
+}
+
+function tool_splashscreen_get_config_options_field_fadeoutspeed($args){
+	$options = $args['options'];
+	$active = false;
+	$value = "300";
+	if (isset($options['tool-splashscreen-fadeoutspeed']))
+		$value = $options['tool-splashscreen-fadeoutspeed'];
+	echo '<input type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-splashscreen-fadeoutspeed]" value="'.esc_attr($value).'" />&nbsp;ms';
 }

@@ -46,8 +46,13 @@ if (!function_exists("tool_splashscreen_woodkit_front_enqueue_scripts_tools")):
 function tool_splashscreen_woodkit_front_enqueue_scripts_tools($dependencies) {
 
 	$js_tool_splashscreen = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SPLASHSCREEN_TOOL_NAME.'/js/tool-splashscreen.js');
-	if (!empty($js_tool_splashscreen))
+	if (!empty($js_tool_splashscreen)){
 		wp_enqueue_script('tool-splashscreen-script', $js_tool_splashscreen, $dependencies, '1.0', true);
+		$fadeout_speed = woodkit_get_option('tool-splashscreen-fadeoutspeed');
+		wp_localize_script("tool-splashscreen-script", "ToolSplascreen", array(
+			'fadeoutspeed' => $fadeout_speed,
+		));
+	}
 }
 add_action('woodkit_front_enqueue_scripts_tools', 'tool_splashscreen_woodkit_front_enqueue_scripts_tools');
 endif;
