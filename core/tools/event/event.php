@@ -75,7 +75,7 @@ function add_event_post_type(){
 			'capability_type' => 'post',
 			'hierarchical' => true,
 			'supports' => array('title', 'editor', 'thumbnail'),
-			'rewrite'           => array('slug' => _x('evenement', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
+			'rewrite'           => array('slug' => _x('events', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
 	);
 	register_post_type('event', $args);
 
