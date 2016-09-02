@@ -249,7 +249,7 @@ endif;
 if (!function_exists("wall_filter_the_content")):
 function wall_filter_the_content($content){
 	$meta_wall_display_position = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POSITION, true);
-	if (($meta_wall_display_position == "before-content" || $meta_wall_display_position == "after-content") && in_array(get_post_type(get_the_ID()), get_displayed_post_types()) && (is_single(get_the_ID()) || is_page(get_the_ID()))){ // never for search, listing, ...
+	if (($meta_wall_display_position == "before-content" || $meta_wall_display_position == "after-content") && in_array(get_post_type(get_the_ID()), get_displayed_post_types()) && is_singular(get_post_type(get_the_ID()))){ // never for search, listing, ...
 		$meta_wall_display_post_type = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POST_TYPE, true);
 		if (!empty($meta_wall_display_post_type) && $meta_wall_display_post_type != '0'){
 			$content = '<div class="content-with-wall-wrapper"><div class="content-with-wall">'.$content.'</div></div>';
@@ -276,21 +276,38 @@ function tool_wall_use_shortcode($atts, $content = null, $name='') {
 	$output = '<div class="wall-shortcode">';
 	$atts = shortcode_atts(array(), $atts);
 	$meta_wall_display_position = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POSITION, true);
-	if ($meta_wall_display_position == "use-shortcode" && in_array(get_post_type(get_the_ID()), get_displayed_post_types()) && (is_single(get_the_ID()) || is_page(get_the_ID()))){ // never for search, listing, ...
-		$meta_wall_display_post_type = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POST_TYPE, true);
-		if (!empty($meta_wall_display_post_type) && $meta_wall_display_post_type != '0'){
-			ob_start();
-			$wall_template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-display.php');
-			if (!empty($wall_template))
-				include($wall_template);
-			$output .= ob_get_contents();
-			ob_end_clean();
-		}
+	if ($meta_wall_display_position == "use-shortcode" && in_array(get_post_type(get_the_ID()), get_displayed_post_types()) && is_singular(get_post_type(get_the_ID()))){ // never for search, listing, ...
+		// 		$meta_wall_display_post_type = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POST_TYPE, true);
+		// 		if (!empty($meta_wall_display_post_type) && $meta_wall_display_post_type != '0'){
+		// 			ob_start();
+		// 			$wall_template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-display.php');
+		// 			if (!empty($wall_template))
+			// 				include($wall_template);
+			// 			$output .= ob_get_contents();
+		// 			ob_end_clean();
+		// 		}
+		woodkit_wall_get_wall($output);
 	}
 	$output .= '</div>';
 	return $output;
 }
 add_shortcode('woodkit_wall', 'tool_wall_use_shortcode');
+
+/**
+ * retrieve wall for current post (used for divi or visualcomposer module)
+*/
+function woodkit_wall_get_wall($output = ''){
+	$meta_wall_display_post_type = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POST_TYPE, true);
+	if (!empty($meta_wall_display_post_type) && $meta_wall_display_post_type != '0'){
+		ob_start();
+		$wall_template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-display.php');
+		if (!empty($wall_template))
+			include($wall_template);
+		$output .= ob_get_contents();
+		ob_end_clean();
+	}
+	return $output;
+}
 
 if (!function_exists("wall_get_post_types_options")):
 /**
@@ -510,7 +527,7 @@ function wall_get_wall_item_title($item_id, $wall_args, $test_hide_property = fa
 		if (function_exists("woodkit_display_title")){
 			$title = woodkit_display_title($item_id, false, $test_hide_property, $before, $after);
 		}else{
-			$title = the_title($before, $after, false); 
+			$title = the_title($before, $after, false);
 		}
 	}else{
 		$title = $before.$title.$after;

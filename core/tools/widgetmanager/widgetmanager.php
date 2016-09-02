@@ -51,15 +51,17 @@ add_action('woodkit_admin_enqueue_styles_tools', 'tool_widgetmanager_woodkit_adm
 
 /**
  * filter widgets list and check they are not hidden by widgetmanager
- */
+*/
 function tool_widgetmanager_sidebars_widgets($sidebars_widgets){
 	if (!is_admin()){
 		foreach ($sidebars_widgets as $sidebar => $widgets){
 			$new_set = array();
-			foreach ($widgets as $widget){
-				$hide = @get_post_meta(get_the_ID(), TOOL_WIDGETMANAGER_HIDE_WIDGET_.$sidebar.$widget, true);
-				if (!isset($hide) || empty($hide) || $hide != 'on'){
-					$new_set[] = $widget;
+			if (!empty($widgets)){
+				foreach ($widgets as $widget){
+					$hide = @get_post_meta(get_the_ID(), TOOL_WIDGETMANAGER_HIDE_WIDGET_.$sidebar.$widget, true);
+					if (!isset($hide) || empty($hide) || $hide != 'on'){
+						$new_set[] = $widget;
+					}
 				}
 			}
 			$sidebars_widgets[$sidebar] = $new_set;
