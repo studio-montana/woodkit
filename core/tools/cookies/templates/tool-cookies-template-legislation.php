@@ -27,16 +27,24 @@ defined('ABSPATH') or die("Go Away!");
 	<div class="cookies-legislation-content">
 		<span>
 			<?php 
-			$text_content = __("By continuing your visit to this site, you accept the use of cookies or other tracers", WOODKIT_PLUGIN_TEXT_DOMAIN).'.&nbsp;<a href="http://www.cnil.fr/vos-obligations/sites-web-cookies-et-autres-traceurs/que-dit-la-loi/" target="_blank">'.__("More about", WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
-			$text_content = apply_filters("woodkit_tool_cookies_text_content", $text_content);
-			echo $text_content;
+			$text_content = woodkit_customizer_get_value('cookies_text', '');
+			if (empty($text_content))
+				$text_content = __("By continuing to visit our site, you are agreeing to the use of cookies and similar technology.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+			$text_link = woodkit_customizer_get_value('cookies_link_text', '');
+			if (empty($text_link))
+				$text_link = __("More details here.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+			$link_url = woodkit_customizer_get_value('cookies_link_url', '');
+			if (empty($link_url))
+				$link_url = "http://www.cnil.fr/vos-obligations/sites-web-cookies-et-autres-traceurs/que-dit-la-loi/";
+			echo apply_filters("woodkit_tool_cookies_text_content", $text_content.'&nbsp;<a href="'.esc_url($link_url).'" target="_blank">'.$text_link.'</a>');
 			?>
 		</span>
 		<button id="cookies-accept-condition">
 			<?php 
-			$button_content = __('Ok', WOODKIT_PLUGIN_TEXT_DOMAIN);
-			$button_content = apply_filters("woodkit_tool_cookies_button_content", $button_content);
-			echo $button_content;
+			$button_text = woodkit_customizer_get_value('cookies_button_text', '');
+			if (empty($button_text))
+				$button_text = '<i class="fa fa-check"></i>';
+			echo apply_filters("woodkit_tool_cookies_button_content", $button_text);
 			?>
 		</button>
 	</div>

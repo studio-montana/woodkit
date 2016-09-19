@@ -4,7 +4,7 @@
  * Plugin Name: Woodkit
  * Plugin URI: http://www.studio-montana.com/product/woodkit
  * Description: Multitool experience for WP | SEO, security, masonry, private site, social publication, ...
- * Version: 1.1.65
+ * Version: 1.1.66
  * Author: Studio Montana
  * Author URI: http://www.studio-montana.com/
  * License: GPL2
@@ -84,7 +84,10 @@ if(!class_exists('Woodkit')){
 			/** config */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_CONFIG_FOLDER.'config.php');
 
-			/** woodkit fields */
+			/** customizer tools */
+			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'customizer.php');
+
+			/** custom fields */
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'custom-fields.php');
 
 			/** pickers */

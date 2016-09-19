@@ -23,6 +23,11 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
+ * REQUIREMENTS
+*/
+require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.COOKIES_TOOL_NAME.'/inc/customizer.php');
+
+/**
  * Enqueue styles for the front end.
  */
 function tool_cookies_woodkit_front_enqueue_styles_tools($dependencies) {
