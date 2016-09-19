@@ -38,7 +38,7 @@ function woodkit_customizer_add_add_control($customizer_obj, $control_slug, $set
 		if (!empty($langs)){
 			foreach ($langs as $lang){
 				$control_args['settings'] = $control_slug.$lang;
-				$control_args['label'] .= " [".$lang."]";
+				$control_args['label'] = $control_args['label']." [".$lang."]";
 				$customizer_obj->add_setting($control_slug.$lang, $settings_args);
 				$customizer_obj->add_control($control_slug.$lang, $control_args);
 			}
