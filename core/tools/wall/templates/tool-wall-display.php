@@ -95,15 +95,9 @@ if (post_type_exists($wall_args['meta_wall_display_post_type'])){ // dynamic lis
 			unset($ids_tab[$key]);
 		}
 		if (!empty($ids_tab)){
-			// Some problems using WP_Query		 
-			// $args = array("posts_per_page" => -1, "post_type" => "any", "post__in" => $ids_tab, "orderby" => "post__in", "suppress_filters" => FALSE, "post_status" => "any", "ignore_sticky_posts" => true);
-			// $get_any_posts = new WP_Query;
-			// $posts = $get_any_posts->query($args);
-			
-			// Use super ancestral method !
-			foreach ($ids_tab as $id){
-				$posts[] = get_post($id);
-			}
+			$args = array("posts_per_page" => -1, "post_type" => "any", "post__in" => $ids_tab, "orderby" => "post__in", "suppress_filters" => FALSE, "post_status" => "any", "ignore_sticky_posts" => true);
+			$get_any_posts = new WP_Query;
+			$posts = $get_any_posts->query($args);
 		}
 	}
 }
