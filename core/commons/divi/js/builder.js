@@ -22,7 +22,7 @@
 		 */
 		$(document).on("DOMNodeInserted", function(e) {
 			if ($(".et_pb_modal_settings_container").length > 0) { // Divi modal box load - important test to optimize performance
-				if ($(e.target).attr('class').indexOf('et_pb_modal_settings_container') !== -1) {
+				if (!empty($(e.target).attr('class')) && $(e.target).attr('class').indexOf('et_pb_modal_settings_container') !== -1) {
 					$(document).trigger("woodkit-on-divi-modal-box-opened", [e]);
 				}
 			}
