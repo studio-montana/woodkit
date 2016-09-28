@@ -95,8 +95,8 @@ if (post_type_exists($wall_args['meta_wall_display_post_type'])){ // dynamic lis
 			unset($ids_tab[$key]);
 		}
 		if (!empty($ids_tab)){
-			// WP_Query
-			$args = array("posts_per_page" => -1, "post_type" => "any", "post__in" => $ids_tab, "orderby" => "post__in", "suppress_filters" => FALSE, "post_status" => "any", "ignore_sticky_posts" => true);
+			// WP_Query - "suppress_filters" => TRUE - because we don't need to use WPML (selection made before this request) - and its generate error for media elements
+			$args = array("posts_per_page" => -1, "post_type" => "any", "post__in" => $ids_tab, "orderby" => "post__in", "suppress_filters" => TRUE, "post_status" => "any", "ignore_sticky_posts" => true);
 			$get_any_posts = new WP_Query;
 			$posts = $get_any_posts->query($args);
 			

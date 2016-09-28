@@ -29,11 +29,13 @@ class Woodkit_Divi_Module_Wall extends ET_Builder_Module {
 	function init() {
 		$this->name            = esc_html__('Woodkit Wall', WOODKIT_PLUGIN_TEXT_DOMAIN);
 		$this->slug            = 'woodkit_et_pb_wall';
-		$this->decode_entities = true;
+		$this->custom_css_tab  = false;
 
 		$this->whitelisted_fields = array(
 				'admin_label'
 		);
+
+		$this->fields_defaults = array();
 	}
 
 	function get_fields() {
@@ -41,9 +43,9 @@ class Woodkit_Divi_Module_Wall extends ET_Builder_Module {
 		$fields = array(
 				/* General */
 				'admin_label' => array(
-						'label'       => esc_html__( 'Admin Label', 'et_builder' ),
+						'label'       => esc_html__('Admin Label', 'et_builder'),
 						'type'        => 'text',
-						'description' => esc_html__( 'This will change the label of the module in the builder for easy identification.', 'et_builder' ),
+						'description' => esc_html__('Woodkit Wall - please setup your wall under Divi Builder Generator, in Woodkit Wall section', WOODKIT_PLUGIN_TEXT_DOMAIN),
 				),
 
 		);
