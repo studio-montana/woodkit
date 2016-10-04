@@ -82,20 +82,34 @@ function get_url_parameter(param) {
  */
 function wait($element) {
 	if ($element.children('.woodkit-wait').length <= 0) {
-		$element.append('<div class="woodkit-wait">loading...</div>');
+		$element.append('<div class="woodkit-wait"><span>'+Utils.wait_label_loading+'</span></div>');
 		$element.children('.woodkit-wait').css('position', 'absolute');
 		$element.children('.woodkit-wait').css('top', '0');
 		$element.children('.woodkit-wait').css('left', '0');
-		$element.children('.woodkit-wait').css('background', '#e2e2e2');
-		$element.children('.woodkit-wait').css('opacity', '0.5');
+		$element.children('.woodkit-wait').css('background', '#fff');
+		$element.children('.woodkit-wait').css('background', 'rgba(255,255,255,0.5)');
+		$element.children('.woodkit-wait').css('color', '#777');
 		$element.children('.woodkit-wait').css('width', '100%');
 		$element.children('.woodkit-wait').css('height', '100%');
 		$element.children('.woodkit-wait').css('text-align', 'center');
-		$element.children('.woodkit-wait').css('padding', '70px');
 		$element.children('.woodkit-wait').css('z-index', '200000');
 		$element.children('.woodkit-wait').css('box-sizing', 'border-box');
 		$element.children('.woodkit-wait').css('-moz-box-sizing', 'border-box');
 		$element.children('.woodkit-wait').css('-webkit-box-sizing', 'border-box');
+		/* flex */
+		$element.children('.woodkit-wait').css('display', '-webkit-flex');
+		$element.children('.woodkit-wait').css('display', '-moz-flex');
+		$element.children('.woodkit-wait').css('display', '-ms-flex');
+		$element.children('.woodkit-wait').css('display', 'flex');
+		$element.children('.woodkit-wait').css('-webkit-justify-content', 'center');
+	    $element.children('.woodkit-wait').css('-moz-justify-content', 'center');
+	    $element.children('.woodkit-wait').css('-ms-justify-content', 'center');
+	    $element.children('.woodkit-wait').css(' justify-content', 'center');
+		 /* flex */
+		$element.children('.woodkit-wait').find('span').css('-webkit-align-self', 'center');
+		$element.children('.woodkit-wait').find('span').css('-moz-align-self', 'center');
+		$element.children('.woodkit-wait').find('span').css('-ms-align-self', 'center');
+		$element.children('.woodkit-wait').find('span').css('align-self', 'center');
 	}
 }
 
