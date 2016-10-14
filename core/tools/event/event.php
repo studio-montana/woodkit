@@ -242,7 +242,7 @@ endif;
  * @param unknown $args
  * @return array of upcomping events
  */
-function get_event_post_types_upcoming($date_from = null, $date_to = null, $meta_args = null, $args=array()){
+function get_event_post_types_upcoming($date_from = null, $date_to = null, $meta_args = null, $args=array(), $check_date_begin = true, $check_date_end = true, $operator = 'OR'){
 	if (!isset($date_from) || empty($date_from)){
 		$date_from = time();
 	}
@@ -252,13 +252,38 @@ function get_event_post_types_upcoming($date_from = null, $date_to = null, $meta
 	$args['orderby'] = 'meta_value_num';
 	$args['meta_key'] = 'meta_event_date_begin';
 	$args['order'] = 'ASC';
-	$args['meta_query'] = array(
-			array(
-					'key' => 'meta_event_date_begin',
-					'value' => array($date_from, $date_to),
-					'compare' => 'BETWEEN'
-			)
-	);
+
+	if ($check_date_begin && $check_date_end){
+		$args['meta_query'] = array(
+				'relation' => $operator,
+				array(
+						'key' => 'meta_event_date_begin',
+						'value' => array($date_from, $date_to),
+						'compare' => 'BETWEEN'
+				),
+				array(
+						'key' => 'meta_event_date_end',
+						'value' => array($date_from, $date_to),
+						'compare' => 'BETWEEN'
+				)
+		);
+	}else if($check_date_end){
+		$args['meta_query'] = array(
+				array(
+						'key' => 'meta_event_date_end',
+						'value' => array($date_from, $date_to),
+						'compare' => 'BETWEEN'
+				)
+		);
+	}else{
+		$args['meta_query'] = array(
+				array(
+						'key' => 'meta_event_date_begin',
+						'value' => array($date_from, $date_to),
+						'compare' => 'BETWEEN'
+				)
+		);
+	}
 	return get_event_post_types($meta_args, $args);
 }
 

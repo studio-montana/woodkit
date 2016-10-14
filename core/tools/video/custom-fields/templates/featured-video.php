@@ -30,14 +30,13 @@ if (!defined ('ABSPATH')) die ('No direct access allowed');
 	<div class="custom-fields-section-content">
 		<table class="fields">
 			<tr valign="top">
-				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_VIDEO_FEATURED_URL; ?>"><?php _e('Url', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
-				</th>
 				<td valign="middle">
 					<?php 
 					$meta = get_post_meta(get_the_ID(), META_VIDEO_FEATURED_URL, true);
 					?>
-					<input type="text" size="50" id="<?php echo META_VIDEO_FEATURED_URL; ?>" name="<?php echo META_VIDEO_FEATURED_URL; ?>" value="<?php echo $meta; ?>" />
+					<input type="text" size="50" id="<?php echo META_VIDEO_FEATURED_URL; ?>" name="<?php echo META_VIDEO_FEATURED_URL; ?>" value="<?php echo $meta; ?>" placeholder="https://vimeo.com/28449482" />
+					<br />
+					<em style="font-size: 10px;">youtube/vimeo/dailymotion/vine</em>
 				</td>
 			</tr>
 		</table>
@@ -61,7 +60,6 @@ if (!defined ('ABSPATH')) die ('No direct access allowed');
 					get_video_preview(video_url, $("#featured-video-preview").width(), 150, function(response){
 						unwait($("#tool-video-featured-video"));
 						$("#featured-video-preview").html($(response).text());
-						
 					}, function(){
 						unwait($("#tool-video-featured-video"));
 						$("#featured-video-preview").html("");
