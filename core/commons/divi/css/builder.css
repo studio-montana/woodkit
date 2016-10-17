@@ -94,3 +94,25 @@
 	content: "\f465";
 }
 
+/**
+ * Divi modules - Wall
+ */
+.et-pb-all-modules > li.woodkit_et_pb_wall:before{
+    font-family: FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	content: "\f00a";
+}
+
+/**
+ * Divi modules - Wall Fullwidth
+ */
+.et-pb-all-modules > li.woodkit_et_pb_fullwidth_wall:before{
+    font-family: FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	content: "\f00a";
+}
+
