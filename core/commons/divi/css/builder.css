@@ -97,7 +97,7 @@
 /**
  * Divi modules - Wall
  */
-.et-pb-all-modules > li.woodkit_et_pb_wall:before{
+.et-pb-all-modules > li.woodkit_et_pb_wall_integration:before{
     font-family: FontAwesome;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -108,7 +108,7 @@
 /**
  * Divi modules - Wall Fullwidth
  */
-.et-pb-all-modules > li.woodkit_et_pb_fullwidth_wall:before{
+.et-pb-all-modules > li.woodkit_et_pb_fullwidth_wall_integration:before{
     font-family: FontAwesome;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;

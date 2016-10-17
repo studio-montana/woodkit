@@ -157,10 +157,12 @@
 }
 
 /**
- * Divi Modules - Woodkit Wall
+ * Divi Modules - Woodkit Wall (Fullwidth or not)
  */
-.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall .masonry-item .has-mask,
-.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall .isotope-item .has-mask {
+.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall_integration .masonry-item .has-mask,
+.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall_integration .isotope-item .has-mask,
+.et_divi_builder #et_builder_outer_content .et_pb_fullwidth_section .woodkit_et_pb_fullwidth_wall_integration .masonry-item .has-mask,
+.et_divi_builder #et_builder_outer_content .et_pb_fullwidth_section .woodkit_et_pb_fullwidth_wall_integration .isotope-item .has-mask {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -188,8 +190,10 @@
     justify-content: center;
 }
 
-.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall .masonry-item a:hover .has-mask,
-.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall .isotope-item a:hover .has-mask {
+.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall_integration .masonry-item a:hover .has-mask,
+.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall_integration .isotope-item a:hover .has-mask,
+.et_divi_builder #et_builder_outer_content .et_pb_fullwidth_section .woodkit_et_pb_fullwidth_wall_integration .masonry-item a:hover .has-mask,
+.et_divi_builder #et_builder_outer_content .et_pb_fullwidth_section .woodkit_et_pb_fullwidth_wall_integration .isotope-item a:hover .has-mask {
 	opacity: 1;
 	-moz-transition: all 0.8s ease-in-out 0s;
 	-ms-transition: all 0.8s ease-in-out 0s;
@@ -197,8 +201,10 @@
 	transition: all 0.8s ease-in-out 0s;
 }
 
-.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall .masonry-item .has-mask .title,
-.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall .isotope-item .has-mask .title {
+.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall_integration .masonry-item .has-mask .title,
+.et_divi_builder #et_builder_outer_content .et_pb_row .woodkit_et_pb_wall_integration .isotope-item .has-mask .title,
+.et_divi_builder #et_builder_outer_content .et_pb_fullwidth_section .woodkit_et_pb_fullwidth_wall_integration .masonry-item .has-mask .title,
+.et_divi_builder #et_builder_outer_content .et_pb_fullwidth_section .woodkit_et_pb_fullwidth_wall_integration .isotope-item .has-mask .title {
 	position: relative;
 	font-size: 1.2rem;
 	font-weight: 400;

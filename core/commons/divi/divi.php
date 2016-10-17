@@ -40,8 +40,8 @@ function Woodkit_Divi_Modules(){
 		if (class_exists("WPCF7_ContactForm"))
 			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/contactform7.php');
 		if (woodkit_is_registered_tool("wall")){
-			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/wall.php');
-			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/fullwidth-wall.php');
+			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/wall-integration.php');
+			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/fullwidth-wall-integration.php');
 		}
 
 		do_action("woodkit_divi_add_module_after");

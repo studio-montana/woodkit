@@ -25,12 +25,11 @@ defined('ABSPATH') or die("Go Away!");
 /**
  *  Icon Button Module
 */
-class Woodkit_Divi_Module_Fullwidth_Wall extends ET_Builder_Module {
+class Woodkit_Divi_Module_Wall_Integration extends ET_Builder_Module {
 	function init() {
-		$this->name				= esc_html__('Woodkit Wall Fullwidth', WOODKIT_PLUGIN_TEXT_DOMAIN);
-		$this->slug				= 'woodkit_et_pb_fullwidth_wall';
-		$this->fullwidth  		= true;
-		$this->custom_css_tab	= false;
+		$this->name            = esc_html__('Woodkit Wall', WOODKIT_PLUGIN_TEXT_DOMAIN);
+		$this->slug            = 'woodkit_et_pb_wall_integration';
+		$this->custom_css_tab  = false;
 
 		$this->whitelisted_fields = array(
 				'admin_label'
@@ -46,7 +45,7 @@ class Woodkit_Divi_Module_Fullwidth_Wall extends ET_Builder_Module {
 				'admin_label' => array(
 						'label'       => esc_html__('Admin Label', 'et_builder'),
 						'type'        => 'text',
-						'description' => esc_html__('Woodkit Wall - please setup your wall under Divi Builder Generator, in Woodkit Wall section', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'description' => esc_html__('Woodkit Wall Integration - please setup your wall under Divi Builder Generator, in Woodkit Wall section', WOODKIT_PLUGIN_TEXT_DOMAIN),
 				),
 
 		);
@@ -59,8 +58,8 @@ class Woodkit_Divi_Module_Fullwidth_Wall extends ET_Builder_Module {
 		$module_class = "";
 		$module_class = ET_Builder_Element::add_module_order_class($module_class, $function_name);
 
-		$output = '<div class="woodkit_et_pb_fullwidth_wall_wrapper">';
-		$output .= '<div class="woodkit_et_pb_fullwidth_wall '.esc_attr($module_class).'">';
+		$output = '<div class="woodkit_et_pb_wall_integration_wrapper">';
+		$output .= '<div class="woodkit_et_pb_wall_integration '.esc_attr($module_class).'">';
 		$output .= woodkit_wall_get_wall();
 		$output .= '</div>';
 		$output .= '</div>';
@@ -68,4 +67,4 @@ class Woodkit_Divi_Module_Fullwidth_Wall extends ET_Builder_Module {
 		return $output;
 	}
 }
-new Woodkit_Divi_Module_Fullwidth_Wall;
+new Woodkit_Divi_Module_Wall_Integration;
