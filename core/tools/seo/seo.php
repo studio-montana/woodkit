@@ -488,6 +488,10 @@ function seo_header(){
 <meta
 	name="keywords"
 	content="<?php do_action('woodkit_seo_get_metakeywords', true); ?>">
+<?php 
+$opengraph_active = woodkit_get_option("tool-seo-opengraph-active");
+if (!empty($opengraph_active) && $opengraph_active == "on"){
+?>
 <meta
 	property="og:type"
 	content="<?php do_action('woodkit_seo_get_meta_publication_type', true); ?>">
@@ -518,7 +522,9 @@ function seo_header(){
 <meta
 	name="twitter:image"
 	content="<?php do_action('woodkit_seo_get_meta_publication_image', true); ?>">
-
+<?php 
+}
+?>
 <meta
 	name="author"
 	content="<?php do_action('woodkit_seo_get_meta_author', true); ?>">

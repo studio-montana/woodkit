@@ -32,6 +32,7 @@ add_filter("woodkit_is_tool_seo_active", "tool_seo_is_active", 1, 1);
 
 function tool_seo_woodkit_config_default_values($default_values){
 	$default_values["tool-seo-active"] = "on";
+	$default_values["tool-seo-opengraph-active"] = "on";
 	return $default_values;
 }
 add_filter("woodkit_config_default_values", "tool_seo_woodkit_config_default_values");
@@ -46,6 +47,7 @@ function tool_seo_get_config_options_section_documentation_url(){
 
 function tool_seo_get_config_options_fields($additional_fields){
 	$additional_fields[] = array("slug" => "tool-seo-active", "callback" => "tool_seo_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-seo-opengraph-active", "callback" => "tool_seo_get_config_options_field_opengraph_active", "title" => __("opengraph active", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
 add_filter("woodkit_config_options_fields_tool_seo", "tool_seo_get_config_options_fields", 1, 1);
@@ -53,11 +55,23 @@ add_filter("woodkit_config_options_fields_tool_seo", "tool_seo_get_config_option
 function tool_seo_get_config_options_field_active($args){
 	$options = $args['options'];
 	$active = false;
-	$value = "off";
+	$value = "on";
 	if (isset($options['tool-seo-active']))
 		$value = $options['tool-seo-active'];
 	$checked = '';
 	if ($value == 'on')
 		$checked = ' checked="checked"';
 	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-seo-active]" '.$checked.' />';
+}
+
+function tool_seo_get_config_options_field_opengraph_active($args){
+	$options = $args['options'];
+	$active = false;
+	$value = "on";
+	if (isset($options['tool-seo-opengraph-active']))
+		$value = $options['tool-seo-opengraph-active'];
+	$checked = '';
+	if ($value == 'on')
+		$checked = ' checked="checked"';
+	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-seo-opengraph-active]" '.$checked.' />';
 }

@@ -61,6 +61,10 @@ defined('ABSPATH') or die("Go Away!");
 		</table>
 	</div>
 </div>
+<?php 
+$opengraph_active = woodkit_get_option("tool-seo-opengraph-active");
+if (!empty($opengraph_active) && $opengraph_active == "on"){
+?>
 <div id="tool-display-general" class="custom-fields-section">
 	<header class="custom-fields-section-header">
 		<h3><?php _e("Open Graph", WOODKIT_PLUGIN_TEXT_DOMAIN); ?><em style="margin-left: 6px;">(<?php _e("social network publication", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>)</em></h3>
@@ -141,3 +145,6 @@ defined('ABSPATH') or die("Go Away!");
 		</script>
 	</div>
 </div>
+<?php 
+}
+?>
