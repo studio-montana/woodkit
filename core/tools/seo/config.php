@@ -33,6 +33,8 @@ add_filter("woodkit_is_tool_seo_active", "tool_seo_is_active", 1, 1);
 function tool_seo_woodkit_config_default_values($default_values){
 	$default_values["tool-seo-active"] = "on";
 	$default_values["tool-seo-opengraph-active"] = "on";
+	$default_values["tool-seo-xmlsitemap-active"] = "on";
+	$default_values["tool-seo-xmlsitemap-notification-active"] = "on";
 	return $default_values;
 }
 add_filter("woodkit_config_default_values", "tool_seo_woodkit_config_default_values");
@@ -47,7 +49,9 @@ function tool_seo_get_config_options_section_documentation_url(){
 
 function tool_seo_get_config_options_fields($additional_fields){
 	$additional_fields[] = array("slug" => "tool-seo-active", "callback" => "tool_seo_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
-	$additional_fields[] = array("slug" => "tool-seo-opengraph-active", "callback" => "tool_seo_get_config_options_field_opengraph_active", "title" => __("opengraph active", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-seo-xmlsitemap-active", "callback" => "tool_seo_get_config_options_field_xmlsitemap_active", "title" => "&nbsp;-&nbsp;".__("generate sitemap.xml", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-seo-xmlsitemap-notification-active", "callback" => "tool_seo_get_config_options_field_xmlsitemap_notification_active", "title" => "&nbsp;-&nbsp;".__("notify search engines", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-seo-opengraph-active", "callback" => "tool_seo_get_config_options_field_opengraph_active", "title" => "&nbsp;-&nbsp;".__("opengraph active", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
 add_filter("woodkit_config_options_fields_tool_seo", "tool_seo_get_config_options_fields", 1, 1);
@@ -64,6 +68,32 @@ function tool_seo_get_config_options_field_active($args){
 	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-seo-active]" '.$checked.' />';
 }
 
+function tool_seo_get_config_options_field_xmlsitemap_active($args){
+	$options = $args['options'];
+	$active = false;
+	$value = "on";
+	if (isset($options['tool-seo-xmlsitemap-active']))
+		$value = $options['tool-seo-xmlsitemap-active'];
+	$checked = '';
+	if ($value == 'on')
+		$checked = ' checked="checked"';
+	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-seo-xmlsitemap-active]" '.$checked.' />';
+	echo '<p class="field-description"><a href="'.seo_get_xmlsitemap_url().'" target="_blank">'.__('view your sitemap.xml', WOODKIT_PLUGIN_TEXT_DOMAIN).'</a></p>';
+}
+
+function tool_seo_get_config_options_field_xmlsitemap_notification_active($args){
+	$options = $args['options'];
+	$active = false;
+	$value = "on";
+	if (isset($options['tool-seo-xmlsitemap-notification-active']))
+		$value = $options['tool-seo-xmlsitemap-notification-active'];
+	$checked = '';
+	if ($value == 'on')
+		$checked = ' checked="checked"';
+	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-seo-xmlsitemap-notification-active]" '.$checked.' />';
+	echo '<p class="field-description">'.__('notify Google, Yahoo, Bing, Ask about your sitemap.xml update', WOODKIT_PLUGIN_TEXT_DOMAIN).'</p>';
+}
+
 function tool_seo_get_config_options_field_opengraph_active($args){
 	$options = $args['options'];
 	$active = false;
@@ -74,4 +104,5 @@ function tool_seo_get_config_options_field_opengraph_active($args){
 	if ($value == 'on')
 		$checked = ' checked="checked"';
 	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-seo-opengraph-active]" '.$checked.' />';
+	echo '<p class="field-description">'.__('social network publication control', WOODKIT_PLUGIN_TEXT_DOMAIN).'</p>';
 }
