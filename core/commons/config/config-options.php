@@ -53,7 +53,7 @@ class WoodkitOptions {
 		'woodkit_options',
 		array( $this, 'create_admin_page' ),
 		'none'
-		);
+				);
 	}
 
 	/**
@@ -65,6 +65,7 @@ class WoodkitOptions {
 	<h2>
 		<i class="fa fa-rocket"></i>&nbsp;
 		<?php _e("Woodkit settings", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+		<em><?php echo Woodkit::get_info("Version"); ?></em>
 	</h2>
 	<form method="post" action="options.php">
 		<?php
@@ -147,25 +148,25 @@ class WoodkitOptions {
 					$documentation_link = '<a class="tool-documentation" href="'.call_user_func("tool_".$tool['slug']."_get_config_options_section_documentation_url").'" target="_blank"><i class="fa fa-info-circle"></i></a>';
 				add_settings_section(
 				'woodkit_settings_tool_'.$tool['slug'].'_id', // ID
-				$tool['name'].$documentation_link, // Title
+				'<span id="woodkit_settings_tool_'.$tool['slug'].'_id">'.$tool['name'].$documentation_link.'</span>', // Title
 				$callback, // Callback
 				'woodkit-admin' // Page
 				);
 
 				// tool fields
 				if (!empty($fields)){
-						foreach ($fields as $field){
-							add_settings_field(
-							$field['slug'], // ID
-							$field['title'], // Title
-							$field['callback'], // Callback
-							'woodkit-admin', // Page
-							'woodkit_settings_tool_'.$tool['slug'].'_id', // Section
-							array('options' => $this->options) // Args
-							);
-							$this->fields[] = $field['slug'];
-						}
+					foreach ($fields as $field){
+						add_settings_field(
+						$field['slug'], // ID
+						$field['title'], // Title
+						$field['callback'], // Callback
+						'woodkit-admin', // Page
+						'woodkit_settings_tool_'.$tool['slug'].'_id', // Section
+						array('options' => $this->options) // Args
+						);
+						$this->fields[] = $field['slug'];
 					}
+				}
 			}
 		}
 		//}
@@ -224,7 +225,7 @@ class WoodkitOptions {
 			$low_selected = 'selected="selected"';
 		else
 			$default_selected = 'selected="selected"';
-		
+
 		echo '<select name="'.WOODKIT_CONFIG_OPTIONS.'[metabox-position]">';
 		echo '<option value="default" '.$default_selected.'>'.__("default", WOODKIT_PLUGIN_TEXT_DOMAIN).'</option>';
 		echo '<option value="high" '.$high_selected.'>'.__("high position", WOODKIT_PLUGIN_TEXT_DOMAIN).'</option>';
@@ -233,5 +234,6 @@ class WoodkitOptions {
 	}
 }
 
-if( is_admin() )
+if(is_admin()){
 	$woodkit_options = new WoodkitOptions();
+}

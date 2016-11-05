@@ -101,6 +101,13 @@
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
+.toplevel_page_woodkit_options .wrap>h2:first-child em {
+	font-size: 12px;
+	font-style: normal;
+	float: right;
+	margin-top: 8px;
+}
+
 .toplevel_page_woodkit_options form {
 	max-width: 900px;
 	background-color: #FFFFFF;

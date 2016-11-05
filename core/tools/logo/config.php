@@ -20,6 +20,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
+
+/**
+ * @deprecated
+ * @since 1.1.81
+ * DO NOT USE THIS TOOL
+ */
 defined('ABSPATH') or die("Go Away!");
 
 function tool_logo_is_active($active){
@@ -41,26 +47,7 @@ function tool_logo_get_config_options_section_documentation_url(){
 }
 
 function tool_logo_woodkit_config_default_values($default_values){
-	$default_values["tool-logo-active"] = "on";
+	$default_values["tool-logo-active"] = "off";
 	return $default_values;
 }
 add_filter("woodkit_config_default_values", "tool_logo_woodkit_config_default_values");
-
-function tool_logo_get_config_options_fields($additional_fields){
-	$additional_fields[] = array("slug" => "tool-logo-active", "callback" => "tool_logo_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
-	return $additional_fields;
-}
-add_filter("woodkit_config_options_fields_tool_logo", "tool_logo_get_config_options_fields", 1, 1);
-
-function tool_logo_get_config_options_field_active($args){
-	$options = $args['options'];
-	$active = false;
-	$value = "off";
-	if (isset($options['tool-logo-active']))
-		$value = $options['tool-logo-active'];
-	$checked = '';
-	if ($value == 'on')
-		$checked = ' checked="checked"';
-	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-logo-active]" '.$checked.' />';
-	echo '<p class="field-description">'.__('insert this code in your theme templates :', WOODKIT_PLUGIN_TEXT_DOMAIN).'<br /><code style="font-size: 0.7rem;">&lt;?php logo_display(); ?&gt;</code></p>';
-}

@@ -20,6 +20,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
+
+/**
+ * @deprecated
+ * @since 1.1.81
+ * DO NOT USE THIS TOOL
+ */
 defined('ABSPATH') or die("Go Away!");
 
 /**
