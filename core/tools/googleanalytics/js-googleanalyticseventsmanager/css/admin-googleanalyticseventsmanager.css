@@ -1,1 +1,11 @@
 @CHARSET "UTF-8";
+
+.googleanalyticseventsmanager-wrapper{
+	overflow-x:auto;
+}
+
+.googleanalyticseventsmanager-container .googleanalytics-event-selector input[type='text']{
+	color: #0073aa;
+	letter-spacing: 0.06em;
+	min-width: 250px;
+}

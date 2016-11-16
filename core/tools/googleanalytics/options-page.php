@@ -32,7 +32,9 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-googleanalytics-option
 			$name = isset($_POST['googleanalytics-event-name-'.$v]) ? sanitize_text_field($_POST['googleanalytics-event-name-'.$v]) : "";
 			$action = isset($_POST['googleanalytics-event-action-'.$v]) ? sanitize_text_field($_POST['googleanalytics-event-action-'.$v]) : "";
 			$category = isset($_POST['googleanalytics-event-category-'.$v]) ? sanitize_text_field($_POST['googleanalytics-event-category-'.$v]) : "";
-			$events[] = array("selector" => $selector, "name" => $name, "action" => $action, "category" => $category);
+			if (!empty($selector)){
+				$events[] = array("selector" => $selector, "name" => $name, "action" => $action, "category" => $category);
+			}
 		}
 	}
 	if (empty($events)){
@@ -55,6 +57,10 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-googleanalytics-option
 			</button>
 		</div>
 
+		<?php 
+		$googleanalytics_code = woodkit_get_option('tool-googleanalytics-code');
+		if (!empty($googleanalytics_code)){
+		?>
 		<div class="section">
 			<h3 class="section-title">
 				<?php _e("Sitemap options", 'woodvehicles'); ?>
@@ -93,8 +99,17 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-googleanalytics-option
 				});
 			</script>
 
+			<div class="section-info"><?php _e("You can add some Google Analytics Event rules based on CSS Selector.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<?php _e("Example", WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : <code>body.home .header &gt; a.logo</code></div>
+				
 			</div>
 		</div>
+		<?php 
+		}else{
+			?>
+			<p><?php _e("To manage Google Analytics Events, you have to setup your Google Analytics code in Woodkit settings.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+			<?php
+		}
+		?>
 
 		<div class="form-row form-row-submit">
 			<button type="submit">

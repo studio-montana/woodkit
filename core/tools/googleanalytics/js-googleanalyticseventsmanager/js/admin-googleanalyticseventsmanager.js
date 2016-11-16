@@ -44,7 +44,7 @@
 			/**
 			 * Html structure
 			 */
-			$googleanalyticseventsmanager_container = $('<table class="googleanalyticseventsmanager-container"></table>').appendTo($googleanalyticseventsmanager);
+			$googleanalyticseventsmanager_container = $('<table class="googleanalyticseventsmanager-container"></table>').appendTo($('<div class="googleanalyticseventsmanager-wrapper"></div>').appendTo($googleanalyticseventsmanager));
 			$googleanalyticseventsmanager_container_add = $('<div class="add-event add btn"><i class="fa fa-plus"></i><span>' + settings['label_add_event'] + '</span></div>').appendTo(
 					$googleanalyticseventsmanager);
 
@@ -88,10 +88,10 @@
 			
 			var html = '';
 			html += '<tr valign="top" class="event" id="googleanalytics-event-id-' + event_id + '">';
-			html += '<td valign="middle"><input type="text" name="googleanalytics-event-selector-' + event_id + '" value="'+selector+'" placeholder="' + settings['label_event_selector'] + '" /></td>';
-			html += '<td valign="middle"><input type="text" name="googleanalytics-event-name-' + event_id + '" value="'+name+'" placeholder="' + settings['label_event_name'] + '" /></td>';
-			html += '<td valign="middle"><input type="text" name="googleanalytics-event-action-' + event_id + '" value="'+action+'" placeholder="' + settings['label_event_action'] + '" /></td>';
-			html += '<td valign="middle"><input type="text" name="googleanalytics-event-category-' + event_id + '" value="'+category+'" placeholder="' + settings['label_event_category'] + '" /></td>';
+			html += '<td valign="middle" class="googleanalytics-event-selector"><input type="text" name="googleanalytics-event-selector-' + event_id + '" value="'+selector+'" placeholder="' + settings['label_event_selector'] + '" /></td>';
+			html += '<td valign="middle" class="googleanalytics-event-name"><input type="text" name="googleanalytics-event-name-' + event_id + '" value="'+name+'" placeholder="' + settings['label_event_name'] + '" /></td>';
+			html += '<td valign="middle" class="googleanalytics-event-action"><input type="text" name="googleanalytics-event-action-' + event_id + '" value="'+action+'" placeholder="' + settings['label_event_action'] + '" /></td>';
+			html += '<td valign="middle" class="googleanalytics-event-category"><input type="text" name="googleanalytics-event-category-' + event_id + '" value="'+category+'" placeholder="' + settings['label_event_category'] + '" /></td>';
 			html += '<td valign="middle"><div class="delete delete-event btn" data-id="googleanalytics-event-id-' + event_id + '"><i class="fa fa-times"></i></div><input type="hidden" name="googleanalytics-event-id-' + event_id + '" value="' + event_id + '" /></td>';
 			html += '</tr>';
 

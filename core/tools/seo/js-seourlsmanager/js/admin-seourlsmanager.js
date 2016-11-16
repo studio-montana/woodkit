@@ -42,7 +42,7 @@
 			/**
 			 * Html structure
 			 */
-			$seourlsmanager_container = $('<table class="seourlsmanager-container"></table>').appendTo($seourlsmanager);
+			$seourlsmanager_container = $('<table class="seourlsmanager-container"></table>').appendTo($('<div class="seourlsmanager-wrapper"></div>').appendTo($seourlsmanager));
 			$seourlsmanager_container_add = $('<div class="add-url add btn"><i class="fa fa-plus"></i><span>' + settings['label_add_url'] + '</span></div>').appendTo(
 					$seourlsmanager);
 
@@ -89,9 +89,9 @@
 			
 			var html = '';
 			html += '<tr valign="top" class="url" id="seo-sitemap-url-id-' + url_id + '">';
-			html += '<td valign="middle"><input type="text" name="seo-sitemap-url-' + url_id + '" value="'+url+'" placeholder="' + settings['label_url'] + '" /></td>';
-			html += '<td valign="middle"><label for="seo-sitemap-url-exclude-' + url_id + '">' + settings['label_url_exclude'] + '</label><input type="checkbox" name="seo-sitemap-url-exclude-' + url_id + '" id="seo-sitemap-url-exclude-' + url_id + '" '+exclude_checked+'/></td>';
-			html += '<td valign="middle"><div class="delete delete-url btn" data-id="seo-sitemap-url-id-' + url_id + '"><i class="fa fa-times"></i></div><input type="hidden" name="seo-sitemap-url-id-' + url_id + '" value="' + url_id + '" /></td>';
+			html += '<td valign="middle" class="seo-sitemap-url"><input type="text" name="seo-sitemap-url-' + url_id + '" value="'+url+'" placeholder="' + settings['label_url'] + '" /></td>';
+			html += '<td valign="middle" class="seo-sitemap-url-exclude"><label for="seo-sitemap-url-exclude-' + url_id + '">' + settings['label_url_exclude'] + '</label><input type="checkbox" name="seo-sitemap-url-exclude-' + url_id + '" id="seo-sitemap-url-exclude-' + url_id + '" '+exclude_checked+'/></td>';
+			html += '<td valign="middle" class="seo-sitemap-url-id"><div class="delete delete-url btn" data-id="seo-sitemap-url-id-' + url_id + '"><i class="fa fa-times"></i></div><input type="hidden" name="seo-sitemap-url-id-' + url_id + '" value="' + url_id + '" /></td>';
 			html += '</tr>';
 
 			var $url_container = $(html).appendTo($seourlsmanager_container);

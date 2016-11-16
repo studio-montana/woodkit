@@ -1048,6 +1048,12 @@
 	-webkit-transition: all 0.3s;
 }
 
+.woodkit-tool-page-options .btn:hover,
+.woodkit-tool-page-options .btn:focus,
+.woodkit-tool-page-options .btn:active{
+	background-color: #656b72;
+}
+
 .woodkit-tool-page-options .form-row-submit{
 	margin: 24px auto;
 }
@@ -1116,11 +1122,17 @@
 }
 
 .woodkit-tool-page-options .section .section-info{
-	margin: 0 0 24px 0;
+	margin: 12px 0;
 	font-size: 12px;
 	font-style: italic;
 }
 
-.woodkit-tool-page-options .seourls-manager input[type='text']{
-	min-width: 400px;
+.woodkit-tool-page-options .section .section-info code{
+	font-size: 12px;
+	color: #0073aa;
+	letter-spacing: 0.06em;
+}
+
+.woodkit-tool-page-options .section .btn.add i{
+	margin-right: 6px;
 }

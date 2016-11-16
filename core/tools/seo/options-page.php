@@ -31,8 +31,10 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-seo-options-nonce']) &
 	foreach ($_POST as $k => $v){
 		if (startsWith($k, "seo-sitemap-url-id-")){
 			$url = isset($_POST['seo-sitemap-url-'.$v]) ? sanitize_text_field($_POST['seo-sitemap-url-'.$v]) : "";
+			if (!empty($url)){
 			$exclude = isset($_POST['seo-sitemap-url-exclude-'.$v]) ? sanitize_text_field($_POST['seo-sitemap-url-exclude-'.$v]) : "";
-			$urls[] = array("url" => $url, "exclude" => $exclude);
+				$urls[] = array("url" => $url, "exclude" => $exclude);
+			}
 		}
 	}
 	// trace
@@ -68,7 +70,7 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-seo-options-nonce']) &
 				<?php _e("Sitemap options", 'woodvehicles'); ?>
 			</h3>
 			<div class="section-content">
-				<div class="section-info"><?php _e("Your sitemap.xml is automaticaly generated, however you can insert URLs manualy  or exclude generated URLs."); ?>&nbsp;<a href="<?php echo seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('View sitemap.xml', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
+				<div class="section-info"><?php _e("Your sitemap.xml is automaticaly generated, however you can insert URLs manualy  or exclude generated URLs.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<a href="<?php echo seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('View sitemap.xml', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
 
 				<div class="seourls-manager"></div>
 				
@@ -101,6 +103,10 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-seo-options-nonce']) &
 			</div>
 		</div>
 		<?php 
+		}else{
+			?>
+			<p><?php _e("To manage URLs on your sitemap.xml, you have to activate sitemap.xml in Woodkit settings.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+			<?php
 		}
 		?>
 
