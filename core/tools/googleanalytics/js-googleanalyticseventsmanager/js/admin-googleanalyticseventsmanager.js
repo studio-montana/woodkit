@@ -126,13 +126,13 @@
 		return plugin;
 	};
 
-	$.fn.googleanalyticseventsmanager = function(events) {
+	$.fn.googleanalyticseventsmanager = function(options) {
 		var googleanalyticseventsmanager = $(this).data('googleanalyticseventsmanager');
 		if (empty(googleanalyticseventsmanager)) {
-			googleanalyticseventsmanager = new $.googleanalyticseventsmanager($(this), events);
+			googleanalyticseventsmanager = new $.googleanalyticseventsmanager($(this), options);
 			$(this).data('googleanalyticseventsmanager', googleanalyticseventsmanager);
 		} else {
-			googleanalyticseventsmanager.reinit(events);
+			googleanalyticseventsmanager.reinit(options);
 		}
 		return googleanalyticseventsmanager;
 	};

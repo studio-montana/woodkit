@@ -22,33 +22,33 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
-if (isset($_POST) && !empty($_POST) && isset($_POST['googleanalytics-options-nonce']) && wp_verify_nonce($_POST['googleanalytics-options-nonce'], 'googleanalytics-options-nonce')){
+if (isset($_POST) && !empty($_POST) && isset($_POST['tool-googleanalytics-options-nonce']) && wp_verify_nonce($_POST['tool-googleanalytics-options-nonce'], 'tool-googleanalytics-options-nonce')){
 	
 	// -- save events
 	$events = array();
 	foreach ($_POST as $k => $v){
 		if (startsWith($k, "googleanalytics-event-id-")){
-			$selector = isset($_POST['googleanalytics-event-selector-'.$v]) ? $_POST['googleanalytics-event-selector-'.$v] : "";
-			$name = isset($_POST['googleanalytics-event-name-'.$v]) ? $_POST['googleanalytics-event-name-'.$v] : "";
-			$action = isset($_POST['googleanalytics-event-action-'.$v]) ? $_POST['googleanalytics-event-action-'.$v] : "";
-			$category = isset($_POST['googleanalytics-event-category-'.$v]) ? $_POST['googleanalytics-event-category-'.$v] : "";
+			$selector = isset($_POST['googleanalytics-event-selector-'.$v]) ? sanitize_text_field($_POST['googleanalytics-event-selector-'.$v]) : "";
+			$name = isset($_POST['googleanalytics-event-name-'.$v]) ? sanitize_text_field($_POST['googleanalytics-event-name-'.$v]) : "";
+			$action = isset($_POST['googleanalytics-event-action-'.$v]) ? sanitize_text_field($_POST['googleanalytics-event-action-'.$v]) : "";
+			$category = isset($_POST['googleanalytics-event-category-'.$v]) ? sanitize_text_field($_POST['googleanalytics-event-category-'.$v]) : "";
 			$events[] = array("selector" => $selector, "name" => $name, "action" => $action, "category" => $category);
 		}
 	}
 	if (empty($events)){
-		delete_option("woodkit-tool-seo-options-events");
+		delete_option("woodkit-tool-googleanalytics-options-events");
 	}else{
-		update_option("woodkit-tool-seo-options-events", $events);
+		update_option("woodkit-tool-googleanalytics-options-events", $events);
 	}
 }
 
 ?>
-<div class="woodkit-page-options woodkit-tool-page-options woodkit-tool-seo-page-options">
+<div class="woodkit-page-options woodkit-tool-page-options woodkit-tool-googleanalytics-page-options">
 	<h1>
 		<?php _e("Google Analytics settings", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
 	</h1>
 	<form method="post" action="<?php echo get_current_url(true); ?>">
-		<input type="hidden" name="<?php echo 'googleanalytics-options-nonce'; ?>" value="<?php echo wp_create_nonce('googleanalytics-options-nonce'); ?>" />
+		<input type="hidden" name="<?php echo 'tool-googleanalytics-options-nonce'; ?>" value="<?php echo wp_create_nonce('tool-googleanalytics-options-nonce'); ?>" />
 		<div class="form-row form-row-submit">
 			<button type="submit">
 				<?php _e("Save", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
@@ -74,17 +74,15 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['googleanalytics-options-non
 							label_confirm_remove_event : "<?php _e("Do you realy want remove this event ?", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
 						});
 					<?php 
-					$events = get_option("woodkit-tool-seo-options-events", array());
+					$events = get_option("woodkit-tool-googleanalytics-options-events", array());
 					if (!empty($events)){
 						$events_js = "{";
-						$nb_events = 0;
-						foreach ($events as $event){
-							$selector = str_replace('"', '\"', str_replace('\\\\', '', $event['selector']));
-							$name = str_replace('"', '\"', str_replace('\\\\', '', $event['name']));
-							$action = str_replace('"', '\"', str_replace('\\\\', '', $event['action']));
-							$category = str_replace('"', '\"', str_replace('\\\\', '', $event['category']));
-							$events_js .= intval($nb_events).":{selector: \"".$selector."\", name:\"".$name."\", action:\"".$action."\", category:\"".$category."\"},";
-							$nb_events++;
+						foreach ($events as $k => $event){
+							$selector = !empty($event['selector']) ? str_replace('"', '\"', str_replace('\\\\', '', $event['selector'])) : "";
+							$name = !empty($event['name']) ? str_replace('"', '\"', str_replace('\\\\', '', $event['name'])) : "";
+							$action = !empty($event['action']) ? str_replace('"', '\"', str_replace('\\\\', '', $event['action'])) : "";
+							$category = !empty($event['category']) ? str_replace('"', '\"', str_replace('\\\\', '', $event['category'])) : "";
+							$events_js .= intval($k).":{selector: \"".$selector."\", name:\"".$name."\", action:\"".$action."\", category:\"".$category."\"},";
 						}
 						$events_js .= "}";
 						?>

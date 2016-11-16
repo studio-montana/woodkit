@@ -32,6 +32,7 @@ function seo_auto_update_xmlsitemap(){
 }
 add_action("save_post", "seo_auto_update_xmlsitemap");
 add_action("deleted_post", "seo_auto_update_xmlsitemap");
+add_action("tool_xmlsitemap_update", "seo_auto_update_xmlsitemap");
 
 /**
  * Xml site Map generator
@@ -43,6 +44,22 @@ function seo_update_xmlsitemap($availables_post_types){
 
 	$xmlsitemap_active = woodkit_get_option("tool-seo-xmlsitemap-active");
 	if ($xmlsitemap_active == "on"){
+
+		// xmlsitemap urls options (additionals or excluded)
+		$sitemap_urls = get_option("woodkit-tool-seo-options-sitemap-urls", array());
+		$additional_urls = array();
+		$excluded_urls = array();
+		if (!empty($sitemap_urls)){
+			foreach ($sitemap_urls as $k => $item){
+				$url = !empty($item['url']) ? str_replace('"', '\"', str_replace('\\\\', '', $item['url'])) : "";
+				$exclude = !empty($item['exclude']) ? str_replace('"', '\"', str_replace('\\\\', '', $item['exclude'])) : "";
+				if (!empty($url) && $exclude != 'on'){
+					$additional_urls[] = $url;
+				}else if(!empty($url) && $exclude == 'on'){
+					$excluded_urls[] = $url;
+				}
+			}
+		}
 
 		// $xmlsitemappath = trailingslashit(get_home_path()) . "sitemap.xml"; makes error with woocommerce payplug/paypal purchase method
 		$xmlsitemappath = trailingslashit(ABSPATH) . "sitemap.xml";
@@ -76,13 +93,31 @@ function seo_update_xmlsitemap($availables_post_types){
 				));
 				foreach($posts as $post) {
 					$lm = intval(get_timestamp_from_mysql($post->post_modified_gmt));
-					$date = date('Y-m-d\TH:i:s+00:00', $lm);
-					$xml_sitemap .= "\n\t".'<url>';
-					$xml_sitemap .= "\n\t\t".'<loc>'.get_permalink($post->ID).'</loc>';
-					$xml_sitemap .= "\n\t\t".'<lastmod>'.$date.'</lastmod>';
-					$xml_sitemap .= "\n\t\t".'<changefreq>weekly</changefreq>';
-					$xml_sitemap .= "\n\t\t".'<priority>0.6</priority>';
-					$xml_sitemap .= "\n\t".'</url>';
+					$url = get_permalink($post->ID);
+					if (!in_array($url, $excluded_urls)){
+						$date = date('Y-m-d\TH:i:s+00:00', $lm);
+						$xml_sitemap .= "\n\t".'<url>';
+						$xml_sitemap .= "\n\t\t".'<loc>'.$url.'</loc>';
+						$xml_sitemap .= "\n\t\t".'<lastmod>'.$date.'</lastmod>';
+						$xml_sitemap .= "\n\t\t".'<changefreq>weekly</changefreq>';
+						$xml_sitemap .= "\n\t\t".'<priority>0.6</priority>';
+						$xml_sitemap .= "\n\t".'</url>';
+					}
+				}
+			}
+
+			// additional urls
+			if (!empty($additional_urls)){
+				foreach ($additional_urls as $url){
+					if (!in_array($url, $excluded_urls)){
+						$date = date('Y-m-d\TH:i:s+00:00');
+						$xml_sitemap .= "\n\t".'<url>';
+						$xml_sitemap .= "\n\t\t".'<loc>'.$url.'</loc>';
+						$xml_sitemap .= "\n\t\t".'<lastmod>'.$date.'</lastmod>';
+						$xml_sitemap .= "\n\t\t".'<changefreq>weekly</changefreq>';
+						$xml_sitemap .= "\n\t\t".'<priority>0.6</priority>';
+						$xml_sitemap .= "\n\t".'</url>';
+					}
 				}
 			}
 
