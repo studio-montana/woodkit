@@ -91,7 +91,8 @@ function tool_seo_get_config_options_field_xmlsitemap_active($args){
 	if ($value == 'on')
 		$checked = ' checked="checked"';
 	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-seo-xmlsitemap-active]" '.$checked.' />';
-	echo '<p class="field-description"><a href="'.seo_get_xmlsitemap_url().'" target="_blank">'.__('view your sitemap.xml', WOODKIT_PLUGIN_TEXT_DOMAIN).'</a></p>';
+	if (tool_seo_is_active(false))
+		echo '<p class="field-description"><a href="'.seo_get_xmlsitemap_url().'" target="_blank">'.__('view your sitemap.xml', WOODKIT_PLUGIN_TEXT_DOMAIN).'</a></p>';
 }
 
 function tool_seo_get_config_options_field_xmlsitemap_notification_active($args){

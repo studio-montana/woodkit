@@ -39,7 +39,7 @@ function tool_display_is_active($active){
 add_filter("woodkit_is_tool_display_active", "tool_display_is_active", 1, 1);
 
 function tool_display_woodkit_config_default_values($default_values){
-	$default_values["tool-display-active"] = "on";
+	$default_values["tool-display-active"] = "off";
 	return $default_values;
 }
 add_filter("woodkit_config_default_values", "tool_display_woodkit_config_default_values");

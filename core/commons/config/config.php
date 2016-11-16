@@ -189,7 +189,7 @@ function woodkit_get_option_default_value($slug){
 endif;
 
 /**
- * Plugin options page
+ * Plugin options page & Plugin tool options pages
  */
 if (is_admin()){
 
@@ -210,4 +210,32 @@ if (is_admin()){
 	}
 	add_filter('plugin_action_links_woodkit/woodkit.php', 'woodkit_plugin_action_links');
 	endif;
+
+	if (!function_exists("woodkit_plugin_action_admin_menu")):
+	/**
+	 * Load plugin tools options page on Woodkit submenu
+	*/
+	function woodkit_plugin_action_admin_menu_config() {
+		$tools = woodkit_get_registered_tools();
+		if (!empty($tools)){
+			foreach ($tools as $tool) {
+				$tool_config_page_path = WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.$tool['slug'].'/options.php';
+				if (file_exists($tool_config_page_path)){
+					require_once $tool_config_page_path;
+					$page_name = apply_filters("tool_".$tool['slug']."_get_page_options_name", "No Page Name");
+					$menu_name = apply_filters("tool_".$tool['slug']."_get_page_options_menu_name", "No Menu Name");
+					$callback = "tool_".$tool['slug']."_get_page_options_callback_function";
+					if (function_exists($callback)){
+						do_action("woodkit_tool_config_page_before_menu_add", $tool['slug']);
+						add_submenu_page("woodkit_options", $page_name, $menu_name, "manage_options", "woodkit_options_tool_".$tool['slug'], $callback);
+						do_action("woodkit_tool_config_page_after_menu_add", $tool['slug']);
+					}
+				};
+			}
+		}
+	}
+	add_action('admin_menu', 'woodkit_plugin_action_admin_menu_config');
+	endif;
+
+
 }
