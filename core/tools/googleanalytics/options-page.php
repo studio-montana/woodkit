@@ -63,7 +63,7 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-googleanalytics-option
 		?>
 		<div class="section">
 			<h3 class="section-title">
-				<?php _e("Sitemap options", 'woodvehicles'); ?>
+				<?php _e("Event Tracking", 'woodvehicles'); ?>
 			</h3>
 			<div class="section-content">
 

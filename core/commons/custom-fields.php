@@ -38,7 +38,7 @@ function customfields_admin_init() {
 		$metabox_position = "default";
 	foreach ($customfields_posttypes_available as $post_type){
 		$post_type_obj = get_post_type_object($post_type);
-		add_meta_box('woodkit-customfields', '<i class="fa fa-rocket" style="margin-right: 6px; font-size: 1.3rem;"></i>'.$post_type_obj->labels->singular_name.' '.__('options', WOODKIT_PLUGIN_TEXT_DOMAIN), 'customfields_add_inner_meta_boxes', $post_type, 'normal', $metabox_position);
+		add_meta_box('woodkit-customfields', '<i class="fa fa-rocket" style="margin-right: 6px; font-size: 1.3rem;"></i>'.__('Woodkit', WOODKIT_PLUGIN_TEXT_DOMAIN), 'customfields_add_inner_meta_boxes', $post_type, 'normal', $metabox_position);
 	}
 }
 add_action('admin_init', 'customfields_admin_init');

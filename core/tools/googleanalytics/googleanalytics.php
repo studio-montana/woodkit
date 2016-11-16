@@ -64,7 +64,7 @@ function woodkit_tool_googleanalytics_event_tracking(eventCategory, eventAction,
 	// console.log("event on "+eventCategory+", "+eventAction+", "+eventLabel);
 	ga('send', 'event', eventCategory, eventAction, eventLabel);
 }
-<?php $events = get_option("woodkit-tool-seo-options-events", array());
+<?php $events = get_option("woodkit-tool-googleanalytics-options-events", array());
 if (!empty($events)){ ?>
 
 // Google Analytics Events 
