@@ -198,16 +198,11 @@ function woodkit_seo_notify_searchengines(){
 function woodkit_seo_is_excluded_url($url, $excluded_if_equals_urls = array(), $excluded_if_contains_urls = array(), $excluded_if_regexp_urls = array()){
 	$excluded = false;
 
-	trace_info("--------------------------------------------");
-	trace_info("---- test url - $url");
-
 	// equals
 	if (!empty($excluded_if_equals_urls)){
 		foreach ($excluded_if_equals_urls as $equals){
-			trace_info("-- test equals - $url - $equals");
 			if ($url == $equals){
 				$excluded = true;
-				trace_info("- url exluded because equals - $url - $equals");
 				break;
 			}
 		}
@@ -216,10 +211,8 @@ function woodkit_seo_is_excluded_url($url, $excluded_if_equals_urls = array(), $
 	// contains
 	if (!empty($excluded_if_contains_urls) && !$excluded){
 		foreach ($excluded_if_contains_urls as $contains){
-			trace_info("- url contains - ".strpos($contains, $url)." - $url - $contains");
 			if (strpos($url, $contains) !== false) {
 				$excluded = true;
-				trace_info("- url exluded because contains - $url - $contains");
 				break;
 			}
 		}
@@ -230,7 +223,6 @@ function woodkit_seo_is_excluded_url($url, $excluded_if_equals_urls = array(), $
 		foreach ($excluded_if_regexp_urls as $regexp){
 			if (preg_match($regexp, $url)) {
 				$excluded = true;
-				trace_info("- url exluded because regexp - $url - $regexp");
 				break;
 			}
 		}
