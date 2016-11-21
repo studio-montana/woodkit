@@ -84,10 +84,10 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-googleanalytics-option
 					if (!empty($events)){
 						$events_js = "{";
 						foreach ($events as $k => $event){
-							$selector = !empty($event['selector']) ? str_replace('"', '\"', str_replace('\\\\', '', $event['selector'])) : "";
-							$name = !empty($event['name']) ? str_replace('"', '\"', str_replace('\\\\', '', $event['name'])) : "";
-							$action = !empty($event['action']) ? str_replace('"', '\"', str_replace('\\\\', '', $event['action'])) : "";
-							$category = !empty($event['category']) ? str_replace('"', '\"', str_replace('\\\\', '', $event['category'])) : "";
+							$selector = !empty($event['selector']) ? esc_attr($event['selector']) : "";
+							$name = !empty($event['name']) ? esc_attr($event['name']) : "";
+							$action = !empty($event['action']) ? esc_attr($event['action']) : "";
+							$category = !empty($event['category']) ? esc_attr($event['category']) : "";
 							$events_js .= intval($k).":{selector: \"".$selector."\", name:\"".$name."\", action:\"".$action."\", category:\"".$category."\"},";
 						}
 						$events_js .= "}";

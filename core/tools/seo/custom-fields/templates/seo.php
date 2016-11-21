@@ -24,7 +24,7 @@ defined('ABSPATH') or die("Go Away!");
 ?>
 <div id="tool-display-general" class="custom-fields-section">
 	<header class="custom-fields-section-header">
-		<h3><?php _e("SEO", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<em>(<a href="<?php echo seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e("look at sitemap.xml", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a>)</em></h3>
+		<h3><?php _e("SEO", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<em>(<a href="<?php echo woodkit_seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e("look at sitemap.xml", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a>)</em></h3>
 	</header>
 	<div class="custom-fields-section-content">
 		<table class="fields full-width">

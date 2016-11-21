@@ -997,7 +997,6 @@
     padding: 5px 10px;
     font-size: 12px;
     line-height: 17px;
-    height: 17px;
     color: #000;
     width: 200px;
     height: auto;
@@ -1005,6 +1004,10 @@
     -moz-transition: background .1s;
     transition: background .1s;
 	border: 1px solid #ececec;
+}
+
+.woodkit-tool-page-options select {
+    height: 29px;
 }
 
 .woodkit-tool-page-options input[type='text']:focus,

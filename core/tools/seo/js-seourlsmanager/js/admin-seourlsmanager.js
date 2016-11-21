@@ -26,10 +26,14 @@
 		 */
 		plugin.urls = function(urls) {
 			settings = $.extend({
-				label_add_url : "Add URL",
+				label_add_url : "Add sitemap rule",
 				label_url : "url",
 				label_url_exclude : "exclude",
 				label_confirm_remove_url : "Do you realy want remove this url ?",
+				label_action_add : "add",
+				label_action_exclude_if_equals : "exclude if equals",
+				label_action_exclude_if_contains : "exclude if contains",
+				label_action_exclude_if_regexp : "exclude if matches regexp",
 			}, urls);
 		}
 
@@ -50,7 +54,7 @@
 			 * Listener
 			 */
 			$seourlsmanager_container_add.on('click', function(e) {
-				plugin.add_url("", "");
+				plugin.add_url("", "add");
 			});
 			$seourlsmanager_container.on('click', '.delete-url', function(e) {
 				plugin.remove_url($(this).data('id'));
@@ -72,7 +76,7 @@
 			for ( var k in data) {
 				if (data.hasOwnProperty(k)) {
 					var obj = data[k];
-					plugin.add_url(obj.url, obj.exclude);
+					plugin.add_url(obj.url, obj.action);
 				}
 			}
 		}
@@ -80,17 +84,35 @@
 		/**
 		 * Add url html container
 		 */
-		plugin.add_url = function(url, exclude) {
+		plugin.add_url = function(url, action) {
 
+			console.log("action : "+action);
+			
 			var url_id = plugin.get_unique_id("seo-sitemap-url-id-", 0);
-			var exclude_checked = '';
-			if (exclude == "on")
-				exclude_checked = ' checked="checked"';
 			
 			var html = '';
 			html += '<tr valign="top" class="url" id="seo-sitemap-url-id-' + url_id + '">';
+			html += '<td valign="middle" class="seo-sitemap-url-action">';
+			html += '<select name="seo-sitemap-url-action-' + url_id + '">';
+			var action_checked = "";
+			if (empty(action) || action == 'add')
+				action_checked = ' selected="selected"';
+			html += '<option value="add"'+action_checked+'>'+settings['label_action_add']+'</option>';
+			action_checked = "";
+			if (!empty(action) && action == 'exclude_if_equals')
+				action_checked = ' selected="selected"';
+			html += '<option value="exclude_if_equals"'+action_checked+'>'+settings['label_action_exclude_if_equals']+'</option>';
+			action_checked = "";
+			if (!empty(action) && action == 'exclude_if_contains')
+				action_checked = ' selected="selected"';
+			html += '<option value="exclude_if_contains"'+action_checked+'>'+settings['label_action_exclude_if_contains']+'</option>';
+			action_checked = "";
+			if (!empty(action) && action == 'exclude_if_regexp')
+				action_checked = ' selected="selected"';
+			html += '<option value="exclude_if_regexp"'+action_checked+'>'+settings['label_action_exclude_if_regexp']+'</option>';
+			html += '</select>';
+			html += '</td>';
 			html += '<td valign="middle" class="seo-sitemap-url"><input type="text" name="seo-sitemap-url-' + url_id + '" value="'+url+'" placeholder="' + settings['label_url'] + '" /></td>';
-			html += '<td valign="middle" class="seo-sitemap-url-exclude"><label for="seo-sitemap-url-exclude-' + url_id + '">' + settings['label_url_exclude'] + '</label><input type="checkbox" name="seo-sitemap-url-exclude-' + url_id + '" id="seo-sitemap-url-exclude-' + url_id + '" '+exclude_checked+'/></td>';
 			html += '<td valign="middle" class="seo-sitemap-url-id"><div class="delete delete-url btn" data-id="seo-sitemap-url-id-' + url_id + '"><i class="fa fa-times"></i></div><input type="hidden" name="seo-sitemap-url-id-' + url_id + '" value="' + url_id + '" /></td>';
 			html += '</tr>';
 

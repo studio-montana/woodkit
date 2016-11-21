@@ -22,24 +22,24 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
-function seo_get_xmlsitemap_url($params = ""){
+function woodkit_seo_get_xmlsitemap_url($params = ""){
 	return get_bloginfo('url').'/sitemap.xml'.$params;
 }
 
-function seo_auto_update_xmlsitemap(){
+function woodkit_seo_auto_update_xmlsitemap(){
 	$availables_post_types = get_displayed_post_types();
-	seo_update_xmlsitemap($availables_post_types);
+	woodkit_seo_update_xmlsitemap($availables_post_types);
 }
-add_action("save_post", "seo_auto_update_xmlsitemap");
-add_action("deleted_post", "seo_auto_update_xmlsitemap");
-add_action("tool_xmlsitemap_update", "seo_auto_update_xmlsitemap");
+add_action("save_post", "woodkit_seo_auto_update_xmlsitemap");
+add_action("deleted_post", "woodkit_seo_auto_update_xmlsitemap");
+add_action("tool_xmlsitemap_update", "woodkit_seo_auto_update_xmlsitemap");
 
 /**
  * Xml site Map generator
  * @param array $availables_post_types
  * @return true if success, false otherwise
 */
-function seo_update_xmlsitemap($availables_post_types){
+function woodkit_seo_update_xmlsitemap($availables_post_types){
 	$success = false;
 
 	$xmlsitemap_active = woodkit_get_option("tool-seo-xmlsitemap-active");
@@ -48,18 +48,61 @@ function seo_update_xmlsitemap($availables_post_types){
 		// xmlsitemap urls options (additionals or excluded)
 		$sitemap_urls = get_option("woodkit-tool-seo-options-sitemap-urls", array());
 		$additional_urls = array();
-		$excluded_urls = array();
+		$excluded_if_equals_urls = array();
+		$excluded_if_contains_urls = array();
+		$excluded_if_regexp_urls = array();
 		if (!empty($sitemap_urls)){
 			foreach ($sitemap_urls as $k => $item){
-				$url = !empty($item['url']) ? str_replace('"', '\"', str_replace('\\\\', '', $item['url'])) : "";
-				$exclude = !empty($item['exclude']) ? str_replace('"', '\"', str_replace('\\\\', '', $item['exclude'])) : "";
-				if (!empty($url) && $exclude != 'on'){
+				$url = !empty($item['url']) ? esc_attr($item['url']) : "";
+				$action = !empty($item['action']) ? esc_attr($item['action']) : "";
+				if (!empty($url) && $action == 'add'){
 					$additional_urls[] = $url;
-				}else if(!empty($url) && $exclude == 'on'){
-					$excluded_urls[] = $url;
+				}else if(!empty($url) && $action == 'exclude_if_equals'){
+					$excluded_if_equals_urls[] = $url;
+				}else if(!empty($url) && $action == 'exclude_if_contains'){
+					$excluded_if_contains_urls[] = $url;
+				}else if(!empty($url) && $action == 'exclude_if_regexp'){
+					$excluded_if_regexp_urls[] = $url;
 				}
 			}
 		}
+
+
+		// --- URLs
+		$urls = array();
+
+		// root
+		$lm = intval(get_timestamp_from_mysql(get_lastpostmodified('GMT')));
+		$date = date('Y-m-d\TH:i:s+00:00', $lm);
+		$urls[] = array('loc' => get_bloginfo('url'), 'lastmod' => $date, 'changefreq' => 'weekly', 'priority' => '1.0');
+
+		// posts
+		if ($availables_post_types){
+			$posts = get_posts(array(
+					'numberposts' => -1,
+					'orderby' => 'modified',
+					'order'    => 'DESC',
+					'post_type' => $availables_post_types,
+					'suppress_filters' => true // WPML compatibility to include all posts
+			));
+			foreach($posts as $post) {
+				$lm = intval(get_timestamp_from_mysql($post->post_modified_gmt));
+				$date = date('Y-m-d\TH:i:s+00:00', $lm);
+				$urls[] = array('loc' => get_permalink($post->ID), 'lastmod' => $date, 'changefreq' => 'weekly', 'priority' => '0.6');
+			}
+		}
+
+		// sitemap adds
+		if (!empty($additional_urls)){
+			foreach ($additional_urls as $url){
+				if (!woodkit_seo_is_excluded_url($url, $excluded_if_equals_urls, $excluded_if_contains_urls, $excluded_if_regexp_urls)){
+					$date = date('Y-m-d\TH:i:s+00:00');
+					$urls[] = array('loc' => $url, 'lastmod' => $date, 'changefreq' => 'weekly', 'priority' => '0.6');
+				}
+			}
+		}
+
+
 
 		// $xmlsitemappath = trailingslashit(get_home_path()) . "sitemap.xml"; makes error with woocommerce payplug/paypal purchase method
 		$xmlsitemappath = trailingslashit(ABSPATH) . "sitemap.xml";
@@ -72,50 +115,15 @@ function seo_update_xmlsitemap($availables_post_types){
 				$xml_sitemap.="\n".'<?xml-stylesheet type="text/xsl" href="'.$xsl.'"?>';
 			$xml_sitemap.="\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
-			// root
-			$lm = intval(get_timestamp_from_mysql(get_lastpostmodified('GMT')));
-			$date = date('Y-m-d\TH:i:s+00:00', $lm);
-			$xml_sitemap .= "\n\t".'<url>';
-			$xml_sitemap .= "\n\t\t".'<loc>'.get_bloginfo('url').'</loc>';
-			$xml_sitemap .= "\n\t\t".'<lastmod>'. $date .'</lastmod>';
-			$xml_sitemap .= "\n\t\t".'<changefreq>weekly</changefreq>';
-			$xml_sitemap .= "\n\t\t".'<priority>1.0</priority>';
-			$xml_sitemap .= "\n\t".'</url>';
-
-			if ($availables_post_types){
-				// posts
-				$posts = get_posts(array(
-						'numberposts' => -1,
-						'orderby' => 'modified',
-						'order'    => 'DESC',
-						'post_type' => $availables_post_types,
-						'suppress_filters' => true // pour avoir tous les post, y compris les traductions (WPML compatibility)
-				));
-				foreach($posts as $post) {
-					$lm = intval(get_timestamp_from_mysql($post->post_modified_gmt));
-					$url = get_permalink($post->ID);
-					if (!in_array($url, $excluded_urls)){
-						$date = date('Y-m-d\TH:i:s+00:00', $lm);
+			// loop for urls and test
+			if (!empty($urls)){
+				foreach ($urls as $url){
+					if (!woodkit_seo_is_excluded_url($url['loc'], $excluded_if_equals_urls, $excluded_if_contains_urls, $excluded_if_regexp_urls)){
 						$xml_sitemap .= "\n\t".'<url>';
-						$xml_sitemap .= "\n\t\t".'<loc>'.$url.'</loc>';
-						$xml_sitemap .= "\n\t\t".'<lastmod>'.$date.'</lastmod>';
-						$xml_sitemap .= "\n\t\t".'<changefreq>weekly</changefreq>';
-						$xml_sitemap .= "\n\t\t".'<priority>0.6</priority>';
-						$xml_sitemap .= "\n\t".'</url>';
-					}
-				}
-			}
-
-			// additional urls
-			if (!empty($additional_urls)){
-				foreach ($additional_urls as $url){
-					if (!in_array($url, $excluded_urls)){
-						$date = date('Y-m-d\TH:i:s+00:00');
-						$xml_sitemap .= "\n\t".'<url>';
-						$xml_sitemap .= "\n\t\t".'<loc>'.$url.'</loc>';
-						$xml_sitemap .= "\n\t\t".'<lastmod>'.$date.'</lastmod>';
-						$xml_sitemap .= "\n\t\t".'<changefreq>weekly</changefreq>';
-						$xml_sitemap .= "\n\t\t".'<priority>0.6</priority>';
+						$xml_sitemap .= "\n\t\t".'<loc>'.$url['loc'].'</loc>';
+						$xml_sitemap .= "\n\t\t".'<lastmod>'. $url['lastmod'] .'</lastmod>';
+						$xml_sitemap .= "\n\t\t".'<changefreq>'. $url['changefreq'] .'</changefreq>';
+						$xml_sitemap .= "\n\t\t".'<priority>'. $url['priority'] .'</priority>';
 						$xml_sitemap .= "\n\t".'</url>';
 					}
 				}
@@ -128,7 +136,7 @@ function seo_update_xmlsitemap($availables_post_types){
 			fclose($fp);
 			$success = true;
 
-			seo_notify_searchengines();
+			woodkit_seo_notify_searchengines();
 
 		}else{
 			trace_err("Impossible d'écrire le fichier : ".trailingslashit(get_home_path())."sitemap.xml");
@@ -137,12 +145,12 @@ function seo_update_xmlsitemap($availables_post_types){
 	return $success;
 }
 
-function seo_notify_searchengines(){
+function woodkit_seo_notify_searchengines(){
 	$xmlsitemap_active = woodkit_get_option("tool-seo-xmlsitemap-active");
 	if ($xmlsitemap_active == "on"){
 		$notify_searchengines = woodkit_get_option("tool-seo-xmlsitemap-notification-active");
 		if ($notify_searchengines == "on"){
-			$sitemap_url = seo_get_xmlsitemap_url();
+			$sitemap_url = woodkit_seo_get_xmlsitemap_url();
 			$success = true;
 			if (!empty($sitemap_url)){
 				$curl_req = array();
@@ -185,4 +193,48 @@ function seo_notify_searchengines(){
 		}
 	}
 	return false;
+}
+
+function woodkit_seo_is_excluded_url($url, $excluded_if_equals_urls = array(), $excluded_if_contains_urls = array(), $excluded_if_regexp_urls = array()){
+	$excluded = false;
+
+	trace_info("--------------------------------------------");
+	trace_info("---- test url - $url");
+
+	// equals
+	if (!empty($excluded_if_equals_urls)){
+		foreach ($excluded_if_equals_urls as $equals){
+			trace_info("-- test equals - $url - $equals");
+			if ($url == $equals){
+				$excluded = true;
+				trace_info("- url exluded because equals - $url - $equals");
+				break;
+			}
+		}
+	}
+
+	// contains
+	if (!empty($excluded_if_contains_urls) && !$excluded){
+		foreach ($excluded_if_contains_urls as $contains){
+			trace_info("- url contains - ".strpos($contains, $url)." - $url - $contains");
+			if (strpos($url, $contains) !== false) {
+				$excluded = true;
+				trace_info("- url exluded because contains - $url - $contains");
+				break;
+			}
+		}
+	}
+
+	// regexp
+	if (!empty($excluded_if_regexp_urls) && !$excluded){
+		foreach ($excluded_if_regexp_urls as $regexp){
+			if (preg_match($regexp, $url)) {
+				$excluded = true;
+				trace_info("- url exluded because regexp - $url - $regexp");
+				break;
+			}
+		}
+	}
+
+	return $excluded;
 }
