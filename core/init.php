@@ -214,12 +214,13 @@ function woodkit_admin_scripts_styles() {
 	if (!empty($js_admin))
 		wp_enqueue_script('woodkit-admin-script', $js_admin, array('jquery'), '1.0', true);
 	
+	// Setup color picker (iris) palette colors
 	$color_picker_options_palettes = array('#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff', '#fff000');
+	// TODO get options for custom colors
 	$color_picker_options_palettes = apply_filters("woodkit_admin_color_picker_options_palettes", $color_picker_options_palettes);
-	
 	wp_localize_script('woodkit-admin-script', 'CustomColorPicker', array("palettes" => $color_picker_options_palettes));
 
-	// wp.media JavaScript in Admin environnement (widget, posts, ...)
+	// Load wp.media JavaScript in Admin environnement (widget, posts, ...)
 	wp_enqueue_media();
 
 	// Action after woodkit enqueue admin scripts
@@ -262,8 +263,16 @@ add_action('login_enqueue_scripts', 'woodkit_login_scripts_styles');
 */
 function woodkit_dashboard_setup() {
 	wp_add_dashboard_widget('woodkit-dashboard-info-widget', Woodkit::get_info("Name")." | ".Woodkit::get_info("Version"), 'woodkit_dashboard_info_widget');
+	// display woodkit widget on top
+	global $wp_meta_boxes;
+	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+	$woodkit_widget_backup = array('woodkit-dashboard-info-widget' => $normal_dashboard['woodkit-dashboard-info-widget']);
+	unset($normal_dashboard['woodkit-dashboard-info-widget']);
+	$sorted_dashboard = array_merge($woodkit_widget_backup, $normal_dashboard);
+	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+	// end display woodkit widget on top
 }
-add_action('wp_dashboard_setup', 'woodkit_dashboard_setup' );
+add_action('wp_dashboard_setup', 'woodkit_dashboard_setup');
 
 /**
  * Dashboard Widgets : Woodkit Info

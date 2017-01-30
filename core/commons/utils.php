@@ -814,3 +814,21 @@ function woodkit_get_posts_options_children($id_selected = null, $id_post_parent
 	}
 	return $options;
 }
+
+function woodkit_is_light_color($hex){
+	$hex = str_replace("#", "", $hex);
+	$r = hexdec(substr($hex,0,2));
+	$g = hexdec(substr($hex,2,2));
+	$b = hexdec(substr($hex,4,2));
+
+	$contrast = sqrt(
+			$r * $r * .241 +
+			$g * $g * .691 +
+			$b * $b * .068
+	);
+
+	if($contrast > 130){
+		return true;
+	}
+	return false;
+}
