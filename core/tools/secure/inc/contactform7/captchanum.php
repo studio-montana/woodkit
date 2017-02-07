@@ -46,7 +46,11 @@ function wpcf7_add_shortcode_captchanum() {
 add_action( 'wpcf7_init', 'wpcf7_add_shortcode_captchanum');
 
 function wpcf7_captchanum_shortcode_handler($tag) {
-	$tag = new WPCF7_Shortcode($tag);
+	if (class_exists('WPCF7_FormTag')){
+		$tag = new WPCF7_FormTag($tag);
+	}else{
+		$tag = new WPCF7_Shortcode($tag);
+	}
 	if (empty($tag->name))
 		return '';
 
