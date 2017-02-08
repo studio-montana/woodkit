@@ -79,7 +79,11 @@ function wpcf7_captchanum_shortcode_handler($tag) {
  * Validation filter
 */
 function wpcf7_captchanum_validation_filter($result, $tag) {
-	$tag = new WPCF7_Shortcode($tag);
+	if (class_exists('WPCF7_FormTag')){
+		$tag = new WPCF7_FormTag($tag);
+	}else{
+		$tag = new WPCF7_Shortcode($tag);
+	}
 	$errors = apply_filters('tool_contactform7_captchanum_validatation', $tag->name);
 	if (!empty($errors)){
 		foreach ($errors as $error){
