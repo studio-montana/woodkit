@@ -92,8 +92,8 @@ function woodkit_is_registered(){
 				$woodkit_config_ac = false;
 				$url = WOODKIT_URL_API;
 				$url = add_query_arg(array("api-action" => "active"), $url);
-				$url = add_query_arg(array("api-package" => WOODKIT_PLUGIN_NAME), $url);
-				$url = add_query_arg(array("api-host" => get_site_url()), $url);
+				$url = add_query_arg(array("api-key-package" => WOODKIT_PLUGIN_NAME), $url);
+				$url = add_query_arg(array("api-key-host" => get_site_url()), $url);
 				$url = add_query_arg(array("api-key" => $key), $url);
 				$request_body = wp_remote_retrieve_body(wp_remote_get($url));
 				if (!empty($request_body)) {
