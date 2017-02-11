@@ -2,16 +2,14 @@
 
 class WoodkitPluginUploader {
 
-	private $slug; // plugin slug
-	private $pluginData; // plugin data
-	private $repo;
-	private $pluginFile; // __FILE__ of our plugin
-	private $APIResult; // holds data
+	private $slug;
+	private $pluginData;
+	private $pluginFile;
+	private $APIResult;
 
-	function __construct($pluginFile, $package) {
+	function __construct($pluginFile) {
 
 		$this->pluginFile = $pluginFile;
-		$this->repo = $package;
 
 		if (file_exists($this->pluginFile)){
 			add_filter("plugins_api", array( $this, "setPluginInfo" ), 10, 3);
@@ -21,7 +19,7 @@ class WoodkitPluginUploader {
 		}
 	}
 
-	// Get information regarding our plugin from WordPress
+	// Get plugin information
 	private function initPluginData() {
 		$this->slug = plugin_basename($this->pluginFile);
 		$this->pluginData = get_plugin_data( $this->pluginFile );
