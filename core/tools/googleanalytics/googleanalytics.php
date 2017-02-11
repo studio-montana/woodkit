@@ -92,4 +92,4 @@ if (!empty($events)){ ?>
 <?php
 	}
 }
-add_action('wp_head', 'tool_googleanalytics_wp_head');
+add_action('wp_head', 'tool_googleanalytics_wp_head', 1);

@@ -47,7 +47,6 @@ function tool_googleanalytics_get_config_options_field_code($args){
 	if (isset($options['tool-googleanalytics-code']))
 		$value = $options['tool-googleanalytics-code'];
 	echo '<input type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-googleanalytics-code]" value="'.$value.'" placeholder="XX-XXXXXXX-XX" />';
-	echo '<p class="field-description">'.__('not needs if you use Google Tag Manager code', WOODKIT_PLUGIN_TEXT_DOMAIN).'</p>';
 }
 
 function tool_googleanalytics_get_config_options_field_googletagmanager_code($args){

@@ -1,6 +1,6 @@
 <?php
 
-class WoodkitUploader {
+class WoodkitPluginUploader {
 
 	private $slug; // plugin slug
 	private $pluginData; // plugin data
@@ -13,15 +13,17 @@ class WoodkitUploader {
 		$this->pluginFile = $pluginFile;
 		$this->repo = $package;
 
-		add_filter("plugins_api", array( $this, "setPluginInfo" ), 10, 3);
-		add_filter('site_transient_update_plugins', array( $this, 'setTransitent'), 10, 1);
-		add_filter("pre_set_site_transient_update_plugins", array( $this, "setTransitent" ), 10, 1);
-		add_filter("upgrader_post_install", array( $this, "postInstall" ), 10, 3);
+		if (file_exists($this->pluginFile)){
+			add_filter("plugins_api", array( $this, "setPluginInfo" ), 10, 3);
+			add_filter('site_transient_update_plugins', array( $this, 'setTransitent'), 10, 1);
+			add_filter("pre_set_site_transient_update_plugins", array( $this, "setTransitent" ), 10, 1);
+			add_filter("upgrader_post_install", array( $this, "postInstall" ), 10, 3);
+		}
 	}
 
 	// Get information regarding our plugin from WordPress
 	private function initPluginData() {
-		$this->slug = plugin_basename( $this->pluginFile );
+		$this->slug = plugin_basename($this->pluginFile);
 		$this->pluginData = get_plugin_data( $this->pluginFile );
 	}
 
@@ -36,8 +38,8 @@ class WoodkitUploader {
 
 		$reload = true;
 		$now = new DateTime();
-		$last_update = get_option('woodkit-last-update-latest-release', null);
-		$latestrelease = get_option('woodkit-latest-release', null);
+		$last_update = get_option($this->slug.'-last-update-latest-release', null);
+		$latestrelease = get_option($this->slug.'-latest-release', null);
 		if ($last_update != null){
 			if (defined('WOODKIT_INTERVAL_API'))
 				$last_update->add(new DateInterval(WOODKIT_INTERVAL_API));
@@ -58,12 +60,12 @@ class WoodkitUploader {
 				$this->APIResult = @json_decode($remote_result);
 				// update release
 				if ($latestrelease != null)
-					delete_option('woodkit-latest-release');
-				add_option('woodkit-latest-release', $remote_result);
+					delete_option($this->slug.'-latest-release');
+				add_option($this->slug.'-latest-release', $remote_result);
 				// update date
 				if ($last_update != null)
-					delete_option('woodkit-last-update-latest-release');
-				add_option('woodkit-last-update-latest-release', $now);
+					delete_option($this->slug.'-last-update-latest-release');
+				add_option($this->slug.'-last-update-latest-release', $now);
 			}
 		}else{
 			$this->APIResult = @json_decode($latestrelease);
@@ -75,7 +77,7 @@ class WoodkitUploader {
 
 		if (!is_object($transient))
 			return $transient;
-		
+
 		if (!woodkit_is_registered())
 			return $transient;
 
@@ -98,7 +100,7 @@ class WoodkitUploader {
 
 			$response = new stdClass();
 			$response->id = 0;
-			$response->slug = WOODKIT_PLUGIN_SLUG_INSTALLER; // might be woodkit/woodkit.php to get plugin information ligthbox but generate an error on ajax update !
+			$response->slug = $this->slug; // might be woodkit/woodkit.php to get plugin information ligthbox but generate an error on ajax update !
 			$response->plugin = $this->slug;
 			$response->new_version = $this->APIResult->tag_name;
 			$response->upgrade_notice = '';
