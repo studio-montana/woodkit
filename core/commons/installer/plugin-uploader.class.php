@@ -121,8 +121,6 @@ class WoodkitPluginUploader {
 
 		}
 
-		trace_info("Woodkit Plugin Installer - setTransitent : ".var_export($transient, true));
-
 		return $transient;
 	}
 
@@ -200,8 +198,6 @@ class WoodkitPluginUploader {
 	public function postInstall($true, $hook_extra, $result) {
 		// Get plugin information
 		$this->initPluginData();
-
-		trace_info("Plugin Install - postInstall result : ".var_export($result, true));
 
 		// check if updated theme is our theme - name like : studio-montana-THEMENAME-HASH
 		if (isset($result['destination_name']) && strpos($result['destination_name'], WOODKIT_GITHUB_BASE_PACKAGE.'-'.$this->package.'-') !== false){
