@@ -45,7 +45,6 @@ class WoodkitThemeUploader {
 				$reload = false;
 			}
 		}
-		$reload = true; // TODO delete this statement
 
 		if ($reload){
 			$key = woodkit_get_option("key-activation");
