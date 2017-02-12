@@ -47,7 +47,8 @@ if (!function_exists("seo_document_title_parts")):
 /**
  * Filter the site meta title.
 */
-function seo_document_title_parts($title) {
+function seo_document_title_parts($title_parts) {
+	$title = '';
 	$queried_object = get_queried_object();
 	if (is_category() || is_tax()){
 		if (is_category()){
@@ -59,7 +60,7 @@ function seo_document_title_parts($title) {
 		if (!empty($term_id)){
 			$meta_data_cat = stripslashes(get_option("term_".$term_id."_".SEO_CUSTOMFIELD_METATITLE));
 			if (!empty($meta_data_cat)){
-				$title['title'] = $meta_data_cat;
+				$title = $meta_data_cat;
 			}
 		}
 	}
@@ -68,11 +69,19 @@ function seo_document_title_parts($title) {
 			// meta title
 			$meta_data = get_post_meta($queried_object->ID, SEO_CUSTOMFIELD_METATITLE, true);
 			if (!empty($meta_data)){
-				$title['title'] = $meta_data;
+				$title = $meta_data;
 			}
 		}
 	}
-	return $title;
+	
+	if (!empty($title)){
+		$title_parts['title'] = $title;
+		if (is_front_page()){
+			$title_parts['tagline'] = '';
+		}
+	}
+	
+	return $title_parts;
 }
 add_filter('document_title_parts', 'seo_document_title_parts', 100, 3);
 endif;
