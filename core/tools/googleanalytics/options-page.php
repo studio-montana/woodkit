@@ -49,72 +49,81 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-googleanalytics-option
 	<h1>
 		<?php _e("Google Analytics settings", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
 	</h1>
-	<form method="post" action="<?php echo get_current_url(true); ?>">
-		<input type="hidden" name="<?php echo 'tool-googleanalytics-options-nonce'; ?>" value="<?php echo wp_create_nonce('tool-googleanalytics-options-nonce'); ?>" />
-		<div class="form-row form-row-submit">
-			<button type="submit">
-				<?php _e("Save", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
-			</button>
-		</div>
-
-		<?php 
-		$googleanalytics_code = woodkit_get_option('tool-googleanalytics-code');
-		if (!empty($googleanalytics_code)){
+	<?php 
+	$googleanalytics_code = woodkit_get_option('tool-googleanalytics-code');
+	$googleanalytics_googletagmanager_code = woodkit_get_option('tool-googleanalytics-googletagmanager-code');
+	if (!empty($googleanalytics_googletagmanager_code)){
 		?>
-		<div class="section">
-			<h3 class="section-title">
-				<?php _e("Event Tracking", 'woodvehicles'); ?>
-			</h3>
-			<div class="section-content">
-
-				<div class="googleanalyticsevents-manager"></div>
-				
-				<script type="text/javascript">
-				jQuery(document).ready(function($){
-					var googleanalyticsevents_manager = $(".googleanalyticsevents-manager").googleanalyticseventsmanager({
-							label_add_event : "<?php _e("Add Google Analytics Event", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-							label_event_selector : "<?php _e("css selector", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-							label_event_name : "<?php _e("event label", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-							label_event_action : "<?php _e("action name", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-							label_event_category : "<?php _e("category name", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-							label_confirm_remove_event : "<?php _e("Do you realy want remove this event ?", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-						});
-					<?php 
-					$events = get_option("woodkit-tool-googleanalytics-options-events", array());
-					if (!empty($events)){
-						$events_js = "{";
-						foreach ($events as $k => $event){
-							$selector = !empty($event['selector']) ? esc_attr($event['selector']) : "";
-							$name = !empty($event['name']) ? esc_attr($event['name']) : "";
-							$action = !empty($event['action']) ? esc_attr($event['action']) : "";
-							$category = !empty($event['category']) ? esc_attr($event['category']) : "";
-							$events_js .= intval($k).":{selector: \"".$selector."\", name:\"".$name."\", action:\"".$action."\", category:\"".$category."\"},";
-						}
-						$events_js .= "}";
-						?>
-						googleanalyticsevents_manager.set_data(<?php echo $events_js; ?>);
-						<?php
-					}
-					?>
-				});
-			</script>
-
-			<div class="section-info"><?php _e("You can add some Google Analytics Event rules based on CSS Selector.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<?php _e("Example", WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : <code>body.home .header &gt; a.logo</code></div>
-				
+		<h3>
+			<?php _e("You are using Google Tag Manager, please add tracking events on Google interface.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<a href="https://www.google.com/analytics/tag-manager/" target="_blank">Google Tag Manager</a>
+		</h3>
+		<?php
+	}else if (empty($googleanalytics_code)){
+		?>
+		<h3>
+			<?php _e("To manage Google Analytics, you have to setup your Google Analytics code in Woodkit settings.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+		</h3>
+		<?php
+	}else{
+		?>
+		<form method="post" action="<?php echo get_current_url(true); ?>">
+			<input type="hidden" name="<?php echo 'tool-googleanalytics-options-nonce'; ?>" value="<?php echo wp_create_nonce('tool-googleanalytics-options-nonce'); ?>" />
+			<div class="form-row form-row-submit">
+				<button type="submit">
+					<?php _e("Save", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+				</button>
 			</div>
-		</div>
+	
+			<div class="section">
+				<h3 class="section-title">
+					<?php _e("Event Tracking", 'woodvehicles'); ?>
+				</h3>
+				<div class="section-content">
+	
+					<div class="googleanalyticsevents-manager"></div>
+					
+					<script type="text/javascript">
+					jQuery(document).ready(function($){
+						var googleanalyticsevents_manager = $(".googleanalyticsevents-manager").googleanalyticseventsmanager({
+								label_add_event : "<?php _e("Add Google Analytics Event", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+								label_event_selector : "<?php _e("css selector", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+								label_event_name : "<?php _e("event label", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+								label_event_action : "<?php _e("action name", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+								label_event_category : "<?php _e("category name", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+								label_confirm_remove_event : "<?php _e("Do you realy want remove this event ?", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+							});
+						<?php 
+						$events = get_option("woodkit-tool-googleanalytics-options-events", array());
+						if (!empty($events)){
+							$events_js = "{";
+							foreach ($events as $k => $event){
+								$selector = !empty($event['selector']) ? esc_attr($event['selector']) : "";
+								$name = !empty($event['name']) ? esc_attr($event['name']) : "";
+								$action = !empty($event['action']) ? esc_attr($event['action']) : "";
+								$category = !empty($event['category']) ? esc_attr($event['category']) : "";
+								$events_js .= intval($k).":{selector: \"".$selector."\", name:\"".$name."\", action:\"".$action."\", category:\"".$category."\"},";
+							}
+							$events_js .= "}";
+							?>
+							googleanalyticsevents_manager.set_data(<?php echo $events_js; ?>);
+							<?php
+						}
+						?>
+					});
+				</script>
+	
+				<div class="section-info"><?php _e("You can add some Google Analytics Event rules based on CSS Selector.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<?php _e("Example", WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : <code>body.home .header &gt; a.logo</code></div>
+					
+				</div>
+			</div>
+	
+			<div class="form-row form-row-submit">
+				<button type="submit">
+					<?php _e("Save", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+				</button>
+			</div>
+		</form>
 		<?php 
-		}else{
-			?>
-			<p><?php _e("To manage Google Analytics Events, you have to setup your Google Analytics code in Woodkit settings.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
-			<?php
-		}
-		?>
-
-		<div class="form-row form-row-submit">
-			<button type="submit">
-				<?php _e("Save", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
-			</button>
-		</div>
-	</form>
+	}
+	?>
 </div>

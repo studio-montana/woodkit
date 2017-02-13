@@ -116,6 +116,11 @@ function woodkit_scripts_styles() {
 	if (!empty($js_slider))
 		wp_enqueue_script('woodkit-script-woodkit-slider', $js_slider, array('jquery'), '1.0', true);
 
+	// Loads front general JavaScript file (contains tools javascript)
+	$js_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-front.js');
+	if (!empty($js_front))
+		wp_enqueue_script('woodkit-script-woodkit-front', $js_front, array('jquery', 'woodkit-script-woodkit-slider'), '1.0', true);
+
 	// Action after woodkit enqueue scripts
 	do_action("woodkit_front_enqueue_scripts_after");
 
@@ -246,6 +251,11 @@ function woodkit_login_scripts_styles() {
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils))
 		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery'), '1.0', true);
+
+	// Loads login scripts
+	$js_login = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-login.js');
+	if (!empty($js_login))
+		wp_enqueue_script('woodkit-script-login', $js_login, array('jquery', 'woodkit-script-utils'), '1.0', true);
 
 	// Action for stylesheets tools
 	do_action("woodkit_login_enqueue_styles_tools", array());

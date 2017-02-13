@@ -47,6 +47,7 @@ function tool_googleanalytics_get_config_options_field_code($args){
 	if (isset($options['tool-googleanalytics-code']))
 		$value = $options['tool-googleanalytics-code'];
 	echo '<input type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-googleanalytics-code]" value="'.$value.'" placeholder="XX-XXXXXXX-XX" />';
+	echo '<p class="field-description">'.__('GoogleAnalytics code is\'nt needed if you use Google Tag Manager', WOODKIT_PLUGIN_TEXT_DOMAIN).'</p>';
 }
 
 function tool_googleanalytics_get_config_options_field_googletagmanager_code($args){
@@ -55,4 +56,5 @@ function tool_googleanalytics_get_config_options_field_googletagmanager_code($ar
 	if (isset($options['tool-googleanalytics-googletagmanager-code']))
 		$value = $options['tool-googleanalytics-googletagmanager-code'];
 	echo '<input type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-googleanalytics-googletagmanager-code]" value="'.$value.'" placeholder="GTM-XXXX" />';
+	echo '<p class="field-description">'.__('be sure that your theme integrates "wp_start_body" action, otherwise please add this action just after the opening &lt;body&gt; tag :', WOODKIT_PLUGIN_TEXT_DOMAIN).'<br /><code style="font-size: 0.7rem;">&lt;?php do_action("wp_start_body"); ?&gt;</code></p>';
 }

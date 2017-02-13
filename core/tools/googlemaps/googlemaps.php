@@ -37,10 +37,6 @@ function tool_googlemaps_woodkit_front_enqueue_styles_tools($dependencies) {
 	$css_googlemaps = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEMAPS_TOOL_NAME.'/css/tool-googlemaps.css');
 	if (!empty($css_googlemaps))
 		wp_enqueue_style('tool-googlemaps-css', $css_googlemaps, $dependencies, '1.0');
-
-	$js_googlemaps = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEMAPS_TOOL_NAME.'/js/googlemaps.js');
-	if (!empty($js_googlemaps))
-		wp_enqueue_script('tool-googlemaps-js', $js_googlemaps, array(), '1.0', false);
 	
 	$googlemap_api_key = woodkit_get_option('tool-googlemaps-apikey', '');
 	if (!empty($googlemap_api_key))

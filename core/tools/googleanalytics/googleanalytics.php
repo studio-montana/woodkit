@@ -73,10 +73,29 @@ function tool_googleanalytics_wp_head() {
 			 * Google Analytics Event Tracking
 			 */
 			function woodkit_tool_googleanalytics_event_tracking(eventCategory, eventAction, eventLabel){
-				// console.log("event on "+eventCategory+", "+eventAction+", "+eventLabel);
 				ga('send', 'event', eventCategory, eventAction, eventLabel);
 			}
-			<?php $events = get_option("woodkit-tool-googleanalytics-options-events", array());
+		</script>
+		<!-- End Google Analytics -->
+		<?php
+	}
+}
+add_action('wp_head', 'tool_googleanalytics_wp_head', 1);
+
+/**
+ * WP_Head hook
+ *
+ * @since Woodkit 1.0
+ * @return void
+ */
+function tool_googleanalytics_wp_footer() {
+	$googleanalytics_code = woodkit_get_option('tool-googleanalytics-code');
+	$googleanalytics_googletagmanager_code = woodkit_get_option('tool-googleanalytics-googletagmanager-code');
+	if (empty($googleanalytics_googletagmanager_code) && !empty($googleanalytics_code)){
+		?>
+		<!-- Google Analytics Events Tracking -->
+		<script>
+			<?php $events = get_option("woodkit-tool-googleanalytics-options-events", array());			
 			if (!empty($events)){ ?>
 			
 			// Google Analytics Events 
@@ -104,7 +123,7 @@ function tool_googleanalytics_wp_head() {
 		<?php
 	}
 }
-add_action('wp_head', 'tool_googleanalytics_wp_head', 1);
+add_action('wp_footer', 'tool_googleanalytics_wp_footer', 1);
 
 function tool_googleanalytics_wp_start_body(){
 	$googleanalytics_googletagmanager_code = woodkit_get_option('tool-googleanalytics-googletagmanager-code');

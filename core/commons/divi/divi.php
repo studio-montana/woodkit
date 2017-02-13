@@ -80,7 +80,7 @@ function woodkit_divi_modules_builder_scripts_styles() {
 		/**
 		 * JS
 		*/
-		wp_enqueue_script("woodkit-divi-modules-builder-script", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_DIVI_FOLDER."js/front.js", array('jquery'), '1.0');
+		wp_enqueue_script("woodkit-divi-modules-builder-script", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_DIVI_FOLDER."js/front.js", array('jquery'), '1.0', true);
 
 		do_action("woodkit_divi_front_enqueue_scripts_after");
 
@@ -111,7 +111,7 @@ function woodkit_divi_modules_builder_admin_scripts_styles() {
 		/**
 		 * JS
 		*/
-		wp_enqueue_script("woodkit-divi-modules-builder-script", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_DIVI_FOLDER."js/builder.js", array('jquery'), '1.0');
+		wp_enqueue_script("woodkit-divi-modules-builder-script", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_DIVI_FOLDER."js/builder.js", array('jquery'), '1.0', true);
 
 		do_action("woodkit_divi_admin_enqueue_scripts_after");
 

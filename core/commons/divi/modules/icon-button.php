@@ -37,7 +37,6 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 				'module_link_url_blank',
 				'module_content',
 				'module_title_orientation',
-				'module_text_orientation',
 				'module_title',
 				'module_text',
 				'module_title_color',
@@ -53,6 +52,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 				'module_border_size',
 				'module_border_color',
 				'module_border_color_focus',
+				'module_icon_padding',
 				'module_icon_size',
 				'module_icon',
 				'module_class',
@@ -66,13 +66,13 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 				'module_color_focus'			=> array('#000000'),
 				'module_content'				=> array('off'),
 				'module_title_orientation'		=> array('center'),
-				'module_text_orientation'		=> array('center'),
 				'module_title_color'			=> array('#000000'),
 				'module_title_color_focus'		=> array('#000000'),
 				'module_text_color'				=> array('#000000'),
 				'module_text_color_focus'		=> array('#000000'),
 				'module_radius'					=> array('3'),
-				'module_icon_size'				=> array('50'),
+				'module_icon_size'				=> array('52'),
+				'module_icon_padding'			=> array('48'),
 				'module_border'					=> array('off'),
 				'module_border_size'			=> array('2'),
 				'module_border_color'			=> array('#000000'),
@@ -121,17 +121,6 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 						),
 						'default'         => 'off',
 						'depends_show_if' => 'on',
-				),
-				'module_icon_size' => array(
-						'label'					=> esc_html__('Icon size', WOODKIT_PLUGIN_TEXT_DOMAIN),
-						'type'					=> 'range',
-						'option_category'		=> 'basic_option',
-						'default'         => '50',
-						'range_settings'  => array(
-								'min'  => '0',
-								'max'  => '200',
-								'step' => '1',
-						),
 				),
 				'module_color' => array(
 						'label'					=> esc_html__('Icon color', WOODKIT_PLUGIN_TEXT_DOMAIN),
@@ -182,17 +171,6 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 						'type'            => 'tiny_mce',
 						'option_category' => 'basic_option',
 				),
-				'module_text_orientation' => array(
-						'label'             => esc_html__('Text Orientation', WOODKIT_PLUGIN_TEXT_DOMAIN),
-						'type'              => 'select',
-						'option_category'   => 'basic_option',
-						'options'           => array(
-								'left'   => esc_html__('Left', WOODKIT_PLUGIN_TEXT_DOMAIN),
-								'center' => esc_html__('Center', WOODKIT_PLUGIN_TEXT_DOMAIN),
-								'right'  => esc_html__('Right', WOODKIT_PLUGIN_TEXT_DOMAIN),
-								'justify'  => esc_html__('Justify', WOODKIT_PLUGIN_TEXT_DOMAIN),
-						),
-				),
 				'module_text_color' => array(
 						'label'					=> esc_html__('Text color', WOODKIT_PLUGIN_TEXT_DOMAIN),
 						'type'					=> 'color-alpha',
@@ -213,6 +191,30 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 						'description' => esc_html__( 'This will change the label of the module in the builder for easy identification.', 'et_builder' ),
 				),
 				/* Advanced */
+				'module_icon_size' => array(
+						'label'					=> esc_html__('Icon size', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'					=> 'range',
+						'option_category'		=> 'basic_option',
+						'default'         => '52',
+						'range_settings'  => array(
+								'min'  => '0',
+								'max'  => '200',
+								'step' => '1',
+						),
+						'tab_slug'          => 'advanced'
+				),
+				'module_icon_padding' => array(
+						'label'					=> esc_html__('Icon padding', WOODKIT_PLUGIN_TEXT_DOMAIN),
+						'type'					=> 'range',
+						'option_category'		=> 'basic_option',
+						'default'         => '48',
+						'range_settings'  => array(
+								'min'  => '0',
+								'max'  => '200',
+								'step' => '3',
+						),
+						'tab_slug'          => 'advanced'
+				),
 				'module_bgcolor' => array(
 						'label'					=> esc_html__('Background color', WOODKIT_PLUGIN_TEXT_DOMAIN),
 						'type'					=> 'color-alpha',
@@ -259,13 +261,12 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 						'label'					=> esc_html__('Border size', WOODKIT_PLUGIN_TEXT_DOMAIN),
 						'type'					=> 'range',
 						'option_category'		=> 'basic_option',
-						'default'         => '2',
 						'range_settings'  => array(
 								'min'  => '0',
 								'max'  => '50',
 								'step' => '1',
 						),
-						'default'         => '1',
+						'default'         => '2',
 						'depends_show_if' => 'on',
 						'tab_slug'          => 'advanced'
 				),
@@ -322,6 +323,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		$module_border_color		= $this->shortcode_atts['module_border_color'];
 		$module_border_color_focus	= $this->shortcode_atts['module_border_color_focus'];
 		$module_icon_size			= $this->shortcode_atts['module_icon_size'];
+		$module_icon_padding		= $this->shortcode_atts['module_icon_padding'];
 		$module_icon				= $this->shortcode_atts['module_icon'];
 		$module_class				= $this->shortcode_atts['module_class'];
 
@@ -330,7 +332,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		// icon background
 		if ( '' !== $module_bgcolor ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon',
 			'declaration' => sprintf(
 			'background-color: %1$s;',
 			esc_html( $module_bgcolor )
@@ -341,7 +343,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		// icon background focus
 		if ('' !== $module_bgcolor_focus ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon',
 			'declaration' => sprintf(
 			'background-color: %1$s;',
 			esc_html($module_bgcolor_focus)
@@ -353,7 +355,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		if ('on' === $module_border) {
 			if ('' !== $module_border_size && '' !== $module_border_color) {
 				ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button',
+				'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon',
 				'declaration' => sprintf(
 				'border: %1$s solid %2$s;',
 				esc_html( $module_border_size )."px", esc_html( $module_border_color )
@@ -362,7 +364,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			}
 			if ('' !== $module_border_size && '' !== $module_border_color_focus ) {
 				ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button',
+				'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon',
 				'declaration' => sprintf(
 				'border-color: %1$s;',
 				esc_html($module_border_color_focus)
@@ -374,7 +376,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		// icon color
 		if ('' !== $module_color ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button i',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon i',
 			'declaration' => sprintf(
 			'color: %1$s;',
 			esc_html( $module_color )
@@ -385,7 +387,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		// icon color focus
 		if ('' !== $module_color_focus ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button i, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button i, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button i',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon i, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon i, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon i',
 			'declaration' => sprintf(
 			'color: %1$s;',
 			esc_html($module_color_focus)
@@ -396,7 +398,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		// icon size
 		if ('' !== $module_icon_size) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button i',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon i',
 			'declaration' => sprintf(
 			'font-size: %1$s;',
 			esc_html( $module_icon_size )."px"
@@ -404,10 +406,21 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			) );
 		}
 
+		// icon padding
+		if ('' !== $module_icon_padding) {
+			ET_Builder_Element::set_style( $function_name, array(
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon i',
+			'declaration' => sprintf(
+			'padding: %1$s;',
+			esc_html( $module_icon_padding )."px"
+					),
+			) );
+		}
+
 		// icon radius
 		if ('' !== $module_radius ) {
 			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button',
+			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon',
 			'declaration' => sprintf(
 			'border-radius: %1$s; -webkit-border-radius: %1$s; -moz-border-radius: %1$s;',
 			esc_html($module_radius)."%"
@@ -469,17 +482,6 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			),
 			) );
 		}
-		
-		// text orientation
-		if ('' !== $module_text_orientation){
-			ET_Builder_Element::set_style( $function_name, array(
-			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button_content .text',
-			'declaration' => sprintf(
-			'text-align: %1$s;',
-			esc_html( $module_text_orientation )
-			),
-			) );
-		}
 
 		$this->shortcode_content = trim(et_builder_replace_code_content_entities($this->shortcode_content));
 
@@ -494,7 +496,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 			$output .= '<div class="woodkit_et_pb_icon_button_container">';
 		}
 
-		$output .= '<div class="woodkit_et_pb_icon_button"><i class="'.$module_icon.'"></i></div>';
+		$output .= '<div class="woodkit_et_pb_icon_button"><div class="woodkit_et_pb_icon"><i class="'.$module_icon.'"></i></div></div>';
 
 		if ('on' === $module_content && ('' !== $this->shortcode_content || '' !== $module_title)) {
 			$output .= '<div class="woodkit_et_pb_icon_button_content">';

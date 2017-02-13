@@ -1,4 +1,3 @@
-<?php
 /**
  * @package Woodkit
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
@@ -19,23 +18,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * 
+ * NOTE : this file is loaded only in wp login
  */
-defined('ABSPATH') or die("Go Away!");
-
-function tool_googleanalytics_get_page_options_name($name){
-	return __("Google Analytics", WOODKIT_PLUGIN_TEXT_DOMAIN);
-}
-add_filter("tool_googleanalytics_get_page_options_name", "tool_googleanalytics_get_page_options_name");
-
-function tool_googleanalytics_get_page_options_menu_name($name){
-	return __("Google Analytics", WOODKIT_PLUGIN_TEXT_DOMAIN);
-}
-add_filter("tool_googleanalytics_get_page_options_menu_name", "tool_googleanalytics_get_page_options_menu_name");
 
 /**
- * This displays Google Analytics Event tracking options - NOT FOR Google Tag Manager
- * @param unknown $name
-*/
-function tool_googleanalytics_get_page_options_callback_function($name){
-	require_once(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEANALYTICS_TOOL_NAME.'/options-page.php');
-}
+ * Tool Secure
+ */
+(function($) {
+	$(".tool-secure-input-wrapper .tool-secure-show-info").on("click", function(e) {
+		var $text = $(this).parent().find(".tool-secure-info-text");
+		if ($text.length > 0) {
+			if ($text.is(":visible") == true) {
+				$text.fadeOut();
+			} else {
+				$text.fadeIn();
+			}
+		}
+	});
+	$(".tool-secure-input-wrapper .tool-secure-input").on("click", function(e) {
+		var $info = $(this).parent().find(".tool-secure-show-info");
+		if ($info.length > 0) {
+			$info.fadeIn();
+		}
+	});
+})(jQuery);

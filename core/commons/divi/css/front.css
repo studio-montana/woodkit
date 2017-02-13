@@ -24,25 +24,7 @@
  * Divi modules - Icon button
  */
 .woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button{
-	display: block;
-	position: relative;
-	width: 150px;
-	height: 150px;
-	margin: 0 auto !important;
-	overflow: hidden;
-	/* background transition */
-	-webkit-transition: background-color 200ms linear !important;
-    -moz-transition: background-color 200ms linear !important;
-    -o-transition: background-color 200ms linear !important;
-    -ms-transition: background-color 200ms linear !important;
-    transition: background-color 200ms linear !important;
-	/* color transition */
-	-webkit-transition: border-color 200ms linear !important;
-    -moz-transition: border-color 200ms linear !important;
-    -o-transition: border-color 200ms linear !important;
-    -ms-transition: border-color 200ms linear !important;
-    transition: border-color 200ms linear !important;
-    /* flex */
+	/* flex */
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -53,13 +35,24 @@
     justify-content: center;
 }
 
-.woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button i{
-	/* color transition */
-	-webkit-transition: color 200ms linear !important;
-    -moz-transition: color 200ms linear !important;
-    -o-transition: color 200ms linear !important;
-    -ms-transition: color 200ms linear !important;
-    transition: color 200ms linear !important;
+.woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button .woodkit_et_pb_icon{
+	display: block;
+	position: relative;
+	overflow: hidden;
+	-webkit-transition: all 200ms linear !important;
+    -moz-transition: all 200ms linear !important;
+    -o-transition: all 200ms linear !important;
+    -ms-transition: all 200ms linear !important;
+    transition: all 200ms linear !important;
+	/* flex */
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
     /* flex */
     -webkit-align-self: center;
     -moz-align-self: center;
@@ -67,14 +60,28 @@
     align-self: center;
 }
 
+.woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button .woodkit_et_pb_icon i{
+    /* flex */
+    -webkit-align-self: center;
+    -moz-align-self: center;
+    -ms-align-self: center;
+    align-self: center;
+	/* color transition */
+	-webkit-transition: color 200ms linear !important;
+    -moz-transition: color 200ms linear !important;
+    -o-transition: color 200ms linear !important;
+    -ms-transition: color 200ms linear !important;
+    transition: color 200ms linear !important;
+}
+
 .woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button_content{
-	max-width: 150px;
-	padding: 12px 0 !important;
+	padding: 0 0 12px 0 !important;
 	margin: 0 auto !important;
 }
 
 .woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button_content .title,
 .woodkit_et_pb_icon_button_wrapper .woodkit_et_pb_icon_button_content .text{
+	padding: 18px 0 0 0 !important;
 	-webkit-transition: color 200ms linear !important;
     -moz-transition: color 200ms linear !important;
     -o-transition: color 200ms linear !important;

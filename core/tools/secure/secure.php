@@ -315,17 +315,6 @@ function tool_secure_woodkit_front_enqueue_styles_tools($dependencies) {
 add_action('woodkit_front_enqueue_styles_tools', 'tool_secure_woodkit_front_enqueue_styles_tools');
 
 /**
- * Enqueue scripts for the front end.
-*/
-function tool_secure_woodkit_front_enqueue_scripts_tools($dependencies) {
-
-	$js_tool_secure = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/js/tool-secure.js');
-	if (!empty($js_tool_secure))
-		wp_enqueue_script('tool-secure-script', $js_tool_secure, $dependencies, '1.0', true);
-}
-add_action('woodkit_front_enqueue_scripts_tools', 'tool_secure_woodkit_front_enqueue_scripts_tools');
-
-/**
  * Enqueue styles for the login end.
 */
 function tool_secure_woodkit_login_enqueue_styles_tools($dependencies) {
@@ -335,14 +324,3 @@ function tool_secure_woodkit_login_enqueue_styles_tools($dependencies) {
 		wp_enqueue_style('tool-secure-css', $css_secure, $dependencies, '1.0');
 }
 add_action('woodkit_login_enqueue_styles_tools', 'tool_secure_woodkit_login_enqueue_styles_tools');
-
-/**
- * Enqueue scripts for the login end.
-*/
-function tool_secure_woodkit_login_enqueue_scripts_tools($dependencies) {
-
-	$js_tool_secure = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/js/tool-secure.js');
-	if (!empty($js_tool_secure))
-		wp_enqueue_script('tool-secure-script', $js_tool_secure, $dependencies, '1.0', true);
-}
-add_action('woodkit_login_enqueue_scripts_tools', 'tool_secure_woodkit_login_enqueue_scripts_tools');
