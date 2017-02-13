@@ -45,51 +45,76 @@ add_action('woodkit_admin_enqueue_styles_tools', 'tool_googleanalytics_woodkit_a
 */
 function tool_googleanalytics_wp_head() {
 	$googleanalytics_code = woodkit_get_option('tool-googleanalytics-code');
-	if (!empty($googleanalytics_code)){
+	$googleanalytics_googletagmanager_code = woodkit_get_option('tool-googleanalytics-googletagmanager-code');
+	if (!empty($googleanalytics_googletagmanager_code)){
 		?>
-<!-- Google Analytics -->
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', '<?php echo $googleanalytics_code; ?>', 'auto');
-ga('send', 'pageview');
-
-/**
- * Google Analytics Event Tracking
- */
-function woodkit_tool_googleanalytics_event_tracking(eventCategory, eventAction, eventLabel){
-	// console.log("event on "+eventCategory+", "+eventAction+", "+eventLabel);
-	ga('send', 'event', eventCategory, eventAction, eventLabel);
-}
-<?php $events = get_option("woodkit-tool-googleanalytics-options-events", array());
-if (!empty($events)){ ?>
-
-// Google Analytics Events 
-(function($) {
-	$(document).ready(function() {
+		<!-- Google Tag Manager -->
+		<script>
+			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','<?php echo $googleanalytics_googletagmanager_code; ?>');
+		</script>
+		<!-- End Google Tag Manager -->
 		<?php
-		foreach ($events as $event){
-			$selector = str_replace('"', '\"', str_replace('\\\\', '', $event['selector']));
-			$name = str_replace('"', '\"', str_replace('\\\\', '', $event['name']));
-			$action = str_replace('"', '\"', str_replace('\\\\', '', $event['action']));
-			$category = str_replace('"', '\"', str_replace('\\\\', '', $event['category']));
-			?>
-			$(document).on('click', '<?php echo $selector; ?>', function(e){
-				woodkit_tool_googleanalytics_event_tracking("<?php echo $category; ?>", "<?php echo $action; ?>", "<?php echo $name; ?>");
-			});
-			<?php
-		} ?>
-	});
-})(jQuery);
-
-<?php } ?>
-
-</script>
-<!-- End Google Analytics -->
-<?php
+	}else if (!empty($googleanalytics_code)){
+		?>
+		<!-- Google Analytics -->
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', '<?php echo $googleanalytics_code; ?>', 'auto');
+			ga('send', 'pageview');
+			
+			/**
+			 * Google Analytics Event Tracking
+			 */
+			function woodkit_tool_googleanalytics_event_tracking(eventCategory, eventAction, eventLabel){
+				// console.log("event on "+eventCategory+", "+eventAction+", "+eventLabel);
+				ga('send', 'event', eventCategory, eventAction, eventLabel);
+			}
+			<?php $events = get_option("woodkit-tool-googleanalytics-options-events", array());
+			if (!empty($events)){ ?>
+			
+			// Google Analytics Events 
+			(function($) {
+				$(document).ready(function() {
+					<?php
+					foreach ($events as $event){
+						$selector = str_replace('"', '\"', str_replace('\\\\', '', $event['selector']));
+						$name = str_replace('"', '\"', str_replace('\\\\', '', $event['name']));
+						$action = str_replace('"', '\"', str_replace('\\\\', '', $event['action']));
+						$category = str_replace('"', '\"', str_replace('\\\\', '', $event['category']));
+						?>
+						$(document).on('click', '<?php echo $selector; ?>', function(e){
+							woodkit_tool_googleanalytics_event_tracking("<?php echo $category; ?>", "<?php echo $action; ?>", "<?php echo $name; ?>");
+						});
+						<?php
+					} ?>
+				});
+			})(jQuery);
+			
+			<?php } ?>
+		
+		</script>
+		<!-- End Google Analytics -->
+		<?php
 	}
 }
 add_action('wp_head', 'tool_googleanalytics_wp_head', 1);
+
+function tool_googleanalytics_wp_start_body(){
+	$googleanalytics_googletagmanager_code = woodkit_get_option('tool-googleanalytics-googletagmanager-code');
+	if (!empty($googleanalytics_googletagmanager_code)){
+		?>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $googleanalytics_googletagmanager_code; ?>"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<?php
+	}
+}
+add_action('wp_start_body', 'tool_googleanalytics_wp_start_body', 1);

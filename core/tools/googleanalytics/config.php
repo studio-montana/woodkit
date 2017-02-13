@@ -35,7 +35,7 @@ function tool_googleanalytics_get_config_options_section_documentation_url(){
 }
 
 function tool_googleanalytics_get_config_options_fields($additional_fields){
-	$additional_fields[] = array("slug" => "tool-googleanalytics-code", "callback" => "tool_googleanalytics_get_config_options_field_code", "title" => __("code", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-googleanalytics-code", "callback" => "tool_googleanalytics_get_config_options_field_code", "title" => __("Google Analytics code", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	$additional_fields[] = array("slug" => "tool-googleanalytics-googletagmanager-code", "callback" => "tool_googleanalytics_get_config_options_field_googletagmanager_code", "title" => __("Google Tag Manager code", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
