@@ -22,7 +22,6 @@ class WoodkitThemeUploader {
 	// Get information regarding our plugin from WordPress
 	private function initThemeData() {
 		$this->themeData = wp_get_theme($this->slug);
-		$this->themeData->get('Version');
 	}
 
 	// Get information regarding our plugin from API
@@ -151,6 +150,8 @@ class WoodkitThemeUploader {
 		if (strpos($activated_theme->get('Name'), WOODKIT_GITHUB_BASE_PACKAGE.'-'.$this->slug.'-') !== false){
 			switch_theme($this->slug);
 		}
+		
+		woodkit_after_auto_update($this->slug, $this->themeData->get('Version'));
 
 	}
 }

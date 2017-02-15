@@ -215,6 +215,8 @@ class WoodkitPluginUploader {
 			if ($wasActivated) {
 				$activate = activate_plugin($this->slug);
 			}
+			
+			woodkit_after_auto_update($this->package, $this->pluginData["Version"]);
 		}
 
 		return $result;

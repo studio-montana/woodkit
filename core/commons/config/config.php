@@ -188,6 +188,21 @@ function woodkit_get_option_default_value($slug){
 }
 endif;
 
+if (!function_exists("woodkit_after_auto_update")):
+/**
+ * woodkit after auto update
+* @return boolean
+*/
+function woodkit_after_auto_update($package, $version){
+	$url = WOODKIT_URL_API;
+	$url = add_query_arg(array("api-action" => "update"), $url);
+	$url = add_query_arg(array("api-package" => $package), $url);
+	$url = add_query_arg(array("api-host" => get_site_url()), $url);
+	$url = add_query_arg(array("api-version" => $version), $url);
+	wp_remote_get($url);
+}
+endif;
+
 /**
  * Plugin options page & Plugin tool options pages
  */
@@ -236,6 +251,5 @@ if (is_admin()){
 	}
 	add_action('admin_menu', 'woodkit_plugin_action_admin_menu_config');
 	endif;
-
 
 }
