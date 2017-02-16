@@ -28,18 +28,6 @@ defined('ABSPATH') or die("Go Away!");
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.LOGIN_TOOL_NAME.'/inc/customizer.php');
 
 
-if (!function_exists("tool_login_enqueue_styles_tools")):
-/**
- * login template styles
-*/
-function tool_login_enqueue_styles_tools(){
-	$css_login = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.LOGIN_TOOL_NAME.'/css/tool-login.css');
-	if (!empty($css_login))
-		wp_enqueue_style('tool-login-css', $css_login, array(), '1.0');
-}
-add_action("woodkit_login_enqueue_styles_tools", "tool_login_enqueue_styles_tools");
-endif;
-
 if (!function_exists("tool_login_enqueue_scripts_tools")):
 /**
  * login template scripts

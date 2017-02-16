@@ -302,25 +302,3 @@ function secure_contactform7_form_validate($field_name){
 	}
 	return $errors;
 }
-
-/**
- * Enqueue styles for the front end.
- */
-function tool_secure_woodkit_front_enqueue_styles_tools($dependencies) {
-
-	$css_secure = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/css/tool-secure.css');
-	if (!empty($css_secure))
-		wp_enqueue_style('tool-secure-css', $css_secure, $dependencies, '1.0');
-}
-add_action('woodkit_front_enqueue_styles_tools', 'tool_secure_woodkit_front_enqueue_styles_tools');
-
-/**
- * Enqueue styles for the login end.
-*/
-function tool_secure_woodkit_login_enqueue_styles_tools($dependencies) {
-
-	$css_secure = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/css/tool-secure.css');
-	if (!empty($css_secure))
-		wp_enqueue_style('tool-secure-css', $css_secure, $dependencies, '1.0');
-}
-add_action('woodkit_login_enqueue_styles_tools', 'tool_secure_woodkit_login_enqueue_styles_tools');

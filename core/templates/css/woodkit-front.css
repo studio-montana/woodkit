@@ -1,0 +1,304 @@
+@CHARSET "UTF-8";
+
+/**
+ * Tool Breadcrumb
+ */
+.tool-breadcrumb{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.tool-breadcrumb li{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
+.tool-breadcrumb li.breadcrumb-item{
+	display: inline-block;
+}
+.tool-breadcrumb li.breadcrumb-item > a{
+	display: inline-block;
+	padding: 6px 12px;
+	margin: 0;
+}
+
+/**
+ * Tool Cookies
+ */
+.cookies-legislation-container {
+	position: fixed;
+	top: auto;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #000;
+	color: #fff;
+	width: auto;
+	height: auto;
+	font-size: 0.8em;
+	font-weight: normal;
+	padding: 12px;
+	z-index: 9999;
+}
+.cookies-legislation-container #cookies-accept-condition {
+	position: absolute;
+	right: 12px;
+	bottom: 6px;
+	font-size: 1em;
+	font-weight: normal;
+	border: 1px solid #fff;
+	color: #fff;
+	background: #000;
+}
+.cookies-legislation-container #cookies-accept-condition:hover {
+	background: #fff;
+	color: #000;
+}
+.cookies-legislation-container a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+/**
+ * Tool GoogleMaps
+ */
+.googlemaps-canvas{
+	max-width:none!important;
+	background:none!important;
+}
+
+/**
+ * Tool Media
+ */
+.fancybox-title{
+	text-align: center;
+}
+.fancybox-skin {
+	border-radius: 0;
+}
+.fancybox-title-inside-wrap {
+	padding: 0.25em 0;
+}
+.fancybox-close {
+	display: none;
+}
+.fancybox-title h1 {
+	font-size: 1.4rem;
+	font-weight: normal;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+}
+.fancybox-title div {
+	font-size: 1.4rem;
+	font-weight: normal;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+}
+
+/**
+ * Tool Private
+ */
+.private-logout {
+    position: fixed;
+    right: 12px;
+    top: 12px;
+    z-index: 1000;
+}
+body.admin-bar .private-logout {
+    top: 44px;
+}
+
+/**
+ * Tool Secure
+ */
+.woocommerce-billing-fields .captcha-error { /** do not display captcha-error field on woocommerce checkout-register form (double message) */
+	display: none;
+}
+
+.wpcf7 .captcha-error { /** do not display captcha-error field on contact form 7 (double message) */
+	display: none;
+}
+.tool-secure-input-wrapper {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+.login .tool-secure-input-wrapper {
+	padding-bottom: 0;
+}
+.tool-secure-input-wrapper .tool-secure-input {
+	
+}
+.tool-secure-input-wrapper .tool-secure-show-info {
+	position: absolute;
+	display: none;
+	top: 1px;
+	right: 10px;
+	bottom: 1px;
+	background-color: transparent;
+	cursor: pointer;
+	width: 50px;
+	text-align: center;
+	padding: 17px 0 0 0;
+	color: rgb(109, 109, 109);
+	font-size: 1.5rem;
+}
+.login .tool-secure-input-wrapper .tool-secure-show-info {
+	padding: 20px 0 0 0;
+	font-size: 1.3rem;
+}
+.tool-secure-input-wrapper .tool-secure-info-text {
+	display: none;
+}
+.login .tool-secure-input-wrapper .tool-secure-info-text {
+	color: #fff;
+	padding-bottom: 3px;
+}
+
+/**
+ * Tool Shortcodes
+ */
+.shortcode-columns {
+	position: relative;
+	float: left;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.shortcode-columns+p {
+	display: none; /* for automatic empty <p/> generate by WP */
+}
+.shortcode-columns.col_clear {
+	float: none;
+	clear: both;
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	width: 100%;
+	overflow: hidden;
+}
+.col_one {
+	width: 100%;
+	float: none;
+	clear: both;
+	display: block;
+}
+.col_one_half {
+	width: 50%;
+}
+.col_one_third {
+	width: 33.3%;
+}
+.col_two_third {
+	width: 66.6%;
+}
+.col_one_fourth {
+	width: 25%;
+}
+.col_three_fourth {
+	width: 75%;
+}
+.col_one_fifth {
+	width: 20%;
+}
+.col_two_fifth {
+	width: 40%;
+}
+.col_three_fifth {
+	width: 60%;
+}
+.col_four_fifth {
+	width: 80%;
+}
+.col_one_sixth {
+	width: 16.6%;
+}
+.col_five_sixth {
+	width: 83.4%;
+}
+@media screen and (max-width:800px) {
+	.col_one,.col_one_half,.col_one_third,.col_two_third,.col_one_fourth,.col_three_fourth,.col_one_fifth,.col_two_fifth,.col_three_fifth,.col_four_fifth,.col_one_sixth,.col_five_sixth{
+		clear: both;
+		float: none;
+		display: block;
+		width: 100%;
+	}
+}
+
+/**
+ * Tool Splashscreen
+ */
+#splashscreen {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	z-index: 10000;
+}
+#splashscreen #splashscreen-text {
+	position: absolute;
+	bottom: 50%;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+/**
+ * Tool Wip
+ */
+body.wip {
+	margin: 0;
+	text-align: center;
+	font-family: Helvetica;
+	background: #000;
+}
+#wip-page {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #000;
+	color: #fff;
+	/* flex */
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+}
+#wip-page-content{
+	margin: 0 auto;
+	max-width: 348px;
+	padding: 24px;
+    /* flex */
+    -webkit-align-self: center;
+    -moz-align-self: center;
+    -ms-align-self: center;
+    align-self: center;
+}
+#wip-page-content h1 {
+	font-size: 20px;
+	margin: 0 0 1.2rem 0;
+	color: #fff;
+}
+#wip-page-content .wip-message {
+	font-size: 14px;
+	margin: 24px 0;
+}

@@ -28,17 +28,6 @@ defined('ABSPATH') or die("Go Away!");
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.COOKIES_TOOL_NAME.'/inc/customizer.php');
 
 /**
- * Enqueue styles for the front end.
- */
-function tool_cookies_woodkit_front_enqueue_styles_tools($dependencies) {
-
-	$css_cookies = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.COOKIES_TOOL_NAME.'/css/tool-cookies.css');
-	if (!empty($css_cookies))
-		wp_enqueue_style('tool-cookies-css', $css_cookies, $dependencies, '1.0');
-}
-add_action('woodkit_front_enqueue_styles_tools', 'tool_cookies_woodkit_front_enqueue_styles_tools');
-
-/**
  * WP_Footer hook
  *
  * @since Woodkit 1.0

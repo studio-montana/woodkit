@@ -1,7 +1,5 @@
 @CHARSET "UTF-8";
 
-/* Placeholder text color -- selectors need to be separate to work. */
-
 ::-webkit-input-placeholder {
 	color: rgba(124, 124, 124, 1);
 	text-transform: uppercase;
@@ -34,13 +32,11 @@
 html{
 	background: #000;
 }
-
 body.login{
 	background: none;
 	padding: 0 0 0 0;
 	height: auto;
 }
-
 #login {
 	position: fixed;
 	top: 0;
@@ -51,7 +47,6 @@ body.login{
 	width: 320px;
     background: rgba(0, 0, 0, 0.5);
 }
-
 .login-interim #login,
 .interim-login #login,
 iframe #login {
@@ -60,7 +55,6 @@ iframe #login {
 	padding: 0;
 	width: 100%;
 }
-
 .login .message{
 	background: transparent;
 	border: none;
@@ -70,7 +64,6 @@ iframe #login {
 	color: #ccc;
 	font-weight: 300;
 }
-
 .login #login_error{
 	background: transparent;
 	border: none;
@@ -80,14 +73,12 @@ iframe #login {
 	color: #ccc;
 	font-weight: 300;
 }
-
 .login form {
     background: transparent;
     box-shadow: none;
     margin-top: 0;
 	padding: 17px 24px 0 24px;
 }
-
 .login form input[type='text'],
 .login form input[type='password'],
 .login form input[type='email'],
@@ -113,7 +104,6 @@ iframe #login {
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
-
 .login form input[type='submit'].button-large{
 	background: #000;
 	border: none;
@@ -127,32 +117,25 @@ iframe #login {
 	text-transform: uppercase;
 
 }
-
 .login form input[type='submit'].button-large:hover{
 	color: #FA9140;
 }
-
 .login form .button.active, .login form .button.active:hover, .login form .button:active {
     -webkit-transform: none;
     -ms-transform: none;
     transform: none;
 }
-
 .login form p{
 }
-
 .login label{
     color: rgba(255, 255, 255, 1);
 }
-
 .login h1{
 	display: none;
 }
-
 .login #nav,
 .login form .forgetmenot{
 }
-
 .login form .forgetmenot{
 	position: absolute;
 	bottom: 6px;
@@ -162,7 +145,6 @@ iframe #login {
 	padding: 0;
 	margin: 0;
 }
-
 .login #nav{
 	position: relative;
 	text-align: center;
@@ -171,7 +153,6 @@ iframe #login {
 	padding: 12px 24px 0 24px;
 	border-top: 1px solid #000;
 }
-
 .login #nav a{
 	color: #ccc;
 	display: block;
@@ -179,7 +160,6 @@ iframe #login {
 	text-align: center;
 	font-weight: 300;
 }
-
 .login #nav a.registration-url,
 .login-action-register #nav a:first-child,
 .login-action-lostpassword #nav a:first-child{
@@ -193,7 +173,6 @@ iframe #login {
 	margin: 0 0 12px 0;
 	font-weight: 300;
 }
-
 .login #nav a:hover, .login #nav a:focus, .login #nav a:active{
 	color: #FA9140;
 	text-decoration: none;
@@ -202,7 +181,6 @@ iframe #login {
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
-
 .login #backtoblog{
 	display: none;
 }
@@ -213,22 +191,96 @@ iframe #login {
 	background-color: #ccc;
 	border-color: #777;
 }
-
 #login form p.captcha-error{
 	text-align: center;
 	color: #ccc;
 	font-weight: 300;
 	margin-bottom: 3px;
 }
-
 .login #registerform #reg_passmail {
 	color: #ccc;
 	text-align: center;
 	font-weight: 300;
 	margin: 12px 0;
 }
-
 .login #registerform br.clear {
 	display: none;
 }
 
+
+/**
+ * Tool Cookies
+ */
+.cookies-legislation-container {
+	position: fixed;
+	top: auto;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #000;
+	color: #fff;
+	width: auto;
+	height: auto;
+	font-size: 0.8em;
+	font-weight: normal;
+	padding: 12px;
+	z-index: 9999;
+}
+.cookies-legislation-container #cookies-accept-condition {
+	position: absolute;
+	right: 12px;
+	bottom: 6px;
+	font-size: 1em;
+	font-weight: normal;
+	border: 1px solid #fff;
+	color: #fff;
+	background: #000;
+}
+.cookies-legislation-container #cookies-accept-condition:hover {
+	background: #fff;
+	color: #000;
+}
+.cookies-legislation-container a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+/**
+ * Tool Secure
+ */
+.tool-secure-input-wrapper {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+.login .tool-secure-input-wrapper {
+	padding-bottom: 0;
+}
+.tool-secure-input-wrapper .tool-secure-input {
+	
+}
+.tool-secure-input-wrapper .tool-secure-show-info {
+	position: absolute;
+	display: none;
+	top: 1px;
+	right: 10px;
+	bottom: 1px;
+	background-color: transparent;
+	cursor: pointer;
+	width: 50px;
+	text-align: center;
+	padding: 17px 0 0 0;
+	color: rgb(109, 109, 109);
+	font-size: 1.5rem;
+}
+.login .tool-secure-input-wrapper .tool-secure-show-info {
+	padding: 20px 0 0 0;
+	font-size: 1.3rem;
+}
+.tool-secure-input-wrapper .tool-secure-info-text {
+	display: none;
+}
+.login .tool-secure-input-wrapper .tool-secure-info-text {
+	color: #fff;
+	padding-bottom: 3px;
+}

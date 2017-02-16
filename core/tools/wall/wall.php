@@ -29,17 +29,6 @@ require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/custom-fields/wall.php');
 
 /**
- * Enqueue styles for the front end.
- */
-function tool_wall_woodkit_front_enqueue_styles_tools($dependencies) {
-
-	$css_wall = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/css/tool-wall.css');
-	if (!empty($css_wall))
-		wp_enqueue_style('tool-wall-css', $css_wall, $dependencies, '1.0');
-}
-add_action('woodkit_front_enqueue_styles_tools', 'tool_wall_woodkit_front_enqueue_styles_tools');
-
-/**
  * Enqueue styles for the back end.
  */
 function tool_wall_woodkit_admin_enqueue_styles_tools($dependencies) {

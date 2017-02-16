@@ -27,18 +27,6 @@ defined('ABSPATH') or die("Go Away!");
 */
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SPLASHSCREEN_TOOL_NAME.'/inc/customizer.php');
 
-if (!function_exists("tool_splashscreen_woodkit_front_enqueue_styles_tools")):
-/**
- * Enqueue styles for the front end.
-*/
-function tool_splashscreen_woodkit_front_enqueue_styles_tools($dependencies) {
-	$css_splashscreen = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SPLASHSCREEN_TOOL_NAME.'/css/tool-splashscreen.css');
-	if (!empty($css_splashscreen))
-		wp_enqueue_style('tool-splashscreen-css', $css_splashscreen, $dependencies, '1.0');
-}
-add_action('woodkit_front_enqueue_styles_tools', 'tool_splashscreen_woodkit_front_enqueue_styles_tools');
-endif;
-
 if (!function_exists("tool_splashscreen_woodkit_front_enqueue_scripts_tools")):
 /**
  * Enqueue scripts for the front end.

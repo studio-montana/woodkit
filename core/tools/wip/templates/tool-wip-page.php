@@ -43,19 +43,24 @@ defined('ABSPATH') or die("Go Away!");
 	<body class="wip">
 		
 		<div id="wip-page">
-			<?php if (function_exists("logo_has") && logo_has() && function_exists("logo_display")){ ?>
-				<?php logo_display(array("class" => "site-logo", "alt" => esc_attr(get_bloginfo('name')))); ?>
-			<?php }else{ ?>
-				<h1><?php bloginfo('name'); ?></h1>
-			<?php } ?>
-			<?php 
-			$wip_message = get_theme_mod('wip_message');
-			if (!empty($wip_message)){
-				?>
-				<div class="wip-message"><?php echo $wip_message; ?></div>
+		
+			<div id="wip-page-content">
+		
+				<?php if (function_exists("logo_has") && logo_has() && function_exists("logo_display")){ ?>
+					<?php logo_display(array("class" => "site-logo", "alt" => esc_attr(get_bloginfo('name')))); ?>
+				<?php }else{ ?>
+					<h1><?php bloginfo('name'); ?></h1>
+				<?php } ?>
 				<?php 
-			}
-			?>
+				$wip_message = get_theme_mod('wip_message');
+				if (!empty($wip_message)){
+					?>
+					<div class="wip-message"><?php echo $wip_message; ?></div>
+					<?php 
+				}
+				?>
+			
+			</div>
 		</div>
 		<?php wp_footer(); ?>
 	</body>

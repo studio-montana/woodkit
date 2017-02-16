@@ -28,24 +28,6 @@ defined('ABSPATH') or die("Go Away!");
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.MEDIA_TOOL_NAME.'/custom-fields/media.php');
 
 /**
- * Enqueue styles for the front end.
-*/
-function tool_media_woodkit_front_enqueue_styles_tools($dependencies) {
-
-	$css_media = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.MEDIA_TOOL_NAME.'/css/tool-media.css');
-	if (!empty($css_media))
-		wp_enqueue_style('tool-media-css', $css_media, $dependencies, '1.0');
-
-	$media_fancybox_active = woodkit_get_option('tool-media-fancybox-active');
-	if (!empty($media_fancybox_active) && $media_fancybox_active == 'on'){
-		$css_media_fancybox = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.MEDIA_TOOL_NAME.'/css/tool-media-fancybox.css');
-		if (!empty($css_media_fancybox))
-			wp_enqueue_style('tool-media-css-fancybox', $css_media_fancybox, $dependencies, '1.0');
-	}
-}
-add_action('woodkit_front_enqueue_styles_tools', 'tool_media_woodkit_front_enqueue_styles_tools');
-
-/**
  * Enqueue scripts for the front end.
 */
 function tool_media_woodkit_front_enqueue_scripts_tools($dependencies) {

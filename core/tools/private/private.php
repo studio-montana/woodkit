@@ -27,16 +27,6 @@ defined('ABSPATH') or die("Go Away!");
 */
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.PRIVATE_TOOL_NAME.'/inc/options.php');
 
-/**
- * Enqueue styles for the front end.
-*/
-function tool_private_woodkit_front_enqueue_styles_tools($dependencies) {
-	$css_private = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.PRIVATE_TOOL_NAME.'/css/tool-private.css');
-	if (!empty($css_private))
-		wp_enqueue_style('tool-private-css', $css_private, $dependencies, '1.0');
-}
-add_action('woodkit_front_enqueue_styles_tools', 'tool_private_woodkit_front_enqueue_styles_tools');
-
 if (!function_exists("private_template_include")):
 /**
  * template_include filter (allow to override template hierarchy)

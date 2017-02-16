@@ -89,17 +89,3 @@ function wip_template_include($template) {
 add_filter('template_include', 'wip_template_include', 2000); // more than private tool (1000)
 endif;
 
-if (!function_exists("tool_wip_woodkit_front_enqueue_styles_tools")):
-/**
- * Enqueue styles for the front end.
-*/
-function tool_wip_woodkit_front_enqueue_styles_tools($dependencies) {
-	if (tool_wip_is_wip()){
-		$css_wip = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WIP_TOOL_NAME.'/css/tool-wip.css');
-		if (!empty($css_wip))
-			wp_enqueue_style('tool-wip-css', $css_wip, $dependencies, '1.0');
-	}
-}
-add_action('woodkit_front_enqueue_styles_tools', 'tool_wip_woodkit_front_enqueue_styles_tools');
-endif;
-
