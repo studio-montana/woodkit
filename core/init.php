@@ -60,7 +60,7 @@ function woodkit_scripts_styles() {
 	// -- isotope/slider
 	$css_isotope_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope-slider.css');
 	if (!empty($css_isotope_slider))
-		wp_enqueue_style('woodkit-css-isotope-slider', $css_isotope_slider, array('woodkit-css-fontawesome'), '1.1');
+		wp_enqueue_style('woodkit-core-slider-style', $css_isotope_slider, array('woodkit-css-fontawesome'), '1.1');
 
 	// Action after woodkit enqueue styles
 	do_action("woodkit_front_enqueue_styles_after");
