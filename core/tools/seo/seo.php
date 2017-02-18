@@ -30,7 +30,7 @@ require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.
 
 /**
  * Enqueue styles for the back end.
- */
+*/
 function tool_seo_woodkit_admin_enqueue_styles_tools($dependencies) {
 
 	$css_seourlsmanager = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/js-seourlsmanager/css/admin-seourlsmanager.css');
@@ -40,8 +40,95 @@ function tool_seo_woodkit_admin_enqueue_styles_tools($dependencies) {
 	$js_seourlsmanager = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/js-seourlsmanager/js/admin-seourlsmanager.js');
 	if (!empty($js_seourlsmanager))
 		wp_enqueue_script('tool-seo-seourlsmanager-js', $js_seourlsmanager, array('jquery'), '1.0', true);
+
+	$css_redirectsmanager = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/js-redirectsmanager/css/admin-redirectsmanager.css');
+	if (!empty($css_redirectsmanager))
+		wp_enqueue_style('tool-seo-redirectsmanager-css', $css_redirectsmanager, $dependencies, '1.0');
+
+	$js_redirectsmanager = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/js-redirectsmanager/js/admin-redirectsmanager.js');
+	if (!empty($js_redirectsmanager))
+		wp_enqueue_script('tool-seo-redirectsmanager-js', $js_redirectsmanager, array('jquery'), '1.0', true);
 }
 add_action('woodkit_admin_enqueue_styles_tools', 'tool_seo_woodkit_admin_enqueue_styles_tools');
+
+
+/**
+ * Redirections (301 permanent redirects)
+*/
+if (!function_exists("woodkit_tool_seo_redirects")):
+function woodkit_tool_seo_redirects() {
+	if (!is_admin()){
+		$redirects = get_option("woodkit-tool-seo-options-redirects", array());
+		if (!empty($redirects) && is_array($redirects)){
+			usort($redirects, "woodkit_cmp_options_sorted");
+			$currentrequest = str_ireplace(get_option('home'), '', get_current_url()); // remove domain
+			$currentrequest = rtrim($currentrequest,'/');
+			$do_redirect = '';
+			foreach ($redirects as $redirect) {
+				if(!isset($redirect['disable']) || empty($redirect['disable']) || $redirect['disable'] != 'on'){
+					$fromurl = !empty($redirect['fromurl']) ? esc_attr($redirect['fromurl']) : "";
+					$tourl = !empty($redirect['tourl']) ? esc_attr($redirect['tourl']) : "";
+					$test = !empty($redirect['test']) ? esc_attr($redirect['test']) : "";
+					if (!empty($fromurl) && !empty($tourl) && strpos($currentrequest, '/wp-login') !== 0 && strpos($currentrequest, '/wp-admin') !== 0 ) { // prevents people to accidentally lock themselves out of admin
+						if (!empty($test) && $test == 'matches') { // regex
+							if (preg_match($fromurl, $currentrequest)) {
+								$do_redirect = $output;
+							}
+						}else if(urldecode($currentrequest) == rtrim($fromurl,'/')) { // equals
+							$do_redirect = $tourl;
+						}
+					}
+				}
+				if ($do_redirect !== '' && trim($do_redirect,'/') !== trim($currentrequest,'/')) { // prevent simple loop
+					if (strpos($do_redirect,'/') === 0){ // add domain if missing
+						$do_redirect = home_url().$do_redirect;
+					}
+					header ('HTTP/1.1 301 Moved Permanently');
+					header ('Location: ' . $do_redirect);
+					exit();
+				}else {
+					unset($redirects);
+				}
+			}
+		}
+	}
+}
+add_action('init', 'woodkit_tool_seo_redirects', 1);
+endif;
+
+if (!function_exists("seo_has_redirects_loop")):
+/**
+ * check if there is loop inside redirects - NOTICE : this doesn't matche regexp
+* @param array $redirects
+* @return boolean
+*/
+function seo_has_redirects_loop($redirects = array()){
+	$has_loop = false;
+	if (!empty($redirects)){
+		foreach ($redirects as $redirect_to){
+			if(!isset($redirect_to['disable']) || empty($redirect_to['disable']) || $redirect_to['disable'] != 'on'){
+				$tourl = !empty($redirect_to['tourl']) ? esc_attr($redirect_to['tourl']) : "";
+				$fromurl = !empty($redirect_to['fromurl']) ? esc_attr($redirect_to['fromurl']) : "";
+				if ($tourl == $fromurl){
+					$has_loop = true;
+					break;
+				}else{
+					foreach ($redirects as $redirect_from){
+						if(!isset($redirect_from['disable']) || empty($redirect_from['disable']) || $redirect_from['disable'] != 'on'){
+							$fromurl_2 = !empty($redirect_from['fromurl']) ? esc_attr($redirect_from['fromurl']) : "";
+							if ($tourl == $fromurl_2){
+								$has_loop = true;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return $has_loop;
+}
+endif;
 
 if (!function_exists("seo_document_title_parts")):
 /**
@@ -73,14 +160,14 @@ function seo_document_title_parts($title_parts) {
 			}
 		}
 	}
-	
+
 	if (!empty($title)){
 		$title_parts['title'] = $title;
 		if (is_front_page()){
 			$title_parts['tagline'] = '';
 		}
 	}
-	
+
 	return $title_parts;
 }
 add_filter('document_title_parts', 'seo_document_title_parts', 100, 3);
@@ -560,3 +647,4 @@ if (!empty($opengraph_active) && $opengraph_active == "on"){
 <?php
 }
 add_action('wp_head', 'seo_header');
+

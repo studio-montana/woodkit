@@ -32,3 +32,23 @@ function woodkit_cmp_posttypes($post_type_1, $post_type_2) {
 	return strcmp($current_post_type_label_1->name, $current_post_type_label_2->name);
 }
 endif;
+
+/**
+ * options sorted comparator (used in usort function based on 'rank' property)
+ * @param array $item_1 : must have 'rank' property
+ * @param array $item_2 : must have 'rank' property
+ * @return number
+ */
+function woodkit_cmp_options_sorted($item_1, $item_2){
+	$name_1 = "";
+	if (isset($item_1['rank']) && !empty($item_1['rank']))
+		$name_1 = $item_1['rank'];
+	$name_2 = "";
+	if (isset($item_2['rank']) && !empty($item_2['rank']))
+		$name_2 = $item_2['rank'];
+
+	if ($name_1 == $name_2) {
+		return 0;
+	}
+	return ($name_1 < $name_2) ? -1 : 1;
+}

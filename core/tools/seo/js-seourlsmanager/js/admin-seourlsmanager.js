@@ -26,10 +26,10 @@
 		 */
 		plugin.urls = function(urls) {
 			settings = $.extend({
-				label_add_url : "Add sitemap rule",
+				label_add_item : "Add sitemap rule",
+				label_confirm_remove_item : "Do you realy want remove this url ?",
 				label_url : "url",
 				label_url_exclude : "exclude",
-				label_confirm_remove_url : "Do you realy want remove this url ?",
 				label_action_add : "add",
 				label_action_exclude_if_equals : "exclude if equals",
 				label_action_exclude_if_contains : "exclude if contains",
@@ -46,15 +46,15 @@
 			/**
 			 * Html structure
 			 */
-			$seourlsmanager_container = $('<table class="seourlsmanager-container"></table>').appendTo($('<div class="seourlsmanager-wrapper"></div>').appendTo($seourlsmanager));
-			$seourlsmanager_container_add = $('<div class="add-url add btn"><i class="fa fa-plus"></i><span>' + settings['label_add_url'] + '</span></div>').appendTo(
+			$seourlsmanager_container = $('<div class="optionsmanager-container seourlsmanager-container"></div>').appendTo($seourlsmanager);
+			$seourlsmanager_container_add = $('<div class="add-url add btn"><i class="fa fa-plus"></i><span>' + settings['label_add_item'] + '</span></div>').appendTo(
 					$seourlsmanager);
 
 			/**
 			 * Listener
 			 */
 			$seourlsmanager_container_add.on('click', function(e) {
-				plugin.add_url("", "add");
+				plugin.add_url(1, "", "add");
 			});
 			$seourlsmanager_container.on('click', '.delete-url', function(e) {
 				plugin.remove_url($(this).data('id'));
@@ -76,7 +76,7 @@
 			for ( var k in data) {
 				if (data.hasOwnProperty(k)) {
 					var obj = data[k];
-					plugin.add_url(obj.url, obj.action);
+					plugin.add_url(obj.id, obj.url, obj.action);
 				}
 			}
 		}
@@ -84,15 +84,14 @@
 		/**
 		 * Add url html container
 		 */
-		plugin.add_url = function(url, action) {
+		plugin.add_url = function(id, url, action) {
 
-			console.log("action : "+action);
-			
-			var url_id = plugin.get_unique_id("seo-sitemap-url-id-", 0);
+			var url_id = plugin.get_unique_id("seo-sitemap-url-id-", id);
 			
 			var html = '';
-			html += '<tr valign="top" class="url" id="seo-sitemap-url-id-' + url_id + '">';
-			html += '<td valign="middle" class="seo-sitemap-url-action">';
+			html += '<div class="url item" id="seo-sitemap-url-id-' + url_id + '" data-id="' + url_id + '">';
+			html += '<span class="delete delete-url" data-id="seo-sitemap-url-id-' + url_id + '"><i class="fa fa-times"></i></span>';
+			
 			html += '<select name="seo-sitemap-url-action-' + url_id + '">';
 			var action_checked = "";
 			if (empty(action) || action == 'add')
@@ -111,11 +110,12 @@
 				action_checked = ' selected="selected"';
 			html += '<option value="exclude_if_regexp"'+action_checked+'>'+settings['label_action_exclude_if_regexp']+'</option>';
 			html += '</select>';
-			html += '</td>';
-			html += '<td valign="middle" class="seo-sitemap-url"><input type="text" name="seo-sitemap-url-' + url_id + '" value="'+url+'" placeholder="' + settings['label_url'] + '" /></td>';
-			html += '<td valign="middle" class="seo-sitemap-url-id"><div class="delete delete-url btn" data-id="seo-sitemap-url-id-' + url_id + '"><i class="fa fa-times"></i></div><input type="hidden" name="seo-sitemap-url-id-' + url_id + '" value="' + url_id + '" /></td>';
-			html += '</tr>';
-
+			
+			html += '<input type="text" name="seo-sitemap-url-' + url_id + '" value="'+url+'" placeholder="' + settings['label_url'] + '" />';
+			
+			html += '<input type="hidden" name="seo-sitemap-url-id-' + url_id + '" value="' + url_id + '" />';
+			html += '</div>';
+			
 			var $url_container = $(html).appendTo($seourlsmanager_container);
 
 			return $url_container;
@@ -125,7 +125,7 @@
 		 * Remove url
 		 */
 		plugin.remove_url = function($url_id) {
-			if ($("#" + $url_id).length > 0 && confirm(settings['label_confirm_remove_url'])) {
+			if ($("#" + $url_id).length > 0 && confirm(settings['label_confirm_remove_item'])) {
 				$("#" + $url_id).remove();
 			}
 		}
@@ -134,7 +134,7 @@
 		 * get unique url ID
 		 */
 		plugin.get_unique_id = function(prefix, id) {
-			if ($seourlsmanager_container.find("#" + prefix + id).length > 0) {
+			if (id < 1 || $seourlsmanager_container.find("#" + prefix + id).length > 0) {
 				id++;
 				return plugin.get_unique_id(prefix, id);
 			} else {

@@ -1,9 +1,1 @@
 @CHARSET "UTF-8";
-
-.seourlsmanager-wrapper{
-	overflow-x:auto;
-}
-
-.seourlsmanager-container .seo-sitemap-url input[type='text']{
-	min-width: 400px;
-}

@@ -1139,3 +1139,93 @@
 .woodkit-tool-page-options .section .btn.add i{
 	margin-right: 6px;
 }
+
+/**
+ * Options manager
+ */
+.optionsmanager-container .item{
+	padding: 2px 0 2px 2px;
+	margin: 0 0 3px 0;
+	position: relative;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: #F1F1F1;
+	border: 1px solid #E9E9E9;
+	border-left: 36px solid #00C3AA;
+	border-right: 36px solid #00C3AA;
+	-webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.optionsmanager-container.sortable .item{
+	cursor: move;
+}
+.optionsmanager-container.sortable .sortable-placeholder{
+	height: 30px;
+	margin: 0 0 3px 0;
+	background: #fff;
+	position: relative;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.optionsmanager-container .item:hover,
+.optionsmanager-container .item:focus,
+.optionsmanager-container .item:active{
+	border-top-color: #c9c9c9;
+	border-bottom-color: #c9c9c9;
+}
+.optionsmanager-container .item input[type='text']{
+	max-width: 300px;
+	width: 100%;
+}
+.optionsmanager-container .item .move{
+	font-size: 15px;
+    font-weight: 400;
+    height: 36px;
+    line-height: 37px;
+	color: #fff;
+	padding: 0 16px;
+	position: absolute;
+	top: 0;
+	left: -36px;
+}
+.optionsmanager-container .item .move i{
+	-webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.optionsmanager-container .item .move:hover i{
+}
+.optionsmanager-container .item .delete{
+	cursor: pointer;
+	font-size: 12px;
+    font-weight: 400;
+    height: 36px;
+    line-height: 36px;
+	color: #fff;
+	padding: 0 14px;
+	position: absolute;
+	top: 0;
+	right: -36px;
+}
+.optionsmanager-container .item .delete i{
+	-webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.optionsmanager-container .item .delete:hover i{
+	-ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.optionsmanager-container.sortable .item .label{
+	margin: 0 6px;
+}
