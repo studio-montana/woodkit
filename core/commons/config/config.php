@@ -238,7 +238,7 @@ if (is_admin()){
 				if (file_exists($tool_config_page_path)){
 					require_once $tool_config_page_path;
 					$page_name = apply_filters("tool_".$tool['slug']."_get_page_options_name", "No Page Name");
-					$menu_name = "- ".apply_filters("tool_".$tool['slug']."_get_page_options_menu_name", "No Menu Name");
+					$menu_name = '<i class="fa fa-caret-right"></i> '.apply_filters("tool_".$tool['slug']."_get_page_options_menu_name", "No Menu Name");
 					$callback = "tool_".$tool['slug']."_get_page_options_callback_function";
 					if (function_exists($callback)){
 						do_action("woodkit_tool_config_page_before_menu_add", $tool['slug']);
