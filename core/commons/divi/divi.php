@@ -71,37 +71,6 @@ Prep_Woodkit_Divi_Modules();
  *
  * @return void
 */
-function woodkit_divi_modules_builder_scripts_styles() {
-
-	if(class_exists("ET_Builder_Module")){
-
-		do_action("woodkit_divi_front_enqueue_scripts_before");
-
-		/**
-		 * JS
-		*/
-		wp_enqueue_script("woodkit-divi-modules-builder-script", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_DIVI_FOLDER."js/front.js", array('jquery'), '1.0', true);
-
-		do_action("woodkit_divi_front_enqueue_scripts_after");
-
-		do_action("woodkit_divi_front_enqueue_styles_before");
-
-		/**
-		 * CSS
-		*/
-		wp_enqueue_style("woodkit-divi-modules-builder-style", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_DIVI_FOLDER."css/front.css", array(), '1.0');
-
-		do_action("woodkit_divi_front_enqueue_styles_after");
-
-	}
-}
-add_action('wp_enqueue_scripts', 'woodkit_divi_modules_builder_scripts_styles');
-
-/**
- * Enqueue scripts and styles for the back end.
- *
- * @return void
-*/
 function woodkit_divi_modules_builder_admin_scripts_styles() {
 
 	if(class_exists("ET_Builder_Module")){

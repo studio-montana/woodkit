@@ -307,7 +307,6 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		$module_link_url_blank		= $this->shortcode_atts['module_link_url_blank'];
 		$module_content				= $this->shortcode_atts['module_content'];
 		$module_title_orientation	= $this->shortcode_atts['module_title_orientation'];
-		$module_text_orientation	= $this->shortcode_atts['module_text_orientation'];
 		$module_title				= $this->shortcode_atts['module_title'];
 		$module_title_color			= $this->shortcode_atts['module_title_color'];
 		$module_title_color_focus	= $this->shortcode_atts['module_title_color_focus'];

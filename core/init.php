@@ -56,14 +56,11 @@ function woodkit_scripts_styles() {
 	if (!empty($css_front)){
 		wp_enqueue_style('woodkit-css-front', $css_front, array('woodkit-css-fontawesome'), '4.4.0');
 	}
-	// -- isotope
-	$css_isotope = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope.css');
-	if (!empty($css_isotope))
-		wp_enqueue_style('woodkit-core-isotope-style', $css_isotope, array('woodkit-css-fontawesome'), '1.0');
-	// -- slider
-	$css_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-slider.css');
-	if (!empty($css_slider))
-		wp_enqueue_style('woodkit-core-slider-style', $css_slider, array('woodkit-core-isotope-style'), '1.0');
+	
+	// -- isotope/slider
+	$css_isotope_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope-slider.css');
+	if (!empty($css_isotope_slider))
+		wp_enqueue_style('woodkit-css-isotope-slider', $css_isotope_slider, array('woodkit-css-fontawesome'), '1.1');
 
 	// Action after woodkit enqueue styles
 	do_action("woodkit_front_enqueue_styles_after");
@@ -156,28 +153,22 @@ function woodkit_admin_scripts_styles() {
 	// Action for stylesheets tools
 	do_action("woodkit_admin_enqueue_styles_tools", array("woodkit-admin-css-jquery-ui"));
 
-	// Loads Isotope specific stylesheet.
-	$css_isotope = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope.css');
-	if (!empty($css_isotope)){
-		wp_enqueue_style('woodkit-admin-css-isotope', $css_isotope, array(), '1.0');
-	}
-
 	// Loads BxSlider specific stylesheet
 	$css_bxslider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'bxslider/jquery.bxslider.css');
 	if (!empty($css_bxslider)){
 		wp_enqueue_style('woodkit-admin-css-bxslider', $css_bxslider, array(), '2.1.1');
 	}
 
-	// Loads Slider specific stylesheet.
-	$css_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-slider.css');
-	if (!empty($css_slider)){
-		wp_enqueue_style('woodkit-admin-css-slider', $css_slider, array(), '1.0');
+	// Loads Isotope/Slider specific stylesheet.
+	$css_isotope_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope-slider.css');
+	if (!empty($css_isotope_slider)){
+		wp_enqueue_style('woodkit-admin-css-isotope-slider', $css_isotope_slider, array(), '1.1');
 	}
 
 	// Loads our main template stylesheet
 	$css_admin = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-admin.css');
 	if (!empty($css_admin))
-		wp_enqueue_style('woodkit-admin-style', $css_admin, array('woodkit-admin-css-isotope', 'woodkit-admin-css-slider', 'woodkit-admin-css-jquery-ui'), '1.3');
+		wp_enqueue_style('woodkit-admin-style', $css_admin, array('woodkit-admin-css-isotope-slider', 'woodkit-admin-css-jquery-ui'), '1.3');
 
 	// Loads Cookies jQuery plugin
 	$js_cookies = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'cookies/jquery.cookie.js');
