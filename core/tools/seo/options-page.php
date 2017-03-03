@@ -137,7 +137,7 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-seo-options-nonce']) &
 				<h4 style="background-color: #ECA400; color: #fff; padding: 12px;"><?php _e("WARNING : one or more rules may generate loop - this may crash your website", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h4>
 				<?php } ?>
 				<div class="section-content">
-					<div class="section-info"><?php _e("Here you can add your 301 permanent redirects.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<a href="https://blog.hubspot.com/blog/tabid/6307/bid/7430/what-is-a-301-redirect-and-why-should-you-care.aspx" target="_blank"><?php _e("What is a 301 permanent redirect ?", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
+					<div class="section-info"><?php _e("Here you can add your 301 permanent redirects and order theme by drag & drop.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<a href="https://blog.hubspot.com/blog/tabid/6307/bid/7430/what-is-a-301-redirect-and-why-should-you-care.aspx" target="_blank"><?php _e("What is a 301 permanent redirect ?", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
 	
 					<div class="redirects-manager"></div>
 					

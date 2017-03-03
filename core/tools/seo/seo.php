@@ -71,8 +71,10 @@ function woodkit_tool_seo_redirects() {
 					$test = !empty($redirect['test']) ? esc_attr($redirect['test']) : "";
 					if (!empty($fromurl) && !empty($tourl) && strpos($currentrequest, '/wp-login') !== 0 && strpos($currentrequest, '/wp-admin') !== 0 ) { // prevents people to accidentally lock themselves out of admin
 						if (!empty($test) && $test == 'matches') { // regex
+							$fromurl = str_replace("@", "\@", $fromurl);
+							$fromurl = "@{$fromurl}@gi";
 							if (preg_match($fromurl, $currentrequest)) {
-								$do_redirect = $output;
+								$do_redirect = $tourl;
 							}
 						}else if(urldecode($currentrequest) == rtrim($fromurl,'/')) { // equals
 							$do_redirect = $tourl;
@@ -94,6 +96,58 @@ function woodkit_tool_seo_redirects() {
 	}
 }
 add_action('init', 'woodkit_tool_seo_redirects', 1);
+
+function woodkit_tool_seo_redirects_new_version() {
+	if (!is_admin()){
+		$redirects = get_option("woodkit-tool-seo-options-redirects", array());
+		if (!empty($redirects) && is_array($redirects)){
+			usort($redirects, "woodkit_cmp_options_sorted");
+			$currentrequest = str_ireplace(get_option('home'), '', get_current_url()); // remove domain
+			$currentrequest = rtrim($currentrequest,'/');
+			$do_redirect = '';
+			foreach ($redirects as $redirect) {
+				if(!isset($redirect['disable']) || empty($redirect['disable']) || $redirect['disable'] != 'on'){
+					$fromurl = !empty($redirect['fromurl']) ? esc_attr($redirect['fromurl']) : "";
+					$tourl = !empty($redirect['tourl']) ? esc_attr($redirect['tourl']) : "";
+					$test = !empty($redirect['test']) ? esc_attr($redirect['test']) : "";
+					if (! empty ( $fromurl ) && ! empty ( $tourl ) && strpos ( $currentrequest, '/wp-login' ) !== 0 && strpos ( $currentrequest, '/wp-admin' ) !== 0 && strpos ( $currentrequest, '/wp-cron' ) !== 0) { // prevents people to accidentally lock themselves out of admin
+						if (!empty($test) && $test == 'matches') { // regex
+							$fromurl = str_replace("@", "\@", $fromurl);
+							$fromurl = "@{$fromurl}@i";
+							//trace_info("----------------------");
+							//trace_info("fromurl : ".$fromurl);
+							//trace_info("currentrequest : ".$currentrequest);
+							if (preg_match($fromurl, $currentrequest, $matches)) {
+								// $do_redirect = $output;
+								$do_redirect = $tourl;
+								if (!empty($matches) && count($matches) > 0){
+									for ($i=1 ; $i<count($matches) ; $i++){
+										$do_redirect = str_replace("$".$i, $matches[$i], $do_redirect);
+									}
+									//trace_info("do_redirect : ".$do_redirect);
+								}
+							}
+						}else if(urldecode($currentrequest) == rtrim($fromurl,'/')) { // equals
+							$do_redirect = $tourl;
+						}
+					}
+				}
+				if ($do_redirect !== '' && trim($do_redirect,'/') !== trim($currentrequest,'/')) { // prevent simple loop
+					if (strpos($do_redirect,'/') === 0){ // add domain if missing
+						$do_redirect = home_url().$do_redirect;
+					}
+					// trace_info("do_redirect : ".$do_redirect);
+					header ('HTTP/1.1 301 Moved Permanently');
+					header ('Location: ' . $do_redirect);
+					exit();
+				}else {
+					unset($redirects);
+				}
+			}
+		}
+	}
+}
+
 endif;
 
 if (!function_exists("seo_has_redirects_loop")):
