@@ -35,8 +35,14 @@ defined('ABSPATH') or die("Go Away!");
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_EXCERPT_CONTENT, true); ?>
 					<?php 
+					$excerpt_autop = woodkit_get_option("tool-excerpt-editor-autop");
+					if ($excerpt_autop == "on"){
+						$excerpt_autop = false;
+					}else{
+						$excerpt_autop = true;
+					}
 					wp_editor($meta, 'woodkitexcerpt', array(
-							'wpautop'       => true,
+							'wpautop'       => $excerpt_autop,
 							'media_buttons' => false,
 							'textarea_name' => META_EXCERPT_CONTENT,
 							'textarea_rows' => 10,

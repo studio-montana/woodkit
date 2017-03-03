@@ -32,6 +32,7 @@ add_filter("woodkit_is_tool_excerpt_active", "tool_excerpt_is_active", 1, 1);
 
 function tool_excerpt_woodkit_config_default_values($default_values){
 	$default_values["tool-excerpt-active"] = "on";
+	$default_values["tool-excerpt-editor-autop"] = "on";
 	return $default_values;
 }
 add_filter("woodkit_config_default_values", "tool_excerpt_woodkit_config_default_values");
@@ -46,6 +47,7 @@ function tool_excerpt_get_config_options_section_documentation_url(){
 
 function tool_excerpt_get_config_options_fields($additional_fields){
 	$additional_fields[] = array("slug" => "tool-excerpt-active", "callback" => "tool_excerpt_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-excerpt-editor-autop", "callback" => "tool_excerpt_get_config_options_field_editor_autop", "title" => __("auto paragraph", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
 add_filter("woodkit_config_options_fields_tool_excerpt", "tool_excerpt_get_config_options_fields", 1, 1);
@@ -60,4 +62,17 @@ function tool_excerpt_get_config_options_field_active($args){
 	if ($value == 'on')
 		$checked = ' checked="checked"';
 	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-excerpt-active]" '.$checked.' />';
+}
+
+function tool_excerpt_get_config_options_field_editor_autop($args){
+	$options = $args['options'];
+	$active = false;
+	$value = "on";
+	if (isset($options['tool-excerpt-editor-autop']))
+		$value = $options['tool-excerpt-editor-autop'];
+	$checked = '';
+	if ($value == 'on')
+		$checked = ' checked="checked"';
+	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-excerpt-editor-autop]" '.$checked.' />';
+	echo '<p class="field-description">'.__('activate auto paragraph for excerpt text editor', WOODKIT_PLUGIN_TEXT_DOMAIN).'</p>';
 }
