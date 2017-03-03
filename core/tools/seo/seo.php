@@ -72,7 +72,7 @@ function woodkit_tool_seo_redirects() {
 					if (!empty($fromurl) && !empty($tourl) && strpos($currentrequest, '/wp-login') !== 0 && strpos($currentrequest, '/wp-admin') !== 0 ) { // prevents people to accidentally lock themselves out of admin
 						if (!empty($test) && $test == 'matches') { // regex
 							$fromurl = str_replace("@", "\@", $fromurl);
-							$fromurl = "@{$fromurl}@gi";
+							$fromurl = "@{$fromurl}@i";
 							if (preg_match($fromurl, $currentrequest)) {
 								$do_redirect = $tourl;
 							}
