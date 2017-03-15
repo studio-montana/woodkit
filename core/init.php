@@ -76,7 +76,7 @@ function woodkit_scripts_styles() {
 	// Loads Isotope JavaScript file
 	$js_isotope = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'isotope/isotope.pkgd.min.js');
 	if (!empty($js_isotope))
-		wp_enqueue_script('woodkit-script-isotope', $js_isotope, array('jquery'), '2.1.1', true);
+		wp_enqueue_script('woodkit-script-isotope', $js_isotope, array('jquery'), '3.0.3', true);
 
 	// Loads BxSlider JavaScript file
 	$js_bxslider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'bxslider/jquery.bxslider.min.js');
@@ -185,7 +185,7 @@ function woodkit_admin_scripts_styles() {
 	// Loads Isotope JavaScript file
 	$js_isotope = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'isotope/isotope.pkgd.min.js');
 	if (!empty($js_isotope))
-		wp_enqueue_script('woodkit-admin-script-isotope', $js_isotope, array('jquery'), '2.1.1', true);
+		wp_enqueue_script('woodkit-admin-script-isotope', $js_isotope, array('jquery'), '3.0.3', true);
 
 	// Loads BxSlider JavaScript file
 	$js_bxslider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'bxslider/jquery.bxslider.min.js');
