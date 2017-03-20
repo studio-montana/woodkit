@@ -305,10 +305,7 @@ if (!function_exists("get_protocol")):
  * get the current Protocol (http || https)
 */
 function get_protocol(){
-	if (isset($_SERVER['HTTPS']) &&
-			($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
-			isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
-			$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+	if (is_ssl()) {
 		$protocol = 'https://';
 	}
 	else {

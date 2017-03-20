@@ -206,11 +206,13 @@ if (! function_exists ( "seo_document_title_parts" )) :
 				}
 			}
 		} else {
-			if ($queried_object) {
+			if ($queried_object){
 				// meta title
-				$meta_data = get_post_meta ( $queried_object->ID, SEO_CUSTOMFIELD_METATITLE, true );
-				if (! empty ( $meta_data )) {
-					$title = $meta_data;
+				if (isset($queried_object->ID)){
+					$meta_data = get_post_meta($queried_object->ID, SEO_CUSTOMFIELD_METATITLE, true);
+					if (!empty($meta_data)){
+						$title = $meta_data;
+					}
 				}
 			}
 		}
@@ -265,14 +267,15 @@ if (! function_exists ( "seo_get_metatitle" )) :
 		} else {
 			if ($queried_object) {
 				// meta title
-				$meta_data = get_post_meta ( $queried_object->ID, SEO_CUSTOMFIELD_METATITLE, true );
-				if (! empty ( $meta_data )) {
-					$title = $meta_data;
-				} 				// post title
-				else {
-					$post_title = get_the_title ( $queried_object->ID );
-					if (! empty ( $post_title )) {
-						$title = $post_title;
+				if (isset($queried_object->ID)){
+					$meta_data = get_post_meta ( $queried_object->ID, SEO_CUSTOMFIELD_METATITLE, true );
+					if (! empty ( $meta_data )) {
+						$title = $meta_data;
+					} else {
+						$post_title = get_the_title ( $queried_object->ID );
+						if (! empty ( $post_title )) {
+							$title = $post_title;
+						}
 					}
 				}
 			}
@@ -319,9 +322,11 @@ if (! function_exists ( "woodkit_seo_get_metadescription" )) :
 		} else {
 			$_queried_post = get_queried_object ();
 			if ($_queried_post) {
-				$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_METADESCRIPTION, true );
-				if (! empty ( $meta_data )) {
-					$description = $meta_data;
+				if (isset($_queried_post->ID)){
+					$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_METADESCRIPTION, true );
+					if (! empty ( $meta_data )) {
+						$description = $meta_data;
+					}
 				}
 			}
 		}
@@ -364,9 +369,11 @@ if (! function_exists ( "woodkit_seo_get_metakeywords" )) :
 		} else {
 			$_queried_post = get_queried_object ();
 			if ($_queried_post) {
-				$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_METAKEYWORDS, true );
-				if (! empty ( $meta_data )) {
-					$keywords = $meta_data;
+				if (isset($_queried_post->ID)){
+					$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_METAKEYWORDS, true );
+					if (! empty ( $meta_data )) {
+						$keywords = $meta_data;
+					}
 				}
 			}
 		}
@@ -476,9 +483,11 @@ if (! function_exists ( "woodkit_seo_get_meta_publication_title" )) :
 				if (! empty ( $meta_data )) {
 					$opengraph_content = $meta_data;
 				} else { // default
-					$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_METATITLE, true );
-					if (! empty ( $meta_data )) {
-						$opengraph_content = $meta_data;
+					if (isset($_queried_post->ID)){
+						$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_METATITLE, true );
+						if (! empty ( $meta_data )) {
+							$opengraph_content = $meta_data;
+						}
 					}
 				}
 			}
@@ -530,13 +539,15 @@ if (! function_exists ( "woodkit_seo_get_meta_publication_description" )) :
 		} else {
 			$_queried_post = get_queried_object ();
 			if ($_queried_post) {
-				$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_META_OPENGRAPH_DESCRIPTION, true );
-				if (! empty ( $meta_data )) {
-					$opengraph_content = $meta_data;
-				} else { // default
-					$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_METADESCRIPTION, true );
+				if (isset($_queried_post->ID)){
+					$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_META_OPENGRAPH_DESCRIPTION, true );
 					if (! empty ( $meta_data )) {
 						$opengraph_content = $meta_data;
+					} else { // default
+						$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_METADESCRIPTION, true );
+						if (! empty ( $meta_data )) {
+							$opengraph_content = $meta_data;
+						}
 					}
 				}
 			}
@@ -579,17 +590,19 @@ if (! function_exists ( "woodkit_seo_get_meta_publication_image" )) :
 		} else {
 			$_queried_post = get_queried_object ();
 			if ($_queried_post) {
-				$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_META_OPENGRAPH_IMAGE, true );
-				if (! empty ( $meta_data )) {
-					$opengraph_content = $meta_data;
-				} else { // default (post thumbnail)
-					if (has_post_thumbnail ( $_queried_post->ID )) {
-						$thumb_id = get_post_thumbnail_id ( $_queried_post->ID );
-						$thumb = wp_get_attachment_image_src ( $thumb_id, 'woodkit-600' );
-						if ($thumb) {
-							list ( $thumb_src, $thumb_width, $thumb_height ) = $thumb;
-							if (! empty ( $thumb_src )) {
-								$opengraph_content = $thumb_src;
+				if (isset($_queried_post->ID)){
+					$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_META_OPENGRAPH_IMAGE, true );
+					if (! empty ( $meta_data )) {
+						$opengraph_content = $meta_data;
+					} else { // default (post thumbnail)
+						if (has_post_thumbnail ( $_queried_post->ID )) {
+							$thumb_id = get_post_thumbnail_id ( $_queried_post->ID );
+							$thumb = wp_get_attachment_image_src ( $thumb_id, 'woodkit-600' );
+							if ($thumb) {
+								list ( $thumb_src, $thumb_width, $thumb_height ) = $thumb;
+								if (! empty ( $thumb_src )) {
+									$opengraph_content = $thumb_src;
+								}
 							}
 						}
 					}
