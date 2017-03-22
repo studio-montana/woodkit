@@ -47,9 +47,9 @@ function woodkit_scripts_styles() {
 		wp_enqueue_style('woodkit-css-fancybox', $css_fancybox, array('woodkit-css-bxslider'), '2.1.5');
 	}
 	// -- fontawesome
-	$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'fontawesome/fontawesome-4.4.0.css');
+	$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome/css/font-awesome.min.css');
 	if (!empty($css_fontawesome)){
-		wp_enqueue_style('woodkit-css-fontawesome', $css_fontawesome, array('woodkit-css-bxslider'), '4.4.0');
+		wp_enqueue_style('woodkit-css-fontawesome', $css_fontawesome, array('woodkit-css-bxslider'), '4.4.7');
 	}
 	// -- front
 	$css_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-front.css');
@@ -140,9 +140,9 @@ function woodkit_admin_scripts_styles() {
 	wp_enqueue_script('wp-color-picker');
 
 	// Fontawesome
-	$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'fontawesome/fontawesome-4.4.0.css');
+	$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome/css/font-awesome.min.css');
 	if (!empty($css_fontawesome)){
-		wp_enqueue_style('woodkit-admin-css-fontawesome', $css_fontawesome, array('wp-color-picker'), '4.4.0');
+		wp_enqueue_style('woodkit-admin-css-fontawesome', $css_fontawesome, array('wp-color-picker'), '4.4.7');
 	}
 
 	// Loads jquery-ui stylesheet (used by date jquery-ui-datepicker)
@@ -233,9 +233,9 @@ add_action('admin_enqueue_scripts', 'woodkit_admin_scripts_styles');
 function woodkit_login_scripts_styles() {
 
 	// Fontawesome
-	$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'fontawesome/fontawesome-4.4.0.css');
+	$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome/css/font-awesome.min.css');
 	if (!empty($css_fontawesome)){
-		wp_enqueue_style('woodkit-login-css-fontawesome', $css_fontawesome, array(), '4.4.0');
+		wp_enqueue_style('woodkit-login-css-fontawesome', $css_fontawesome, array(), '4.4.7');
 	}
 
 	// Login
