@@ -103,9 +103,9 @@ add_action('woocommerce_process_login_errors', 'secure_validate_woocommerce_logi
 add_action('woocommerce_registration_errors', 'secure_validate_woocommerce_register_form', 1, 3);
 
 /**
- * WP uses this filter to accepts new fields in comment form
+ * WP uses this filter to accepts new fields in comment form - old : add_filter('comment_form_default_fields', 'secure_comment_form_field', 10, 1);
 */
-add_filter('comment_form_default_fields', 'secure_comment_form_field', 10, 1);
+add_filter('comment_form_fields', 'secure_comment_form_field', 10, 1);
 
 /**
  * WP uses this action before insert new comment
