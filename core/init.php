@@ -289,3 +289,35 @@ add_action('wp_dashboard_setup', 'woodkit_dashboard_setup');
 function woodkit_dashboard_info_widget() {
 	include(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TEMPLATES_DASHBOARD_FOLDER."infos.php");
 }
+
+/**
+ * Sanitize FileName - fixe Mac filename encoding
+ */
+function woodkit_sanitize_file_name ($filename) {
+	$clean = utf8_encode($filename);
+	return remove_accents($clean);
+}
+add_filter('sanitize_file_name', 'woodkit_sanitize_file_name', 10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
