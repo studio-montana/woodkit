@@ -46,26 +46,36 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 		<div class="inner-item-wrapper" style="width: 100%; height: 100%;">
 			<div class="inner-item content" style="width: 100%; height: 100%;">
 		
-				<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
-				
-				<div class="has-mask">
-					<?php if (function_exists("woodkit_display_thumbnail")){
-						woodkit_display_thumbnail(get_the_ID(), $wall_args['image_size'], '', true, false, '<div class="thumb">', '</div>'); 
-					}else if (has_post_thumbnail(get_the_ID())){
-						?><div class="thumb"><?php the_post_thumbnail($wall_args['image_size']); ?></div><?php 
-					}?>
-					<?php echo $title; ?>
-					<div class="excerpt"><?php the_excerpt(); ?></div>
-				</div>
-				<div class="has-infos">
-					<?php if (function_exists("woodkit_display_thumbnail")){
-						woodkit_display_thumbnail(get_the_ID(), $wall_args['image_size'], '', true, false, '<div class="thumb">', '</div>'); 
-					}else if (has_post_thumbnail(get_the_ID())){
-						?><div class="thumb"><?php the_post_thumbnail($wall_args['image_size']); ?></div><?php 
-					}?>
-					<?php echo $title; ?>
-					<div class="excerpt"><?php the_excerpt(); ?></div>
-				</div>
+				<?php 
+				/** since 1.2 inner template can be override */
+				$template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-template-masonry-content-inner.php');
+				if (!empty($template)){
+					include($template);
+				}else{
+					?>
+					<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
+					<div class="has-mask">
+						<?php if (function_exists("woodkit_display_thumbnail")){
+							woodkit_display_thumbnail(get_the_ID(), $wall_args['image_size'], '', true, false, '<div class="thumb">', '</div>'); 
+						}else if (has_post_thumbnail(get_the_ID())){
+							?><div class="thumb"><?php the_post_thumbnail($wall_args['image_size']); ?></div><?php 
+						}?>
+						<?php echo $title; ?>
+						<div class="excerpt"><?php the_excerpt(); ?></div>
+					</div>
+					<div class="has-infos">
+						<?php if (function_exists("woodkit_display_thumbnail")){
+							woodkit_display_thumbnail(get_the_ID(), $wall_args['image_size'], '', true, false, '<div class="thumb">', '</div>'); 
+						}else if (has_post_thumbnail(get_the_ID())){
+							?><div class="thumb"><?php the_post_thumbnail($wall_args['image_size']); ?></div><?php 
+						}?>
+						<?php echo $title; ?>
+						<div class="excerpt"><?php the_excerpt(); ?></div>
+					</div>
+					<?php 
+				}
+				?>
+		
 			</div>
 		</div>
 	<?php if (!is_admin()){ ?>

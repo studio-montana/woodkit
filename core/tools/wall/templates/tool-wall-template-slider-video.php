@@ -50,20 +50,31 @@ if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_P
 	<div class="inner-item-wrapper">
 		<div class="inner-item video" style="width: 100%; height: 100%;">
 		
-			<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
-			
-			<?php
-			if (video_has_featured_video(get_the_ID())){
-				 echo video_get_featured_video(get_the_ID(), "100%", "100%");
-			}else if(is_admin()){
+			<?php 
+			/** since 1.2 inner template can be override */
+			$template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-template-slider-video-inner.php');
+			if (!empty($template)){
+				include($template);
+			}else{
 				?>
-				<div class="no-content" style="min-height: 150px;"><i class="fa fa-ban"></i></div>
+				<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
 				<?php
+				if (video_has_featured_video(get_the_ID())){
+					 echo video_get_featured_video(get_the_ID(), "100%", "100%");
+				}else if(is_admin()){
+					?>
+					<div class="no-content" style="min-height: 150px;"><i class="fa fa-ban"></i></div>
+					<?php
+				}
+				?>
+				<?php if (!is_admin()){ ?>
+				<div class="has-more"><a class="post-link" href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> title="<?php echo esc_attr(__("more", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>"><?php _e("more", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
+				<?php } ?>
+				<?php 
 			}
 			?>
-			<?php if (!is_admin()){ ?>
-			<div class="has-more"><a class="post-link" href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> title="<?php echo esc_attr(__("more", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>"><?php _e("more", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
-			<?php } ?>
+		
+			
 		</div>
 	</div>
 	<?php if (is_admin()){

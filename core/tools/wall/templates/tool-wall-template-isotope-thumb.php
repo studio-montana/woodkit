@@ -77,16 +77,24 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 	<?php } ?>
 		<div class="inner-item-wrapper" style="width: 100%; height: 100%;">
 			<div class="inner-item thumb" style="<?php echo $style; ?>">
-		
-				<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
-				
-				<div class="has-mask">
-					<?php echo $title; ?>
-				</div>
-				<div class="has-infos">
-					<?php echo $title; ?>
-				</div>
-				<?php if (!$has_thumb && is_admin()){ ?><div class="no-content"><i class="fa fa-ban"></i></div><?php } ?>
+				<?php 
+				/** since 1.2 inner template can be override */
+				$template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WALL_TOOL_NAME.'/templates/tool-wall-template-isotope-thumb-inner.php');
+				if (!empty($template)){
+					include($template);
+				}else{
+					?>
+					<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
+					<div class="has-mask">
+						<?php echo $title; ?>
+					</div>
+					<div class="has-infos">
+						<?php echo $title; ?>
+					</div>
+					<?php if (!$has_thumb && is_admin()){ ?><div class="no-content"><i class="fa fa-ban"></i></div><?php } ?>
+					<?php 
+				}
+				?>
 			</div>
 		</div>
 	<?php if (!is_admin()){ ?>
