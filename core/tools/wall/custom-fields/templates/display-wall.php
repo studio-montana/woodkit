@@ -177,9 +177,9 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POSITION, true); ?>
 					<select id="<?php echo META_WALL_DISPLAY_POSITION; ?>" name="<?php echo META_WALL_DISPLAY_POSITION; ?>">
-						<option value="after-content" <?php if (empty($meta) || $meta == 'after-content'){ echo 'selected="selected"'; }?>><?php _e("after content", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="after-content" <?php if (!empty($meta) && $meta == 'after-content'){ echo 'selected="selected"'; }?>><?php _e("after content", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
 						<option value="before-content" <?php if (!empty($meta) && $meta == 'before-content'){ echo 'selected="selected"'; }?>><?php _e("before content", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="use-shortcode" <?php if (!empty($meta) && $meta == 'use-shortcode'){ echo 'selected="selected"'; }?>><?php _e("use shortcode", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="use-shortcode" <?php if (empty($meta) || $meta == 'use-shortcode'){ echo 'selected="selected"'; }?>><?php _e("use shortcode", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
 					</select>
 				</td>
 				<td valign="middle">(<?php _e('insert [woodkit_wall/] directly in your content or use visual composer element "Woodkit Wall"', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>)</td>
