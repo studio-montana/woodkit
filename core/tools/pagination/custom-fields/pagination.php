@@ -33,7 +33,8 @@ if (!function_exists("pagination_add_inner_meta_boxes")):
 * @param unknown $post
 */
 function pagination_add_inner_meta_boxes($post){
-	if (in_array(get_post_type($post), get_displayed_post_types())){
+	$pagination_post_types_allowed = apply_filters("woodkit_pagination_post_types_allowed", get_displayed_post_types());
+	if (in_array(get_post_type($post), $pagination_post_types_allowed)){
 		include(locate_ressource('/'.WOODKIT_PLUGIN_TOOLS_FOLDER.PAGINATION_TOOL_NAME.'/custom-fields/templates/display-pagination.php'));
 	}
 }
@@ -46,7 +47,8 @@ if (!function_exists("pagination_save_post")):
 * @param int $post_id
 */
 function pagination_save_post($post_id){
-	if (in_array(get_post_type($post_id), get_displayed_post_types())){
+	$pagination_post_types_allowed = apply_filters("woodkit_pagination_post_types_allowed", get_displayed_post_types());
+	if (in_array(get_post_type($post_id), $pagination_post_types_allowed)){
 		// META_PAGINATION_DISPLAY_PAGINATION
 		if (!empty($_POST[META_PAGINATION_DISPLAY_PAGINATION])){
 			update_post_meta($post_id, META_PAGINATION_DISPLAY_PAGINATION, sanitize_text_field($_POST[META_PAGINATION_DISPLAY_PAGINATION]));
