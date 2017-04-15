@@ -33,10 +33,13 @@ require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEMAPS_TOO
  * Enqueue styles for the front end.
  */
 function tool_googlemaps_woodkit_front_enqueue_scripts_tools($dependencies) {
-	$googlemap_api_key = woodkit_get_option('tool-googlemaps-apikey', '');
-	if (!empty($googlemap_api_key))
-		$googlemap_api_key = "?key=".$googlemap_api_key;
-	wp_enqueue_script('tool-googlemaps-googleapis', 'https://maps.googleapis.com/maps/api/js'.$googlemap_api_key, array(), '3.0', false);
+	if (!function_exists("et_pb_get_google_api_key")){ // let Divi declare googlemaps API
+		$googlemap_api_key = woodkit_get_option('tool-googlemaps-apikey', '');
+		if (!empty($googlemap_api_key)){
+			$googlemap_api_key = "?key=".$googlemap_api_key;
+			wp_enqueue_script('tool-googlemaps-googleapis', 'https://maps.googleapis.com/maps/api/js'.$googlemap_api_key, array(), '3.0', false);
+		}
+	}
 }
 add_action('woodkit_front_enqueue_scripts_tools', 'tool_googlemaps_woodkit_front_enqueue_scripts_tools');
 
