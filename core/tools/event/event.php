@@ -181,6 +181,9 @@ function tool_event_save_post($post_id){
 		}else{
 			delete_post_meta($post_id, "meta_event_locate_country");
 		}
+		
+		// others
+		do_action("woodkit_event_save_after", $post_id);
 	}
 }
 add_action("customfields_save_post", "tool_event_save_post");
@@ -236,8 +239,8 @@ endif;
 
 /**
  * retieve upcomping events (from date_from to date_to)
- * @param string $date_from : null for now
- * @param string $date_to : null for 100 years after date_from
+ * @param int $date_from : null for now
+ * @param int $date_to : null for 100 years after date_from
  * @param string $meta_args
  * @param unknown $args
  * @return array of upcomping events

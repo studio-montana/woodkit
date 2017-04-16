@@ -215,5 +215,6 @@ defined('ABSPATH') or die("Go Away!");
 				</td>
 			</tr>
 		</table>
+		<?php do_action("woodkit_event_template_fields_after"); ?>
 	</div>
 </div>
