@@ -57,6 +57,8 @@ define('META_WALL_DISPLAY_PRESENTATION_SETUP_TEMPLATE_', 'meta_wall_display_pres
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_', 'meta_wall_display_presentation_setup_title_');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_', 'meta_wall_display_presentation_setup_link_');
 define('META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_BLANK_', 'meta_wall_display_presentation_setup_link_blank_');
+define('META_WALL_DISPLAY_LINK_PAGE', 'meta_wall_display_link_page');
+define('META_WALL_DISPLAY_LINK_TITLE', 'meta_wall_display_link_title');
 
 if (!function_exists("wall_add_inner_meta_boxes")):
 /**
@@ -240,6 +242,18 @@ function wall_save_post($post_id){
 			update_post_meta($post_id, META_WALL_DISPLAY_PRESENTATION_SETUP, sanitize_text_field(html_entity_decode($_POST[META_WALL_DISPLAY_PRESENTATION_SETUP])));
 		}else{
 			delete_post_meta($post_id, META_WALL_DISPLAY_PRESENTATION_SETUP);
+		}
+		// META_WALL_DISPLAY_LINK_PAGE
+		if (!empty($_POST[META_WALL_DISPLAY_LINK_PAGE])){
+			update_post_meta($post_id, META_WALL_DISPLAY_LINK_PAGE, sanitize_text_field($_POST[META_WALL_DISPLAY_LINK_PAGE]));
+		}else{
+			delete_post_meta($post_id, META_WALL_DISPLAY_LINK_PAGE);
+		}
+		// META_WALL_DISPLAY_LINK_TITLE
+		if (!empty($_POST[META_WALL_DISPLAY_LINK_TITLE])){
+			update_post_meta($post_id, META_WALL_DISPLAY_LINK_TITLE, sanitize_text_field($_POST[META_WALL_DISPLAY_LINK_TITLE]));
+		}else{
+			delete_post_meta($post_id, META_WALL_DISPLAY_LINK_TITLE);
 		}
 	}
 }

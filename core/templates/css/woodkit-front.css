@@ -307,6 +307,79 @@ body.wip {
 	margin: 24px 0;
 }
 
+/**
+ * Modal Box
+ */
+#modalbox{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #000;
+	background-color: rgba(0,0,0,0.9);
+	padding: 48px;
+	z-index: 999;
+	/* flex */
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+}
+#modalbox #modalbox-content{
+    /* flex */
+    -webkit-align-self: center;
+    -moz-align-self: center;
+    -ms-align-self: center;
+    align-self: center;
+}
+#modalbox #modalbox-close{
+   position: absolute;
+   top: 24px;
+   right: 24px;
+   color: #fff;
+   font-size: 22px;
+   cursor: pointer;
+}
+#modalbox #modalbox-content iframe{
+    width: 900px;
+    height: 700px;
+}
+@media screen and (max-width: 1024px) {
+	#modalbox #modalbox-content iframe{
+	    width: 768px;
+	    height: 500px;
+	}
+}
+@media screen and (max-width: 800px) {
+	#modalbox #modalbox-content iframe{
+	    width: 600px;
+	    height: 400px;
+	}
+}
+@media screen and (max-width: 600px) {
+	#modalbox #modalbox-content iframe{
+	    width: 540px;
+	    height: 400px;
+	}
+}
+@media screen and (max-width: 580px) {
+	#modalbox #modalbox-content iframe{
+	    width: 300px;
+	    height: 200px;
+	}
+}
+@media screen and (max-width: 400px) {
+	#modalbox #modalbox-content iframe{
+	    width: 200px;
+	    height: 160px;
+	}
+}
+
 /****************************
  * Divi
  ***************************/

@@ -420,6 +420,23 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 				<td valign="middle">px</td>
 				<td valign="middle"></td>
 			</tr>
+			<tr valign="top" class="display-wall-options">
+				<th class="metabox_label_column" align="left" valign="middle"><label
+					for="<?php echo META_WALL_DISPLAY_LINK_PAGE; ?>">-&nbsp;<?php _e('Page link', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+				</th>
+				<td valign="middle">
+					<?php $meta_link_page = get_post_meta(get_the_ID(), META_WALL_DISPLAY_LINK_PAGE, true); ?>
+					<?php $meta_link_title = get_post_meta(get_the_ID(), META_WALL_DISPLAY_LINK_TITLE, true); ?>
+					<select id="<?php echo META_WALL_DISPLAY_LINK_PAGE; ?>" name="<?php echo META_WALL_DISPLAY_LINK_PAGE; ?>">
+						<option value="0" <?php if (empty($meta_link_page) || $meta_link_page == '0'){ echo 'selected="selected"'; }?>><?php _e("No link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<?php 
+						echo woodkit_get_posts_options($meta_link_page);
+						?>
+					</select>
+				</td>
+				<td valign="middle"><input type="text" name="<?php echo META_WALL_DISPLAY_LINK_TITLE; ?>" id="<?php echo META_WALL_DISPLAY_LINK_TITLE; ?>" placeholder="<?php echo esc_attr(__("Customize your link title (let empty to get page/post title)")); ?>" value="<?php echo esc_attr($meta_link_title); ?>" /></td>
+				<td valign="middle"></td>
+			</tr>
 		</table>
 		<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_TAX, true); ?>
 		<input type="hidden" name="<?php echo META_WALL_DISPLAY_TAX; ?>" value="<?php echo $meta; ?>" /><!-- updated by javascript when META_WALL_DISPLAY_TERM_SLUG option change -->

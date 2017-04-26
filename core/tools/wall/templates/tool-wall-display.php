@@ -50,6 +50,8 @@ if (!is_admin()){
 	$wall_args['meta_wall_display_presentation_margin_vertical'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MARGIN_VERTICAL, true);
 	$wall_args['meta_wall_display_presentation_margin_horizontal'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL, true);
 	$wall_args['meta_wall_display_presentation_setup'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_SETUP, true);
+	$wall_args['meta_wall_display_link_page'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_LINK_PAGE, true);
+	$wall_args['meta_wall_display_link_title'] = get_post_meta(get_the_ID(), META_WALL_DISPLAY_LINK_TITLE, true);
 }else{
 	// $wall_args must be defined by the calling script (same array keys)
 }
@@ -121,6 +123,24 @@ if (!empty($posts)){
 					include($template);
 				wp_reset_postdata();
 			} ?>
+			<?php 
+			if (!is_admin() && !empty($wall_args['meta_wall_display_link_page'])){
+				$link_post_meta =  explode("|", $wall_args['meta_wall_display_link_page']);
+				if (!empty($link_post_meta[2]) && is_numeric($link_post_meta[2])){
+					$link_title = "";
+					if (!empty($wall_args['meta_wall_display_link_link'])){
+						$link_title = $wall_args['meta_wall_display_link_link'];
+					}else{
+						$link_title = get_the_title($link_post_meta[2]);
+					}
+					?>
+					<div class="wall-link-wrapper">
+						<a class="wall-link" href="<?php the_permalink($link_post_meta[2]); ?>" title="<?php echo esc_attr($link_title); ?>"><span><?php echo $link_title; ?></span></a>
+					</div>
+					<?php
+				}
+			}
+			?>
 		</div>
 		<?php
 	}else if ($wall_args['meta_wall_display_presentation'] == 'slider'){
@@ -402,6 +422,24 @@ if (!empty($posts)){
 					wp_reset_postdata();
 				} ?>
 			</ul>
+			<?php 
+			if (!is_admin() && !empty($wall_args['meta_wall_display_link_page'])){
+				$link_post_meta =  explode("|", $wall_args['meta_wall_display_link_page']);
+				if (!empty($link_post_meta[2]) && is_numeric($link_post_meta[2])){
+					$link_title = "";
+					if (!empty($wall_args['meta_wall_display_link_link'])){
+						$link_title = $wall_args['meta_wall_display_link_link'];
+					}else{
+						$link_title = get_the_title($link_post_meta[2]);
+					}
+					?>
+					<div class="wall-link-wrapper">
+						<a class="wall-link" href="<?php the_permalink($link_post_meta[2]); ?>" title="<?php echo esc_attr($link_title); ?>"><span><?php echo $link_title; ?></span></a>
+					</div>
+					<?php
+				}
+			}
+			?>
 		</div>
 		<?php if (!is_admin()){ ?>
 			<script type="text/javascript">
@@ -600,6 +638,24 @@ if (!empty($posts)){
 					wp_reset_postdata();
 				} ?>
 			</ul>
+			<?php 
+			if (!is_admin() && !empty($wall_args['meta_wall_display_link_page'])){
+				$link_post_meta =  explode("|", $wall_args['meta_wall_display_link_page']);
+				if (!empty($link_post_meta[2]) && is_numeric($link_post_meta[2])){
+					$link_title = "";
+					if (!empty($wall_args['meta_wall_display_link_link'])){
+						$link_title = $wall_args['meta_wall_display_link_link'];
+					}else{
+						$link_title = get_the_title($link_post_meta[2]);
+					}
+					?>
+					<div class="wall-link-wrapper">
+						<a class="wall-link" href="<?php the_permalink($link_post_meta[2]); ?>" title="<?php echo esc_attr($link_title); ?>"><span><?php echo $link_title; ?></span></a>
+					</div>
+					<?php
+				}
+			}
+			?>
 		</div>
 		<?php if (!is_admin()){ ?>
 			<script type="text/javascript">

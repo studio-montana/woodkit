@@ -42,4 +42,100 @@
 			$info.fadeIn();
 		}
 	});
+	
+	/**
+	 * ModalBox
+	 */
+	$.modalbox = function(options) {
+		var plugin = this;
+		var settings = $.extend({
+			content : '',
+			onopen : null, // function()
+			onclose : null, // function()
+		}, options);
+		var $body = $("body");
+		var $modalbox = null;
+		var $modalboxcontent = null;
+		var $modalboxclose = null;
+		var resize_timer = null;
+		/**
+		 * window resize
+		 */
+		$(window).resize(function() {
+			if (resize_timer != null)
+				clearTimeout(resize_timer);
+			resize_timer = setTimeout(plugin.resize, 500);
+		});
+		/**
+		 * initialization
+		 */
+		plugin.init = function() {
+			if ($("#modalbox").length < 1) {
+				$body.append('<div id="modalbox" class="woodkit-modal-box" style="display: none;"></div>');
+				$("#modalbox").append('<div id="modalbox-close" class="woodkit-modal-box-close"><i class="fa fa-times"></i></div>');
+				$("#modalbox").append('<div id="modalbox-content" class="woodkit-modal-box-content"></div>');
+			}
+			$modalbox = $("#modalbox");
+			$modalboxclose = $("#modalbox-close");
+			$modalboxclose.on('click', function(e) {
+				plugin.close();
+			});
+			$modalboxcontent = $("#modalbox-content");
+			$modalboxcontent.empty();
+			$(document).keyup(function(e) {
+				if (e.keyCode === 27)
+					plugin.close();
+			});
+			$(document).on('click', function(e) { // close on click outside
+				if (!$modalboxcontent.is(e.target) && $modalboxcontent.has(e.target).length === 0 && $modalbox.is(e.target)) {
+					plugin.close();
+				}
+			});
+			if (isset(settings['content'])) {
+				$modalboxcontent.append(settings['content']);
+			}
+			plugin.open();
+		};
+		/**
+		 * open plugin interface (draw if doesn't exist)
+		 */
+		plugin.open = function() {
+			$modalbox.fadeIn(0);
+			plugin.trigger_onopen();
+		}
+		/**
+		 * close plugin interface
+		 */
+		plugin.close = function() {
+			if ($modalbox != null) {
+				$modalbox.fadeOut(0);
+				$modalboxcontent.empty();
+				plugin.trigger_onclose();
+			}
+		}
+		/**
+		 * resize
+		 */
+		plugin.resize = function() {
+		};
+		/**
+		 * trigger onopen
+		 */
+		plugin.trigger_onopen = function() {
+			if (isset(settings['onopen']) && $.isFunction(settings['onopen'])) {
+				settings['onopen'].call(null);
+			}
+		};
+		/**
+		 * trigger onclose
+		 */
+		plugin.trigger_onclose = function() {
+			if (isset(settings['onclose']) && $.isFunction(settings['onclose'])) {
+				settings['onclose'].call(null);
+			}
+		};
+		plugin.init();
+		return plugin;
+	};
+	
 })(jQuery);
