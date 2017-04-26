@@ -430,7 +430,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 					<select id="<?php echo META_WALL_DISPLAY_LINK_PAGE; ?>" name="<?php echo META_WALL_DISPLAY_LINK_PAGE; ?>">
 						<option value="0" <?php if (empty($meta_link_page) || $meta_link_page == '0'){ echo 'selected="selected"'; }?>><?php _e("No link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
 						<?php 
-						echo woodkit_get_posts_options($meta_link_page);
+						echo woodkit_get_posts_options($meta_link_page, null, array()); // no taxonomy
 						?>
 					</select>
 				</td>
