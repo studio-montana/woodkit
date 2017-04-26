@@ -128,8 +128,8 @@ if (!empty($posts)){
 				$link_post_meta =  explode("|", $wall_args['meta_wall_display_link_page']);
 				if (!empty($link_post_meta[2]) && is_numeric($link_post_meta[2])){
 					$link_title = "";
-					if (!empty($wall_args['meta_wall_display_link_link'])){
-						$link_title = $wall_args['meta_wall_display_link_link'];
+					if (!empty($wall_args['meta_wall_display_link_title'])){
+						$link_title = $wall_args['meta_wall_display_link_title'];
 					}else{
 						$link_title = get_the_title($link_post_meta[2]);
 					}
