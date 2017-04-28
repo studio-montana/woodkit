@@ -21,9 +21,6 @@
 		/**
 		 * date picker on date fields (require jquery-ui-datepicker)
 		 */
-		$("input[type='date']").datepicker({
-			dateFormat : 'dd/mm/yy'
-		});
 		$("input.datepicker").datepicker({
 			dateFormat : 'dd/mm/yy'
 		});
