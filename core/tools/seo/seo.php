@@ -125,7 +125,7 @@ if (! function_exists ( "woodkit_tool_seo_redirects" )) :
 									// clear all unreplaced dynamics values
 									$do_redirect = preg_replace ( "@[$\d]@i", "", $do_redirect );
 								}
-							} else if (urldecode ( $currentrequest ) == rtrim ( $fromurl, '/' )) { // equals
+							} else if (urldecode ( $currentrequest ) == rtrim ( $fromurl, '/' ) || urldecode ( $currentrequest ) == $fromurl) { // equals
 								$do_redirect = $tourl;
 							}
 						}
