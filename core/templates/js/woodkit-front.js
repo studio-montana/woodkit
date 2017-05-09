@@ -53,8 +53,32 @@
 		}, options);
 		var $dynamicnumber = element;
 		var animated = false;
-		var initial_value = $dynamicnumber.data('dynamicnumber');
+		var animate_number = $dynamicnumber.data('dynamicnumber'); // int or float value - required
+		var animate_start = $dynamicnumber.data('dynamicnumber-start'); // int or float value - default: 0
+		var animate_duration = $dynamicnumber.data('dynamicnumber-duration'); // int value - default: 5000
+		var animate_easing = $dynamicnumber.data('dynamicnumber-easing'); // "constant" or "linear" or "quadratic" - default: "linear"
+		var animate_number_type = $dynamicnumber.data('dynamicnumber-type'); // "int" or "float" - default: "float"
 		plugin.init = function() {
+			// animate_start
+			if (empty(animate_start) || parseInt(animate_start) == 'NaN')
+				animate_start = 0;
+			
+			// animate_duration
+			if (empty(animate_duration) || parseInt(animate_duration) == 'NaN')
+				animate_duration = 5000;
+			
+			// animate_easing
+			if (animate_easing == 'constant')
+				animate_easing = plugin.easing_constant;
+			else if (animate_easing == 'quadratic')
+				animate_easing = plugin.easing_quadratic;
+			else
+				animate_easing = plugin.easing_linear;
+			
+			// animate_number_type
+			if (empty(animate_number_type) || (animate_number_type != 'int' && animate_number_type != 'float'))
+				animate_number_type = 'float';
+			
 			$(window).scroll(function(){
 				plugin.is_displayed();
 			});
@@ -68,35 +92,51 @@
 				var scroll = $(window).scrollTop();
 				var offset = $dynamicnumber.offset();
 				if ((scroll) > (offset.top -  window_height) && (scroll) < offset.top){
-					plugin.animate_number(0, 5000, plugin.easing_linear);
+					plugin.start_animation(animate_start, animate_duration, animate_easing);
 				}
 			}
 		}
 
 		// Animate number
-		plugin.animate_number = function(start, duration, easing) {
+		plugin.start_animation = function(start, duration, easing) {
 			animated = true;
-			var end = parseFloat(initial_value);
-			if (end != 'NaN'){
+			var end = 'NaN';
+			var range = 0;
+			var current = 0;
+			if (animate_number_type == 'int'){
+				end = parseInt(animate_number);
+				if (end != 'NaN'){
+					range = end - start;
+					current = start;
+				}
+			}else{
+				end = parseFloat(animate_number);
 				end = end.toFixed(2);
 				end = end * 100;
-				var range = end - start;
-				var current = start;
+				start = start * 100;
+				if (end != 'NaN'){
+					range = end - start;
+					current = start;
+				}
+			}
+			if (end != 'NaN'){
 				var increment = end > start ? 1 : -1;
-				var startTime = new Date();
-				var offset = 1;
 				var step = function() {
 					current += increment;
-					$dynamicnumber.html(current/100);
+					if (animate_number_type == 'int'){
+						$dynamicnumber.html(current);
+					}else{
+						$dynamicnumber.html(current/100);
+					}
 					if (current != end) {
 						setTimeout(step, easing(duration, range, current));
 					}else{
-						$dynamicnumber.html(initial_value);
+						$dynamicnumber.html(animate_number);
 					}
 				};
 				setTimeout(step, easing(duration, range, start));
 			}else{
-				$dynamicnumber.html(initial_value);
+				$dynamicnumber.html(animate_number);
 			}
 		}	
 		
