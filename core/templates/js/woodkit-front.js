@@ -44,6 +44,96 @@
 	});
 	
 	/**
+	 * DynamicNumber
+	 */
+	$.dynamicnumber = function(element, options) {
+		var plugin = this;
+		var settings = $.extend({
+			activate_when_appear: true
+		}, options);
+		var $dynamicnumber = element;
+		var animated = false;
+		var initial_value = $dynamicnumber.data('dynamicnumber');
+		plugin.init = function() {
+			$(window).scroll(function(){
+				plugin.is_displayed();
+			});
+			plugin.is_displayed();
+		};
+		
+		// Start animation when element appears
+		plugin.is_displayed = function(){
+			if(!animated){
+				var window_height = $(window).height();
+				var scroll = $(window).scrollTop();
+				var offset = $dynamicnumber.offset();
+				if ((scroll) > (offset.top -  window_height) && (scroll) < offset.top){
+					plugin.animate_number(0, 5000, plugin.easing_linear);
+				}
+			}
+		}
+
+		// Animate number
+		plugin.animate_number = function(start, duration, easing) {
+			animated = true;
+			var end = parseFloat(initial_value);
+			if (end != 'NaN'){
+				end = end.toFixed(2);
+				end = end * 100;
+				var range = end - start;
+				var current = start;
+				var increment = end > start ? 1 : -1;
+				var startTime = new Date();
+				var offset = 1;
+				var step = function() {
+					current += increment;
+					$dynamicnumber.html(current/100);
+					if (current != end) {
+						setTimeout(step, easing(duration, range, current));
+					}else{
+						$dynamicnumber.html(initial_value);
+					}
+				};
+				setTimeout(step, easing(duration, range, start));
+			}else{
+				$dynamicnumber.html(initial_value);
+			}
+		}	
+		
+		//No easing
+		plugin.easing_constant = function(duration, range, current) {
+		  return duration / range;
+		}
+
+		//Linear easing
+		plugin.easing_linear = function(duration, range, current) {
+		  return ((duration * 2) / Math.pow(range, 2)) * current;
+		}
+
+		//Quadratic easing
+		plugin.easing_quadratic = function(duration, range, current) {
+		  return ((duration * 3) / Math.pow(range, 3)) * Math.pow(current, 2);
+		}
+		plugin.init();
+		return plugin;
+	};
+	$.fn.dynamicnumber = function(options) {
+		var dynamicnumber = $(this).data('dynamicnumberplugin');
+		if (empty(dynamicnumber)) {
+			dynamicnumber = new $.dynamicnumber($(this), options);
+			$(this).data('dynamicnumberplugin', dynamicnumber);
+		} else {
+			dynamicnumber.reinit(options);
+		}
+		return dynamicnumber;
+	};
+	$(document).ready(function(){
+		$("*[data-dynamicnumber]").each(function(i){
+			$(this).dynamicnumber({});
+		});
+	});
+	
+	/**
 	 * ModalBox
 	 */
 	$.modalbox = function(options) {
