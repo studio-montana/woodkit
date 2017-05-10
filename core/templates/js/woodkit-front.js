@@ -65,7 +65,7 @@
 			
 			// animate_duration
 			if (empty(animate_duration) || parseInt(animate_duration) == 'NaN')
-				animate_duration = 5000;
+				animate_duration = 3000;
 			
 			// animate_easing
 			if (animate_easing == 'constant')
@@ -111,8 +111,8 @@
 				}
 			}else{
 				end = parseFloat(animate_number);
-				end = end.toFixed(2);
 				end = end * 100;
+				end = end.toFixed(2);
 				start = start * 100;
 				if (end != 'NaN'){
 					range = end - start;
@@ -120,21 +120,25 @@
 				}
 			}
 			if (end != 'NaN'){
-				var increment = end > start ? 1 : -1;
-				var step = function() {
-					current += increment;
-					if (animate_number_type == 'int'){
-						$dynamicnumber.html(current);
-					}else{
-						$dynamicnumber.html(current/100);
-					}
-					if (current != end) {
-						setTimeout(step, easing(duration, range, current));
-					}else{
-						$dynamicnumber.html(animate_number);
-					}
-				};
-				setTimeout(step, easing(duration, range, start));
+				if (end != start){
+					var increment = end > start ? 1 : -1;
+					var step = function() {
+						current += increment;
+						if (animate_number_type == 'int'){
+							$dynamicnumber.html(current);
+						}else{
+							$dynamicnumber.html(current/100);
+						}
+						if (current != end) {
+							setTimeout(step, easing(duration, range, current));
+						}else{
+							$dynamicnumber.html(animate_number);
+						}
+					};
+					setTimeout(step, easing(duration, range, start));
+				}else{
+					$dynamicnumber.html(animate_number);
+				}
 			}else{
 				$dynamicnumber.html(animate_number);
 			}
