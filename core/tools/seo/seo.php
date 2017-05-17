@@ -153,7 +153,7 @@ if (! function_exists ( "seo_get_social_share_url_for_post" )) :
 function seo_get_social_share_url_for_post($post, $social_network_name = 'facebook') {
 	$share_url = '';
 	if (!empty($post)){
-		$share_url = seo_get_social_share_url($social_network_name, get_the_permalink($post), get_the_title($post), get_the_excerpt($post));
+		$share_url = seo_get_social_share_url($social_network_name, get_the_permalink($post), get_the_title($post), get_the_excerpt($post), get_the_post_thumbnail_url($post, 'woodkit-600'));
 	}
 	return $share_url;
 }
@@ -163,12 +163,13 @@ if (! function_exists ( "seo_get_social_share_url" )) :
 /**
  * Retireve Social Share URL for specified post
 */
-function seo_get_social_share_url($social_network_name, $url, $title = '', $resume = '') {
+function seo_get_social_share_url($social_network_name, $url, $title = '', $resume = '', $img_url = '') {
 	$share_url = '';
 	if (!empty($url)){
 		$url_endoded = urlencode($url);
 		$title_encoded = urlencode($title);
 		$resume_encoded = urlencode($resume);
+		$img_url_encoded = urlencode($img_url);
 		switch ($social_network_name){
 			case "facebook" :
 				$share_url = 'https://www.facebook.com/sharer/sharer.php?u='.$url_endoded;
@@ -179,6 +180,13 @@ function seo_get_social_share_url($social_network_name, $url, $title = '', $resu
 			case "twitter" :
 				$share_url = 'https://twitter.com/home?status='.$url_endoded;
 				break;
+			case "houzz" :
+				$share_url = 'http://www.houzz.com/imageClipperUpload?imageUrl='.$img_url_encoded.'&title='.$title_encoded.'&link='.$url_endoded;
+				break;
+			case "pinterest" : 
+				$share_url = 'http://pinterest.com/pin/create/button/?url='.$img_url_encoded.'&media='.$url_endoded.'&description='.$title_encoded;
+				break;
+				
 		}
 	}
 	return $share_url;
