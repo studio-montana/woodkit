@@ -189,7 +189,7 @@ function secure_captcha_generate_field($field_name, $use_placeholder = true, $us
 	if ($use_placeholder == true){
 		$placeholder =  'placeholder="'.$captcha_1." + ".$captcha_2.'"';
 	}
-	$field .= '<input class="'.$input_classes.'" size="20" type="number" id="'.$field_name.'" name="'.$field_name.'" '.$placeholder.' />';
+	$field .= '<input class="'.$input_classes.'" size="20" type="number" id="'.$field_name.'" name="'.$field_name.'" '.$placeholder.' autocomplete="off" />';
 	$field .= '<span class="fa fa-question-circle tool-secure-show-info"></span>';
 	$field .= '<span class="tool-secure-info-text">'.__("Please solve the problem. This is an anti-spam security check.", WOODKIT_PLUGIN_TEXT_DOMAIN).'</span>';
 	$field .= '</span>';
