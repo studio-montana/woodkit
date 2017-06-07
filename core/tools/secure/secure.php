@@ -33,6 +33,18 @@ require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NA
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/inc/failtoban.php');
 
 /**
+ * Force login/password authentication (user can not use email)
+ */
+remove_filter( 'authenticate', 'wp_authenticate_email_password', 20 );
+
+/**
+ * Hide generator in HTML meta data
+ */
+add_filter('the_generator', function(){
+	return '';
+});
+
+/**
  * Is secure captcha active
  * @return boolean
 */
