@@ -511,6 +511,7 @@ function get_video_embed_code($url, $width = "", $height="", $args = array()){
 					array("brand" => "youtube", "regex" => "/youtu\.be\/([\w\-.]+)/", "type" => "iframe", "width" => 425, "height" => 350, "url" => "//www.youtube.com/embed/$1"),
 					array("brand" => "youtube", "regex" => "/youtube\.com(.+)v=([^&]+)/", "type" => "iframe", "width" => 425, "height" => 350, "url" => "//www.youtube.com/embed/$2"),
 					array("brand" => "youtube", "regex" => "/youtube\.com\/([0-9|a-z|A-Z]+)/", "type" => "iframe", "width" => 425, "height" => 350, "url" => "//www.youtube.com/embed/$1"),
+					array("brand" => "youtube", "regex" => "/youtube\.com\/embed\/([0-9|a-z|A-Z]+)/", "type" => "iframe", "width" => 425, "height" => 350, "url" => "//www.youtube.com/embed/$1"),
 					array("brand" => "vimeo", "regex" => "/vimeo\.com\/([0-9]+)/", "type" => "iframe", "width" => 425, "height" => 350, "url" => "//player.vimeo.com/video/$1"),
 					array("brand" => "vimeo", "regex" => "/vimeo\.com\/(.*)\/([0-9]+)/", "type" => "iframe", "width" => 425, "height" => 350, "url" => "//player.vimeo.com/video/$2")
 			);
