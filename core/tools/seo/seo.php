@@ -618,23 +618,14 @@ function woodkit_seo_get_meta_publication_image($display = true) {
 		}
 	}
 
-	if (empty ( $opengraph_content )) {
-		$url_logo = get_theme_mod ( 'logo_image' ); // site-logo
-		if (! empty ( $url_logo )) {
-			$opengraph_content = $url_logo;
-		} else { // default (theme screenshot)
-			if (file_exists ( get_stylesheet_directory () . '/screenshot.png' ))
-				$opengraph_content = get_stylesheet_directory_uri () . '/screenshot.png';
-				else if (file_exists ( get_template_directory () . '/screenshot.png' ))
-					$opengraph_content = get_template_directory_uri () . '/screenshot.png';
-		}
-	}
+	// this filter use to override publication image
+	$opengraph_content = apply_filters("woodkit-tool-seo-publication-image", $opengraph_content);
 
 	// result
 	if ($display)
 		echo esc_attr ( $opengraph_content );
-		else
-			return esc_attr ( $opengraph_content );
+	else
+		return esc_attr ( $opengraph_content );
 }
 add_action ( "woodkit_seo_get_meta_publication_image", "woodkit_seo_get_meta_publication_image" );
 
