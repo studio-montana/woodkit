@@ -675,11 +675,11 @@ if (!function_exists("get_dates_period")):
 * @param string $date_to : php format Y/m/d
 */
 function get_dates_period($date_from, $date_to) {
-	$date_from = \DateTime::createFromFormat('Y/m/d', $date_from);
-	$date_to = \DateTime::createFromFormat('Y/m/d', $date_to);
-	return new \DatePeriod(
+	$date_from = DateTime::createFromFormat('Y/m/d', $date_from);
+	$date_to = DateTime::createFromFormat('Y/m/d', $date_to);
+	return new DatePeriod(
 			$date_from,
-			new \DateInterval('P1D'),
+			new DateInterval('P1D'),
 			$date_to->modify('+1 day')
 	);
 }
