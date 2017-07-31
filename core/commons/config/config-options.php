@@ -200,10 +200,17 @@ class WoodkitOptions {
 
 	function print_setting_key_activation(){
 		$value = "";
-		// TODO display message if key is invalid
-		if (isset($this->options['key-activation']))
+		$valid_key = false;
+		if (isset($this->options['key-activation'])){
 			$value = $this->options['key-activation'];
+			$valid_key = woodkit_is_registered();
+		}
 		echo '<input placeholder="'.__("YOUR KEY", WOODKIT_PLUGIN_TEXT_DOMAIN).'" type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[key-activation]" value="'.$value.'" /><a href="'.esc_url(WOODKIT_CONFIG_GET_KEY_URL).'" target="_blank" class="button primary get-a-key">'.__('Get key', WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
+		if (!$valid_key){
+			echo '<br /><span class="invalid-key"><i class="fa fa-times"></i>'.__("Your key is invalid", WOODKIT_PLUGIN_TEXT_DOMAIN).'</span>';
+		}else{
+			echo '<br /><span class="valid-key"><i class="fa fa-check"></i>'.__("Your site is registered", WOODKIT_PLUGIN_TEXT_DOMAIN).'</span>';
+		}
 	}
 
 	/**

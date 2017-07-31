@@ -317,6 +317,22 @@
 }
 /* --------------------- */
 
+.toplevel_page_woodkit_options form .valid-key,
+.toplevel_page_woodkit_options form .invalid-key {
+	display: inline-block;
+	padding: 12px 12px 0 12px;
+}
+.toplevel_page_woodkit_options form .valid-key i,
+.toplevel_page_woodkit_options form .invalid-key i {
+	margin-right: 6px;
+}
+.toplevel_page_woodkit_options form .valid-key {
+	color: #00C3AA;
+}
+.toplevel_page_woodkit_options form .invalid-key {
+	color: red;
+}
+
 .toplevel_page_woodkit_options form p.submit {
 	text-align: right;
 }
