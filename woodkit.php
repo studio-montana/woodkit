@@ -138,6 +138,8 @@ if(!class_exists('Woodkit')){
 		 * Init
 		 */
 		public static function init() {
+			
+			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_COMMONS_FOLDER.'plugin.init.php');
 
 			do_action("woodkit_before_init");
 				
