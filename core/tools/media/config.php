@@ -32,7 +32,6 @@ add_filter("woodkit_is_tool_media_active", "tool_media_is_active", 1, 1);
 
 function tool_media_woodkit_config_default_values($default_values){
 	$default_values["tool-media-active"] = "on";
-	$default_values["tool-media-fancybox-active"] = "on";
 	return $default_values;
 }
 add_filter("woodkit_config_default_values", "tool_media_woodkit_config_default_values");
@@ -47,7 +46,6 @@ function tool_media_get_config_options_section_documentation_url(){
 
 function tool_media_get_config_options_fields($additional_fields){
 	$additional_fields[] = array("slug" => "tool-media-active", "callback" => "tool_media_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
-	$additional_fields[] = array("slug" => "tool-media-fancybox-active", "callback" => "tool_media_get_config_options_field_fancybox_active", "title" => __("Fancybox active", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
 add_filter("woodkit_config_options_fields_tool_media", "tool_media_get_config_options_fields", 1, 1);
@@ -62,16 +60,4 @@ function tool_media_get_config_options_field_active($args){
 	if ($value == 'on')
 		$checked = ' checked="checked"';
 	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-media-active]" '.$checked.' />';
-}
-
-function tool_media_get_config_options_field_fancybox_active($args){
-	$options = $args['options'];
-	$active = false;
-	$value = "off";
-	if (isset($options['tool-media-fancybox-active']))
-		$value = $options['tool-media-fancybox-active'];
-	$checked = '';
-	if ($value == 'on')
-		$checked = ' checked="checked"';
-	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-media-fancybox-active]" '.$checked.' />';
 }

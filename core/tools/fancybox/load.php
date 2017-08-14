@@ -23,6 +23,21 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
- * REQUIREMENTS
-*/
-require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.MEDIA_TOOL_NAME.'/custom-fields/media.php');
+ * CONSTANTS
+ */
+define('FANCYBOX_TOOL_NAME', 'fancybox');
+
+function tool_fancybox_get_name($tool_name = ""){
+	return __("Fancybox", WOODKIT_PLUGIN_TEXT_DOMAIN);
+}
+add_filter("woodkit_get_tool_name_".FANCYBOX_TOOL_NAME, "tool_fancybox_get_name", 1, 1);
+
+function tool_fancybox_get_description($tool_description = ""){
+	return __("Open image in fancybox", WOODKIT_PLUGIN_TEXT_DOMAIN);
+}
+add_filter("woodkit_get_tool_description_".FANCYBOX_TOOL_NAME, "tool_fancybox_get_description", 1, 1);
+
+function tool_fancybox_activate(){
+	require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.FANCYBOX_TOOL_NAME.'/'.FANCYBOX_TOOL_NAME.'.php');
+}
+add_action("woodkit_tool_activate_".FANCYBOX_TOOL_NAME, "tool_fancybox_activate");

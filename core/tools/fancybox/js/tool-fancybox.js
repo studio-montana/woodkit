@@ -17,7 +17,7 @@
 			},
 			overlay : {
 				css : {
-					'background' : 'rgba(0, 0, 0, 0.85)'
+					'background' : ToolFancybox.backgroundcolor
 				}
 			}
 		},
