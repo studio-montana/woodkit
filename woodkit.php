@@ -63,11 +63,19 @@ define('WOODKIT_INTERVAL_API', 'PT1H');
 if(!class_exists('Woodkit')){
 
 	class Woodkit{
+		
+		private static $_this;
 
 		/**
 		 * Construct the plugin object
 		 */
 		public function __construct(){
+			
+			// Don't allow more than one instance of the class
+			if (isset(self::$_this)) {
+				wp_die(sprintf(esc_html__( '%s is a singleton class and you cannot create a second instance.', WOODKIT_PLUGIN_TEXT_DOMAIN ), get_class($this)));
+			}
+			self::$_this = $this;
 
 			load_plugin_textdomain('woodkit', false, dirname( plugin_basename( __FILE__ ) ).'/lang/' );
 

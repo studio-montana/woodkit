@@ -563,7 +563,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 						$wall_isotope.isotope({
 							// update columnWidth to a percentage of container width 
 							masonry : {
-								columnWidth : $wall_isotope.width() / $wall_isotope.data("columns")
+								columnWidth : $wall_isotope.width() / $wall_isotope.data("wall-columns")
 							}
 						});
 					}

@@ -42,7 +42,7 @@ $title = wall_get_wall_item_title(get_the_ID(), $wall_args);
 $link = wall_get_wall_item_link(get_the_ID(), $wall_args);
 $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
-<li class="isotope-item template-video <?php echo $class; ?>"style="<?php echo $style; ?>" data-format="<?php echo $wall_args['meta_wall_display_presentation_format']; ?>" data-columns="<?php echo $wall_args['wall_item_width_selected']; ?>" data-lines="<?php echo $wall_args['wall_item_height_selected']; ?>">
+<li class="isotope-item template-video <?php echo $class; ?>"style="<?php echo $style; ?>" data-wall-format="<?php echo $wall_args['meta_wall_display_presentation_format']; ?>" data-wall-columns="<?php echo $wall_args['wall_item_width_selected']; ?>" data-wall-lines="<?php echo $wall_args['wall_item_height_selected']; ?>">
 	<div class="inner-item-wrapper">
 		<div class="inner-item video" style="width: 100%; height: 100%;">
 		

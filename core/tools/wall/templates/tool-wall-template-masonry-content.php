@@ -39,7 +39,7 @@ $title = wall_get_wall_item_title(get_the_ID(), $wall_args);
 $link = wall_get_wall_item_link(get_the_ID(), $wall_args);
 $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
-<li class="masonry-item template-content <?php echo $class; ?>" style="<?php echo $style; ?>" data-autoresponsive="true" data-columns="1">
+<li class="masonry-item template-content <?php echo $class; ?>" style="<?php echo $style; ?>" data-autoresponsive="true" data-wall-columns="1">
 	<?php if (!is_admin()){ ?>
 	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>

@@ -13,7 +13,7 @@ var gold_number = 1.618;
 	 */
 	function woodkit_resize_isotope_items($isotope, item_selector) {
 		var isotope_matrice = woodkit_resize_gallery_matrix();
-		var isotope_data_columns = parseInt($isotope.data('columns'));
+		var isotope_data_columns = parseInt($isotope.data('wall-columns'));
 		if (isset(isotope_data_columns) && !isNaN(isotope_data_columns)) {
 			var resized = false;
 			for ( var window_size in isotope_matrice) {
@@ -23,7 +23,7 @@ var gold_number = 1.618;
 						var columns_matrice = window_matrice[isotope_data_columns];
 						$isotope.find(item_selector).each(function(i) {
 							// width
-							var item_data_columns = parseInt($(this).data('columns'));
+							var item_data_columns = parseInt($(this).data('wall-columns'));
 							if (columns_matrice.hasOwnProperty(item_data_columns)) {
 								var new_width = columns_matrice[item_data_columns];
 								$(this).css("width", new_width);
@@ -49,7 +49,7 @@ var gold_number = 1.618;
 			if (resized == false) { // initial values
 				$isotope.find(item_selector).each(function(i) {
 					// width
-					var item_data_columns = parseInt($(this).data('columns'));
+					var item_data_columns = parseInt($(this).data('wall-columns'));
 					var new_width = (100 / isotope_data_columns) * item_data_columns;
 					$(this).css("width", new_width + '%');
 					// height
@@ -83,7 +83,7 @@ var gold_number = 1.618;
 	 */
 	function woodkit_resize_classic_items($classic, item_selector) {
 		var classic_matrice = woodkit_resize_gallery_matrix();
-		var classic_data_columns = parseInt($classic.data('columns'));
+		var classic_data_columns = parseInt($classic.data('wall-columns'));
 		if (isset(classic_data_columns) && !isNaN(classic_data_columns)) {
 			var resized = false;
 			for ( var window_size in classic_matrice) {
@@ -93,7 +93,7 @@ var gold_number = 1.618;
 						var columns_matrice = window_matrice[classic_data_columns];
 						$classic.find(item_selector).each(function(i) {
 							// width
-							var item_data_columns = parseInt($(this).data('columns'));
+							var item_data_columns = parseInt($(this).data('wall-columns'));
 							if (columns_matrice.hasOwnProperty(item_data_columns)) {
 								var new_width = columns_matrice[item_data_columns];
 								$(this).css("width", new_width);
@@ -119,7 +119,7 @@ var gold_number = 1.618;
 			if (resized == false) { // initial values
 				$classic.find(item_selector).each(function(i) {
 					// width
-					var item_data_columns = parseInt($(this).data('columns'));
+					var item_data_columns = parseInt($(this).data('wall-columns'));
 					var new_width = (100 / classic_data_columns) * item_data_columns;
 					$(this).css("width", new_width + '%');
 					// height
@@ -158,9 +158,9 @@ var gold_number = 1.618;
 			if (!empty(ratio_width_height)) {
 				$gallery_item.css("height", Math.ceil(parseInt(item_width) * parseFloat(ratio_width_height)) + "px");
 			} else {
-				var format = $gallery_item.data('format'); // isotope only
-				var lines = $gallery_item.data('lines'); // isotope only
-				var columns = $gallery_item.data('columns'); // isotope only
+				var format = $gallery_item.data('wall-format'); // isotope only
+				var lines = $gallery_item.data('wall-lines'); // isotope only
+				var columns = $gallery_item.data('wall-columns'); // isotope only
 				var height = 0;
 				if (empty(format)) {
 					format = "square";
@@ -193,13 +193,13 @@ var gold_number = 1.618;
 	 * UPDATE ISOTOPE & MASONRY & CLASSIC GALLERY
 	 */
 	function woodkit_refresh_galleries() {
-		$(".isotope[data-columns]").each(function(i) {
+		$(".isotope[data-wall-columns]").each(function(i) {
 			woodkit_resize_isotope_items($(this), '.isotope-item');
 		});
-		$(".masonry[data-columns]").each(function(i) {
+		$(".masonry[data-wall-columns]").each(function(i) {
 			woodkit_resize_isotope_items($(this), '.masonry-item');
 		});
-		$(".classic[data-columns]").each(function(i) {
+		$(".classic[data-wall-columns]").each(function(i) {
 			woodkit_resize_classic_items($(this), '.classic-item');
 		});
 	}

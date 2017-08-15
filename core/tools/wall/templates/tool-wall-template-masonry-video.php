@@ -48,7 +48,7 @@ $title = wall_get_wall_item_title(get_the_ID(), $wall_args);
 $link = wall_get_wall_item_link(get_the_ID(), $wall_args);
 $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
-<li class="masonry-item template-video <?php echo $class; ?>" style="<?php echo $style; ?>" data-columns="1">
+<li class="masonry-item template-video <?php echo $class; ?>" style="<?php echo $style; ?>" data-wall-columns="1">
 	<div class="inner-item-wrapper">
 		<div class="inner-item video" style="width: 100%; height: 100%;">
 		

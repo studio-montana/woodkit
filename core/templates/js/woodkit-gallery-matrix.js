@@ -5,7 +5,7 @@
  */
 
 /**
- * matrix = { window_size : { columns : new isotope columns , wrapper-data-columns : { item-data-columns : "new item width in percent" } } } IMPORTANT : respect window_size's order (always ascendent -
+ * matrix = { window_size : { columns : new isotope columns , wrapper-data-wall-columns : { item-data-wall-columns : "new item width in percent" } } } IMPORTANT : respect window_size's order (always ascendent -
  * never : 800 before 600 for example)
  */
 function woodkit_resize_gallery_matrix() {

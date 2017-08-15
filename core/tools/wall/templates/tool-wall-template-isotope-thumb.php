@@ -71,7 +71,7 @@ $title = wall_get_wall_item_title(get_the_ID(), $wall_args);
 $link = wall_get_wall_item_link(get_the_ID(), $wall_args);
 $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
-<li class="isotope-item template-thumb <?php echo $class; ?>"style="<?php echo $style_li; ?>" data-format="<?php echo $wall_args['meta_wall_display_presentation_format']; ?>" data-columns="<?php echo $wall_args['wall_item_width_selected']; ?>" data-lines="<?php echo $wall_args['wall_item_height_selected']; ?>">
+<li class="isotope-item template-thumb <?php echo $class; ?>" style="<?php echo $style_li; ?>" data-wall-format="<?php echo $wall_args['meta_wall_display_presentation_format']; ?>" data-wall-columns="<?php echo $wall_args['wall_item_width_selected']; ?>" data-wall-lines="<?php echo $wall_args['wall_item_height_selected']; ?>">
 	<?php if (!is_admin()){ ?>
 	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> class="<?php echo $class_a ?>" rel="<?php echo $rel_a; ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>
