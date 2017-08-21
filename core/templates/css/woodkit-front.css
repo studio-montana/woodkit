@@ -337,17 +337,9 @@ body.wip {
     display: -moz-flex;
     display: -ms-flex;
     display: flex;
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    -ms-justify-content: center;
-    justify-content: center;
 }
 #modalbox #modalbox-wrapper #modalbox-content{
-    /* flex */
-    -webkit-align-self: center;
-    -moz-align-self: center;
-    -ms-align-self: center;
-    align-self: center;
+    margin: auto;
 }
 #modalbox #modalbox-wrapper #modalbox-close{
    position: absolute;
