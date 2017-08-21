@@ -318,9 +318,20 @@ body.wip {
 	left: 0;
 	background: #000;
 	background-color: rgba(0,0,0,0.9);
-	padding: 48px;
+	padding: 0;
 	z-index: 999;
-	/* flex */
+}
+#modalbox #modalbox-wrapper{
+    width: 100%;
+    padding: 48px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+	-ms-transform: translate(-50%,0);
+    -webkit-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+    /* flex container */
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -330,14 +341,14 @@ body.wip {
     -ms-justify-content: center;
     justify-content: center;
 }
-#modalbox #modalbox-content{
+#modalbox #modalbox-wrapper #modalbox-content{
     /* flex */
     -webkit-align-self: center;
     -moz-align-self: center;
     -ms-align-self: center;
     align-self: center;
 }
-#modalbox #modalbox-close{
+#modalbox #modalbox-wrapper #modalbox-close{
    position: absolute;
    top: 24px;
    right: 24px;
@@ -345,36 +356,42 @@ body.wip {
    font-size: 22px;
    cursor: pointer;
 }
-#modalbox #modalbox-content iframe{
+#modalbox #modalbox-wrapper #modalbox-content iframe{
     width: 900px;
     height: 700px;
 }
 @media screen and (max-width: 1024px) {
-	#modalbox #modalbox-content iframe{
+	#modalbox #modalbox-wrapper #modalbox-content iframe{
 	    width: 768px;
 	    height: 500px;
 	}
 }
 @media screen and (max-width: 800px) {
-	#modalbox #modalbox-content iframe{
+	#modalbox #modalbox-wrapper{
+	    padding: 24px;
+	}
+	#modalbox #modalbox-wrapper #modalbox-content iframe{
 	    width: 600px;
 	    height: 400px;
 	}
 }
 @media screen and (max-width: 600px) {
-	#modalbox #modalbox-content iframe{
+	#modalbox #modalbox-wrapper #modalbox-content iframe{
 	    width: 540px;
 	    height: 400px;
 	}
 }
 @media screen and (max-width: 580px) {
-	#modalbox #modalbox-content iframe{
+	#modalbox #modalbox-wrapper{
+	    padding: 12px;
+	}
+	#modalbox #modalbox-wrapper #modalbox-content iframe{
 	    width: 300px;
 	    height: 200px;
 	}
 }
 @media screen and (max-width: 400px) {
-	#modalbox #modalbox-content iframe{
+	#modalbox #modalbox-wrapper #modalbox-content iframe{
 	    width: 200px;
 	    height: 160px;
 	}

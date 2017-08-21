@@ -54,7 +54,7 @@ function woodkit_scripts_styles() {
 	// -- front
 	$css_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-front.css');
 	if (!empty($css_front)){
-		wp_enqueue_style('woodkit-css-front', $css_front, array('woodkit-css-fontawesome'), '4.4.0');
+		wp_enqueue_style('woodkit-css-front', $css_front, array('woodkit-css-fontawesome'), '1.3');
 	}
 	
 	// -- isotope/slider
@@ -116,7 +116,7 @@ function woodkit_scripts_styles() {
 	// Loads front general JavaScript file (contains tools javascript)
 	$js_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-front.js');
 	if (!empty($js_front))
-		wp_enqueue_script('woodkit-script-woodkit-front', $js_front, array('jquery', 'woodkit-script-woodkit-slider'), '1.2', true);
+		wp_enqueue_script('woodkit-script-woodkit-front', $js_front, array('jquery', 'woodkit-script-woodkit-slider'), '1.3', true);
 
 	// Action after woodkit enqueue scripts
 	do_action("woodkit_front_enqueue_scripts_after");

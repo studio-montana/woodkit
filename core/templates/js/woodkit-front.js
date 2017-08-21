@@ -190,6 +190,7 @@
 		var $body = $("body");
 		var $modalbox = null;
 		var $modalboxcontent = null;
+		var $modalboxwrapper = null;
 		var $modalboxclose = null;
 		var resize_timer = null;
 		/**
@@ -206,8 +207,9 @@
 		plugin.init = function() {
 			if ($("#modalbox").length < 1) {
 				$body.append('<div id="modalbox" class="woodkit-modal-box" style="display: none;"></div>');
-				$("#modalbox").append('<div id="modalbox-close" class="woodkit-modal-box-close"><i class="fa fa-times"></i></div>');
-				$("#modalbox").append('<div id="modalbox-content" class="woodkit-modal-box-content"></div>');
+				$("#modalbox").append('<div id="modalbox-wrapper" class="woodkit-modal-box-wrapper"></div>');
+				$("#modalbox-wrapper").append('<div id="modalbox-close" class="woodkit-modal-box-close"><i class="fa fa-times"></i></div>');
+				$("#modalbox-wrapper").append('<div id="modalbox-content" class="woodkit-modal-box-content"></div>');
 			}
 			$modalbox = $("#modalbox");
 			$modalboxclose = $("#modalbox-close");
@@ -215,13 +217,14 @@
 				plugin.close();
 			});
 			$modalboxcontent = $("#modalbox-content");
+			$modalboxwrapper = $("#modalbox-wrapper");
 			$modalboxcontent.empty();
 			$(document).keyup(function(e) {
 				if (e.keyCode === 27)
 					plugin.close();
 			});
 			$(document).on('click', function(e) { // close on click outside
-				if (!$modalboxcontent.is(e.target) && $modalboxcontent.has(e.target).length === 0 && $modalbox.is(e.target)) {
+				if (!$modalboxcontent.is(e.target) && $modalboxcontent.has(e.target).length === 0 && ($modalbox.is(e.target) || $modalboxwrapper.is(e.target))) {
 					plugin.close();
 				}
 			});
