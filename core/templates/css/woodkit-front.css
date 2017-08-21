@@ -322,6 +322,7 @@ body.wip {
 	z-index: 999;
 }
 #modalbox #modalbox-wrapper{
+	overflow-x: scroll;
     width: 100%;
     padding: 48px;
     position: absolute;
