@@ -44,6 +44,77 @@
 	});
 	
 	/**
+	 * Standardize item heights
+	 */
+	$.standardizechildheights = function($element, options) {
+		var plugin = this;
+		var settings = $.extend({
+			child_selector : '.item',
+			onstart : null, // function()
+			ondone : null, // function()
+		}, options);
+		var resize_timer = null;
+		/**
+		 * Process
+		 */
+		plugin.process = function() {
+			plugin.trigger_onstart();
+			var has_item_to_resize = false;
+			var resize_height = 0;
+			var selector = "";
+			$element.find(settings['child_selector']).each(function(i){
+				has_item_to_resize = true;
+				if ($(this).length > 0 && $(this).outerHeight() > resize_height)
+					resize_height = $(this).outerHeight();
+			});
+			if (has_item_to_resize)
+				$element.find(settings['child_selector']).css('min-height', resize_height+'px');
+			plugin.trigger_ondone();
+		};
+		/**
+		 * resize
+		 */
+		$(window).resize(function() {
+			if (resize_timer != null)
+				clearTimeout(resize_timer);
+			resize_timer = setTimeout(plugin.resize, 500);
+		});
+		plugin.resize = function() {
+			// disable previous height
+			$element.find(settings['child_selector']).css('min-height', '0px');
+			plugin.process();
+		};
+		/**
+		 * trigger onstart
+		 */
+		plugin.trigger_onstart = function() {
+			if (isset(settings['onstart']) && $.isFunction(settings['onstart'])) {
+				settings['onstart'].call(null);
+			}
+		};
+		/**
+		 * trigger ondone
+		 */
+		plugin.trigger_ondone = function() {
+			if (isset(settings['ondone']) && $.isFunction(settings['ondone'])) {
+				settings['ondone'].call(null);
+			}
+		};
+		plugin.process();
+		return plugin;
+	};
+	$.fn.standardizechildheights = function(options) {
+		var standardizechildheights = $(this).data('standardizechildheightsplugin');
+		if (empty(standardizechildheights)) {
+			standardizechildheights = new $.standardizechildheights($(this), options);
+			$(this).data('standardizechildheightsplugin', standardizechildheights);
+		} else {
+			standardizechildheights.reinit(options);
+		}
+		return standardizechildheights;
+	};
+	
+	/**
 	 * DynamicNumber
 	 */
 	$.dynamicnumber = function(element, options) {
