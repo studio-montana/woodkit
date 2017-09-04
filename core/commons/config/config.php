@@ -124,28 +124,30 @@ if (!function_exists("woodkit_on_admin_init")):
 * @return boolean
 */
 function woodkit_on_admin_init(){
-	global $woodkit_install_notif;
-	if(!isset($woodkit_install_notif)){
-		$woodkit_install_notif = false;
-		$notif = get_option("woodkit-init-notification", null);
-		$plugin_data = get_plugin_data(WP_PLUGIN_DIR.'/woodkit/woodkit.php');
-		$website_notif = hash('md5', get_site_url().$plugin_data["Version"]);
-		if (!empty($notif) && $notif == $website_notif){
-			$woodkit_install_notif = true;
-		}
-		if (!$woodkit_install_notif){
-			$url = WOODKIT_URL_API;
-			$url = add_query_arg(array("api-action" => "install"), $url);
-			$url = add_query_arg(array("api-package" => WOODKIT_PLUGIN_NAME), $url);
-			$url = add_query_arg(array("api-host" => get_site_url()), $url);
-			$url = add_query_arg(array("api-version" => $plugin_data["Version"]), $url);
-			$request_body = wp_remote_retrieve_body(wp_remote_get($url));
-			if (!empty($request_body)) {
-				$request_body = @json_decode($request_body);
-				if (isset($request_body->install) && $request_body->install == true){
-					$woodkit_install_notif = true;
-					delete_option('woodkit-init-notification');
-					add_option('woodkit-init-notification', $website_notif);
+	if (!defined('DOING_AJAX') && !defined('DOING_AUTOSAVE')){
+		global $woodkit_install_notif;
+		if(!isset($woodkit_install_notif)){
+			$woodkit_install_notif = false;
+			$notif = get_option("woodkit-init-notification", null);
+			$plugin_data = get_plugin_data(WP_PLUGIN_DIR.'/woodkit/woodkit.php');
+			$website_notif = hash('md5', get_site_url().$plugin_data["Version"]);
+			if (!empty($notif) && $notif == $website_notif){
+				$woodkit_install_notif = true;
+			}
+			if (!$woodkit_install_notif){
+				$url = WOODKIT_URL_API;
+				$url = add_query_arg(array("api-action" => "install"), $url);
+				$url = add_query_arg(array("api-package" => WOODKIT_PLUGIN_NAME), $url);
+				$url = add_query_arg(array("api-host" => get_site_url()), $url);
+				$url = add_query_arg(array("api-version" => $plugin_data["Version"]), $url);
+				$request_body = wp_remote_retrieve_body(wp_remote_get($url));
+				if (!empty($request_body)) {
+					$request_body = @json_decode($request_body);
+					if (isset($request_body->install) && $request_body->install == true){
+						$woodkit_install_notif = true;
+						delete_option('woodkit-init-notification');
+						add_option('woodkit-init-notification', $website_notif);
+					}
 				}
 			}
 		}
