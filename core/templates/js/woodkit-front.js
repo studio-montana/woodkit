@@ -126,6 +126,7 @@
 		var animated = false;
 		var animate_number = $dynamicnumber.data('dynamicnumber'); // int or float value - required
 		var animate_start = $dynamicnumber.data('dynamicnumber-start'); // int or float value - default: 0
+		var animate_step = $dynamicnumber.data('dynamicnumber-step'); // int or float value - default: 1
 		var animate_duration = $dynamicnumber.data('dynamicnumber-duration'); // int value - default: 5000
 		var animate_easing = $dynamicnumber.data('dynamicnumber-easing'); // "constant" or "linear" or "quadratic" - default: "linear"
 		var animate_number_type = $dynamicnumber.data('dynamicnumber-type'); // "int" or "float" - default: "float"
@@ -137,6 +138,10 @@
 			// animate_duration
 			if (empty(animate_duration) || parseInt(animate_duration) == 'NaN')
 				animate_duration = 3000;
+			
+			// animate_step
+			if (empty(animate_step) || parseInt(animate_step) == 'NaN' || parseInt(animate_step) <= 1)
+				animate_step = 1;
 			
 			// animate_easing
 			if (animate_easing == 'constant')
@@ -192,7 +197,8 @@
 			}
 			if (end != 'NaN'){
 				if (end != start){
-					var increment = end > start ? 1 : -1;
+					var increment = end > start ? animate_step : -(animate_step);
+					var increment_dir = end > start ? 'asc' : 'desc';
 					var step = function() {
 						current += increment;
 						if (animate_number_type == 'int'){
@@ -200,7 +206,7 @@
 						}else{
 							$dynamicnumber.html(current/100);
 						}
-						if (current != end) {
+						if ((increment_dir == 'asc' && current < end) || (increment_dir == 'desc' && current > end)) {
 							setTimeout(step, easing(duration, range, current));
 						}else{
 							$dynamicnumber.html(animate_number);
