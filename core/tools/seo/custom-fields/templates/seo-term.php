@@ -35,7 +35,7 @@ defined('ABSPATH') or die("Go Away!");
 				</td>
 			</tr>
 			<!-- meta-description -->
-			<tr class="form-field form-required term-name-wrap seo-box">
+			<tr class="form-field term-name-wrap seo-box">
 				<th scope="row" class="seo-label">
 					<label for="<?php echo SEO_CUSTOMFIELD_METADESCRIPTION; ?>"><?php _e("Meta-description", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
 				</th>
@@ -44,7 +44,7 @@ defined('ABSPATH') or die("Go Away!");
 				</td>
 			</tr>
 			<!-- meta-keywords -->
-			<tr class="form-field form-required term-name-wrap seo-box">
+			<tr class="form-field term-name-wrap seo-box">
 				<th scope="row" class="seo-label">
 					<label for="<?php echo SEO_CUSTOMFIELD_METAKEYWORDS; ?>"><?php _e("Meta-keyword", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
 				</th>

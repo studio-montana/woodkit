@@ -124,6 +124,7 @@ if (!function_exists("woodkit_on_admin_init")):
 * @return boolean
 */
 function woodkit_on_admin_init(){
+	// TODO on seb-c.com get_plugin_data call get "call undefined function" - I don't know WHY !!!
 	if (!defined('DOING_AJAX') && !defined('DOING_AUTOSAVE') && function_exists("get_plugin_data")){
 		global $woodkit_install_notif;
 		if(!isset($woodkit_install_notif)){
