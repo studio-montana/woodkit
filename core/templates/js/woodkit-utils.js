@@ -82,12 +82,13 @@ function get_url_parameter(param) {
  */
 function wait($element) {
 	if ($element.children('.woodkit-wait').length <= 0) {
-		$element.append('<div class="woodkit-wait"><span>'+Utils.wait_label_loading+'</span></div>');
+		$element.append('<div class="woodkit-wait"><span>'+Utils.wait_label+'</span></div>');
 		$element.children('.woodkit-wait').css('position', 'absolute');
 		$element.children('.woodkit-wait').css('top', '0');
 		$element.children('.woodkit-wait').css('left', '0');
-		$element.children('.woodkit-wait').css('background', '#fff');
-		$element.children('.woodkit-wait').css('background', 'rgba(255,255,255,0.5)');
+		if (isset(Utils.wait_background) && !empty(Utils.wait_background)){
+			$element.children('.woodkit-wait').css('background', Utils.wait_background);
+		}
 		$element.children('.woodkit-wait').css('color', '#777');
 		$element.children('.woodkit-wait').css('width', '100%');
 		$element.children('.woodkit-wait').css('height', '100%');
