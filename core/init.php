@@ -182,7 +182,10 @@ function woodkit_admin_scripts_styles() {
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils)){
 		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery', 'wp-color-picker'), '1.2', true);
-		wp_localize_script('woodkit-script-utils', 'Utils', array("wait_label_loading" => __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)));
+		wp_localize_script('woodkit-script-utils', 'Utils', array(
+				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)),
+				"wait_background" => apply_filters('woodkit-js-wait-background', "rgba(255,255,255,0.5)")
+		));
 	}
 
 	// Loads Isotope JavaScript file
