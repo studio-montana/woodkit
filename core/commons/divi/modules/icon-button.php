@@ -35,7 +35,6 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 				'module_link',
 				'module_link_url',
 				'module_link_url_blank',
-				'module_content',
 				'module_title_orientation',
 				'module_title',
 				'module_text',
@@ -64,7 +63,6 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 				'module_link_url_blank'			=> array('off'),
 				'module_color'					=> array('#000000'),
 				'module_color_focus'			=> array('#000000'),
-				'module_content'				=> array('off'),
 				'module_title_orientation'		=> array('center'),
 				'module_title_color'			=> array('#000000'),
 				'module_title_color_focus'		=> array('#000000'),
@@ -305,7 +303,6 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		$module_link				= $this->shortcode_atts['module_link'];
 		$module_link_url			= $this->shortcode_atts['module_link_url'];
 		$module_link_url_blank		= $this->shortcode_atts['module_link_url_blank'];
-		$module_content				= $this->shortcode_atts['module_content'];
 		$module_title_orientation	= $this->shortcode_atts['module_title_orientation'];
 		$module_title				= $this->shortcode_atts['module_title'];
 		$module_title_color			= $this->shortcode_atts['module_title_color'];
@@ -428,7 +425,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		}
 
 		// title color
-		if ('on' === $module_content && '' !== $module_title && '' !== $module_title_color){
+		if ('' !== $module_title && '' !== $module_title_color){
 			ET_Builder_Element::set_style( $function_name, array(
 			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button_content .title',
 			'declaration' => sprintf(
@@ -439,7 +436,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		}
 
 		// title color focus
-		if ('on' === $module_content && '' !== $module_title && '' !== $module_title_color_focus){
+		if ('' !== $module_title && '' !== $module_title_color_focus){
 			ET_Builder_Element::set_style( $function_name, array(
 			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button_content .title, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button_content .title, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button_content .title',
 			'declaration' => sprintf(
@@ -461,7 +458,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		}
 
 		// text color
-		if ('on' === $module_content && '' !== $this->shortcode_content && '' !== $module_text_color){
+		if ('' !== $this->shortcode_content && '' !== $module_text_color){
 			ET_Builder_Element::set_style( $function_name, array(
 			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container .woodkit_et_pb_icon_button_content .text',
 			'declaration' => sprintf(
@@ -472,7 +469,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 		}
 
 		// text color focus
-		if ('on' === $module_content && '' !== $this->shortcode_content && '' !== $module_text_color_focus){
+		if ('' !== $this->shortcode_content && '' !== $module_text_color_focus){
 			ET_Builder_Element::set_style( $function_name, array(
 			'selector'    => '%%order_class%% .woodkit_et_pb_icon_button_container:hover .woodkit_et_pb_icon_button_content .text, %%order_class%% .woodkit_et_pb_icon_button_container:focus .woodkit_et_pb_icon_button_content .text, %%order_class%% .woodkit_et_pb_icon_button_container:active .woodkit_et_pb_icon_button_content .text',
 			'declaration' => sprintf(
@@ -497,7 +494,7 @@ class Woodkit_Divi_Module_Icon_Button extends ET_Builder_Module {
 
 		$output .= '<div class="woodkit_et_pb_icon_button"><div class="woodkit_et_pb_icon"><i class="'.$module_icon.'"></i></div></div>';
 
-		if ('on' === $module_content && ('' !== $this->shortcode_content || '' !== $module_title)) {
+		if ('' !== $this->shortcode_content || '' !== $module_title) {
 			$output .= '<div class="woodkit_et_pb_icon_button_content">';
 			if ('' !== $module_title) {
 				$output .= '<h2 class="title">'.$module_title.'</h2>';

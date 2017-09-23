@@ -36,21 +36,21 @@ function tool_seo_woodkit_admin_enqueue_styles_tools($dependencies) {
 	if (! empty ( $css_seourlsmanager ))
 		wp_enqueue_style ( 'tool-seo-seourlsmanager-css', $css_seourlsmanager, $dependencies, '1.0' );
 
-		$js_seourlsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-seourlsmanager/js/admin-seourlsmanager.js' );
-		if (! empty ( $js_seourlsmanager ))
-			wp_enqueue_script ( 'tool-seo-seourlsmanager-js', $js_seourlsmanager, array (
-					'jquery'
-			), '1.0', true );
+	$js_seourlsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-seourlsmanager/js/admin-seourlsmanager.js' );
+	if (! empty ( $js_seourlsmanager ))
+		wp_enqueue_script ( 'tool-seo-seourlsmanager-js', $js_seourlsmanager, array (
+				'jquery'
+		), '1.0', true );
 
-			$css_redirectsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-redirectsmanager/css/admin-redirectsmanager.css' );
-			if (! empty ( $css_redirectsmanager ))
-				wp_enqueue_style ( 'tool-seo-redirectsmanager-css', $css_redirectsmanager, $dependencies, '1.0' );
+	$css_redirectsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-redirectsmanager/css/admin-redirectsmanager.css' );
+	if (! empty ( $css_redirectsmanager ))
+		wp_enqueue_style ( 'tool-seo-redirectsmanager-css', $css_redirectsmanager, $dependencies, '1.0' );
 
-				$js_redirectsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-redirectsmanager/js/admin-redirectsmanager.js' );
-				if (! empty ( $js_redirectsmanager ))
-					wp_enqueue_script ( 'tool-seo-redirectsmanager-js', $js_redirectsmanager, array (
-							'jquery'
-					), '1.0', true );
+	$js_redirectsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-redirectsmanager/js/admin-redirectsmanager.js' );
+	if (! empty ( $js_redirectsmanager ))
+		wp_enqueue_script ( 'tool-seo-redirectsmanager-js', $js_redirectsmanager, array (
+				'jquery'
+		), '1.0', true );
 }
 add_action ( 'woodkit_admin_enqueue_styles_tools', 'tool_seo_woodkit_admin_enqueue_styles_tools' );
 
@@ -325,18 +325,52 @@ function woodkit_seo_get_metadescription($display = true) {
 			$meta_data_cat = stripslashes ( get_option ( "term_" . $term_id . "_" . SEO_CUSTOMFIELD_METADESCRIPTION ) );
 			if (! empty ( $meta_data_cat )) {
 				$description = $meta_data_cat;
+			}else{
+				$term = get_term($term_id);
+				if ($term && ! is_wp_error($term) && !empty($term->description)){
+					$description = $term->description;
+				}
 			}
 		}
 	} else {
 		$_queried_post = get_queried_object ();
 		if ($_queried_post) {
 			if (isset($_queried_post->ID)){
+				// meta
 				$meta_data = get_post_meta ( $_queried_post->ID, SEO_CUSTOMFIELD_METADESCRIPTION, true );
 				if (! empty ( $meta_data )) {
 					$description = $meta_data;
 				}
+				// user defined excerpt
+				if (empty($description) && !empty($_queried_post->post_excerpt)){
+					$description = get_the_excerpt($_queried_post->post_excerpt);
+				}
+				// generated excerpt
+				if (empty ( $description )) {
+					setup_postdata($_queried_post->ID);
+					$description = get_the_excerpt($_queried_post->ID);
+					if (empty($description)){
+						// make manualy excerpt - patch divi builder exerpt
+						$text = $_queried_post->post_content;
+						//$text = preg_replace('/\[\/?.*?\]/', '', $text); // remove shortcodes
+						/** This filter is documented in wp-includes/post-template.php */
+						$text = apply_filters( 'the_content', $text );
+						$text = str_replace(']]>', ']]&gt;', $text);
+						/** Filters the string in the "more" link displayed after a trimmed excerpt. */
+						// TODO make exerpt_length/excerpt_more dynamic
+						$excerpt_length = 20;
+						$excerpt_more = '...';
+						$description = wp_trim_words( $text, $excerpt_length, $excerpt_more);
+					}
+					wp_reset_postdata();
+				}
 			}
 		}
+	}
+	
+	// SEO default values
+	if (empty($description)){
+		$description = get_option("woodkit-tool-seo-default-description", '');
 	}
 
 	// default value
@@ -347,8 +381,8 @@ function woodkit_seo_get_metadescription($display = true) {
 	// result
 	if ($display)
 		echo esc_attr ( $description );
-		else
-			return esc_attr ( $description );
+	else
+		return esc_attr ( $description );
 }
 add_action ( "woodkit_seo_get_metadescription", "woodkit_seo_get_metadescription" );
 
@@ -386,9 +420,9 @@ function woodkit_seo_get_metakeywords($display = true) {
 		}
 	}
 
-	// default value
-	if (empty ( $keywords )) {
-		// none
+	// SEO default values
+	if (empty($keywords)){
+		$keywords = get_option("woodkit-tool-seo-default-keywords", '');
 	}
 
 	// result

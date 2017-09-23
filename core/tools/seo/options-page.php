@@ -24,6 +24,20 @@ defined('ABSPATH') or die("Go Away!");
 
 if (isset($_POST) && !empty($_POST) && isset($_POST['tool-seo-options-nonce']) && wp_verify_nonce($_POST['tool-seo-options-nonce'], 'tool-seo-options-nonce')){
 	
+	// -- default SEO values
+	$default_description = isset($_POST['seo-default-description']) ? sanitize_text_field($_POST['seo-default-description']) : '';
+	if (empty($default_description)){
+		delete_option("woodkit-tool-seo-default-description");
+	}else{
+		update_option("woodkit-tool-seo-default-description", $default_description);
+	}
+	$default_keywords = isset($_POST['seo-default-keywords']) ? sanitize_text_field($_POST['seo-default-keywords']) : '';
+	if (empty($default_keywords)){
+		delete_option("woodkit-tool-seo-default-keywords");
+	}else{
+		update_option("woodkit-tool-seo-default-keywords", $default_keywords);
+	}
+	
 	// -- save sitemap urls
 	$urls = array();
 	foreach ($_POST as $k => $v){
@@ -72,8 +86,8 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-seo-options-nonce']) &
 		<?php _e("SEO settings", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
 	</h1>
 	<?php 
-	$xmlsitemap_active = woodkit_get_option("tool-seo-xmlsitemap-active");
-	if ($xmlsitemap_active == "on"){
+	$toolseo_active = woodkit_get_option("tool-seo-active");
+	if ($toolseo_active == "on"){
 		?>
 		<form method="post" action="<?php echo get_current_url(true); ?>">
 			<input type="hidden" name="<?php echo 'tool-seo-options-nonce'; ?>" value="<?php echo wp_create_nonce('tool-seo-options-nonce'); ?>" />
@@ -83,48 +97,89 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-seo-options-nonce']) &
 				</button>
 			</div>
 			
-			<div class="section">
+			<div class="section default-values">
 				<h3 class="section-title">
-					<?php _e("Sitemap options", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+					<?php _e("Default values", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
 				</h3>
+				<?php
+				$default_description = get_option("woodkit-tool-seo-default-description", '');
+				$default_keywords = get_option("woodkit-tool-seo-default-keywords", '');
+				?>
 				<div class="section-content">
-					<div class="section-info"><?php _e("Your sitemap.xml is automaticaly generated, however you can add URLs manualy  or exclude generated URLs.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<a href="<?php echo woodkit_seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('View sitemap.xml', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
-	
-					<div class="seourls-manager"></div>
-					
-					<script type="text/javascript">
-						jQuery(document).ready(function($){
-							var seourls_manager = $(".seourls-manager").seourlsmanager({
-									label_add_item : "<?php _e("Add sitemap rule", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-									label_confirm_remove_item : "<?php _e("Do you realy want remove this url ?", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-									label_url : "<?php _e("http://www.website.com", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-									label_url_exclude : "<?php _e("exclude", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-									label_action_add : "<?php _e("add", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-									label_action_exclude_if_equals : "<?php _e("exclude if equals", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-									label_action_exclude_if_contains : "<?php _e("exclude if contains", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-									label_action_exclude_if_regexp : "<?php _e("exclude if matches regexp", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-								});
-							<?php 
-							$urls = get_option("woodkit-tool-seo-options-sitemap-urls", array());
-							if (!empty($urls)){
-								$urls_js = "{";
-								foreach ($urls as $k => $item){
-									$id = !empty($item['id']) ? esc_attr($item['id']) : 1;
-									$url = !empty($item['url']) ? esc_attr($item['url']) : "";
-									$action = !empty($item['action']) ? esc_attr($item['action']) : "";
-									$urls_js .= intval($k).":{id: \"".$id."\", url: \"".$url."\", action:\"".$action."\"},";
-								}
-								$urls_js .= "}";
-								?>
-								seourls_manager.set_data(<?php echo $urls_js; ?>);
-								<?php
-							}
-							?>
-						});
-					</script>
-	
+					<div class="option-field">
+						<table>
+							<tbody>
+								<tr valign="top" class="event">
+									<td valign="middle">
+										<label for="seo-default-description"><?php _e("Default description", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+									</td>
+									<td valign="middle">
+										<input type="text" name="seo-default-description" id="seo-default-description" value="<?php echo esc_attr($default_description); ?>" placeholder="<?php _e("default description used when meta-description is not set", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									</td>
+								</tr>
+								<tr valign="top" class="event">
+									<td valign="middle">
+										<label for="seo-default-keywords"><?php _e("Default keywords", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+									</td>
+									<td valign="middle">
+										<input type="text" name="seo-default-keywords" id="seo-default-keywords" value="<?php echo esc_attr($default_keywords); ?>" placeholder="<?php _e("default keywords used when meta-keywords is not set", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</div>
 				</div>
 			</div>
+			
+			<?php 
+			$xmlsitemap_active = woodkit_get_option("tool-seo-xmlsitemap-active");
+			if ($xmlsitemap_active == "on"){
+				?>
+				<div class="section">
+					<h3 class="section-title">
+						<?php _e("Sitemap options", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+					</h3>
+					<div class="section-content">
+						<div class="section-info"><?php _e("Your sitemap.xml is automaticaly generated, however you can add URLs manualy  or exclude generated URLs.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>&nbsp;<a href="<?php echo woodkit_seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('View sitemap.xml', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
+		
+						<div class="seourls-manager"></div>
+						
+						<script type="text/javascript">
+							jQuery(document).ready(function($){
+								var seourls_manager = $(".seourls-manager").seourlsmanager({
+										label_add_item : "<?php _e("Add sitemap rule", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+										label_confirm_remove_item : "<?php _e("Do you realy want remove this url ?", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+										label_url : "<?php _e("http://www.website.com", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+										label_url_exclude : "<?php _e("exclude", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+										label_action_add : "<?php _e("add", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+										label_action_exclude_if_equals : "<?php _e("exclude if equals", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+										label_action_exclude_if_contains : "<?php _e("exclude if contains", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+										label_action_exclude_if_regexp : "<?php _e("exclude if matches regexp", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+									});
+								<?php 
+								$urls = get_option("woodkit-tool-seo-options-sitemap-urls", array());
+								if (!empty($urls)){
+									$urls_js = "{";
+									foreach ($urls as $k => $item){
+										$id = !empty($item['id']) ? esc_attr($item['id']) : 1;
+										$url = !empty($item['url']) ? esc_attr($item['url']) : "";
+										$action = !empty($item['action']) ? esc_attr($item['action']) : "";
+										$urls_js .= intval($k).":{id: \"".$id."\", url: \"".$url."\", action:\"".$action."\"},";
+									}
+									$urls_js .= "}";
+									?>
+									seourls_manager.set_data(<?php echo $urls_js; ?>);
+									<?php
+								}
+								?>
+							});
+						</script>
+		
+					</div>
+				</div>
+				<?php 
+			} ?>
 			
 			<div class="section">
 				<h3 class="section-title">
@@ -188,7 +243,7 @@ if (isset($_POST) && !empty($_POST) && isset($_POST['tool-seo-options-nonce']) &
 		<?php 
 	}else{
 		?>
-		<h3><?php _e("To manage URLs on your sitemap.xml, you have to activate SEO &gt; sitemap.xml in Woodkit settings.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h3>
+		<h3><?php _e("You have to activate SEO tool in Woodkit settings to manage SEO settings.", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h3>
 		<?php
 	}
 	?>

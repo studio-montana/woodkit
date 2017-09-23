@@ -1156,6 +1156,14 @@
 	margin-right: 6px;
 }
 
+.woodkit-tool-page-options .section .option-field table{
+	width: 100%;
+}
+
+.woodkit-tool-page-options .section .option-field input{
+	width: 100%;
+}
+
 /**
  * Options manager
  */
