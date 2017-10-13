@@ -174,16 +174,29 @@ function geocode_adress(map, geocoder, address, titre) {
  * Animated scroll-to on each <a> tag which references an anchor and has data-scrollto="true"
  */
 (function($) {
-	$("a[href^='#']").on('click', function(e) {
-		if ($(this).data("scrollto") == true || $(this).data("scrollto") == "true" || $(this).data("scrollto") == "1") {
-			e.preventDefault();
-			var anchor = $(this).attr('href');
-			var speed = 750; // ms
-			$('html, body').animate({
-				scrollTop : $(anchor).offset().top
-			}, speed);
-			return false;
-		}
+	$(document).ready(function(){
+		$("a[href^='#']").on('click', function(e) {
+			if ($(this).attr("data-scrollto") == true || $(this).attr("data-scrollto") == "true" || $(this).attr("data-scrollto") == "1") {
+				e.preventDefault();
+				var anchor = $(this).attr('href');
+				var speed = $(this).attr("data-scrollto-speed"); // ms
+				if (!empty(speed)){
+					speed = parseInt(speed);
+				}else{
+					speed = 750;
+				}
+				var top = $(this).attr("data-scrollto-top"); // px
+				if (!empty(top)){
+					top = parseInt(top);
+				}else{
+					top = 0;
+				}
+				$('html, body').animate({
+					scrollTop : ($(anchor).offset().top - top)
+				}, speed);
+				return false;
+			}
+		});
 	});
 })(jQuery);
 
