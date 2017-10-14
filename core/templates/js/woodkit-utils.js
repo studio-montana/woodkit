@@ -191,6 +191,12 @@ function geocode_adress(map, geocoder, address, titre) {
 				}else{
 					top = 0;
 				}
+				/**
+				 * Add anchor to history
+				 */
+				if (!isset($(this).attr("data-notaddtohistory"))) {
+					window.history.pushState(null, null, anchor);
+				}
 				$('html, body').animate({
 					scrollTop : ($(anchor).offset().top - top)
 				}, speed);
