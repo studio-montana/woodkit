@@ -48,16 +48,18 @@
 	 */
 	$.standardizechildheights = function($element, options) {
 		var plugin = this;
-		var settings = $.extend({
-			child_selector : '.item',
-			onstart : null, // function()
-			ondone : null, // function()
-		}, options);
+		var settings = null;
 		var resize_timer = null;
 		/**
 		 * Process
 		 */
-		plugin.process = function() {
+		plugin.process = function(options) {
+			settings = $.extend({
+				child_selector : '.item',
+				onstart : null, // function()
+				ondone : null, // function()
+			}, options);
+			
 			plugin.trigger_onstart();
 			var has_item_to_resize = false;
 			var resize_height = 0;
@@ -100,7 +102,7 @@
 				settings['ondone'].call(null);
 			}
 		};
-		plugin.process();
+		plugin.process(options);
 		return plugin;
 	};
 	$.fn.standardizechildheights = function(options) {
@@ -109,7 +111,7 @@
 			standardizechildheights = new $.standardizechildheights($(this), options);
 			$(this).data('standardizechildheightsplugin', standardizechildheights);
 		} else {
-			standardizechildheights.reinit(options);
+			standardizechildheights.process(options);
 		}
 		return standardizechildheights;
 	};
