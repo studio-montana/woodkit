@@ -91,7 +91,7 @@ function woodkit_scripts_styles() {
 	// Loads Utils JavaScript file
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils)){
-		wp_enqueue_script('woodkit-script-woodkit-utils', $js_utils, array('jquery'), '1.3', true);
+		wp_enqueue_script('woodkit-script-woodkit-utils', $js_utils, array('jquery'), '1.4', true);
 		wp_localize_script('woodkit-script-woodkit-utils', 'Utils', array(
 				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)),
 				"wait_background" => apply_filters('woodkit-js-wait-background', "rgba(255,255,255,0.5)")
@@ -181,7 +181,7 @@ function woodkit_admin_scripts_styles() {
 	// Loads Utils
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils)){
-		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery', 'wp-color-picker'), '1.3', true);
+		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery', 'wp-color-picker'), '1.4', true);
 		wp_localize_script('woodkit-script-utils', 'Utils', array(
 				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)),
 				"wait_background" => apply_filters('woodkit-js-wait-background', "rgba(255,255,255,0.5)")
@@ -253,7 +253,7 @@ function woodkit_login_scripts_styles() {
 	// Loads Utils
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils))
-		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery'), '1.3', true);
+		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery'), '1.4', true);
 
 	// Loads login scripts
 	$js_login = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-login.js');

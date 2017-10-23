@@ -80,20 +80,29 @@ function get_url_parameter(param) {
 /**
  * Show wait box
  */
-function wait($element) {
+function wait($element, label, background, z_index) {
 	if ($element.children('.woodkit-wait').length <= 0) {
-		$element.append('<div class="woodkit-wait"><span>'+Utils.wait_label+'</span></div>');
+		if (!isset(label)){
+			label = Utils.wait_label;
+		}
+		if (!isset(background)){
+			background = Utils.wait_background;
+		}
+		if (!isset(z_index)){
+			z_index = 200000;
+		}
+		$element.append('<div class="woodkit-wait"><span>'+label+'</span></div>');
 		$element.children('.woodkit-wait').css('position', 'absolute');
 		$element.children('.woodkit-wait').css('top', '0');
 		$element.children('.woodkit-wait').css('left', '0');
 		if (isset(Utils.wait_background) && !empty(Utils.wait_background)){
-			$element.children('.woodkit-wait').css('background', Utils.wait_background);
+			$element.children('.woodkit-wait').css('background', background);
 		}
 		$element.children('.woodkit-wait').css('color', '#777');
 		$element.children('.woodkit-wait').css('width', '100%');
 		$element.children('.woodkit-wait').css('height', '100%');
 		$element.children('.woodkit-wait').css('text-align', 'center');
-		$element.children('.woodkit-wait').css('z-index', '200000');
+		$element.children('.woodkit-wait').css('z-index', z_index);
 		$element.children('.woodkit-wait').css('box-sizing', 'border-box');
 		$element.children('.woodkit-wait').css('-moz-box-sizing', 'border-box');
 		$element.children('.woodkit-wait').css('-webkit-box-sizing', 'border-box');
