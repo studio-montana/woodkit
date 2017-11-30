@@ -23,7 +23,7 @@
 defined('ABSPATH') or die("Go Away!");
 ?>
 
-<div id="cookies-legislation-box" class="cookies-legislation-container" style="display: none; z-index: 10000;">
+<div id="cookies-legislation-box" class="cookies-legislation-container" style="display: none; z-index: 200000;">
 	<div class="cookies-legislation-content">
 		<span>
 			<?php 

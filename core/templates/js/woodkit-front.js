@@ -48,18 +48,16 @@
 	 */
 	$.standardizechildheights = function($element, options) {
 		var plugin = this;
-		var settings = null;
+		var settings = $.extend({
+			child_selector : '.item',
+			onstart : null, // function()
+			ondone : null, // function()
+		}, options);
 		var resize_timer = null;
 		/**
 		 * Process
 		 */
-		plugin.process = function(options) {
-			settings = $.extend({
-				child_selector : '.item',
-				onstart : null, // function()
-				ondone : null, // function()
-			}, options);
-			
+		plugin.process = function() {			
 			plugin.trigger_onstart();
 			var has_item_to_resize = false;
 			var resize_height = 0;
@@ -102,7 +100,7 @@
 				settings['ondone'].call(null);
 			}
 		};
-		plugin.process(options);
+		plugin.process();
 		return plugin;
 	};
 	$.fn.standardizechildheights = function(options) {
