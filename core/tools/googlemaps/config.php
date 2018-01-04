@@ -47,6 +47,7 @@ function tool_googlemaps_get_config_options_section_documentation_url(){
 function tool_googlemaps_get_config_options_fields($additional_fields){
 	$additional_fields[] = array("slug" => "tool-googlemaps-active", "callback" => "tool_googlemaps_get_config_options_field_active", "title" => __("active", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	$additional_fields[] = array("slug" => "tool-googlemaps-apikey", "callback" => "tool_googlemaps_get_config_options_field_apikey", "title" => __("API KEY", WOODKIT_PLUGIN_TEXT_DOMAIN));
+	$additional_fields[] = array("slug" => "tool-googlemaps-enqueueapi", "callback" => "tool_googlemaps_get_config_options_field_enqueueapi", "title" => __("Enqueue API", WOODKIT_PLUGIN_TEXT_DOMAIN));
 	return $additional_fields;
 }
 add_filter("woodkit_config_options_fields_tool_googlemaps", "tool_googlemaps_get_config_options_fields", 1, 1);
@@ -70,4 +71,16 @@ function tool_googlemaps_get_config_options_field_apikey($args){
 		$value = $options['tool-googlemaps-apikey'];
 	echo '<input type="text" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-googlemaps-apikey]" value="'.$value.'" /><a class="button primary get-a-key google-maps-key" style="margin-left: 12px;" href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">'.__("Get google maps API KEY", WOODKIT_PLUGIN_TEXT_DOMAIN).'</a>';
 	echo '<p class="field-description">'.__('shortcode in your theme templates :', WOODKIT_PLUGIN_TEXT_DOMAIN).'<br /><code style="font-size: 0.7rem;">&lt;?php echo do_shortcode(\'[googlemaps id="gmaps1465" adress="" title="" type="ROADMAP" width="100%" height="400px" style="" /]\'); ?&gt;</code></p>';
+}
+
+function tool_googlemaps_get_config_options_field_enqueueapi($args){
+	$options = $args['options'];
+	$value = "";
+	$checked = "";
+	if (isset($options['tool-googlemaps-enqueueapi']))
+		$value = $options['tool-googlemaps-enqueueapi'];
+	if ($value == 'on')
+		$checked = ' checked="checked"';
+	echo '<input type="checkbox" name="'.WOODKIT_CONFIG_OPTIONS.'[tool-googlemaps-enqueueapi]" '.$checked.' />';
+	echo '<p class="field-description">'.__('enqueue googlemaps api script (disable when you use other plugin to enqueue this api)', WOODKIT_PLUGIN_TEXT_DOMAIN).'</p>';
 }
