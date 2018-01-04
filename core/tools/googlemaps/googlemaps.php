@@ -33,11 +33,12 @@ require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEMAPS_TOO
  * Enqueue styles for the front end.
  */
 function tool_googlemaps_woodkit_front_enqueue_scripts_tools($dependencies) {
-	if (!function_exists("et_pb_get_google_api_key")){ // let Divi declare googlemaps API
+	$googlemap_api_enqueueapi = woodkit_get_option('tool-googlemaps-enqueueapi', '');
+	if (!empty($googlemap_api_enqueueapi) && $googlemap_api_enqueueapi == 'on'){
 		$googlemap_api_key = woodkit_get_option('tool-googlemaps-apikey', '');
 		if (!empty($googlemap_api_key)){
 			$googlemap_api_key = "?key=".$googlemap_api_key;
-			wp_enqueue_script('tool-googlemaps-googleapis', 'https://maps.googleapis.com/maps/api/js'.$googlemap_api_key, array(), '3.0', false);
+			wp_enqueue_script('tool-googlemaps-googleapis', 'https://maps.googleapis.com/maps/api/js'.$googlemap_api_key, array(), null, false); // be sure to not add "ver" query var
 		}
 	}
 }
@@ -47,7 +48,6 @@ add_action('woodkit_front_enqueue_scripts_tools', 'tool_googlemaps_woodkit_front
  * Enqueue styles for the back end.
  */
 function tool_googlemaps_woodkit_admin_enqueue_styles_tools($dependencies) {
-
 	$css_googlemaps = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.GOOGLEMAPS_TOOL_NAME.'/css/tool-googlemaps-admin.css');
 	if (!empty($css_googlemaps))
 		wp_enqueue_style('tool-googlemaps-css', $css_googlemaps, $dependencies, '1.0');
