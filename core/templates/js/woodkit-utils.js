@@ -173,7 +173,7 @@ function geocode_adress(map, geocoder, address, titre) {
 					infowindow.open(map, marker);
 				});
 			} else {
-				alert('Geocode was not successful for the following reason: ' + status);
+				console.error('Geocode was not successful for the following reason: ' + status);
 			}
 		});
 	}
