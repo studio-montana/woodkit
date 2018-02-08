@@ -367,25 +367,25 @@ function get_event_date_pretty($event = null, $display_hours = true){
 			$date_s = "";
 			if ($meta_date_begin_s == $meta_date_end_s){
 				if ($meta_date_hour_begin_s != $meta_date_hour_end_s){
-					$hour_s = " ".__("from", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s." ".__("at", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+					$hour_s = " ".__("from (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s." ".__("to (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
 				}else{
-					$hour_s = " ".__("at", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+					$hour_s = " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
 				}
 				if (!$display_hours){
 					$hour_s = "";
 				}
 				$date_s = $meta_day_begin_s." ".$meta_month_begin_s." ".$meta_year_begin_s.$hour_s;
 			}else{
-				$hour_begin_s = " ".__("at", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
-				$hour_end_s = " ".__("at", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+				$hour_begin_s = " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+				$hour_end_s = " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
 				if (!$display_hours){
 					$hour_begin_s = "";
 					$hour_end_s = "";
 				}
 				if ($meta_year_begin_s == $meta_year_end_s){
-					$date_s = __("from", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_begin_s." ".$meta_month_begin_s.$hour_begin_s." ".__("to", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ".$meta_month_end_s." ".$meta_year_end_s.$hour_end_s;
+					$date_s = __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_begin_s." ".$meta_month_begin_s.$hour_begin_s." ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ".$meta_month_end_s." ".$meta_year_end_s.$hour_end_s;
 				}else{
-					$date_s = __("from", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_begin_s." ".$meta_month_begin_s.$meta_year_begin_s." ".$hour_begin_s." ".__("to", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ".$meta_month_end_s." ".$meta_year_end_s.$hour_end_s;
+					$date_s = __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_begin_s." ".$meta_month_begin_s.$meta_year_begin_s." ".$hour_begin_s." ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ".$meta_month_end_s." ".$meta_year_end_s.$hour_end_s;
 				}
 			}
 		}
