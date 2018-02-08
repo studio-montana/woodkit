@@ -32,11 +32,12 @@ defined('ABSPATH') or die("Go Away!");
 	</div>
 	<?php 
 	$has_googlemaps_api = false;
-	if (function_exists("et_pb_get_google_api_key")){ // Divi API settings
-		$googlemap_api_key = et_pb_get_google_api_key();
-		$has_googlemaps_api = !empty($googlemap_api_key);
-	}else{
+	$googlemap_api_enqueueapi = woodkit_get_option('tool-googlemaps-enqueueapi', '');
+	if (!empty($googlemap_api_enqueueapi) && $googlemap_api_enqueueapi == 'on'){
 		$googlemap_api_key = woodkit_get_option('tool-googlemaps-apikey', '');
+		$has_googlemaps_api = !empty($googlemap_api_key);
+	}else if (function_exists("et_pb_get_google_api_key")){ // Divi API settings
+		$googlemap_api_key = et_pb_get_google_api_key();
 		$has_googlemaps_api = !empty($googlemap_api_key);
 	}
 	if ($has_googlemaps_api){
