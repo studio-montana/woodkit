@@ -29,6 +29,7 @@ defined('ABSPATH') or die("Go Away!");
 /**
  * REQUIREMENTS
 */
+require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/inc/headers.php');
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/inc/captcha.php');
 require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/inc/failtoban.php');
 
@@ -38,7 +39,12 @@ require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NA
 remove_filter( 'authenticate', 'wp_authenticate_email_password', 20 );
 
 /**
- * Hide generator in HTML meta data
+ * Hide WP version in HTML meta data
+ */
+remove_action("wp_head", "wp_generator");
+
+/**
+ * Hide WP version in RSS feed
  */
 add_filter('the_generator', function(){
 	return '';
