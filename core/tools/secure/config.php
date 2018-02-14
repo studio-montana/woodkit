@@ -34,7 +34,7 @@ function tool_secure_woodkit_config_default_values($default_values){
 	$default_values["tool-secure-headers-nosniff"] = "on";
 	$default_values["tool-secure-headers-xss"] = "on";
 	$default_values["tool-secure-headers-frame"] = "on";
-	$default_values["tool-secure-headers-referrer"] = "";
+	$default_values["tool-secure-headers-referrer"] = "no-referrer-when-downgrade";
 	$default_values["tool-secure-headers-poweredby"] = "on";
 	
 	/* - have to uncomment in next version
