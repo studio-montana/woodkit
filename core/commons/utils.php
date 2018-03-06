@@ -22,6 +22,42 @@
 */
 defined('ABSPATH') or die("Go Away!");
 
+if (!function_exists("woodkit_get_request_param")):
+/**
+ * Remove accents from a string and return it
+ */
+function woodkit_remove_accent($str){
+	$str = strtolower(trim(preg_replace('~[^0-9a-z]+~i', '-', preg_replace('~&([a-z]{1,2})(acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities($str, ENT_QUOTES, 'UTF-8'))), ' '));
+	return $str;
+}
+endif;
+
+if (!function_exists("woodkit_get_request_param")):
+/**
+ * Retrieve param from REQUEST if exists
+ *
+ * @param unknown $key
+ * @param unknown $default
+ * @return string|unknown
+ */
+function woodkit_get_request_param($key, $default = null, $sanitize = true) {
+	$value = $default;
+	if (! empty ( $_POST ) || ! empty ( $_GET ) || ! empty ( $_FILES )) {
+		if (isset ( $_POST [$key] )){
+			$value = $_POST [$key];
+		}else if (isset ( $_GET [$key] )){
+			$value = $_GET [$key];
+		}else if (isset ( $_FILES [$key] ) && $_FILES [$key]['error'] != UPLOAD_ERR_NO_FILE){
+			$sanitize = false;
+			$value = $_FILES [$key];
+		}
+	}
+	if ($sanitize)
+		return sanitize_text_field($value);
+	return $value;
+}
+endif;
+
 if (!function_exists("woodkit_get_image_id_for_url")):
 /**
  * retrieve image id for image url

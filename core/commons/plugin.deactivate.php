@@ -21,3 +21,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 defined('ABSPATH') or die("Go Away!");
+
+/**
+ * Deactivate Tools
+ */
+if (function_exists("woodkit_deactivate_tools")){
+	woodkit_deactivate_tools();
+}

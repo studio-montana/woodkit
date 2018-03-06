@@ -22,7 +22,7 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
-require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.SHORTCODES_TOOL_NAME.'/columns/columnspicker/columnspicker.php');
+require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SHORTCODES_TOOL_NAME.'/columns/columnspicker/columnspicker.php');
 
 /**
  * Register shortcode to TinyMce

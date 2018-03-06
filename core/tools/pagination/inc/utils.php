@@ -82,7 +82,8 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 	
 				// tax_query
 				if (!isset($args['include_tax'])){
-					if (woodkit_get_option('tool-pagination-taxnav-active', woodkit_get_option_default_value('tool-pagination-taxnav-active')) == 'on'){
+					$taxnav_active = woodkit_get_tool_option(PAGINATION_TOOL_NAME, 'taxnav-active');
+					if ($taxnav_active == 'on'){
 						$args['include_tax'] = true;
 					}else{
 						$args['include_tax'] = false;
@@ -161,7 +162,8 @@ function woodkit_pagination($args = array(), $display = true, $before_links = ''
 						}
 					}
 					// loop
-					if (woodkit_get_option('tool-pagination-loop-active', woodkit_get_option_default_value('tool-pagination-loop-active')) == 'on'){
+					$loop_active = woodkit_get_tool_option(PAGINATION_TOOL_NAME, 'loop-active');
+					if ($loop_active == 'on'){
 						if ($prev_post_nav == null && $last_post_nav != null && $last_post_nav->ID != $current_post_id){
 							$prev_post_nav = $last_post_nav;
 						}

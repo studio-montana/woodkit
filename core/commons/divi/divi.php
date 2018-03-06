@@ -30,18 +30,18 @@ function Woodkit_Divi_Modules(){
 
 		do_action("woodkit_divi_add_module_before_commons");
 
-		require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/commons.php');
+		require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_DIVI_FOLDER.'modules/commons.php');
 
 		do_action("woodkit_divi_add_module_after_commons");
 
 		do_action("woodkit_divi_add_module_before");
 
-		require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/icon-button.php');
+		require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_DIVI_FOLDER.'modules/icon-button.php');
 		if (class_exists("WPCF7_ContactForm"))
-			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/contactform7.php');
-		if (woodkit_is_registered_tool("wall")){
-			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/wall-integration.php');
-			require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_DIVI_FOLDER.'modules/fullwidth-wall-integration.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_DIVI_FOLDER.'modules/contactform7.php');
+		if (woodkit_is_activated_tool("wall")){
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_DIVI_FOLDER.'modules/wall-integration.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_DIVI_FOLDER.'modules/fullwidth-wall-integration.php');
 		}
 
 		do_action("woodkit_divi_add_module_after");
@@ -80,7 +80,7 @@ function woodkit_divi_modules_builder_admin_scripts_styles() {
 		/**
 		 * JS
 		*/
-		wp_enqueue_script("woodkit-divi-modules-builder-script", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_DIVI_FOLDER."js/builder.js", array('jquery'), '1.0', true);
+		wp_enqueue_script("woodkit-divi-modules-builder-script", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_COMMONS_DIVI_FOLDER."js/builder.js", array('jquery'), '1.0', true);
 
 		do_action("woodkit_divi_admin_enqueue_scripts_after");
 
@@ -89,7 +89,7 @@ function woodkit_divi_modules_builder_admin_scripts_styles() {
 		/**
 		 * CSS
 		*/
-		wp_enqueue_style("woodkit-divi-modules-builder-style", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_DIVI_FOLDER."css/builder.css", array(), '1.0');
+		wp_enqueue_style("woodkit-divi-modules-builder-style", WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_COMMONS_DIVI_FOLDER."css/builder.css", array(), '1.0');
 
 		do_action("woodkit_divi_admin_enqueue_styles_after");
 

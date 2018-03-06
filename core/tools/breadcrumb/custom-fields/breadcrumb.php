@@ -37,7 +37,7 @@ function breadcrumb_add_inner_meta_boxes($post){
 	$available_posttypes = get_displayed_post_types();
 	$available_posttypes = apply_filters("tool_breadcrumb_available_posttypes", $available_posttypes);
 	if (in_array(get_post_type($post), $available_posttypes)){
-		include(WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/custom-fields/templates/breadcrumb.php');
+		include(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/custom-fields/templates/breadcrumb.php');
 	}
 }
 add_action("customfields_add_inner_meta_boxes", "breadcrumb_add_inner_meta_boxes", 10);

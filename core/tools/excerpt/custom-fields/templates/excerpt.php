@@ -35,7 +35,7 @@ defined('ABSPATH') or die("Go Away!");
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_EXCERPT_CONTENT, true); ?>
 					<?php 
-					$excerpt_autop = woodkit_get_option("tool-excerpt-editor-autop");
+					$excerpt_autop = woodkit_get_tool_option(EXCERPT_TOOL_NAME, "editor-autop");
 					if ($excerpt_autop == "on"){
 						$excerpt_autop = false;
 					}else{

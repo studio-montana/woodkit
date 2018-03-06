@@ -54,8 +54,7 @@ if ($meta_media_presentation == 'slider'){
 				$style .= "overflow: hidden;";
 				$a_class = "";
 				$data_fancybox_title = "";
-				$media_fancybox_active = woodkit_get_option('tool-fancybox-active');
-				if (!empty($media_fancybox_active) && $media_fancybox_active == 'on'){
+				if (woodkit_is_activated_tool('fancybox')){
 					$a_class .= " fancybox";
 					if (!empty($attachment->post_title)){
 						$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
@@ -217,8 +216,7 @@ if ($meta_media_presentation == 'slider'){
 				
 				// classes / data
 				$class .= " attachment attachment-$id";
-				$media_fancybox_active = woodkit_get_option('tool-fancybox-active');
-				if (!empty($media_fancybox_active) && $media_fancybox_active == 'on'){
+				if (woodkit_is_activated_tool('fancybox')){
 					$a_class .= " fancybox";
 					if (!empty($attachment->post_title)){
 						$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
@@ -291,8 +289,7 @@ if ($meta_media_presentation == 'slider'){
 				$style .= "overflow: hidden;";
 				$a_class = "";
 				$data_fancybox_title = "";
-				$media_fancybox_active = woodkit_get_option('tool-fancybox-active');
-				if (!empty($media_fancybox_active) && $media_fancybox_active == 'on'){
+				if (woodkit_is_activated_tool('fancybox')){
 					$a_class .= " fancybox";
 					if (!empty($attachment->post_title)){
 						$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";
@@ -360,8 +357,7 @@ if ($meta_media_presentation == 'slider'){
 				$style .= "overflow: hidden;";
 				$a_class = "";
 				$data_fancybox_title = "";
-				$media_fancybox_active = woodkit_get_option('tool-fancybox-active');
-				if (!empty($media_fancybox_active) && $media_fancybox_active == 'on'){
+				if (woodkit_is_activated_tool('fancybox')){
 					$a_class .= " fancybox";
 					if (!empty($attachment->post_title)){
 						$data_fancybox_title .= "<h1>".$attachment->post_title."</h1>";

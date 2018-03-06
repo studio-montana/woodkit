@@ -76,7 +76,7 @@ defined('ABSPATH') or die("Go Away!");
 				<td valign="middle"><em><?php _e("Hide thumbnail except in lists", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></em></td>
 			</tr>
 			<?php 
-			if (woodkit_is_registered_tool('video')){
+			if (woodkit_is_activated_tool('video')){
 			?>
 			<tr valign="top">
 				<th class="metabox_label_column" align="left" valign="middle"><label

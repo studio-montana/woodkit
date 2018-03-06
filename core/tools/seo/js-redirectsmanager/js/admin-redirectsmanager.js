@@ -46,8 +46,8 @@
 			/**
 			 * Html structure
 			 */
-			$redirectsmanager_container = $('<div class="optionsmanager-container sortable redirectsmanager-container"></div>').appendTo($redirectsmanager);
-			$redirectsmanager_container_add = $('<div class="add-redirect add btn"><i class="fa fa-plus"></i><span>' + settings['label_add_item'] + '</span></div>').appendTo(
+			$redirectsmanager_container = $('<div class="multiple-items-manager sortable redirectsmanager-container"></div>').appendTo($redirectsmanager);
+			$redirectsmanager_container_add = $('<div class="add-redirect add woodkit-btn"><span>' + settings['label_add_item'] + '</span></div>').appendTo(
 					$redirectsmanager);
 			
 			$redirectsmanager_container.sortable({
@@ -84,7 +84,7 @@
 		 */
 		plugin.update_ranks = function() {
 			$redirectsmanager_container.find(".redirect.item").each(function(i){
-				$(this).find("input[name='seo-redirect-rank-"+$(this).attr('data-id')+"']").val(i);
+				$(this).find("input[name='redirect-rank-"+$(this).attr('data-id')+"']").val(i);
 			});
 		}
 
@@ -105,14 +105,14 @@
 		 */
 		plugin.add_redirect = function(id, fromurl, tourl, test, disable) {
 
-			var redirect_id = plugin.get_unique_id("seo-redirect-", id); // item ID for JS manipulations
+			var redirect_id = plugin.get_unique_id("redirect-", id); // item ID for JS manipulations
 
 			var html = '';
-			html += '<div class="redirect item" id="seo-redirect-' + redirect_id + '" data-id="' + redirect_id + '">';
-			html += '<span class="move-redirect move" data-id="seo-redirect-' + redirect_id + '"><i class="fa fa-ellipsis-v"></i></span>';
-			html += '<span class="delete-redirect delete" data-id="seo-redirect-' + redirect_id + '"><i class="fa fa-times"></i></span>';
+			html += '<div class="redirect item" id="redirect-' + redirect_id + '" data-id="' + redirect_id + '">';
+			html += '<span class="move-redirect move" data-id="redirect-' + redirect_id + '"><i class="fa fa-ellipsis-v"></i></span>';
+			html += '<span class="delete-redirect delete" data-id="redirect-' + redirect_id + '"><i class="fa fa-times"></i></span>';
 			
-			html += '<select name="seo-redirect-test-' + redirect_id + '">';
+			html += '<select name="redirect-test-' + redirect_id + '">';
 			var test_checked = "";
 			if (empty(test) || test == 'equals')
 				test_checked = ' selected="selected"';
@@ -123,17 +123,17 @@
 			html += '<option value="matches"'+test_checked+'>'+settings['label_test_matches']+'</option>';
 			html += '</select>';
 			
-			html += '<input type="text" name="seo-redirect-fromurl-' + redirect_id + '" value="'+fromurl+'" placeholder="' + settings['label_from_url'] + '" />';
+			html += '<input type="text" class="large" name="redirect-fromurl-' + redirect_id + '" value="'+fromurl+'" placeholder="' + settings['label_from_url'] + '" />';
 			html += '<span class="label">' + settings['label_to'] + '</span>';
-			html += '<input type="text" name="seo-redirect-tourl-' + redirect_id + '" value="'+tourl+'" placeholder="' + settings['label_to_url'] + '" />';
+			html += '<input type="text" class="large" name="redirect-tourl-' + redirect_id + '" value="'+tourl+'" placeholder="' + settings['label_to_url'] + '" />';
 			html += '<span class="label" style="color: #888;">' + settings['label_disable'] + ' : </span>';
 			$disable_checked = "";
 			if (!empty(disable) && disable == 'on')
 				$disable_checked = ' checked="checked"';
-			html += '<input type="checkbox" name="seo-redirect-disable-' + redirect_id + '"'+$disable_checked+' />';
+			html += '<input type="checkbox" name="redirect-disable-' + redirect_id + '"'+$disable_checked+' />';
 			
-			html += '<input type="hidden" name="seo-redirect-id-' + redirect_id + '" value="' + redirect_id + '" />';
-			html += '<input type="hidden" name="seo-redirect-rank-' + redirect_id + '" value="" />';
+			html += '<input type="hidden" name="redirect-id-' + redirect_id + '" value="' + redirect_id + '" />';
+			html += '<input type="hidden" name="redirect-rank-' + redirect_id + '" value="" />';
 			html += '</div>';
 
 			var $redirect_container = $(html).appendTo($redirectsmanager_container);

@@ -78,7 +78,7 @@ function seo_save_post($post_id){
 			delete_post_meta($post_id, SEO_CUSTOMFIELD_METAKEYWORDS);
 		}
 
-		$opengraph_active = woodkit_get_option("tool-seo-opengraph-active");
+		$opengraph_active = woodkit_get_tool_option(SEO_TOOL_NAME, "opengraph-active");
 		if (!empty($opengraph_active) && $opengraph_active == "on"){
 
 			// SEO_CUSTOMFIELD_META_OPENGRAPH_TITLE

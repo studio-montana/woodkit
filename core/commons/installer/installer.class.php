@@ -22,12 +22,18 @@
 */
 defined('ABSPATH') or die("Go Away!");
 
-require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_INSTALLER_FOLDER.'plugin-uploader.class.php');
+/**
+ * Plugin uploader
+ */
+require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER.'plugin-uploader.class.php');
 if (is_admin()){
     new WoodkitPluginUploader('woodkit', WP_PLUGIN_DIR.'/woodkit/woodkit.php');
 }
 
-require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_INSTALLER_FOLDER.'theme-uploader.class.php');
+/**
+ * Theme uploader
+ */
+require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER.'theme-uploader.class.php');
 if (is_admin()){
     new WoodkitThemeUploader('woody');
 }

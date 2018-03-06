@@ -42,7 +42,7 @@ function display_add_inner_meta_boxes($post){
 	$available_posttypes = get_displayed_post_types();
 	$available_posttypes = apply_filters("tool_display_available_posttypes", $available_posttypes);
 	if (in_array(get_post_type($post), $available_posttypes)){
-		include(WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.DISPLAY_TOOL_NAME.'/custom-fields/templates/display.php');
+		include(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.DISPLAY_TOOL_NAME.'/custom-fields/templates/display.php');
 	}
 }
 add_action("customfields_add_inner_meta_boxes", "display_add_inner_meta_boxes", 1);

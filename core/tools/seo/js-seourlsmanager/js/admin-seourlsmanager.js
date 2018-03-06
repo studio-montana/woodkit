@@ -46,8 +46,8 @@
 			/**
 			 * Html structure
 			 */
-			$seourlsmanager_container = $('<div class="optionsmanager-container seourlsmanager-container"></div>').appendTo($seourlsmanager);
-			$seourlsmanager_container_add = $('<div class="add-url add btn"><i class="fa fa-plus"></i><span>' + settings['label_add_item'] + '</span></div>').appendTo(
+			$seourlsmanager_container = $('<div class="multiple-items-manager seourlsmanager-container"></div>').appendTo($seourlsmanager);
+			$seourlsmanager_container_add = $('<div class="add-url add woodkit-btn"><span>' + settings['label_add_item'] + '</span></div>').appendTo(
 					$seourlsmanager);
 
 			/**
@@ -86,13 +86,13 @@
 		 */
 		plugin.add_url = function(id, url, action) {
 
-			var url_id = plugin.get_unique_id("seo-sitemap-url-id-", id);
+			var url_id = plugin.get_unique_id("sitemap-url-id-", id);
 			
 			var html = '';
-			html += '<div class="url item" id="seo-sitemap-url-id-' + url_id + '" data-id="' + url_id + '">';
-			html += '<span class="delete delete-url" data-id="seo-sitemap-url-id-' + url_id + '"><i class="fa fa-times"></i></span>';
+			html += '<div class="url item" id="sitemap-url-id-' + url_id + '" data-id="' + url_id + '">';
+			html += '<span class="delete delete-url" data-id="sitemap-url-id-' + url_id + '"><i class="fa fa-times"></i></span>';
 			
-			html += '<select name="seo-sitemap-url-action-' + url_id + '">';
+			html += '<select name="sitemap-url-action-' + url_id + '">';
 			var action_checked = "";
 			if (empty(action) || action == 'add')
 				action_checked = ' selected="selected"';
@@ -111,9 +111,9 @@
 			html += '<option value="exclude_if_regexp"'+action_checked+'>'+settings['label_action_exclude_if_regexp']+'</option>';
 			html += '</select>';
 			
-			html += '<input type="text" name="seo-sitemap-url-' + url_id + '" value="'+url+'" placeholder="' + settings['label_url'] + '" />';
+			html += '<input type="text" class="large" name="sitemap-url-' + url_id + '" value="'+url+'" placeholder="' + settings['label_url'] + '" />';
 			
-			html += '<input type="hidden" name="seo-sitemap-url-id-' + url_id + '" value="' + url_id + '" />';
+			html += '<input type="hidden" name="sitemap-url-id-' + url_id + '" value="' + url_id + '" />';
 			html += '</div>';
 			
 			var $url_container = $(html).appendTo($seourlsmanager_container);

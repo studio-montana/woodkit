@@ -52,7 +52,7 @@ defined('ABSPATH') or die("Go Away!");
 		$has_video = false;
 		$has_thumb = false;
 		// featured video
-		if (woodkit_is_registered_tool('video') && video_has_featured_video(get_the_ID())){
+		if (woodkit_is_activated_tool('video') && video_has_featured_video(get_the_ID())){
 			$has_video = true;
 			?>
 			<div class="video"><?php echo video_get_featured_video(get_the_ID(), "100%", "100%"); ?></div>

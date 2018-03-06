@@ -22,6 +22,8 @@
 */
 defined('ABSPATH') or die("Go Away!");
 
+define('WOODKIT_WEB_CACHE_VERSION', '1.3.0');
+
 /**
  * Enqueue scripts and styles for the front end.
  *
@@ -54,13 +56,13 @@ function woodkit_scripts_styles() {
 	// -- front
 	$css_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-front.css');
 	if (!empty($css_front)){
-		wp_enqueue_style('woodkit-css-front', $css_front, array('woodkit-css-fontawesome'), '1.3');
+		wp_enqueue_style('woodkit-css-front', $css_front, array('woodkit-css-fontawesome'), WOODKIT_WEB_CACHE_VERSION);
 	}
 	
 	// -- isotope/slider
 	$css_isotope_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope-slider.css');
 	if (!empty($css_isotope_slider))
-		wp_enqueue_style('woodkit-core-slider-style', $css_isotope_slider, array('woodkit-css-fontawesome'), '1.1');
+		wp_enqueue_style('woodkit-core-slider-style', $css_isotope_slider, array('woodkit-css-fontawesome'), WOODKIT_WEB_CACHE_VERSION);
 
 	// Action after woodkit enqueue styles
 	do_action("woodkit_front_enqueue_styles_after");
@@ -91,7 +93,7 @@ function woodkit_scripts_styles() {
 	// Loads Utils JavaScript file
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils)){
-		wp_enqueue_script('woodkit-script-woodkit-utils', $js_utils, array('jquery'), '1.5', true);
+		wp_enqueue_script('woodkit-script-woodkit-utils', $js_utils, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
 		wp_localize_script('woodkit-script-woodkit-utils', 'Utils', array(
 				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)),
 				"wait_background" => apply_filters('woodkit-js-wait-background', "rgba(255,255,255,0.5)")
@@ -104,22 +106,22 @@ function woodkit_scripts_styles() {
 	// Loads Gallery Matrix JavaScript file
 	$js_gallery_matrix = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-gallery-matrix.js');
 	if (!empty($js_gallery_matrix))
-		wp_enqueue_script('woodkit-script-woodkit-gallery-matrix', $js_gallery_matrix, array('jquery'), '1.0', true);
+		wp_enqueue_script('woodkit-script-woodkit-gallery-matrix', $js_gallery_matrix, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
 
 	// Loads Gallery JavaScript file
 	$js_gallery = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-gallery.js');
 	if (!empty($js_gallery))
-		wp_enqueue_script('woodkit-script-woodkit-gallery', $js_gallery, array('jquery', 'woodkit-script-woodkit-gallery-matrix'), '1.0', true);
+		wp_enqueue_script('woodkit-script-woodkit-gallery', $js_gallery, array('jquery', 'woodkit-script-woodkit-gallery-matrix'), WOODKIT_WEB_CACHE_VERSION, true);
 
 	// Loads slider JavaScript file
 	$js_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-slider.js');
 	if (!empty($js_slider))
-		wp_enqueue_script('woodkit-script-woodkit-slider', $js_slider, array('jquery'), '1.0', true);
+		wp_enqueue_script('woodkit-script-woodkit-slider', $js_slider, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
 
 	// Loads front general JavaScript file (contains tools javascript)
 	$js_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-front.js');
 	if (!empty($js_front))
-		wp_enqueue_script('woodkit-script-woodkit-front', $js_front, array('jquery', 'woodkit-script-woodkit-slider'), '1.5', true);
+		wp_enqueue_script('woodkit-script-woodkit-front', $js_front, array('jquery', 'woodkit-script-woodkit-slider'), WOODKIT_WEB_CACHE_VERSION, true);
 
 	// Action after woodkit enqueue scripts
 	do_action("woodkit_front_enqueue_scripts_after");
@@ -165,13 +167,13 @@ function woodkit_admin_scripts_styles() {
 	// Loads Isotope/Slider specific stylesheet.
 	$css_isotope_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope-slider.css');
 	if (!empty($css_isotope_slider)){
-		wp_enqueue_style('woodkit-admin-css-isotope-slider', $css_isotope_slider, array(), '1.1');
+		wp_enqueue_style('woodkit-admin-css-isotope-slider', $css_isotope_slider, array(), WOODKIT_WEB_CACHE_VERSION);
 	}
 
 	// Loads our main template stylesheet
 	$css_admin = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-admin.css');
 	if (!empty($css_admin))
-		wp_enqueue_style('woodkit-admin-style', $css_admin, array('woodkit-admin-css-isotope-slider', 'woodkit-admin-css-jquery-ui'), '1.4');
+		wp_enqueue_style('woodkit-admin-style', $css_admin, array('woodkit-admin-css-isotope-slider', 'woodkit-admin-css-jquery-ui'), WOODKIT_WEB_CACHE_VERSION);
 
 	// Loads Cookies jQuery plugin
 	$js_cookies = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'cookies/jquery.cookie.js');
@@ -181,7 +183,7 @@ function woodkit_admin_scripts_styles() {
 	// Loads Utils
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils)){
-		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery', 'wp-color-picker'), '1.5', true);
+		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery', 'wp-color-picker'), WOODKIT_WEB_CACHE_VERSION, true);
 		wp_localize_script('woodkit-script-utils', 'Utils', array(
 				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)),
 				"wait_background" => apply_filters('woodkit-js-wait-background', "rgba(255,255,255,0.5)")
@@ -201,12 +203,12 @@ function woodkit_admin_scripts_styles() {
 	// Loads Gallery Matrix JavaScript file
 	$js_gallery_matrix = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-gallery-matrix.js');
 	if (!empty($js_gallery_matrix))
-		wp_enqueue_script('woodkit-script-woodkit-gallery-matrix', $js_gallery_matrix, array('jquery'), '1.0', true);
+		wp_enqueue_script('woodkit-script-woodkit-gallery-matrix', $js_gallery_matrix, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
 
 	// Loads Gallery JavaScript file
 	$js_gallery = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-gallery.js');
 	if (!empty($js_gallery))
-		wp_enqueue_script('woodkit-script-woodkit-gallery', $js_gallery, array('jquery', 'woodkit-script-woodkit-gallery-matrix'), '1.0', true);
+		wp_enqueue_script('woodkit-script-woodkit-gallery', $js_gallery, array('jquery', 'woodkit-script-woodkit-gallery-matrix'), WOODKIT_WEB_CACHE_VERSION, true);
 
 	// Action for javascript tools
 	do_action("woodkit_admin_enqueue_scripts_tools", array("woodkit-script-woodkit-gallery"));
@@ -214,7 +216,7 @@ function woodkit_admin_scripts_styles() {
 	// Loads JavaScript file for admin.
 	$js_admin = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-admin.js');
 	if (!empty($js_admin))
-		wp_enqueue_script('woodkit-admin-script', $js_admin, array('jquery'), '1.0', true);
+		wp_enqueue_script('woodkit-admin-script', $js_admin, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
 	
 	// Setup color picker (iris) palette colors
 	$color_picker_options_palettes = array('#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff', '#fff000');

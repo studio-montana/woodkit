@@ -23,6 +23,11 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
+ * REQUIREMENTS
+ */
+require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_CONFIG_FOLDER.'config-render.php');
+
+/**
  * CONSTANTS
 */
 define('WOODKIT_CONFIG_OPTIONS', 'woodkit_config_options');
@@ -36,37 +41,14 @@ global $woodkit_config_values;
 global $woodkit_config_ac;
 global $woodkit_install_notif;
 
-if (!function_exists("woodkit_load_tools_config")):
-/**
- * load tools configuration file
-*/
-function woodkit_load_tools_config(){
-	if (is_dir(WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER)){
-		$tools_folders = scandir(WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER);
-		if ($tools_folders){
-			foreach ($tools_folders as $tool_folder){
-				if ($tool_folder != '.' && $tool_folder != '..'){
-					$tool_path = WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.$tool_folder.'/config.php';
-					if (file_exists($tool_path)){
-						require_once $tool_path;
-						do_action("woodkit_tool_config_loaded", $tool_folder);
-					}
-				}
-			}
-		}
-	}
-}
-woodkit_load_tools_config();
-endif;
-
 if (!function_exists("woodkit_is_registered")):
 /**
  * woodkit registration
 * @return boolean
 */
-function woodkit_is_registered(){
+function woodkit_is_registered($force_reload = false){
 	global $woodkit_config_ac;
-	if(!isset($woodkit_config_ac)){
+	if(!isset($woodkit_config_ac) || $force_reload){
 		$woodkit_config_ac = false;
 		$key = woodkit_get_option("key-activation");
 		if (!empty($key)){
@@ -156,6 +138,44 @@ function woodkit_on_admin_init(){
 }
 endif;
 
+if (!function_exists("woodkit_save_options")):
+/**
+ * save woodkit options
+* @param array $options - woodkit options
+* @param boolean $merge - merge old option with newest - default is true
+* @param boolean $reload - clear woodkit options cache after save - default is true
+*/
+function woodkit_save_options($options, $merge = true, $reload = true){
+	if ($merge){
+		$old_options = woodkit_get_options();
+		foreach ($old_options as $old_option_key => $old_option_value){
+			if (!array_key_exists($old_option_key, $options)){
+				$options[$old_option_key] = $old_option_value;
+			}
+		}
+		update_option(WOODKIT_CONFIG_OPTIONS, $options);
+	}else{
+		// IMPORTANT : erase old options which are not in the new options set
+		update_option(WOODKIT_CONFIG_OPTIONS, $options);
+	}
+	if ($reload){ // reload options (clear option global cache)
+		woodkit_get_options(true);
+	}
+}
+endif;
+
+if (!function_exists("woodkit_save_option")):
+/**
+ * retrieve woodkit options values
+* @return multiple : option value - null if doesn't exists
+*/
+function woodkit_save_option($option_name, $option_value){
+	$options = woodkit_get_options();
+	$options[$option_name] = $option_value;
+	woodkit_save_options($options);
+}
+endif;
+
 if (!function_exists("woodkit_get_options")):
 /**
  * retrieve woodkit options values
@@ -164,17 +184,17 @@ if (!function_exists("woodkit_get_options")):
 function woodkit_get_options($reload = false){
 	global $woodkit_config_values;
 	if ($reload || !isset($woodkit_config_values)){
-		$options = get_option(WOODKIT_CONFIG_OPTIONS);
-		if (!isset($options))
-			$options = array();
+		$woodkit_config_values = get_option(WOODKIT_CONFIG_OPTIONS);
+		if (!isset($woodkit_config_values))
+			$woodkit_config_values = array();
 		$default_values = woodkit_get_option_default_values();
 		foreach ($default_values as $id => $value){
-			if (!isset($options[$id])){
-				$options[$id] = $value;
+			if (!isset($woodkit_config_values[$id])){
+				$woodkit_config_values[$id] = $value;
 			}
 		}
 	}
-	return $options;
+	return $woodkit_config_values;
 }
 endif;
 
@@ -247,9 +267,6 @@ endif;
  */
 if (is_admin()){
 
-	require_once (WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_CONFIG_FOLDER.'config-options.php');
-
-	if (!function_exists("woodkit_plugin_action_links")):
 	/**
 	 * Plugin admin links
 	* @param unknown $links
@@ -263,32 +280,21 @@ if (is_admin()){
 		return $links;
 	}
 	add_filter('plugin_action_links_woodkit/woodkit.php', 'woodkit_plugin_action_links');
-	endif;
 
-	if (!function_exists("woodkit_plugin_action_admin_menu")):
 	/**
-	 * Load plugin tools options page on Woodkit submenu
-	*/
-	function woodkit_plugin_action_admin_menu_config() {
-		$tools = woodkit_get_registered_tools();
-		if (!empty($tools)){
-			foreach ($tools as $tool) {
-				$tool_config_page_path = WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.$tool['slug'].'/options.php';
-				if (file_exists($tool_config_page_path)){
-					require_once $tool_config_page_path;
-					$page_name = apply_filters("tool_".$tool['slug']."_get_page_options_name", "No Page Name");
-					$menu_name = '<i class="fa fa-caret-right"></i> '.apply_filters("tool_".$tool['slug']."_get_page_options_menu_name", "No Menu Name");
-					$callback = "tool_".$tool['slug']."_get_page_options_callback_function";
-					if (function_exists($callback)){
-						do_action("woodkit_tool_config_page_before_menu_add", $tool['slug']);
-						add_submenu_page("woodkit_options", $page_name, $menu_name, "manage_options", "woodkit_options_tool_".$tool['slug'], $callback);
-						do_action("woodkit_tool_config_page_after_menu_add", $tool['slug']);
-					}
-				};
-			}
-		}
+	 * Add Plugin option page entry to Menu
+	 */
+	function woodkit_plugin_add_menu_config() {
+		$page_name = __ ( "Woodkit", 'po' );
+		$menu_name = __ ( "Woodkit", 'po' );
+		add_menu_page ( $page_name, $menu_name, "manage_options", "woodkit_options", "woodkit_plugin_menu_config_callback", 'none');
 	}
-	add_action('admin_menu', 'woodkit_plugin_action_admin_menu_config');
-	endif;
-
+	add_action ( 'admin_menu', 'woodkit_plugin_add_menu_config' );
+	
+	/**
+	 * Display plugin option page
+	 */
+	function woodkit_plugin_menu_config_callback() {
+		$woodkit_options = new WoodkitOptions();
+	}
 }

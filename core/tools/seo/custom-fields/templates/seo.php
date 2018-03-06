@@ -62,7 +62,7 @@ defined('ABSPATH') or die("Go Away!");
 	</div>
 </div>
 <?php 
-$opengraph_active = woodkit_get_option("tool-seo-opengraph-active");
+$opengraph_active = woodkit_get_tool_option(SEO_TOOL_NAME, "opengraph-active");
 if (!empty($opengraph_active) && $opengraph_active == "on"){
 ?>
 <div id="tool-display-general" class="custom-fields-section">

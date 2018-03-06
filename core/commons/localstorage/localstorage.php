@@ -26,7 +26,7 @@ defined('ABSPATH') or die("Go Away!");
  * Clear local storage - WARNING : used when WP_DEBUG == true | never in production site | useful to develop Divi Modules
  */
 function woodkit_clear_local_storage () {
-	wp_enqueue_script('woodkit-clear-local-storage-script', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_LOCALSTORAGE_FOLDER.'js/clearlocalstorage.js');
+	wp_enqueue_script('woodkit-clear-local-storage-script', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_COMMONS_LOCALSTORAGE_FOLDER.'js/clearlocalstorage.js');
 }
 if (WP_DEBUG){
 	add_action('admin_enqueue_scripts', 'woodkit_clear_local_storage', 9999);

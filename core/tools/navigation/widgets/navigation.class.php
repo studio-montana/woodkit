@@ -96,7 +96,7 @@ class toolnavigation_widget extends WP_Widget {
 		if (isset($instance['order']))
 			$order = $instance['order'];
 			
-		include(WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.NAVIGATION_TOOL_NAME.'/widgets/templates/navigation-form.php');
+		include(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.NAVIGATION_TOOL_NAME.'/widgets/templates/navigation-form.php');
 	}
 
 	// Updating widget replacing old instances with new
@@ -158,7 +158,7 @@ add_action('widgets_init', 'toolnavigation_load_widget');
  * Widget manager form
 */
 function tool_widgetmanager_post_widget_form_toolnavigation($post_id, $sidebar_id, $widget_obj){
-	include(WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.NAVIGATION_TOOL_NAME.'/widgets/templates/navigation-form-widgetmanager.php');
+	include(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.NAVIGATION_TOOL_NAME.'/widgets/templates/navigation-form-widgetmanager.php');
 }
 add_action("tool_widgetmanager_post_widget_form_toolnavigation", 'tool_widgetmanager_post_widget_form_toolnavigation', 1, 3);
 

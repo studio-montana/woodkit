@@ -51,7 +51,7 @@ if (!function_exists("backgroundimage_add_inner_meta_boxes")):
 * @param unknown $post
 */
 function backgroundimage_add_inner_meta_boxes($post) {
-	include(WOODKIT_PLUGIN_PATH.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.BACKGROUNDIMAGE_TOOL_NAME.'/custom-fields/templates/backgroundimage.php');
+	include(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.BACKGROUNDIMAGE_TOOL_NAME.'/custom-fields/templates/backgroundimage.php');
 }
 endif;
 

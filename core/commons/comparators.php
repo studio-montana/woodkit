@@ -52,3 +52,15 @@ function woodkit_cmp_options_sorted($item_1, $item_2){
 	}
 	return ($name_1 < $name_2) ? -1 : 1;
 }
+
+/**
+ * options sorted comparator (used in usort function based on 'rank' property)
+ * @param array $item_1 : must have 'rank' property
+ * @param array $item_2 : must have 'rank' property
+ * @return number
+ */
+function woodkit_cmp_tools_by_name($tool_1, $tool_2){
+	$tool_1_name = !empty($tool_1->name) ? woodkit_remove_accent($tool_1->name) : '';
+	$tool_2_name = !empty($tool_2->name) ? woodkit_remove_accent($tool_2->name) : '';
+	return strcmp($tool_1_name, $tool_2_name);
+}

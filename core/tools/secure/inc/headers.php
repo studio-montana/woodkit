@@ -27,12 +27,12 @@ function woodkit_tool_secure_headers() {
 		trace_err("Headers already sent. Woodkit secure tool unable to process");
 	}
 
-	// HSTS - have to uncomment in next version
+	// TODO HSTS
 	/*
 	if (is_ssl()){
-		$time = esc_attr(woodkit_get_option("tool-secure-headers-hsts-time"));
-		$subdomain = esc_attr(woodkit_get_option("tool-secure-headers-hsts-subdomains"));
-		$preload = esc_attr(woodkit_get_option("tool-secure-headers-hsts-preload"));
+		$time = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hsts-time"));
+		$subdomain = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hsts-subdomains"));
+		$preload = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hsts-preload"));
 		if ( ctype_digit($time)  ) {
 			$subdomain_output = $subdomain > 0 ? "; includeSubDomains" : "";
 			$preload_output = $preload > 0 ? "; preload" : "";
@@ -41,39 +41,45 @@ function woodkit_tool_secure_headers() {
 	}
 	*/
 
-	// No Sniff
-	$nosniff = esc_attr(woodkit_get_option("tool-secure-headers-nosniff"));
+	// No Sniff - X-Content-Type-Options: nosniff
+	$nosniff = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-nosniff"));
 	if ($nosniff == 'on') {
 		send_nosniff_header();
 	}
 
-	// XSS
-	$xss = esc_attr(woodkit_get_option("tool-secure-headers-xss"));
+	// XSS - X-XSS-Protection: 1; mode=block
+	$xss = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-xss"));
 	if ($xss == 'on') {
 		header("X-XSS-Protection: 1; mode=block");
 	}
 
-	// Frame Options
-	$frame = esc_attr(woodkit_get_option("tool-secure-headers-frame"));
+	// Frame Options - X-Frame-Options: SAMEORIGIN
+	$frame = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-frame"));
 	if ($frame == 'on') {
 		send_frame_options_header();
 	}
 
-	// Powered by
-	$poweredby = esc_attr(woodkit_get_option("tool-secure-headers-poweredby"));
+	// Powered by - X-Powered-By: unknown
+	$poweredby = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-poweredby"));
 	if ($poweredby == 'on') {
-		header("X-Powered-By: unknown");
+		header_remove('X-Powered-By');
 	}
 
-	// HPKP - have to uncomment in next version
+	// Server - Server: unknown
+	$server = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-server"));
+	if ($server == 'on') {
+		header_remove('X-Server');
+	}
+
+	// TODO HPKP
 	/*
 	if (is_ssl()){
-		$pinkey1 = esc_attr(woodkit_get_option("tool-secure-headers-hpkp-key1"));
-		$pinkey2 = esc_attr(woodkit_get_option("tool-secure-headers-hpkp-key2"));
-		$pinkey3 = esc_attr(woodkit_get_option("tool-secure-headers-hpkp-key3"));
-		$pintime = esc_attr(woodkit_get_option("tool-secure-headers-hpkp-time"));
-		$pinsubdomain = esc_attr(woodkit_get_option("tool-secure-headers-hpkp-subdomains"));
-		$pinuri = woodkit_get_option("tool-secure-headers-hpkp-uri");
+		$pinkey1 = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-key1"));
+		$pinkey2 = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-key2"));
+		$pinkey3 = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-key3"));
+		$pintime = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-time"));
+		$pinsubdomain = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-subdomains"));
+		$pinuri = woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-uri");
 		// Standard requires at least one backup key so insist on two keys before working
 		if ( is_numeric($pintime) && !empty($pinkey1) && !empty($pinkey2)) {
 			$pinheader="Public-Key-Pins: ";
@@ -87,9 +93,24 @@ function woodkit_tool_secure_headers() {
 		}
 	}
 	*/
+	
+	// TODO Expect-CT
+	/*
+	if (is_ssl()){ // Should not be issued for http
+		$ectage = esc_attr(get_option('security_headers_ect_time'));
+		$ectenforce = esc_attr(get_option('security_headers_ect_enforce'));
+		$ecturi = get_option('security_headers_ect_uri');
+		if ( ctype_digit($ectage) ){
+			$ectheader="Expect-CT: max-age=$ectage";
+			if ($ectenforce > 0) { $ectheader .= ',enforce'; }
+			if (!empty($ecturi)) { $ectheader .= ',report-uri="'. $ecturi .'"'; }
+			header($ectheader);
+		}
+	}
+	*/
 
 	// Referrer Policy
-	$referrer = esc_attr(woodkit_get_option("tool-secure-headers-referrer"));
+	$referrer = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-referrer"));
 	if (!empty($referrer)){
 		header("Referrer-Policy: $referrer");
 	}

@@ -430,7 +430,7 @@ if (!function_exists("wall_get_available_templates")):
 */
 function wall_get_available_templates(){
 	$templates = array("thumb", "content");
-	if (woodkit_is_registered_tool('video'))
+	if (woodkit_is_activated_tool('video'))
 		$templates[] = "video";
 	$templates = apply_filters("woodkit-tool-wall-available-templates", $templates);
 	return $templates;
@@ -449,7 +449,7 @@ function wall_get_default_template($post_id = null){
 	$template = "content";
 	if (get_post_type($post_id) == "attachment" && startsWith(get_post_mime_type($post_id), 'image')){
 		$template = "thumb";
-	}else if (woodkit_is_registered_tool('video') && video_has_featured_video($post_id)){
+	}else if (woodkit_is_activated_tool('video') && video_has_featured_video($post_id)){
 		$template = "video";
 	}else if (has_post_thumbnail($post_id)){
 		$template = "thumb";
