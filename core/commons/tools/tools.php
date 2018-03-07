@@ -257,35 +257,37 @@ function woodkit_deactivate_tool($tool_slug){
 }
 endif;
 
-if (!function_exists("woodkit_activate_tools")):
+if (!function_exists("woodkit_tools_fire_activation")):
 /**
- * activate all tools which are active
+ * Fire activation on all activated tools
  */
-function woodkit_activate_tools(){
-	$activated_tools = woodkit_get_activated_tools();
+function woodkit_tools_fire_activation(){
+	$activated_tools = woodkit_get_activated_tools(true);
 	if (!empty($activated_tools)){
 		foreach ($activated_tools as $tool){
+			trace_info("plugin.activate.php - fire activation on tool [{$tool->slug}]");
 			$tool->activate();
 		}
 	}
 }
 endif;
 
-if (!function_exists("woodkit_deactivate_tools")):
+if (!function_exists("woodkit_tools_fire_deactivation")):
 /**
- * deactivate all tools which are active
- */
-function woodkit_deactivate_tools(){
-	$activated_tools = woodkit_get_activated_tools();
+ * Fire deactivation on all activated tools
+*/
+function woodkit_tools_fire_deactivation(){
+	$activated_tools = woodkit_get_activated_tools(true);
 	if (!empty($activated_tools)){
 		foreach ($activated_tools as $tool){
+			trace_info("plugin.deactivate.php - fire deactivation on tool [{$tool->slug}]");
 			$tool->deactivate();
 		}
 	}
 }
 endif;
 
-if (!function_exists("activate_woodkit_tools")):
+if (!function_exists("woodkit_launch_tools")):
 /**
  * launch activated tools
 */

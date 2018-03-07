@@ -51,7 +51,7 @@ class WoodkitToolExcerpt extends WoodkitTool{
 	
 	public function get_config_default_values(){
 		return array(
-				'active' => 'on',
+				'active' => 'off',
 				'editor-autop' => 'on'
 		);
 	}

@@ -92,7 +92,7 @@ class WoodkitToolUpdateNotifier extends WoodkitTool{
 						<label for="emails"><?php _e("Send email to", 'woodkit'); ?></label>
 						<input type="text" class="xlarge" id="emails" name="emails" value="<?php echo esc_attr($value); ?>" />
 					</div>
-					<p class="description"><?php _e("To send notification to multiple emails, please separate emails by coma", 'woodkit');?></p>
+					<p class="description"><?php _e("Send by default to Administrator. To send notification to multiple emails, please separate emails by coma", 'woodkit');?></p>
 				</div>
 			</div>
 		</div>

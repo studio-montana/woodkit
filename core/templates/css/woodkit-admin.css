@@ -977,6 +977,11 @@
 	color: #0073aa;
 	letter-spacing: 0.06em;
 }
+/* textarea */
+.woodkit-tool-page-options .section .field.textarea label,
+.woodkit-tool-page-options .section .field.textarea textarea{
+	display: block;
+}
 /* key */
 .woodkit-tool-page-options .section .field .valid-key,
 .woodkit-tool-page-options .section .field .invalid-key {
@@ -1074,12 +1079,3 @@
 .multiple-items-manager.sortable .item .label{
 	margin: 0 6px;
 }
-
-
-
-
-
-
-
-
-

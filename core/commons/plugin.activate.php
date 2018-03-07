@@ -23,8 +23,6 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
- * Activate Tools
- */
-if (function_exists("woodkit_activate_tools")){
-	woodkit_activate_tools();
-}
+ * Fire activation on all activated tools
+*/
+woodkit_tools_fire_activation();

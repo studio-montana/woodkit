@@ -52,7 +52,7 @@ class WoodkitToolPagination extends WoodkitTool{
 	
 	public function get_config_default_values(){
 		return array(
-				'active' => 'on',
+				'active' => 'off',
 				'taxnav-active' => 'on',
 				'loop-active' => 'on',
 		);

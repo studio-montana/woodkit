@@ -215,6 +215,17 @@ function woodkit_upgrader_version_1_3_0(){
 		woodkit_save_tool_options($tool_slug, $new_tool_options);
 		trace_info("=====> after upgrade options [{$tool_slug}] : ".var_export(woodkit_get_tool_options($tool_slug), true));
 	}
+	
+	/**
+	 * add 'activation' option on 'cookies' tool - default => 'on'
+	 */
+	woodkit_save_tool_options('cookies', array('active' => 'on'));
+	
+	/**
+	 * Fire activation on all activated tools
+	 */
+	woodkit_tools_fire_activation();
+	
 	trace_info("==============================================================");
 	trace_info("========================END UPGRADE===========================");
 	trace_info("==============================================================");
