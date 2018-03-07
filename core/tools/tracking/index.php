@@ -145,7 +145,7 @@ class WoodkitToolTracking extends WoodkitTool{
 						<?php
 						$facebook_pixel = str_replace("\\'", "'", str_replace('\\"', '"', woodkit_get_tool_option($this->slug, 'facebook-pixel')));
 						?>
-						<textarea class="xlarge" id="facebook-pixel" name="facebook-pixel" placeholder="<?php echo esc_attr(__("Pixel code", 'woodkit')); ?>"><?php echo $facebook_pixel; ?></textarea>
+						<textarea class="xlarge" style="min-height: 200px;" id="facebook-pixel" name="facebook-pixel" placeholder="<?php echo esc_attr(__("Pixel code", 'woodkit')); ?>"><?php echo $facebook_pixel; ?></textarea>
 					</div>
 				</div>
 			</div>
