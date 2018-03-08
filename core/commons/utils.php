@@ -973,3 +973,9 @@ function woodkit_get_departments_fr(){
 	$dep['976'] = array("label" => "Mayotte");
 	return $dep;
 }
+
+if (!function_exists('woodkit_clean_php_to_javascript_var')):
+function woodkit_clean_php_to_javascript_var($var){
+	return str_replace("\\'", "'", str_replace('\\"', '"', str_replace("\r", "", str_replace("\n", "", $var))));
+}
+endif;

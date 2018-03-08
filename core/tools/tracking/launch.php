@@ -88,7 +88,7 @@ function tool_tracking_wp_head() {
 		<?php
 	}
 	/** FaceBook Pixel */
-	$facebook_pixel = str_replace("\\'", "'", str_replace('\\"', '"', woodkit_get_tool_option(TRACKING_TOOL_NAME, 'facebook-pixel')));
+	$facebook_pixel = woodkit_clean_php_to_javascript_var(woodkit_get_tool_option(TRACKING_TOOL_NAME, 'facebook-pixel'));
 	if (!empty($facebook_pixel)){
 		echo $facebook_pixel;
 	}
@@ -160,7 +160,7 @@ function tool_tracking_wp_start_body(){
 					$pixel_event_url = trim($facebook_pixel_event['url'], '/');
 				}
 				if ($current_url == $pixel_event_url){
-					echo str_replace("\\'", "'", str_replace('\\"', '"', str_replace("\r", "", str_replace("\n", "", $facebook_pixel_event['code']))));
+					echo woodkit_clean_php_to_javascript_var($facebook_pixel_event['code']);
 				}
 			}
 		}

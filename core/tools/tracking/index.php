@@ -144,7 +144,7 @@ class WoodkitToolTracking extends WoodkitTool{
 				<div class="field textarea">
 					<div class="field-content">
 						<?php
-						$facebook_pixel = str_replace("\\'", "'", str_replace('\\"', '"', woodkit_get_tool_option($this->slug, 'facebook-pixel')));
+						$facebook_pixel = woodkit_clean_php_to_javascript_var(woodkit_get_tool_option($this->slug, 'facebook-pixel'));
 						?>
 						<textarea class="xlarge" style="min-height: 200px;" id="facebook-pixel" name="facebook-pixel" placeholder="<?php echo esc_attr(__("Pixel code", 'woodkit')); ?>"><?php echo $facebook_pixel; ?></textarea>
 					</div>
@@ -177,7 +177,7 @@ class WoodkitToolTracking extends WoodkitTool{
 							$facebookpixel_events_js = "{";
 							foreach ($facebookpixel_events as $k => $facebookpixel_event){
 								$url = !empty($facebookpixel_event['url']) ? esc_attr($facebookpixel_event['url']) : "";
-								$code = !empty($facebookpixel_event['code']) ? str_replace("\\'", "'", str_replace('\\"', '"', str_replace("\r", "", str_replace("\n", "", esc_attr($facebookpixel_event['code']))))) : "";
+								$code = !empty($facebookpixel_event['code']) ? woodkit_clean_php_to_javascript_var(esc_attr($facebookpixel_event['code'])) : "";
 								$parameters = !empty($facebookpixel_event['parameters']) ? esc_attr($facebookpixel_event['parameters']) : "";
 								$facebookpixel_events_js .= intval($k).":{url: \"".$url."\", code:\"".$code."\", parameters:\"".$parameters."\"},";
 							}
