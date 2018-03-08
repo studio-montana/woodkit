@@ -160,7 +160,7 @@ function tool_tracking_wp_start_body(){
 					$pixel_event_url = trim($facebook_pixel_event['url'], '/');
 				}
 				if ($current_url == $pixel_event_url){
-					echo str_replace("\\'", "'", str_replace('\\"', '"', $facebook_pixel_event['code']));
+					echo str_replace("\\'", "'", str_replace('\\"', '"', str_replace("\r", "", str_replace("\n", "", $facebook_pixel_event['code']))));
 				}
 			}
 		}

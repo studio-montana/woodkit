@@ -94,7 +94,7 @@
 				parameters_checked = ' checked="checked"';
 			html += '<span style="display: inline-block; margin-left: 12px;"></span><input type="checkbox" name="facebookpixel-event-parameters-' + event_id + '"'+parameters_checked+' />';
 			html += '<span class="label" style="color: #888; font-style: italic; font-size: 12px;">' + settings['label_event_parameters'] + '</span>';
-			html += '<textarea class="xlarge" name="facebookpixel-event-code-' + event_id + '" placeholder="'+settings['label_event_code']+'">'+code+'</textarea>';
+			html += '<br /><textarea class="xlarge" name="facebookpixel-event-code-' + event_id + '" placeholder="'+settings['label_event_code']+'">'+code+'</textarea>';
 			html += '<span class="delete delete-event btn" data-id="facebookpixel-event-id-' + event_id + '"><i class="fa fa-times"></i></div><input type="hidden" name="facebookpixel-event-id-' + event_id + '" value="' + event_id + '" /></span>';
 			html += '</div>';
 

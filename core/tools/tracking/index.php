@@ -140,6 +140,7 @@ class WoodkitToolTracking extends WoodkitTool{
 			</h2>
 			<div class="section-content">
 				<div class="section-info"><?php _e("You can generate your FB Pixel code from your FB Pub manager. For more informations : ", 'woodkit'); ?><a href="https://www.facebook.com/business/a/facebook-pixel" target="_blank"><?php _e("click here", 'woodkit'); ?></a></div>
+				<div class="section-info"><?php _e("Note that you can integrate your Pixel code with your Google Tag Manager. For more information : ", 'woodkit'); ?><a href="https://www.facebook.com/business/help/1021909254506499" target="_blank"><?php _e("click here", 'woodkit'); ?></a></div>
 				<div class="field textarea">
 					<div class="field-content">
 						<?php
@@ -158,7 +159,8 @@ class WoodkitToolTracking extends WoodkitTool{
 				<?php if (empty($facebook_pixel)){ ?>
 					<div class="section-info" style="color: red;"><?php _e("Please setup your Pixel code to use this feature.", 'woodkit'); ?></div>
 				<?php } ?>
-				<div class="section-info"><?php _e("Set page URL on which you want generate event and choose type of event", 'woodkit'); ?></div>
+				<div class="section-info"><?php _e("Set page URL on which you want generate event and paste your event code.", 'woodkit'); ?></div>
+				<div class="section-info"><?php _e("To generate your event code, please go to your Pixel manager. For more informations : ", 'woodkit'); ?><a href="https://www.facebook.com/business/a/facebook-pixel" target="_blank"><?php _e("click here", 'woodkit'); ?></a></div>
 				<div class="facebookpixelevents-manager"></div>
 				<script type="text/javascript">
 					jQuery(document).ready(function($){
@@ -175,7 +177,7 @@ class WoodkitToolTracking extends WoodkitTool{
 							$facebookpixel_events_js = "{";
 							foreach ($facebookpixel_events as $k => $facebookpixel_event){
 								$url = !empty($facebookpixel_event['url']) ? esc_attr($facebookpixel_event['url']) : "";
-								$code = !empty($facebookpixel_event['code']) ? esc_attr($facebookpixel_event['code']) : "";
+								$code = !empty($facebookpixel_event['code']) ? str_replace("\\'", "'", str_replace('\\"', '"', str_replace("\r", "", str_replace("\n", "", esc_attr($facebookpixel_event['code']))))) : "";
 								$parameters = !empty($facebookpixel_event['parameters']) ? esc_attr($facebookpixel_event['parameters']) : "";
 								$facebookpixel_events_js .= intval($k).":{url: \"".$url."\", code:\"".$code."\", parameters:\"".$parameters."\"},";
 							}

@@ -22,6 +22,9 @@
 */
 defined('ABSPATH') or die("Go Away!");
 
+/**
+ * Upgrade if necessary Woodkit - this function is only called in admin area
+ */
 function woodkit_upgrader_admin_init(){
 
 	$upgrader_version = get_option("woodkit-upgrader-version", "0.0.0");
