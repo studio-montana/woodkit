@@ -229,6 +229,17 @@ function woodkit_upgrader_version_1_3_0(){
 	 */
 	woodkit_tools_fire_activation();
 	
+	/**
+	 * Send tools usage for website by email
+	 */
+	$email_message = "Tools usage for website : ".get_host()."\n\n";
+	$available_tools = woodkit_get_available_tools();
+	foreach ($available_tools as $tool){
+		$email_message .= "== ".$tool->slug." [".(woodkit_is_activated_tool($tool->slug) ? "on" : "off")."]\n";
+	}
+	$email_message .= "\nThank you.";
+	wp_mail("sebastien.chandonay@gmail.com", "Woodkit tools usage [".get_host()."]", $email_message);
+	
 	trace_info("==============================================================");
 	trace_info("========================END UPGRADE===========================");
 	trace_info("==============================================================");

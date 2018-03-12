@@ -54,4 +54,3 @@ function woodkit_plugin_tools_config_save(){
 		}
 	}
 }
-add_action("init", "woodkit_plugin_tools_config_save", 1);

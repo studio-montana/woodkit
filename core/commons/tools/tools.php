@@ -233,9 +233,8 @@ function woodkit_activate_tool($tool_slug){
 	if (is_object($tool) && !woodkit_is_activated_tool($tool_slug)){
 		woodkit_save_tool_option($tool_slug, 'active', 'on');
 		$tool->activate();
-		woodkit_get_activated_tools(true); // reload activated tools
 	}else{
-		trace_err("woodkit_activate_tool - try to activate null tool");
+		trace_err("woodkit_activate_tool - try to activate null tool for slug {$tool_slug}");
 	}
 }
 endif;
@@ -265,7 +264,6 @@ function woodkit_tools_fire_activation(){
 	$activated_tools = woodkit_get_activated_tools(true);
 	if (!empty($activated_tools)){
 		foreach ($activated_tools as $tool){
-			trace_info("plugin.activate.php - fire activation on tool [{$tool->slug}]");
 			$tool->activate();
 		}
 	}
@@ -280,7 +278,6 @@ function woodkit_tools_fire_deactivation(){
 	$activated_tools = woodkit_get_activated_tools(true);
 	if (!empty($activated_tools)){
 		foreach ($activated_tools as $tool){
-			trace_info("plugin.deactivate.php - fire deactivation on tool [{$tool->slug}]");
 			$tool->deactivate();
 		}
 	}
@@ -289,12 +286,13 @@ endif;
 
 if (!function_exists("woodkit_launch_tools")):
 /**
- * launch activated tools
+ * launch activated tools (called in woodkit.php on 'init' action)
 */
 function woodkit_launch_tools() {
-	$activated_tools = woodkit_get_activated_tools();
+	$activated_tools = woodkit_get_activated_tools(true);
 	if (!empty($activated_tools)){
 		foreach ($activated_tools as $tool){
+			trace_info("launch tool[{$tool->slug}]");
 			$tool->launch();
 			do_action("woodkit_tool_launched", $tool->slug);
 		}
@@ -302,8 +300,3 @@ function woodkit_launch_tools() {
 	do_action("woodkit_tools_launched", $activated_tools);
 }
 endif;
-
-/**
- * launch activated tools
- */
-woodkit_launch_tools();

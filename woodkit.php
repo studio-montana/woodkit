@@ -152,6 +152,22 @@ if(!class_exists('Woodkit')){
 		 */
 		public static function init() {
 			
+			if (is_admin()){
+				/** save woodkit options (always before 'launch woodkit tools') */
+				if (class_exists("WoodkitOptions")){
+					WoodkitOptions::save();
+				}
+				/** save woodkit tools options (always before 'launch woodkit tools') */
+				if (function_exists("woodkit_plugin_tools_config_save")){
+					woodkit_plugin_tools_config_save();
+				}
+			}
+			
+			/** launch activated tools (always after 'save woodkit options') */
+			if (function_exists("woodkit_launch_tools")){
+				woodkit_launch_tools();
+			}
+			
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'plugin.init.php');
 
 			do_action("woodkit_before_init");

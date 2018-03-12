@@ -53,6 +53,7 @@ class WoodkitOptions {
 	
 	/**
 	 * This method is called by 'init' hook action (before this Class is intanciated) - be careful to check correct nonce
+	 * (called in woodkit.php on 'init' action)
 	 */
 	public static function save(){
 		// woodkit main form (note: tool's setups are managed separatly)
@@ -69,6 +70,7 @@ class WoodkitOptions {
 		// tool activation / deactivation
 		if (isset($_GET) && !empty($_GET) && isset($_GET[self::$nonce_name]) && wp_verify_nonce($_GET[self::$nonce_name], self::$nonce_name)){
 			if (isset($_GET['action']) && !empty($_GET['action']) && isset($_GET['tool']) && !empty($_GET['tool'])){
+				trace_info("Save config !");
 				$action = woodkit_get_request_param('action');
 				$tool_slug = woodkit_get_request_param('tool');
 				if ($action == 'activate'){
@@ -221,7 +223,4 @@ class WoodkitOptions {
 		</div>
 		<?php
 	}
-}
-if (is_admin()){
-	add_action('init', array('WoodkitOptions', 'save'));
 }
