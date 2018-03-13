@@ -180,6 +180,12 @@ function woodkit_upgrader_version_1_3_0(){
 			trace_info("= option {$option} (default: {$get_default}) : ".var_export($old_option, true));
 		}
 		/**
+		 * 'secure' force active
+		 */
+		if ($tool_slug == 'secure'){
+			$new_tool_options['active'] = 'on';
+		}
+		/**
 		 * 'googleanalytics' tool renamed to 'tracking'
 		 */
 		if ($tool_slug == 'googleanalytics'){

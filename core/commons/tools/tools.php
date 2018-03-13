@@ -304,7 +304,6 @@ function woodkit_launch_tools() {
 	$activated_tools = woodkit_get_activated_tools(true);
 	if (!empty($activated_tools)){
 		foreach ($activated_tools as $tool){
-			trace_info("launch tool[{$tool->slug}]");
 			$tool->launch();
 			do_action("woodkit_tool_launched", $tool->slug);
 		}

@@ -26,7 +26,6 @@ defined('ABSPATH') or die("Go Away!");
  * ajoute le post-type 'portfolio'
 */
 function add_portfolio_post_type(){
-	trace_info("add_portfolio_post_type()");
 	// woodkit post type
 	$labels = array(
 			'name'               => __('Portfolios', WOODKIT_PLUGIN_TEXT_DOMAIN),

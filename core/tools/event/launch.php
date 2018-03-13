@@ -51,7 +51,6 @@ if (!function_exists("add_event_post_type")):
  * ajoute le post-type 'event'
 */
 function add_event_post_type(){
-	trace_info("add_event_post_type()");
 	// woodkit post type
 	$labels = array(
 			'name'               => __('Events', WOODKIT_PLUGIN_TEXT_DOMAIN),

@@ -49,10 +49,10 @@ class WoodkitToolUpdateNotifier extends WoodkitTool{
 		 */
 		$currentSchedule = wp_get_schedule('woodkit_tool_updatenotifier_cron_daily');
 		if (empty($currentSchedule)){
-			trace_info("tool_updatenotifier_activate - Add cron");
+			// trace_info("tool_updatenotifier_activate - Add cron");
 			wp_schedule_event( time(), 'daily', 'woodkit_tool_updatenotifier_cron_daily');
 		}else{
-			trace_info("tool_updatenotifier_activate - Cron already exists");
+			// trace_info("tool_updatenotifier_activate - Cron already exists");
 		}
 	}
 	
@@ -61,7 +61,7 @@ class WoodkitToolUpdateNotifier extends WoodkitTool{
 		 * Remove CRON
 		 */
 		wp_clear_scheduled_hook('woodkit_tool_updatenotifier_cron_daily');
-		trace_info("tool_updatenotifier_activate - Cron already exists");
+		// trace_info("tool_updatenotifier_activate - Cron already exists");
 	}
 	
 	public function get_config_fields(){
