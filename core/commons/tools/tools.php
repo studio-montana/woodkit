@@ -223,6 +223,18 @@ function woodkit_is_activated_tool($tool_slug, $reload = false) {
 }
 endif;
 
+if (!function_exists("woodkit_is_registered_tool")):
+/**
+ * back compatibility for version older than 1.3.0
+ * @deprecated since 1.3.0 - please use woodkit_is_activated_tool($tool_slug, $reload)
+ * @param unknown $tool_slug
+ * @return boolean
+ */
+function woodkit_is_registered_tool($tool_slug){
+	return woodkit_is_activated_tool($tool_slug);
+}
+endif;
+
 if (!function_exists("woodkit_activate_tool")):
 /**
  * activate specified tool
