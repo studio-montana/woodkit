@@ -184,6 +184,8 @@ function woodkit_upgrader_version_1_3_0(){
 		 */
 		if ($tool_slug == 'googleanalytics'){
 			$tool_slug = 'tracking';
+			// force active
+			$new_tool_options['active'] = 'on';
 			// rename option name 'code' to 'googleanalytics-code'
 			if (isset($new_tool_options['code'])){
 				$new_tool_options['googleanalytics-code'] = $new_tool_options['code'];
