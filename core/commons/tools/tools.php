@@ -225,7 +225,7 @@ endif;
 
 if (!function_exists("woodkit_is_registered_tool")):
 /**
- * back compatibility for version older than 1.3.0
+ * back compatibility for version older than 1.3.0 (this function is used in few themes which override some woodkit tool templates (wall for example))
  * @deprecated since 1.3.0 - please use woodkit_is_activated_tool($tool_slug, $reload)
  * @param unknown $tool_slug
  * @return boolean
