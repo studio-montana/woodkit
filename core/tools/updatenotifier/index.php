@@ -36,7 +36,7 @@ class WoodkitToolUpdateNotifier extends WoodkitTool{
 		parent::__construct(
 				'updatenotifier', 								// slug
 				__("Update Notifier", 'woodkit'),				// name
-				__("Get notification when something, themes, plugins, has to be updated. It's very useful to keep your website up to date and improve security.", 'woodkit'),	// description
+				__("[COMING SOON] - Get notification when something, themes, plugins, has to be updated. It's very useful to keep your website up to date and improve security.", 'woodkit'),	// description
 				true,										// has config page
 				false,										// add config page in woodkit submenu
 				WOODKIT_URL_DOCUMENTATION.'/notification-mise-a-jour'		// documentation url
