@@ -35,6 +35,8 @@ class WoodkitPluginUploader {
 		$this->package = $package;
 		$this->pluginFile = $pluginFile;
 		$this->slug = plugin_basename($this->pluginFile);
+		
+		trace_info("woodkit upgrader - __construct");
 
 		if (file_exists($this->pluginFile)){
 			add_filter("plugins_api", array( $this, "setPluginInfo" ), 10, 3);

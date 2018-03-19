@@ -26,7 +26,7 @@ defined('ABSPATH') or die("Go Away!");
  * Plugin uploader
  */
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER.'plugin-uploader.class.php');
-if (is_admin() && !defined('DOING_AJAX') && !defined('DOING_AUTOSAVE')){
+if (is_admin() && !defined('DOING_AUTOSAVE')){
     new WoodkitPluginUploader('woodkit', WP_PLUGIN_DIR.'/woodkit/woodkit.php');
 }
 
@@ -34,7 +34,7 @@ if (is_admin() && !defined('DOING_AJAX') && !defined('DOING_AUTOSAVE')){
  * Theme uploader
  */
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER.'theme-uploader.class.php');
-if (is_admin() && !defined('DOING_AJAX') && !defined('DOING_AUTOSAVE')){
+if (is_admin() && !defined('DOING_AUTOSAVE')){
     new WoodkitThemeUploader('woody');
 }
 ?>
