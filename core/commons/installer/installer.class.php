@@ -23,6 +23,10 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
+ * IMPORTANT : never check is_defined('DOING_AJAX') or is_defined('AUTOSAVE') => it breaks plugin rename after update !
+ */
+
+/**
  * Plugin uploader
  */
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER.'plugin-uploader.class.php');
