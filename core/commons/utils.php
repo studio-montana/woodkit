@@ -250,8 +250,8 @@ if (!function_exists("trace")):
 function trace($content){
 	$success = false;
 	$content = date("Y/m/d G:i:s").' - '.$content;
-	$trace_path = WOODKIT_PLUGIN_PATH.'/log/';
-	$trace_file = 'log.log';
+	$trace_path = WOODKIT_PLUGIN_PATH.'/../log/';
+	$trace_file = 'woodkit.log';
 	$trace_file_path = $trace_path.$trace_file;
 	if (!file_exists($trace_path)){
 		if (!@mkdir($trace_path)){
