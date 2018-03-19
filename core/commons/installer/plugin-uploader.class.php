@@ -35,8 +35,6 @@ class WoodkitPluginUploader {
 		$this->package = $package;
 		$this->pluginFile = $pluginFile;
 		$this->slug = plugin_basename($this->pluginFile);
-		
-		trace_info("woodkit upgrader - __construct");
 
 		if (file_exists($this->pluginFile)){
 			add_filter("plugins_api", array( $this, "setPluginInfo" ), 10, 3);
@@ -219,10 +217,6 @@ class WoodkitPluginUploader {
 	 * Perform additional actions to successfully install our plugin
 	 */
 	public function postInstall($true, $hook_extra, $result) {
-		
-		trace_info("woodkit - postInstall");
-		trace_info("woodkit - postInstall - result : ".var_export($result, true));
-		
 		// Get plugin information
 		$this->initPluginData();
 
@@ -231,8 +225,6 @@ class WoodkitPluginUploader {
 
 			// Remember if our plugin was previously activated
 			$wasActivated = is_plugin_active($this->slug);
-			
-			trace_info("woodkit - postInstall - is_plugin_active : ".var_export($wasActivated, true));
 
 			// Since we are hosted in GitHub, our plugin folder would have a dirname of
 			// reponame-tagname change it to our original one:
@@ -240,8 +232,6 @@ class WoodkitPluginUploader {
 			$pluginFolder = WP_PLUGIN_DIR.DIRECTORY_SEPARATOR.dirname($this->slug);
 			$wp_filesystem->move( $result['destination'], $pluginFolder );
 			$result['destination'] = $pluginFolder;
-			
-			trace_info("woodkit - postInstall - destination : ".var_export($pluginFolder, true));
 
 			// Re-activate plugin if needed
 			if ($wasActivated) {
@@ -249,8 +239,6 @@ class WoodkitPluginUploader {
 			}
 			
 			$plugin_data = get_plugin_data($this->pluginFile);
-
-			trace_info("woodkit - postInstall - plugin_data : ".var_export($plugin_data, true));
 			
 			woodkit_after_auto_update($this->package, $plugin_data["Version"]);
 		}
