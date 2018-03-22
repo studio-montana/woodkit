@@ -195,7 +195,8 @@ endif;
 
 if (! function_exists ( "seo_document_title_parts" )) :
 /**
- * Filter the site meta title.
+ * Filter the site meta title
+ * @since WP 4.4
 */
 function seo_document_title_parts($title_parts) {
 	$title = '';
@@ -241,10 +242,15 @@ endif;
 if (! function_exists ( "seo_wp_title" )) :
 /**
  * Filter the site meta title.
+ * @deprecated since WP 4.4
 */
 function seo_wp_title($title, $sep, $seplocation) {
 	return seo_get_metatitle ( $sep, false );
 }
+/**
+ * Filter for title tag
+ * @deprecated since WP 4.4
+ */
 add_filter ( 'wp_title', 'seo_wp_title', 100, 3 );
 
 endif;
