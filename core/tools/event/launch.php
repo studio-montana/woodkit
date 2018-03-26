@@ -319,7 +319,8 @@ function get_event_options($id_selected = null){
  * Retrieve pretty event date
  * @param string $event or get current post if null
  */
-function get_event_date_pretty($post = null, $display_hours = true, $force_minutes = false){
+function get_event_date_pretty($post = null, $display_hours = true, $display_day = true, $display_year = true, $force_minutes = false){
+	$date_s = "";
 	$meta_date_begin_slug = 'meta_event_date_begin';
 	$meta_date_end_slug = 'meta_event_date_end';
 	$lang = woodkit_get_current_lang();
@@ -329,85 +330,163 @@ function get_event_date_pretty($post = null, $display_hours = true, $force_minut
 	if (empty($post) || ! is_numeric($post)){
 		$post = get_the_ID();
 	}
-	$date_s = "";
+	/**
+	 * Date begin
+	 */
 	$meta_date_begin = get_post_meta($post, $meta_date_begin_slug, true);
-	$meta_date_begin_s = "";
-	$meta_day_begin_s = "";
-	$meta_month_begin_s = "";
-	$meta_year_begin_s = "";
-	$meta_date_hour_begin_s = "";
 	if (!empty($meta_date_begin) && is_numeric($meta_date_begin)){
 		$begin_datetime = new DateTime();
 		$begin_datetime->setTimestamp($meta_date_begin);
 		$meta_day_begin_s = $begin_datetime->format("d");
-		$meta_month_begin_s = get_textual_month($meta_date_begin);
-		$meta_date_begin_s = $meta_day_begin_s." ".$meta_month_begin_s;
+		$meta_month_begin_s = function_exists('get_textual_month') ? get_textual_month($meta_date_begin) : $begin_datetime->format("m");
 		$meta_year_begin_s = $begin_datetime->format("Y");
-		$meta_date_minute_begin = $begin_datetime->format("i");
 		if ($lang == 'en'){
-			if (intval($meta_date_minute_begin) > 0 || $force_minutes){
+			if (intval($begin_datetime->format("i")) > 0 || $force_minutes){
 				$meta_date_hour_begin_s = $begin_datetime->format("g:ia");
 			}else{
 				$meta_date_hour_begin_s = $begin_datetime->format("ga");
 			}
 		}else{
-			if (intval($meta_date_minute_begin) > 0 || $force_minutes){
+			if (intval($begin_datetime->format("i")) > 0 || $force_minutes){
 				$meta_date_hour_begin_s = $begin_datetime->format("H:i");
 			}else{
 				$meta_date_hour_begin_s = $begin_datetime->format("H")."h";
 			}
 		}
-	}
-	$meta_date_end = get_post_meta($post, $meta_date_end_slug, true);
-	$meta_date_end_s = "";
-	$meta_day_end_s = "";
-	$meta_month_end_s = "";
-	$meta_year_end_s = "";
-	$meta_date_hour_end_s = "";
-	if (!empty($meta_date_end) && is_numeric($meta_date_end)){
-		$end_datetime = new DateTime();
-		$end_datetime->setTimestamp($meta_date_end);
-		$meta_day_end_s = $end_datetime->format("d");
-		$meta_month_end_s = get_textual_month($meta_date_end);
-		$meta_date_end_s = $meta_day_end_s." ".$meta_month_end_s;
-		$meta_year_end_s = $end_datetime->format("Y");
-		$meta_date_minute_end = $end_datetime->format("i");
-		if ($lang == 'en'){
-			if (intval($meta_date_minute_end) > 0 || $force_minutes){
-				$meta_date_hour_end_s = $end_datetime->format("g:ia");
+		/**
+		 * Date end
+		 */
+		$meta_date_end = get_post_meta($post, $meta_date_end_slug, true);
+		if (!empty($meta_date_end) && is_numeric($meta_date_end)){
+			$end_datetime = new DateTime();
+			$end_datetime->setTimestamp($meta_date_end);
+			$meta_day_end_s = $end_datetime->format("d");
+			$meta_month_end_s = function_exists('get_textual_month') ? get_textual_month($meta_date_end) : $end_datetime->format("m");
+			$meta_year_end_s = $end_datetime->format("Y");
+			if ($lang == 'en'){
+				if (intval($end_datetime->format("i")) > 0 || $force_minutes){
+					$meta_date_hour_end_s = $end_datetime->format("g:ia");
+				}else{
+					$meta_date_hour_end_s = $end_datetime->format("ga");
+				}
 			}else{
-				$meta_date_hour_end_s = $end_datetime->format("ga");
+				if (intval($end_datetime->format("i")) > 0 || $force_minutes){
+					$meta_date_hour_end_s = $end_datetime->format("H:i");
+				}else{
+					$meta_date_hour_end_s = $end_datetime->format("H")."h";
+				}
+			}
+			/**
+			 * Same day
+			 */
+			if ($meta_day_begin_s == $meta_day_end_s && $meta_month_begin_s == $meta_month_end_s && $meta_year_begin_s == $meta_year_end_s){
+				if ($display_day){
+					$date_s .= $meta_day_begin_s." ";
+				}
+				$date_s .= $meta_month_begin_s;
+				if ($display_year){
+					$date_s .= " ".$meta_year_begin_s;
+				}
+				if ($display_hours){
+					if ($meta_date_hour_begin_s != $meta_date_hour_end_s){
+						$date_s .= " ".__("from (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s." ".__("to (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+					}else{
+						$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+					}
+				}
+			}else{
+				/**
+				 * Same month
+				 */
+				if ($meta_month_begin_s == $meta_month_end_s && $meta_year_begin_s == $meta_year_end_s){
+					if ($display_day){
+						$date_s .= __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_begin_s." ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ";
+					}
+					$date_s .= $meta_month_begin_s;
+					if ($display_year){
+						$date_s .= " ".$meta_year_begin_s;
+					}
+					if ($display_hours){
+						if ($meta_date_hour_begin_s != $meta_date_hour_end_s){
+							$date_s .= " ".__("from (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s." ".__("to (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+						}else{
+							$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+						}
+					}
+				}else{
+					/**
+					 * Same year
+					 */
+					if ($meta_year_begin_s == $meta_year_end_s){
+						if( $display_day){
+							$date_s .= __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= " ".$meta_day_begin_s;
+						}else{
+							$date_s .= __("from (month)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+						}
+						$date_s .= " ".$meta_month_begin_s;
+						if ($display_hours){
+							$date_s .=" ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+						}
+						if( $display_day){
+							$date_s .= " ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= " ".$meta_day_end_s;
+						}else{
+							$date_s .= " ".__("to (month)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+						}
+						$date_s .= " ".$meta_month_end_s;
+						if ($display_year){
+							$date_s .= " ".$meta_year_begin_s;
+						}
+						if ($display_hours){
+							$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+						}
+					}else{
+						/**
+						 * Different day / month / year
+						 */
+						if( $display_day){
+							$date_s .= __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= " ".$meta_day_begin_s;
+						}else{
+							$date_s .= __("from (month)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+						}
+						$date_s .= " ".$meta_month_begin_s;
+						if ($display_year){
+							$date_s .= " ".$meta_year_begin_s;
+						}
+						if ($display_hours){
+							$date_s .=" ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+						}
+						if( $display_day){
+							$date_s .= " ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= " ".$meta_day_end_s;
+						}else{
+							$date_s .= " ".__("to (month)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+						}
+						$date_s .= " ".$meta_month_end_s;
+						if ($display_year){
+							$date_s .= " ".$meta_year_end_s;
+						}
+						if ($display_hours){
+							$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+						}
+					}
+				}
 			}
 		}else{
-			if (intval($meta_date_minute_begin) > 0 || $force_minutes){
-				$meta_date_hour_end_s = $end_datetime->format("H:i");
-			}else{
-				$meta_date_hour_end_s = $end_datetime->format("H")."h";
+			/**
+			 * One day
+			 */
+			if ($display_day){
+				$date_s .= $meta_day_begin_s." ";
 			}
-		}
-	}
-	if (!empty($meta_date_begin_s) && !empty($meta_date_end_s)){
-		if ($meta_date_begin_s == $meta_date_end_s){
-			if ($meta_date_hour_begin_s != $meta_date_hour_end_s){
-				$hour_s = " ".__("from (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s." ".__("to (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
-			}else{
-				$hour_s = " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+			$date_s .= $meta_month_begin_s." ".$meta_year_begin_s;
+			if ($display_year){
+				$date_s .= " ".$meta_year_begin_s;
 			}
-			if (!$display_hours){
-				$hour_s = "";
-			}
-			$date_s = $meta_day_begin_s." ".$meta_month_begin_s." ".$meta_year_begin_s.$hour_s;
-		}else{
-			$hour_begin_s = " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
-			$hour_end_s = " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
-			if (!$display_hours){
-				$hour_begin_s = "";
-				$hour_end_s = "";
-			}
-			if ($meta_year_begin_s == $meta_year_end_s){
-				$date_s = __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_begin_s." ".$meta_month_begin_s.$hour_begin_s." ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ".$meta_month_end_s." ".$meta_year_end_s.$hour_end_s;
-			}else{
-				$date_s = __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_begin_s." ".$meta_month_begin_s.$meta_year_begin_s." ".$hour_begin_s." ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ".$meta_month_end_s." ".$meta_year_end_s.$hour_end_s;
+			if ($display_hours){
+				$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
 			}
 		}
 	}

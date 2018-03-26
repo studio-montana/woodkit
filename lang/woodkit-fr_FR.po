@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom\n"
-"POT-Creation-Date: 2018-03-13 14:39+0100\n"
-"PO-Revision-Date: 2018-03-13 15:12+0100\n"
+"POT-Creation-Date: 2018-03-26 16:06+0200\n"
+"PO-Revision-Date: 2018-03-26 16:08+0200\n"
 "Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
 "Language-Team: Sébastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
 "com artcyril@gmail.com>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../core/commons/config/config-render.php:88
+#: ../core/commons/config/config-render.php:87
 msgid "Woodkit setup"
 msgstr "Réglages Woodkit"
 
-#: ../core/commons/config/config-render.php:93
+#: ../core/commons/config/config-render.php:92
 #: ../core/tools/excerpt/index.php:63 ../core/tools/fancybox/index.php:63
 #: ../core/tools/pagination/index.php:65 ../core/tools/secure/index.php:89
 #: ../core/tools/seo/index.php:75 ../core/tools/shortcodes/index.php:71
@@ -32,35 +32,35 @@ msgstr "Réglages Woodkit"
 msgid "General"
 msgstr "Général"
 
-#: ../core/commons/config/config-render.php:103
+#: ../core/commons/config/config-render.php:102
 msgid "Woodkit key activation"
 msgstr "Clé d’activation de Woodkit"
 
-#: ../core/commons/config/config-render.php:104
+#: ../core/commons/config/config-render.php:103
 msgid "YOUR KEY"
 msgstr "VOTRE CLÉ"
 
-#: ../core/commons/config/config-render.php:106
+#: ../core/commons/config/config-render.php:105
 msgid "Your key is invalid"
 msgstr "Votre clé est invalide"
 
-#: ../core/commons/config/config-render.php:107
+#: ../core/commons/config/config-render.php:106
 msgid "Get key"
 msgstr "Obtenir une clé"
 
-#: ../core/commons/config/config-render.php:109
+#: ../core/commons/config/config-render.php:108
 msgid "Your site is registered"
 msgstr "Votre site est enregistré"
 
-#: ../core/commons/config/config-render.php:112
+#: ../core/commons/config/config-render.php:111
 msgid "Setup your key to get woodkit updates"
 msgstr "Renseignez votre clé pour obtenir les mises à jour Woodkit"
 
-#: ../core/commons/config/config-render.php:132
+#: ../core/commons/config/config-render.php:131
 msgid "Options position"
 msgstr "Position des options"
 
-#: ../core/commons/config/config-render.php:134
+#: ../core/commons/config/config-render.php:133
 #: ../core/tools/navigation/widgets/templates/navigation-form-widgetmanager.php:37
 #: ../core/tools/navigation/widgets/templates/navigation-form-widgetmanager.php:55
 #: ../core/tools/navigation/widgets/templates/navigation-form.php:33
@@ -68,53 +68,53 @@ msgstr "Position des options"
 msgid "default"
 msgstr "défaut"
 
-#: ../core/commons/config/config-render.php:135
+#: ../core/commons/config/config-render.php:134
 msgid "high position"
 msgstr "position haute"
 
-#: ../core/commons/config/config-render.php:136
+#: ../core/commons/config/config-render.php:135
 msgid "low position"
 msgstr "position basse"
 
-#: ../core/commons/config/config-render.php:139
+#: ../core/commons/config/config-render.php:138
 msgid "Woodkit options position on your content editor"
 msgstr ""
 
-#: ../core/commons/config/config-render.php:143
+#: ../core/commons/config/config-render.php:142
 #: ../core/commons/tools/tool.class.php:103
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: ../core/commons/config/config-render.php:150
+#: ../core/commons/config/config-render.php:149
 #: ../core/commons/tools/tool.class.php:93
 msgid "Woodkit tools"
 msgstr "Outils Woodkit"
 
-#: ../core/commons/config/config-render.php:156
-#: ../core/commons/config/config-render.php:215
+#: ../core/commons/config/config-render.php:155
+#: ../core/commons/config/config-render.php:214
 msgid "Tool name"
 msgstr ""
 
-#: ../core/commons/config/config-render.php:157
-#: ../core/commons/config/config-render.php:216
+#: ../core/commons/config/config-render.php:156
+#: ../core/commons/config/config-render.php:215
 msgid "Description"
 msgstr "Description"
 
-#: ../core/commons/config/config-render.php:158
-#: ../core/commons/config/config-render.php:217
+#: ../core/commons/config/config-render.php:157
+#: ../core/commons/config/config-render.php:216
 msgid "Doc."
 msgstr ""
 
-#: ../core/commons/config/config-render.php:174
+#: ../core/commons/config/config-render.php:173
 #: ../core/commons/config/config.php:278
 msgid "Setup"
 msgstr "Réglages"
 
-#: ../core/commons/config/config-render.php:182
+#: ../core/commons/config/config-render.php:181
 msgid "Deactivate"
 msgstr "Désactiver"
 
-#: ../core/commons/config/config-render.php:189
+#: ../core/commons/config/config-render.php:188
 msgid "Activate"
 msgstr "Activer"
 
@@ -160,107 +160,203 @@ msgstr "Aucune entrée"
 msgid "View all tools"
 msgstr "Voir tous les outils"
 
-#: ../core/commons/utils.php:523
+#: ../core/commons/utils.php:533
 msgid "Invalid URL..."
 msgstr "URL invalide…"
 
-#: ../core/commons/utils.php:594
+#: ../core/commons/utils.php:604
 msgid "Invalid Format..."
 msgstr "Format invalide…"
 
-#: ../core/commons/utils.php:594
+#: ../core/commons/utils.php:604
 msgid "are supported"
 msgstr "sont supportés"
 
-#: ../core/commons/utils.php:611
+#: ../core/commons/utils.php:621
 msgid "january"
 msgstr "janvier"
 
-#: ../core/commons/utils.php:613
+#: ../core/commons/utils.php:623
 msgid "february"
 msgstr "février"
 
-#: ../core/commons/utils.php:615
+#: ../core/commons/utils.php:625
 msgid "march"
 msgstr "mars"
 
-#: ../core/commons/utils.php:617
+#: ../core/commons/utils.php:627
 msgid "april"
 msgstr "avril"
 
-#: ../core/commons/utils.php:619 ../core/commons/utils.php:656
+#: ../core/commons/utils.php:629 ../core/commons/utils.php:740
 msgid "may"
 msgstr "mai"
 
-#: ../core/commons/utils.php:621
+#: ../core/commons/utils.php:631
 msgid "june"
 msgstr "juin"
 
-#: ../core/commons/utils.php:623
+#: ../core/commons/utils.php:633
 msgid "july"
 msgstr "juillet"
 
-#: ../core/commons/utils.php:625
+#: ../core/commons/utils.php:635
 msgid "august"
 msgstr "août"
 
-#: ../core/commons/utils.php:627
+#: ../core/commons/utils.php:637
 msgid "september"
 msgstr "septembre"
 
-#: ../core/commons/utils.php:629
+#: ../core/commons/utils.php:639
 msgid "october"
 msgstr "octobre"
 
-#: ../core/commons/utils.php:631
+#: ../core/commons/utils.php:641
 msgid "november"
 msgstr "novembre"
 
-#: ../core/commons/utils.php:633
+#: ../core/commons/utils.php:643
 msgid "december"
 msgstr "décembre"
 
-#: ../core/commons/utils.php:648
+#: ../core/commons/utils.php:658
+msgid "January"
+msgstr "Janvier"
+
+#: ../core/commons/utils.php:660
+msgid "February"
+msgstr "Février"
+
+#: ../core/commons/utils.php:662
+msgid "March"
+msgstr "Mars"
+
+#: ../core/commons/utils.php:664
+msgid "April"
+msgstr "Avril"
+
+#: ../core/commons/utils.php:666
+msgid "May"
+msgstr "Mai"
+
+#: ../core/commons/utils.php:668
+msgid "June"
+msgstr "Juin"
+
+#: ../core/commons/utils.php:670
+msgid "July"
+msgstr "Juillet"
+
+#: ../core/commons/utils.php:672
+msgid "August"
+msgstr "Août"
+
+#: ../core/commons/utils.php:674
+msgid "September"
+msgstr "Septembre"
+
+#: ../core/commons/utils.php:676
+msgid "October"
+msgstr "Octobre"
+
+#: ../core/commons/utils.php:678
+msgid "November"
+msgstr "Novembre"
+
+#: ../core/commons/utils.php:680
+msgid "December"
+msgstr "Décembre"
+
+#: ../core/commons/utils.php:695
+msgid "JANUARY"
+msgstr "JANVIER"
+
+#: ../core/commons/utils.php:697
+msgid "FEBRUARY"
+msgstr "FÉVRIER"
+
+#: ../core/commons/utils.php:699
+msgid "MARCH"
+msgstr "MARS"
+
+#: ../core/commons/utils.php:701
+msgid "APRIL"
+msgstr "AVRIL"
+
+#: ../core/commons/utils.php:703
+msgid "MAY"
+msgstr "MAI"
+
+#: ../core/commons/utils.php:705
+msgid "JUNE"
+msgstr "JUIN"
+
+#: ../core/commons/utils.php:707
+msgid "JULY"
+msgstr "JUILLET"
+
+#: ../core/commons/utils.php:709
+msgid "AOUT"
+msgstr "AOÛT"
+
+#: ../core/commons/utils.php:711
+msgid "SEPTEMBER"
+msgstr "SEPTEMBRE"
+
+#: ../core/commons/utils.php:713
+msgid "OCTOBER"
+msgstr "OCTOBRE"
+
+#: ../core/commons/utils.php:715
+msgid "NOVEMBER"
+msgstr "NOVEMBRE"
+
+#: ../core/commons/utils.php:717
+msgid "DECEMBER"
+msgstr "DÉCEMBRE"
+
+#: ../core/commons/utils.php:732
 msgid "jan"
 msgstr "jan"
 
-#: ../core/commons/utils.php:650
+#: ../core/commons/utils.php:734
 msgid "feb"
 msgstr "fév"
 
-#: ../core/commons/utils.php:652
+#: ../core/commons/utils.php:736
 msgid "mar"
 msgstr "mar"
 
-#: ../core/commons/utils.php:654
+#: ../core/commons/utils.php:738
 msgid "apr"
 msgstr "avr"
 
-#: ../core/commons/utils.php:658
+#: ../core/commons/utils.php:742
 msgid "jun"
 msgstr "juin"
 
-#: ../core/commons/utils.php:660
+#: ../core/commons/utils.php:744
 msgid "jul"
 msgstr "juil"
 
-#: ../core/commons/utils.php:662
+#: ../core/commons/utils.php:746
 msgid "aug"
 msgstr "aout"
 
-#: ../core/commons/utils.php:664
+#: ../core/commons/utils.php:748
 msgid "sept"
 msgstr "sept"
 
-#: ../core/commons/utils.php:666
+#: ../core/commons/utils.php:750
 msgid "oct"
 msgstr "oct"
 
-#: ../core/commons/utils.php:668
+#: ../core/commons/utils.php:752
 msgid "nov"
 msgstr "nov"
 
-#: ../core/commons/utils.php:670
+#: ../core/commons/utils.php:754
 msgid "dec"
 msgstr "déc"
 
@@ -529,8 +625,8 @@ msgstr ""
 "Cacher le titre, l’image à la une, mettre un titre alternatif, mettre en "
 "avant un contenu, mettre un sous-titre…"
 
-#: ../core/tools/event/index.php:38 ../core/tools/event/launch.php:57
-#: ../core/tools/event/launch.php:62
+#: ../core/tools/event/index.php:38 ../core/tools/event/launch.php:56
+#: ../core/tools/event/launch.php:61
 #: ../core/tools/event/widgets/tool-event-widget.class.php:34
 #: ../core/tools/event/widgets/tool-event-widget.class.php:72
 msgid "Events"
@@ -540,105 +636,117 @@ msgstr "Évènements"
 msgid "Events manager"
 msgstr "Gestionnaire d’évènements"
 
-#: ../core/tools/event/launch.php:58
+#: ../core/tools/event/launch.php:57
 msgid "Event"
 msgstr "Évènement"
 
-#: ../core/tools/event/launch.php:59
+#: ../core/tools/event/launch.php:58
 msgid "Add Event"
 msgstr "Ajouter un évènement"
 
-#: ../core/tools/event/launch.php:60
+#: ../core/tools/event/launch.php:59
 msgid "Edit Event"
 msgstr "Editer un évènement"
 
-#: ../core/tools/event/launch.php:61
+#: ../core/tools/event/launch.php:60
 msgid "New Event"
 msgstr "Nouvel évènement"
 
-#: ../core/tools/event/launch.php:63
+#: ../core/tools/event/launch.php:62
 msgid "Look Event"
 msgstr "Voir un évènement"
 
-#: ../core/tools/event/launch.php:64
+#: ../core/tools/event/launch.php:63
 msgid "Search Events"
 msgstr "Rechercher un évènement"
 
-#: ../core/tools/event/launch.php:65
+#: ../core/tools/event/launch.php:64
 msgid "No Event found"
 msgstr "Aucun évènement trouvé"
 
-#: ../core/tools/event/launch.php:66
+#: ../core/tools/event/launch.php:65
 msgid "No Event found in trash"
 msgstr "Aucun évènement trouvé dans la corbeille"
 
-#: ../core/tools/event/launch.php:84
+#: ../core/tools/event/launch.php:83
 msgid "Event Types"
 msgstr "Types d'évènement"
 
-#: ../core/tools/event/launch.php:85 ../core/tools/event/launch.php:94
+#: ../core/tools/event/launch.php:84 ../core/tools/event/launch.php:93
 msgid "Event Type"
 msgstr "Type d'évènement"
 
-#: ../core/tools/event/launch.php:86
+#: ../core/tools/event/launch.php:85
 msgid "Search Event Type"
 msgstr "Recherche un type d'évènement"
 
-#: ../core/tools/event/launch.php:87
+#: ../core/tools/event/launch.php:86
 msgid "All Event Types"
 msgstr "Tous les types d'évènement"
 
-#: ../core/tools/event/launch.php:88 ../core/tools/event/launch.php:89
+#: ../core/tools/event/launch.php:87 ../core/tools/event/launch.php:88
 msgid "Event Type's parent"
 msgstr "Type d'évènement parent"
 
-#: ../core/tools/event/launch.php:90
+#: ../core/tools/event/launch.php:89
 msgid "Edit Event Type"
 msgstr "Editer un type d'évènement"
 
-#: ../core/tools/event/launch.php:91
+#: ../core/tools/event/launch.php:90
 msgid "Update Event Type"
 msgstr "Mettre à jour un type d'évènement"
 
-#: ../core/tools/event/launch.php:92
+#: ../core/tools/event/launch.php:91
 msgid "Add Event Type"
 msgstr "Ajouter un type d'évènement"
 
-#: ../core/tools/event/launch.php:93 ../core/tools/portfolio/launch.php:68
+#: ../core/tools/event/launch.php:92 ../core/tools/portfolio/launch.php:67
 #: ../core/tools/secure/inc/contactform7/captchanum.php:126
 msgid "Name"
 msgstr "Nom"
 
-#: ../core/tools/event/launch.php:196
+#: ../core/tools/event/launch.php:195
 #: ../core/tools/event/templates/template-event-fields.php:37
 msgid "Begin"
 msgstr "Début"
 
-#: ../core/tools/event/launch.php:197
+#: ../core/tools/event/launch.php:196
 #: ../core/tools/event/templates/template-event-fields.php:108
 msgid "End"
 msgstr "Fin"
 
-#: ../core/tools/event/launch.php:370
+#: ../core/tools/event/launch.php:392 ../core/tools/event/launch.php:411
 msgid "from (hour)"
 msgstr "de"
 
-#: ../core/tools/event/launch.php:370
+#: ../core/tools/event/launch.php:392 ../core/tools/event/launch.php:411
 msgid "to (hour)"
 msgstr "à"
 
-#: ../core/tools/event/launch.php:372 ../core/tools/event/launch.php:379
-#: ../core/tools/event/launch.php:380
+#: ../core/tools/event/launch.php:394 ../core/tools/event/launch.php:413
+#: ../core/tools/event/launch.php:429 ../core/tools/event/launch.php:442
+#: ../core/tools/event/launch.php:459 ../core/tools/event/launch.php:472
+#: ../core/tools/event/launch.php:489
 msgid "at (hour)"
 msgstr "à"
 
-#: ../core/tools/event/launch.php:386 ../core/tools/event/launch.php:388
+#: ../core/tools/event/launch.php:403 ../core/tools/event/launch.php:422
+#: ../core/tools/event/launch.php:449
 msgid "from (date)"
 msgstr "du"
 
-#: ../core/tools/event/launch.php:386 ../core/tools/event/launch.php:388
+#: ../core/tools/event/launch.php:403 ../core/tools/event/launch.php:432
+#: ../core/tools/event/launch.php:462
 msgid "to (date)"
 msgstr "au"
+
+#: ../core/tools/event/launch.php:425 ../core/tools/event/launch.php:452
+msgid "from (month)"
+msgstr "de"
+
+#: ../core/tools/event/launch.php:435 ../core/tools/event/launch.php:465
+msgid "to (month)"
+msgstr "à"
 
 #: ../core/tools/event/templates/template-event-fields.php:27
 msgid "Properties"
@@ -1085,7 +1193,7 @@ msgstr "génère un pagination en boucle"
 msgid "insert this code in your theme templates :"
 msgstr "insérez ce code dans vos templates :"
 
-#: ../core/tools/portfolio/index.php:38 ../core/tools/portfolio/launch.php:33
+#: ../core/tools/portfolio/index.php:38 ../core/tools/portfolio/launch.php:32
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -1093,71 +1201,71 @@ msgstr "Portfolio"
 msgid "Create portfolio content type"
 msgstr "Créer un type de contenu Portfolio"
 
-#: ../core/tools/portfolio/launch.php:32 ../core/tools/portfolio/launch.php:37
+#: ../core/tools/portfolio/launch.php:31 ../core/tools/portfolio/launch.php:36
 msgid "Portfolios"
 msgstr "Portfolios"
 
-#: ../core/tools/portfolio/launch.php:34
+#: ../core/tools/portfolio/launch.php:33
 msgid "Add Portfolio"
 msgstr "Ajouter un portfolio"
 
-#: ../core/tools/portfolio/launch.php:35
+#: ../core/tools/portfolio/launch.php:34
 msgid "Edit Portfolio"
 msgstr "Editer un portfolio"
 
-#: ../core/tools/portfolio/launch.php:36
+#: ../core/tools/portfolio/launch.php:35
 msgid "New Portfolio"
 msgstr "Nouveau portfolio"
 
-#: ../core/tools/portfolio/launch.php:38
+#: ../core/tools/portfolio/launch.php:37
 msgid "Look Portfolio"
 msgstr "Voir un portfolio"
 
-#: ../core/tools/portfolio/launch.php:39
+#: ../core/tools/portfolio/launch.php:38
 msgid "Search Portfolios"
 msgstr "Rechercher un portfolio"
 
-#: ../core/tools/portfolio/launch.php:40
+#: ../core/tools/portfolio/launch.php:39
 msgid "No Portfolio found"
 msgstr "Aucun portfolio trouvé"
 
-#: ../core/tools/portfolio/launch.php:41
+#: ../core/tools/portfolio/launch.php:40
 msgid "No Portfolio found in trash"
 msgstr "Aucun portfolio trouvé dans la corbeille"
 
-#: ../core/tools/portfolio/launch.php:59
+#: ../core/tools/portfolio/launch.php:58
 msgid "Portfolio Types"
 msgstr "Types de portfolio"
 
-#: ../core/tools/portfolio/launch.php:60 ../core/tools/portfolio/launch.php:69
+#: ../core/tools/portfolio/launch.php:59 ../core/tools/portfolio/launch.php:68
 msgid "Portfolio Type"
 msgstr "Type de portfolio"
 
-#: ../core/tools/portfolio/launch.php:61
+#: ../core/tools/portfolio/launch.php:60
 msgid "Search Portfolio Type"
 msgstr "Rechercher un type de portfolio"
 
-#: ../core/tools/portfolio/launch.php:62
+#: ../core/tools/portfolio/launch.php:61
 msgid "All Portfolio Types"
 msgstr "Tous les types de portfolio"
 
-#: ../core/tools/portfolio/launch.php:63 ../core/tools/portfolio/launch.php:64
+#: ../core/tools/portfolio/launch.php:62 ../core/tools/portfolio/launch.php:63
 msgid "Portfolio Type's parent"
 msgstr "Type de portfolio parent"
 
-#: ../core/tools/portfolio/launch.php:65
+#: ../core/tools/portfolio/launch.php:64
 msgid "Edit Portfolio Type"
 msgstr "Editer un type de portfolio"
 
-#: ../core/tools/portfolio/launch.php:66
+#: ../core/tools/portfolio/launch.php:65
 msgid "Update Portfolio Type"
 msgstr "Mettre à jour un type de portfolio"
 
-#: ../core/tools/portfolio/launch.php:67
+#: ../core/tools/portfolio/launch.php:66
 msgid "Add Portfolio Type"
 msgstr "Ajouter un type de portfolio"
 
-#: ../core/tools/portfolio/launch.php:88
+#: ../core/tools/portfolio/launch.php:87
 msgid "Thumb"
 msgstr "Vignette"
 
@@ -1542,7 +1650,7 @@ msgstr "Voulez-vous vraiment supprimer cette url ?"
 
 #: ../core/tools/seo/index.php:166
 msgid "http://www.website.com"
-msgstr ""
+msgstr "http://www.website.com"
 
 #: ../core/tools/seo/index.php:167
 msgid "exclude"
@@ -1603,11 +1711,11 @@ msgstr "redirige vers"
 
 #: ../core/tools/seo/index.php:219
 msgid "/my-old-page"
-msgstr ""
+msgstr "/mon-ancienne-page"
 
 #: ../core/tools/seo/index.php:220
 msgid "/my-new-page"
-msgstr ""
+msgstr "/ma-nouvelle-page"
 
 #: ../core/tools/seo/index.php:221
 msgid "URL that equals"
@@ -1617,7 +1725,7 @@ msgstr "URL qui est égale à"
 msgid "URL that matches (regexp)"
 msgstr "URL qui correspond à la regexp"
 
-#: ../core/tools/seo/launch.php:299
+#: ../core/tools/seo/launch.php:305
 #, php-format
 msgid "page %s"
 msgstr "page %s"
@@ -1955,9 +2063,14 @@ msgid "Update Notifier"
 msgstr "Notification de mise à jour"
 
 #: ../core/tools/updatenotifier/index.php:39
+#, fuzzy
+#| msgid ""
+#| "Get notification when something, themes, plugins, has to be updated. It's "
+#| "very useful to keep your website up to date and improve security."
 msgid ""
-"Get notification when something, themes, plugins, has to be updated. It's "
-"very useful to keep your website up to date and improve security."
+"[COMING SOON] - Get notification when something, themes, plugins, has to be "
+"updated. It's very useful to keep your website up to date and improve "
+"security."
 msgstr ""
 "Recevez une notification lorsque que Wordpress, une extension ou un thème "
 "doit être mie à jour. Cela est très utile pour garder votre site web à jour "
@@ -2283,35 +2396,35 @@ msgstr "WIP"
 msgid "Add maintenance page on your website"
 msgstr "Ajoute une page de maintenance à votre site"
 
-#: ../woodkit.php:194
+#: ../woodkit.php:195
 msgid "1200px"
 msgstr ""
 
-#: ../woodkit.php:199
+#: ../woodkit.php:200
 msgid "1024px"
 msgstr ""
 
-#: ../woodkit.php:204
+#: ../woodkit.php:205
 msgid "800px"
 msgstr ""
 
-#: ../woodkit.php:209
+#: ../woodkit.php:210
 msgid "600px"
 msgstr ""
 
-#: ../woodkit.php:214
+#: ../woodkit.php:215
 msgid "400px"
 msgstr ""
 
-#: ../woodkit.php:219
+#: ../woodkit.php:220
 msgid "300px"
 msgstr ""
 
-#: ../woodkit.php:224
+#: ../woodkit.php:225
 msgid "100px"
 msgstr ""
 
-#: ../woodkit.php:229
+#: ../woodkit.php:230
 msgid "150x150px"
 msgstr ""
 

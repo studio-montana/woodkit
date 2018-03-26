@@ -487,7 +487,7 @@ endif;
 
 if (!function_exists('get_current_lang')) :
 /**
- * woodkit_get_current_lang
+ * please use woodkit_get_current_lang()
 * @deprecated since 1.3.5
 * @since Woodkit 1.0
 * @return void
@@ -512,7 +512,7 @@ function woodkit_get_current_lang() {
 	if (!empty($wp_locale)){
 		if (strlen($wp_locale)>4)
 			return substr($wp_locale, 0, 2);
-			else return $wp_locale;
+		else return $wp_locale;
 	}
 	// inconnu
 	return "";
@@ -641,6 +641,80 @@ function get_textual_month($timestamp){
 			$res = __("november", WOODKIT_PLUGIN_TEXT_DOMAIN);
 		if ($month == "12")
 			$res = __("december", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	}
+	return $res;
+}
+endif;
+
+if (!function_exists("get_textual_month_capitalized")):
+/**
+ * @param int $timestamp : date timestamp in millisecond
+*/
+function get_textual_month_capitalized($timestamp){
+	$res = "";
+	if (!empty($timestamp) && is_numeric($timestamp)){
+		$month = date("m", $timestamp);
+		if ($month == "1")
+			$res = __("January", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "2")
+			$res = __("February", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "3")
+			$res = __("March", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "4")
+			$res = __("April", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "5")
+			$res = __("May", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "6")
+			$res = __("June", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "7")
+			$res = __("July", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "8")
+			$res = __("August", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "9")
+			$res = __("September", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "10")
+			$res = __("October", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "11")
+			$res = __("November", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "12")
+			$res = __("December", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	}
+	return $res;
+}
+endif;
+
+if (!function_exists("get_textual_month_uppercased")):
+/**
+ * @param int $timestamp : date timestamp in millisecond
+*/
+function get_textual_month_uppercased($timestamp){
+	$res = "";
+	if (!empty($timestamp) && is_numeric($timestamp)){
+		$month = date("m", $timestamp);
+		if ($month == "1")
+			$res = __("JANUARY", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "2")
+			$res = __("FEBRUARY", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "3")
+			$res = __("MARCH", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "4")
+			$res = __("APRIL", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "5")
+			$res = __("MAY", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "6")
+			$res = __("JUNE", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "7")
+			$res = __("JULY", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "8")
+			$res = __("AOUT", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "9")
+			$res = __("SEPTEMBER", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "10")
+			$res = __("OCTOBER", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "11")
+			$res = __("NOVEMBER", WOODKIT_PLUGIN_TEXT_DOMAIN);
+		if ($month == "12")
+			$res = __("DECEMBER", WOODKIT_PLUGIN_TEXT_DOMAIN);
 	}
 	return $res;
 }

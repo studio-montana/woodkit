@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom\n"
-"POT-Creation-Date: 2018-02-08 18:58+0100\n"
-"PO-Revision-Date: 2018-02-08 19:01+0100\n"
+"POT-Creation-Date: 2018-03-26 16:08+0200\n"
+"PO-Revision-Date: 2018-03-26 16:09+0200\n"
 "Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
 "Language-Team: Sébastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
 "com artcyril@gmail.com>\n"
@@ -18,52 +18,49 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../core/commons/backup.php:30
-msgid "Backup"
+#: ../core/commons/config/config-render.php:87
+msgid "Woodkit setup"
 msgstr ""
 
-#: ../core/commons/config/config-options.php:67
-msgid "Woodkit settings"
+#: ../core/commons/config/config-render.php:92
+#: ../core/tools/excerpt/index.php:63 ../core/tools/fancybox/index.php:63
+#: ../core/tools/pagination/index.php:65 ../core/tools/secure/index.php:89
+#: ../core/tools/seo/index.php:75 ../core/tools/shortcodes/index.php:71
+#: ../core/tools/splashscreen/index.php:63
+#: ../core/tools/updatenotifier/index.php:84 ../core/tools/video/index.php:67
+#: ../core/tools/wall/index.php:63
+msgid "General"
 msgstr ""
 
-#: ../core/commons/config/config-options.php:97
-msgid "Woodkit activation"
+#: ../core/commons/config/config-render.php:102
+msgid "Woodkit key activation"
 msgstr ""
 
-#: ../core/commons/config/config-options.php:104
-msgid "Enter your key"
-msgstr ""
-
-#: ../core/commons/config/config-options.php:116
-msgid "Metabox position"
-msgstr ""
-
-#: ../core/commons/config/config-options.php:123
-#: ../core/tools/wall/custom-fields/templates/display-wall.php:175
-msgid "Position"
-msgstr ""
-
-#: ../core/commons/config/config-options.php:198
-msgid "get Woodkit updates"
-msgstr ""
-
-#: ../core/commons/config/config-options.php:208
+#: ../core/commons/config/config-render.php:103
 msgid "YOUR KEY"
 msgstr ""
 
-#: ../core/commons/config/config-options.php:208
-msgid "Get key"
-msgstr ""
-
-#: ../core/commons/config/config-options.php:210
+#: ../core/commons/config/config-render.php:105
 msgid "Your key is invalid"
 msgstr ""
 
-#: ../core/commons/config/config-options.php:212
+#: ../core/commons/config/config-render.php:106
+msgid "Get key"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:108
 msgid "Your site is registered"
 msgstr ""
 
-#: ../core/commons/config/config-options.php:237
+#: ../core/commons/config/config-render.php:111
+msgid "Setup your key to get woodkit updates"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:131
+msgid "Options position"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:133
 #: ../core/tools/navigation/widgets/templates/navigation-form-widgetmanager.php:37
 #: ../core/tools/navigation/widgets/templates/navigation-form-widgetmanager.php:55
 #: ../core/tools/navigation/widgets/templates/navigation-form.php:33
@@ -71,18 +68,57 @@ msgstr ""
 msgid "default"
 msgstr ""
 
-#: ../core/commons/config/config-options.php:238
+#: ../core/commons/config/config-render.php:134
 msgid "high position"
 msgstr ""
 
-#: ../core/commons/config/config-options.php:239
+#: ../core/commons/config/config-render.php:135
 msgid "low position"
 msgstr ""
 
-#: ../core/commons/config/config.php:261
+#: ../core/commons/config/config-render.php:138
+msgid "Woodkit options position on your content editor"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:142
+#: ../core/commons/tools/tool.class.php:103
+msgid "Save"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:149
+#: ../core/commons/tools/tool.class.php:93
+msgid "Woodkit tools"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:155
+#: ../core/commons/config/config-render.php:214
+msgid "Tool name"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:156
+#: ../core/commons/config/config-render.php:215
+msgid "Description"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:157
+#: ../core/commons/config/config-render.php:216
+msgid "Doc."
+msgstr ""
+
+#: ../core/commons/config/config-render.php:173
+#: ../core/commons/config/config.php:278
 msgid "Setup"
 msgstr ""
 
+#: ../core/commons/config/config-render.php:181
+msgid "Deactivate"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:188
+msgid "Activate"
+msgstr ""
+
+#: ../core/commons/config/config.php:288 ../core/commons/config/config.php:289
 #: ../core/commons/custom-fields.php:41
 msgid "Woodkit"
 msgstr ""
@@ -120,111 +156,211 @@ msgstr ""
 msgid "No entry"
 msgstr ""
 
-#: ../core/commons/utils.php:487
+#: ../core/commons/tools/tool.class.php:94
+msgid "View all tools"
+msgstr ""
+
+#: ../core/commons/utils.php:533
 msgid "Invalid URL..."
 msgstr ""
 
-#: ../core/commons/utils.php:558
+#: ../core/commons/utils.php:604
 msgid "Invalid Format..."
 msgstr ""
 
-#: ../core/commons/utils.php:558
+#: ../core/commons/utils.php:604
 msgid "are supported"
 msgstr ""
 
-#: ../core/commons/utils.php:575
+#: ../core/commons/utils.php:621
 msgid "january"
 msgstr ""
 
-#: ../core/commons/utils.php:577
+#: ../core/commons/utils.php:623
 msgid "february"
 msgstr ""
 
-#: ../core/commons/utils.php:579
+#: ../core/commons/utils.php:625
 msgid "march"
 msgstr ""
 
-#: ../core/commons/utils.php:581
+#: ../core/commons/utils.php:627
 msgid "april"
 msgstr ""
 
-#: ../core/commons/utils.php:583 ../core/commons/utils.php:620
+#: ../core/commons/utils.php:629 ../core/commons/utils.php:740
 msgid "may"
 msgstr ""
 
-#: ../core/commons/utils.php:585
+#: ../core/commons/utils.php:631
 msgid "june"
 msgstr ""
 
-#: ../core/commons/utils.php:587
+#: ../core/commons/utils.php:633
 msgid "july"
 msgstr ""
 
-#: ../core/commons/utils.php:589
+#: ../core/commons/utils.php:635
 msgid "august"
 msgstr ""
 
-#: ../core/commons/utils.php:591
+#: ../core/commons/utils.php:637
 msgid "september"
 msgstr ""
 
-#: ../core/commons/utils.php:593
+#: ../core/commons/utils.php:639
 msgid "october"
 msgstr ""
 
-#: ../core/commons/utils.php:595
+#: ../core/commons/utils.php:641
 msgid "november"
 msgstr ""
 
-#: ../core/commons/utils.php:597
+#: ../core/commons/utils.php:643
 msgid "december"
 msgstr ""
 
-#: ../core/commons/utils.php:612
+#: ../core/commons/utils.php:658
+msgid "January"
+msgstr ""
+
+#: ../core/commons/utils.php:660
+msgid "February"
+msgstr ""
+
+#: ../core/commons/utils.php:662
+msgid "March"
+msgstr ""
+
+#: ../core/commons/utils.php:664
+msgid "April"
+msgstr ""
+
+#: ../core/commons/utils.php:666
+msgid "May"
+msgstr ""
+
+#: ../core/commons/utils.php:668
+msgid "June"
+msgstr ""
+
+#: ../core/commons/utils.php:670
+msgid "July"
+msgstr ""
+
+#: ../core/commons/utils.php:672
+msgid "August"
+msgstr ""
+
+#: ../core/commons/utils.php:674
+msgid "September"
+msgstr ""
+
+#: ../core/commons/utils.php:676
+msgid "October"
+msgstr ""
+
+#: ../core/commons/utils.php:678
+msgid "November"
+msgstr ""
+
+#: ../core/commons/utils.php:680
+msgid "December"
+msgstr ""
+
+#: ../core/commons/utils.php:695
+msgid "JANUARY"
+msgstr ""
+
+#: ../core/commons/utils.php:697
+msgid "FEBRUARY"
+msgstr ""
+
+#: ../core/commons/utils.php:699
+msgid "MARCH"
+msgstr ""
+
+#: ../core/commons/utils.php:701
+msgid "APRIL"
+msgstr ""
+
+#: ../core/commons/utils.php:703
+msgid "MAY"
+msgstr ""
+
+#: ../core/commons/utils.php:705
+msgid "JUNE"
+msgstr ""
+
+#: ../core/commons/utils.php:707
+msgid "JULY"
+msgstr ""
+
+#: ../core/commons/utils.php:709
+msgid "AOUT"
+msgstr ""
+
+#: ../core/commons/utils.php:711
+msgid "SEPTEMBER"
+msgstr ""
+
+#: ../core/commons/utils.php:713
+msgid "OCTOBER"
+msgstr ""
+
+#: ../core/commons/utils.php:715
+msgid "NOVEMBER"
+msgstr ""
+
+#: ../core/commons/utils.php:717
+msgid "DECEMBER"
+msgstr ""
+
+#: ../core/commons/utils.php:732
 msgid "jan"
 msgstr ""
 
-#: ../core/commons/utils.php:614
+#: ../core/commons/utils.php:734
 msgid "feb"
 msgstr ""
 
-#: ../core/commons/utils.php:616
+#: ../core/commons/utils.php:736
 msgid "mar"
 msgstr ""
 
-#: ../core/commons/utils.php:618
+#: ../core/commons/utils.php:738
 msgid "apr"
 msgstr ""
 
-#: ../core/commons/utils.php:622
+#: ../core/commons/utils.php:742
 msgid "jun"
 msgstr ""
 
-#: ../core/commons/utils.php:624
+#: ../core/commons/utils.php:744
 msgid "jul"
 msgstr ""
 
-#: ../core/commons/utils.php:626
+#: ../core/commons/utils.php:746
 msgid "aug"
 msgstr ""
 
-#: ../core/commons/utils.php:628
+#: ../core/commons/utils.php:748
 msgid "sept"
 msgstr ""
 
-#: ../core/commons/utils.php:630
+#: ../core/commons/utils.php:750
 msgid "oct"
 msgstr ""
 
-#: ../core/commons/utils.php:632
+#: ../core/commons/utils.php:752
 msgid "nov"
 msgstr ""
 
-#: ../core/commons/utils.php:634
+#: ../core/commons/utils.php:754
 msgid "dec"
 msgstr ""
 
-#: ../core/init.php:96 ../core/init.php:186
+#: ../core/init.php:98 ../core/init.php:188
 msgid "loading..."
 msgstr ""
 
@@ -254,32 +390,10 @@ msgstr ""
 msgid "documentation"
 msgstr ""
 
-#: ../core/tools/backgroundimage/config.php:49
-#: ../core/tools/breadcrumb/config.php:38 ../core/tools/display/config.php:48
-#: ../core/tools/event/config.php:42 ../core/tools/excerpt/config.php:49
-#: ../core/tools/fancybox/config.php:49 ../core/tools/googlemaps/config.php:48
-#: ../core/tools/login/config.php:50 ../core/tools/media/config.php:48
-#: ../core/tools/navigation/config.php:48
-#: ../core/tools/pagination/config.php:50 ../core/tools/portfolio/config.php:42
-#: ../core/tools/private/config.php:42 ../core/tools/seo/config.php:51
-#: ../core/tools/shortcodes/config.php:48
-#: ../core/tools/splashscreen/config.php:49 ../core/tools/video/config.php:51
-#: ../core/tools/wall/config.php:48 ../core/tools/widgetmanager/config.php:48
-msgid "active"
-msgstr ""
-
-#: ../core/tools/backgroundimage/config.php:50
-#: ../core/tools/video/config.php:52
-msgid "auto insert"
-msgstr ""
-
-#: ../core/tools/backgroundimage/config.php:77
-msgid "otherwise, you can insert this code directly in your theme templates :"
-msgstr ""
-
 #: ../core/tools/backgroundimage/custom-fields/backgroundimage.php:42
 #: ../core/tools/backgroundimage/custom-fields/templates/backgroundimage.php:25
 #: ../core/tools/backgroundimage/inc/customizer.php:35
+#: ../core/tools/backgroundimage/index.php:38
 msgid "Background Image"
 msgstr ""
 
@@ -297,13 +411,12 @@ msgid "Choose document"
 msgstr ""
 
 #: ../core/tools/backgroundimage/custom-fields/templates/backgroundimage.php:119
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:33
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:33
 #: ../core/tools/seo/custom-fields/templates/seo.php:125
 msgid "Ok"
 msgstr ""
 
 #: ../core/tools/backgroundimage/inc/customizer.php:45
-#: ../core/tools/backgroundimage/load.php:31
 #: ../core/tools/login/inc/customizer.php:46
 msgid "Background image"
 msgstr ""
@@ -321,40 +434,16 @@ msgstr ""
 msgid "expressed in %"
 msgstr ""
 
-#: ../core/tools/backgroundimage/load.php:36
+#: ../core/tools/backgroundimage/index.php:39
 msgid "Add background image to your site and posts"
 msgstr ""
 
-#: ../core/tools/breadcrumb/breadcrumb.php:71
-#: ../core/tools/breadcrumb/breadcrumb.php:87
-#: ../core/tools/breadcrumb/custom-fields/templates/breadcrumb.php:53
-msgid "Home"
+#: ../core/tools/backgroundimage/index.php:63 ../core/tools/video/index.php:80
+msgid "Auto insert"
 msgstr ""
 
-#: ../core/tools/breadcrumb/breadcrumb.php:134
-msgid "search"
-msgstr ""
-
-#: ../core/tools/breadcrumb/breadcrumb.php:139
-#: ../core/tools/breadcrumb/breadcrumb.php:142
-#: ../core/tools/breadcrumb/breadcrumb.php:145
-msgid "Archive "
-msgstr ""
-
-#: ../core/tools/breadcrumb/breadcrumb.php:148
-msgid "Author"
-msgstr ""
-
-#: ../core/tools/breadcrumb/breadcrumb.php:151
-msgid "Blog archives"
-msgstr ""
-
-#: ../core/tools/breadcrumb/breadcrumb.php:154
-msgid "Search results"
-msgstr ""
-
-#: ../core/tools/breadcrumb/config.php:53
-msgid "use this code in your theme templates :"
+#: ../core/tools/backgroundimage/index.php:76
+msgid "otherwise, you can insert this code directly in your theme templates :"
 msgstr ""
 
 #: ../core/tools/breadcrumb/custom-fields/templates/breadcrumb.php:27
@@ -379,6 +468,12 @@ msgstr ""
 msgid "Breadcrumb composition"
 msgstr ""
 
+#: ../core/tools/breadcrumb/custom-fields/templates/breadcrumb.php:53
+#: ../core/tools/breadcrumb/launch.php:71
+#: ../core/tools/breadcrumb/launch.php:87
+msgid "Home"
+msgstr ""
+
 #: ../core/tools/breadcrumb/custom-fields/templates/breadcrumb.php:75
 #: ../core/tools/breadcrumb/custom-fields/templates/breadcrumb.php:90
 #: ../core/tools/breadcrumb/custom-fields/templates/breadcrumb.php:109
@@ -389,16 +484,38 @@ msgstr ""
 msgid "Add breadcrumb element"
 msgstr ""
 
-#: ../core/tools/breadcrumb/load.php:31
+#: ../core/tools/breadcrumb/index.php:38
 msgid "Bread crumb"
 msgstr ""
 
-#: ../core/tools/breadcrumb/load.php:36
+#: ../core/tools/breadcrumb/index.php:39
 msgid "Bread crumb tool"
 msgstr ""
 
+#: ../core/tools/breadcrumb/launch.php:134
+msgid "search"
+msgstr ""
+
+#: ../core/tools/breadcrumb/launch.php:139
+#: ../core/tools/breadcrumb/launch.php:142
+#: ../core/tools/breadcrumb/launch.php:145
+msgid "Archive "
+msgstr ""
+
+#: ../core/tools/breadcrumb/launch.php:148
+msgid "Author"
+msgstr ""
+
+#: ../core/tools/breadcrumb/launch.php:151
+msgid "Blog archives"
+msgstr ""
+
+#: ../core/tools/breadcrumb/launch.php:154
+msgid "Search results"
+msgstr ""
+
 #: ../core/tools/cookies/inc/customizer.php:36
-#: ../core/tools/cookies/load.php:31
+#: ../core/tools/cookies/index.php:38
 msgid "Cookies"
 msgstr ""
 
@@ -419,8 +536,8 @@ msgstr ""
 msgid "Button text"
 msgstr ""
 
-#: ../core/tools/cookies/load.php:36
-msgid "Cookies tool"
+#: ../core/tools/cookies/index.php:39
+msgid "Add legal advice on front of your website."
 msgstr ""
 
 #: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:32
@@ -431,10 +548,6 @@ msgstr ""
 
 #: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:35
 msgid "More details here."
-msgstr ""
-
-#: ../core/tools/display/config.php:63
-msgid "use these codes in your theme templates :"
 msgstr ""
 
 #: ../core/tools/display/custom-fields/templates/display.php:27
@@ -493,125 +606,137 @@ msgstr ""
 msgid "new"
 msgstr ""
 
-#: ../core/tools/display/load.php:31
+#: ../core/tools/display/index.php:38
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:38
 msgid "Display"
 msgstr ""
 
-#: ../core/tools/display/load.php:36
+#: ../core/tools/display/index.php:39
 msgid "Hide title, thumbnail, set alternative title, badge, subtitle..."
 msgstr ""
 
-#: ../core/tools/event/event.php:57 ../core/tools/event/event.php:62
-#: ../core/tools/event/load.php:31
+#: ../core/tools/event/index.php:38 ../core/tools/event/launch.php:56
+#: ../core/tools/event/launch.php:61
 #: ../core/tools/event/widgets/tool-event-widget.class.php:34
 #: ../core/tools/event/widgets/tool-event-widget.class.php:72
 msgid "Events"
 msgstr ""
 
-#: ../core/tools/event/event.php:58
+#: ../core/tools/event/index.php:39
+msgid "Events manager"
+msgstr ""
+
+#: ../core/tools/event/launch.php:57
 msgid "Event"
 msgstr ""
 
-#: ../core/tools/event/event.php:59
+#: ../core/tools/event/launch.php:58
 msgid "Add Event"
 msgstr ""
 
-#: ../core/tools/event/event.php:60
+#: ../core/tools/event/launch.php:59
 msgid "Edit Event"
 msgstr ""
 
-#: ../core/tools/event/event.php:61
+#: ../core/tools/event/launch.php:60
 msgid "New Event"
 msgstr ""
 
-#: ../core/tools/event/event.php:63
+#: ../core/tools/event/launch.php:62
 msgid "Look Event"
 msgstr ""
 
-#: ../core/tools/event/event.php:64
+#: ../core/tools/event/launch.php:63
 msgid "Search Events"
 msgstr ""
 
-#: ../core/tools/event/event.php:65
+#: ../core/tools/event/launch.php:64
 msgid "No Event found"
 msgstr ""
 
-#: ../core/tools/event/event.php:66
+#: ../core/tools/event/launch.php:65
 msgid "No Event found in trash"
 msgstr ""
 
-#: ../core/tools/event/event.php:84
+#: ../core/tools/event/launch.php:83
 msgid "Event Types"
 msgstr ""
 
-#: ../core/tools/event/event.php:85 ../core/tools/event/event.php:94
+#: ../core/tools/event/launch.php:84 ../core/tools/event/launch.php:93
 msgid "Event Type"
 msgstr ""
 
-#: ../core/tools/event/event.php:86
+#: ../core/tools/event/launch.php:85
 msgid "Search Event Type"
 msgstr ""
 
-#: ../core/tools/event/event.php:87
+#: ../core/tools/event/launch.php:86
 msgid "All Event Types"
 msgstr ""
 
-#: ../core/tools/event/event.php:88 ../core/tools/event/event.php:89
+#: ../core/tools/event/launch.php:87 ../core/tools/event/launch.php:88
 msgid "Event Type's parent"
 msgstr ""
 
-#: ../core/tools/event/event.php:90
+#: ../core/tools/event/launch.php:89
 msgid "Edit Event Type"
 msgstr ""
 
-#: ../core/tools/event/event.php:91
+#: ../core/tools/event/launch.php:90
 msgid "Update Event Type"
 msgstr ""
 
-#: ../core/tools/event/event.php:92
+#: ../core/tools/event/launch.php:91
 msgid "Add Event Type"
 msgstr ""
 
-#: ../core/tools/event/event.php:93 ../core/tools/portfolio/portfolio.php:68
+#: ../core/tools/event/launch.php:92 ../core/tools/portfolio/launch.php:67
 #: ../core/tools/secure/inc/contactform7/captchanum.php:126
 msgid "Name"
 msgstr ""
 
-#: ../core/tools/event/event.php:196
+#: ../core/tools/event/launch.php:195
 #: ../core/tools/event/templates/template-event-fields.php:37
 msgid "Begin"
 msgstr ""
 
-#: ../core/tools/event/event.php:197
+#: ../core/tools/event/launch.php:196
 #: ../core/tools/event/templates/template-event-fields.php:108
 msgid "End"
 msgstr ""
 
-#: ../core/tools/event/event.php:370
+#: ../core/tools/event/launch.php:392 ../core/tools/event/launch.php:411
 msgid "from (hour)"
 msgstr "from"
 
-#: ../core/tools/event/event.php:370
+#: ../core/tools/event/launch.php:392 ../core/tools/event/launch.php:411
 msgid "to (hour)"
 msgstr "to"
 
-#: ../core/tools/event/event.php:372 ../core/tools/event/event.php:379
-#: ../core/tools/event/event.php:380
+#: ../core/tools/event/launch.php:394 ../core/tools/event/launch.php:413
+#: ../core/tools/event/launch.php:429 ../core/tools/event/launch.php:442
+#: ../core/tools/event/launch.php:459 ../core/tools/event/launch.php:472
+#: ../core/tools/event/launch.php:489
 msgid "at (hour)"
 msgstr "at"
 
-#: ../core/tools/event/event.php:386 ../core/tools/event/event.php:388
+#: ../core/tools/event/launch.php:403 ../core/tools/event/launch.php:422
+#: ../core/tools/event/launch.php:449
 msgid "from (date)"
 msgstr "from"
 
-#: ../core/tools/event/event.php:386 ../core/tools/event/event.php:388
+#: ../core/tools/event/launch.php:403 ../core/tools/event/launch.php:432
+#: ../core/tools/event/launch.php:462
 msgid "to (date)"
 msgstr "to"
 
-#: ../core/tools/event/load.php:36
-msgid "Events manager"
-msgstr ""
+#: ../core/tools/event/launch.php:425 ../core/tools/event/launch.php:452
+msgid "from (month)"
+msgstr "from"
+
+#: ../core/tools/event/launch.php:435 ../core/tools/event/launch.php:465
+msgid "to (month)"
+msgstr "to"
 
 #: ../core/tools/event/templates/template-event-fields.php:27
 msgid "Properties"
@@ -627,8 +752,8 @@ msgid "Location"
 msgstr ""
 
 #: ../core/tools/event/templates/template-event-fields.php:187
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:34
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:31
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:34
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:31
 msgid "Address"
 msgstr ""
 
@@ -645,7 +770,7 @@ msgid "Country"
 msgstr ""
 
 #: ../core/tools/event/widgets/templates/tool-event-widget-form.php:27
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:27
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:27
 msgid "Title"
 msgstr ""
 
@@ -674,14 +799,6 @@ msgstr ""
 msgid "Show upcoming events"
 msgstr ""
 
-#: ../core/tools/excerpt/config.php:50
-msgid "auto paragraph"
-msgstr ""
-
-#: ../core/tools/excerpt/config.php:77
-msgid "activate auto paragraph for excerpt text editor"
-msgstr ""
-
 #: ../core/tools/excerpt/custom-fields/templates/excerpt.php:28
 msgid "Customized excerpt"
 msgstr ""
@@ -690,283 +807,181 @@ msgstr ""
 msgid "Let empty to get automatic excerpt from content"
 msgstr ""
 
-#: ../core/tools/excerpt/load.php:31
+#: ../core/tools/excerpt/index.php:38
 msgid "Excerpt"
 msgstr ""
 
-#: ../core/tools/excerpt/load.php:36
+#: ../core/tools/excerpt/index.php:39
 msgid "Add a custom excerpt to your posts"
 msgstr ""
 
-#: ../core/tools/fancybox/config.php:50
-msgid "- all wordpress images"
+#: ../core/tools/excerpt/index.php:76
+msgid "Auto paragraph"
 msgstr ""
 
-#: ../core/tools/fancybox/load.php:31
+#: ../core/tools/excerpt/index.php:78
+msgid "activate auto paragraph for excerpt text editor"
+msgstr ""
+
+#: ../core/tools/fancybox/index.php:38
 msgid "Fancybox"
 msgstr ""
 
-#: ../core/tools/fancybox/load.php:36
+#: ../core/tools/fancybox/index.php:39
 msgid "Open image in fancybox"
 msgstr ""
 
-#: ../core/tools/favicon/config.php:42
-msgid "customize favicon"
+#: ../core/tools/fancybox/index.php:76
+msgid "Enable for all images"
 msgstr ""
 
-#: ../core/tools/favicon/config.php:42 ../core/tools/login/config.php:41
-#: ../core/tools/logo/config.php:41 ../core/tools/wip/config.php:32
-msgid "manage here "
+#: ../core/tools/fancybox/index.php:78
+msgid "Enable Fancybox on all wordpress content images - not only woodkit wall"
 msgstr ""
 
-#: ../core/tools/favicon/inc/customizer.php:42
-#: ../core/tools/favicon/load.php:38
-msgid "Favicon"
+#: ../core/tools/login/inc/customizer.php:36 ../core/tools/login/index.php:38
+msgid "Login page"
 msgstr ""
 
-#: ../core/tools/favicon/load.php:43
-msgid "customize your site favicon"
+#: ../core/tools/login/index.php:39
+msgid "Improve your experience on admin login page"
 msgstr ""
 
-#: ../core/tools/googleanalytics/config.php:38
-msgid "Google Analytics code"
+#: ../core/tools/login/launch.php:39
+msgid "login"
 msgstr ""
 
-#: ../core/tools/googleanalytics/config.php:39
-msgid "Google Tag Manager code"
+#: ../core/tools/login/launch.php:39
+msgid "password"
 msgstr ""
 
-#: ../core/tools/googleanalytics/config.php:50
-msgid "GoogleAnalytics code is'nt needed if you use Google Tag Manager"
+#: ../core/tools/login/launch.php:39
+msgid "email"
 msgstr ""
 
-#: ../core/tools/googleanalytics/config.php:59
-msgid ""
-"be sure that your theme integrates \"wp_start_body\" action, otherwise "
-"please add this action just after the opening &lt;body&gt; tag :"
+#: ../core/tools/login/launch.php:47
+msgid "Register"
 msgstr ""
 
-#: ../core/tools/googleanalytics/load.php:31
-msgid "Google"
-msgstr ""
-
-#: ../core/tools/googleanalytics/load.php:36
-msgid "Google Analytics tool"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:50
-msgid "Google Analytics settings"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:58
-msgid ""
-"You are using Google Tag Manager, please add tracking events on Google "
-"interface."
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:64
-msgid ""
-"To manage Google Analytics, you have to setup your Google Analytics code in "
-"Woodkit settings."
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:73
-#: ../core/tools/googleanalytics/options-page.php:122
-#: ../core/tools/seo/options-page.php:96 ../core/tools/seo/options-page.php:239
-msgid "Save"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:79
-msgid "Event Tracking"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:88
-msgid "Add Google Analytics Event"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:89
-msgid "css selector"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:90
-msgid "event label"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:91
-msgid "action name"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:92
-msgid "category name"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:93
-msgid "Do you realy want remove this event ?"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:115
-msgid "You can add some Google Analytics Event rules based on CSS Selector."
-msgstr ""
-
-#: ../core/tools/googleanalytics/options-page.php:115
-msgid "Example"
-msgstr ""
-
-#: ../core/tools/googleanalytics/options.php:26
-#: ../core/tools/googleanalytics/options.php:31
-msgid "Google Analytics"
-msgstr ""
-
-#: ../core/tools/googlemaps/config.php:49
-msgid "API KEY"
-msgstr ""
-
-#: ../core/tools/googlemaps/config.php:50
-msgid "Enqueue API"
-msgstr ""
-
-#: ../core/tools/googlemaps/config.php:72
-msgid "Get google maps API KEY"
-msgstr ""
-
-#: ../core/tools/googlemaps/config.php:73
-msgid "shortcode in your theme templates :"
-msgstr ""
-
-#: ../core/tools/googlemaps/config.php:85
-msgid ""
-"enqueue googlemaps api script (disable when you use other plugin to enqueue "
-"this api)"
-msgstr ""
-
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:35
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:35
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:35
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:35
 msgid "Marker Title"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:36
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:40
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:36
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:40
 msgid "Zoom"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:37
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:63
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:37
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:63
 msgid "Type"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:38
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:74
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:38
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:74
 msgid "Width"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:39
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:78
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:39
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:78
 #: ../core/tools/media/custom-fields/templates/media.php:116
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:226
 msgid "Height"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:40
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:82
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:40
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:82
 msgid "Zoom control"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:41
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:91
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:41
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:91
 msgid "StreetView control"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:42
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:100
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:42
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:100
 msgid "Scale control"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:43
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:109
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:43
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:109
 msgid "Type control"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:44
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:118
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:44
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:118
 msgid "Rotate control"
 msgstr ""
 
-#: ../core/tools/googlemaps/googlemapsgenerator/googlemapsgenerator.php:45
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:127
+#: ../core/tools/maps/googlemapsgenerator/googlemapsgenerator.php:45
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:127
 msgid "Scroll wheel"
 msgstr ""
 
-#: ../core/tools/googlemaps/load.php:31
-msgid "GoogleMaps"
+#: ../core/tools/maps/index.php:38
+msgid "Maps"
 msgstr ""
 
-#: ../core/tools/googlemaps/load.php:36
-msgid ""
-"Add a GoogleMaps shortcode to your content editor (not recommended with Divi "
-"Builder, this will generate javascript conficts)"
+#: ../core/tools/maps/index.php:39
+msgid "Add a Google Maps shortcode & widget"
 msgstr ""
 
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:85
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:94
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:104
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:112
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:122
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:130
-msgid "true"
-msgstr ""
-
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:86
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:95
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:103
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:113
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:121
-#: ../core/tools/googlemaps/widgets/templates/tool-googlemaps-widget-form.php:131
-msgid "false"
-msgstr ""
-
-#: ../core/tools/googlemaps/widgets/tool-googlemaps-widget.class.php:34
-#: ../core/tools/googlemaps/widgets/tool-googlemaps-widget.class.php:130
+#: ../core/tools/maps/index.php:64
+#: ../core/tools/maps/widgets/googlemaps-widget.class.php:34
+#: ../core/tools/maps/widgets/googlemaps-widget.class.php:130
 msgid "Google Maps"
 msgstr ""
 
-#: ../core/tools/googlemaps/widgets/tool-googlemaps-widget.class.php:37
+#: ../core/tools/maps/index.php:72
+msgid "API KEY"
+msgstr ""
+
+#: ../core/tools/maps/index.php:74
+msgid "Get google maps API KEY"
+msgstr ""
+
+#: ../core/tools/maps/index.php:87
+msgid "Enqueue Google Maps API"
+msgstr ""
+
+#: ../core/tools/maps/index.php:89
+msgid ""
+"enqueue googlemaps api script (disable when you use other plugin which "
+"enqueues this api)"
+msgstr ""
+
+#: ../core/tools/maps/index.php:95 ../core/tools/pagination/index.php:100
+#: ../core/tools/splashscreen/index.php:79
+#: ../core/tools/updatenotifier/index.php:101 ../core/tools/video/index.php:106
+msgid "Integration"
+msgstr ""
+
+#: ../core/tools/maps/index.php:99
+msgid "shortcode :"
+msgstr ""
+
+#: ../core/tools/maps/widgets/googlemaps-widget.class.php:37
 msgid "Show Google Maps"
 msgstr ""
 
-#: ../core/tools/login/config.php:41
-msgid "Customize login page"
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:85
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:94
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:104
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:112
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:122
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:130
+msgid "true"
 msgstr ""
 
-#: ../core/tools/login/inc/customizer.php:36 ../core/tools/login/load.php:31
-msgid "Login page"
-msgstr ""
-
-#: ../core/tools/login/load.php:36
-msgid "Login page tool"
-msgstr ""
-
-#: ../core/tools/login/login.php:39
-msgid "login"
-msgstr ""
-
-#: ../core/tools/login/login.php:39
-msgid "password"
-msgstr ""
-
-#: ../core/tools/login/login.php:39
-msgid "email"
-msgstr ""
-
-#: ../core/tools/login/login.php:47
-msgid "Register"
-msgstr ""
-
-#: ../core/tools/logo/config.php:41 ../core/tools/logo/load.php:42
-msgid "Add logo to your site"
-msgstr ""
-
-#: ../core/tools/logo/inc/customizer.php:41 ../core/tools/logo/load.php:37
-msgid "Logo"
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:86
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:95
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:103
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:113
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:121
+#: ../core/tools/maps/widgets/templates/googlemaps-widget-form.php:131
+msgid "false"
 msgstr ""
 
 #: ../core/tools/media/custom-fields/templates/media.php:27
@@ -1061,27 +1076,27 @@ msgstr ""
 msgid "Margins"
 msgstr ""
 
-#: ../core/tools/media/load.php:31
+#: ../core/tools/media/index.php:38
 msgid "Wordpress galleries"
 msgstr ""
 
-#: ../core/tools/media/load.php:36
+#: ../core/tools/media/index.php:39
 msgid "Customize Wordpress galleries"
 msgstr ""
 
-#: ../core/tools/navigation/load.php:31
+#: ../core/tools/navigation/index.php:38
 msgid "Navigation widget"
 msgstr ""
 
-#: ../core/tools/navigation/load.php:36
+#: ../core/tools/navigation/index.php:39
 msgid "Contextual navigation widget"
 msgstr ""
 
-#: ../core/tools/navigation/widgets/navigation.class.php:12
+#: ../core/tools/navigation/widgets/navigation.class.php:34
 msgid "Navigation"
 msgstr ""
 
-#: ../core/tools/navigation/widgets/navigation.class.php:15
+#: ../core/tools/navigation/widgets/navigation.class.php:37
 msgid "Display contextual navigation"
 msgstr ""
 
@@ -1125,27 +1140,6 @@ msgstr ""
 msgid "descendant"
 msgstr ""
 
-#: ../core/tools/pagination/config.php:51
-msgid "include taxonomies"
-msgstr ""
-
-#: ../core/tools/pagination/config.php:52
-msgid "loop"
-msgstr ""
-
-#: ../core/tools/pagination/config.php:67
-#: ../core/tools/splashscreen/config.php:65
-msgid "insert this code in your theme templates :"
-msgstr ""
-
-#: ../core/tools/pagination/config.php:80
-msgid "include taxonomies context if appropriate"
-msgstr ""
-
-#: ../core/tools/pagination/config.php:93
-msgid "generate loop navigation"
-msgstr ""
-
 #: ../core/tools/pagination/custom-fields/templates/display-pagination.php:27
 msgid "Pagination options"
 msgstr ""
@@ -1154,90 +1148,109 @@ msgstr ""
 msgid "Display pagination"
 msgstr ""
 
-#: ../core/tools/pagination/load.php:31
+#: ../core/tools/pagination/index.php:38
 msgid "Pagination"
 msgstr ""
 
-#: ../core/tools/pagination/load.php:36
-msgid "Intelligent pagination for all post"
+#: ../core/tools/pagination/index.php:39
+msgid "Intelligent pagination for all post-types"
 msgstr ""
 
-#: ../core/tools/portfolio/load.php:31 ../core/tools/portfolio/portfolio.php:32
-#: ../core/tools/portfolio/portfolio.php:37
-msgid "Portfolios"
+#: ../core/tools/pagination/index.php:78
+msgid "Include taxonomies"
 msgstr ""
 
-#: ../core/tools/portfolio/load.php:36
-msgid "Portfolios manager"
+#: ../core/tools/pagination/index.php:80
+msgid "include taxonomies context if appropriate"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:33
+#: ../core/tools/pagination/index.php:92
+msgid "Loop"
+msgstr ""
+
+#: ../core/tools/pagination/index.php:94
+msgid "generate loop navigation"
+msgstr ""
+
+#: ../core/tools/pagination/index.php:104
+#: ../core/tools/splashscreen/index.php:83
+#: ../core/tools/updatenotifier/index.php:105 ../core/tools/video/index.php:110
+msgid "insert this code in your theme templates :"
+msgstr ""
+
+#: ../core/tools/portfolio/index.php:38 ../core/tools/portfolio/launch.php:32
 msgid "Portfolio"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:34
+#: ../core/tools/portfolio/index.php:39
+msgid "Create portfolio content type"
+msgstr ""
+
+#: ../core/tools/portfolio/launch.php:31 ../core/tools/portfolio/launch.php:36
+msgid "Portfolios"
+msgstr ""
+
+#: ../core/tools/portfolio/launch.php:33
 msgid "Add Portfolio"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:35
+#: ../core/tools/portfolio/launch.php:34
 msgid "Edit Portfolio"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:36
+#: ../core/tools/portfolio/launch.php:35
 msgid "New Portfolio"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:38
+#: ../core/tools/portfolio/launch.php:37
 msgid "Look Portfolio"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:39
+#: ../core/tools/portfolio/launch.php:38
 msgid "Search Portfolios"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:40
+#: ../core/tools/portfolio/launch.php:39
 msgid "No Portfolio found"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:41
+#: ../core/tools/portfolio/launch.php:40
 msgid "No Portfolio found in trash"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:59
+#: ../core/tools/portfolio/launch.php:58
 msgid "Portfolio Types"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:60
-#: ../core/tools/portfolio/portfolio.php:69
+#: ../core/tools/portfolio/launch.php:59 ../core/tools/portfolio/launch.php:68
 msgid "Portfolio Type"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:61
+#: ../core/tools/portfolio/launch.php:60
 msgid "Search Portfolio Type"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:62
+#: ../core/tools/portfolio/launch.php:61
 msgid "All Portfolio Types"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:63
-#: ../core/tools/portfolio/portfolio.php:64
+#: ../core/tools/portfolio/launch.php:62 ../core/tools/portfolio/launch.php:63
 msgid "Portfolio Type's parent"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:65
+#: ../core/tools/portfolio/launch.php:64
 msgid "Edit Portfolio Type"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:66
+#: ../core/tools/portfolio/launch.php:65
 msgid "Update Portfolio Type"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:67
+#: ../core/tools/portfolio/launch.php:66
 msgid "Add Portfolio Type"
 msgstr ""
 
-#: ../core/tools/portfolio/portfolio.php:88
+#: ../core/tools/portfolio/launch.php:87
 msgid "Thumb"
 msgstr ""
 
@@ -1275,39 +1288,20 @@ msgstr ""
 msgid "Private site"
 msgstr ""
 
-#: ../core/tools/private/load.php:31
+#: ../core/tools/private/index.php:38
 msgid "Private"
 msgstr ""
 
-#: ../core/tools/private/load.php:36
-msgid "Make your site private (Intranet) or just few pages"
+#: ../core/tools/private/index.php:39
+msgid "Make your site, or just few pages, private (Intranet)"
 msgstr ""
 
-#: ../core/tools/private/private.php:111 ../core/tools/private/private.php:112
+#: ../core/tools/private/launch.php:111 ../core/tools/private/launch.php:112
 msgid "sign out"
 msgstr ""
 
 #: ../core/tools/private/templates/tool-private-template.php:86
 msgid "sign in"
-msgstr ""
-
-#: ../core/tools/secure/config.php:46
-msgid "Captcha active"
-msgstr ""
-
-#: ../core/tools/secure/config.php:47
-msgid "FailToBan active"
-msgstr ""
-
-#: ../core/tools/secure/config.php:62
-msgid ""
-"add captcha on login, register and comment forms (Woocommerce supported)"
-msgstr ""
-
-#: ../core/tools/secure/config.php:75
-msgid ""
-"block gross power hacking on login, register and comment forms (Woocommerce "
-"supported)"
 msgstr ""
 
 #: ../core/tools/secure/inc/captcha.php:56
@@ -1374,36 +1368,112 @@ msgstr ""
 msgid "<strong>ERROR</strong>: Too many tries - please wait 1min"
 msgstr ""
 
-#: ../core/tools/secure/load.php:31
-msgid "Secure"
+#: ../core/tools/secure/index.php:38
+msgid "Security"
 msgstr ""
 
-#: ../core/tools/secure/load.php:36
+#: ../core/tools/secure/index.php:39
 msgid "Make your site secure"
 msgstr ""
 
-#: ../core/tools/seo/config.php:52
-msgid "opengraph active"
+#: ../core/tools/secure/index.php:102
+msgid "Captcha active"
 msgstr ""
 
-#: ../core/tools/seo/config.php:53
-msgid "generate sitemap.xml"
+#: ../core/tools/secure/index.php:104
+msgid ""
+"Add captcha on login, register and comment forms (Woocommerce supported)"
 msgstr ""
 
-#: ../core/tools/seo/config.php:54
-msgid "notify search engines"
+#: ../core/tools/secure/index.php:116
+msgid "Failtoban active"
 msgstr ""
 
-#: ../core/tools/seo/config.php:81
-msgid "social network publication control"
+#: ../core/tools/secure/index.php:118
+msgid ""
+"Block gross power hacking on login, register and comment forms (Woocommerce "
+"supported)"
 msgstr ""
 
-#: ../core/tools/seo/config.php:95
-msgid "view your sitemap.xml"
+#: ../core/tools/secure/index.php:130
+msgid "No sniff"
 msgstr ""
 
-#: ../core/tools/seo/config.php:108
-msgid "notify Google, Yahoo, Bing, Ask about your sitemap.xml update"
+#: ../core/tools/secure/index.php:132
+msgid "Disable content sniffing"
+msgstr ""
+
+#: ../core/tools/secure/index.php:144
+msgid "XSS protection"
+msgstr ""
+
+#: ../core/tools/secure/index.php:146
+msgid "Enabled web broswer XSS protection"
+msgstr ""
+
+#: ../core/tools/secure/index.php:158
+msgid "Restrict framing"
+msgstr ""
+
+#: ../core/tools/secure/index.php:160
+msgid "Enabled clickjacking protection"
+msgstr ""
+
+#: ../core/tools/secure/index.php:172
+msgid "Hide 'powered by' info"
+msgstr ""
+
+#: ../core/tools/secure/index.php:174
+msgid "Hide powered by info (php version)"
+msgstr ""
+
+#: ../core/tools/secure/index.php:186
+msgid "Hide 'Server' info"
+msgstr ""
+
+#: ../core/tools/secure/index.php:188
+msgid "Hide server info (server name/version)"
+msgstr ""
+
+#: ../core/tools/secure/index.php:197
+msgid "Omit entirely"
+msgstr ""
+
+#: ../core/tools/secure/index.php:199
+msgid "(Browser default) omit referrer on downgrade to HTTP"
+msgstr ""
+
+#: ../core/tools/secure/index.php:201
+msgid "Only send the origin ( https://www.example.com/ )"
+msgstr ""
+
+#: ../core/tools/secure/index.php:203
+msgid "Full URL to current origin, but just origin to other sites"
+msgstr ""
+
+#: ../core/tools/secure/index.php:205
+msgid "Omit referrer for cross origin requests"
+msgstr ""
+
+#: ../core/tools/secure/index.php:207
+msgid "Send only the origin, or nothing on downgrade (HTTPS->HTTP)"
+msgstr ""
+
+#: ../core/tools/secure/index.php:209
+msgid ""
+"Omit on downgrade, just origin on cross-origin, and full to current origin"
+msgstr ""
+
+#: ../core/tools/secure/index.php:211
+msgid "Always send the whole URL"
+msgstr ""
+
+#: ../core/tools/secure/index.php:214
+msgid "Set referrer policy option"
+msgstr ""
+
+#: ../core/tools/secure/index.php:216
+msgid "You can view your headers and evaluate your website security"
 msgstr ""
 
 #: ../core/tools/seo/custom-fields/templates/seo-term.php:31
@@ -1422,7 +1492,7 @@ msgid "Meta-keyword"
 msgstr ""
 
 #: ../core/tools/seo/custom-fields/templates/seo.php:27
-#: ../core/tools/seo/options.php:26 ../core/tools/seo/options.php:31
+#: ../core/tools/seo/index.php:38
 msgid "SEO"
 msgstr ""
 
@@ -1478,140 +1548,151 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: ../core/tools/seo/load.php:31
-msgid "SEO - OpenGraph"
-msgstr ""
-
-#: ../core/tools/seo/load.php:36
+#: ../core/tools/seo/index.php:39
 msgid "Optimize your site SEO and manage your social publications"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:86
-msgid "SEO settings"
+#: ../core/tools/seo/index.php:88
+msgid "Opengraph active"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:102
+#: ../core/tools/seo/index.php:90
+msgid "Social network publication management"
+msgstr ""
+
+#: ../core/tools/seo/index.php:102
+msgid "Enable sitemap.xml generator"
+msgstr ""
+
+#: ../core/tools/seo/index.php:104
+msgid "view your sitemap.xml"
+msgstr ""
+
+#: ../core/tools/seo/index.php:116
+msgid "Enable search engine notifications"
+msgstr ""
+
+#: ../core/tools/seo/index.php:118
+msgid "Notify Google, Yahoo, Bing, Ask when your sitemap.xml is updated"
+msgstr ""
+
+#: ../core/tools/seo/index.php:124
 msgid "Default values"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:114
+#: ../core/tools/seo/index.php:132
 msgid "Default description"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:117
-msgid "default description used when meta-description is not set"
+#: ../core/tools/seo/index.php:135
+msgid "Used as default meta description in your website"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:122
+#: ../core/tools/seo/index.php:142
 msgid "Default keywords"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:125
-msgid "default keywords used when meta-keywords is not set"
+#: ../core/tools/seo/index.php:145
+msgid "Used as default meta keywords in your website"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:141
+#: ../core/tools/seo/index.php:156
 msgid "Sitemap options"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:144
+#: ../core/tools/seo/index.php:159
 msgid ""
 "Your sitemap.xml is automaticaly generated, however you can add URLs "
 "manualy  or exclude generated URLs."
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:144
+#: ../core/tools/seo/index.php:159
 msgid "View sitemap.xml"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:151
+#: ../core/tools/seo/index.php:164
 msgid "Add sitemap rule"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:152
+#: ../core/tools/seo/index.php:165
 msgid "Do you realy want remove this url ?"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:153
+#: ../core/tools/seo/index.php:166
 msgid "http://www.website.com"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:154
+#: ../core/tools/seo/index.php:167
 msgid "exclude"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:155
+#: ../core/tools/seo/index.php:168
 msgid "add"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:156
+#: ../core/tools/seo/index.php:169
 msgid "exclude if equals"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:157
+#: ../core/tools/seo/index.php:170
 msgid "exclude if contains"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:158
+#: ../core/tools/seo/index.php:171
 msgid "exclude if matches regexp"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:186
+#: ../core/tools/seo/index.php:199
 msgid "301 Redirects"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:192
+#: ../core/tools/seo/index.php:205
 msgid ""
 "WARNING : one or more rules may generate loop - this may crash your website"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:195
+#: ../core/tools/seo/index.php:208
 msgid ""
 "Here you can add your 301 permanent redirects and order theme by drag & drop."
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:195
+#: ../core/tools/seo/index.php:208
 msgid "What is a 301 permanent redirect ?"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:202
+#: ../core/tools/seo/index.php:215
 msgid "Add redirection"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:203
+#: ../core/tools/seo/index.php:216
 msgid "Do you realy want remove this redirection ?"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:204
+#: ../core/tools/seo/index.php:217
 msgid "disable"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:205
+#: ../core/tools/seo/index.php:218
 msgid "redirects to"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:206
+#: ../core/tools/seo/index.php:219
 msgid "/my-old-page"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:207
+#: ../core/tools/seo/index.php:220
 msgid "/my-new-page"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:208
+#: ../core/tools/seo/index.php:221
 msgid "URL that equals"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:209
+#: ../core/tools/seo/index.php:222
 msgid "URL that matches (regexp)"
 msgstr ""
 
-#: ../core/tools/seo/options-page.php:246
-msgid ""
-"You have to activate SEO tool in Woodkit settings to manage SEO settings."
-msgstr ""
-
-#: ../core/tools/seo/seo.php:299
+#: ../core/tools/seo/launch.php:305
 #, php-format
 msgid "page %s"
 msgstr ""
@@ -1717,20 +1798,35 @@ msgstr ""
 msgid "five sixth last"
 msgstr ""
 
-#: ../core/tools/shortcodes/load.php:31
+#: ../core/tools/shortcodes/index.php:38
 msgid "Shortcodes"
 msgstr ""
 
-#: ../core/tools/shortcodes/load.php:36
+#: ../core/tools/shortcodes/index.php:39
 msgid "Add few shortcodes on your html editor: icons, columns, anchors..."
 msgstr ""
 
-#: ../core/tools/splashscreen/config.php:50
-msgid "fadeout speed"
+#: ../core/tools/shortcodes/index.php:81
+msgid "Enable shortcode 'anchor'"
+msgstr ""
+
+#: ../core/tools/shortcodes/index.php:91
+msgid "Enable shortcode 'columns'"
+msgstr ""
+
+#: ../core/tools/shortcodes/index.php:101
+msgid "Enable shortcode 'exergue'"
+msgstr ""
+
+#: ../core/tools/shortcodes/index.php:111
+msgid "Enable shortcode 'heightspace'"
+msgstr ""
+
+#: ../core/tools/shortcodes/index.php:121
+msgid "Enable shortcode 'icons'"
 msgstr ""
 
 #: ../core/tools/splashscreen/inc/customizer.php:35
-#: ../core/tools/splashscreen/load.php:31
 msgid "Splash Screen"
 msgstr ""
 
@@ -1754,42 +1850,213 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#: ../core/tools/splashscreen/load.php:36
+#: ../core/tools/splashscreen/index.php:38
+msgid "Splashscreen"
+msgstr ""
+
+#: ../core/tools/splashscreen/index.php:39
 msgid "Add loading page to your site"
 msgstr ""
 
-#: ../core/tools/video/config.php:53
-msgid "default width"
+#: ../core/tools/splashscreen/index.php:71
+msgid "Fadeout speed"
 msgstr ""
 
-#: ../core/tools/video/config.php:54
-msgid "default height"
+#: ../core/tools/tracking/index.php:38
+msgid "Tracking"
 msgstr ""
 
-#: ../core/tools/video/config.php:81
+#: ../core/tools/tracking/index.php:39
 msgid ""
-"replace featured image if exists, otherwise, you can insert this code "
-"directly in your theme templates :"
+"Manage your website tracking (Google Analytics, Google Tag Manager, FaceBook "
+"Pixel, ...)"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:71
+msgid "Google Codes"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:74
+msgid "Google Analytics code isn't needed if you use Google Tag Manager"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:80
+msgid "Google Analytics code"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:89
+msgid "Google Tag Manager code"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:97
+msgid "Google Analytics Event's tracking"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:101
+msgid "To use Google Analytics Event manager, please set GA key."
+msgstr ""
+
+#: ../core/tools/tracking/index.php:103
+msgid ""
+"You can add some Google Analytics Event rules based on CSS Selector - please "
+"don't use them when you are using Google Tag Manager."
+msgstr ""
+
+#: ../core/tools/tracking/index.php:108
+msgid "Add Google Analytics Event"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:109
+msgid "css selector"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:110
+msgid "event label"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:111
+msgid "action name"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:112
+msgid "category name"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:113 ../core/tools/tracking/index.php:172
+msgid "Do you realy want remove this event ?"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:134
+msgid "Selector example"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:139
+msgid "FaceBook Pixel"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:142
+msgid ""
+"You can generate your FB Pixel code from your FB Pub manager. For more "
+"informations : "
+msgstr ""
+
+#: ../core/tools/tracking/index.php:142 ../core/tools/tracking/index.php:143
+#: ../core/tools/tracking/index.php:163
+msgid "click here"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:143
+msgid ""
+"Note that you can integrate your Pixel code with your Google Tag Manager. "
+"For more information : "
+msgstr ""
+
+#: ../core/tools/tracking/index.php:149
+msgid "Pixel code"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:156
+msgid "FaceBook Pixel Events"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:160
+msgid "Please setup your Pixel code to use this feature."
+msgstr ""
+
+#: ../core/tools/tracking/index.php:162
+msgid ""
+"Set page URL on which you want generate event and paste your event code."
+msgstr ""
+
+#: ../core/tools/tracking/index.php:163
+msgid ""
+"To generate your event code, please go to your Pixel manager. For more "
+"informations : "
+msgstr ""
+
+#: ../core/tools/tracking/index.php:168
+msgid "Add Pixel Event"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:169
+msgid "URL"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:170
+msgid "Event code"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:171
+msgid "include url parameters"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:192
+msgid "Example"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:192
+msgid ""
+"will send a 'Lead' event to your FB Pixel when somebody visits your https://"
+"www.yourwebsite.com/presentation worpdress page."
+msgstr ""
+
+#: ../core/tools/tracking/index.php:193
+msgid "Note 1 : your theme must integrate the following code just after"
+msgstr ""
+
+#: ../core/tools/tracking/index.php:194
+msgid "Note 2 : specified URLs must be served by your Wordpress website."
+msgstr ""
+
+#: ../core/tools/updatenotifier/index.php:38
+msgid "Update Notifier"
+msgstr ""
+
+#: ../core/tools/updatenotifier/index.php:39
+msgid ""
+"[COMING SOON] - Get notification when something, themes, plugins, has to be "
+"updated. It's very useful to keep your website up to date and improve "
+"security."
+msgstr ""
+
+#: ../core/tools/updatenotifier/index.php:92
+msgid "Send email to"
+msgstr ""
+
+#: ../core/tools/updatenotifier/index.php:95
+msgid ""
+"Send by default to Administrator. To send notification to multiple emails, "
+"please separate emails by coma"
 msgstr ""
 
 #: ../core/tools/video/custom-fields/featured-video.php:40
 msgid "Featured Video"
 msgstr ""
 
-#: ../core/tools/video/load.php:31
+#: ../core/tools/video/index.php:38
 msgid "Video"
 msgstr ""
 
-#: ../core/tools/video/load.php:36
+#: ../core/tools/video/index.php:39
 msgid "Add featured video to your posts"
 msgstr ""
 
-#: ../core/tools/wall/config.php:49
-msgid "thumbnails size"
+#: ../core/tools/video/index.php:82
+msgid ""
+"replace featured image if exists, otherwise, you can insert this code "
+"directly in your theme templates, please see 'integration' section bellow."
+msgstr ""
+
+#: ../core/tools/video/index.php:89
+msgid "Default width"
+msgstr ""
+
+#: ../core/tools/video/index.php:98
+msgid "Default height"
 msgstr ""
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:30
-#: ../core/tools/wall/load.php:31
+#: ../core/tools/wall/index.php:38
 msgid "Wall"
 msgstr ""
 
@@ -1855,6 +2122,10 @@ msgstr ""
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:158
 msgid "First level"
+msgstr ""
+
+#: ../core/tools/wall/custom-fields/templates/display-wall.php:175
+msgid "Position"
 msgstr ""
 
 #: ../core/tools/wall/custom-fields/templates/display-wall.php:180
@@ -1989,8 +2260,12 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: ../core/tools/wall/load.php:36
+#: ../core/tools/wall/index.php:39
 msgid "Create multi-content galleries"
+msgstr ""
+
+#: ../core/tools/wall/index.php:72
+msgid "Thumbnails size"
 msgstr ""
 
 #: ../core/tools/wall/templates/tool-wall-display.php:194
@@ -2032,17 +2307,12 @@ msgstr ""
 msgid "hide"
 msgstr ""
 
-#: ../core/tools/widgetmanager/load.php:31
+#: ../core/tools/widgetmanager/index.php:38
 msgid "Widgets manager"
 msgstr ""
 
-#: ../core/tools/widgetmanager/load.php:36
+#: ../core/tools/widgetmanager/index.php:39
 msgid "Customize your widgets on each posts"
-msgstr ""
-
-#: ../core/tools/wip/config.php:32
-msgid ""
-"close your site for maintenance or update. Customize wip page appearence"
 msgstr ""
 
 #: ../core/tools/wip/inc/customizer.php:36
@@ -2057,49 +2327,45 @@ msgstr ""
 msgid "only logged in user can look you site"
 msgstr ""
 
-#: ../core/tools/wip/load.php:31
+#: ../core/tools/wip/index.php:38
 msgid "WIP"
 msgstr ""
 
-#: ../core/tools/wip/load.php:36
-msgid "close your site for maintenance or updates"
+#: ../core/tools/wip/index.php:39
+msgid "Add maintenance page on your website"
 msgstr ""
 
-#: ../woodkit.php:173
+#: ../woodkit.php:195
 msgid "1200px"
 msgstr ""
 
-#: ../woodkit.php:178
+#: ../woodkit.php:200
 msgid "1024px"
 msgstr ""
 
-#: ../woodkit.php:183
+#: ../woodkit.php:205
 msgid "800px"
 msgstr ""
 
-#: ../woodkit.php:188
+#: ../woodkit.php:210
 msgid "600px"
 msgstr ""
 
-#: ../woodkit.php:193
+#: ../woodkit.php:215
 msgid "400px"
 msgstr ""
 
-#: ../woodkit.php:198
+#: ../woodkit.php:220
 msgid "300px"
 msgstr ""
 
-#: ../woodkit.php:203
+#: ../woodkit.php:225
 msgid "100px"
 msgstr ""
 
-#: ../woodkit.php:208
+#: ../woodkit.php:230
 msgid "150x150px"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Enable comments"
-#~ msgstr "Un commentaire (FR)"
 
 #, fuzzy
 #~ msgid "No thumb navigation"
