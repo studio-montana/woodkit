@@ -319,50 +319,74 @@ function get_event_options($id_selected = null){
  * Retrieve pretty event date
  * @param string $event or get current post if null
  */
-function get_event_date_pretty($event = null, $display_hours = true){
-	$res = '';
-	if (is_object($event))
-		$event = $event->ID;
-	if (empty($event) || ! is_numeric($event)){
-		$event = get_the_ID();
+function get_event_date_pretty($post = null, $display_hours = true, $force_minutes = false){
+	$meta_date_begin_slug = 'meta_event_date_begin';
+	$meta_date_end_slug = 'meta_event_date_end';
+	$lang = woodkit_get_current_lang();
+	if (is_object($post)){
+		$post = $post->ID;
 	}
-	if (get_post_type($event) == 'event'){
-		$date_s = "";
-		$meta_date_begin = get_post_meta($event, "meta_event_date_begin", true);
-		$meta_date_begin_s = "";
-		$meta_day_begin_s = "";
-		$meta_month_begin_s = "";
-		$meta_year_begin_s = "";
-		if (!empty($meta_date_begin) && is_numeric($meta_date_begin)){
-			$meta_day_begin_s = strftime("%d",$meta_date_begin);
-			$meta_month_begin_s = get_textual_month($meta_date_begin);
-			$meta_date_begin_s = $meta_day_begin_s." ".$meta_month_begin_s;
-			$meta_year_begin_s = strftime("%Y",$meta_date_begin);
-			$meta_date_hour_begin = strftime("%H",$meta_date_begin);
-			$meta_date_minute_begin = strftime("%M",$meta_date_begin);
+	if (empty($post) || ! is_numeric($post)){
+		$post = get_the_ID();
+	}
+	$date_s = "";
+	$meta_date_begin = get_post_meta($post, $meta_date_begin_slug, true);
+	$meta_date_begin_s = "";
+	$meta_day_begin_s = "";
+	$meta_month_begin_s = "";
+	$meta_year_begin_s = "";
+	$meta_date_hour_begin_s = "";
+	if (!empty($meta_date_begin) && is_numeric($meta_date_begin)){
+		$begin_datetime = new DateTime();
+		$begin_datetime->setTimestamp($meta_date_begin);
+		$meta_day_begin_s = $begin_datetime->format("d");
+		$meta_month_begin_s = get_textual_month($meta_date_begin);
+		$meta_date_begin_s = $meta_day_begin_s." ".$meta_month_begin_s;
+		$meta_year_begin_s = $begin_datetime->format("Y");
+		$meta_date_minute_begin = $begin_datetime->format("i");
+		if ($lang == 'en'){
+			if (intval($meta_date_minute_begin) > 0 || $force_minutes){
+				$meta_date_hour_begin_s = $begin_datetime->format("g:ia");
+			}else{
+				$meta_date_hour_begin_s = $begin_datetime->format("ga");
+			}
+		}else{
+			if (intval($meta_date_minute_begin) > 0 || $force_minutes){
+				$meta_date_hour_begin_s = $begin_datetime->format("H:i");
+			}else{
+				$meta_date_hour_begin_s = $begin_datetime->format("H")."h";
+			}
 		}
-		$meta_date_hour_begin_s = "";
-		if (!empty($meta_date_hour_begin) && !empty($meta_date_minute_begin)){
-			$meta_date_hour_begin_s = $meta_date_hour_begin.":".$meta_date_minute_begin;
+	}
+	$meta_date_end = get_post_meta($post, $meta_date_end_slug, true);
+	$meta_date_end_s = "";
+	$meta_day_end_s = "";
+	$meta_month_end_s = "";
+	$meta_year_end_s = "";
+	$meta_date_hour_end_s = "";
+	if (!empty($meta_date_end) && is_numeric($meta_date_end)){
+		$end_datetime = new DateTime();
+		$end_datetime->setTimestamp($meta_date_end);
+		$meta_day_end_s = $end_datetime->format("d");
+		$meta_month_end_s = get_textual_month($meta_date_end);
+		$meta_date_end_s = $meta_day_end_s." ".$meta_month_end_s;
+		$meta_year_end_s = $end_datetime->format("Y");
+		$meta_date_minute_end = $end_datetime->format("i");
+		if ($lang == 'en'){
+			if (intval($meta_date_minute_end) > 0 || $force_minutes){
+				$meta_date_hour_end_s = $end_datetime->format("g:ia");
+			}else{
+				$meta_date_hour_end_s = $end_datetime->format("ga");
+			}
+		}else{
+			if (intval($meta_date_minute_begin) > 0 || $force_minutes){
+				$meta_date_hour_end_s = $end_datetime->format("H:i");
+			}else{
+				$meta_date_hour_end_s = $end_datetime->format("H")."h";
+			}
 		}
-		$meta_date_end = get_post_meta($event, "meta_event_date_end", true);
-		$meta_date_end_s = "";
-		$meta_day_end_s = "";
-		$meta_month_end_s = "";
-		$meta_year_end_s = "";
-		if (!empty($meta_date_end) && is_numeric($meta_date_end)){
-			$meta_day_end_s = strftime("%d",$meta_date_end);
-			$meta_month_end_s = get_textual_month($meta_date_end);
-			$meta_date_end_s = $meta_day_end_s." ".$meta_month_end_s;
-			$meta_year_end_s = strftime("%Y",$meta_date_end);
-			$meta_date_hour_end = strftime("%H",$meta_date_end);
-			$meta_date_minute_end = strftime("%M",$meta_date_end);
-		}
-		$meta_date_hour_end_s = "";
-		if (!empty($meta_date_hour_end) && !empty($meta_date_minute_end)){
-			$meta_date_hour_end_s = $meta_date_hour_end.":".$meta_date_minute_end;
-		}
-		$date_s = "";
+	}
+	if (!empty($meta_date_begin_s) && !empty($meta_date_end_s)){
 		if ($meta_date_begin_s == $meta_date_end_s){
 			if ($meta_date_hour_begin_s != $meta_date_hour_end_s){
 				$hour_s = " ".__("from (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s." ".__("to (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
@@ -386,7 +410,6 @@ function get_event_date_pretty($event = null, $display_hours = true){
 				$date_s = __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_begin_s." ".$meta_month_begin_s.$meta_year_begin_s." ".$hour_begin_s." ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ".$meta_month_end_s." ".$meta_year_end_s.$hour_end_s;
 			}
 		}
-		$res = $date_s;
 	}
-	return $res;
+	return $date_s;
 }

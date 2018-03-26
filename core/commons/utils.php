@@ -488,11 +488,21 @@ endif;
 if (!function_exists('get_current_lang')) :
 /**
  * woodkit_get_current_lang
-*
+* @deprecated since 1.3.5
 * @since Woodkit 1.0
 * @return void
 */
 function get_current_lang() {
+	return woodkit_get_current_lang();
+}
+endif;
+if (!function_exists('woodkit_get_current_lang')) :
+/**
+ * Retrieve current lang (WPML support)
+* @since Woodkit 1.0
+* @return void
+*/
+function woodkit_get_current_lang() {
 	// on interroge WPML
 	if (defined('ICL_LANGUAGE_CODE')){
 		return ICL_LANGUAGE_CODE;
@@ -502,7 +512,7 @@ function get_current_lang() {
 	if (!empty($wp_locale)){
 		if (strlen($wp_locale)>4)
 			return substr($wp_locale, 0, 2);
-		else return $wp_locale;
+			else return $wp_locale;
 	}
 	// inconnu
 	return "";
