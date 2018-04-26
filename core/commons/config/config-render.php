@@ -137,6 +137,32 @@ class WoodkitOptions {
 							</div>
 							<p class="description"><?php _e("Woodkit options position on your content editor", 'woodkit'); ?></p>
 						</div>
+						<div class="field">
+							<div class="field-content">
+								<?php 
+								$value = "";
+								if (isset($this->options['fontawesome-version'])){
+									$value = $this->options['fontawesome-version'];
+								}
+								$default_selected = "";
+								$high_selected = "";
+								$low_selected = "";
+								if ($value == "high"){
+									$high_selected = 'selected="selected"';
+								}else if ($value == "low"){
+									$low_selected = 'selected="selected"';
+								}else{
+									$default_selected = 'selected="selected"';
+								}
+								?>
+								<label for="fontawesome-version"><?php _e("Font Awesome", 'woodkit'); ?></label>
+								<select id="fontawesome-version" name="<?php echo WOODKIT_CONFIG_OPTIONS.'[fontawesome-version]'; ?>">
+									<option value="4" <?php if (empty($value) || $value == "4"){ echo 'selected="selected"'; } ?>><?php _e("v.4", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+									<option value="5" <?php if (!empty($value) && $value == "5"){ echo 'selected="selected"'; } ?>><?php _e("v.5", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+								</select>
+							</div>
+							<p class="description"><?php _e("Please verify compatibility to use v.5.", 'woodkit'); ?></p>
+						</div>
 					</div>
 					<button type="submit" class="woodkit-btn primary save">
 						<?php _e("Save", 'woodkit'); ?>

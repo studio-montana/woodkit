@@ -33,7 +33,7 @@ if (!function_exists("customfields_admin_init")):
 function customfields_admin_init() {
 	$customfields_posttypes_available = get_displayed_post_types();
 	$customfields_posttypes_available = apply_filters("woodkit_customfields_available_posttypes", $customfields_posttypes_available);
-	$metabox_position = $key = woodkit_get_option("metabox-position");
+	$metabox_position = woodkit_get_option("metabox-position");
 	if (empty($metabox_position))
 		$metabox_position = "default";
 	foreach ($customfields_posttypes_available as $post_type){
