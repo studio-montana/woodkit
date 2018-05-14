@@ -13,7 +13,7 @@
 			ed.addButton('toolshortcodesheightspace', {
 				title : 'Height Space',
 				cmd : 'toolshortcodesheightspace',
-				icon : 'none fa fa-arrows-v'
+				icon : 'none fas fa-arrows-alt-v'
 			});
 
 			ed.addCommand('toolshortcodesheightspace', function() {
