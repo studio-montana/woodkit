@@ -148,9 +148,11 @@ if (!function_exists("woodkit_save_options")):
 function woodkit_save_options($options, $merge = true, $reload = true){
 	if ($merge){
 		$old_options = woodkit_get_options();
-		foreach ($old_options as $old_option_key => $old_option_value){
-			if (!array_key_exists($old_option_key, $options)){
-				$options[$old_option_key] = $old_option_value;
+		if (!empty($old_options)){
+			foreach ($old_options as $old_option_key => $old_option_value){
+				if (!array_key_exists($old_option_key, $options)){
+					$options[$old_option_key] = $old_option_value;
+				}
 			}
 		}
 		update_option(WOODKIT_CONFIG_OPTIONS, $options);
