@@ -94,7 +94,7 @@ function locate_web_ressource($ressource_name) {
 			$located = WOODKIT_PLUGIN_URI . $ressource_name;
 		}
 	}
-	return $located;
+	return apply_filters("woodkit_locate_web_ressource", $located);
 }
 endif;
 
@@ -119,7 +119,7 @@ function locate_ressource($ressource_name) {
 			$located = WOODKIT_PLUGIN_PATH . $ressource_name;
 		}
 	}
-	return $located;
+	return apply_filters("woodkit_locate_ressource", $located);
 }
 endif;
 
