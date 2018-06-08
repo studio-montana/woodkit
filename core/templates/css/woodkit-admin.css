@@ -332,10 +332,10 @@
 }
 .custom-fields-section-header h3 {
 	font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     color: #fff;
-    background-color: #114C7F;/*#6C2EB9*/
-    padding: 20px;
+    background-color: #114C7F; /*#6C2EB9*/
+    padding: 12px 20px 9px 20px;
     border-bottom: 0;
     line-height: 18px;
     position: relative;
