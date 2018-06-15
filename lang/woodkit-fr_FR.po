@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom\n"
-"POT-Creation-Date: 2018-03-26 16:06+0200\n"
-"PO-Revision-Date: 2018-03-26 16:08+0200\n"
+"POT-Creation-Date: 2018-06-15 11:37+0200\n"
+"PO-Revision-Date: 2018-06-15 11:38+0200\n"
 "Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
 "Language-Team: Sébastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
 "com artcyril@gmail.com>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Projecustom-Id-Version: Bancassurances Theme WP\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
@@ -78,47 +78,63 @@ msgstr "position basse"
 
 #: ../core/commons/config/config-render.php:138
 msgid "Woodkit options position on your content editor"
-msgstr ""
+msgstr "Position des options Woodkit dans votre éditeur de contenu"
 
-#: ../core/commons/config/config-render.php:142
+#: ../core/commons/config/config-render.php:158
+msgid "Font Awesome"
+msgstr "Font Awesome"
+
+#: ../core/commons/config/config-render.php:160
+msgid "v.4"
+msgstr "v.4"
+
+#: ../core/commons/config/config-render.php:161
+msgid "v.5"
+msgstr "v.5"
+
+#: ../core/commons/config/config-render.php:164
+msgid "Please verify compatibility to use v.5."
+msgstr "Merci de vérifier la compatibilité pour utiliser la v.5"
+
+#: ../core/commons/config/config-render.php:168
 #: ../core/commons/tools/tool.class.php:103
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: ../core/commons/config/config-render.php:149
+#: ../core/commons/config/config-render.php:175
 #: ../core/commons/tools/tool.class.php:93
 msgid "Woodkit tools"
 msgstr "Outils Woodkit"
 
-#: ../core/commons/config/config-render.php:155
-#: ../core/commons/config/config-render.php:214
+#: ../core/commons/config/config-render.php:181
+#: ../core/commons/config/config-render.php:240
 msgid "Tool name"
-msgstr ""
+msgstr "Nom du tool"
 
-#: ../core/commons/config/config-render.php:156
-#: ../core/commons/config/config-render.php:215
+#: ../core/commons/config/config-render.php:182
+#: ../core/commons/config/config-render.php:241
 msgid "Description"
 msgstr "Description"
 
-#: ../core/commons/config/config-render.php:157
-#: ../core/commons/config/config-render.php:216
+#: ../core/commons/config/config-render.php:183
+#: ../core/commons/config/config-render.php:242
 msgid "Doc."
-msgstr ""
+msgstr "Doc."
 
-#: ../core/commons/config/config-render.php:173
-#: ../core/commons/config/config.php:278
+#: ../core/commons/config/config-render.php:199
+#: ../core/commons/config/config.php:280
 msgid "Setup"
 msgstr "Réglages"
 
-#: ../core/commons/config/config-render.php:181
+#: ../core/commons/config/config-render.php:207
 msgid "Deactivate"
 msgstr "Désactiver"
 
-#: ../core/commons/config/config-render.php:188
+#: ../core/commons/config/config-render.php:214
 msgid "Activate"
 msgstr "Activer"
 
-#: ../core/commons/config/config.php:288 ../core/commons/config/config.php:289
+#: ../core/commons/config/config.php:290 ../core/commons/config/config.php:291
 #: ../core/commons/custom-fields.php:41
 msgid "Woodkit"
 msgstr "Woodkit"
@@ -360,7 +376,7 @@ msgstr "nov"
 msgid "dec"
 msgstr "déc"
 
-#: ../core/init.php:98 ../core/init.php:188
+#: ../core/init.php:107 ../core/init.php:206
 msgid "loading..."
 msgstr "chargement…"
 
@@ -546,17 +562,29 @@ msgstr ""
 "Ajoute les mentions légales obligatoire relatives à la politique de "
 "confidentialité à votre site."
 
-#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:32
-msgid ""
-"By continuing to visit our site, you are agreeing to the use of cookies and "
-"similar technology."
-msgstr ""
-"En continuant votre visite sur ce site, vous acceptez l'utilisation de "
-"cookies et autres traceurs."
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:47
+msgid "Read our privacy policy."
+msgstr "Lire notre politique de confidentialité."
 
-#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:35
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:49
 msgid "More details here."
 msgstr "Plus de détails ici."
+
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:55
+msgid ""
+"By continuing to visit our website, you are agreeing to our privacy policy, "
+"the use of cookies and similar technology."
+msgstr ""
+"En continuant votre visite sur notre site Web, vous acceptez notre politique "
+"de confidentialité, l'utilisation de cookies et autres traceurs."
+
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:57
+msgid ""
+"By continuing to visit our website, you are agreeing to the use of cookies "
+"and similar technology."
+msgstr ""
+"En continuant votre visite sur notre site Web, vous acceptez l'utilisation "
+"de cookies et autres traceurs."
 
 #: ../core/tools/display/custom-fields/templates/display.php:27
 msgid "Display options"
@@ -1418,43 +1446,43 @@ msgstr ""
 
 #: ../core/tools/secure/index.php:130
 msgid "No sniff"
-msgstr ""
+msgstr "No sniff"
 
 #: ../core/tools/secure/index.php:132
 msgid "Disable content sniffing"
-msgstr ""
+msgstr "Empêcher le content sniffing"
 
 #: ../core/tools/secure/index.php:144
 msgid "XSS protection"
-msgstr ""
+msgstr "XSS protection"
 
 #: ../core/tools/secure/index.php:146
 msgid "Enabled web broswer XSS protection"
-msgstr ""
+msgstr "Activer la protection XSS de votre navigateur"
 
 #: ../core/tools/secure/index.php:158
 msgid "Restrict framing"
-msgstr ""
+msgstr "Restreindre les frames"
 
 #: ../core/tools/secure/index.php:160
 msgid "Enabled clickjacking protection"
-msgstr ""
+msgstr "Activer la protection contre le clickjacking"
 
 #: ../core/tools/secure/index.php:172
 msgid "Hide 'powered by' info"
-msgstr ""
+msgstr "Cacher l’information ‘powered by’"
 
 #: ../core/tools/secure/index.php:174
 msgid "Hide powered by info (php version)"
-msgstr ""
+msgstr "Cacher l’information ‘powered by’ (version php)"
 
 #: ../core/tools/secure/index.php:186
 msgid "Hide 'Server' info"
-msgstr ""
+msgstr "Cacher l’information ‘server’"
 
 #: ../core/tools/secure/index.php:188
 msgid "Hide server info (server name/version)"
-msgstr ""
+msgstr "Cacher l’information ‘server’ (nom/version du serveur)"
 
 #: ../core/tools/secure/index.php:197
 msgid "Omit entirely"
@@ -2063,18 +2091,14 @@ msgid "Update Notifier"
 msgstr "Notification de mise à jour"
 
 #: ../core/tools/updatenotifier/index.php:39
-#, fuzzy
-#| msgid ""
-#| "Get notification when something, themes, plugins, has to be updated. It's "
-#| "very useful to keep your website up to date and improve security."
 msgid ""
 "[COMING SOON] - Get notification when something, themes, plugins, has to be "
 "updated. It's very useful to keep your website up to date and improve "
 "security."
 msgstr ""
-"Recevez une notification lorsque que Wordpress, une extension ou un thème "
-"doit être mie à jour. Cela est très utile pour garder votre site web à jour "
-"et améliorer sa sécurité."
+"[BIENTOT] - Recevez une notification lorsque que Wordpress, une extension ou "
+"un thème doit être mie à jour. Cela est très utile pour garder votre site "
+"web à jour et améliorer sa sécurité."
 
 #: ../core/tools/updatenotifier/index.php:92
 msgid "Send email to"

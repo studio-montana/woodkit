@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom\n"
-"POT-Creation-Date: 2018-03-26 16:08+0200\n"
-"PO-Revision-Date: 2018-03-26 16:09+0200\n"
+"POT-Creation-Date: 2018-06-15 11:39+0200\n"
+"PO-Revision-Date: 2018-06-15 11:39+0200\n"
 "Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
 "Language-Team: Sébastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
 "com artcyril@gmail.com>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Projecustom-Id-Version: Bancassurances Theme WP\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
@@ -80,45 +80,61 @@ msgstr ""
 msgid "Woodkit options position on your content editor"
 msgstr ""
 
-#: ../core/commons/config/config-render.php:142
+#: ../core/commons/config/config-render.php:158
+msgid "Font Awesome"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:160
+msgid "v.4"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:161
+msgid "v.5"
+msgstr ""
+
+#: ../core/commons/config/config-render.php:164
+msgid "Please verify compatibility to use v.5."
+msgstr ""
+
+#: ../core/commons/config/config-render.php:168
 #: ../core/commons/tools/tool.class.php:103
 msgid "Save"
 msgstr ""
 
-#: ../core/commons/config/config-render.php:149
+#: ../core/commons/config/config-render.php:175
 #: ../core/commons/tools/tool.class.php:93
 msgid "Woodkit tools"
 msgstr ""
 
-#: ../core/commons/config/config-render.php:155
-#: ../core/commons/config/config-render.php:214
+#: ../core/commons/config/config-render.php:181
+#: ../core/commons/config/config-render.php:240
 msgid "Tool name"
 msgstr ""
 
-#: ../core/commons/config/config-render.php:156
-#: ../core/commons/config/config-render.php:215
+#: ../core/commons/config/config-render.php:182
+#: ../core/commons/config/config-render.php:241
 msgid "Description"
 msgstr ""
 
-#: ../core/commons/config/config-render.php:157
-#: ../core/commons/config/config-render.php:216
+#: ../core/commons/config/config-render.php:183
+#: ../core/commons/config/config-render.php:242
 msgid "Doc."
 msgstr ""
 
-#: ../core/commons/config/config-render.php:173
-#: ../core/commons/config/config.php:278
+#: ../core/commons/config/config-render.php:199
+#: ../core/commons/config/config.php:280
 msgid "Setup"
 msgstr ""
 
-#: ../core/commons/config/config-render.php:181
+#: ../core/commons/config/config-render.php:207
 msgid "Deactivate"
 msgstr ""
 
-#: ../core/commons/config/config-render.php:188
+#: ../core/commons/config/config-render.php:214
 msgid "Activate"
 msgstr ""
 
-#: ../core/commons/config/config.php:288 ../core/commons/config/config.php:289
+#: ../core/commons/config/config.php:290 ../core/commons/config/config.php:291
 #: ../core/commons/custom-fields.php:41
 msgid "Woodkit"
 msgstr ""
@@ -360,7 +376,7 @@ msgstr ""
 msgid "dec"
 msgstr ""
 
-#: ../core/init.php:98 ../core/init.php:188
+#: ../core/init.php:107 ../core/init.php:206
 msgid "loading..."
 msgstr ""
 
@@ -540,14 +556,24 @@ msgstr ""
 msgid "Add legal advice on front of your website."
 msgstr ""
 
-#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:32
-msgid ""
-"By continuing to visit our site, you are agreeing to the use of cookies and "
-"similar technology."
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:47
+msgid "Read our privacy policy."
 msgstr ""
 
-#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:35
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:49
 msgid "More details here."
+msgstr ""
+
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:55
+msgid ""
+"By continuing to visit our website, you are agreeing to our privacy policy, "
+"the use of cookies and similar technology."
+msgstr ""
+
+#: ../core/tools/cookies/templates/tool-cookies-template-legislation.php:57
+msgid ""
+"By continuing to visit our website, you are agreeing to the use of cookies "
+"and similar technology."
 msgstr ""
 
 #: ../core/tools/display/custom-fields/templates/display.php:27

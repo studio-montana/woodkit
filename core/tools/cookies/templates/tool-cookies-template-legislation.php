@@ -27,16 +27,37 @@ defined('ABSPATH') or die("Go Away!");
 	<div class="cookies-legislation-content">
 		<span>
 			<?php 
-			$text_content = woodkit_customizer_get_value('cookies_text', '');
-			if (empty($text_content))
-				$text_content = __("By continuing to visit our site, you are agreeing to the use of cookies and similar technology.", WOODKIT_PLUGIN_TEXT_DOMAIN);
-			$text_link = woodkit_customizer_get_value('cookies_link_text', '');
-			if (empty($text_link))
-				$text_link = __("More details here.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+			$has_privacy_policy = false;
+			$link_target = '_blank';
 			$link_url = woodkit_customizer_get_value('cookies_link_url', '');
-			if (empty($link_url))
-				$link_url = "http://www.cnil.fr/vos-obligations/sites-web-cookies-et-autres-traceurs/que-dit-la-loi/";
-			echo apply_filters("woodkit_tool_cookies_text_content", $text_content.'&nbsp;<a href="'.esc_url($link_url).'" target="_blank">'.$text_link.'</a>');
+			if (empty($link_url)){
+				$privacy_policy = get_option("wp_page_for_privacy_policy", 0);
+				if (!empty($privacy_policy)){
+					$has_privacy_policy = true;
+					$link_target = "_self";
+					$link_url = get_the_permalink($privacy_policy);
+				}
+				if (empty($link_url)){
+					$link_url = "http://www.cnil.fr/vos-obligations/sites-web-cookies-et-autres-traceurs/que-dit-la-loi/";
+				}
+			}
+			$text_link = woodkit_customizer_get_value('cookies_link_text', '');
+			if (empty($text_link)){
+				if ($has_privacy_policy){
+					$text_link = __("Read our privacy policy.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+				}else{
+					$text_link = __("More details here.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+				}
+			}
+			$text_content = woodkit_customizer_get_value('cookies_text', '');
+			if (empty($text_content)){
+				if ($has_privacy_policy){
+					$text_content = __("By continuing to visit our website, you are agreeing to our privacy policy, the use of cookies and similar technology.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+				}else{
+					$text_content = __("By continuing to visit our website, you are agreeing to the use of cookies and similar technology.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+				}
+			}
+			echo apply_filters("woodkit_tool_cookies_text_content", $text_content.'&nbsp;<a href="'.esc_url($link_url).'" target="'.$link_target.'">'.$text_link.'</a>');
 			?>
 		</span>
 		<button id="cookies-accept-condition">
