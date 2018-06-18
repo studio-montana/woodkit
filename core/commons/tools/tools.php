@@ -49,7 +49,7 @@ function woodkit_get_available_tools(){
 			$tools_folders = scandir($tools_pathbase);
 			if ($tools_folders){
 				foreach ($tools_folders as $tool_folder){
-					if ($tool_folder != '.' && $tool_folder != '..' && $tool_folder != '.DS_Store'){
+					if ($tool_folder != '.' && $tool_folder != '..' && $tool_folder != '.DS_Store' && $tool_folder != 'index.php'){
 						$tool_path = $tools_pathbase.$tool_folder.'/index.php';
 						if (file_exists($tool_path)){
 							require_once $tool_path; // load all tool index.php file which must add_filter : "woodkit-register-tool" to register themself
