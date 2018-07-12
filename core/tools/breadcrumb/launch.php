@@ -59,7 +59,7 @@ function tool_breadcrumb_get_the_title($post_id = null){
  * @return string
  */
 function tool_breadcrumb($args = array(), $display = true){
-
+	
 	$id_blog_page = get_option('page_for_posts');
 	$id_front_page = get_option('page_on_front');
 
@@ -230,3 +230,110 @@ function tool_breadcrumb_term_ancestors($id, $taxonomy, $separator){
 	return $output;
 }
 
+/**
+ * Retrieve Breadcrumb Items Object relative to specified $id
+ * @param int $id
+ * @param string $type : 'post' | 'term' | 'tax'
+ * @param array $breadcrumb_items
+ * @param array $in_array_ids
+ * @return array of BreadcrumbItem
+ */
+function tool_breadcrumb_get_items($id, $type = 'post', $breadcrumb_items = array(), $in_array_ids = array()) {
+	if ($type === 'post' && !empty($id)) {
+		$item_breadcrumb_type = get_post_meta ( $id, META_BREADCRUMB_TYPE, true );
+		if (! empty ( $item_breadcrumb_type ) && $item_breadcrumb_type == 'customized') {
+			$item_breadcrumb_items = get_post_meta($id, META_BREADCRUMB_CUSTOM_ITEMS, true);
+			if (!empty($item_breadcrumb_items)){
+				$item_breadcrumb_items = json_decode($item_breadcrumb_items, true);
+				if (!empty($item_breadcrumb_items)){
+					foreach ($item_breadcrumb_items as $item_breadcrumb_item){
+						$parts = explode("|", $item_breadcrumb_item);
+						if (count($parts) > 2){
+							list($item_type, $item_type_slug, $item_id) = $parts;
+							if (!in_array($item_breadcrumb_item, $in_array_ids)){
+								$in_array_ids[] = $item_breadcrumb_item;
+								if (!empty($item_type) && !empty($item_type_slug) && !empty($item_id) && is_numeric($item_id)){
+									if ($item_type == 'post'){
+										$post = get_post($item_id);
+										if ($post){
+											$breadcrumb_items = tool_breadcrumb_get_items($item_id, $item_type, $breadcrumb_items, $in_array_ids);
+										}
+									}else if ($item_type === 'tax' || $item_type === 'term'){
+										$term = get_term($item_id);
+										if ($term){
+											$breadcrumb_items = tool_breadcrumb_get_items($item_id, $item_type, $breadcrumb_items, $in_array_ids);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}else{
+			$id_post_parent = wp_get_post_parent_id($id);
+			if (!empty($id_post_parent)){
+				$post_parent_breadcrumb_item = 'post|'.get_post_type($id_post_parent).'|'.$id_post_parent;
+				if (!in_array($post_parent_breadcrumb_item, $in_array_ids)){
+					$in_array_ids[] = $post_parent_breadcrumb_item;
+					$post = get_post($id_post_parent);
+					if ($post && !empty($id_post_parent)){
+						$breadcrumb_items = tool_breadcrumb_get_items($id_post_parent, 'post', $breadcrumb_items, $in_array_ids);
+					}
+				}
+			}
+		}
+		$breadcrumb_items[] = new BreadcrumbItem(get_post($id));
+		
+	} else if (($type === 'tax' || $type === 'term') && !empty($id)) {
+		$term = WP_Term::get_instance($id);
+		$ancestors = get_ancestors($id, $term->taxonomy);
+		if ($ancestors){
+			sort($ancestors, -1);
+			foreach ($ancestors as $ancestor ) {
+				$term = WP_Term::get_instance($ancestor, $term->taxonomy);
+				if ($term){
+					$breadcrumb_items[] = new BreadcrumbItem($term);
+				}
+			}
+		}
+		$breadcrumb_items[] = new BreadcrumbItem($term);
+	}
+	return $breadcrumb_items;
+}
+
+class BreadcrumbItem {
+
+	public $id;
+	public $slug;
+	public $title;
+	public $type;
+	public $term_type;
+	public $post_type;
+	public $post;
+	public $term;
+	public $type_id;
+	public $permalink;
+
+	function __construct($wp_object){
+		if (is_a($wp_object, 'WP_Term')){
+			$this->id = $wp_object->term_id;
+			$this->slug = $wp_object->slug;
+			$this->title = $wp_object->name;
+			$this->type = 'term';
+			$this->term_type = $wp_object->taxonomy;
+			$this->term = $wp_object;
+			$this->type_id = 'term_'.$this->id;
+			$this->permalink = get_term_link($this->term);
+		}else if (is_a($wp_object, 'WP_Post')){
+			$this->id = $wp_object->ID;
+			$this->slug = $wp_object->post_name;
+			$this->title = get_the_title($wp_object->ID);
+			$this->type = 'post';
+			$this->post_type = $wp_object->post_type;
+			$this->post = $wp_object;
+			$this->type_id = 'post_'.$this->id;
+			$this->permalink = get_the_permalink($this->post);
+		}
+	}
+}
