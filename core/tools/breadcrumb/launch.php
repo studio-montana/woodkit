@@ -35,6 +35,10 @@ function tool_breadcrumb_woodkit_admin_enqueue_styles_tools($dependencies) {
 	$css_breadcrumb = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/css/tool-breadcrumb-admin.css');
 	if (!empty($css_breadcrumb))
 		wp_enqueue_style('tool-breadcrumb-admin-css', $css_breadcrumb, $dependencies, '1.0');
+
+	$js_breadcrumb = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/js/tool-breadcrumb-admin.js');
+	if (!empty($js_breadcrumb))
+		wp_enqueue_script('tool-breadcrumb-admin-js', $js_breadcrumb, array('jquery'), '1.0', true);
 }
 add_action('woodkit_admin_enqueue_styles_tools', 'tool_breadcrumb_woodkit_admin_enqueue_styles_tools');
 
