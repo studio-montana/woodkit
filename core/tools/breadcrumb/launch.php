@@ -34,11 +34,11 @@ function tool_breadcrumb_woodkit_admin_enqueue_styles_tools($dependencies) {
 
 	$css_breadcrumb = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/css/tool-breadcrumb-admin.css');
 	if (!empty($css_breadcrumb))
-		wp_enqueue_style('tool-breadcrumb-admin-css', $css_breadcrumb, $dependencies, '1.0');
+		wp_enqueue_style('tool-breadcrumb-admin-css', $css_breadcrumb, $dependencies, '1.1');
 
 	$js_breadcrumb = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/js/tool-breadcrumb-admin.js');
 	if (!empty($js_breadcrumb))
-		wp_enqueue_script('tool-breadcrumb-admin-js', $js_breadcrumb, array('jquery'), '1.0', true);
+		wp_enqueue_script('tool-breadcrumb-admin-js', $js_breadcrumb, array('jquery'), '1.1', true);
 }
 add_action('woodkit_admin_enqueue_styles_tools', 'tool_breadcrumb_woodkit_admin_enqueue_styles_tools');
 
@@ -175,10 +175,29 @@ function tool_breadcrumb_post_ancestors($id_post, $separator, $existing_ids_in_b
 	}else{
 		// classic breadcrumb
 		$id_post_parent = wp_get_post_parent_id($id_post);
-		if ($id_post_parent && is_numeric($id_post_parent) && !in_array($id_post_parent, $existing_ids_in_breadcrumb)){
-			$existing_ids_in_breadcrumb[] = $id_post_parent;
-			$output .= tool_breadcrumb_post_ancestors($id_post_parent, $separator, $existing_ids_in_breadcrumb);
-			$output .= '<li class="breadcrumb-item"><a href="'.get_permalink($id_post_parent).'" title="'.esc_attr(tool_breadcrumb_get_the_title($id_post_parent)).'">'.tool_breadcrumb_get_the_title($id_post_parent).'</a></li>'.$separator;
+		if (!empty($id_post_parent)){
+			if (is_numeric($id_post_parent) && !in_array($id_post_parent, $existing_ids_in_breadcrumb)){
+				$existing_ids_in_breadcrumb[] = $id_post_parent;
+				$output .= tool_breadcrumb_post_ancestors($id_post_parent, $separator, $existing_ids_in_breadcrumb);
+				$output .= '<li class="breadcrumb-item"><a href="'.get_permalink($id_post_parent).'" title="'.esc_attr(tool_breadcrumb_get_the_title($id_post_parent)).'">'.tool_breadcrumb_get_the_title($id_post_parent).'</a></li>'.$separator;
+			}
+		}else{
+			// post type breadcrumb - get customized post-type breadcrumb ONLY for the last post parent
+			$post_type = get_post_type($id_post);
+			if (!empty($post_type)){
+				$items = breadcrumb_get_customized_post_type_settings($post_type);
+				if ($items !== false && !empty($items) && is_array($items)){
+					foreach ($items as $item){
+						list($item_gender, $item_type, $item_id) = explode('|', $item);
+						if ($item_gender === 'post'){
+							$output .= '<li class="breadcrumb-item"><a href="'.get_permalink($item_id).'" title="'.esc_attr(tool_breadcrumb_get_the_title($item_id)).'">'.tool_breadcrumb_get_the_title($item_id).'</a></li>'.$separator;
+						}else if ($item_gender === 'term' || $item_gender === 'tax'){
+							$term = get_term($item_id, $item_type);
+							$output .= '<li class="breadcrumb-item"><a href="'.get_term_link($term, $item_type).'" title="'.esc_attr($term->name).'">'.$term->name.'</a></li>'.$separator;
+						}
+					}
+				}
+			}
 		}
 	}
 	return $output;
@@ -232,6 +251,19 @@ function tool_breadcrumb_term_ancestors($id, $taxonomy, $separator){
 		}
 	}
 	return $output;
+}
+
+/**
+ * Retrieve customized breadcrumb for specified post-type (return false if post type isn't customized)
+ * @param unknown $post_type
+ * @return Array|boolean
+ */
+function breadcrumb_get_customized_post_type_settings($post_type){
+	$value = woodkit_get_tool_option('breadcrumb', 'breadcrumb-post-types');
+	if (!empty($value) && is_array($value) && isset($value[$post_type]) && !empty($value[$post_type]) && is_array($value[$post_type]) && isset($value[$post_type]['type']) && $value[$post_type]['type'] === 'customized'){
+		return $value[$post_type]['items'];
+	}
+	return false;
 }
 
 /**

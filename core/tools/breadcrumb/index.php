@@ -120,7 +120,8 @@ class WoodkitToolBreadCrumb extends WoodkitTool{
 									<option value="classic" <?php if (empty($type) || $type == "classic"){ ?> selected="selected"<?php } ?>><?php _e('classic', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
 									<option value="customized" <?php if (!empty($type) && $type == "customized"){ ?> selected="selected"<?php } ?>><?php _e('customized', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
 								</select>
-								<div id="breadcrumb-customize-items-<?php echo $post_type->name; ?>" style="display: none;">
+								<div id="breadcrumb-customize-items-<?php echo $post_type->name; ?>" class="breadcrumb-customize-items" style="display: none;">
+									<div><i class="fa fa-long-arrow-down" style="margin: 0 9px 6px 0;"></i><?php _e('Home', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></div>
 									<div id="breadcrumb-customize-items-<?php echo $post_type->name; ?>-manager"></div>
 								</div>
 							</div>
@@ -167,32 +168,6 @@ class WoodkitToolBreadCrumb extends WoodkitTool{
 			</div>
 		</div>
 		<?php
-	}
-	
-	/**
-	 * Override...
-	 * {@inheritDoc}
-	 * @see WoodkitTool::save_config_fields()
-	 */
-	public function save_config_fields($values){
-		// specified fields
-		$fields = $this->get_config_fields();
-		if (!empty($fields)){
-			foreach ($fields as $field){
-				if (isset($_POST[$field])){
-					if (is_array($_POST[$field])){
-						$values[$field] = woodkit_get_request_param($field, null, false);
-					}else{
-						$values[$field] = woodkit_get_request_param($field, null, true);
-					}
-				}else{
-					$values[$field] = null;
-				}
-			}
-		}
-		// extra fields
-		
-		return $values;
 	}
 	
 }
