@@ -93,7 +93,6 @@ class WoodkitToolBreadCrumb extends WoodkitTool{
 			<div class="section-content">
 				<?php 
 				$value = woodkit_get_tool_option($this->slug, 'breadcrumb-post-types');
-				echo '<div style="padding: 12px; border: 1px solid #ccc;">'.var_export($value, true).'</div>';
 				$post_types = get_post_types(array('public' => true), 'objects');
 				if (!empty($post_types)){
 					foreach ($post_types as $post_type){

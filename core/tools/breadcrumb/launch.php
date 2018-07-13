@@ -52,6 +52,31 @@ function tool_breadcrumb_get_the_title($post_id = null){
 }
 
 /**
+ * Hook WP Menu to add classes
+ */
+$breadcrumb_menu_management_active = woodkit_get_tool_option('breadcrumb', 'breadcrumb-menu-management-active');
+if ($breadcrumb_menu_management_active == 'on'){
+	add_action('nav_menu_css_class', function ( $classes, $item, $args ) {
+		if ($item->type === 'post_type'){
+			$post_id = $item->object_id;
+			if (breadcrumb_is_in_current_breadcrumb($post_id, 'post')){
+				if (!in_array('current-menu-ancestor', $classes)){
+					$classes[] = 'current-menu-ancestor';
+				}
+			}
+		}else if($item->type === 'taxonomy'){
+			$term_id = $item->object_id;
+			if (breadcrumb_is_in_current_breadcrumb($term_id, 'term')){
+				if (!in_array('current-menu-ancestor', $classes)){
+					$classes[] = 'current-menu-ancestor';
+				}
+			}
+		}
+		return $classes;
+	}, 10, 3 );
+}
+
+/**
  * retrieve or display breadcrumb
  * @param array $args {
  *     Optional.
@@ -266,6 +291,41 @@ function breadcrumb_get_customized_post_type_settings($post_type){
 	return false;
 }
 
+function breadcrumb_is_in_current_breadcrumb($id, $type = 'post'){
+	if ($type === 'tax'){
+		$type = 'term'; // secure this slug - 'tax' is 'term' too
+	}
+	$res = false;
+	$current_id = null;
+	$current_type = null;
+	if (is_single() || is_page()){
+		$current_id = get_the_ID();
+		$current_type = 'post';
+	}else if (is_category()) {
+		$categories = get_the_category();
+		$current_id = $categories[0]->cat_ID;
+		$current_type = 'term';
+	}else if (is_archive()){
+		if (is_tax() || is_category() || is_tag() ){
+			$term = get_queried_object();
+			$current_id = $term->term_id;
+			$current_type = 'term';
+		}
+	}
+	if (!empty($current_id) && !empty($current_type)){
+		$b_items = tool_breadcrumb_get_items($current_id, $current_type);
+		if (!empty($b_items) && is_array($b_items)){
+			foreach ($b_items as $b_item){
+				if ($b_item->id == $id && $b_item->type == $type){
+					$res = true;
+					break;
+				}
+			}
+		}
+	}
+	return $res;
+}
+
 /**
  * Retrieve Breadcrumb Items Object relative to specified $id
  * @param int $id
@@ -315,6 +375,22 @@ function tool_breadcrumb_get_items($id, $type = 'post', $breadcrumb_items = arra
 					$post = get_post($id_post_parent);
 					if ($post && !empty($id_post_parent)){
 						$breadcrumb_items = tool_breadcrumb_get_items($id_post_parent, 'post', $breadcrumb_items, $in_array_ids);
+					}
+				}
+			}else{
+				// post type breadcrumb - get customized post-type breadcrumb ONLY for the last post parent
+				$post_type = get_post_type($id);
+				if (!empty($post_type)){
+					$items = breadcrumb_get_customized_post_type_settings($post_type);
+					if ($items !== false && !empty($items) && is_array($items)){
+						foreach ($items as $item){
+							list($item_gender, $item_type, $item_id) = explode('|', $item);
+							if ($item_gender === 'post'){
+								$breadcrumb_items[] = new BreadcrumbItem(get_post($item_id));
+							}else if ($item_gender === 'term' || $item_gender === 'tax'){
+								$breadcrumb_items[] = new BreadcrumbItem(get_term($item_id, $item_type));
+							}
+						}
 					}
 				}
 			}
