@@ -54,6 +54,7 @@ class WoodkitToolSecure extends WoodkitTool{
 				'headers-referrer',
 				'headers-poweredby',
 				'headers-server',
+				'headers-corswhitelist',
 				/* - have to add their options in next version
 				 'headers-hsts-time',
 				 'headers-hsts-subdomains',
@@ -79,6 +80,7 @@ class WoodkitToolSecure extends WoodkitTool{
 				'headers-referrer' => "no-referrer-when-downgrade",
 				'headers-poweredby' => "on",
 				'headers-server' => "on",
+				'headers-corswhitelist' => "",
 		);
 	}
 	
@@ -213,10 +215,37 @@ class WoodkitToolSecure extends WoodkitTool{
 					</div>
 					<p class="description"><?php _e('Set referrer policy option', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
 				</div>
+				<div class="field select">
+					<div class="field-content">
+						<?php 
+						$value = woodkit_get_tool_option($this->slug, 'headers-corswhitelist');
+						?>
+						<textarea id="headers-corswhitelist" name="headers-corswhitelist" rows="10" placeholder="<?php echo esc_attr(__("CORS domains whitelist", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>"><?php echo $value; ?></textarea>
+					</div>
+					<p class="description"><?php _e('Set CORS whitelist - one domain per line', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+				</div>
 				<div class="section-info"><?php _e("You can view your headers and evaluate your website security", 'woodkit'); ?> : <a href="https://securityheaders.io/" target="_blank">https://securityheaders.io/</a></div>
 			</div>
 		</div>
 		<?php
+	}
+	
+	public function save_config_fields($values){
+		$fields = $this->get_config_fields();
+		if (!empty($fields)){
+			foreach ($fields as $field){
+				if (isset($_POST[$field])){
+					if (is_array($_POST[$field]) || $field === 'headers-corswhitelist'){
+						$values[$field] = woodkit_get_request_param($field, null, false);
+					}else{
+						$values[$field] = woodkit_get_request_param($field, null, true);
+					}
+				}else{
+					$values[$field] = null;
+				}
+			}
+		}
+		return $values;
 	}
 }
 add_filter("woodkit-register-tool", function($tools){

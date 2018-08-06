@@ -22,8 +22,24 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
+/**
+ * CORS whitelist
+ */
+add_filter('allowed_http_origins', function($origins) {
+	$corswhitelist = woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-corswhitelist");
+	if (!empty($corswhitelist)){
+		$corswhitelist = explode("\n", $corswhitelist);
+		if (!empty($corswhitelist)){
+			foreach ($corswhitelist as $corswhitelist_item){
+				$origins[] = trim($corswhitelist_item);
+			}
+		}
+	}
+	return $origins;
+});
+
 function woodkit_tool_secure_headers() {
-	if ( headers_sent() ) {
+	if (headers_sent()){
 		trace_err("Headers already sent. Woodkit secure tool unable to process");
 	}
 
