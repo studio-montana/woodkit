@@ -33,7 +33,7 @@ function tool_shortcodes_columns_init() {
 		add_filter('mce_buttons', 'tool_shortcodes_columns_tiny_mce_plugins_buttons');
 	}
 }
-add_action('init', 'tool_shortcodes_columns_init');
+add_action('init', 'tool_shortcodes_columns_init', 100); // 100 => after Woodkit tools 'init'
 
 /**
  * Register mce plugin button

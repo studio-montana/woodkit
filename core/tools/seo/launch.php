@@ -105,7 +105,7 @@ function woodkit_tool_seo_redirects() {
 		}
 	}
 }
-add_action ( 'init', 'woodkit_tool_seo_redirects', 1 );
+add_action ( 'init', 'woodkit_tool_seo_redirects', 100); // 100 => after Woodkit tools 'init'
 
 endif;
 

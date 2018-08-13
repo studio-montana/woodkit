@@ -31,7 +31,7 @@ function tool_googlemaps_shortcode_init() {
 		add_filter('mce_buttons', 'tool_googlemaps_shortcode_tiny_mce_plugins_buttons');
 	}
 }
-add_action('init', 'tool_googlemaps_shortcode_init');
+add_action('init', 'tool_googlemaps_shortcode_init', 100); // 100 => after Woodkit tools 'init'
 
 /**
  * Register mce plugin button

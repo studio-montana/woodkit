@@ -77,7 +77,7 @@ function add_portfolio_post_type(){
 	);
 	register_taxonomy('portfoliotype', array( 'portfolio' ), $args);
 }
-add_action('init', 'add_portfolio_post_type', 100); // 100 => after tools 'init'
+add_action('init', 'add_portfolio_post_type', 100); // 100 => after Woodkit tools 'init'
 
 if (!function_exists("define_portfolio_columns")):
 /**

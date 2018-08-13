@@ -105,7 +105,7 @@ function add_event_post_type(){
 	do_action("tool_event_add_post_type_after", "event");
 	
 }
-add_action('init', 'add_event_post_type', 100); // 100 => after tools 'init'
+add_action('init', 'add_event_post_type', 100); // 100 => after Woodkit tools 'init'
 endif;
 
 /**

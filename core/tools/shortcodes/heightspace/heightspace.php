@@ -31,7 +31,7 @@ function tool_shortcodes_heightspace_init() {
 		add_filter('mce_buttons', 'tool_shortcodes_heightspace_tiny_mce_plugins_buttons');
 	}
 }
-add_action('init', 'tool_shortcodes_heightspace_init');
+add_action('init', 'tool_shortcodes_heightspace_init', 100); // 100 => after Woodkit tools 'init'
 
 /**
  * Register mce plugin button

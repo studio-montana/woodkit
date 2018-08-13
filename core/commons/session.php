@@ -22,7 +22,7 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
-add_action('init', 'woodkit_session_start', 1);
+add_action('init', 'woodkit_session_start', 100); // 100 => after Woodkit tools 'init'
 
 /**
  * start the session, after this call the PHP $_SESSION super global is available
