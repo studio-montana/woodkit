@@ -384,47 +384,55 @@ function get_emails_from_string($string){
 }
 endif;
 
-if (!function_exists("get_post_types_by_type")):
-/**
- * retrieve specified post-types
-* @param string $meta_args : permet de filtrer sur les post_meta
-* @return array
-*/
-function get_post_types_by_type($type, $meta_args = null, $args=array()){
-	$posts = array();
-	// parse args array and set default values
-	$args['post_type'] = $type;
-	if (empty($args['orderby']))
-		$args['orderby'] = "title";
-	if (empty($args['order']))
-		$args['order'] = 'ASC';
-	if (empty($args['numberposts']))
-		$args['numberposts'] = -1;
-	if (empty($args['suppress_filters']))
-		$args['suppress_filters'] = FALSE; // pour n'avoir que les items de la langue courante (compatibilité WPML)
-
-	$posts = array_merge($posts, get_posts($args));
-	$posts_fin = array();
-
-	// meta filters
-	if ($meta_args && count($meta_args)>0){
-		foreach ($posts as $post){
-			$add = true;
-			foreach ($meta_args as $meta_key => $meta_value){
-				if (get_post_meta($post->ID, $meta_key, true) != $meta_value){
-					$add = false;
+if (! function_exists ( "get_post_types_by_type" )) :
+	/**
+	 * retrieve specified post-types
+	 * 
+	 * @param string $meta_args
+	 *        	: permet de filtrer sur les post_meta
+	 * @return array
+	 *
+	 */
+	function get_post_types_by_type($type, $meta_args = null, $args = array()) {
+		// parse args array and set default values
+		$args ['post_type'] = $type;
+		if (empty ( $args ['orderby'] ))
+			$args ['orderby'] = "title";
+		if (empty ( $args ['order'] ))
+			$args ['order'] = 'ASC';
+		if (empty ( $args ['numberposts'] ))
+			$args ['numberposts'] = - 1;
+		if (empty ( $args ['suppress_filters'] ))
+			$args ['suppress_filters'] = FALSE; // pour n'avoir que les items de la langue courante (compatibilité WPML)
+		
+		$posts = get_posts ( $args );
+		$posts_fin = array ();
+		
+		// meta filters
+		if ($meta_args && count ( $meta_args ) > 0) {
+			foreach ( $posts as $post ) {
+				$add = true;
+				foreach ( $meta_args as $meta_key => $meta_value ) {
+					if (isset ( $args ['fields'] ) && $args ['fields'] === 'ids') {
+						$post_id = $post;
+					} else {
+						$post_id = $post->ID;
+					}
+					if (get_post_meta ( $post_id, $meta_key, true ) != $meta_value) {
+						$add = false;
+					}
+				}
+				if ($add == true) {
+					array_push ( $posts_fin, $post );
 				}
 			}
-			if ($add == true){
-				array_push($posts_fin, $post);
-			}
+		} else {
+			$posts_fin = $posts;
 		}
-	}else{
-		$posts_fin = $posts;
+		
+		return $posts_fin;
 	}
 
-	return $posts_fin;
-}
 endif;
 
 if (!function_exists("get_timestamp_from_mysql")):
