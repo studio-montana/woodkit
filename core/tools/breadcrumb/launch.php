@@ -1,54 +1,54 @@
 <?php
 /**
  * @package Woodkit
- * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
- * License: GPL2
- * Text Domain: woodkit
- *
- * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- */
+* @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+* License: GPL2
+* Text Domain: woodkit
+*
+* Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License, version 2, as
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 defined('ABSPATH') or die("Go Away!");
 
 /**
  * REQUIREMENTS
-*/
+ */
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/custom-fields/breadcrumb.php');
 
 /**
  * Enqueue styles for the back end.
-*/
+ */
 function tool_breadcrumb_woodkit_admin_enqueue_styles_tools($dependencies) {
 
 	$css_breadcrumb = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/css/tool-breadcrumb-admin.css');
 	if (!empty($css_breadcrumb))
 		wp_enqueue_style('tool-breadcrumb-admin-css', $css_breadcrumb, $dependencies, '1.1');
 
-	$js_breadcrumb = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/js/tool-breadcrumb-admin.js');
-	if (!empty($js_breadcrumb))
-		wp_enqueue_script('tool-breadcrumb-admin-js', $js_breadcrumb, array('jquery'), '1.1', true);
+		$js_breadcrumb = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.BREADCRUMB_TOOL_NAME.'/js/tool-breadcrumb-admin.js');
+		if (!empty($js_breadcrumb))
+			wp_enqueue_script('tool-breadcrumb-admin-js', $js_breadcrumb, array('jquery'), '1.1', true);
 }
 add_action('woodkit_admin_enqueue_styles_tools', 'tool_breadcrumb_woodkit_admin_enqueue_styles_tools');
 
 function tool_breadcrumb_get_the_title($post_id = null){
 	if (empty($post_id))
 		$post_id = get_the_ID();
-	if (function_exists("woodkit_display_title"))
-		return woodkit_display_title($post_id, false, false, '', '');
-	else
-		return get_the_title($post_id);
+		if (function_exists("woodkit_display_title"))
+			return woodkit_display_title($post_id, false, false, '', '');
+			else
+				return get_the_title($post_id);
 }
 
 /**
@@ -88,7 +88,7 @@ if ($breadcrumb_menu_management_active == 'on'){
  * @return string
  */
 function tool_breadcrumb($args = array(), $display = true){
-	
+
 	$id_blog_page = get_option('page_for_posts');
 	$id_front_page = get_option('page_on_front');
 
@@ -153,6 +153,26 @@ function tool_breadcrumb($args = array(), $display = true){
 					$res .= tool_breadcrumb_term_ancestors($current_term->term_id, 'category', $separator);
 				}
 				$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.esc_attr($current_term->name).'">'.$current_term->name.'</a></li>'.$final;
+			}else{
+				// post archive -> get customized post-type breadcrumb
+				$post_type = get_post_type();
+				if (!empty($post_type)){
+					$items = breadcrumb_get_customized_post_type_settings($post_type);
+					if ($items !== false && !empty($items) && is_array($items)){
+						$count = 0;
+						foreach ($items as $item){
+							$last_item = $count == (count($items) - 1);
+							list($item_gender, $item_type, $item_id) = explode('|', $item);
+							if ($item_gender === 'post'){
+								$res .= '<li class="breadcrumb-item"><a href="'.get_permalink($item_id).'" title="'.esc_attr(tool_breadcrumb_get_the_title($item_id)).'">'.tool_breadcrumb_get_the_title($item_id).'</a></li>'.($last_item ? $final : $separator);
+							}else if ($item_gender === 'term' || $item_gender === 'tax'){
+								$term = get_term($item_id, $item_type);
+								$res .= '<li class="breadcrumb-item"><a href="'.get_term_link($term, $item_type).'" title="'.esc_attr($term->name).'">'.$term->name.'</a></li>'.($last_item ? $final : $separator);
+							}
+							$count ++;
+						}
+					}
+				}
 			}
 		}else if(is_page()) {
 			$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator, array(get_the_ID()));
@@ -163,24 +183,16 @@ function tool_breadcrumb($args = array(), $display = true){
 			$res .= '<li class="breadcrumb-item current"><span title="'.esc_attr(tool_breadcrumb_get_the_title()).'">'.__('search',WOODKIT_PLUGIN_TEXT_DOMAIN).'</span></li>'.$final;
 		}else if(is_tag()) {
 			single_tag_title();
-		}
-		else if(is_day()) {
+		}else if(is_day()) {
 			$res .= '<li class="breadcrumb-item current">'.__('Archive ', WOODKIT_PLUGIN_TEXT_DOMAIN)." "; the_time('F jS, Y'); $res .= '</li>'.$final;
-		}
-		else if(is_month()) {
+		}else if(is_month()) {
 			$res .= '<li class="breadcrumb-item current">'.__('Archive ', WOODKIT_PLUGIN_TEXT_DOMAIN)." "; the_time('F, Y'); $res .= '</li>'.$final;
-		}
-		else if(is_year()) {
+		}else if(is_year()) {
 			$res .= '<li class="breadcrumb-item current">'.__('Archive ', WOODKIT_PLUGIN_TEXT_DOMAIN)." "; the_time('Y'); $res .= '</li>'.$final;
-		}
-		else if(is_author()) {
+		}else if(is_author()) {
 			$res .= '<li class="breadcrumb-item current">'.__('Author', WOODKIT_PLUGIN_TEXT_DOMAIN); $res .= '</li>'.$final;
-		}
-		else if(isset($_GET['paged']) && !empty($_GET['paged'])) {
+		}else if(isset($_GET['paged']) && !empty($_GET['paged'])) {
 			$res .= '<li class="breadcrumb-item current">'.__("Blog archives", WOODKIT_PLUGIN_TEXT_DOMAIN); $res .= '</li>'.$final;
-		}
-		else if(is_search()) {
-			$res .= '<li class="breadcrumb-item current">'.__('Search results', WOODKIT_PLUGIN_TEXT_DOMAIN); $res .= '</li>'.$final;
 		}
 	}
 	$res .= '</ul>'.$args['after'].'<div style="clear: both"></div>';
@@ -396,7 +408,7 @@ function tool_breadcrumb_get_items($id, $type = 'post', $breadcrumb_items = arra
 			}
 		}
 		$breadcrumb_items[] = new BreadcrumbItem(get_post($id));
-		
+
 	} else if (($type === 'tax' || $type === 'term') && !empty($id)) {
 		$term = WP_Term::get_instance($id);
 		$ancestors = get_ancestors($id, $term->taxonomy);
