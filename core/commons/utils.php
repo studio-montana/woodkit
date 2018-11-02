@@ -22,15 +22,81 @@
 */
 defined('ABSPATH') or die("Go Away!");
 
-if (!function_exists("woodkit_get_request_param")):
 /**
- * Remove accents from a string and return it
+ * String cleaning : remove accents, remove "de", "le", "la", "l'", etc., transform to lowercase, special characters
+ * Great for search form
  */
-function woodkit_remove_accent($str){
-	$str = strtolower(trim(preg_replace('~[^0-9a-z]+~i', '-', preg_replace('~&([a-z]{1,2})(acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities($str, ENT_QUOTES, 'UTF-8'))), ' '));
+function woodkit_str_cleaning($str){
+	$str = strtolower($str);
+	$str = woodkit_remove_accent($str);
+	$str = woodkit_remove_contracted_articles($str);
+	$str = strtr($str, array('\\' => '', '&' => '', '!' => '', '^' => '', ',' => '', '?' => '', ';' => '',
+			'.' => '', ':' => '', '/' => '', '=' => '', '+' => '', '$' => '', '%' => '', '(' => '',
+			')' => '', '[' => '', ']' => '', '-' => '', '_' => '', '"' => '', '\'' => '', '#' => '',
+			'@' => '', '<' => '', '>' => '',));
+	return trim($str);
+}
+
+function woodkit_remove_contracted_articles($str){
+	/** remove from begening */
+	$items = array(
+			'des ' => '',
+			'du ' => '',
+			'de ' => '',
+			'le ' => '',
+			'les ' => '',
+			'la ' => '');
+	foreach ($items as $k => $v){
+		$pos = stripos($str, $k);
+		if ($pos == 0){
+			$str = str_replace($k, $v, $str);
+		}
+	}
+	/** remove from ending */
+	$items = array(
+			' des' => '',
+			' du' => '',
+			' de' => '',
+			' le' => '',
+			' les' => '',
+			' la' => '');
+	foreach ($items as $k => $v){
+		$pos = stripos($str, $k);
+		trace_info("pos({$k}) : {$pos} - ".strlen($k));
+		if ($pos == (strlen($str) - strlen($k))){
+			$str = str_replace($k, $v, $str);
+		}
+	}
+	/** apostrophe */
+	$apostrophe = array(
+			'c\'' => '',
+			'd\'' => '',
+			'j\'' => '',
+			'l\'' => '',
+			'm\'' => '',
+			'n\'' => '',
+			'qu\'' => '',
+			's\'' => '',
+			't\'' => '');
+	/** remove others */
+	$patterns = array('/\\sdes\\s/', '/\\sdu\\s/', '/\\sde\\s/', '/\\sle\\s/', '/\\sles\\s/', '/\\sla\\s/', '/\\s\\s/');
+	$replacements = array('', '', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
+	$str = preg_replace($patterns, $replacements, $str);
 	return $str;
 }
-endif;
+
+function woodkit_remove_accent($str, $is_html = false){
+	if ($is_html){
+		$str = preg_replace('~&([a-z]{1,2})(acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '', $str);
+	}else{
+		$str = strtr($str, array( 'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+				'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
+				'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+				'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
+				'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' ));
+	}
+	return $str;
+}
 
 if (!function_exists("woodkit_get_request_param")):
 /**
