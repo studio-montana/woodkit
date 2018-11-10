@@ -183,10 +183,12 @@ function seo_get_social_share_url($social_network_name, $url, $title = '', $resu
 			case "houzz" :
 				$share_url = 'http://www.houzz.com/imageClipperUpload?imageUrl='.$img_url_encoded.'&title='.$title_encoded.'&link='.$url_endoded;
 				break;
-			case "pinterest" : 
-				$share_url = 'http://pinterest.com/pin/create/button/?url='.$img_url_encoded.'&media='.$url_endoded.'&description='.$title_encoded;
+			case "pinterest" :
+				$share_url = 'http://pinterest.com/pin/create/button/?url='.$url_endoded.'&media='.$img_url_encoded.'&description='.$title_encoded;
 				break;
-				
+			case "googleplus" :
+				$share_url = 'https://plus.google.com/share?url='.$url_endoded;
+				break;
 		}
 	}
 	return $share_url;
