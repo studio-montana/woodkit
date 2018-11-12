@@ -37,6 +37,7 @@ define('WOODKIT_PLUGIN_NAME', "woodkit");
 define('WOODKIT_PLUGIN_FILE', __FILE__);
 define('WOODKIT_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('WOODKIT_PLUGIN_URI', plugin_dir_url(__FILE__));
+define('WOODKIT_PLUGIN_WEB_CACHE_VERSION', '1.3.11');
 
 define('WOODKIT_PLUGIN_TEXT_DOMAIN', 'woodkit');
 define('WOODKIT_PLUGIN_CORE_FOLDER', 'core/');

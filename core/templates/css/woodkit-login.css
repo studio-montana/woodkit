@@ -105,8 +105,10 @@ iframe #login {
 	box-shadow: none;
 }
 .login form input[type='submit'].button-large{
+	margin: 18px 0 0 0;
 	background: #000;
-	border: none;
+	border: 1px solid #ff7e1c;
+	color: #ff7e1c;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
@@ -118,17 +120,44 @@ iframe #login {
 
 }
 .login form input[type='submit'].button-large:hover{
+	border-color: #FA9140;
 	color: #FA9140;
 }
-.login form .button.active, .login form .button.active:hover, .login form .button:active {
+.login form .button.active,
+.login form .button.active:hover,
+.login form .button:active {
     -webkit-transform: none;
     -ms-transform: none;
     transform: none;
+}
+#login form p.submit{
+	padding: 0 24px;
 }
 .login form p{
 }
 .login label{
     color: rgba(255, 255, 255, 1);
+}
+.login a{
+	color: #777777;
+	text-decoration: none;
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.login #nav a:hover,
+.login #nav a:focus,
+.login #nav a:active{
+	color: #999999;
+	text-decoration: none;
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.login a:hover{
+	color: #999999;
 }
 .login h1{
 	display: none;
@@ -137,28 +166,26 @@ iframe #login {
 .login form .forgetmenot{
 }
 .login form .forgetmenot{
-	position: absolute;
-	bottom: 6px;
-	right: 0;
-	left: 0;
+	display: block;
+	float: none;
 	text-align: center;
 	padding: 0;
-	margin: 0;
+	margin: 18px 0 0 0;
+	text-align: center;
 }
 .login #nav{
 	position: relative;
 	text-align: center;
 	padding: 0;
-	margin: 12px 0 0 0;
-	padding: 12px 24px 0 24px;
+	margin: 18px 0 0 0;
+	padding: 0 24px 0 24px;
 	border-top: 1px solid #000;
 }
 .login #nav a{
-	color: #ccc;
+	color: #999999;
 	display: block;
 	width: 100%;
 	text-align: center;
-	font-weight: 300;
 }
 .login #nav a.registration-url,
 .login-action-register #nav a:first-child,
@@ -172,14 +199,6 @@ iframe #login {
 	padding: 17px 0;
 	margin: 0 0 12px 0;
 	font-weight: 300;
-}
-.login #nav a:hover, .login #nav a:focus, .login #nav a:active{
-	color: #FA9140;
-	text-decoration: none;
-	border: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
 }
 .login #backtoblog{
 	display: none;
@@ -205,6 +224,9 @@ iframe #login {
 }
 .login #registerform br.clear {
 	display: none;
+}
+.login .privacy-policy-page-link{
+	margin-top: 4px;
 }
 
 
@@ -261,7 +283,7 @@ iframe #login {
 }
 .tool-secure-input-wrapper .tool-secure-show-info {
 	position: absolute;
-	display: none;
+	display: block;
 	top: 1px;
 	right: 10px;
 	bottom: 1px;
@@ -277,10 +299,14 @@ iframe #login {
 	padding: 20px 0 0 0;
 	font-size: 1.3rem;
 }
-.tool-secure-input-wrapper .tool-secure-info-text {
-	display: none;
-}
 .login .tool-secure-input-wrapper .tool-secure-info-text {
 	color: #fff;
 	padding-bottom: 3px;
+	text-align: center;
+	font-style: italic;
+	font-size: 12px;
+	display: none;
+}
+.login .tool-secure-input-wrapper .tool-secure-info-text.visible{
+	display: block;
 }

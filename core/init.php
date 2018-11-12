@@ -22,8 +22,6 @@
 */
 defined('ABSPATH') or die("Go Away!");
 
-define('WOODKIT_WEB_CACHE_VERSION', '1.3.1');
-
 /**
  * Enqueue scripts and styles for the front end.
  *
@@ -35,7 +33,7 @@ function woodkit_scripts_styles() {
 	$fontawesome_version = woodkit_get_option("fontawesome-version", "4");
 
 	// Dashicons
-	wp_enqueue_style( 'dashicons' );
+	wp_enqueue_style('dashicons');
 
 	// Action before woodkit enqueue styles
 	do_action("woodkit_front_enqueue_styles_before");
@@ -53,25 +51,25 @@ function woodkit_scripts_styles() {
 	}
 	// -- fontawesome
 	if ($fontawesome_version == "5"){
-		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-5/css/fontawesome-all.min.css');
+		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-5/css/fontawesome-all.min.css');
 		$css_fontawesome_version = "5.0.10";
 	}else{
-		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
+		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
 		$css_fontawesome_version = "4.4.7";
 	}
 	if (!empty($css_fontawesome)){
 		wp_enqueue_style('woodkit-css-fontawesome', $css_fontawesome, array('woodkit-css-bxslider'), $css_fontawesome_version);
 	}
 	// -- front
-	$css_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-front.css');
+	$css_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-front.css');
 	if (!empty($css_front)){
-		wp_enqueue_style('woodkit-css-front', $css_front, array('woodkit-css-fontawesome'), WOODKIT_WEB_CACHE_VERSION);
+		wp_enqueue_style('woodkit-css-front', $css_front, array('woodkit-css-fontawesome'), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 	}
 	
 	// -- isotope/slider
 	$css_isotope_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope-slider.css');
 	if (!empty($css_isotope_slider)){
-		wp_enqueue_style('woodkit-core-slider-style', $css_isotope_slider, array('woodkit-css-fontawesome'), WOODKIT_WEB_CACHE_VERSION);
+		wp_enqueue_style('woodkit-core-slider-style', $css_isotope_slider, array('woodkit-css-fontawesome'), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 	}
 
 	// Action after woodkit enqueue styles
@@ -107,7 +105,7 @@ function woodkit_scripts_styles() {
 	// Loads Utils JavaScript file
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils)){
-		wp_enqueue_script('woodkit-script-woodkit-utils', $js_utils, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
+		wp_enqueue_script('woodkit-script-woodkit-utils', $js_utils, array('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 		wp_localize_script('woodkit-script-woodkit-utils', 'Utils', array(
 				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)),
 				"wait_background" => apply_filters('woodkit-js-wait-background', "rgba(255,255,255,0.5)")
@@ -120,25 +118,25 @@ function woodkit_scripts_styles() {
 	// Loads Gallery Matrix JavaScript file
 	$js_gallery_matrix = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-gallery-matrix.js');
 	if (!empty($js_gallery_matrix)){
-		wp_enqueue_script('woodkit-script-woodkit-gallery-matrix', $js_gallery_matrix, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
+		wp_enqueue_script('woodkit-script-woodkit-gallery-matrix', $js_gallery_matrix, array('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 	}
 
 	// Loads Gallery JavaScript file
 	$js_gallery = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-gallery.js');
 	if (!empty($js_gallery)){
-		wp_enqueue_script('woodkit-script-woodkit-gallery', $js_gallery, array('jquery', 'woodkit-script-woodkit-gallery-matrix'), WOODKIT_WEB_CACHE_VERSION, true);
+		wp_enqueue_script('woodkit-script-woodkit-gallery', $js_gallery, array('jquery', 'woodkit-script-woodkit-gallery-matrix'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 	}
 
 	// Loads slider JavaScript file
 	$js_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-slider.js');
 	if (!empty($js_slider)){
-		wp_enqueue_script('woodkit-script-woodkit-slider', $js_slider, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
+		wp_enqueue_script('woodkit-script-woodkit-slider', $js_slider, array('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 	}
 
 	// Loads front general JavaScript file (contains tools javascript)
 	$js_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-front.js');
 	if (!empty($js_front)){
-		wp_enqueue_script('woodkit-script-woodkit-front', $js_front, array('jquery', 'woodkit-script-woodkit-slider'), WOODKIT_WEB_CACHE_VERSION, true);
+		wp_enqueue_script('woodkit-script-woodkit-front', $js_front, array('jquery', 'woodkit-script-woodkit-slider'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 	}
 
 	// Action after woodkit enqueue scripts
@@ -167,10 +165,10 @@ function woodkit_admin_scripts_styles() {
 
 	// Fontawesome
 	if ($fontawesome_version == "5"){
-		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-5/css/fontawesome-all.min.css');
+		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-5/css/fontawesome-all.min.css');
 		$css_fontawesome_version = "5.0.10";
 	}else{
-		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
+		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
 		$css_fontawesome_version = "4.4.7";
 	}
 	if (!empty($css_fontawesome)){
@@ -195,13 +193,13 @@ function woodkit_admin_scripts_styles() {
 	// Loads Isotope/Slider specific stylesheet.
 	$css_isotope_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope-slider.css');
 	if (!empty($css_isotope_slider)){
-		wp_enqueue_style('woodkit-admin-css-isotope-slider', $css_isotope_slider, array(), WOODKIT_WEB_CACHE_VERSION);
+		wp_enqueue_style('woodkit-admin-css-isotope-slider', $css_isotope_slider, array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 	}
 
 	// Loads our main template stylesheet
 	$css_admin = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-admin.css');
 	if (!empty($css_admin)){
-		wp_enqueue_style('woodkit-admin-style', $css_admin, array('woodkit-admin-css-isotope-slider', 'woodkit-admin-css-jquery-ui'), WOODKIT_WEB_CACHE_VERSION);
+		wp_enqueue_style('woodkit-admin-style', $css_admin, array('woodkit-admin-css-isotope-slider', 'woodkit-admin-css-jquery-ui'), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 	}
 
 	// Loads Cookies jQuery plugin
@@ -213,7 +211,7 @@ function woodkit_admin_scripts_styles() {
 	// Loads Utils
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils)){
-		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery', 'wp-color-picker'), WOODKIT_WEB_CACHE_VERSION, true);
+		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery', 'wp-color-picker'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 		wp_localize_script('woodkit-script-utils', 'Utils', array(
 				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)),
 				"wait_background" => apply_filters('woodkit-js-wait-background', "rgba(255,255,255,0.5)")
@@ -235,13 +233,13 @@ function woodkit_admin_scripts_styles() {
 	// Loads Gallery Matrix JavaScript file
 	$js_gallery_matrix = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-gallery-matrix.js');
 	if (!empty($js_gallery_matrix)){
-		wp_enqueue_script('woodkit-script-woodkit-gallery-matrix', $js_gallery_matrix, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
+		wp_enqueue_script('woodkit-script-woodkit-gallery-matrix', $js_gallery_matrix, array('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 	}
 
 	// Loads Gallery JavaScript file
 	$js_gallery = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-gallery.js');
 	if (!empty($js_gallery)){
-		wp_enqueue_script('woodkit-script-woodkit-gallery', $js_gallery, array('jquery', 'woodkit-script-woodkit-gallery-matrix'), WOODKIT_WEB_CACHE_VERSION, true);
+		wp_enqueue_script('woodkit-script-woodkit-gallery', $js_gallery, array('jquery', 'woodkit-script-woodkit-gallery-matrix'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 	}
 
 	// Action for javascript tools
@@ -250,7 +248,7 @@ function woodkit_admin_scripts_styles() {
 	// Loads JavaScript file for admin.
 	$js_admin = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-admin.js');
 	if (!empty($js_admin)){
-		wp_enqueue_script('woodkit-admin-script', $js_admin, array('jquery'), WOODKIT_WEB_CACHE_VERSION, true);
+		wp_enqueue_script('woodkit-admin-script', $js_admin, array('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 	}
 	
 	// Setup color picker (iris) palette colors
@@ -280,10 +278,10 @@ function woodkit_login_scripts_styles() {
 
 	// Fontawesome
 	if ($fontawesome_version == "5"){
-		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-5/css/fontawesome-all.min.css');
+		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-5/css/fontawesome-all.min.css');
 		$css_fontawesome_version = "5.0.10";
 	}else{
-		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
+		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
 		$css_fontawesome_version = "4.4.7";
 	}
 	if (!empty($css_fontawesome)){
@@ -291,21 +289,21 @@ function woodkit_login_scripts_styles() {
 	}
 
 	// Login
-	$css_login = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.'/'.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-login.css');
+	$css_login = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-login.css');
 	if (!empty($css_login)){
-		wp_enqueue_style('woodkit-login-css-login', $css_login, array(), '1.0.0');
+		wp_enqueue_style('woodkit-login-css-login', $css_login, array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 	}
 
 	// Loads Utils
 	$js_utils = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-utils.js');
 	if (!empty($js_utils)){
-		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery'), '1.5', true);
+		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 	}
 
 	// Loads login scripts
 	$js_login = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_JS_FOLDER.'woodkit-login.js');
 	if (!empty($js_login)){
-		wp_enqueue_script('woodkit-script-login', $js_login, array('jquery', 'woodkit-script-utils'), '1.0', true);
+		wp_enqueue_script('woodkit-script-login', $js_login, array('jquery', 'woodkit-script-utils'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 	}
 
 	// Action for stylesheets tools
