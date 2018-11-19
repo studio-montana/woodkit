@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Woodkit
  * Plugin URI: http://www.studio-montana.com/product/woodkit
