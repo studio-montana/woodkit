@@ -1,25 +1,25 @@
 <?php
 /**
  * @package Woodkit
- * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
- * License: GPL2
- * Text Domain: woodkit
- * 
- * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- */
+* @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+* License: GPL2
+* Text Domain: woodkit
+*
+* Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License, version 2, as
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 defined('ABSPATH') or die("Go Away!");
 
 $style_ul = "";
@@ -65,7 +65,7 @@ if ($meta_media_presentation == 'slider'){
 				}
 				?>
 				<li class="slider-item wp-gallery-item<?php echo $class; ?>" style="height: auto; width: auto;">
-					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
+					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" data-fancybox="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style; ?>">
 							<div class="has-mask">
 								<?php if (!empty($attachment->post_title)){ ?>
@@ -228,7 +228,7 @@ if ($meta_media_presentation == 'slider'){
 				$style_li .= $style;
 				?>
 				<li class="masonry-item wp-gallery-item<?php echo $class; ?>" style="<?php echo $style_li; ?>" data-ratio-width-height="<?php echo $ratio; ?>" data-wall-columns="1">
-					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img_src; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
+					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" data-fancybox="group-<?php echo $media_post_count; ?>" href="<?php echo $img_src; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style_thumb; ?>">
 							<div class="has-mask">
 								<?php if (!empty($attachment->post_title)){ ?>
@@ -301,7 +301,7 @@ if ($meta_media_presentation == 'slider'){
 				$style_li .= "height: ".$height."px; width: ".$width."%;";
 				?>
 				<li class="isotope-item wp-gallery-item<?php echo $class; ?>" style="<?php echo $style_li; ?>" data-wall-format="<?php echo $meta_media_presentation_format; ?>" data-wall-columns="<?php echo $rand_columns; ?>" data-wall-lines="<?php echo $rand_lines; ?>" data-width="" data-height="<?php echo $height; ?>" >
-					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
+					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" data-fancybox="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style; ?>">
 							<div class="has-mask">
 								<?php if (!empty($attachment->post_title)){ ?>
@@ -369,7 +369,7 @@ if ($meta_media_presentation == 'slider'){
 				$style_li .= "width: ".$width."%;";
 				?>
 				<li class="classic-item wp-gallery-item<?php echo $class; ?>" style="<?php echo $style_li; ?>" data-wall-columns="1" data-wall-format="<?php echo $meta_media_presentation_format; ?>">
-					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
+					<a class="<?php echo $a_class; ?>" rel="group-<?php echo $media_post_count; ?>" data-fancybox="group-<?php echo $media_post_count; ?>" href="<?php echo $img[0]; ?>" title="<?php echo esc_attr($attachment->post_title); ?>" data-fancybox-title="<?php echo esc_attr($data_fancybox_title); ?>">
 						<div class="inner-item thumb" style="<?php echo $style; ?>">
 							<div class="has-mask">
 								<?php if (!empty($attachment->post_title)){ ?>

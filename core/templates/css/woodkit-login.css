@@ -312,6 +312,7 @@ iframe #login {
 	display: block;
 }
 /** lost password */
-body.login-action-lostpassword .login #nav{
+body.login-action-lostpassword .login #nav,
+body.login-action-rp .login #nav{
 	display: none;
 }
