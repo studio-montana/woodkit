@@ -41,7 +41,7 @@ if ($meta_media_presentation == 'slider'){
 		<ul id="slider-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media slider<?php if (!empty($meta_media_presentation_slider_carousel) && $meta_media_presentation_slider_carousel == 'on'){ echo " slider-carousel"; } ?>" data-wall-columns="<?php echo $columns; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
-				$img = wp_get_attachment_image_src($id, 'woodkit-1200');
+				$img = wp_get_attachment_image_src($id, apply_filters('woodkit-gallery-slider-image-size', 'woodkit-1200'));
 				$class = ' attachment attachment-'.$id;
 				$height = $meta_media_presentation_height;
 				$style = "width: 100%; height: ".$height."px;";
@@ -175,8 +175,8 @@ if ($meta_media_presentation == 'slider'){
 				$data_fancybox_title = "";
 				
 				// attachement
-				$img = wp_get_attachment_image_src($id, 'full');
-				$thumb = wp_get_attachment_image_src($id, 'woodkit-400');
+				$img = wp_get_attachment_image_src($id, apply_filters('woodkit-gallery-masonry-image-full-size', 'full'));
+				$thumb = wp_get_attachment_image_src($id, apply_filters('woodkit-gallery-masonry-image-thumb-size', 'woodkit-400'));
 				list($img_src, $img_width, $img_height) = $img;
 				list($thumb_src, $thumb_width, $thumb_height) = $thumb;
 				$ratio = $thumb_height / $thumb_width;
@@ -270,8 +270,8 @@ if ($meta_media_presentation == 'slider'){
 		<ul id="isotope-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media isotope" data-wall-columns="<?php echo $columns; ?>" style="<?php echo $style_ul; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
-				$img = wp_get_attachment_image_src($id, 'full');
-				$thumb = wp_get_attachment_image_src($id, 'woodkit-400');
+				$img = wp_get_attachment_image_src($id, apply_filters('woodkit-gallery-grid-image-full-size', 'full'));
+				$thumb = wp_get_attachment_image_src($id, apply_filters('woodkit-gallery-grid-image-thumb-size', 'woodkit-400'));
 				// sizes (random - values can only be double from initial setup)
 				$rand_columns = rand(1, 2);
 				$width = (100/$columns)*$rand_columns;
@@ -343,8 +343,8 @@ if ($meta_media_presentation == 'slider'){
 		<ul id="classic-gallery-<?php echo $media_post_count; ?>" class="gallery tool-media classic" data-wall-columns="<?php echo $columns; ?>" style="<?php echo $style_ul; ?>">
 			<?php
 			foreach ($attachments as $id => $attachment) {
-				$img = wp_get_attachment_image_src($id, 'full');
-				$thumb = wp_get_attachment_image_src($id, 'woodkit-400');
+				$img = wp_get_attachment_image_src($id, apply_filters('woodkit-gallery-image-full-size', 'full'));
+				$thumb = wp_get_attachment_image_src($id, apply_filters('woodkit-gallery-image-thumb-size', 'woodkit-400'));
 				$class = ' attachment attachment-'.$id;
 				$width = 100 / $columns;
 				$style = "width: 100%; height: 100%;";
