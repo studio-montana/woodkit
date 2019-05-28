@@ -56,7 +56,7 @@ function tool_breadcrumb_get_the_title($post_id = null){
  */
 $breadcrumb_menu_management_active = woodkit_get_tool_option('breadcrumb', 'breadcrumb-menu-management-active');
 if ($breadcrumb_menu_management_active == 'on'){
-	add_action('nav_menu_css_class', function ( $classes, $item, $args ) {
+	add_filter('nav_menu_css_class', function ( $classes, $item ) {
 		if ($item->type === 'post_type'){
 			$post_id = $item->object_id;
 			if (breadcrumb_is_in_current_breadcrumb($post_id, 'post')){
@@ -73,7 +73,7 @@ if ($breadcrumb_menu_management_active == 'on'){
 			}
 		}
 		return $classes;
-	}, 10, 3 );
+	}, 10, 2 );
 }
 
 /**
