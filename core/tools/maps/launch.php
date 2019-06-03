@@ -27,7 +27,6 @@ defined('ABSPATH') or die("Go Away!");
  */
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.MAPS_TOOL_NAME.'/googlemapsgenerator/googlemapsgenerator.php');
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.MAPS_TOOL_NAME.'/shortcode/shortcode.php');
-require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.MAPS_TOOL_NAME.'/widgets/googlemaps-widget.class.php');
 
 /**
  * Enqueue styles for the front end.

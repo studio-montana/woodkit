@@ -28,11 +28,6 @@ defined('ABSPATH') or die("Go Away!");
 define('EVENT_NONCE_ACTION', 'event_nonce_action');
 
 /**
- * WIDGETS
-*/
-require_once (WOODKIT_PLUGIN_PATH.'/'.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.EVENT_TOOL_NAME.'/widgets/tool-event-widget.class.php');
-
-/**
  * This action is called by Woodkit when metabox is display on post-type
  * @param unknown $post
 */

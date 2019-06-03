@@ -21,8 +21,3 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 defined('ABSPATH') or die("Go Away!");
-
-/**
- * REQUIREMENTS
-*/
-require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.NAVIGATION_TOOL_NAME.'/widgets/navigation.class.php');

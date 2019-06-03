@@ -311,3 +311,14 @@ function woodkit_launch_tools() {
 	do_action("woodkit_tools_launched", $activated_tools);
 }
 endif;
+
+if (!function_exists("woodkit_launch_widgets_tools")):
+function woodkit_launch_widgets_tools(){
+	$activated_tools = woodkit_get_activated_tools(true);
+	if (!empty($activated_tools)){
+		foreach ($activated_tools as $tool){
+			$tool->launch_widgets();
+		}
+	}
+}
+endif;

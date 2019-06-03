@@ -50,6 +50,12 @@ class WoodkitTool{
 		require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.$this->slug.'/launch.php');
 	}
 	
+	public function launch_widgets(){
+		if (file_exists(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.$this->slug.'/launch-widgets.php')){
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.$this->slug.'/launch-widgets.php');
+		}
+	}
+	
 	/**
 	 * called when tool is activated
 	 */

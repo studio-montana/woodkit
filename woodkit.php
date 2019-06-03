@@ -3,7 +3,7 @@
  * Plugin Name: Woodkit
  * Plugin URI: http://www.studio-montana.com/product/woodkit
  * Description: Multitool experience for WP | SEO, security, masonry, private site, social publication, ...
- * Version: 1.3.13
+ * Version: 1.3.14
  * Author: Studio Montana
  * Author URI: http://www.studio-montana.com/
  * License: GPL2
@@ -36,7 +36,7 @@ define('WOODKIT_PLUGIN_NAME', "woodkit");
 define('WOODKIT_PLUGIN_FILE', __FILE__);
 define('WOODKIT_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('WOODKIT_PLUGIN_URI', plugin_dir_url(__FILE__));
-define('WOODKIT_PLUGIN_WEB_CACHE_VERSION', '1.3.13');
+define('WOODKIT_PLUGIN_WEB_CACHE_VERSION', '1.3.14');
 
 define('WOODKIT_PLUGIN_TEXT_DOMAIN', 'woodkit');
 define('WOODKIT_PLUGIN_CORE_FOLDER', 'core/');
@@ -121,11 +121,23 @@ if(!class_exists('Woodkit')){
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_DIVI_FOLDER.'divi.php');
 
 			do_action("woodkit_after_requires");
+			
+			/**
+			 * Must load tool widgets initializations because widgets_init is a part of init hook fired as priority 1
+			 */
+			if (function_exists("woodkit_launch_widgets_tools")){
+				woodkit_launch_widgets_tools();
+			}
 
 			/** Woodkit init
 			 * @priority: 1 - important to be launch before other plugins init action hook (like Contact Form 7)
 			 */
 			add_action('init', array('Woodkit', 'init'), 1); // All Tool 'init' add_action must be greater than 1
+
+			/** Woodkit init
+			 * @priority: 1 - important to be launch before other plugins init action hook (like Contact Form 7)
+			 */
+			add_action('widgets_init', array('Woodkit', 'init'), 1);
 
 		}
 
