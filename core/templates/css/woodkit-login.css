@@ -107,9 +107,9 @@ iframe #login {
 }
 .login form input[type='submit'].button-large{
 	margin: 18px 0 0 0;
-	background: #000;
-	border: 1px solid #ff7e1c;
-	color: #ff7e1c;
+	background: rgba(255,255,255,0.1);
+	border: 1px solid #ffffff;
+	color: #ffffff;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
@@ -121,8 +121,7 @@ iframe #login {
 
 }
 .login form input[type='submit'].button-large:hover{
-	border-color: #FA9140;
-	color: #FA9140;
+	background: rgba(255,255,255,0.3);
 }
 .login form .button.active,
 .login form .button.active:hover,
@@ -132,7 +131,7 @@ iframe #login {
     transform: none;
 }
 #login form p.submit{
-	padding: 0 24px;
+	padding: 0;
 }
 .login form p{
 }
