@@ -280,58 +280,47 @@ endif;
 
 if (!function_exists("trace_err")):
 /**
- * write error log trace in log file's theme
-* @param string $content
+ * write error log trace
+* @param string $log
 */
-function trace_err($content){
-	trace("ERROR - ".$content);
+function trace_err($log){
+	if (is_array($log) || is_object($log)) {
+		return error_log("PHP Error:\t".print_r($log, true));
+	} else {
+		return error_log("PHP Error:\t".$log);
+	}
 }
 endif;
 
 if (!function_exists("trace_warn")):
 /**
- * write warning log trace in log file's theme
-* @param string $content
+ * write warning log trace
+* @param string $log
 */
-function trace_warn($content){
-	trace("WARNING - ".$content);
+function trace_warn($log){
+	if (is_array($log) || is_object($log)) {
+		return error_log("PHP Warning:\t".print_r($log, true));
+	} else {
+		return error_log("PHP Warning:\t".$log);
+	}
+	return false;
 }
 endif;
 
 if (!function_exists("trace_info")):
 /**
- * write info log trace in log file's theme
-* @param string $content
+ * write info log trace
+* @param string $log
 */
-function trace_info($content){
-	trace("INFO - ".$content);
-}
-endif;
-
-if (!function_exists("trace")):
-/**
- * write log trace in log file's theme
-* @param string $content
-*/
-function trace($content){
-	$success = false;
-	$content = date("Y/m/d G:i:s").' - '.$content;
-	$trace_path = WOODKIT_PLUGIN_PATH.'/log/';
-	$trace_file = 'log.log';
-	$trace_file_path = $trace_path.$trace_file;
-	if (!file_exists($trace_path)){
-		if (!@mkdir($trace_path)){
-			// ERROR on create log folder
-			// TODO try write by FTP (fopen("ftp://user:password@example.com/log.log", "w");)
+function trace_info($log){
+	if (true === WP_DEBUG) {
+		if (is_array($log) || is_object($log)) {
+			return error_log("PHP Info:\t".print_r($log, true));
+		} else {
+			return error_log("PHP Info:\t".$log);
 		}
 	}
-	if (@file_put_contents($trace_file_path, "\n - ".$content, FILE_APPEND)){
-		$success = true;
-	}else{
-		// ERROR on write log file
-		// TODO try write by FTP (fopen("ftp://user:password@example.com/log.log", "w");)
-	}
-	return $success;
+	return false;
 }
 endif;
 
