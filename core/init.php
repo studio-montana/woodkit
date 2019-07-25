@@ -51,25 +51,24 @@ function woodkit_scripts_styles() {
 	}
 	// -- fontawesome
 	if ($fontawesome_version == "5"){
-		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-5/css/fontawesome-all.min.css');
-		$css_fontawesome_version = "5.0.10";
+		wp_enqueue_script('woodkit-fontawesome-js', 'https://kit.fontawesome.com/7520443ec7.js', array (), $fontawesome_version, true);
 	}else{
 		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
-		$css_fontawesome_version = "4.4.7";
+		if (!empty($css_fontawesome)){
+			wp_enqueue_style('woodkit-css-fontawesome', $css_fontawesome, array('woodkit-css-bxslider'), "4.4.7");
+		}
 	}
-	if (!empty($css_fontawesome)){
-		wp_enqueue_style('woodkit-css-fontawesome', $css_fontawesome, array('woodkit-css-bxslider'), $css_fontawesome_version);
-	}
+	
 	// -- front
 	$css_front = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-front.css');
 	if (!empty($css_front)){
-		wp_enqueue_style('woodkit-css-front', $css_front, array('woodkit-css-fontawesome'), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
+		wp_enqueue_style('woodkit-css-front', $css_front, array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 	}
 	
 	// -- isotope/slider
 	$css_isotope_slider = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-isotope-slider.css');
 	if (!empty($css_isotope_slider)){
-		wp_enqueue_style('woodkit-core-slider-style', $css_isotope_slider, array('woodkit-css-fontawesome'), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
+		wp_enqueue_style('woodkit-core-slider-style', $css_isotope_slider, array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 	}
 
 	// Action after woodkit enqueue styles
@@ -165,20 +164,18 @@ function woodkit_admin_scripts_styles() {
 
 	// Fontawesome
 	if ($fontawesome_version == "5"){
-		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-5/css/fontawesome-all.min.css');
-		$css_fontawesome_version = "5.0.10";
+		wp_enqueue_script('woodkit-fontawesome-js', 'https://kit.fontawesome.com/7520443ec7.js', array (), $fontawesome_version, true);
 	}else{
 		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
-		$css_fontawesome_version = "4.4.7";
-	}
-	if (!empty($css_fontawesome)){
-		wp_enqueue_style('woodkit-admin-css-fontawesome', $css_fontawesome, array('wp-color-picker'), $css_fontawesome_version);
+		if (!empty($css_fontawesome)){
+			wp_enqueue_style('woodkit-admin-css-fontawesome', $css_fontawesome, array('woodkit-css-bxslider'), "4.4.7");
+		}
 	}
 
 	// Loads jquery-ui stylesheet (used by date jquery-ui-datepicker)
 	$css_jquery_ui = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_CSS_FOLDER.'woodkit-jquery-ui.css');
 	if (!empty($css_jquery_ui)){
-		wp_enqueue_style('woodkit-admin-css-jquery-ui', $css_jquery_ui, array('woodkit-admin-css-fontawesome'), '1.11.2');
+		wp_enqueue_style('woodkit-admin-css-jquery-ui', $css_jquery_ui, array(), '1.11.2');
 	}
 
 	// Action for stylesheets tools
@@ -278,14 +275,12 @@ function woodkit_login_scripts_styles() {
 
 	// Fontawesome
 	if ($fontawesome_version == "5"){
-		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-5/css/fontawesome-all.min.css');
-		$css_fontawesome_version = "5.0.10";
+		wp_enqueue_script('woodkit-fontawesome-js', 'https://kit.fontawesome.com/7520443ec7.js', array (), $fontawesome_version, true);
 	}else{
 		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
-		$css_fontawesome_version = "4.4.7";
-	}
-	if (!empty($css_fontawesome)){
-		wp_enqueue_style('woodkit-login-css-fontawesome', $css_fontawesome, array(), $css_fontawesome_version);
+		if (!empty($css_fontawesome)){
+			wp_enqueue_style('woodkit-login-css-fontawesome', $css_fontawesome, array('woodkit-css-bxslider'), "4.4.7");
+		}
 	}
 
 	// Login
