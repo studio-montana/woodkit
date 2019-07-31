@@ -130,7 +130,23 @@ function tool_breadcrumb($args = array(), $display = true){
 				$res .= tool_breadcrumb_post_ancestors($id_blog_page, $separator, array($id_blog_page));
 				$res .= '<li class="breadcrumb-item current"><a href="'.get_permalink($id_blog_page).'" title="'.esc_attr(tool_breadcrumb_get_the_title($id_blog_page)).'">'.tool_breadcrumb_get_the_title($id_blog_page).'</a></li>'.$final;
 			}
+		}else if(function_exists('is_product_category') && is_product_category()){
+			$shop_id = wc_get_page_id('shop');
+			if (!empty($shop_id) && is_numeric($shop_id)){
+				$res .= tool_breadcrumb_post_ancestors($shop_id, $separator, array($shop_id));
+				$res .= '<li class="breadcrumb-item current"><a href="'.get_permalink($shop_id).'" title="'.esc_attr(tool_breadcrumb_get_the_title($shop_id)).'">'.tool_breadcrumb_get_the_title($shop_id).'</a></li>'.$separator;
+			}
+			$current_term = get_queried_object();
+			$res .= tool_breadcrumb_term_ancestors($current_term->term_id, $current_term->taxonomy, $separator);
+			$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.esc_attr($current_term->name).'">'.$current_term->name.'</a></li>'.$final;
 		}else if (is_single()) {
+			if (get_post_type() == 'product' && function_exists('wc_get_page_id')){ // woocommerce product - display shop page
+				$shop_id = wc_get_page_id('shop');
+				if (!empty($shop_id) && is_numeric($shop_id)){
+					$res .= tool_breadcrumb_post_ancestors($shop_id, $separator, array($shop_id));
+					$res .= '<li class="breadcrumb-item current"><a href="'.get_permalink($shop_id).'" title="'.esc_attr(tool_breadcrumb_get_the_title($shop_id)).'">'.tool_breadcrumb_get_the_title($shop_id).'</a></li>'.$separator;
+				}
+			}
 			if (get_post_type() == 'post'){ // blog article - display blog page if is different of front page and if front page is set
 				if (!empty($id_blog_page) && is_numeric($id_blog_page) && !empty($id_front_page) && $id_blog_page != $id_front_page){
 					$res .= tool_breadcrumb_post_ancestors($id_blog_page, $separator, array($id_blog_page));
@@ -139,16 +155,11 @@ function tool_breadcrumb($args = array(), $display = true){
 			}
 			$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator, array(get_the_ID()));
 			$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.esc_attr(tool_breadcrumb_get_the_title()).'">'.tool_breadcrumb_get_the_title().'</a></li>'.$final;
-		}else if (is_category()) {
-			$categories = get_the_category();
-			$category_id = $categories[0]->cat_ID;
-			$res .= tool_breadcrumb_term_ancestors($category_id, 'category', $separator);
-			$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.get_cat_name($category_id).'">'.get_cat_name($category_id).'</a></li>'.$final;
-		}else if (is_archive()){
+		}if (is_archive()){
 			if (is_tax() || is_category() || is_tag() ){
 				$current_term = get_queried_object();
 				if (is_tax()){
-					$res .= tool_breadcrumb_term_ancestors($current_term->term_id, 'typebancaservice', $separator);
+					$res .= tool_breadcrumb_term_ancestors($current_term->term_id, $current_term->taxonomy, $separator);
 				}else if(is_category()){
 					$res .= tool_breadcrumb_term_ancestors($current_term->term_id, 'category', $separator);
 				}
