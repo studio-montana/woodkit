@@ -155,7 +155,7 @@ function tool_breadcrumb($args = array(), $display = true){
 			}
 			$res .= tool_breadcrumb_post_ancestors(get_the_ID(), $separator, array(get_the_ID()));
 			$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.esc_attr(tool_breadcrumb_get_the_title()).'">'.tool_breadcrumb_get_the_title().'</a></li>'.$final;
-		}if (is_archive()){
+		}else if (is_archive()){
 			if (is_tax() || is_category() || is_tag() ){
 				$current_term = get_queried_object();
 				if (is_tax()){
@@ -191,7 +191,7 @@ function tool_breadcrumb($args = array(), $display = true){
 		}else if(is_404()){
 			$res .= '<li class="breadcrumb-item current"><a href="'.get_the_permalink().'" title="'.esc_attr(tool_breadcrumb_get_the_title()).'">404</a></li>'.$final;
 		}else if(is_search()){
-			$res .= '<li class="breadcrumb-item current"><span title="'.esc_attr(tool_breadcrumb_get_the_title()).'">'.__('search',WOODKIT_PLUGIN_TEXT_DOMAIN).'</span></li>'.$final;
+			$res .= '<li class="breadcrumb-item current"><span>'.__('search',WOODKIT_PLUGIN_TEXT_DOMAIN).'</span></li>'.$final;
 		}else if(is_tag()) {
 			single_tag_title();
 		}else if(is_day()) {
