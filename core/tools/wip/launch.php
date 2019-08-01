@@ -1,25 +1,25 @@
 <?php
 /**
  * @package Woodkit
- * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
- * License: GPL2
- * Text Domain: woodkit
- * 
- * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- */
+* @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+* License: GPL2
+* Text Domain: woodkit
+*
+* Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License, version 2, as
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 defined('ABSPATH') or die("Go Away!");
 
 /**
@@ -55,8 +55,8 @@ function wip_template_include($template) {
 	}
 	if (!empty($wip_template))
 		return $wip_template;
-	else
-		return $template;
+		else
+			return $template;
 }
 add_filter('template_include', 'wip_template_include', 2000); // more than private tool (1000)
 endif;
@@ -64,7 +64,7 @@ endif;
 if (!function_exists("woodkit_tool_wip_redirect")) :
 /**
  * Redirect 302
- */
+*/
 function woodkit_tool_wip_redirect(){
 	if (!is_admin() && tool_wip_is_wip()) {
 		$wip_page_id = get_theme_mod('wip_page', 0);
@@ -76,4 +76,17 @@ function woodkit_tool_wip_redirect(){
 	}
 }
 add_action('template_redirect', 'woodkit_tool_wip_redirect');
+endif;
+
+if (!function_exists("woodkit_tool_wip_body_classes")) :
+/**
+ * Body classes
+*/
+function woodkit_tool_wip_body_classes($classes){
+	if (tool_wip_is_wip()) {
+		$classes[] = 'wip-page';
+	}
+	return $classes;
+}
+add_filter('body_class', 'woodkit_tool_wip_body_classes');
 endif;
