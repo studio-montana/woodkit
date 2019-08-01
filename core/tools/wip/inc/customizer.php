@@ -50,42 +50,22 @@ function wip_customize_register($wp_customize_manager) {
 	// wip message
 	$wp_customize_manager->add_setting('wip_message', array('type' => 'theme_mod'));
 	$wp_customize_manager->add_control('wip_message', array(
-			'label'      => __('Message', WOODKIT_PLUGIN_TEXT_DOMAIN ),
-			'section'    => 'wip_customizer',
-			'settings'   => 'wip_message',
+			'type'     		=> 'text',
+			'label'      	=> __('Message', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+			'section'    	=> 'wip_customizer',
+			'settings'   	=> 'wip_message',
+			'description'	=> 'Affiche ce message au visiteurs non connectés (s\'il n\'y a pas de page spécifique)',
+	));
+
+	// wip message
+	$wp_customize_manager->add_setting('wip_page', array('type' => 'theme_mod', 'sanitize_callback' => 'absint'));
+	$wp_customize_manager->add_control('wip_page', array(
+			'type'     		=> 'dropdown-pages',
+			'label'      	=> __('Page spécifique', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+			'section'    	=> 'wip_customizer',
+			'settings'   	=> 'wip_page',
+			'description'	=> 'Affiche cette page au visiteurs non connectés',
 	));
 
 }
 add_action('customize_register', 'wip_customize_register');
-
-/**
- * check if wip mode is active
- * @return boolean
-*/
-function tool_wip_is_wip(){
-	$wip = get_theme_mod('wip_state');
-	if (!is_user_logged_in() && !empty($wip) && $wip == 1){
-		return true;
-	}
-	return false;
-}
-
-if (!function_exists("wip_template_include")):
-/**
- * template_include filter (allow to override template hierarchy)
-* @since WIP 1.0
-* @return template path
-*/
-function wip_template_include($template) {
-	$wip_template = '';
-	if (tool_wip_is_wip()){
-		$wip_template = locate_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.WIP_TOOL_NAME.'/templates/tool-wip-page.php');
-	}
-	if (!empty($wip_template))
-		return $wip_template;
-	else
-		return $template;
-}
-add_filter('template_include', 'wip_template_include', 2000); // more than private tool (1000)
-endif;
-

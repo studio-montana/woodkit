@@ -45,11 +45,13 @@ defined('ABSPATH') or die("Go Away!");
 		<div id="wip-page">
 		
 			<div id="wip-page-content">
+			
+				<h1>WIP !!!</h1>
 		
 				<?php if (function_exists("logo_has") && logo_has() && function_exists("logo_display")){ ?>
 					<?php logo_display(array("class" => "site-logo", "alt" => esc_attr(get_bloginfo('name')))); ?>
 				<?php }else{ ?>
-					<h1><?php bloginfo('name'); ?></h1>
+					<h1>HEP !!! <?php bloginfo('name'); ?></h1>
 				<?php } ?>
 				<?php 
 				$wip_message = get_theme_mod('wip_message');
