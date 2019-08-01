@@ -61,10 +61,10 @@ function wip_template_include($template) {
 add_filter('template_include', 'wip_template_include', 2000); // more than private tool (1000)
 endif;
 
+if (!function_exists("woodkit_tool_wip_redirect")) :
 /**
  * Redirect 302
  */
-if (!function_exists("woodkit_tool_wip_redirect")) :
 function woodkit_tool_wip_redirect(){
 	if (!is_admin() && tool_wip_is_wip()) {
 		$wip_page_id = get_theme_mod('wip_page', 0);
