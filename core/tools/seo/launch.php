@@ -713,7 +713,7 @@ function seo_header() {
 <meta name="keywords"
 	content="<?php do_action('woodkit_seo_get_metakeywords', true); ?>">
 <?php
-	$opengraph_active = woodkit_get_option ( "opengraph-active" );
+	$opengraph_active = woodkit_get_tool_option(SEO_TOOL_NAME, 'opengraph-active');
 	if (! empty ( $opengraph_active ) && $opengraph_active == "on") {
 		?>
 <meta property="og:type"
