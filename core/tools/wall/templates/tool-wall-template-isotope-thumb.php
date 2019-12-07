@@ -52,10 +52,12 @@ if (!empty($thumbnail)){
 }else{
 	$class .= " no-thumb";
 }
+/* fixes bug since fancybox 3.5.2 which doesn't use {class="fancybox" rel="group"} but just {data-fancybox="group"}
 if ($is_attachment){
 	$class_a .= " fancybox";
 	$rel_a .= " group-wall";
 }
+*/
 
 $class = join(' ', get_post_class($class));
 $class = wall_sanitize_wall_item_classes($class);
@@ -73,7 +75,7 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 ?>
 <li class="isotope-item template-thumb <?php echo $class; ?>" style="<?php echo $style_li; ?>" data-wall-format="<?php echo $wall_args['meta_wall_display_presentation_format']; ?>" data-wall-columns="<?php echo $wall_args['wall_item_width_selected']; ?>" data-wall-lines="<?php echo $wall_args['wall_item_height_selected']; ?>">
 	<?php if (!is_admin()){ ?>
-	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> class="<?php echo $class_a ?>" rel="<?php echo $rel_a; ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+	<a href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> class="<?php echo $class_a ?>" rel="<?php echo $rel_a; ?>"<?php if ($is_attachment) { ?> data-fancybox="group-wall"<?php } ?> title="<?php echo esc_attr(get_the_title()); ?>">
 	<?php } ?>
 		<div class="inner-item-wrapper" style="width: 100%; height: 100%;">
 			<div class="inner-item thumb" style="<?php echo $style; ?>">
