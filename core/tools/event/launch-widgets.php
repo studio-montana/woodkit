@@ -25,4 +25,4 @@ defined('ABSPATH') or die("Go Away!");
 /**
  * REQUIREMENTS
 */
-require_once (WOODKIT_PLUGIN_PATH.'/'.'/'.WOODKIT_PLUGIN_TOOLS_FOLDER.EVENT_TOOL_NAME.'/widgets/tool-event-widget.class.php');
+require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.EVENT_TOOL_NAME.'/widgets/tool-event-widget.class.php');

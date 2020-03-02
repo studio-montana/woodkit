@@ -168,7 +168,7 @@ function woodkit_admin_scripts_styles() {
 	}else{
 		$css_fontawesome = locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FOLDER.WOODKIT_PLUGIN_FONTS_FOLDER.'font-awesome-4/css/font-awesome.min.css');
 		if (!empty($css_fontawesome)){
-			wp_enqueue_style('woodkit-admin-css-fontawesome', $css_fontawesome, array('woodkit-css-bxslider'), "4.4.7");
+			wp_enqueue_style('woodkit-admin-css-fontawesome', $css_fontawesome, array(), "4.4.7");
 		}
 	}
 

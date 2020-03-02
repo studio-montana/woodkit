@@ -60,16 +60,17 @@ function add_event_post_type(){
 			'not_found_in_trash' => __('No Event found in trash', WOODKIT_PLUGIN_TEXT_DOMAIN)
 	);
 	$args = array(
-			'labels'             => $labels,
-			'exclude_from_search' => false,
-			'public' => true,
-			'show_ui' => true,
-			'show_in_menu' => true,
-			'menu_icon' => 'dashicons-calendar-alt',
-			'capability_type' => 'post',
-			'hierarchical' => true,
-			'supports' => array('title', 'editor', 'thumbnail'),
-			'rewrite'           => array('slug' => _x('events', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
+			'labels'             	=> $labels,
+			'exclude_from_search' 	=> false,
+			'public' 				=> true,
+			'show_ui' 				=> true,
+			'show_in_menu' 			=> true,
+			"show_in_rest" 			=> true,
+			'menu_icon' 			=> 'dashicons-calendar-alt',
+			'capability_type' 		=> 'post',
+			'hierarchical' 			=> true,
+			'supports' 				=> array('title', 'editor', 'thumbnail'),
+			'rewrite'           	=> array('slug' => _x('events', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
 	);
 	register_post_type('event', $args);
 
@@ -93,6 +94,7 @@ function add_event_post_type(){
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
+			"show_in_rest" 		=> true,
 			'rewrite'           => array('slug' => _x('evenement-type', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
 	);
 	register_taxonomy('eventtype', array( 'event' ), $args);
