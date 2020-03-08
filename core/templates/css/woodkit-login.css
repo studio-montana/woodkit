@@ -1,234 +1,9 @@
 @CHARSET "UTF-8";
 
-::-webkit-input-placeholder {
-	color: rgba(124, 124, 124, 1);
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 1rem;
-}
-
-:-moz-placeholder {
-	color: rgba(124, 124, 124, 1);
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 1rem
-}
-
-::-moz-placeholder {
-	color: rgba(124, 124, 124, 1);
-	opacity: 1; /* Since FF19 lowers the opacity of the placeholder by default */
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 1rem
-}
-
-:-ms-input-placeholder {
-	color: rgba(124, 124, 124, 1);
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 1rem;
-}
-
-html{
-	background: #000;
-}
-body.login{
-	background: none;
-	padding: 0 0 0 0;
-	height: auto;
-}
 #login {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 50%;
-	margin: 0 0 0 -160px;
-	padding: 0;
-	width: 320px;
-    background: rgba(0, 0, 0, 0.5);
+	background: rgba(220,220,220, 0.7);
+	padding-bottom: 24px;
 }
-.login-interim #login,
-.interim-login #login,
-iframe #login {
-	left: 0;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
-.login .message{
-	background: transparent;
-	border: none;
-	text-align: center;
-    box-shadow: none;
-    padding: 24px 24px 0 24px;
-	color: #fff;
-	font-weight: 400;
-	font-size: 16px;
-}
-.login #login_error{
-	background: transparent;
-	border: none;
-	text-align: center;
-    box-shadow: none;
-    padding: 24px 24px 0 24px;
-	color: #ccc;
-	font-weight: 300;
-}
-.login form {
-    background: transparent;
-    box-shadow: none;
-    margin-top: 0;
-	padding: 17px 24px 0 24px;
-}
-.login form input[type='text'],
-.login form input[type='password'],
-.login form input[type='email'],
-.login form input[type='number'],
-.login form input[type='submit'].button-large{
-    height: 60px;
-    font-size: 1.1rem;
-    line-height: 1.5rem;
-	width: 100%;
-	padding: 3px;
-	margin: 0 0 3px 0;
-	text-align: center;
-	border: none;
-	font-weight: 300;
-	background: #fff;
-}
-.login form input[type='text']:focus,
-.login form input[type='password']:focus,
-.login form input[type='email']:focus,
-.login form input[type='number']:focus,
-.login form input[type='submit'].button-large:focus{
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
-.login form input[type='submit'].button-large{
-	margin: 18px 0 0 0;
-	background: rgba(255,255,255,0.1);
-	border: 1px solid #ffffff;
-	color: #ffffff;
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	border-radius: 0px;
-	text-shadow: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	text-transform: uppercase;
-
-}
-.login form input[type='submit'].button-large:hover{
-	background: rgba(255,255,255,0.3);
-}
-.login form .button.active,
-.login form .button.active:hover,
-.login form .button:active {
-    -webkit-transform: none;
-    -ms-transform: none;
-    transform: none;
-}
-#login form p.submit{
-	padding: 0;
-}
-.login form p{
-}
-.login label{
-    color: rgba(255, 255, 255, 1);
-}
-.login a{
-	color: #777777;
-	text-decoration: none;
-	border: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
-.login #nav a:hover,
-.login #nav a:focus,
-.login #nav a:active{
-	color: #999999;
-	text-decoration: none;
-	border: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
-.login a:hover{
-	color: #999999;
-}
-.login h1{
-	display: none;
-}
-.login #nav,
-.login form .forgetmenot{
-}
-.login form .forgetmenot{
-	display: block;
-	float: none;
-	text-align: center;
-	padding: 0;
-	margin: 18px 0 0 0;
-	text-align: center;
-}
-.login #nav{
-	position: relative;
-	text-align: center;
-	padding: 0;
-	margin: 18px 0 0 0;
-	padding: 0 24px 0 24px;
-	border-top: 1px solid #000;
-}
-.login #nav a{
-	color: #999999;
-	display: block;
-	width: 100%;
-	text-align: center;
-}
-.login #nav a.registration-url,
-.login-action-register #nav a:first-child,
-.login-action-lostpassword #nav a:first-child{
-	background: #000;
-	color: #fff;
-	text-transform: uppercase;
-    font-size: 1.1rem;
-    line-height: 1.5rem;
-	width: 100%;
-	padding: 17px 0;
-	margin: 0 0 12px 0;
-	font-weight: 300;
-}
-.login #backtoblog{
-	display: none;
-}
-.login form .forgetmenot label{
-	color: #ccc;
-}
-.login form .forgetmenot input{
-	background-color: #ccc;
-	border-color: #777;
-}
-#login form p.captcha-error{
-	text-align: center;
-	color: #ccc;
-	font-weight: 300;
-	margin-bottom: 3px;
-}
-.login #registerform #reg_passmail {
-	color: #ccc;
-	text-align: center;
-	font-weight: 300;
-	margin: 12px 0;
-}
-.login #registerform br.clear {
-	display: none;
-}
-.login .privacy-policy-page-link{
-	margin-top: 4px;
-}
-
 
 /**
  * Tool Cookies
@@ -285,7 +60,7 @@ iframe #login {
 	position: absolute;
 	display: block;
 	top: 1px;
-	right: 10px;
+	right: 5px;
 	bottom: 1px;
 	background-color: transparent;
 	cursor: pointer;
@@ -296,11 +71,11 @@ iframe #login {
 	font-size: 1.5rem;
 }
 .login .tool-secure-input-wrapper .tool-secure-show-info {
-	padding: 20px 0 0 0;
+	padding: 11px 0 0 0;
 	font-size: 1.3rem;
 }
 .login .tool-secure-input-wrapper .tool-secure-info-text {
-	color: #fff;
+	color: #000000;
 	padding-bottom: 3px;
 	text-align: center;
 	font-style: italic;
