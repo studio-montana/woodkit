@@ -1,30 +1,30 @@
 <?php
 /**
  * @package Woodkit
- * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
- * License: GPL2
- * Text Domain: woodkit
- *
- * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- */
+* @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
+* License: GPL2
+* Text Domain: woodkit
+*
+* Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License, version 2, as
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 defined('ABSPATH') or die("Go Away!");
 
 /**
  * Register shortcode to TinyMce
-*/
+ */
 function tool_googlemaps_shortcode_init() {
 	if (tool_googlemaps_shortcode_has_permissions() && tool_googlemaps_shortcode_is_edit_screen()) {
 		add_filter('mce_external_plugins', 'tool_googlemaps_shortcode_tiny_mce_plugins');
@@ -35,7 +35,7 @@ add_action('init', 'tool_googlemaps_shortcode_init', 100); // 100 => after Woodk
 
 /**
  * Register mce plugin button
-*/
+ */
 function tool_googlemaps_shortcode_tiny_mce_plugins_buttons($buttons) {
 	$buttons[] = 'toolgooglemapsshortcode';
 	return $buttons;
@@ -44,7 +44,7 @@ add_filter('mce_buttons', 'tool_googlemaps_shortcode_tiny_mce_plugins_buttons');
 
 /**
  * Register mce plugin javascript
-*/
+ */
 function tool_googlemaps_shortcode_tiny_mce_plugins($plugin_array) {
 	$plugin_array['toolgooglemapsshortcode'] = WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.MAPS_TOOL_NAME.'/shortcode/shortcode.js';
 	return $plugin_array;
@@ -100,7 +100,9 @@ function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 			"maptypecontrol" => 'true',
 			"rotatecontrol" => 'false',
 			"scrollwheel" => 'true',
-			"style"		=> ''
+			"style"		=> '',
+			"lat"		 => '',
+			"lng"		 => '',
 	), $atts );
 	$id = sanitize_text_field($atts['id']);
 	$adress = sanitize_text_field($atts['adress']);
@@ -116,6 +118,10 @@ function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 	$rotatecontrol = sanitize_text_field($atts['rotatecontrol']);
 	$scrollwheel = sanitize_text_field($atts['scrollwheel']);
 	$type = "google.maps.MapTypeId.".sanitize_text_field($atts['type']);
+	$center = null;
+	if (!empty($atts['lat']) && !empty($atts['lng'])) {
+		$center = "{lat: ".sanitize_text_field($atts['lat']).", lng: ".sanitize_text_field($atts['lng'])."}";
+	}
 	ob_start();
 	?>
 	<div style="overflow:hidden; width:<?php echo $width; ?>; height:<?php echo $height; ?>;">
@@ -124,7 +130,7 @@ function tool_googlemaps_shortcode($atts, $content = null, $name='') {
 	<script type="text/javascript">
 		jQuery(document).ready(function($){
 			google.maps.event.addDomListener(window, 'load', function(){
-				var map = new google.maps.Map(document.getElementById('<?php echo $id; ?>'), {zoom:<?php echo $zoom; ?>, mapTypeId: <?php echo $type; ?>, zoomControl: <?php echo $zoomcontrol; ?>, streetViewControl: <?php echo $streetviewcontrol; ?>, scaleControl: <?php echo $scalecontrol; ?>, mapTypeControl: <?php echo $maptypecontrol; ?>, rotateControl: <?php echo $rotatecontrol; ?>, scrollwheel: <?php echo $scrollwheel; ?>});
+				var map = new google.maps.Map(document.getElementById('<?php echo $id; ?>'), {zoom:<?php echo $zoom; ?>, mapTypeId: <?php echo $type; ?>, zoomControl: <?php echo $zoomcontrol; ?>, streetViewControl: <?php echo $streetviewcontrol; ?>, scaleControl: <?php echo $scalecontrol; ?>, mapTypeControl: <?php echo $maptypecontrol; ?>, rotateControl: <?php echo $rotatecontrol; ?>, scrollwheel: <?php echo $scrollwheel; ?><?php if (!empty($center)) { ?>, center: <?php echo $center; ?><?php } ?>});
 				geocode_adress(map, new google.maps.Geocoder(), "<?php echo $adress; ?>", "<?php echo $title; ?>");
 			});
 		});
