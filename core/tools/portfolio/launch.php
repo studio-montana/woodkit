@@ -48,7 +48,7 @@ function add_portfolio_post_type(){
 			'show_in_menu' => true,
 			'capability_type' => 'post',
 			'hierarchical' => true,
-			'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
+			'supports' => array('title', 'editor', 'thumbnail', 'page-attributes', 'custom-fields', 'excerpt'),
 			'rewrite'           => array('slug' => _x('portfolio', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN)),
 			'show_in_rest' => true,
 			'rest_base' => '',
