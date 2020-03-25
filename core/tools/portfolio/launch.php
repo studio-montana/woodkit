@@ -49,7 +49,9 @@ function add_portfolio_post_type(){
 			'capability_type' => 'post',
 			'hierarchical' => true,
 			'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
-			'rewrite'           => array('slug' => _x('portfolio', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
+			'rewrite'           => array('slug' => _x('portfolio', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN)),
+			'show_in_rest' => true,
+			'rest_base' => '',
 	);
 	register_post_type('portfolio', $args);
 
@@ -73,7 +75,9 @@ function add_portfolio_post_type(){
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
-			'rewrite'           => array('slug' => _x('portfolio-type', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
+			'rewrite'           => array('slug' => _x('portfolio-type', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN)),
+			"meta_box_cb" 		=> true,
+			"show_in_rest" 		=> true,
 	);
 	register_taxonomy('portfoliotype', array( 'portfolio' ), $args);
 }
