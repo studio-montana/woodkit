@@ -58,7 +58,7 @@ if (!is_admin()){
 $wall_args['available_isotope_widths'] = wall_get_available_isotope_widths($wall_args['meta_wall_display_presentation_columns']);
 $wall_args['available_isotope_heights'] = wall_get_available_isotope_heights($wall_args['meta_wall_display_presentation_columns']);
 $wall_args['available_templates'] = wall_get_available_templates();
-$wall_args['image_size'] = woodkit_get_tool_option(WALL_TOOL_NAME, 'imagesize');
+$wall_args['image_size'] = $GLOBALS['woodkit']->tools->get_tool_option(WALL_TOOL_NAME, 'imagesize');
 $wall_args = wall_securize_meta_values($wall_args);
 
 $posts = array();
@@ -191,7 +191,7 @@ if (!empty($posts)){
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()]))
 										$title = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()];
 									?>
-									<input type="text" style="width: 100%;" class="wall-presentation-title save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID(); ?>" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e("customized title", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									<input type="text" style="width: 100%;" class="wall-presentation-title save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID(); ?>" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e("customized title", 'woodkit'); ?>" />
 								</td>
 							</tr>
 							<tr>
@@ -202,7 +202,7 @@ if (!empty($posts)){
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()]))
 										$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
 									?>
-									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", 'woodkit'); ?>" />
 									<i class="fa fa-long-arrow-up link-blank-icon"></i>
 									<?php 
 									$link_blank = "";
@@ -327,7 +327,7 @@ if (!empty($posts)){
 				}
 				if (!empty($tax_terms)){ ?>
 					<ul <?php if (is_admin()){ echo 'id="admin-masonry-wall-filter"'; }else{ echo 'id="masonry-wall-filter-'.get_the_ID().'"'; } ?> class="masonry-wall-filters">
-						<li class="masonry-filter active" data-filter="*"><?php _e('All', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></li>
+						<li class="masonry-filter active" data-filter="*"><?php _e('All', 'woodkit'); ?></li>
 						<?php foreach ($tax_terms as $tax => $terms){ ?>
 							<?php foreach ($terms as $term){ ?>
 								<li class="masonry-filter" data-filter=".<?php echo $tax; ?>-<?php echo $term->slug; ?>" id="<?php echo $term->slug; ?>"><?php echo $term->name; ?></li>
@@ -338,7 +338,7 @@ if (!empty($posts)){
 			}else if($wall_args['meta_wall_display_presentation_filtering'] == 'search'){
 				?>
 				<div class="masonry-wall-search-field-wrapper">
-					<input type="search" class="masonry-wall-search-field" <?php if (is_admin()){ echo 'id="admin-masonry-wall-search-field"'; }else{ echo 'id="masonry-wall-search-field-'.get_the_ID().'"'; } ?> placeholder="<?php _e('Search', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+					<input type="search" class="masonry-wall-search-field" <?php if (is_admin()){ echo 'id="admin-masonry-wall-search-field"'; }else{ echo 'id="masonry-wall-search-field-'.get_the_ID().'"'; } ?> placeholder="<?php _e('Search', 'woodkit'); ?>" />
 				</div>
 				<?php
 			}
@@ -390,7 +390,7 @@ if (!empty($posts)){
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()]))
 										$title = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()];
 									?>
-									<input type="text" style="width: 100%;" class="wall-presentation-title save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID(); ?>" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e("customized title", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									<input type="text" style="width: 100%;" class="wall-presentation-title save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID(); ?>" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e("customized title", 'woodkit'); ?>" />
 								</td>
 							</tr>
 							<tr>
@@ -401,7 +401,7 @@ if (!empty($posts)){
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()]))
 										$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
 									?>
-									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", 'woodkit'); ?>" />
 									<i class="fa fa-long-arrow-up link-blank-icon"></i>
 									<?php 
 									$link_blank = "";
@@ -503,7 +503,7 @@ if (!empty($posts)){
 				}
 				if (!empty($tax_terms)){ ?>
 					<ul <?php if (is_admin()){ echo 'id="admin-isotope-wall-filter"'; }else{ echo 'id="isotope-wall-filter-'.get_the_ID().'"'; } ?> class="isotope-wall-filters">
-						<li class="isotope-filter active" data-filter="*"><?php _e('All', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></li>
+						<li class="isotope-filter active" data-filter="*"><?php _e('All', 'woodkit'); ?></li>
 						<?php foreach ($tax_terms as $tax => $terms){ ?>
 							<?php foreach ($terms as $term){ ?>
 								<li class="isotope-filter" data-filter=".<?php echo $tax; ?>-<?php echo $term->slug; ?>" id="<?php echo $term->slug; ?>"><?php echo $term->name; ?></li>
@@ -514,7 +514,7 @@ if (!empty($posts)){
 			}else if($wall_args['meta_wall_display_presentation_filtering'] == 'search'){
 				?>
 				<div class="isotope-wall-search-field-wrapper">
-					<input type="search" class="isotope-wall-search-field" <?php if (is_admin()){ echo 'id="admin-isotope-wall-search-field"'; }else{ echo 'id="isotope-wall-search-field-'.get_the_ID().'"'; } ?> placeholder="<?php _e('Search', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+					<input type="search" class="isotope-wall-search-field" <?php if (is_admin()){ echo 'id="admin-isotope-wall-search-field"'; }else{ echo 'id="isotope-wall-search-field-'.get_the_ID().'"'; } ?> placeholder="<?php _e('Search', 'woodkit'); ?>" />
 				</div>
 				<?php
 			}
@@ -605,7 +605,7 @@ if (!empty($posts)){
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()]))
 										$title = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID()];
 									?>
-									<input type="text" style="width: 100%;" class="wall-presentation-title save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID(); ?>" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e("customized title", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									<input type="text" style="width: 100%;" class="wall-presentation-title save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_TITLE_.get_the_ID(); ?>" value="<?php echo esc_attr($title); ?>" placeholder="<?php _e("customized title", 'woodkit'); ?>" />
 								</td>
 							</tr>
 							<tr>
@@ -616,7 +616,7 @@ if (!empty($posts)){
 									if (isset($wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()]))
 										$link = $wall_args['meta_wall_display_presentation_setup'][META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID()];
 									?>
-									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" />
+									<input type="text" style="width: 100%;" class="wall-presentation-link save-presentation-setup" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SETUP_LINK_.get_the_ID(); ?>" value="<?php echo esc_url($link); ?>" placeholder="<?php _e("customized link", 'woodkit'); ?>" />
 									<i class="fa fa-long-arrow-up link-blank-icon"></i>
 									<?php 
 									$link_blank = "";
@@ -703,6 +703,6 @@ if (!empty($posts)){
 			</script>
 		<?php } ?>
 	<?php }else{ ?>
-		<h3><?php echo WALL_TOOL_NAME." tool : ".__("No presentation found !", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h3>
+		<h3><?php echo WALL_TOOL_NAME." tool : ".__("No presentation found !", 'woodkit'); ?></h3>
 	<?php } ?>
 <?php } ?>

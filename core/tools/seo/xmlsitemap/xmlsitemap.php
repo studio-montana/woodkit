@@ -42,11 +42,11 @@ add_action("tool_xmlsitemap_update", "woodkit_seo_auto_update_xmlsitemap");
 function woodkit_seo_update_xmlsitemap($availables_post_types){
 	$success = false;
 
-	$xmlsitemap_active = woodkit_get_tool_option(SEO_TOOL_NAME, "xmlsitemap-active");
+	$xmlsitemap_active = $GLOBALS['woodkit']->tools->get_tool_option(SEO_TOOL_NAME, "xmlsitemap-active");
 	if ($xmlsitemap_active == "on"){
 
 		// xmlsitemap urls options (additionals or excluded)
-		$sitemap_urls = woodkit_get_tool_option(SEO_TOOL_NAME, "options-sitemap-urls");
+		$sitemap_urls = $GLOBALS['woodkit']->tools->get_tool_option(SEO_TOOL_NAME, "options-sitemap-urls");
 		$additional_urls = array();
 		$excluded_if_equals_urls = array();
 		$excluded_if_contains_urls = array();
@@ -146,9 +146,9 @@ function woodkit_seo_update_xmlsitemap($availables_post_types){
 }
 
 function woodkit_seo_notify_searchengines(){
-	$xmlsitemap_active = woodkit_get_tool_option(SEO_TOOL_NAME, "xmlsitemap-active");
+	$xmlsitemap_active = $GLOBALS['woodkit']->tools->get_tool_option(SEO_TOOL_NAME, "xmlsitemap-active");
 	if ($xmlsitemap_active == "on"){
-		$notify_searchengines = woodkit_get_tool_option(SEO_TOOL_NAME, "xmlsitemap-notification-active");
+		$notify_searchengines = $GLOBALS['woodkit']->tools->get_tool_option(SEO_TOOL_NAME, "xmlsitemap-notification-active");
 		if ($notify_searchengines == "on"){
 			$sitemap_url = woodkit_seo_get_xmlsitemap_url();
 			$success = true;

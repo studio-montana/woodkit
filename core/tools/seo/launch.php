@@ -61,7 +61,7 @@ if (! function_exists ( "woodkit_tool_seo_redirects" )) :
 function woodkit_tool_seo_redirects() {
 	if (! is_admin ()) {
 			
-		$redirects = woodkit_get_tool_option(SEO_TOOL_NAME, "options-redirects");
+		$redirects = $GLOBALS['woodkit']->tools->get_tool_option(SEO_TOOL_NAME, "options-redirects");
 		if (! empty ( $redirects ) && is_array ( $redirects )) {
 			usort ( $redirects, "woodkit_cmp_options_sorted" );
 			$currentrequest = str_ireplace ( get_option ( 'home' ), '', get_current_url () ); // remove domain
@@ -304,7 +304,7 @@ function seo_get_metatitle($sep = " | ", $display = true) {
 	}
 	// Add a page number if necessary.
 	if ($paged >= 2 || $page >= 2)
-		$title = "$title$sep" . sprintf ( __ ( 'page %s', WOODKIT_PLUGIN_TEXT_DOMAIN ), max ( $paged, $page ) );
+		$title = "$title$sep" . sprintf ( __ ( 'page %s', 'woodkit' ), max ( $paged, $page ) );
 		// result
 		if ($display)
 			echo $title;
@@ -378,7 +378,7 @@ function woodkit_seo_get_metadescription($display = true) {
 	
 	// SEO default values
 	if (empty($description)){
-		$description = woodkit_get_tool_option(SEO_TOOL_NAME, "default-description");
+		$description = $GLOBALS['woodkit']->tools->get_tool_option(SEO_TOOL_NAME, "default-description");
 	}
 
 	// default value
@@ -430,7 +430,7 @@ function woodkit_seo_get_metakeywords($display = true) {
 
 	// SEO default values
 	if (empty($keywords)){
-		$keywords = woodkit_get_tool_option(SEO_TOOL_NAME, "default-keywords");
+		$keywords = $GLOBALS['woodkit']->tools->get_tool_option(SEO_TOOL_NAME, "default-keywords");
 	}
 
 	// result
@@ -713,7 +713,7 @@ function seo_header() {
 <meta name="keywords"
 	content="<?php do_action('woodkit_seo_get_metakeywords', true); ?>">
 <?php
-	$opengraph_active = woodkit_get_tool_option(SEO_TOOL_NAME, 'opengraph-active');
+	$opengraph_active = $GLOBALS['woodkit']->tools->get_tool_option(SEO_TOOL_NAME, 'opengraph-active');
 	if (! empty ( $opengraph_active ) && $opengraph_active == "on") {
 		?>
 <meta property="og:type"

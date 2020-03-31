@@ -52,29 +52,29 @@ function tool_private_get_node($post_type, $posts, $is_hierarchical = false){
 
 <div id="tool-private-settings" class="woodkit-settings-section">
 	<header class="woodkit-settings-section-header">
-		<h3><?php _e("Private settings", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h3>
+		<h3><?php _e("Private settings", 'woodkit'); ?></h3>
 	</header>
 	<div class="woodkit-settings-section-content">
 		<table class="settings">
 			<tr valign="top">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo TOOL_PRIVATE_OPTIONS_GO_PRIVATE; ?>"><?php _e('You want to', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo TOOL_PRIVATE_OPTIONS_GO_PRIVATE; ?>"><?php _e('You want to', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php 
 					$meta = get_option(TOOL_PRIVATE_OPTIONS_GO_PRIVATE, "0");
 					?>
 					<select id="<?php echo TOOL_PRIVATE_OPTIONS_GO_PRIVATE; ?>" name="<?php echo TOOL_PRIVATE_OPTIONS_GO_PRIVATE; ?>">
-						<option value="0" <?php if (empty($meta) || $meta == "0"){ echo ' selected="selected"'; } ?>><?php _e("do nothing", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="1"<?php if (!empty($meta) && $meta == "1"){ echo ' selected="selected"'; } ?>><?php _e("go private this site", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="2"<?php if (!empty($meta) && $meta == "2"){ echo ' selected="selected"'; } ?>><?php _e("go private few elements", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="0" <?php if (empty($meta) || $meta == "0"){ echo ' selected="selected"'; } ?>><?php _e("do nothing", 'woodkit'); ?></option>
+						<option value="1"<?php if (!empty($meta) && $meta == "1"){ echo ' selected="selected"'; } ?>><?php _e("go private this site", 'woodkit'); ?></option>
+						<option value="2"<?php if (!empty($meta) && $meta == "2"){ echo ' selected="selected"'; } ?>><?php _e("go private few elements", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle"></td>
 			</tr>
 			<tr valign="top" class="private-options private-options-1 private-options-2">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo TOOL_PRIVATE_OPTIONS_MESSAGE."-".get_current_lang(); ?>"><?php _e("Message", WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo TOOL_PRIVATE_OPTIONS_MESSAGE."-".get_current_lang(); ?>"><?php _e("Message", 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php 

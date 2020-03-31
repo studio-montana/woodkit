@@ -64,7 +64,7 @@ defined('ABSPATH') or die("Go Away!");
 		<?php 
 	}else{
 		?>
-		<div class="no-content"><?php _e("No upcoming event", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></div>
+		<div class="no-content"><?php _e("No upcoming event", 'woodkit'); ?></div>
 		<?php
 	}	
 	?>

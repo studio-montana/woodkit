@@ -28,19 +28,6 @@
 }
 
 /**
- * Woodkit config menu
- */
-.menu-top .toplevel_page_woodkit_options .wp-menu-image.dashicons-before:before{
-	display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\f135";
-}
-
-/**
  * Woodkit Button
  */
 .woodkit-btn{

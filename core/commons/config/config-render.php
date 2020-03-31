@@ -22,7 +22,7 @@
 */
 defined ( 'ABSPATH' ) or die ( "Go Away!" );
 
-class WoodkitOptions {
+class WoodkitConfig {
 
 	public static $nonce_name = 'woodkit-config-nonce';
 	private $options;
@@ -44,7 +44,7 @@ class WoodkitOptions {
 		$this->options = woodkit_get_options(true);
 		
 		// is registered
-		$this->site_registered = woodkit_is_registered();
+		$this->site_registered = WoodkitInstaller::is_registered();
 		
 		// display page
 		$this->display();
@@ -73,9 +73,9 @@ class WoodkitOptions {
 				$action = woodkit_get_request_param('action');
 				$tool_slug = woodkit_get_request_param('tool');
 				if ($action == 'activate'){
-					woodkit_activate_tool($tool_slug);
+					$GLOBALS['woodkit']->tools->activate_tool($tool_slug);
 				}else if ($action == 'deactivate'){
-					woodkit_deactivate_tool($tool_slug);
+					$GLOBALS['woodkit']->tools->deactivate_tool($tool_slug);
 				}
 			}
 		}
@@ -100,68 +100,15 @@ class WoodkitOptions {
 								}
 								?>
 								<label for="key-activation"><?php _e("Woodkit key activation", 'woodkit'); ?></label>
-								<input placeholder="<?php _e("YOUR KEY", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>" type="password" id="key-activation" name="<?php echo WOODKIT_CONFIG_OPTIONS.'[key-activation]'; ?>" value="<?php echo esc_attr($value); ?>" />
+								<input placeholder="<?php _e("YOUR KEY", 'woodkit'); ?>" type="password" id="key-activation" name="<?php echo WOODKIT_CONFIG_OPTIONS.'[key-activation]'; ?>" value="<?php echo esc_attr($value); ?>" />
 								<?php if (!$this->site_registered){ ?>
-									<span class="invalid-key"><i class="fa fa-times"></i><?php _e("Your key is invalid", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></span>
-									<a href="<?php echo esc_url(WOODKIT_CONFIG_GET_KEY_URL); ?>" target="_blank"><?php _e('Get key', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a>
+									<span class="invalid-key"><i class="fa fa-times"></i><?php _e("Your key is invalid", 'woodkit'); ?></span>
+									<a href="<?php echo esc_url(WOODKIT_CONFIG_GET_KEY_URL); ?>" target="_blank"><?php _e('Get key', 'woodkit'); ?></a>
 								<?php }else{ ?>
-									<span class="valid-key"><i class="fa fa-check"></i><?php _e("Your site is registered", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></span>
+									<span class="valid-key"><i class="fa fa-check"></i><?php _e("Your site is registered", 'woodkit'); ?></span>
 								<?php }	?>
 							</div>
 							<p class="description"><?php _e("Setup your key to get woodkit updates", 'woodkit'); ?></p>
-						</div>
-						<div class="field">
-							<div class="field-content">
-								<?php 
-								$value = "";
-								if (isset($this->options['metabox-position'])){
-									$value = $this->options['metabox-position'];
-								}
-								$default_selected = "";
-								$high_selected = "";
-								$low_selected = "";
-								if ($value == "high"){
-									$high_selected = 'selected="selected"';
-								}else if ($value == "low"){
-									$low_selected = 'selected="selected"';
-								}else{
-									$default_selected = 'selected="selected"';
-								}
-								?>
-								<label for="metabox-position"><?php _e("Options position", 'woodkit'); ?></label>
-								<select id="metabox-position" name="<?php echo WOODKIT_CONFIG_OPTIONS.'[metabox-position]'; ?>">
-									<option value="default" <?php echo $default_selected; ?>><?php _e("default", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-									<option value="high" <?php echo $high_selected; ?>><?php _e("high position", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-									<option value="low" <?php echo $low_selected; ?>><?php _e("low position", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-								</select>
-							</div>
-							<p class="description"><?php _e("Woodkit options position on your content editor", 'woodkit'); ?></p>
-						</div>
-						<div class="field">
-							<div class="field-content">
-								<?php 
-								$value = "";
-								if (isset($this->options['fontawesome-version'])){
-									$value = $this->options['fontawesome-version'];
-								}
-								$default_selected = "";
-								$high_selected = "";
-								$low_selected = "";
-								if ($value == "high"){
-									$high_selected = 'selected="selected"';
-								}else if ($value == "low"){
-									$low_selected = 'selected="selected"';
-								}else{
-									$default_selected = 'selected="selected"';
-								}
-								?>
-								<label for="fontawesome-version"><?php _e("Font Awesome", 'woodkit'); ?></label>
-								<select id="fontawesome-version" name="<?php echo WOODKIT_CONFIG_OPTIONS.'[fontawesome-version]'; ?>">
-									<option value="4" <?php if (empty($value) || $value == "4"){ echo 'selected="selected"'; } ?>><?php _e("v.4", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-									<option value="5" <?php if (!empty($value) && $value == "5"){ echo 'selected="selected"'; } ?>><?php _e("v.5", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-								</select>
-							</div>
-							<p class="description"><?php _e("Please verify compatibility to use v.5.", 'woodkit'); ?></p>
 						</div>
 					</div>
 					<button type="submit" class="woodkit-btn primary save">
@@ -184,11 +131,9 @@ class WoodkitOptions {
 							</tr>
 						</thead>
 						<tbody id="the-list">
-							<?php 
-							$tools = woodkit_get_available_tools(true);
+							<?php $tools = $GLOBALS['woodkit']->tools->get_tools();
 							foreach ($tools as $tool){
-								$active = woodkit_is_activated_tool($tool->slug);
-								?>
+								$active = $tool->is_activated(); ?>
 								<tr class="<?php echo $active == true ? 'active' : 'inactive'?>">
 									<th scope="row" class="check-column"></th>
 									<td class="plugin-title column-primary">

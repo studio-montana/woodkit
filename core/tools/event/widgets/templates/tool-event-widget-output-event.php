@@ -68,7 +68,7 @@ defined('ABSPATH') or die("Go Away!");
 	<footer class="entry-meta">
 		<?php if (comments_open() && ! is_single()) : ?>
 			<div class="comments-link">
-				<?php woodkit_comments_popup_link('<span class="leave-reply">' . __('Comment', WOODKIT_PLUGIN_TEXT_DOMAIN) . '</span>', __('One comment', WOODKIT_PLUGIN_TEXT_DOMAIN), __('See % comments', WOODKIT_PLUGIN_TEXT_DOMAIN) ); ?>
+				<?php woodkit_comments_popup_link('<span class="leave-reply">' . __('Comment', 'woodkit') . '</span>', __('One comment', 'woodkit'), __('See % comments', 'woodkit') ); ?>
 			</div><!-- .comments-link -->
 		<?php endif; // comments_open() ?>
 	</footer><!-- .entry-meta -->

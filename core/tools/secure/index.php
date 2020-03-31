@@ -94,7 +94,7 @@ class WoodkitToolSecure extends WoodkitTool{
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
-						$value = woodkit_get_tool_option($this->slug, 'captcha-active');
+						$value = $this->get_option('captcha-active');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
@@ -103,12 +103,12 @@ class WoodkitToolSecure extends WoodkitTool{
 						<input type="checkbox" id="captcha-active" name="captcha-active" <?php echo $checked; ?> />
 						<label for="captcha-active"><?php _e("Captcha active", 'woodkit'); ?></label>
 					</div>
-					<p class="description"><?php _e('Add captcha on login, register and comment forms (Woocommerce supported)', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+					<p class="description"><?php _e('Add captcha on login, register and comment forms (Woocommerce supported)', 'woodkit'); ?></p>
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
-						$value = woodkit_get_tool_option($this->slug, 'failtoban-active');
+						$value = $this->get_option('failtoban-active');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
@@ -117,12 +117,12 @@ class WoodkitToolSecure extends WoodkitTool{
 						<input type="checkbox" id="failtoban-active" name="failtoban-active" <?php echo $checked; ?> />
 						<label for="failtoban-active"><?php _e("Failtoban active", 'woodkit'); ?></label>
 					</div>
-					<p class="description"><?php _e('Block gross power hacking on login, register and comment forms (Woocommerce supported)', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+					<p class="description"><?php _e('Block gross power hacking on login, register and comment forms (Woocommerce supported)', 'woodkit'); ?></p>
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
-						$value = woodkit_get_tool_option($this->slug, 'headers-nosniff');
+						$value = $this->get_option('headers-nosniff');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
@@ -131,12 +131,12 @@ class WoodkitToolSecure extends WoodkitTool{
 						<input type="checkbox" id="headers-nosniff" name="headers-nosniff" <?php echo $checked; ?> />
 						<label for="headers-nosniff"><?php _e("No sniff", 'woodkit'); ?></label>
 					</div>
-					<p class="description"><?php _e('Disable content sniffing', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+					<p class="description"><?php _e('Disable content sniffing', 'woodkit'); ?></p>
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
-						$value = woodkit_get_tool_option($this->slug, 'headers-xss');
+						$value = $this->get_option('headers-xss');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
@@ -145,12 +145,12 @@ class WoodkitToolSecure extends WoodkitTool{
 						<input type="checkbox" id="headers-xss" name="headers-xss" <?php echo $checked; ?> />
 						<label for="headers-xss"><?php _e("XSS protection", 'woodkit'); ?></label>
 					</div>
-					<p class="description"><?php _e('Enabled web broswer XSS protection', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+					<p class="description"><?php _e('Enabled web broswer XSS protection', 'woodkit'); ?></p>
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
-						$value = woodkit_get_tool_option($this->slug, 'headers-frame');
+						$value = $this->get_option('headers-frame');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
@@ -159,12 +159,12 @@ class WoodkitToolSecure extends WoodkitTool{
 						<input type="checkbox" id="headers-frame" name="headers-frame" <?php echo $checked; ?> />
 						<label for="headers-frame"><?php _e("Restrict framing", 'woodkit'); ?></label>
 					</div>
-					<p class="description"><?php _e('Enabled clickjacking protection', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+					<p class="description"><?php _e('Enabled clickjacking protection', 'woodkit'); ?></p>
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
-						$value = woodkit_get_tool_option($this->slug, 'headers-poweredby');
+						$value = $this->get_option('headers-poweredby');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
@@ -173,12 +173,12 @@ class WoodkitToolSecure extends WoodkitTool{
 						<input type="checkbox" id="headers-poweredby" name="headers-poweredby" <?php echo $checked; ?> />
 						<label for="headers-poweredby"><?php _e("Hide 'powered by' info", 'woodkit'); ?></label>
 					</div>
-					<p class="description"><?php _e('Hide powered by info (php version)', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+					<p class="description"><?php _e('Hide powered by info (php version)', 'woodkit'); ?></p>
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
-						$value = woodkit_get_tool_option($this->slug, 'headers-server');
+						$value = $this->get_option('headers-server');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
@@ -187,12 +187,12 @@ class WoodkitToolSecure extends WoodkitTool{
 						<input type="checkbox" id="headers-server" name="headers-server" <?php echo $checked; ?> />
 						<label for="headers-server"><?php _e("Hide 'Server' info", 'woodkit'); ?></label>
 					</div>
-					<p class="description"><?php _e('Hide server info (server name/version)', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+					<p class="description"><?php _e('Hide server info (server name/version)', 'woodkit'); ?></p>
 				</div>
 				<div class="field select">
 					<div class="field-content">
 						<?php 
-						$value = woodkit_get_tool_option($this->slug, 'headers-referrer');
+						$value = $this->get_option('headers-referrer');
 						?>
 						<select id="headers-referrer" name="headers-referrer">
 							<?php $selected = (!empty($value) && $value == 'no-referrer' ? 'selected="selected"' : ''); ?>
@@ -213,16 +213,16 @@ class WoodkitToolSecure extends WoodkitTool{
 							<option value="unsafe-url" <?php echo $selected; ?>><?php _e("Always send the whole URL", 'woodkit'); ?></option>
 						</select>
 					</div>
-					<p class="description"><?php _e('Set referrer policy option', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+					<p class="description"><?php _e('Set referrer policy option', 'woodkit'); ?></p>
 				</div>
 				<div class="field select">
 					<div class="field-content">
 						<?php 
-						$value = woodkit_get_tool_option($this->slug, 'headers-corswhitelist');
+						$value = $this->get_option('headers-corswhitelist');
 						?>
-						<textarea id="headers-corswhitelist" name="headers-corswhitelist" rows="10" placeholder="<?php echo esc_attr(__("CORS domains whitelist", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>"><?php echo $value; ?></textarea>
+						<textarea id="headers-corswhitelist" name="headers-corswhitelist" rows="10" placeholder="<?php echo esc_attr(__("CORS domains whitelist", 'woodkit')); ?>"><?php echo $value; ?></textarea>
 					</div>
-					<p class="description"><?php _e('Set CORS whitelist - one domain per line', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></p>
+					<p class="description"><?php _e('Set CORS whitelist - one domain per line', 'woodkit'); ?></p>
 				</div>
 				<div class="section-info"><?php _e("You can view your headers and evaluate your website security", 'woodkit'); ?> : <a href="https://securityheaders.io/" target="_blank">https://securityheaders.io/</a></div>
 			</div>

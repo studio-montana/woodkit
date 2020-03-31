@@ -77,7 +77,7 @@ function secure_failtoban_validate_login_form($args){
 function secure_failtoban_validate_register_form($errors){
 	if (isset($_POST['user_login']) && isset($_POST['user_email'])){
 		if (secure_is_failtoban()){
-			$errors->add('faltoban-error', "<strong>".__("ERROR", WOODKIT_PLUGIN_TEXT_DOMAIN)." : </strong>".__("invalid captcha", WOODKIT_PLUGIN_TEXT_DOMAIN));
+			$errors->add('faltoban-error', "<strong>".__("ERROR", 'woodkit')." : </strong>".__("invalid captcha", 'woodkit'));
 		}
 	}
 	return $errors;
@@ -88,7 +88,7 @@ function secure_failtoban_validate_register_form($errors){
  */
 function secure_failtoban_validate_woocommerce_login_form($validation_error, $user, $password){
 	if (secure_is_failtoban()){
-		$validation_error = new WP_Error('faltoban-error', __("Too many tries - please wait 1min", WOODKIT_PLUGIN_TEXT_DOMAIN));
+		$validation_error = new WP_Error('faltoban-error', __("Too many tries - please wait 1min", 'woodkit'));
 	}
 	return $validation_error;
 }
@@ -98,7 +98,7 @@ function secure_failtoban_validate_woocommerce_login_form($validation_error, $us
  */
 function secure_failtoban_validate_woocommerce_register_form($validation_error, $user, $email){
 	if (secure_is_failtoban()){
-		$validation_error = new WP_Error('faltoban-error', __("Too many tries - please wait 1min", WOODKIT_PLUGIN_TEXT_DOMAIN));
+		$validation_error = new WP_Error('faltoban-error', __("Too many tries - please wait 1min", 'woodkit'));
 	}
 	return $validation_error;
 }
@@ -116,7 +116,7 @@ function secure_failtoban_comment_form_field($fields){
  */
 function secure_failtoban_comment_validate($comment_post_ID){
 	if (secure_is_failtoban()){
-		wp_die(__('<strong>ERROR</strong>: Too many tries - please wait 1min', WOODKIT_PLUGIN_TEXT_DOMAIN), 200);
+		wp_die(__('<strong>ERROR</strong>: Too many tries - please wait 1min', 'woodkit'), 200);
 	}
 }
 
@@ -136,7 +136,7 @@ function secure_failtoban_generic_form_field($display = true){
  */
 function secure_failtoban_generic_form_validate($errors){
 	if (secure_is_failtoban()){
-		$errors[] = new WP_Error('failtoban-error', __("Too many tries - please wait 1min", WOODKIT_PLUGIN_TEXT_DOMAIN));
+		$errors[] = new WP_Error('failtoban-error', __("Too many tries - please wait 1min", 'woodkit'));
 	}
 	return $errors;
 }
@@ -146,7 +146,7 @@ function secure_failtoban_generic_form_validate($errors){
  */
 function secure_failtoban_generate_field(){
 	$field = "";
-	$error = woodkit_session_get('failtoban-error', "");
+	$error = WoodkitSession::get('failtoban-error', "");
 	if (!empty($error))
 		$field .= '<p class="error failtoban-error">'.$error.'</p>';
 	return $field;
@@ -158,38 +158,38 @@ function secure_failtoban_generate_field(){
 function secure_is_failtoban(){
 	$failedtoban = false;
 	$timestamp = time();
-	$last_failtoban_time = woodkit_session_get("secure-last-failtoban-time", null);
-	$last_login_time = woodkit_session_get("secure-last-login-time", null);
-	$nb_try_login = woodkit_session_get("secure-nb-try-login", null);
+	$last_failtoban_time = WoodkitSession::get("secure-last-failtoban-time", null);
+	$last_login_time = WoodkitSession::get("secure-last-login-time", null);
+	$nb_try_login = WoodkitSession::get("secure-nb-try-login", null);
 	if (!empty($last_failtoban_time) && ($timestamp - $last_failtoban_time) < 60){
 		$failedtoban = true; // failtoban must wait 1min.
-		woodkit_session_set("secure-last-failtoban-time", $timestamp);
-		woodkit_session_unset("secure-last-login-time");
-		woodkit_session_unset("secure-nb-try-login");
+		WoodkitSession::set("secure-last-failtoban-time", $timestamp);
+		WoodkitSession::unset("secure-last-login-time");
+		WoodkitSession::unset("secure-nb-try-login");
 	}else{
-		woodkit_session_unset("secure-last-failtoban-time");
+		WoodkitSession::unset("secure-last-failtoban-time");
 		if (!empty($last_login_time)){
 			if ($nb_try_login > 9){ // more than 10 tries in 1min.
 				if (($timestamp - $last_login_time) < 60){ // more than 10 tries in 1min. => failtoban
 					$failedtoban = true;
-					woodkit_session_set("secure-last-failtoban-time", $timestamp);
-					woodkit_session_unset("secure-last-login-time");
-					woodkit_session_unset("secure-nb-try-login");
+					WoodkitSession::set("secure-last-failtoban-time", $timestamp);
+					WoodkitSession::unset("secure-last-login-time");
+					WoodkitSession::unset("secure-nb-try-login");
 				}else{ // reset
-					woodkit_session_set("secure-last-login-time", $timestamp);
-					woodkit_session_set("secure-nb-try-login", 1);
+					WoodkitSession::set("secure-last-login-time", $timestamp);
+					WoodkitSession::set("secure-nb-try-login", 1);
 				}
 			}else{ // increment try login
-				woodkit_session_set("secure-nb-try-login", ($nb_try_login+1));
+				WoodkitSession::set("secure-nb-try-login", ($nb_try_login+1));
 			}
 		}else{ // reset
-			woodkit_session_set("secure-last-login-time", $timestamp);
-			woodkit_session_set("secure-nb-try-login", 1);
+			WoodkitSession::set("secure-last-login-time", $timestamp);
+			WoodkitSession::set("secure-nb-try-login", 1);
 		}
 	}
 	if (!$failedtoban)
-		woodkit_session_set('failtoban-error', "");
+		WoodkitSession::set('failtoban-error', "");
 	else
-		woodkit_session_set('failtoban-error', __("Too many tries - please wait 1min", WOODKIT_PLUGIN_TEXT_DOMAIN));
+		WoodkitSession::set('failtoban-error', __("Too many tries - please wait 1min", 'woodkit'));
 	return $failedtoban;
 }

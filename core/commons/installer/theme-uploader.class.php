@@ -49,7 +49,7 @@ class WoodkitThemeUploader {
 	// Get information regarding our plugin from API
 	private function getRepoReleaseInfo() {
 
-		if (!woodkit_is_registered())
+		if (!WoodkitInstaller::is_registered())
 			return;
 
 		if (!empty($this->APIResult))
@@ -60,8 +60,7 @@ class WoodkitThemeUploader {
 		$last_update = get_option($this->slug.'-last-update-latest-release', null);
 		$latestrelease = get_option($this->slug.'-latest-release', null);
 		if ($last_update != null){
-			if (defined('WOODKIT_INTERVAL_API'))
-				$last_update->add(new DateInterval(WOODKIT_INTERVAL_API));
+			$last_update->add(new DateInterval(WoodkitInstaller::$API_INTERVAL));
 			if ($last_update > $now){
 				$reload = false;
 			}
@@ -69,8 +68,7 @@ class WoodkitThemeUploader {
 
 		if ($reload){
 			$key = woodkit_get_option("key-activation");
-			$url = WOODKIT_URL_API;
-			$url = add_query_arg(array("api-action" => "latestrelease"), $url);
+			$url = WoodkitInstaller::$API_URL . '/latestrelease';
 			$url = add_query_arg(array("api-package" => $this->slug), $url);
 			$url = add_query_arg(array("api-key-host" => get_site_url()), $url);
 			$url = add_query_arg(array("api-key-package" => 'woodkit'), $url); // depends woodkit
@@ -101,7 +99,7 @@ class WoodkitThemeUploader {
 		if (!is_object($transient))
 			return $transient;
 
-		if (!woodkit_is_registered())
+		if (!WoodkitInstaller::is_registered())
 			return $transient;
 
 		if (!isset($transient->response) || !is_array($transient->response))
@@ -143,7 +141,7 @@ class WoodkitThemeUploader {
 		$this->initThemeData();
 
 		// check if updated theme is our theme - name like : studio-montana-THEMENAME-HASH
-		if (isset($result['destination_name']) && strpos($result['destination_name'], WOODKIT_GITHUB_BASE_PACKAGE.'-'.$this->slug.'-') !== false){
+		if (isset($result['destination_name']) && strpos($result['destination_name'], WoodkitInstaller::$API_ZIP_PACKAGE_BASE.'-'.$this->slug.'-') !== false){
 			// Since we are hosted in GitHub, our plugin folder would have a dirname of
 			// reponame-tagname change it to our original one:
 			global $wp_filesystem;
@@ -169,11 +167,11 @@ class WoodkitThemeUploader {
 		$activated_theme = wp_get_theme();
 
 		// check if current theme is our update theme - name like : studio-montana-THEMENAME-HASH
-		if (strpos($activated_theme->get('Name'), WOODKIT_GITHUB_BASE_PACKAGE.'-'.$this->slug.'-') !== false){
+		if (strpos($activated_theme->get('Name'), WoodkitInstaller::$API_ZIP_PACKAGE_BASE.'-'.$this->slug.'-') !== false){
 			switch_theme($this->slug);
 		}
 		
-		woodkit_after_auto_update($this->slug, $this->themeData->get('Version'));
+		WoodkitInstaller::after_auto_update($this->slug, $this->themeData->get('Version'));
 
 	}
 }

@@ -31,10 +31,10 @@ class tool_event_widget extends WP_Widget {
 				'tool-event',
 
 				// Widget name will appear in UI
-				__("Events", WOODKIT_PLUGIN_TEXT_DOMAIN),
+				__("Events", 'woodkit'),
 
 				// Widget description
-				array( 'description' => __("Show upcoming events", WOODKIT_PLUGIN_TEXT_DOMAIN),)
+				array( 'description' => __("Show upcoming events", 'woodkit'),)
 		);
 	}
 
@@ -69,7 +69,7 @@ class tool_event_widget extends WP_Widget {
 		if ( isset( $instance['title'] ))
 			$title = $instance['title'];
 		else
-			$title = __("Events", WOODKIT_PLUGIN_TEXT_DOMAIN);
+			$title = __("Events", 'woodkit');
 
 		if (isset( $instance['nb'] ))
 			$nb = $instance['nb'];

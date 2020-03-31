@@ -66,7 +66,7 @@ class WoodkitToolWall extends WoodkitTool{
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
-						$value = woodkit_get_tool_option($this->slug, 'imagesize');
+						$value = $this->get_option('imagesize');
 						$available_sizes = Woodkit::get_image_sizes();
 						?>
 						<label for="imagesize"><?php _e("Thumbnails size", 'woodkit'); ?></label>

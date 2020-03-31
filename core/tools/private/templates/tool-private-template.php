@@ -83,7 +83,7 @@ global $private_tool_errors;
 						}
 						?>
 						<div class="button-wrapper">
-							<a href="<?php echo wp_login_url(get_current_url(true)); ?>" class="button"><?php _e("sign in", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a>
+							<a href="<?php echo wp_login_url(get_current_url(true)); ?>" class="button"><?php _e("sign in", 'woodkit'); ?></a>
 						</div>
 						<div style="clear: both;"></div>
 					

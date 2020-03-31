@@ -27,20 +27,20 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 <div id="tool-wall-display-wall" class="custom-fields-section">
 	<header class="custom-fields-section-header">
 		<h3>
-			<?php _e('Wall', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
-			<em style="margin-left: 12px;">(<?php _e('insert elements in this', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> <?php echo $current_post_type_label->singular_name;?>)</em>
+			<?php _e('Wall', 'woodkit'); ?>
+			<em style="margin-left: 12px;">(<?php _e('insert elements in this', 'woodkit'); ?> <?php echo $current_post_type_label->singular_name;?>)</em>
 		</h3>
 	</header>
 	<div class="custom-fields-section-content">
 		<table class="fields">
 			<tr valign="top">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_POST_TYPE; ?>"><?php _e('Display', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_POST_TYPE; ?>"><?php _e('Display', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POST_TYPE, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_POST_TYPE; ?>" name="<?php echo META_WALL_DISPLAY_POST_TYPE; ?>">
-						<option value="0" <?php if (empty($meta) || $meta == '0'){ echo 'selected="selected"'; }?>><?php _e("nothing", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="0" <?php if (empty($meta) || $meta == '0'){ echo 'selected="selected"'; }?>><?php _e("nothing", 'woodkit'); ?></option>
 						<?php $post_types = get_displayed_post_types();
 						foreach ($post_types as $post_type){ ?>
 							<?php
@@ -49,24 +49,24 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 							?>
 							<option value="<?php echo $post_type; ?>" <?php if (!empty($meta) && $meta == $post_type){ echo 'selected="selected"'; }?> data-list="dynamic" data-hierarchical="<?php echo $hierarchical; ?>"><?php echo $post_type_label->name; ?></option>
 						<?php } ?>
-						<option value="-1" <?php if (!empty($meta) && $meta == '-1'){ echo 'selected="selected"'; }?> data-list="static"><?php _e("customized…", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="-1" <?php if (!empty($meta) && $meta == '-1'){ echo 'selected="selected"'; }?> data-list="static"><?php _e("customized…", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle">
 					<span id="choose-wall-elements" class="button display-wall-options display-wall-options-list display-wall-options-list-static">
-						<i class="fa fa-search" style="margin-right: 6px;"></i><?php _e("manage your elements", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+						<i class="fa fa-search" style="margin-right: 6px;"></i><?php _e("manage your elements", 'woodkit'); ?>
 					</span>
 				</td>
 				<td valign="middle"></td>
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-options-list display-wall-options-list-dynamic">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_TERM_SLUG; ?>">-&nbsp;<?php _e('Category', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_TERM_SLUG; ?>">-&nbsp;<?php _e('Category', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_TERM_SLUG, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_TERM_SLUG; ?>" name="<?php echo META_WALL_DISPLAY_TERM_SLUG; ?>">
-						<option value="0" <?php if (empty($meta) || $meta == '0'){ echo 'selected="selected"'; }?>><?php _e("All", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="0" <?php if (empty($meta) || $meta == '0'){ echo 'selected="selected"'; }?>><?php _e("All", 'woodkit'); ?></option>
 						<?php 
 						// complex tax options - controls by javascript which display valid terms for selected post_type
 						$tax_options = '';
@@ -104,19 +104,19 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-options-list display-wall-options-list-dynamic">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_ORDERBY; ?>">-&nbsp;<?php _e('Order by', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_ORDERBY; ?>">-&nbsp;<?php _e('Order by', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_ORDERBY, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_ORDERBY; ?>" name="<?php echo META_WALL_DISPLAY_ORDERBY; ?>">
-						<option value="none" <?php if (!empty($meta) && $meta == 'none'){ echo 'selected="selected"'; }?>><?php _e("no order", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="ID" <?php if (!empty($meta) && $meta == 'ID'){ echo 'selected="selected"'; }?>><?php _e("id", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="author" <?php if (!empty($meta) && $meta == 'author'){ echo 'selected="selected"'; }?>><?php _e("author", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="title" <?php if (!empty($meta) && $meta == 'title'){ echo 'selected="selected"'; }?>><?php _e("title", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="date" <?php if (empty($meta) || $meta == 'date'){ echo 'selected="selected"'; }?>><?php _e("date", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="modified" <?php if (!empty($meta) && $meta == 'modified'){ echo 'selected="selected"'; }?>><?php _e("last modified date", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="rand" <?php if (!empty($meta) && $meta == 'rand'){ echo 'selected="selected"'; }?>><?php _e("random", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="menu_order" <?php if (!empty($meta) && $meta == 'menu_order'){ echo 'selected="selected"'; }?>><?php _e("num. order", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="none" <?php if (!empty($meta) && $meta == 'none'){ echo 'selected="selected"'; }?>><?php _e("no order", 'woodkit'); ?></option>
+						<option value="ID" <?php if (!empty($meta) && $meta == 'ID'){ echo 'selected="selected"'; }?>><?php _e("id", 'woodkit'); ?></option>
+						<option value="author" <?php if (!empty($meta) && $meta == 'author'){ echo 'selected="selected"'; }?>><?php _e("author", 'woodkit'); ?></option>
+						<option value="title" <?php if (!empty($meta) && $meta == 'title'){ echo 'selected="selected"'; }?>><?php _e("title", 'woodkit'); ?></option>
+						<option value="date" <?php if (empty($meta) || $meta == 'date'){ echo 'selected="selected"'; }?>><?php _e("date", 'woodkit'); ?></option>
+						<option value="modified" <?php if (!empty($meta) && $meta == 'modified'){ echo 'selected="selected"'; }?>><?php _e("last modified date", 'woodkit'); ?></option>
+						<option value="rand" <?php if (!empty($meta) && $meta == 'rand'){ echo 'selected="selected"'; }?>><?php _e("random", 'woodkit'); ?></option>
+						<option value="menu_order" <?php if (!empty($meta) && $meta == 'menu_order'){ echo 'selected="selected"'; }?>><?php _e("num. order", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle"></td>
@@ -124,13 +124,13 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-options-list display-wall-options-list-dynamic">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_ORDER; ?>">-&nbsp;<?php _e('Order', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_ORDER; ?>">-&nbsp;<?php _e('Order', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_ORDER, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_ORDER; ?>" name="<?php echo META_WALL_DISPLAY_ORDER; ?>">
-						<option value="DESC" <?php if (empty($meta) || $meta == 'DESC'){ echo 'selected="selected"'; }?>><?php _e("descendant", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="ASC" <?php if (!empty($meta) && $meta == 'ASC'){ echo 'selected="selected"'; }?>><?php _e("ascendant", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="DESC" <?php if (empty($meta) || $meta == 'DESC'){ echo 'selected="selected"'; }?>><?php _e("descendant", 'woodkit'); ?></option>
+						<option value="ASC" <?php if (!empty($meta) && $meta == 'ASC'){ echo 'selected="selected"'; }?>><?php _e("ascendant", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle"></td>
@@ -138,7 +138,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-options-list display-wall-options-list-dynamic">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_NUMBER; ?>">-&nbsp;<?php _e('Number limit', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_NUMBER; ?>">-&nbsp;<?php _e('Number limit', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_NUMBER, true); ?>
@@ -149,13 +149,13 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-options-list display-wall-options-list-dynamic">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PARENT; ?>">-&nbsp;<?php _e('Children of', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PARENT; ?>">-&nbsp;<?php _e('Children of', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PARENT, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_PARENT; ?>" name="<?php echo META_WALL_DISPLAY_PARENT; ?>">
-						<option value="-1" <?php if (!isset($meta) || $meta == '-1'){ echo 'selected="selected"'; }?>><?php _e("All", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="0" <?php if (isset($meta) && $meta == '0'){ echo 'selected="selected"'; }?>><?php _e("First level", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="-1" <?php if (!isset($meta) || $meta == '-1'){ echo 'selected="selected"'; }?>><?php _e("All", 'woodkit'); ?></option>
+						<option value="0" <?php if (isset($meta) && $meta == '0'){ echo 'selected="selected"'; }?>><?php _e("First level", 'woodkit'); ?></option>
 						<?php
 						$post_types_hierarchical = array();
 						$post_types = get_displayed_post_types();
@@ -172,30 +172,30 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_POSITION; ?>">-&nbsp;<?php _e('Position', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_POSITION; ?>">-&nbsp;<?php _e('Position', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_POSITION, true); ?>
 					<select id="<?php echo META_WALL_DISPLAY_POSITION; ?>" name="<?php echo META_WALL_DISPLAY_POSITION; ?>">
-						<option value="after-content" <?php if (!empty($meta) && $meta == 'after-content'){ echo 'selected="selected"'; }?>><?php _e("after content", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="before-content" <?php if (!empty($meta) && $meta == 'before-content'){ echo 'selected="selected"'; }?>><?php _e("before content", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="use-shortcode" <?php if (empty($meta) || $meta == 'use-shortcode'){ echo 'selected="selected"'; }?>><?php _e("use shortcode", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="after-content" <?php if (!empty($meta) && $meta == 'after-content'){ echo 'selected="selected"'; }?>><?php _e("after content", 'woodkit'); ?></option>
+						<option value="before-content" <?php if (!empty($meta) && $meta == 'before-content'){ echo 'selected="selected"'; }?>><?php _e("before content", 'woodkit'); ?></option>
+						<option value="use-shortcode" <?php if (empty($meta) || $meta == 'use-shortcode'){ echo 'selected="selected"'; }?>><?php _e("use shortcode", 'woodkit'); ?></option>
 					</select>
 				</td>
-				<td valign="middle">(<?php _e('insert [woodkit_wall/] directly in your content or use visual composer element "Woodkit Wall"', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>)</td>
+				<td valign="middle">(<?php _e('insert [woodkit_wall/] directly in your content or use visual composer element "Woodkit Wall"', 'woodkit'); ?>)</td>
 				<td valign="middle"></td>
 			</tr>
 			<tr valign="top" class="display-wall-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION; ?>">-&nbsp;<?php _e('Presentation', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION; ?>">-&nbsp;<?php _e('Presentation', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_PRESENTATION; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION; ?>">
-						<option value="masonry" <?php if (empty($meta) || $meta == 'masonry'){ echo 'selected="selected"'; }?>><?php _e("masonry", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="slider" <?php if (!empty($meta) && $meta == 'slider'){ echo 'selected="selected"'; }?>><?php _e("slider", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="list" <?php if (!empty($meta) && $meta == 'list'){ echo 'selected="selected"'; }?>><?php _e("list", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="isotope" <?php if (!empty($meta) && $meta == 'isotope'){ echo 'selected="selected"'; }?>><?php _e("grid", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="masonry" <?php if (empty($meta) || $meta == 'masonry'){ echo 'selected="selected"'; }?>><?php _e("masonry", 'woodkit'); ?></option>
+						<option value="slider" <?php if (!empty($meta) && $meta == 'slider'){ echo 'selected="selected"'; }?>><?php _e("slider", 'woodkit'); ?></option>
+						<option value="list" <?php if (!empty($meta) && $meta == 'list'){ echo 'selected="selected"'; }?>><?php _e("list", 'woodkit'); ?></option>
+						<option value="isotope" <?php if (!empty($meta) && $meta == 'isotope'){ echo 'selected="selected"'; }?>><?php _e("grid", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle"></td>
@@ -204,17 +204,17 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-isotope-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_COLUMNS; ?>">-&nbsp;<?php _e('Columns', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_COLUMNS; ?>">-&nbsp;<?php _e('Columns', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_COLUMNS, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_PRESENTATION_COLUMNS; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_COLUMNS; ?>">
-						<option value="1" <?php if (!empty($meta) && $meta == '1'){ echo 'selected="selected"'; }?>><?php _e("1", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="2" <?php if (!empty($meta) && $meta == '2'){ echo 'selected="selected"'; }?>><?php _e("2", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="3" <?php if (empty($meta) || $meta == '3'){ echo 'selected="selected"'; }?>><?php _e("3", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="4" <?php if (!empty($meta) && $meta == '4'){ echo 'selected="selected"'; }?>><?php _e("4", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="5" <?php if (!empty($meta) && $meta == '5'){ echo 'selected="selected"'; }?>><?php _e("5", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="6" <?php if (!empty($meta) && $meta == '6'){ echo 'selected="selected"'; }?>><?php _e("6", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="1" <?php if (!empty($meta) && $meta == '1'){ echo 'selected="selected"'; }?>><?php _e("1", 'woodkit'); ?></option>
+						<option value="2" <?php if (!empty($meta) && $meta == '2'){ echo 'selected="selected"'; }?>><?php _e("2", 'woodkit'); ?></option>
+						<option value="3" <?php if (empty($meta) || $meta == '3'){ echo 'selected="selected"'; }?>><?php _e("3", 'woodkit'); ?></option>
+						<option value="4" <?php if (!empty($meta) && $meta == '4'){ echo 'selected="selected"'; }?>><?php _e("4", 'woodkit'); ?></option>
+						<option value="5" <?php if (!empty($meta) && $meta == '5'){ echo 'selected="selected"'; }?>><?php _e("5", 'woodkit'); ?></option>
+						<option value="6" <?php if (!empty($meta) && $meta == '6'){ echo 'selected="selected"'; }?>><?php _e("6", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle"></td>
@@ -223,7 +223,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-slider-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_INITIAL_HEIGHT; ?>">-&nbsp;<?php _e('Height', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_INITIAL_HEIGHT; ?>">-&nbsp;<?php _e('Height', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_INITIAL_HEIGHT, true); 
@@ -238,14 +238,14 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-isotope-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_FORMAT; ?>">-&nbsp;<?php _e('Format', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_FORMAT; ?>">-&nbsp;<?php _e('Format', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_FORMAT, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_PRESENTATION_FORMAT; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_FORMAT; ?>">
-						<option value="square" <?php if (empty($meta) || $meta == 'square'){ echo 'selected="selected"'; }?>><?php _e("square", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="portrait" <?php if (!empty($meta) && $meta == 'portrait'){ echo 'selected="selected"'; }?>><?php _e("portrait", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="landscape" <?php if (!empty($meta) && $meta == 'landscape'){ echo 'selected="selected"'; }?>><?php _e("landscape", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="square" <?php if (empty($meta) || $meta == 'square'){ echo 'selected="selected"'; }?>><?php _e("square", 'woodkit'); ?></option>
+						<option value="portrait" <?php if (!empty($meta) && $meta == 'portrait'){ echo 'selected="selected"'; }?>><?php _e("portrait", 'woodkit'); ?></option>
+						<option value="landscape" <?php if (!empty($meta) && $meta == 'landscape'){ echo 'selected="selected"'; }?>><?php _e("landscape", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle"></td>
@@ -254,18 +254,18 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH; ?>">-&nbsp;<?php _e('Max width', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH; ?>">-&nbsp;<?php _e('Max width', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_WIDTH; ?>">
-						<option value="1" <?php if (empty($meta) && $meta == '1'){ echo 'selected="selected"'; }?>><?php _e("100%", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="2" <?php if (!empty($meta) && $meta == '2'){ echo 'selected="selected"'; }?>><?php _e("50%", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="3" <?php if (!empty($meta) && $meta == '3'){ echo 'selected="selected"'; }?>><?php _e("33%", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="4" <?php if (empty($meta) || $meta == '4'){ echo 'selected="selected"'; }?>><?php _e("25%", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="5" <?php if (!empty($meta) && $meta == '5'){ echo 'selected="selected"'; }?>><?php _e("20%", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="6" <?php if (!empty($meta) && $meta == '6'){ echo 'selected="selected"'; }?>><?php _e("16%", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="customized" <?php if (!empty($meta) && $meta == 'customized'){ echo 'selected="selected"'; }?>><?php _e("customized…", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="1" <?php if (empty($meta) && $meta == '1'){ echo 'selected="selected"'; }?>><?php _e("100%", 'woodkit'); ?></option>
+						<option value="2" <?php if (!empty($meta) && $meta == '2'){ echo 'selected="selected"'; }?>><?php _e("50%", 'woodkit'); ?></option>
+						<option value="3" <?php if (!empty($meta) && $meta == '3'){ echo 'selected="selected"'; }?>><?php _e("33%", 'woodkit'); ?></option>
+						<option value="4" <?php if (empty($meta) || $meta == '4'){ echo 'selected="selected"'; }?>><?php _e("25%", 'woodkit'); ?></option>
+						<option value="5" <?php if (!empty($meta) && $meta == '5'){ echo 'selected="selected"'; }?>><?php _e("20%", 'woodkit'); ?></option>
+						<option value="6" <?php if (!empty($meta) && $meta == '6'){ echo 'selected="selected"'; }?>><?php _e("16%", 'woodkit'); ?></option>
+						<option value="customized" <?php if (!empty($meta) && $meta == 'customized'){ echo 'selected="selected"'; }?>><?php _e("customized…", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle" class="display-wall-masonry-options-customized-width">
@@ -281,14 +281,14 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT; ?>">-&nbsp;<?php _e('Max height', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT; ?>">-&nbsp;<?php _e('Max height', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT, true); 
 					if (empty($meta) || !is_numeric($meta))
 						$meta = "";
 					?>
-					<input type="checkbox" class="wall-update-presentation-setup" id="display-wall-masonry-auto-height" <?php if (empty($meta)){ echo ' checked="checked"'; } ?> />&nbsp;<label for="display-wall-masonry-auto-height"><?php _e("Auto", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+					<input type="checkbox" class="wall-update-presentation-setup" id="display-wall-masonry-auto-height" <?php if (empty($meta)){ echo ' checked="checked"'; } ?> />&nbsp;<label for="display-wall-masonry-auto-height"><?php _e("Auto", 'woodkit'); ?></label>
 				</td>
 				<td valign="middle" class="display-wall-masonry-options-customized-height">
 					<input class="wall-update-presentation-setup" type="number" size="4" id="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_MASONRY_HEIGHT; ?>" value="<?php echo $meta; ?>" />
@@ -299,7 +299,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options display-wall-isotope-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>">-&nbsp;<?php _e('Margins', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_MARGIN_HORIZONTAL; ?>">-&nbsp;<?php _e('Margins', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<i class="fa fa-arrows-h"></i>
@@ -324,7 +324,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-masonry-options display-wall-isotope-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>">-&nbsp;<?php _e('Filters as', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>">-&nbsp;<?php _e('Filters as', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_FILTERING, true);
@@ -333,9 +333,9 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 					}
 					?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_FILTERING; ?>">
-						<option value="none" <?php if (empty($meta) || $meta == 'none'){ echo 'selected="selected"'; }?>><?php _e("none", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="tax" <?php if (!empty($meta) && $meta == 'tax'){ echo 'selected="selected"'; }?>><?php _e("taxonomies", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="search" <?php if (!empty($meta) && $meta == 'search'){ echo 'selected="selected"'; }?>><?php _e("search field", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="none" <?php if (empty($meta) || $meta == 'none'){ echo 'selected="selected"'; }?>><?php _e("none", 'woodkit'); ?></option>
+						<option value="tax" <?php if (!empty($meta) && $meta == 'tax'){ echo 'selected="selected"'; }?>><?php _e("taxonomies", 'woodkit'); ?></option>
+						<option value="search" <?php if (!empty($meta) && $meta == 'search'){ echo 'selected="selected"'; }?>><?php _e("search field", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle"></td>
@@ -343,7 +343,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-slider-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_AUTOPLAY; ?>">-&nbsp;<?php _e('Autoplay', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_AUTOPLAY; ?>">-&nbsp;<?php _e('Autoplay', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_SLIDER_AUTOPLAY, true); ?>
@@ -354,7 +354,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-slider-options display-wall-slider-options-thumb-nav">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_THUMB_NAV; ?>">-&nbsp;<?php _e('Thumb navigation', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_THUMB_NAV; ?>">-&nbsp;<?php _e('Thumb navigation', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_SLIDER_THUMB_NAV, true); ?>
@@ -365,7 +365,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-slider-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL; ?>">-&nbsp;<?php _e('Carousel', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL; ?>">-&nbsp;<?php _e('Carousel', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL, true); ?>
@@ -376,17 +376,17 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-slider-options display-wall-slider-options-carousel">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_COLUMNS; ?>">-&nbsp;<?php _e('Carousel columns', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_COLUMNS; ?>">-&nbsp;<?php _e('Carousel columns', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_COLUMNS, true); ?>
 					<select class="wall-update-presentation-setup" id="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_COLUMNS; ?>" name="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_COLUMNS; ?>">
-						<option value="1" <?php if (!empty($meta) && $meta == '1'){ echo 'selected="selected"'; }?>><?php _e("1", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="2" <?php if (!empty($meta) && $meta == '2'){ echo 'selected="selected"'; }?>><?php _e("2", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="3" <?php if (empty($meta) || $meta == '3'){ echo 'selected="selected"'; }?>><?php _e("3", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="4" <?php if (!empty($meta) && $meta == '4'){ echo 'selected="selected"'; }?>><?php _e("4", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="5" <?php if (!empty($meta) && $meta == '5'){ echo 'selected="selected"'; }?>><?php _e("5", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
-						<option value="6" <?php if (!empty($meta) && $meta == '6'){ echo 'selected="selected"'; }?>><?php _e("6", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="1" <?php if (!empty($meta) && $meta == '1'){ echo 'selected="selected"'; }?>><?php _e("1", 'woodkit'); ?></option>
+						<option value="2" <?php if (!empty($meta) && $meta == '2'){ echo 'selected="selected"'; }?>><?php _e("2", 'woodkit'); ?></option>
+						<option value="3" <?php if (empty($meta) || $meta == '3'){ echo 'selected="selected"'; }?>><?php _e("3", 'woodkit'); ?></option>
+						<option value="4" <?php if (!empty($meta) && $meta == '4'){ echo 'selected="selected"'; }?>><?php _e("4", 'woodkit'); ?></option>
+						<option value="5" <?php if (!empty($meta) && $meta == '5'){ echo 'selected="selected"'; }?>><?php _e("5", 'woodkit'); ?></option>
+						<option value="6" <?php if (!empty($meta) && $meta == '6'){ echo 'selected="selected"'; }?>><?php _e("6", 'woodkit'); ?></option>
 					</select>
 				</td>
 				<td valign="middle"></td>
@@ -394,7 +394,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-slider-options display-wall-slider-options-carousel">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_ITEM_WIDTH; ?>">-&nbsp;<?php _e('Carousel item width', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_ITEM_WIDTH; ?>">-&nbsp;<?php _e('Carousel item width', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_ITEM_WIDTH, true); 
@@ -408,7 +408,7 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options display-wall-specific-options display-wall-slider-options display-wall-slider-options-carousel">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_ITEM_MARGIN; ?>">-&nbsp;<?php _e('Carousel item margin', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_ITEM_MARGIN; ?>">-&nbsp;<?php _e('Carousel item margin', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta = get_post_meta(get_the_ID(), META_WALL_DISPLAY_PRESENTATION_SLIDER_CAROUSEL_ITEM_MARGIN, true); 
@@ -422,13 +422,13 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 			</tr>
 			<tr valign="top" class="display-wall-options">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo META_WALL_DISPLAY_LINK_PAGE; ?>">-&nbsp;<?php _e('Page link', WOODKIT_PLUGIN_TEXT_DOMAIN); ?> : </label>
+					for="<?php echo META_WALL_DISPLAY_LINK_PAGE; ?>">-&nbsp;<?php _e('Page link', 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php $meta_link_page = get_post_meta(get_the_ID(), META_WALL_DISPLAY_LINK_PAGE, true); ?>
 					<?php $meta_link_title = get_post_meta(get_the_ID(), META_WALL_DISPLAY_LINK_TITLE, true); ?>
 					<select id="<?php echo META_WALL_DISPLAY_LINK_PAGE; ?>" name="<?php echo META_WALL_DISPLAY_LINK_PAGE; ?>">
-						<option value="0" <?php if (empty($meta_link_page) || $meta_link_page == '0'){ echo 'selected="selected"'; }?>><?php _e("No link", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></option>
+						<option value="0" <?php if (empty($meta_link_page) || $meta_link_page == '0'){ echo 'selected="selected"'; }?>><?php _e("No link", 'woodkit'); ?></option>
 						<?php 
 						echo woodkit_get_posts_options($meta_link_page, null, array()); // no taxonomy
 						?>
@@ -478,8 +478,8 @@ $current_post_type_label = get_post_type_labels(get_post_type_object(get_post_ty
 								oncontentupdated : function(){},
 								oncontentupdatefail : function(){},
 								onclose : function(){},
-								done_button_text : "<?php _e("Update wall", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
-								order_button_text : "<?php _e("Order elements", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>",
+								done_button_text : "<?php _e("Update wall", 'woodkit'); ?>",
+								order_button_text : "<?php _e("Order elements", 'woodkit'); ?>",
 								ondone : function(post_ids){
 									$("input[name='<?php echo META_WALL_DISPLAY_IDS; ?>']").val(post_ids.join(","));
 									update_wall_presentation_setup();

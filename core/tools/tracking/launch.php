@@ -52,8 +52,8 @@ add_action('woodkit_admin_enqueue_styles_tools', 'tool_tracking_woodkit_admin_en
  * @return void
 */
 function tool_tracking_wp_head() {
-	$googleanalytics_code = woodkit_get_tool_option(TRACKING_TOOL_NAME, 'googleanalytics-code');
-	$googleanalytics_googletagmanager_code = woodkit_get_tool_option(TRACKING_TOOL_NAME, 'googletagmanager-code');
+	$googleanalytics_code = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'googleanalytics-code');
+	$googleanalytics_googletagmanager_code = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'googletagmanager-code');
 	if (!empty($googleanalytics_googletagmanager_code)){
 		?>
 		<!-- Google Tag Manager -->
@@ -88,7 +88,7 @@ function tool_tracking_wp_head() {
 		<?php
 	}
 	/** FaceBook Pixel */
-	$facebook_pixel = woodkit_clean_php_to_javascript_var(woodkit_get_tool_option(TRACKING_TOOL_NAME, 'facebook-pixel'));
+	$facebook_pixel = woodkit_clean_php_to_javascript_var($GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'facebook-pixel'));
 	if (!empty($facebook_pixel)){
 		echo $facebook_pixel;
 	}
@@ -102,13 +102,13 @@ add_action('wp_head', 'tool_tracking_wp_head', 1);
  * @return void
  */
 function tool_tracking_wp_footer() {
-	$googleanalytics_code = woodkit_get_tool_option(TRACKING_TOOL_NAME, 'googleanalytics-code');
-	$googleanalytics_googletagmanager_code = woodkit_get_tool_option(TRACKING_TOOL_NAME, 'googletagmanager-code');
+	$googleanalytics_code = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'googleanalytics-code');
+	$googleanalytics_googletagmanager_code = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'googletagmanager-code');
 	if (empty($googleanalytics_googletagmanager_code) && !empty($googleanalytics_code)){
 		?>
 		<!-- Google Analytics Events Tracking -->
 		<script>
-			<?php $events = woodkit_get_tool_option(TRACKING_TOOL_NAME, "googleanalytics-events");			
+			<?php $events = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, "googleanalytics-events");			
 			if (!empty($events)){ ?>
 				// Google Analytics Events
 				(function($) {
@@ -137,7 +137,7 @@ add_action('wp_footer', 'tool_tracking_wp_footer', 1);
 
 function tool_tracking_wp_start_body(){
 	/** Google Tag Manager */
-	$googleanalytics_googletagmanager_code = woodkit_get_tool_option(TRACKING_TOOL_NAME, 'googletagmanager-code');
+	$googleanalytics_googletagmanager_code = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'googletagmanager-code');
 	if (!empty($googleanalytics_googletagmanager_code)){
 		?>
 		<!-- Google Tag Manager (noscript) -->
@@ -147,8 +147,8 @@ function tool_tracking_wp_start_body(){
 		<?php
 	}
 	/** FaceBook Pixel */
-	$facebook_pixel = woodkit_get_tool_option(TRACKING_TOOL_NAME, 'facebook-pixel');	
-	$facebook_pixel_events = woodkit_get_tool_option(TRACKING_TOOL_NAME, "facebook-pixel-events");
+	$facebook_pixel = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'facebook-pixel');	
+	$facebook_pixel_events = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, "facebook-pixel-events");
 	if (!empty($facebook_pixel) && !empty($facebook_pixel_events)){
 		foreach ($facebook_pixel_events as $facebook_pixel_event){
 			if (!empty($facebook_pixel_event['url']) && !empty($facebook_pixel_event['code'])){

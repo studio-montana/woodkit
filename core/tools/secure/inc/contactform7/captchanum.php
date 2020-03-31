@@ -103,14 +103,14 @@ if (is_admin()){
 
 function wpcf7_add_tag_generator_captchanum() {
 	$tag_generator = WPCF7_TagGenerator::get_instance();
-	$tag_generator->add( 'captchanum', __( 'numeric captcha', WOODKIT_PLUGIN_TEXT_DOMAIN),
+	$tag_generator->add( 'captchanum', __( 'numeric captcha', 'woodkit'),
 			'wpcf7_tag_generator_captchanum' );
 }
 
 function wpcf7_tag_generator_captchanum( $contact_form, $args = '' ) {
 	$args = wp_parse_args( $args, array() );
 	$type = 'captchanum';
-	$description = __("Generate a form-tag for a numeric captcha.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	$description = __("Generate a form-tag for a numeric captcha.", 'woodkit');
 
 	?>
 <div class="control-box">

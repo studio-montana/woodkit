@@ -28,7 +28,7 @@ defined('ABSPATH') or die("Go Away!");
 			<!-- meta-title -->
 			<tr class="form-field seo-box">
 				<th scope="row" class="seo-label">
-					<label for="<?php echo SEO_CUSTOMFIELD_METATITLE; ?>"><?php _e("Meta-title", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+					<label for="<?php echo SEO_CUSTOMFIELD_METATITLE; ?>"><?php _e("Meta-title", 'woodkit'); ?></label>
 				</th>
 				<td class="seo-input">
 					<input type="text" name="<?php echo SEO_CUSTOMFIELD_METATITLE; ?>" id="<?php echo SEO_CUSTOMFIELD_METATITLE; ?>" value="<?php echo get_option("term_".$term->term_id."_".SEO_CUSTOMFIELD_METATITLE); ?>" />
@@ -37,7 +37,7 @@ defined('ABSPATH') or die("Go Away!");
 			<!-- meta-description -->
 			<tr class="form-field term-name-wrap seo-box">
 				<th scope="row" class="seo-label">
-					<label for="<?php echo SEO_CUSTOMFIELD_METADESCRIPTION; ?>"><?php _e("Meta-description", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+					<label for="<?php echo SEO_CUSTOMFIELD_METADESCRIPTION; ?>"><?php _e("Meta-description", 'woodkit'); ?></label>
 				</th>
 				<td class="seo-input">
 					<input type="text" name="<?php echo SEO_CUSTOMFIELD_METADESCRIPTION; ?>" id="<?php echo SEO_CUSTOMFIELD_METADESCRIPTION; ?>" value="<?php echo get_option("term_".$term->term_id."_".SEO_CUSTOMFIELD_METADESCRIPTION); ?>" />
@@ -46,7 +46,7 @@ defined('ABSPATH') or die("Go Away!");
 			<!-- meta-keywords -->
 			<tr class="form-field term-name-wrap seo-box">
 				<th scope="row" class="seo-label">
-					<label for="<?php echo SEO_CUSTOMFIELD_METAKEYWORDS; ?>"><?php _e("Meta-keyword", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+					<label for="<?php echo SEO_CUSTOMFIELD_METAKEYWORDS; ?>"><?php _e("Meta-keyword", 'woodkit'); ?></label>
 				</th>
 				<td class="seo-input">
 					<input type="text" name="<?php echo SEO_CUSTOMFIELD_METAKEYWORDS; ?>" id="<?php echo SEO_CUSTOMFIELD_METAKEYWORDS; ?>" value="<?php echo get_option("term_".$term->term_id."_".SEO_CUSTOMFIELD_METAKEYWORDS); ?>" />

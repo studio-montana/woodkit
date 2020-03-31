@@ -70,7 +70,7 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 				}
 				?>
 				<?php if (!is_admin()){ ?>
-				<div class="has-more"><a class="post-link" href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> title="<?php echo esc_attr(__("more", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>"><?php _e("more", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></a></div>
+				<div class="has-more"><a class="post-link" href="<?php echo $link; ?>"<?php if ($link_blank == 'on'){ ?> target="_blank"<?php } ?> title="<?php echo esc_attr(__("more", 'woodkit')); ?>"><?php _e("more", 'woodkit'); ?></a></div>
 				<?php } ?>
 				<?php 
 			}

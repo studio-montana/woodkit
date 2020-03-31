@@ -26,7 +26,7 @@ defined('ABSPATH') or die("Go Away!");
  * Tool class - must be overriden by each tool
  * @author sebc
  */
-class WoodkitTool{
+abstract class WoodkitTool{
 
 	public $slug; // string
 	public $name; // string
@@ -35,36 +35,127 @@ class WoodkitTool{
 	public $add_config_in_menu; // boolean
 	public $documentation_url; // string
 	protected $config_nonce_name; // string
+	protected $path;
 
-	public function __construct($slug, $name, $description = '', $has_config = false, $add_config_in_menu = true, $documentation_url = ''){
-		$this->slug = $slug;
-		$this->name = $name;
-		$this->description = $description;
-		$this->has_config = $has_config;
-		$this->add_config_in_menu = $add_config_in_menu;
-		$this->documentation_url = $documentation_url;
+	public function __construct($args){
+		$args = wp_parse_args($args, array(
+				'slug' => '',
+				'name' => '',
+				'description' => '',
+				'has_config' => false,
+				'add_config_in_menu' => false,
+				'documentation' => '',
+		));
+		$this->slug = $args['slug'];
+		$this->name = $args['name'];
+		$this->description = $args['description'];
+		$this->has_config = $args['has_config'];
+		$this->add_config_in_menu = $args['add_config_in_menu'];
+		$this->documentation_url = $args['documentation'];
 		$this->config_nonce_name = 'woodkit-tool-'.$this->slug.'-config-nonce';
+		/** calculate class path from child class */
+		$rc = new ReflectionClass(get_class($this));
+		$this->path = dirname($rc->getFileName());
+	}
+	
+	public function get_path () {
+		return $this->path;
 	}
 	
 	public function launch(){
-		require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.$this->slug.'/launch.php');
+		if (file_exists($this->path.'/launch.php')){
+			require_once ($this->path.'/launch.php');
+		}
 	}
 	
 	public function launch_widgets(){
-		if (file_exists(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.$this->slug.'/launch-widgets.php')){
-			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.$this->slug.'/launch-widgets.php');
+		if (file_exists($this->path.'/launch-widgets.php')){
+			require_once ($this->path.'/launch-widgets.php');
 		}
 	}
 	
 	/**
-	 * called when tool is activated
+	 * Proceed to tool activation
 	 */
-	public function activate(){}
+	public function activate(){
+		$this->set_option('active', 'on');
+		$this->on_activate();
+	}
 
 	/**
-	 * called when tool is deactivated
+	 * Proceed to tool deactivation
 	 */
-	public function deactivate(){}
+	public function deactivate(){
+		$this->set_option('active', 'off');
+		$this->on_deactivate();
+	}
+	
+	/**
+	 * Called when tool is activated
+	 */
+	protected function on_activate(){}
+	
+	/**
+	 * Called when tool is deactivated
+	 */
+	protected function on_deactivate(){}
+
+	/**
+	 * Check if tool is activated - based on woodkit tool option
+	 * @return boolean
+	 */
+	public function is_activated(){
+		$tool_active = $this->get_option('active');
+		return !empty($tool_active) && $tool_active == 'on';
+	}
+	
+	/**
+	 * Retrieve tool's option for specified name
+	 * @param string $name
+	 * @param any $default
+	 * @return any
+	 */
+	public function get_option ($name, $default = null) {
+		$options = woodkit_get_option('tool-'.$this->slug);
+		if (is_array($options) && array_key_exists($name, $options)){
+			return $options[$name];
+		}
+		$default_value = $this->get_config_default_value($name);
+		return $default_value != null ? $default_value : $default;
+	}
+	
+	/**
+	 * Set tool's option
+	 * @param string $name
+	 * @param any $value
+	 */
+	public function set_option ($name, $value) {
+		$options = woodkit_get_option('tool-'.$this->slug);
+		if (empty($options) || !is_array($options)){
+			$options = array();
+		}
+		$options[$name] = $value;
+		woodkit_save_option('tool-'.$this->slug, $options);
+	}
+	
+	/**
+	 * Set tool's options
+	 * @param string $name
+	 * @param any $value
+	 */
+	
+	/**
+	 * Set tool's options
+	 * @param array $options
+	 * @param boolean $keep_existings - keep existings options if they are not set in specified $options
+	 */
+	public function set_options ($options, $keep_existings = true) {
+		if ($keep_existings) {
+			$existings = woodkit_get_option('tool-'.$this->slug);
+			$options = wp_parse_args($options, $existings);
+		}
+		woodkit_save_option('tool-'.$this->slug, $options);
+	}
 	
 	/**
 	 * retrieve all config fields<br />
@@ -81,6 +172,15 @@ class WoodkitTool{
 	 */
 	public function get_config_default_values(){
 		return array();
+	}
+
+	/**
+	 * retrieve specific config default value
+	 * @return any
+	 */
+	private function get_config_default_value($name){
+		$defaults = $this->get_config_default_values();
+		return !empty($defaults) && isset($defaults[$name]) ? $defaults[$name] : null;
 	}
 	
 	/**
@@ -157,12 +257,8 @@ class WoodkitTool{
 		if (isset($_POST) && !empty($_POST) && isset($_POST[$this->config_nonce_name]) && wp_verify_nonce($_POST[$this->config_nonce_name], $this->config_nonce_name)){
 			$old_options = woodkit_get_tool_options($this->slug);
 			$options = $this->save_config_fields(array());
-			// IMPORTANT : keep 'active' option - because 'active' is not in tool config form, we must to keep 'active' value
-			if (!isset($options['active'])){
-				$options['active'] = woodkit_get_tool_option($this->slug, 'active');
-			}
 			$this->before_save_config($options, $old_options);
-			woodkit_save_tool_options($this->slug, $options);
+			$this->set_options($options);
 			$this->after_save_config(woodkit_get_tool_options($this->slug), $old_options);
 		}
 	}

@@ -33,15 +33,15 @@ function wip_customize_register($wp_customize_manager) {
 
 	// ------ wip section
 	$wp_customize_manager->add_section('wip_customizer', array(
-			'title' => __( 'Work In Progress', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+			'title' => __( 'Work In Progress', 'woodkit' ),
 	) );
 
 	// wip active
 	$wp_customize_manager->add_setting('wip_state', array('type' => 'theme_mod'));
 	$wp_customize_manager->add_control('wip_state',	array(
 			'type' => 'checkbox',
-			'label' => __('Active', WOODKIT_PLUGIN_TEXT_DOMAIN ),
-			'description' => __('only logged in user can look you site', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+			'label' => __('Active', 'woodkit' ),
+			'description' => __('only logged in user can look you site', 'woodkit' ),
 			'section' => 'wip_customizer',
 			'settings'   => 'wip_state',
 	)
@@ -51,7 +51,7 @@ function wip_customize_register($wp_customize_manager) {
 	$wp_customize_manager->add_setting('wip_message', array('type' => 'theme_mod'));
 	$wp_customize_manager->add_control('wip_message', array(
 			'type'     		=> 'text',
-			'label'      	=> __('Message', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+			'label'      	=> __('Message', 'woodkit' ),
 			'section'    	=> 'wip_customizer',
 			'settings'   	=> 'wip_message',
 			'description'	=> 'Affiche ce message au visiteurs non connectés (s\'il n\'y a pas de page spécifique)',
@@ -61,7 +61,7 @@ function wip_customize_register($wp_customize_manager) {
 	$wp_customize_manager->add_setting('wip_page', array('type' => 'theme_mod', 'sanitize_callback' => 'absint'));
 	$wp_customize_manager->add_control('wip_page', array(
 			'type'     		=> 'dropdown-pages',
-			'label'      	=> __('Page spécifique', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+			'label'      	=> __('Page spécifique', 'woodkit' ),
 			'section'    	=> 'wip_customizer',
 			'settings'   	=> 'wip_page',
 			'description'	=> 'Affiche cette page au visiteurs non connectés',

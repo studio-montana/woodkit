@@ -44,17 +44,17 @@ defined('ABSPATH') or die("Go Away!");
 			$text_link = woodkit_customizer_get_value('cookies_link_text', '');
 			if (empty($text_link)){
 				if ($has_privacy_policy){
-					$text_link = __("Read our privacy policy.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+					$text_link = __("Read our privacy policy.", 'woodkit');
 				}else{
-					$text_link = __("More details here.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+					$text_link = __("More details here.", 'woodkit');
 				}
 			}
 			$text_content = woodkit_customizer_get_value('cookies_text', '');
 			if (empty($text_content)){
 				if ($has_privacy_policy){
-					$text_content = __("By continuing to visit our website, you are agreeing to our privacy policy, the use of cookies and similar technology.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+					$text_content = __("By continuing to visit our website, you are agreeing to our privacy policy, the use of cookies and similar technology.", 'woodkit');
 				}else{
-					$text_content = __("By continuing to visit our website, you are agreeing to the use of cookies and similar technology.", WOODKIT_PLUGIN_TEXT_DOMAIN);
+					$text_content = __("By continuing to visit our website, you are agreeing to the use of cookies and similar technology.", 'woodkit');
 				}
 			}
 			echo apply_filters("woodkit_tool_cookies_text_content", $text_content.'&nbsp;<a href="'.esc_url($link_url).'" target="'.$link_target.'">'.$text_link.'</a>');

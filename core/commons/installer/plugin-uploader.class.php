@@ -31,7 +31,7 @@ class WoodkitPluginUploader {
 	private $APIResult;
 
 	function __construct($package, $pluginFile) {
-
+		
 		$this->package = $package;
 		$this->pluginFile = $pluginFile;
 		$this->slug = plugin_basename($this->pluginFile);
@@ -52,7 +52,7 @@ class WoodkitPluginUploader {
 	// Get information regarding our plugin from API
 	private function getRepoReleaseInfo() {
 
-		if (!woodkit_is_registered())
+		if (!WoodkitInstaller::is_registered())
 			return;
 
 		if (!empty($this->APIResult))
@@ -63,8 +63,7 @@ class WoodkitPluginUploader {
 		$last_update = get_option($this->package.'-last-update-latest-release', null);
 		$latestrelease = get_option($this->package.'-latest-release', null);
 		if ($last_update != null){
-			if (defined('WOODKIT_INTERVAL_API'))
-				$last_update->add(new DateInterval(WOODKIT_INTERVAL_API));
+			$last_update->add(new DateInterval(WoodkitInstaller::$API_INTERVAL));
 			if ($last_update > $now){
 				$reload = false;
 			}
@@ -72,8 +71,7 @@ class WoodkitPluginUploader {
 
 		if ($reload){
 			$key = woodkit_get_option("key-activation");
-			$url = WOODKIT_URL_API;
-			$url = add_query_arg(array("api-action" => "latestrelease"), $url);
+			$url = WoodkitInstaller::$API_URL . '/latestrelease';
 			$url = add_query_arg(array("api-package" => $this->package), $url);
 			$url = add_query_arg(array("api-key-host" => get_site_url()), $url);
 			$url = add_query_arg(array("api-key-package" => 'woodkit'), $url); // depends woodkit
@@ -97,7 +95,6 @@ class WoodkitPluginUploader {
 
 	// Push in plugin version information to get the update notification
 	public function setTransitent($transient) {
-
 		if(empty($transient->checked[$this->slug]))
 			return $transient;
 
@@ -107,7 +104,7 @@ class WoodkitPluginUploader {
 		if (!is_object($transient))
 			return $transient;
 
-		if (!woodkit_is_registered())
+		if (!WoodkitInstaller::is_registered())
 			return $transient;
 
 		if (!isset($transient->response) || !is_array($transient->response))
@@ -221,7 +218,7 @@ class WoodkitPluginUploader {
 		$this->initPluginData();
 
 		// check if updated theme is our theme - name like : studio-montana-THEMENAME-HASH
-		if (isset($result['destination_name']) && strpos($result['destination_name'], WOODKIT_GITHUB_BASE_PACKAGE.'-'.$this->package.'-') !== false){
+		if (isset($result['destination_name']) && strpos($result['destination_name'], WoodkitInstaller::$API_ZIP_PACKAGE_BASE.'-'.$this->package.'-') !== false){
 
 			// Remember if our plugin was previously activated
 			$wasActivated = is_plugin_active($this->slug);
@@ -240,7 +237,7 @@ class WoodkitPluginUploader {
 			
 			$plugin_data = get_plugin_data($this->pluginFile);
 			
-			woodkit_after_auto_update($this->package, $plugin_data["Version"]);
+			WoodkitInstaller::after_auto_update($this->package, $plugin_data["Version"]);
 		}
 
 		return $result;

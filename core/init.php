@@ -106,7 +106,7 @@ function woodkit_scripts_styles() {
 	if (!empty($js_utils)){
 		wp_enqueue_script('woodkit-script-woodkit-utils', $js_utils, array('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 		wp_localize_script('woodkit-script-woodkit-utils', 'Utils', array(
-				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)),
+				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', 'woodkit')),
 				"wait_background" => apply_filters('woodkit-js-wait-background', "rgba(255,255,255,0.5)")
 		));
 	}
@@ -210,7 +210,7 @@ function woodkit_admin_scripts_styles() {
 	if (!empty($js_utils)){
 		wp_enqueue_script('woodkit-script-utils', $js_utils, array('jquery', 'wp-color-picker'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
 		wp_localize_script('woodkit-script-utils', 'Utils', array(
-				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', WOODKIT_PLUGIN_TEXT_DOMAIN)),
+				"wait_label" => apply_filters('woodkit-js-wait-label', __('loading...', 'woodkit')),
 				"wait_background" => apply_filters('woodkit-js-wait-background', "rgba(255,255,255,0.5)")
 		));
 	}

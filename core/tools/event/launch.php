@@ -48,16 +48,16 @@ if (!function_exists("add_event_post_type")):
 function add_event_post_type(){
 	// woodkit post type
 	$labels = array(
-			'name'               => __('Events', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'singular_name'      => __('Event', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'add_new_item'       => __('Add Event', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'edit_item'          => __('Edit Event', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'new_item'           => __('New Event', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'all_items'          => __('Events', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'view_item'          => __('Look Event', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'search_items'       => __('Search Events', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'not_found'          => __('No Event found', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'not_found_in_trash' => __('No Event found in trash', WOODKIT_PLUGIN_TEXT_DOMAIN)
+			'name'               => __('Events', 'woodkit'),
+			'singular_name'      => __('Event', 'woodkit'),
+			'add_new_item'       => __('Add Event', 'woodkit'),
+			'edit_item'          => __('Edit Event', 'woodkit'),
+			'new_item'           => __('New Event', 'woodkit'),
+			'all_items'          => __('Events', 'woodkit'),
+			'view_item'          => __('Look Event', 'woodkit'),
+			'search_items'       => __('Search Events', 'woodkit'),
+			'not_found'          => __('No Event found', 'woodkit'),
+			'not_found_in_trash' => __('No Event found in trash', 'woodkit')
 	);
 	$args = array(
 			'labels'             	=> $labels,
@@ -70,23 +70,23 @@ function add_event_post_type(){
 			'capability_type' 		=> 'post',
 			'hierarchical' 			=> true,
 			'supports' 				=> array('title', 'editor', 'thumbnail'),
-			'rewrite'           	=> array('slug' => _x('events', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
+			'rewrite'           	=> array('slug' => _x('events', 'URL slug', 'woodkit'))
 	);
 	register_post_type('event', $args);
 
 	// woodkit taxonomy
 	$labels = array(
-			"name"              => __("Event Types", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"singular_name"     => __("Event Type", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"search_items"      => __("Search Event Type", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"all_items"         => __("All Event Types", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"parent_item"       => __("Event Type's parent", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"parent_item_colon" => __("Event Type's parent", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"edit_item"         => __("Edit Event Type", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"update_item"       => __("Update Event Type", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"add_new_item"      => __("Add Event Type", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"new_item_name"     => __("Name", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			"menu_name"         => __("Event Type", WOODKIT_PLUGIN_TEXT_DOMAIN)
+			"name"              => __("Event Types", 'woodkit'),
+			"singular_name"     => __("Event Type", 'woodkit'),
+			"search_items"      => __("Search Event Type", 'woodkit'),
+			"all_items"         => __("All Event Types", 'woodkit'),
+			"parent_item"       => __("Event Type's parent", 'woodkit'),
+			"parent_item_colon" => __("Event Type's parent", 'woodkit'),
+			"edit_item"         => __("Edit Event Type", 'woodkit'),
+			"update_item"       => __("Update Event Type", 'woodkit'),
+			"add_new_item"      => __("Add Event Type", 'woodkit'),
+			"new_item_name"     => __("Name", 'woodkit'),
+			"menu_name"         => __("Event Type", 'woodkit')
 	);
 	$args = array(
 			'hierarchical'      => true,
@@ -95,7 +95,7 @@ function add_event_post_type(){
 			'show_admin_column' => true,
 			'query_var'         => true,
 			"show_in_rest" 		=> true,
-			'rewrite'           => array('slug' => _x('evenement-type', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN))
+			'rewrite'           => array('slug' => _x('evenement-type', 'URL slug', 'woodkit'))
 	);
 	register_taxonomy('eventtype', array( 'event' ), $args);
 	
@@ -189,8 +189,8 @@ if (!function_exists("define_event_columns")):
  * woodkit listing columns
 */
 function define_event_columns($columns){
-	$columns["event-date-begin"] = __("Begin", WOODKIT_PLUGIN_TEXT_DOMAIN);
-	$columns["event-date-end"] = __("End", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	$columns["event-date-begin"] = __("Begin", 'woodkit');
+	$columns["event-date-end"] = __("End", 'woodkit');
 	return $columns;
 }
 add_filter('manage_edit-event_columns', 'define_event_columns');
@@ -386,9 +386,9 @@ function get_event_date_pretty($post = null, $display_hours = true, $display_day
 				}
 				if ($display_hours){
 					if ($meta_date_hour_begin_s != $meta_date_hour_end_s){
-						$date_s .= " ".__("from (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s." ".__("to (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+						$date_s .= " ".__("from (hour)", 'woodkit')." ".$meta_date_hour_begin_s." ".__("to (hour)", 'woodkit')." ".$meta_date_hour_end_s;
 					}else{
-						$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+						$date_s .= " ".__("at (hour)", 'woodkit')." ".$meta_date_hour_begin_s;
 					}
 				}
 			}else{
@@ -397,7 +397,7 @@ function get_event_date_pretty($post = null, $display_hours = true, $display_day
 				 */
 				if ($meta_month_begin_s == $meta_month_end_s && $meta_year_begin_s == $meta_year_end_s){
 					if ($display_day){
-						$date_s .= __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_begin_s." ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_day_end_s." ";
+						$date_s .= __("from (date)", 'woodkit')." ".$meta_day_begin_s." ".__("to (date)", 'woodkit')." ".$meta_day_end_s." ";
 					}
 					$date_s .= $meta_month_begin_s;
 					if ($display_year){
@@ -405,9 +405,9 @@ function get_event_date_pretty($post = null, $display_hours = true, $display_day
 					}
 					if ($display_hours){
 						if ($meta_date_hour_begin_s != $meta_date_hour_end_s){
-							$date_s .= " ".__("from (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s." ".__("to (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+							$date_s .= " ".__("from (hour)", 'woodkit')." ".$meta_date_hour_begin_s." ".__("to (hour)", 'woodkit')." ".$meta_date_hour_end_s;
 						}else{
-							$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+							$date_s .= " ".__("at (hour)", 'woodkit')." ".$meta_date_hour_begin_s;
 						}
 					}
 				}else{
@@ -416,57 +416,57 @@ function get_event_date_pretty($post = null, $display_hours = true, $display_day
 					 */
 					if ($meta_year_begin_s == $meta_year_end_s){
 						if( $display_day){
-							$date_s .= __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= __("from (date)", 'woodkit');
 							$date_s .= " ".$meta_day_begin_s;
 						}else{
-							$date_s .= __("from (month)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= __("from (month)", 'woodkit');
 						}
 						$date_s .= " ".$meta_month_begin_s;
 						if ($display_hours){
-							$date_s .=" ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+							$date_s .=" ".__("at (hour)", 'woodkit')." ".$meta_date_hour_begin_s;
 						}
 						if( $display_day){
-							$date_s .= " ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= " ".__("to (date)", 'woodkit');
 							$date_s .= " ".$meta_day_end_s;
 						}else{
-							$date_s .= " ".__("to (month)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= " ".__("to (month)", 'woodkit');
 						}
 						$date_s .= " ".$meta_month_end_s;
 						if ($display_year){
 							$date_s .= " ".$meta_year_begin_s;
 						}
 						if ($display_hours){
-							$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+							$date_s .= " ".__("at (hour)", 'woodkit')." ".$meta_date_hour_end_s;
 						}
 					}else{
 						/**
 						 * Different day / month / year
 						 */
 						if( $display_day){
-							$date_s .= __("from (date)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= __("from (date)", 'woodkit');
 							$date_s .= " ".$meta_day_begin_s;
 						}else{
-							$date_s .= __("from (month)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= __("from (month)", 'woodkit');
 						}
 						$date_s .= " ".$meta_month_begin_s;
 						if ($display_year){
 							$date_s .= " ".$meta_year_begin_s;
 						}
 						if ($display_hours){
-							$date_s .=" ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+							$date_s .=" ".__("at (hour)", 'woodkit')." ".$meta_date_hour_begin_s;
 						}
 						if( $display_day){
-							$date_s .= " ".__("to (date)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= " ".__("to (date)", 'woodkit');
 							$date_s .= " ".$meta_day_end_s;
 						}else{
-							$date_s .= " ".__("to (month)", WOODKIT_PLUGIN_TEXT_DOMAIN);
+							$date_s .= " ".__("to (month)", 'woodkit');
 						}
 						$date_s .= " ".$meta_month_end_s;
 						if ($display_year){
 							$date_s .= " ".$meta_year_end_s;
 						}
 						if ($display_hours){
-							$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_end_s;
+							$date_s .= " ".__("at (hour)", 'woodkit')." ".$meta_date_hour_end_s;
 						}
 					}
 				}
@@ -483,7 +483,7 @@ function get_event_date_pretty($post = null, $display_hours = true, $display_day
 				$date_s .= " ".$meta_year_begin_s;
 			}
 			if ($display_hours){
-				$date_s .= " ".__("at (hour)", WOODKIT_PLUGIN_TEXT_DOMAIN)." ".$meta_date_hour_begin_s;
+				$date_s .= " ".__("at (hour)", 'woodkit')." ".$meta_date_hour_begin_s;
 			}
 		}
 	}

@@ -28,16 +28,16 @@ defined('ABSPATH') or die("Go Away!");
 function add_portfolio_post_type(){
 	// woodkit post type
 	$labels = array(
-			'name'               => __('Portfolios', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'singular_name'      => __('Portfolio', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'add_new_item'       => __('Add Portfolio', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'edit_item'          => __('Edit Portfolio', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'new_item'           => __('New Portfolio', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'all_items'          => __('Portfolios', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'view_item'          => __('Look Portfolio', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'search_items'       => __('Search Portfolios', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'not_found'          => __('No Portfolio found', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'not_found_in_trash' => __('No Portfolio found in trash', WOODKIT_PLUGIN_TEXT_DOMAIN)
+			'name'               => __('Portfolios', 'woodkit'),
+			'singular_name'      => __('Portfolio', 'woodkit'),
+			'add_new_item'       => __('Add Portfolio', 'woodkit'),
+			'edit_item'          => __('Edit Portfolio', 'woodkit'),
+			'new_item'           => __('New Portfolio', 'woodkit'),
+			'all_items'          => __('Portfolios', 'woodkit'),
+			'view_item'          => __('Look Portfolio', 'woodkit'),
+			'search_items'       => __('Search Portfolios', 'woodkit'),
+			'not_found'          => __('No Portfolio found', 'woodkit'),
+			'not_found_in_trash' => __('No Portfolio found in trash', 'woodkit')
 	);
 	$args = array(
 			'labels'             => $labels,
@@ -49,7 +49,7 @@ function add_portfolio_post_type(){
 			'capability_type' => 'post',
 			'hierarchical' => true,
 			'supports' => array('title', 'editor', 'thumbnail', 'page-attributes', 'custom-fields', 'excerpt'),
-			'rewrite'           => array('slug' => _x('portfolio', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN)),
+			'rewrite'           => array('slug' => _x('portfolio', 'URL slug', 'woodkit')),
 			'show_in_rest' => true,
 			'rest_base' => '',
 	);
@@ -57,17 +57,17 @@ function add_portfolio_post_type(){
 
 	// woodkit taxonomy
 	$labels = array(
-			'name'              => __('Portfolio Types', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'singular_name'     => __('Portfolio Type', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'search_items'      => __('Search Portfolio Type', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'all_items'         => __('All Portfolio Types', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'parent_item'       => __("Portfolio Type's parent", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'parent_item_colon' => __("Portfolio Type's parent", WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'edit_item'         => __('Edit Portfolio Type', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'update_item'       => __('Update Portfolio Type', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'add_new_item'      => __('Add Portfolio Type', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'new_item_name'     => __('Name', WOODKIT_PLUGIN_TEXT_DOMAIN),
-			'menu_name'         => __('Portfolio Type', WOODKIT_PLUGIN_TEXT_DOMAIN)
+			'name'              => __('Portfolio Types', 'woodkit'),
+			'singular_name'     => __('Portfolio Type', 'woodkit'),
+			'search_items'      => __('Search Portfolio Type', 'woodkit'),
+			'all_items'         => __('All Portfolio Types', 'woodkit'),
+			'parent_item'       => __("Portfolio Type's parent", 'woodkit'),
+			'parent_item_colon' => __("Portfolio Type's parent", 'woodkit'),
+			'edit_item'         => __('Edit Portfolio Type', 'woodkit'),
+			'update_item'       => __('Update Portfolio Type', 'woodkit'),
+			'add_new_item'      => __('Add Portfolio Type', 'woodkit'),
+			'new_item_name'     => __('Name', 'woodkit'),
+			'menu_name'         => __('Portfolio Type', 'woodkit')
 	);
 	$args = array(
 			'hierarchical'      => false,
@@ -75,7 +75,7 @@ function add_portfolio_post_type(){
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
-			'rewrite'           => array('slug' => _x('portfolio-type', 'URL slug', WOODKIT_PLUGIN_TEXT_DOMAIN)),
+			'rewrite'           => array('slug' => _x('portfolio-type', 'URL slug', 'woodkit')),
 			"meta_box_cb" 		=> true,
 			"show_in_rest" 		=> true,
 	);
@@ -88,7 +88,7 @@ if (!function_exists("define_portfolio_columns")):
  * woodkit listing columns
 */
 function define_portfolio_columns($columns){
-	$columns["portfolio-thumb"] = __("Thumb", WOODKIT_PLUGIN_TEXT_DOMAIN);
+	$columns["portfolio-thumb"] = __("Thumb", 'woodkit');
 	return $columns;
 }
 add_filter('manage_edit-portfolio_columns', 'define_portfolio_columns' );

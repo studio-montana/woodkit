@@ -26,7 +26,7 @@ defined('ABSPATH') or die("Go Away!");
  * CORS whitelist
  */
 add_filter('allowed_http_origins', function($origins) {
-	$corswhitelist = woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-corswhitelist");
+	$corswhitelist = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-corswhitelist");
 	if (!empty($corswhitelist)){
 		$corswhitelist = explode("\n", $corswhitelist);
 		if (!empty($corswhitelist)){
@@ -46,9 +46,9 @@ function woodkit_tool_secure_headers() {
 	// TODO HSTS
 	/*
 	if (is_ssl()){
-		$time = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hsts-time"));
-		$subdomain = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hsts-subdomains"));
-		$preload = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hsts-preload"));
+		$time = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-hsts-time"));
+		$subdomain = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-hsts-subdomains"));
+		$preload = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-hsts-preload"));
 		if ( ctype_digit($time)  ) {
 			$subdomain_output = $subdomain > 0 ? "; includeSubDomains" : "";
 			$preload_output = $preload > 0 ? "; preload" : "";
@@ -58,31 +58,31 @@ function woodkit_tool_secure_headers() {
 	*/
 
 	// No Sniff - X-Content-Type-Options: nosniff
-	$nosniff = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-nosniff"));
+	$nosniff = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-nosniff"));
 	if ($nosniff == 'on') {
 		send_nosniff_header();
 	}
 
 	// XSS - X-XSS-Protection: 1; mode=block
-	$xss = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-xss"));
+	$xss = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-xss"));
 	if ($xss == 'on') {
 		header("X-XSS-Protection: 1; mode=block");
 	}
 
 	// Frame Options - X-Frame-Options: SAMEORIGIN
-	$frame = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-frame"));
+	$frame = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-frame"));
 	if ($frame == 'on') {
 		send_frame_options_header();
 	}
 
 	// Powered by - X-Powered-By: unknown
-	$poweredby = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-poweredby"));
+	$poweredby = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-poweredby"));
 	if ($poweredby == 'on') {
 		header_remove('X-Powered-By');
 	}
 
 	// Server - Server: unknown
-	$server = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-server"));
+	$server = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-server"));
 	if ($server == 'on') {
 		header_remove('X-Server');
 	}
@@ -90,12 +90,12 @@ function woodkit_tool_secure_headers() {
 	// TODO HPKP
 	/*
 	if (is_ssl()){
-		$pinkey1 = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-key1"));
-		$pinkey2 = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-key2"));
-		$pinkey3 = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-key3"));
-		$pintime = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-time"));
-		$pinsubdomain = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-subdomains"));
-		$pinuri = woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-uri");
+		$pinkey1 = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-key1"));
+		$pinkey2 = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-key2"));
+		$pinkey3 = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-key3"));
+		$pintime = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-time"));
+		$pinsubdomain = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-subdomains"));
+		$pinuri = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-hpkp-uri");
 		// Standard requires at least one backup key so insist on two keys before working
 		if ( is_numeric($pintime) && !empty($pinkey1) && !empty($pinkey2)) {
 			$pinheader="Public-Key-Pins: ";
@@ -126,7 +126,7 @@ function woodkit_tool_secure_headers() {
 	*/
 
 	// Referrer Policy
-	$referrer = esc_attr(woodkit_get_tool_option(SECURE_TOOL_NAME, "headers-referrer"));
+	$referrer = esc_attr($GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "headers-referrer"));
 	if (!empty($referrer)){
 		header("Referrer-Policy: $referrer");
 	}

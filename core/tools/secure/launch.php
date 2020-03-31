@@ -55,7 +55,7 @@ add_filter('the_generator', function(){
  * @return boolean
 */
 function secure_is_captcha_active(){
-	$captcha_active = woodkit_get_tool_option(SECURE_TOOL_NAME, "captcha-active");
+	$captcha_active = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "captcha-active");
 	if (!empty($captcha_active) && $captcha_active == "on")
 		return true;
 	return false;
@@ -66,7 +66,7 @@ function secure_is_captcha_active(){
  * @return boolean
  */
 function secure_is_failtoban_active(){
-	$failtoban_active = woodkit_get_tool_option(SECURE_TOOL_NAME, "failtoban-active");
+	$failtoban_active = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "failtoban-active");
 	if (!empty($failtoban_active) && $failtoban_active == "on")
 		return true;
 	return false;

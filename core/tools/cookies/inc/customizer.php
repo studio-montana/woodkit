@@ -33,33 +33,33 @@ function cookies_customize_register($wp_customize_manager) {
 
 	// ------ cookies section
 	$wp_customize_manager->add_section('cookies_customizer', array(
-			'title' => __('Cookies', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+			'title' => __('Cookies', 'woodkit' ),
 	));
 
 	// cookies more link text
 	woodkit_customizer_add_add_control($wp_customize_manager, 'cookies_text', array('default' => '', 'transport'=>'theme_mod'), array(
-	'label'      => __('Text', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+	'label'      => __('Text', 'woodkit' ),
 	'settings'   => 'cookies_text',
 	'section'    => 'cookies_customizer',
 	));
 
 	// cookies text
 	woodkit_customizer_add_add_control($wp_customize_manager, 'cookies_link_text', array('default' => '', 'transport'=>'theme_mod'), array(
-	'label'      => __('More link Text', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+	'label'      => __('More link Text', 'woodkit' ),
 	'section'    => 'cookies_customizer',
 	'settings'   => 'cookies_link_text',
 	));
 
 	// cookies more link url
 	woodkit_customizer_add_add_control($wp_customize_manager, 'cookies_link_url', array('default' => '', 'transport'=>'theme_mod'), array(
-	'label'      => __('More link URL', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+	'label'      => __('More link URL', 'woodkit' ),
 	'section'    => 'cookies_customizer',
 	'settings'   => 'cookies_link_url',
 	));
 
 	// cookies button text
 	woodkit_customizer_add_add_control($wp_customize_manager, 'cookies_button_text', array('default' => '', 'transport'=>'theme_mod'), array(
-	'label'      => __('Button text', WOODKIT_PLUGIN_TEXT_DOMAIN ),
+	'label'      => __('Button text', 'woodkit' ),
 	'section'    => 'cookies_customizer',
 	'settings'   => 'cookies_button_text',
 	));

@@ -22,54 +22,54 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
-add_action('init', 'woodkit_session_start', 100); // 100 => after Woodkit tools 'init'
-
-/**
- * start the session, after this call the PHP $_SESSION super global is available
-*/
-function woodkit_session_start() {
-	//trace_info("woodkit_session_start");
-	if(!session_id())session_start();
-}
-
-/**
- * destroy the session
- */
-function woodkit_session_destroy() {
-	//trace_info("woodkit_session_destroy");
-	session_destroy();
-}
-
-/**
- * get a value from the session array
- * @param type $key the key in the array
- * @param type $default the value to use if the key is not present. empty string if not present
- * @return type the value found or the default if not found
- */
-function woodkit_session_get($key, $default='') {
-	//trace_info("woodkit_session_get($key, $default)");
-	if(isset($_SESSION[$key]))
-		return $_SESSION[$key];
-	return $default;
-}
-
-/**
- * set a value in the session array
- * @param type $key the key in the array
- * @param type $value the value to set
- */
-function woodkit_session_set($key, $value) {
-	//trace_info("woodkit_session_set($key, $value)");
-	$_SESSION[$key] = $value;
-}
-
-
-/**
- * unset a value in the session array
- * @param type $key the key in the array
- */
-function woodkit_session_unset($key) {
-	//trace_info("woodkit_session_unset($key)");
-	if(isset($_SESSION[$key]))
-		unset($_SESSION[$key]);
+class WoodkitSession {
+	
+	/**
+	 * start the session, after this call the PHP $_SESSION super global is available
+	 */
+	static function start() {
+		if(!session_id()) {
+			session_start();
+		}
+	}
+	
+	/**
+	 * destroy the session
+	 */
+	static function destroy() {
+		session_destroy();
+	}
+	
+	/**
+	 * get a value from the session array
+	 * @param type $key the key in the array
+	 * @param type $default the value to use if the key is not present. empty string if not present
+	 * @return type the value found or the default if not found
+	 */
+	static function get($key, $default='') {
+		if(isset($_SESSION[$key])){
+			return $_SESSION[$key];
+		}
+		return $default;
+	}
+	
+	/**
+	 * set a value in the session array
+	 * @param type $key the key in the array
+	 * @param type $value the value to set
+	 */
+	static function set($key, $value) {
+		$_SESSION[$key] = $value;
+	}
+	
+	
+	/**
+	 * unset a value in the session array
+	 * @param type $key the key in the array
+	 */
+	static function unset($key) {
+		if(isset($_SESSION[$key])) {
+			unset($_SESSION[$key]);
+		}
+	}
 }

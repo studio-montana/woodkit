@@ -75,7 +75,7 @@ class WoodkitToolTracking extends WoodkitTool{
 				<div class="field">
 					<div class="field-content">
 						<?php
-						$googleanalytics_code = woodkit_get_tool_option($this->slug, 'googleanalytics-code');
+						$googleanalytics_code = $this->get_option('googleanalytics-code');
 						?>
 						<label for="googleanalytics-code"><?php _e("Google Analytics code", 'woodkit'); ?></label>
 						<input type="text" id="googleanalytics-code" name="googleanalytics-code" value="<?php echo esc_attr($googleanalytics_code); ?>" />
@@ -84,7 +84,7 @@ class WoodkitToolTracking extends WoodkitTool{
 				<div class="field">
 					<div class="field-content">
 						<?php
-						$googletagmanager_code = woodkit_get_tool_option($this->slug, 'googletagmanager-code');
+						$googletagmanager_code = $this->get_option('googletagmanager-code');
 						?>
 						<label for="googletagmanager-code"><?php _e("Google Tag Manager code", 'woodkit'); ?></label>
 						<input type="text" id="googletagmanager-code" name="googletagmanager-code" value="<?php echo esc_attr($googletagmanager_code); ?>" />
@@ -113,7 +113,7 @@ class WoodkitToolTracking extends WoodkitTool{
 								label_confirm_remove_event : "<?php _e("Do you realy want remove this event ?", 'woodkit'); ?>",
 							});
 						<?php 
-						$events = woodkit_get_tool_option($this->slug, "googleanalytics-events");
+						$events = $this->get_option("googleanalytics-events");
 						if (!empty($events)){
 							$events_js = "{";
 							foreach ($events as $k => $event){
@@ -144,7 +144,7 @@ class WoodkitToolTracking extends WoodkitTool{
 				<div class="field textarea">
 					<div class="field-content">
 						<?php
-						$facebook_pixel = woodkit_clean_php_to_javascript_var(woodkit_get_tool_option($this->slug, 'facebook-pixel'));
+						$facebook_pixel = woodkit_clean_php_to_javascript_var($this->get_option('facebook-pixel'));
 						?>
 						<textarea class="xlarge" style="min-height: 200px;" id="facebook-pixel" name="facebook-pixel" placeholder="<?php echo esc_attr(__("Pixel code", 'woodkit')); ?>"><?php echo $facebook_pixel; ?></textarea>
 					</div>
@@ -172,7 +172,7 @@ class WoodkitToolTracking extends WoodkitTool{
 								label_confirm_remove_event : "<?php _e("Do you realy want remove this event ?", 'woodkit'); ?>",
 							});
 						<?php 
-						$facebookpixel_events = woodkit_get_tool_option($this->slug, "facebook-pixel-events");
+						$facebookpixel_events = $this->get_option("facebook-pixel-events");
 						if (!empty($facebookpixel_events)){
 							$facebookpixel_events_js = "{";
 							foreach ($facebookpixel_events as $k => $facebookpixel_event){

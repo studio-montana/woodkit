@@ -34,7 +34,7 @@ define('TOOL_PRIVATE_OPTIONS_MESSAGE', 'tool-private-option-message');
  * create admin menu for private settings
 */
 function tool_private_create_menu() {
-	add_menu_page(__('Private settings', WOODKIT_PLUGIN_TEXT_DOMAIN), __('Private site', WOODKIT_PLUGIN_TEXT_DOMAIN), 'administrator', "tool-private-settings-page", 'tool_private_settings_template' , 'dashicons-lock');
+	add_menu_page(__('Private settings', 'woodkit'), __('Private site', 'woodkit'), 'administrator', "tool-private-settings-page", 'tool_private_settings_template' , 'dashicons-lock');
 }
 add_action('admin_menu', 'tool_private_create_menu');
 

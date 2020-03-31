@@ -513,11 +513,11 @@ add_action('vc_before_init', 'tool_wall_visual_composer_support' );
 */
 function tool_wall_visual_composer_support() {
 	vc_map( array(
-	"name" => __("Woodkit Wall", WOODKIT_PLUGIN_TEXT_DOMAIN),
+	"name" => __("Woodkit Wall", 'woodkit'),
 	"base" => "woodkit_wall",
-	"description" => __("Insert defined wall for this content", WOODKIT_PLUGIN_TEXT_DOMAIN),
+	"description" => __("Insert defined wall for this content", 'woodkit'),
 	"class" => "",
-	"category" => __("Content", WOODKIT_PLUGIN_TEXT_DOMAIN)
+	"category" => __("Content", 'woodkit')
 	) );
 }
 

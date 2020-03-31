@@ -108,8 +108,8 @@ function private_wp_footer() {
 		?>
 <div class="private-logout">
 	<a href="<?php echo wp_logout_url(get_permalink()); ?>"
-		title="<?php echo esc_attr(__("sign out", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>"><i
-		class="fa fa-sign-out"></i><span><?php _e("sign out", WOODKIT_PLUGIN_TEXT_DOMAIN); ?>
+		title="<?php echo esc_attr(__("sign out", 'woodkit')); ?>"><i
+		class="fa fa-sign-out"></i><span><?php _e("sign out", 'woodkit'); ?>
 	</span> </a>
 </div>
 <?php 

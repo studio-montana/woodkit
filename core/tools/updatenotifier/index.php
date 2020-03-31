@@ -43,7 +43,7 @@ class WoodkitToolUpdateNotifier extends WoodkitTool{
 			);
 	}
 	
-	public function activate(){
+	public function on_activate(){
 		/**
 		 * Add CRON (if not exists)
 		 */
@@ -56,7 +56,7 @@ class WoodkitToolUpdateNotifier extends WoodkitTool{
 		}
 	}
 	
-	public function deactivate(){
+	public function on_deactivate(){
 		/**
 		 * Remove CRON
 		 */
@@ -87,7 +87,7 @@ class WoodkitToolUpdateNotifier extends WoodkitTool{
 				<div class="field">
 					<div class="field-content">
 						<?php
-						$value = woodkit_get_tool_option($this->slug, 'emails');
+						$value = $this->get_option('emails');
 						?>
 						<label for="emails"><?php _e("Send email to", 'woodkit'); ?></label>
 						<input type="text" class="xlarge" id="emails" name="emails" value="<?php echo esc_attr($value); ?>" />
@@ -102,7 +102,7 @@ class WoodkitToolUpdateNotifier extends WoodkitTool{
 			</h2>
 			<div class="section-content">
 				<div class="section-info">
-					<?php _e('insert this code in your theme templates :', WOODKIT_PLUGIN_TEXT_DOMAIN); ?><br /><code style="font-size: 0.7rem;">&lt;?php woodkit_updatenotifier(); ?&gt;</code>
+					<?php _e('insert this code in your theme templates :', 'woodkit'); ?><br /><code style="font-size: 0.7rem;">&lt;?php woodkit_updatenotifier(); ?&gt;</code>
 				</div>
 			</div>
 		</div>

@@ -53,7 +53,7 @@ function secure_captcha_woocommerce_login_form(){
  */
 function secure_captcha_woocommerce_checkout_registration_form(){
 	echo '<p class="form-row form-row form-row-wide address-field validate-required" id="billing_captcha_field" data-o_class="form-row form-row form-row-wide address-field validate-required">';
-	echo '<label for="'.SECURE_CAPTCHA_FIELD.'-register" class="">'.__("Captcha", WOODKIT_PLUGIN_TEXT_DOMAIN).'<abbr class="required" title="requis">*</abbr></label>';
+	echo '<label for="'.SECURE_CAPTCHA_FIELD.'-register" class="">'.__("Captcha", 'woodkit').'<abbr class="required" title="requis">*</abbr></label>';
 	echo secure_captcha_generate_field(SECURE_CAPTCHA_FIELD.'-register');
 	echo '</p>';
 }
@@ -88,7 +88,7 @@ function secure_captcha_validate_login_form($args){
 function secure_captcha_validate_register_form($errors){
 	if (isset($_POST['user_login']) && isset($_POST['user_email'])){
 		if (!secure_captcha_validate_result(SECURE_CAPTCHA_FIELD.'-register')){
-			$errors->add('captcha-error', "<strong>".__("ERROR", WOODKIT_PLUGIN_TEXT_DOMAIN)." : </strong>".__("invalid captcha", WOODKIT_PLUGIN_TEXT_DOMAIN));
+			$errors->add('captcha-error', "<strong>".__("ERROR", 'woodkit')." : </strong>".__("invalid captcha", 'woodkit'));
 		}
 	}
 	return $errors;
@@ -99,7 +99,7 @@ function secure_captcha_validate_register_form($errors){
  */
 function secure_captcha_validate_woocommerce_login_form($validation_error, $user, $password){
 	if (!secure_captcha_validate_result(SECURE_CAPTCHA_FIELD.'-woocommerce-login')){
-		$validation_error = new WP_Error('captcha-error', __("invalid captcha", WOODKIT_PLUGIN_TEXT_DOMAIN));
+		$validation_error = new WP_Error('captcha-error', __("invalid captcha", 'woodkit'));
 	}
 	return $validation_error;
 }
@@ -109,7 +109,7 @@ function secure_captcha_validate_woocommerce_login_form($validation_error, $user
  */
 function secure_captcha_validate_woocommerce_register_form($validation_error, $username, $email){
 	if (!secure_captcha_validate_result(SECURE_CAPTCHA_FIELD.'-register')){
-		$validation_error = new WP_Error('captcha-error', __("invalid captcha", WOODKIT_PLUGIN_TEXT_DOMAIN));
+		$validation_error = new WP_Error('captcha-error', __("invalid captcha", 'woodkit'));
 	}
 	return $validation_error;
 }
@@ -127,7 +127,7 @@ function secure_captcha_comment_form_field($fields){
  */
 function secure_captcha_comment_validate($comment_post_ID){
 	if (!secure_captcha_validate_result(SECURE_CAPTCHA_FIELD.'-comment')){
-		wp_die(__('<strong>ERROR</strong>: invalid captcha', WOODKIT_PLUGIN_TEXT_DOMAIN), 200);
+		wp_die(__('<strong>ERROR</strong>: invalid captcha', 'woodkit'), 200);
 	}
 }
 
@@ -149,7 +149,7 @@ function secure_captcha_generic_form_field($field_name = "", $display = true, $u
 function secure_captcha_generic_form_validate($field_name = "", $errors = array()){
 	if (empty($field_name)) $field_name = SECURE_CAPTCHA_FIELD;
 	if (!secure_captcha_validate_result($field_name)){
-		$errors[] = new WP_Error('captcha-error', __("invalid captcha", WOODKIT_PLUGIN_TEXT_DOMAIN));
+		$errors[] = new WP_Error('captcha-error', __("invalid captcha", 'woodkit'));
 	}
 	return $errors;
 }
@@ -159,24 +159,24 @@ function secure_captcha_generic_form_validate($field_name = "", $errors = array(
  */
 function secure_captcha_generate_field($field_name, $use_placeholder = true, $use_label = false){
 	$field = "";
-	$is_validated = woodkit_session_get($field_name.'-validate', "");
-	$old_result = woodkit_session_get($field_name.'-result', "");
+	$is_validated = WoodkitSession::get($field_name.'-validate', "");
+	$old_result = WoodkitSession::get($field_name.'-result', "");
 	if ($is_validated == 1 || empty($old_result)){
 		$captcha_1 = rand(1, 15);
 		$captcha_2 = rand(1, 15);
-		woodkit_session_set($field_name.'-result', $captcha_1 + $captcha_2);
-		woodkit_session_set($field_name.'-value-1', $captcha_1);
-		woodkit_session_set($field_name.'-value-2', $captcha_2);
-		woodkit_session_set($field_name.'-validate', 0);
+		WoodkitSession::set($field_name.'-result', $captcha_1 + $captcha_2);
+		WoodkitSession::set($field_name.'-value-1', $captcha_1);
+		WoodkitSession::set($field_name.'-value-2', $captcha_2);
+		WoodkitSession::set($field_name.'-validate', 0);
 	}else{
-		$captcha_1 = woodkit_session_get($field_name.'-value-1');
-		$captcha_2 = woodkit_session_get($field_name.'-value-2');
+		$captcha_1 = WoodkitSession::get($field_name.'-value-1');
+		$captcha_2 = WoodkitSession::get($field_name.'-value-2');
 		// this captcha field has never be submited... don't change result value
 		// this way to fix bug due to multiple loads of theme's functions.php which changes session values but not front captcha field
 	}
 	$input_classes = 'input tool-secure-input '.SECURE_CAPTCHA_FIELD;
-	$error = woodkit_session_get($field_name.'-error', "");
-	woodkit_session_set($field_name.'-error', ""); // clear captcha error in session (otherwise, captcha-error appear when form is not submited)
+	$error = WoodkitSession::get($field_name.'-error', "");
+	WoodkitSession::set($field_name.'-error', ""); // clear captcha error in session (otherwise, captcha-error appear when form is not submited)
 	if (!empty($error)){
 		$field .= '<p class="error captcha-error">'.$error.'</p>';
 		$input_classes .= ' error ';
@@ -191,7 +191,7 @@ function secure_captcha_generate_field($field_name, $use_placeholder = true, $us
 	}
 	$field .= '<input class="'.$input_classes.'" size="20" type="number" id="'.$field_name.'" name="'.$field_name.'" '.$placeholder.' autocomplete="off" />';
 	$field .= '<span class="fa fa-question-circle tool-secure-show-info"></span>';
-	$field .= '<span class="tool-secure-info-text">'.__("Please solve the problem. This is an anti-spam security check.", WOODKIT_PLUGIN_TEXT_DOMAIN).'</span>';
+	$field .= '<span class="tool-secure-info-text">'.__("Please solve the problem. This is an anti-spam security check.", 'woodkit').'</span>';
 	$field .= '</span>';
 	return $field;
 }
@@ -200,11 +200,11 @@ function secure_captcha_generate_field($field_name, $use_placeholder = true, $us
  * validate captcha result for specified field
  */
 function secure_captcha_validate_result($field_name){
-	woodkit_session_set($field_name.'-validate', 1);
+	WoodkitSession::set($field_name.'-validate', 1);
 	$valid = false;
 	if (isset($_POST[$field_name])){
 		if (!empty($_POST[$field_name])){
-			$captcha_result = woodkit_session_get($field_name.'-result', "");
+			$captcha_result = WoodkitSession::get($field_name.'-result', "");
 			if ($_POST[$field_name] == $captcha_result){
 				$valid = true;
 			}
@@ -213,8 +213,8 @@ function secure_captcha_validate_result($field_name){
 		$valid = true;
 	}
 	if ($valid)
-		woodkit_session_set($field_name.'-error', "");
+		WoodkitSession::set($field_name.'-error', "");
 	else
-		woodkit_session_set($field_name.'-error', __("invalid captcha", WOODKIT_PLUGIN_TEXT_DOMAIN));
+		WoodkitSession::set($field_name.'-error', __("invalid captcha", 'woodkit'));
 	return $valid;
 }

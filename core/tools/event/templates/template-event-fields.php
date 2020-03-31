@@ -24,7 +24,7 @@ defined('ABSPATH') or die("Go Away!");
 ?>
 <div id="tool-event-properties" class="custom-fields-section custom-fields-section-side">
 	<header class="custom-fields-section-header">
-		<h3><?php _e("Properties", WOODKIT_PLUGIN_TEXT_DOMAIN); ?></h3>
+		<h3><?php _e("Properties", 'woodkit'); ?></h3>
 	</header>
 	<div class="custom-fields-section-content">
 		<input type="hidden" name="<?php echo EVENT_NONCE_ACTION; ?>" value="<?php echo wp_create_nonce(EVENT_NONCE_ACTION);?>" />
@@ -34,7 +34,7 @@ defined('ABSPATH') or die("Go Away!");
 					<table>
 						<tr valign="top">
 							<th colspan="2" class="metabox_label_column" align="left" valign="middle"><label
-								for="meta_event_date_begin"><i class="fa fa-calendar" style="margin-right: 6px;"></i><?php _e('Begin', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+								for="meta_event_date_begin"><i class="fa fa-calendar" style="margin-right: 6px;"></i><?php _e('Begin', 'woodkit'); ?></label>
 							</th>
 						</tr>
 						<tr valign="top">
@@ -58,7 +58,7 @@ defined('ABSPATH') or die("Go Away!");
 							}
 							?>
 							<td colspan="2" valign="middle">
-								<input type="text" class="datepicker" name="meta_event_date_begin" id="meta_event_date_begin" value="<?php echo $meta_date_begin_s; ?>" placeholder="<?php _e('dd/mm/yyyy', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>"/>
+								<input type="text" class="datepicker" name="meta_event_date_begin" id="meta_event_date_begin" value="<?php echo $meta_date_begin_s; ?>" placeholder="<?php _e('dd/mm/yyyy', 'woodkit'); ?>"/>
 							</td>
 						</tr>
 						<tr valign="top">
@@ -105,7 +105,7 @@ defined('ABSPATH') or die("Go Away!");
 					<table>
 						<tr valign="top">
 							<th colspan="2" class="metabox_label_column" align="left" valign="middle"><label
-								for="meta_event_date_end"><i class="fa fa-calendar" style="margin-right: 6px;"></i><?php _e('End', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+								for="meta_event_date_end"><i class="fa fa-calendar" style="margin-right: 6px;"></i><?php _e('End', 'woodkit'); ?></label>
 							</th>
 						</tr>
 						<tr valign="top">
@@ -129,7 +129,7 @@ defined('ABSPATH') or die("Go Away!");
 							}
 							?>
 							<td colspan="2" valign="middle">
-								<input type="text" class="datepicker" name="meta_event_date_end" id="meta_event_date_end" value="<?php echo $meta_date_end_s; ?>" placeholder="<?php _e('dd/mm/yyyy', WOODKIT_PLUGIN_TEXT_DOMAIN); ?>"/>
+								<input type="text" class="datepicker" name="meta_event_date_end" id="meta_event_date_end" value="<?php echo $meta_date_end_s; ?>" placeholder="<?php _e('dd/mm/yyyy', 'woodkit'); ?>"/>
 							</td>
 						</tr>
 						<tr valign="top">
@@ -176,7 +176,7 @@ defined('ABSPATH') or die("Go Away!");
 					<table>
 						<tr valign="top">
 							<th colspan="2" class="metabox_label_column" align="left" valign="middle"><label
-								for="meta_event_locate_address"><i class="fa fa-map-marker" style="margin-right: 6px;"></i><?php _e('Location', WOODKIT_PLUGIN_TEXT_DOMAIN); ?></label>
+								for="meta_event_locate_address"><i class="fa fa-map-marker" style="margin-right: 6px;"></i><?php _e('Location', 'woodkit'); ?></label>
 							</th>
 						</tr>
 						<tr valign="top">
@@ -184,7 +184,7 @@ defined('ABSPATH') or die("Go Away!");
 							$meta_locate_address = get_post_meta(get_the_ID(), "meta_event_locate_address", true);
 							?>
 							<td valign="middle" colspan="2">
-								<input type="text" placeholder="<?php echo esc_attr(__("Address", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>" name="meta_event_locate_address" id="meta_event_locate_address" value="<?php echo $meta_locate_address; ?>" />
+								<input type="text" placeholder="<?php echo esc_attr(__("Address", 'woodkit')); ?>" name="meta_event_locate_address" id="meta_event_locate_address" value="<?php echo $meta_locate_address; ?>" />
 							</td>
 						</tr>
 						<tr valign="top">
@@ -192,7 +192,7 @@ defined('ABSPATH') or die("Go Away!");
 							$meta_locate_cp = get_post_meta(get_the_ID(), "meta_event_locate_cp", true);
 							?>
 							<td valign="middle" colspan="2">
-								<input type="text" placeholder="<?php echo esc_attr(__("CP", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>" name="meta_event_locate_cp" id="meta_event_locate_cp" value="<?php echo $meta_locate_cp; ?>" />
+								<input type="text" placeholder="<?php echo esc_attr(__("CP", 'woodkit')); ?>" name="meta_event_locate_cp" id="meta_event_locate_cp" value="<?php echo $meta_locate_cp; ?>" />
 							</td>
 						</tr>
 						<tr valign="top">
@@ -200,7 +200,7 @@ defined('ABSPATH') or die("Go Away!");
 							$meta_locate_city = get_post_meta(get_the_ID(), "meta_event_locate_city", true);
 							?>
 							<td valign="middle" colspan="2">
-								<input type="text" placeholder="<?php echo esc_attr(__("City", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>" name="meta_event_locate_city" id="meta_event_locate_city" value="<?php echo $meta_locate_city; ?>" />
+								<input type="text" placeholder="<?php echo esc_attr(__("City", 'woodkit')); ?>" name="meta_event_locate_city" id="meta_event_locate_city" value="<?php echo $meta_locate_city; ?>" />
 							</td>
 						</tr>
 						<tr valign="top">
@@ -208,7 +208,7 @@ defined('ABSPATH') or die("Go Away!");
 							$meta_locate_country = get_post_meta(get_the_ID(), "meta_event_locate_country", true);
 							?>
 							<td valign="middle" colspan="2">
-								<input type="text" placeholder="<?php echo esc_attr(__("Country", WOODKIT_PLUGIN_TEXT_DOMAIN)); ?>" name="meta_event_locate_country" id="meta_event_locate_country" value="<?php echo $meta_locate_country; ?>" />
+								<input type="text" placeholder="<?php echo esc_attr(__("Country", 'woodkit')); ?>" name="meta_event_locate_country" id="meta_event_locate_country" value="<?php echo $meta_locate_country; ?>" />
 							</td>
 						</tr>
 					</table>
