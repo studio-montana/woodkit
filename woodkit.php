@@ -26,7 +26,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
 defined('ABSPATH') or die("Go Away!");
 
 /**
@@ -37,14 +36,16 @@ define('WOODKIT_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('WOODKIT_PLUGIN_URI', plugin_dir_url(__FILE__));
 define('WOODKIT_PLUGIN_WEB_CACHE_VERSION', '2.0.0');
 
-define('WOODKIT_PLUGIN_COMMONS_TOOLS_FOLDER', 'core/commons/tools/');
-define('WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER', 'core/commons/installer/');
-define('WOODKIT_PLUGIN_TEMPLATES_FOLDER', 'core/templates/');
-define('WOODKIT_PLUGIN_TEMPLATES_DASHBOARD_FOLDER', 'core/templates/dashboard/');
-define('WOODKIT_PLUGIN_TOOLS_FOLDER', 'core/tools/');
-define('WOODKIT_PLUGIN_CSS_FOLDER', 'css/');
-define('WOODKIT_PLUGIN_JS_FOLDER', 'js/');
-define('WOODKIT_PLUGIN_FONTS_FOLDER', 'fonts/');
+define('WOODKIT_PLUGIN_COMMONS_FOLDER', 'core/src/commons/');
+define('WOODKIT_PLUGIN_COMMONS_TOOLS_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'tools/');
+define('WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'installer/');
+define('WOODKIT_PLUGIN_TEMPLATES_FOLDER', 'core/src/templates/');
+define('WOODKIT_PLUGIN_TEMPLATES_CSS_FOLDER', WOODKIT_PLUGIN_TEMPLATES_FOLDER.'css/');
+define('WOODKIT_PLUGIN_TEMPLATES_JS_FOLDER', WOODKIT_PLUGIN_TEMPLATES_FOLDER.'js/');
+define('WOODKIT_PLUGIN_TEMPLATES_FONTS_FOLDER', WOODKIT_PLUGIN_TEMPLATES_FOLDER.'fonts/');
+define('WOODKIT_PLUGIN_TEMPLATES_DASHBOARD_FOLDER', 'core/src/templates/dashboard/');
+define('WOODKIT_PLUGIN_GUTENBERG_FOLDER', 'core/src/gutenberg/');
+define('WOODKIT_PLUGIN_TOOLS_FOLDER', 'core/src/tools/');
 
 define('WOODKIT_URL_DOCUMENTATION', 'https://lab.studio-montana.com/documentation/woodkit');
 
@@ -75,23 +76,23 @@ if(!class_exists('Woodkit')){
 			do_action("woodkit_before_requires");
 
 			/** utils */
-			require_once (WOODKIT_PLUGIN_PATH.'core/commons/session.php');
-			require_once (WOODKIT_PLUGIN_PATH.'core/commons/comparators.php');
-			require_once (WOODKIT_PLUGIN_PATH.'core/commons/utils.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'session.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'comparators.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'utils.php');
 
 			/** upgrader */
 			if (is_admin()){
-				require_once (WOODKIT_PLUGIN_PATH.'core/commons/upgrader.php');
+				require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'upgrader.php');
 			}
 
 			/** installer */
-			require_once (WOODKIT_PLUGIN_PATH.'core/commons/installer/installer.class.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'installer/installer.class.php');
 
 			/** config */
-			require_once (WOODKIT_PLUGIN_PATH.'core/commons/config/config.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'config/config.php');
 
 			/** gutenberg (must be included before tools) */
-			require_once (WOODKIT_PLUGIN_PATH.'gutenberg/index.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_GUTENBERG_FOLDER.'index.php');
 
 			/** instanciate tools manager */
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_TOOLS_FOLDER.'index.php');
@@ -154,7 +155,7 @@ if(!class_exists('Woodkit')){
 
 			do_action("woodkit_before_init");
 
-			require_once (WOODKIT_PLUGIN_PATH.'core/init.php');
+			require_once (WOODKIT_PLUGIN_PATH.'core/src/init.php');
 
 			do_action("woodkit_after_init");
 		}

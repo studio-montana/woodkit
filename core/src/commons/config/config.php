@@ -25,7 +25,7 @@ defined('ABSPATH') or die("Go Away!");
 /**
  * REQUIREMENTS
  */
-require_once (WOODKIT_PLUGIN_PATH.'core/commons/config/config-render.php');
+require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'config/config-render.php');
 
 /**
  * CONSTANTS
