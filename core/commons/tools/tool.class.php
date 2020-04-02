@@ -34,6 +34,7 @@ abstract class WoodkitTool{
 	public $has_config; // boolean
 	public $add_config_in_menu; // boolean
 	public $documentation_url; // string
+	public $is_core;  // boolean
 	protected $config_nonce_name; // string
 	protected $path;
 
@@ -52,10 +53,13 @@ abstract class WoodkitTool{
 		$this->has_config = $args['has_config'];
 		$this->add_config_in_menu = $args['add_config_in_menu'];
 		$this->documentation_url = $args['documentation'];
+		$this->documentation_url = $args['documentation'];
 		$this->config_nonce_name = 'woodkit-tool-'.$this->slug.'-config-nonce';
 		/** calculate class path from child class */
 		$rc = new ReflectionClass(get_class($this));
 		$this->path = dirname($rc->getFileName());
+		/** calculate if it's core source (path comparison) */
+		$this->is_core = startsWith($this->path, WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER);
 	}
 	
 	public function get_path () {
@@ -109,6 +113,10 @@ abstract class WoodkitTool{
 		return !empty($tool_active) && $tool_active == 'on';
 	}
 	
+	public function get_options () {
+		return woodkit_get_option('tool-'.$this->slug);
+	}
+	
 	/**
 	 * Retrieve tool's option for specified name
 	 * @param string $name
@@ -116,7 +124,7 @@ abstract class WoodkitTool{
 	 * @return any
 	 */
 	public function get_option ($name, $default = null) {
-		$options = woodkit_get_option('tool-'.$this->slug);
+		$options = $this->get_options();
 		if (is_array($options) && array_key_exists($name, $options)){
 			return $options[$name];
 		}
@@ -130,7 +138,7 @@ abstract class WoodkitTool{
 	 * @param any $value
 	 */
 	public function set_option ($name, $value) {
-		$options = woodkit_get_option('tool-'.$this->slug);
+		$options = $this->get_options();
 		if (empty($options) || !is_array($options)){
 			$options = array();
 		}
@@ -151,7 +159,7 @@ abstract class WoodkitTool{
 	 */
 	public function set_options ($options, $keep_existings = true) {
 		if ($keep_existings) {
-			$existings = woodkit_get_option('tool-'.$this->slug);
+			$existings = $this->get_options();
 			$options = wp_parse_args($options, $existings);
 		}
 		woodkit_save_option('tool-'.$this->slug, $options);
@@ -230,7 +238,7 @@ abstract class WoodkitTool{
 						$values[$field] = woodkit_get_request_param($field, null, true);
 					}
 				}else{
-					$values[$field] = null;
+					$values[$field] = null; // for unchecked checkboxes
 				}
 			}
 		}
@@ -255,11 +263,11 @@ abstract class WoodkitTool{
 	 */
 	public function save_config(){
 		if (isset($_POST) && !empty($_POST) && isset($_POST[$this->config_nonce_name]) && wp_verify_nonce($_POST[$this->config_nonce_name], $this->config_nonce_name)){
-			$old_options = woodkit_get_tool_options($this->slug);
+			$old_options = $this->get_options();
 			$options = $this->save_config_fields(array());
 			$this->before_save_config($options, $old_options);
 			$this->set_options($options);
-			$this->after_save_config(woodkit_get_tool_options($this->slug), $old_options);
+			$this->after_save_config($this->get_options(), $old_options);
 		}
 	}
 }

@@ -33,19 +33,18 @@ define('SECURE_TOOL_NAME', 'secure');
 class WoodkitToolSecure extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'secure', 								// slug
-				__("Security", 'woodkit'),				// name
-				__("Make your site secure", 'woodkit'),	// description
-				true,										// has config page
-				true,										// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/securite'		// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'secure', 
+				'name' => __("Security", 'woodkit'),
+				'description' => __("Secures your website", 'woodkit'),
+				'has_config' => true,
+				'add_config_in_menu' => true,
+				'documentation' => WOODKIT_URL_DOCUMENTATION.'/secure'
+			));
 	}
 	
 	public function get_config_fields(){
 		return array(
-				'active',
 				'captcha-active',
 				'failtoban-active',
 				'headers-nosniff',
@@ -241,7 +240,7 @@ class WoodkitToolSecure extends WoodkitTool{
 						$values[$field] = woodkit_get_request_param($field, null, true);
 					}
 				}else{
-					$values[$field] = null;
+					$values[$field] = null; // for unchecked checkboxes
 				}
 			}
 		}

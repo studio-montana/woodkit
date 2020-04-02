@@ -33,14 +33,14 @@ define('PORTFOLIO_TOOL_NAME', 'portfolio');
 class WoodkitToolPortfolio extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'portfolio', 									// slug
-				__("Portfolio", 'woodkit'),				// name
-				__("Create portfolio content type", 'woodkit'),	// description
-				false,											// has config page
-				false,											// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/portfolios'			// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'portfolio', 
+				'name' => __("Portfolio", 'woodkit'),
+				'description' => __("Create portfolio content type", 'woodkit'),
+				'has_config' => false,
+				'add_config_in_menu' => false,
+				'documentation' => WOODKIT_URL_DOCUMENTATION.'/portfolios'
+			));
 	}
 	
 	public function get_config_default_values(){

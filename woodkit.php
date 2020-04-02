@@ -90,8 +90,10 @@ if(!class_exists('Woodkit')){
 			/** config */
 			require_once (WOODKIT_PLUGIN_PATH.'core/commons/config/config.php');
 
+			/** gutenberg (must be included before tools) */
+			require_once (WOODKIT_PLUGIN_PATH.'gutenberg/index.php');
+
 			/** instanciate tools manager */
-			//require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_TOOLS_FOLDER.'CopyOftools.php');
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_TOOLS_FOLDER.'index.php');
 			$this->tools = new ToolsManager();
 

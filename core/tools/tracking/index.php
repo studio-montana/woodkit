@@ -33,14 +33,14 @@ define('TRACKING_TOOL_NAME', 'tracking');
 class WoodkitToolTracking extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'tracking', 								// slug
-				__("Tracking", 'woodkit'),					// name
-				__("Manage your website tracking (Google Analytics, Google Tag Manager, FaceBook Pixel, ...)", 'woodkit'),	// description
-				true,										// has config page
-				true,										// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/tracking'		// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'tracking', 
+				'name' => __("Tracking", 'woodkit'),
+				'description' => __("Manage your website tracking (Google Analytics, Google Tag Manager)", 'woodkit'),
+				'has_config' => true,
+				'add_config_in_menu' => true,
+				'documentation' => WOODKIT_URL_DOCUMENTATION.'/tracking'
+			));
 	}
 	
 	public function get_config_fields(){
@@ -48,8 +48,6 @@ class WoodkitToolTracking extends WoodkitTool{
 				'googleanalytics-code',
 				'googleanalytics-events',
 				'googletagmanager-code',
-				'facebook-pixel',
-				'facebook-pixel-events'
 		);
 	}
 	
@@ -59,8 +57,6 @@ class WoodkitToolTracking extends WoodkitTool{
 				'googleanalytics-code' => null,
 				'googleanalytics-events' => null,
 				'googletagmanager-code' => null,
-				'facebook-pixel' => null,
-				'facebook-pixel-events' => null,
 		);
 	}
 	
@@ -134,66 +130,6 @@ class WoodkitToolTracking extends WoodkitTool{
 				<div class="section-info"><?php _e("Selector example", 'woodkit'); ?> : <code>body.home .header &gt; a.logo</code></div>
 			</div>
 		</div>
-		<div class="section">
-			<h2 class="section-title">
-				<?php _e("FaceBook Pixel", 'woodkit'); ?>
-			</h2>
-			<div class="section-content">
-				<div class="section-info"><?php _e("You can generate your FB Pixel code from your FB Pub manager. For more informations : ", 'woodkit'); ?><a href="https://www.facebook.com/business/a/facebook-pixel" target="_blank"><?php _e("click here", 'woodkit'); ?></a></div>
-				<div class="section-info"><?php _e("Note that you can integrate your Pixel code with your Google Tag Manager. For more information : ", 'woodkit'); ?><a href="https://www.facebook.com/business/help/1021909254506499" target="_blank"><?php _e("click here", 'woodkit'); ?></a></div>
-				<div class="field textarea">
-					<div class="field-content">
-						<?php
-						$facebook_pixel = woodkit_clean_php_to_javascript_var($this->get_option('facebook-pixel'));
-						?>
-						<textarea class="xlarge" style="min-height: 200px;" id="facebook-pixel" name="facebook-pixel" placeholder="<?php echo esc_attr(__("Pixel code", 'woodkit')); ?>"><?php echo $facebook_pixel; ?></textarea>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="section">
-			<h2 class="section-title">
-				<?php _e("FaceBook Pixel Events", 'woodkit'); ?>
-			</h2>
-			<div class="section-content">
-				<?php if (empty($facebook_pixel)){ ?>
-					<div class="section-info" style="color: red;"><?php _e("Please setup your Pixel code to use this feature.", 'woodkit'); ?></div>
-				<?php } ?>
-				<div class="section-info"><?php _e("Set page URL on which you want generate event and paste your event code.", 'woodkit'); ?></div>
-				<div class="section-info"><?php _e("To generate your event code, please go to your Pixel manager. For more informations : ", 'woodkit'); ?><a href="https://www.facebook.com/business/a/facebook-pixel" target="_blank"><?php _e("click here", 'woodkit'); ?></a></div>
-				<div class="facebookpixelevents-manager"></div>
-				<script type="text/javascript">
-					jQuery(document).ready(function($){
-						var facebookpixelevents_manager = $(".facebookpixelevents-manager").facebookpixeleventsmanager({
-								label_add_event : "<?php _e("Add Pixel Event", 'woodkit'); ?>",
-								label_event_url : "<?php _e("URL", 'woodkit'); ?>",
-								label_event_code : "<?php _e("Event code", 'woodkit'); ?>",
-								label_event_parameters : "<?php _e("include url parameters", 'woodkit'); ?>",
-								label_confirm_remove_event : "<?php _e("Do you realy want remove this event ?", 'woodkit'); ?>",
-							});
-						<?php 
-						$facebookpixel_events = $this->get_option("facebook-pixel-events");
-						if (!empty($facebookpixel_events)){
-							$facebookpixel_events_js = "{";
-							foreach ($facebookpixel_events as $k => $facebookpixel_event){
-								$url = !empty($facebookpixel_event['url']) ? esc_attr($facebookpixel_event['url']) : "";
-								$code = !empty($facebookpixel_event['code']) ? woodkit_clean_php_to_javascript_var(esc_attr($facebookpixel_event['code'])) : "";
-								$parameters = !empty($facebookpixel_event['parameters']) ? esc_attr($facebookpixel_event['parameters']) : "";
-								$facebookpixel_events_js .= intval($k).":{url: \"".$url."\", code:\"".$code."\", parameters:\"".$parameters."\"},";
-							}
-							$facebookpixel_events_js .= "}";
-							?>
-							facebookpixelevents_manager.set_data(<?php echo $facebookpixel_events_js; ?>);
-							<?php
-						}
-						?>
-					});
-				</script>
-				<div class="section-info"><?php _e("Example", 'woodkit'); ?> : <code>url : https://www.yourwebsite.com/presentation - type : Lead</code> <?php _e("will send a 'Lead' event to your FB Pixel when somebody visits your https://www.yourwebsite.com/presentation worpdress page.", 'woodkit'); ?></div>
-				<div class="section-info"><?php _e("Note 1 : your theme must integrate the following code just after", 'woodkit'); ?> &lt;head&gt; (header.php) : <code>&lt;?php do_action("wp_start_body"); ?&gt;</code></div>
-				<div class="section-info"><?php _e("Note 2 : specified URLs must be served by your Wordpress website.", 'woodkit'); ?></div>
-			</div>
-		</div>
 		<?php
 	}
 	
@@ -222,25 +158,6 @@ class WoodkitToolTracking extends WoodkitTool{
 			}
 		}
 		$values['googleanalytics-events'] = $events;
-		
-		// -- facebook-pixel
-		if (isset($_POST['facebook-pixel'])){
-			$values['facebook-pixel'] = woodkit_get_request_param('facebook-pixel', '', false);
-		}
-		
-		// -- facebook-pixel-events
-		$events = array();
-		foreach ($_POST as $k => $v){
-			if (startsWith($k, "facebookpixel-event-id-")){
-				$url = isset($_POST['facebookpixel-event-url-'.$v]) ? sanitize_text_field($_POST['facebookpixel-event-url-'.$v]) : "";
-				$code = isset($_POST['facebookpixel-event-code-'.$v]) ? $_POST['facebookpixel-event-code-'.$v] : "";
-				$parameters = isset($_POST['facebookpixel-event-parameters-'.$v]) ? sanitize_text_field($_POST['facebookpixel-event-parameters-'.$v]) : "";
-				if (!empty($url) && !empty($code)){
-					$events[] = array("url" => $url, "code" => $code, "parameters" => $parameters);
-				}
-			}
-		}
-		$values['facebook-pixel-events'] = $events;
 		
 		return $values;
 	}

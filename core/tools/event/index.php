@@ -33,14 +33,14 @@ define('EVENT_TOOL_NAME', 'event');
 class WoodkitToolEvent extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'event', 									// slug
-				__("Events", 'woodkit'),					// name
-				__("Events manager", 'woodkit'),			// description
-				false,										// has config page
-				false,										// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/evenements'		// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'event', 
+				'name' => __("Events", 'woodkit'),
+				'description' => __("Events manager", 'woodkit'),
+				'has_config' => false,
+				'add_config_in_menu' => false,
+				'documentation' => WOODKIT_URL_DOCUMENTATION.'/evenements'
+			));
 	}
 	
 	public function get_config_default_values(){

@@ -33,14 +33,14 @@ define('UPDATENOTIFIER_TOOL_NAME', 'updatenotifier');
 class WoodkitToolUpdateNotifier extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'updatenotifier', 								// slug
-				__("Update Notifier", 'woodkit'),				// name
-				__("[COMING SOON] - Get notification when something, themes, plugins, has to be updated. It's very useful to keep your website up to date and improve security.", 'woodkit'),	// description
-				true,										// has config page
-				false,										// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/notification-mise-a-jour'		// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'updatenotifier',
+				'name' => __("Update Notifier", 'woodkit'),
+				'description' => __("[COMING SOON] - Get notification when something, themes, plugins, has to be updated. It's very useful to keep your website up to date and improve security.", 'woodkit'),
+				'has_config' => true,
+				'add_config_in_menu' => false,
+				'documentation' => WOODKIT_URL_DOCUMENTATION.'/notification-mise-a-jour',
+			));
 	}
 	
 	public function on_activate(){

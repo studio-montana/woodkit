@@ -33,14 +33,11 @@ define('WALL_TOOL_NAME', 'wall');
 class WoodkitToolWall extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'wall', 								// slug
-				__("Wall", 'woodkit'),				// name
-				__("Create multi-content galleries", 'woodkit'),	// description
-				true,										// has config page
-				false,										// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/wall'		// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'wall', 
+				'name' => __("wall", 'woodkit'),
+				'description' => __("Create Gutenberg Block which displays any contents as a gallery", 'woodkit'),
+			));
 	}
 	
 	public function get_config_fields(){

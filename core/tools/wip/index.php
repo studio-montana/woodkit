@@ -33,14 +33,14 @@ define('WIP_TOOL_NAME', 'wip');
 class WoodkitToolWip extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'wip', 									// slug
-				__("WIP", 'woodkit'),				// name
-				__("Add maintenance page on your website", 'woodkit'),	// description
-				false,											// has config page
-				false,											// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/wip'			// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'wip', 
+				'name' => __("WIP", 'woodkit'),
+				'description' => __("Add work in progress page on your website", 'woodkit'),
+				'has_config' => false,
+				'add_config_in_menu' => false,
+				'documentation' => WOODKIT_URL_DOCUMENTATION.'/wip'
+			));
 	}
 	
 	public function get_config_default_values(){

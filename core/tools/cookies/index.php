@@ -33,14 +33,14 @@ define('COOKIES_TOOL_NAME', 'cookies');
 class WoodkitToolCookies extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'cookies', 								// slug
-				__("Cookies", 'woodkit'),				// name
-				__("Add legal advice on front of your website.", 'woodkit'),			// description
-				false,									// has config page
-				false,									// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/cookies'	// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'cookies',
+				'name' => __("Cookies", 'woodkit'),
+				'description' => __("Add legal advice on front of your website.", 'woodkit'),
+				'has_config' => false,
+				'add_config_in_menu' => false,
+				'documentation' => WOODKIT_URL_DOCUMENTATION.'/cookies',
+			));
 	}
 	
 	public function get_config_default_values(){

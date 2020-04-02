@@ -127,6 +127,7 @@ class WoodkitConfig {
 								<td id="cb" class="manage-column column-cb check-column"></td>
 								<th scope="col" id="name" class="manage-column column-name column-primary"><?php _e("Tool name", 'woodkit'); ?></th>
 								<th scope="col" id="description" class="manage-column column-description"><?php _e("Description", 'woodkit'); ?></th>
+								<th scope="col" id="source" class="manage-column column-source"><?php _e("Source", 'woodkit'); ?></th>
 								<th scope="col" id="documentation" class="manage-column column-documentation"><?php _e("Doc.", 'woodkit'); ?></th>
 							</tr>
 						</thead>
@@ -168,6 +169,9 @@ class WoodkitConfig {
 											<p><?php echo $tool->description; ?></p>
 										</div>
 									</td>
+									<td class="column-information">
+										<div class="plugin-documentation"><?php if (!$tool->is_core) {  _e("Addons", 'woodkit');  } else { echo 'Woodkit'; } ?></div>
+									</td>
 									<td class="column-documentation">
 										<div class="plugin-documentation">
 											<a class="tool-documentation" href="<?php echo esc_url($tool->documentation_url); ?>" target="_blank">
@@ -184,6 +188,7 @@ class WoodkitConfig {
 								<td class="manage-column column-cb check-column"></td>
 								<th scope="col" class="manage-column column-name column-primary"><?php _e("Tool name", 'woodkit'); ?></th>
 								<th scope="col" class="manage-column column-description"><?php _e("Description", 'woodkit'); ?></th>
+								<th scope="col" class="manage-column column-source"><?php _e("Source", 'woodkit'); ?></th>
 								<th scope="col" class="manage-column column-documentation"><?php _e("Doc.", 'woodkit'); ?></th>
 							</tr>
 						</tfoot>

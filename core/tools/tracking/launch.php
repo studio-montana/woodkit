@@ -26,24 +26,17 @@ defined('ABSPATH') or die("Go Away!");
  * Enqueue styles for the back end.
 */
 function tool_tracking_woodkit_admin_enqueue_styles_tools($dependencies) {
-
-	$css_googleanalyticseventsmanager = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-googleanalyticseventsmanager/css/admin-googleanalyticseventsmanager.css');
-	if (!empty($css_googleanalyticseventsmanager))
-		wp_enqueue_style('tool-tracking-googleanalyticseventsmanager-css', $css_googleanalyticseventsmanager, $dependencies, '1.1');
-
-	$js_googleanalyticseventsmanager = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-googleanalyticseventsmanager/js/admin-googleanalyticseventsmanager.js');
-	if (!empty($js_googleanalyticseventsmanager))
-		wp_enqueue_script('tool-tracking-googleanalyticseventsmanager-js', $js_googleanalyticseventsmanager, array('jquery'), '1.1', true);
-
-	$css_facebookpixeleventsmanager = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-facebookpixeleventsmanager/css/admin-facebookpixeleventsmanager.css');
-	if (!empty($css_facebookpixeleventsmanager))
-		wp_enqueue_style('tool-tracking-facebookpixeleventsmanager-css', $css_facebookpixeleventsmanager, $dependencies, '1.1');
-
-	$js_facebookpixeleventsmanager = locate_web_ressource(WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-facebookpixeleventsmanager/js/admin-facebookpixeleventsmanager.js');
-	if (!empty($js_facebookpixeleventsmanager))
-		wp_enqueue_script('tool-tracking-facebookpixeleventsmanager-js', $js_facebookpixeleventsmanager, array('jquery'), '1.1', true);
+	wp_enqueue_style('tool-tracking-googleanalyticseventsmanager-css', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-googleanalyticseventsmanager/css/admin-googleanalyticseventsmanager.css', $dependencies, '1.1');
 }
 add_action('woodkit_admin_enqueue_styles_tools', 'tool_tracking_woodkit_admin_enqueue_styles_tools');
+
+/**
+ * Enqueue styles for the back end.
+*/
+function tool_tracking_woodkit_admin_enqueue_scripts_tools($dependencies) {
+	wp_enqueue_script('tool-tracking-googleanalyticseventsmanager-js', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-googleanalyticseventsmanager/js/admin-googleanalyticseventsmanager.js', array('jquery'), '1.1', true);
+}
+add_action('woodkit_admin_enqueue_scripts_tools', 'tool_tracking_woodkit_admin_enqueue_scripts_tools');
 
 /**
  * WP_Head hook
@@ -87,13 +80,8 @@ function tool_tracking_wp_head() {
 		<!-- End Google Analytics -->
 		<?php
 	}
-	/** FaceBook Pixel */
-	$facebook_pixel = woodkit_clean_php_to_javascript_var($GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'facebook-pixel'));
-	if (!empty($facebook_pixel)){
-		echo $facebook_pixel;
-	}
 }
-add_action('wp_head', 'tool_tracking_wp_head', 1);
+add_action('wp_head', 'tool_tracking_wp_head');
 
 /**
  * WP_Head hook
@@ -108,7 +96,7 @@ function tool_tracking_wp_footer() {
 		?>
 		<!-- Google Analytics Events Tracking -->
 		<script>
-			<?php $events = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, "googleanalytics-events");			
+			<?php $events = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, "googleanalytics-events");	
 			if (!empty($events)){ ?>
 				// Google Analytics Events
 				(function($) {
@@ -145,25 +133,6 @@ function tool_tracking_wp_start_body(){
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
 		<?php
-	}
-	/** FaceBook Pixel */
-	$facebook_pixel = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'facebook-pixel');	
-	$facebook_pixel_events = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, "facebook-pixel-events");
-	if (!empty($facebook_pixel) && !empty($facebook_pixel_events)){
-		foreach ($facebook_pixel_events as $facebook_pixel_event){
-			if (!empty($facebook_pixel_event['url']) && !empty($facebook_pixel_event['code'])){
-				if (!empty($facebook_pixel_event['parameters']) && $facebook_pixel_event['parameters'] == 'on'){
-					$current_url = get_current_url(true);
-					$pixel_event_url = $facebook_pixel_event['url'];
-				}else{
-					$current_url = trim(get_current_url(false), '/');
-					$pixel_event_url = trim($facebook_pixel_event['url'], '/');
-				}
-				if ($current_url == $pixel_event_url){
-					echo woodkit_clean_php_to_javascript_var($facebook_pixel_event['code']);
-				}
-			}
-		}
 	}
 }
 add_action('wp_start_body', 'tool_tracking_wp_start_body', 1);

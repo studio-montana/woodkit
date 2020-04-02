@@ -33,14 +33,14 @@ define('PRIVATE_TOOL_NAME', 'private');
 class WoodkitToolPrivate extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'private', 									// slug
-				__("Private", 'woodkit'),				// name
-				__("Make your site, or just few pages, private (Intranet)", 'woodkit'),	// description
-				false,											// has config page
-				false,											// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/private'			// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'private', 
+				'name' => __("Private", 'woodkit'),
+				'description' => __("Make your site, or just few pages, private (Intranet)", 'woodkit'),
+				'has_config' => false,
+				'add_config_in_menu' => false,
+				'documentation' => WOODKIT_URL_DOCUMENTATION.'/private'
+			));
 	}
 	
 	public function get_config_default_values(){

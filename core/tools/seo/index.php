@@ -33,14 +33,14 @@ define('SEO_TOOL_NAME', 'seo');
 class WoodkitToolSEO extends WoodkitTool{
 	
 	public function __construct(){
-		parent::__construct(
-				'seo', 								// slug
-				__("SEO", 'woodkit'),					// name
-				__("Optimize your site SEO and manage your social publications", 'woodkit'),	// description
-				true,										// has config page
-				true,										// add config page in woodkit submenu
-				WOODKIT_URL_DOCUMENTATION.'/seo-referencement'		// documentation url
-			);
+		parent::__construct(array(
+				'slug' => 'seo', 
+				'name' => __("SEO", 'woodkit'),
+				'description' => __("Optimize your site SEO and manage your social publications", 'woodkit'),
+				'has_config' => true,
+				'add_config_in_menu' => true,
+				'documentation' => WOODKIT_URL_DOCUMENTATION.'/seo-referencement'
+			));
 	}
 	
 	public function get_config_fields(){
