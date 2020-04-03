@@ -1,10 +1,6 @@
 <?php
 /**
- * Use this class to register Gutenberg Block
- *
- * Registers all block assets so that they can be enqueued through Gutenberg in
- * the corresponding context.
- * @see https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type/#enqueuing-block-scripts
+ * Extend this class to register Gutenberg Block or Plugin
  *
  * @author sebc
  *

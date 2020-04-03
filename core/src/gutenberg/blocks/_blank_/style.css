@@ -1,22 +1,20 @@
 /**
- * The following styles get applied both on the front of your site and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
+ * Block styles for front, editor or both
  *
  */
 
- /************************************************/
- /** applied both on the front and in the editor */
- /************************************************/
+/*************************************************/
+/** applied both on the front and in the editor **/
+/*************************************************/
 .wp-block-wkg-_blank_{
 }
-/******************************/
-/** applied on the front only */
-/******************************/
+/**************************************************/
+/** applied on the front only                    **/
+/**************************************************/
 .wkg-front.wp-block-wkg-_blank_{
 }
-/*******************************/
-/** applied in the editor only */
-/*******************************/
+/**************************************************/
+/** applied in the editor only                   **/
+/**************************************************/
 .wkg-editor.wp-block-wkg-_blank_{
 }

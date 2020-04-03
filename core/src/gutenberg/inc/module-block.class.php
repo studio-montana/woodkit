@@ -1,6 +1,6 @@
 <?php
 /**
- * Use this class to register Gutenberg Block
+ * Extend this class to register Gutenberg Block
  *
  * Registers all block assets so that they can be enqueued through Gutenberg in
  * the corresponding context.
@@ -96,10 +96,6 @@ abstract class WKG_Module_Block extends WKG_Module {
 	public function getFrontClasses($adds = array()) {
 		$classes = array_merge(array('wkg-front', 'wkg-block', 'wp-block-' . str_replace('/', '-', $this->slug)), $adds);
 		return implode(' ', $classes);
-	}
-
-	protected function register_post_meta () {
-		error_log('[WARNING] You must override WoodBlock.register_post_meta() method when your block is a meta block.');
 	}
 
 	public function render(array $attributes, $content) {

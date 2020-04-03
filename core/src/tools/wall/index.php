@@ -35,7 +35,7 @@ class WoodkitToolWall extends WoodkitTool{
 	public function __construct(){
 		parent::__construct(array(
 				'slug' => 'wall', 
-				'name' => __("wall", 'woodkit'),
+				'name' => __("Wall", 'woodkit'),
 				'description' => __("Create Gutenberg Block which displays any contents as a gallery", 'woodkit'),
 			));
 	}

@@ -6,7 +6,6 @@ const { PanelBody, PanelRow, Button, SelectControl, RangeControl, TextControl, R
 const { compose, withInstanceId } = wp.compose
 const { withSelect, withDispatch } = wp.data
 const { apiFetch } = wp
-import SelectControlObj from './../../../../../gutenberg/components/select-control-object.jsx'
 
 /* Masonry documentation :
 - https://www.npmjs.com/package/react-masonry-component
@@ -95,11 +94,11 @@ registerBlockType('wkg/wall', {
 		},
 		margin_horizontal: {
 			type: 'number',
-			default: 0
+			default: 3
 		},
 		margin_vertical: {
 			type: 'number',
-			default: 0
+			default: 3
 		},
 		space_before: {
 			type: 'number',
@@ -454,16 +453,19 @@ class BlockComponent_Base extends Component {
 		)
 	}
 	render_IC__format () {
-		let options = [
-			{value: 'square', label: 'Carré'},
-			{value: 'landscape', label: 'Paysage'},
-			{value: 'portrait', label: 'Portrait'}
-		]
-		return (
-			<PanelRow className="wkg-ic-panelrow">
-				<SelectControl label="Format" value={this.state.format} options={options} onChange={(format) => this.onChange({format})} />
-			</PanelRow>
-		)
+		if (this.state.display === 'grid') {
+			let options = [
+				{value: 'square', label: 'Carré'},
+				{value: 'landscape', label: 'Paysage'},
+				{value: 'portrait', label: 'Portrait'}
+			]
+			return (
+				<PanelRow className="wkg-ic-panelrow">
+					<SelectControl label="Format" value={this.state.format} options={options} onChange={(format) => this.onChange({format})} />
+				</PanelRow>
+			)
+		}
+		return null
 	}
 	render_IC__thumbsize () {
 		let options = [

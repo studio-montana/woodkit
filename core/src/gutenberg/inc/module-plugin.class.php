@@ -1,6 +1,6 @@
 <?php
 /**
- * Use this class to register Gutenberg Block
+ * Extend this class to register Gutenberg Plugin
  *
  * Registers all block assets so that they can be enqueued through Gutenberg in
  * the corresponding context.

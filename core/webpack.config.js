@@ -21,6 +21,12 @@ var config = {
 				use: "babel-loader"
 			}
 		]
+	},
+	resolve: {
+		alias: {
+		  wkgcomponents: path.resolve(__dirname, 'src/gutenberg/components/'), // import ... from 'wkgcomponents/...'
+		},
+    	extensions: ['.js', '.jsx'], // import without extension
 	}
 };
 

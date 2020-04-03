@@ -49,22 +49,27 @@ if (!class_exists('WOODKITGUTEN')) {
 			require_once (WOODKITGUTEN_SRC_PATH.'inc/rest/index.php');
 
 			/** Main classes */
-			require_once (WOODKITGUTEN_SRC_PATH.'inc/wkg-module.class.php');
-			require_once (WOODKITGUTEN_SRC_PATH.'inc/wkg-module-block.class.php');
-			require_once (WOODKITGUTEN_SRC_PATH.'inc/wkg-module-plugin.class.php');
+			require_once (WOODKITGUTEN_SRC_PATH.'inc/module.class.php');
+			require_once (WOODKITGUTEN_SRC_PATH.'inc/module-block.class.php');
+			require_once (WOODKITGUTEN_SRC_PATH.'inc/module-plugin.class.php');
 
 			/** admin scripts / styles */
 			add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
 		}
 
+		/**
+		 * Enqueue global styles and scripts
+		 */
 		public function admin_scripts () {
 			// Skip if Gutenberg is not enabled/merged.
 			if (!function_exists('register_block_type')) {
 				return;
 			}
+			// Enqueue Stores
 			$stores_uri = WOODKITGUTEN_SRC_URI . 'stores/build.js';
 			$stores_path = WOODKITGUTEN_SRC_PATH . 'stores/build.js';
 			wp_enqueue_script('wkg-general-stores', $stores_uri, array(), filemtime($stores_path));
+			// Enqueue Editor styles
 			$style_uri = WOODKITGUTEN_SRC_URI . 'assets-css/editor.css';
 			$style_path = WOODKITGUTEN_SRC_PATH . 'assets-css/editor.css';
 			wp_enqueue_style('wkg-general-editor', $style_uri, array(), filemtime($style_path));
