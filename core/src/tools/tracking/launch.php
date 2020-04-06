@@ -23,20 +23,12 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
- * Enqueue styles for the back end.
+ * Enqueue scripts/styles for the back end.
 */
-function tool_tracking_woodkit_admin_enqueue_styles_tools($dependencies) {
-	wp_enqueue_style('tool-tracking-googleanalyticseventsmanager-css', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-googleanalyticseventsmanager/css/admin-googleanalyticseventsmanager.css', $dependencies, '1.1');
-}
-add_action('woodkit_admin_enqueue_styles_tools', 'tool_tracking_woodkit_admin_enqueue_styles_tools');
-
-/**
- * Enqueue styles for the back end.
-*/
-function tool_tracking_woodkit_admin_enqueue_scripts_tools($dependencies) {
-	wp_enqueue_script('tool-tracking-googleanalyticseventsmanager-js', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-googleanalyticseventsmanager/js/admin-googleanalyticseventsmanager.js', array('jquery'), '1.1', true);
-}
-add_action('woodkit_admin_enqueue_scripts_tools', 'tool_tracking_woodkit_admin_enqueue_scripts_tools');
+add_action('admin_enqueue_scripts', function () {
+	wp_enqueue_style('tool-tracking-googleanalyticseventsmanager-css', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-googleanalyticseventsmanager/css/admin-googleanalyticseventsmanager.css', array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
+	wp_enqueue_script('tool-tracking-googleanalyticseventsmanager-js', WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TOOLS_FOLDER.TRACKING_TOOL_NAME.'/js-googleanalyticseventsmanager/js/admin-googleanalyticseventsmanager.js', array('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true);
+}, 100);
 
 /**
  * WP_Head hook

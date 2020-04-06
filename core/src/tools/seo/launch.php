@@ -27,32 +27,17 @@ defined ( 'ABSPATH' ) or die ( "Go Away!" );
  */
 require_once (WOODKIT_PLUGIN_PATH . '/' . WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/custom-fields/seo.php');
 require_once (WOODKIT_PLUGIN_PATH . '/' . WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/xmlsitemap/xmlsitemap.php');
+require_once (WOODKIT_PLUGIN_PATH . '/' . WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/gutenberg/plugins/seometa/index.php');
 
 /**
- * Enqueue styles for the back end.
+ * Enqueue scripts/styles for the back end.
  */
-function tool_seo_woodkit_admin_enqueue_styles_tools($dependencies) {
-	$css_seourlsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-seourlsmanager/css/admin-seourlsmanager.css' );
-	if (! empty ( $css_seourlsmanager ))
-		wp_enqueue_style ( 'tool-seo-seourlsmanager-css', $css_seourlsmanager, $dependencies, '1.0' );
-
-	$js_seourlsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-seourlsmanager/js/admin-seourlsmanager.js' );
-	if (! empty ( $js_seourlsmanager ))
-		wp_enqueue_script ( 'tool-seo-seourlsmanager-js', $js_seourlsmanager, array (
-				'jquery'
-		), '1.0', true );
-
-	$css_redirectsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-redirectsmanager/css/admin-redirectsmanager.css' );
-	if (! empty ( $css_redirectsmanager ))
-		wp_enqueue_style ( 'tool-redirectsmanager-css', $css_redirectsmanager, $dependencies, '1.0' );
-
-	$js_redirectsmanager = locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-redirectsmanager/js/admin-redirectsmanager.js' );
-	if (! empty ( $js_redirectsmanager ))
-		wp_enqueue_script ( 'tool-redirectsmanager-js', $js_redirectsmanager, array (
-				'jquery'
-		), '1.0', true );
-}
-add_action ( 'woodkit_admin_enqueue_styles_tools', 'tool_seo_woodkit_admin_enqueue_styles_tools' );
+add_action('admin_enqueue_scripts', function () {
+	wp_enqueue_style ( 'tool-seo-seourlsmanager-css', locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-seourlsmanager/css/admin-seourlsmanager.css' ), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION );
+	wp_enqueue_script ( 'tool-seo-seourlsmanager-js', locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-seourlsmanager/js/admin-seourlsmanager.js' ), array ('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true );
+	wp_enqueue_style ( 'tool-redirectsmanager-css', locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-redirectsmanager/css/admin-redirectsmanager.css' ), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION );
+	wp_enqueue_script ( 'tool-redirectsmanager-js', locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-redirectsmanager/js/admin-redirectsmanager.js' ), array ('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true );
+}, 100);
 
 /**
  * Redirections (301 permanent redirects)

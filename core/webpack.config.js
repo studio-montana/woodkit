@@ -1,12 +1,10 @@
 const path = require('path');
 
-/** gutenberg blocks names */
-let blocks = [
+/** gutenberg modules declaration */
+let gutenberg_modules = [
 	{'slug': 'wall', 'path': 'tools/wall/gutenberg/blocks/wall/'},
+	{'slug': 'seometa', 'path': 'tools/seo/gutenberg/plugins/seometa/'},
 ];
-
-/** gutenberg plugins names */
-let plugins = [];
 
 /** all configurations */
 let configs = [];
@@ -31,14 +29,14 @@ var config = {
 };
 
 /**
- * gutenberg blocks configuration
+ * gutenberg modules configuration
  */
-for (var block of blocks) {
+for (var gutenberg_module of gutenberg_modules) {
 	configs.push(Object.assign({}, config, {
-		name: block.slug,
-		entry: './src/'+block.path+'index.jsx',
+		name: gutenberg_module.slug,
+		entry: './src/'+gutenberg_module.path+'index.jsx',
 		output: {
-			path: path.resolve(__dirname, 'src/' + block.path),
+			path: path.resolve(__dirname, 'src/' + gutenberg_module.path),
 			filename: 'build.js'
 		},
 	}));

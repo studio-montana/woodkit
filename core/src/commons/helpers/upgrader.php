@@ -23,34 +23,9 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
- * Constants
+ * Upgrade if necessary Woodkit - this function is only called in admin area
  */
-define('COOKIES_TOOL_NAME', 'cookies');
-
-/**
- * Tool instance
- */
-class WoodkitToolCookies extends WoodkitTool{
-	
-	public function __construct(){
-		parent::__construct(array(
-				'slug' => 'cookies',
-				'name' => __("Cookies", 'woodkit'),
-				'description' => __("Add legal advice on front of your website.", 'woodkit'),
-				'has_config' => false,
-				'add_config_in_menu' => false,
-				'documentation' => WOODKIT_URL_DOCUMENTATION.'/cookies',
-			));
-	}
-	
-	public function get_config_default_values(){
-		return array(
-				'active' => 'on',
-		);
-	}
-	
+function woodkit_upgrader_admin_init(){
+	$upgrader_version = get_option("woodkit-upgrader-version", "0.0.0");
 }
-add_filter("woodkit-register-tool", function($tools){
-	$tools[] = new WoodkitToolCookies();
-	return $tools;
-});
+add_action('admin_init', 'woodkit_upgrader_admin_init');

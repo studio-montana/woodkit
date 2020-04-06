@@ -121,7 +121,7 @@ endif;
 
 if (!function_exists("seo_save_taxonomy_fields")):
 /**
- * save seo category extra fields
+ * save seo taxonomy extra fields
 */
 function seo_save_taxonomy_fields($term_id) {
 	// SEO_CUSTOMFIELD_METATITLE

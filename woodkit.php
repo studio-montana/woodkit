@@ -37,8 +37,10 @@ define('WOODKIT_PLUGIN_URI', plugin_dir_url(__FILE__));
 define('WOODKIT_PLUGIN_WEB_CACHE_VERSION', '2.0.0');
 
 define('WOODKIT_PLUGIN_COMMONS_FOLDER', 'core/src/commons/');
+define('WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'helpers/');
 define('WOODKIT_PLUGIN_COMMONS_TOOLS_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'tools/');
 define('WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'installer/');
+define('WOODKIT_PLUGIN_COMMONS_CONFIG_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'config/');
 define('WOODKIT_PLUGIN_TEMPLATES_FOLDER', 'core/src/templates/');
 define('WOODKIT_PLUGIN_TEMPLATES_CSS_FOLDER', WOODKIT_PLUGIN_TEMPLATES_FOLDER.'css/');
 define('WOODKIT_PLUGIN_TEMPLATES_JS_FOLDER', WOODKIT_PLUGIN_TEMPLATES_FOLDER.'js/');
@@ -73,23 +75,20 @@ if(!class_exists('Woodkit')){
 			/** plugin textdomain */
 			load_plugin_textdomain('woodkit', false, dirname( plugin_basename( __FILE__ ) ).'/lang/' );
 
-			do_action("woodkit_before_requires");
-
-			/** utils */
-			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'session.php');
-			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'comparators.php');
-			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'utils.php');
+			/** helpers */
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'session.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'comparators.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'utils.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'customizer.php');
 
 			/** upgrader */
-			if (is_admin()){
-				require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'upgrader.php');
-			}
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'upgrader.php');
 
 			/** installer */
-			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'installer/installer.class.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER.'installer.class.php');
 
 			/** config */
-			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_FOLDER.'config/config.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_CONFIG_FOLDER.'index.php');
 
 			/** gutenberg (must be included before tools) */
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_GUTENBERG_FOLDER.'index.php');
@@ -98,14 +97,12 @@ if(!class_exists('Woodkit')){
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_TOOLS_FOLDER.'index.php');
 			$this->tools = new ToolsManager();
 
-			do_action("woodkit_after_requires");
-
 			/** plugin install/uninstall hooks */
 			register_activation_hook(__FILE__, array($this, 'activate'));
 			register_deactivation_hook(__FILE__, array($this, 'deactivate'));
 
 			/** Woodkit init */
-			add_action('init', array($this, 'init'), 1);
+			add_action('init', array($this, 'init'), 5);
 		}
 
 		/**

@@ -30,7 +30,7 @@ class WKG_Module_Block_wall extends WKG_Module_Block {
 	}
 
 	public function wp_enqueue_scripts () {
-		wp_enqueue_script('wkg-masonry', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array('jquery'), '4.2.2', true);
+		wp_enqueue_script('woodkit-js-masonry');
 	}
 
 	public function render (array $attributes, $content) {
@@ -58,8 +58,8 @@ class WKG_Module_Block_wall extends WKG_Module_Block {
 		$this->maxwidth_custom = isset($attributes['maxwidth_custom']) ? intval($attributes['maxwidth_custom']) : 250;
 		$this->maxheight = isset($attributes['maxheight']) ? $attributes['maxheight'] : 'auto';
 		$this->maxheight_custom = isset($attributes['maxheight_custom']) ? intval($attributes['maxheight_custom']) : 250;
-		$this->margin_horizontal = isset($attributes['margin_horizontal']) ? intval($attributes['margin_horizontal']) : 0;
-		$this->margin_vertical = isset($attributes['margin_vertical']) ? intval($attributes['margin_vertical']) : 0;
+		$this->margin_horizontal = isset($attributes['margin_horizontal']) ? intval($attributes['margin_horizontal']) : 3;
+		$this->margin_vertical = isset($attributes['margin_vertical']) ? intval($attributes['margin_vertical']) : 3;
 		$this->space_before = isset($attributes['space_before']) ? intval($attributes['space_before']) : 0;
 		$this->space_after = isset($attributes['space_after']) ? intval($attributes['space_after']) : 0;
 
