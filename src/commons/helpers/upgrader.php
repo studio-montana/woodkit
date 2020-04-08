@@ -27,5 +27,6 @@ defined('ABSPATH') or die("Go Away!");
  */
 function woodkit_upgrader_admin_init(){
 	$upgrader_version = get_option("woodkit-upgrader-version", "0.0.0");
+	
 }
 add_action('admin_init', 'woodkit_upgrader_admin_init');

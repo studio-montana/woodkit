@@ -36,18 +36,18 @@ define('WOODKIT_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('WOODKIT_PLUGIN_URI', plugin_dir_url(__FILE__));
 define('WOODKIT_PLUGIN_WEB_CACHE_VERSION', '2.0.0');
 
-define('WOODKIT_PLUGIN_COMMONS_FOLDER', 'core/src/commons/');
+define('WOODKIT_PLUGIN_COMMONS_FOLDER', 'src/commons/');
 define('WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'helpers/');
 define('WOODKIT_PLUGIN_COMMONS_TOOLS_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'tools/');
 define('WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'installer/');
 define('WOODKIT_PLUGIN_COMMONS_CONFIG_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'config/');
-define('WOODKIT_PLUGIN_TEMPLATES_FOLDER', 'core/src/templates/');
+define('WOODKIT_PLUGIN_TEMPLATES_FOLDER', 'src/templates/');
 define('WOODKIT_PLUGIN_TEMPLATES_CSS_FOLDER', WOODKIT_PLUGIN_TEMPLATES_FOLDER.'css/');
 define('WOODKIT_PLUGIN_TEMPLATES_JS_FOLDER', WOODKIT_PLUGIN_TEMPLATES_FOLDER.'js/');
 define('WOODKIT_PLUGIN_TEMPLATES_FONTS_FOLDER', WOODKIT_PLUGIN_TEMPLATES_FOLDER.'fonts/');
-define('WOODKIT_PLUGIN_TEMPLATES_DASHBOARD_FOLDER', 'core/src/templates/dashboard/');
-define('WOODKIT_PLUGIN_GUTENBERG_FOLDER', 'core/src/gutenberg/');
-define('WOODKIT_PLUGIN_TOOLS_FOLDER', 'core/src/tools/');
+define('WOODKIT_PLUGIN_TEMPLATES_DASHBOARD_FOLDER', 'src/templates/dashboard/');
+define('WOODKIT_PLUGIN_GUTENBERG_FOLDER', 'src/gutenberg/');
+define('WOODKIT_PLUGIN_TOOLS_FOLDER', 'src/tools/');
 
 define('WOODKIT_URL_DOCUMENTATION', 'https://lab.studio-montana.com/documentation/woodkit');
 
@@ -57,7 +57,7 @@ define('WOODKIT_URL_DOCUMENTATION', 'https://lab.studio-montana.com/documentatio
 if(!class_exists('Woodkit')){
 
 	class Woodkit{
-		
+
 		private static $_this;
 		public $tools;
 
@@ -65,7 +65,7 @@ if(!class_exists('Woodkit')){
 		 * Construct the plugin object
 		 */
 		public function __construct(){
-			
+
 			// Don't allow more than one instance of the class
 			if (isset(self::$_this)) {
 				wp_die(sprintf(esc_html__( '%s is a singleton class and you cannot create a second instance.', 'woodkit' ), get_class($this)));
@@ -128,16 +128,16 @@ if(!class_exists('Woodkit')){
 		 * Init
 		 */
 		public function init() {
-			
+
 			/** start PHP session (maybe used by tools) */
 			if (class_exists('WoodkitSession')) {
 				WoodkitSession::start();
 			}
-			
+
 			if (class_exists('WoodkitInstaller')) {
 				WoodkitInstaller::init();
 			}
-			
+
 			if (is_admin()){
 				/** save woodkit config */
 				if (class_exists("WoodkitConfig")){
@@ -146,13 +146,13 @@ if(!class_exists('Woodkit')){
 				/** save woodkit tools config */
 				$this->tools->save_config();
 			}
-			
+
 			/** launch activated tools */
 			$this->tools->launch();
 
 			do_action("woodkit_before_init");
 
-			require_once (WOODKIT_PLUGIN_PATH.'core/src/init.php');
+			require_once (WOODKIT_PLUGIN_PATH.'src/init.php');
 
 			do_action("woodkit_after_init");
 		}

@@ -79,7 +79,7 @@ export default class WKG_Media_Selector extends Component {
 		if (this.props.onChange) {
 			this.props.onChange({id: this.state.id, size: this.state.size, url: this.state.url})
 		} else {
-			console.warn('WKG_Media_Selector doit recevoir la propriété \'onChange={(id, size, url) => {}}}\'')
+			console.warn('WKG_Media_Selector doit recevoir la propriété \'onChange={(media) => {}}}\'')
 		}
 	}
 

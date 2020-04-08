@@ -70,10 +70,16 @@
  * WKG Plugin Component
  *****************************************************************/
 .wkg-plugin-panelbody {
-
+	position: relative;
 }
 .wkg-plugin-panelrow {
-
+	display: block;
+}
+.wkg-plugin-panelrow .wkg-info {
+	position: relative;
+	margin-bottom: 6px;
+	color: #999999 !important;
+	font-style: italic;
 }
 /*****************************************************************
  * WKG Card
