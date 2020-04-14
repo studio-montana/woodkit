@@ -33,7 +33,7 @@ class WKG_Icon_Selector extends Component {
 			return (
 				<div style={{display: 'flex', justifyContent: 'space-between'}}>
 					<Button className="wkg-btn light" onClick={() => this.setState({open_selector: true})}>Choisir l'icône</Button>
-					<Button className="wkg-btn icon light" style={{marginLeft: '6px'}} onClick={() => this.onChange(null)}><i className="icomoon-cross"></i></Button>
+					<Button className="wkg-btn light" style={{marginLeft: '6px'}} onClick={() => this.onChange(null)}>[DEL]</Button>
 				</div>
 			)
 		}

@@ -111,7 +111,7 @@ class WoodkitConfig {
 							<p class="description"><?php _e("Setup your key to get woodkit updates", 'woodkit'); ?></p>
 						</div>
 					</div>
-					<button type="submit" class="woodkit-btn primary save">
+					<button type="submit" class="wk-btn primary save">
 						<?php _e("Save", 'woodkit'); ?>
 					</button>
 				</div>

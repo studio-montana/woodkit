@@ -47,7 +47,7 @@
 			 * Html structure
 			 */
 			$redirectsmanager_container = $('<div class="multiple-items-manager sortable redirectsmanager-container"></div>').appendTo($redirectsmanager);
-			$redirectsmanager_container_add = $('<div class="add-redirect add woodkit-btn"><span>' + settings['label_add_item'] + '</span></div>').appendTo(
+			$redirectsmanager_container_add = $('<div class="add-redirect wk-btn light small"><span>' + settings['label_add_item'] + '</span></div>').appendTo(
 					$redirectsmanager);
 			
 			$redirectsmanager_container.sortable({
@@ -109,8 +109,8 @@
 
 			var html = '';
 			html += '<div class="redirect item" id="redirect-' + redirect_id + '" data-id="' + redirect_id + '">';
-			html += '<span class="move-redirect move" data-id="redirect-' + redirect_id + '"><i class="fa fa-ellipsis-v"></i></span>';
-			html += '<span class="delete-redirect delete" data-id="redirect-' + redirect_id + '"><i class="fa fa-times"></i></span>';
+			html += '<span class="move-redirect move" data-id="redirect-' + redirect_id + '">[MOV]</span>';
+			html += '<span class="delete-redirect delete" data-id="redirect-' + redirect_id + '">[DEL]</span>';
 			
 			html += '<select name="redirect-test-' + redirect_id + '">';
 			var test_checked = "";

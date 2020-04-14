@@ -108,7 +108,7 @@ export default class WKG_Media_Selector extends Component {
 	render_remove () {
 		if (this.state.id) {
 			return (
-				<Button className="wkg-btn icon light" style={{marginLeft: '6px'}} onClick={() => this.removeMedia()}><i className="icomoon-cross"></i></Button>
+				<Button className="wkg-btn icon light" style={{marginLeft: '6px'}} onClick={() => this.removeMedia()}>[DEL]</Button>
 			)
 		}
 		return null

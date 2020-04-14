@@ -47,7 +47,7 @@
 			 * Html structure
 			 */
 			$seourlsmanager_container = $('<div class="multiple-items-manager seourlsmanager-container"></div>').appendTo($seourlsmanager);
-			$seourlsmanager_container_add = $('<div class="add-url add woodkit-btn"><span>' + settings['label_add_item'] + '</span></div>').appendTo(
+			$seourlsmanager_container_add = $('<div class="add-url wk-btn light small"><span>' + settings['label_add_item'] + '</span></div>').appendTo(
 					$seourlsmanager);
 
 			/**
@@ -90,7 +90,7 @@
 			
 			var html = '';
 			html += '<div class="url item" id="sitemap-url-id-' + url_id + '" data-id="' + url_id + '">';
-			html += '<span class="delete delete-url" data-id="sitemap-url-id-' + url_id + '"><i class="fa fa-times"></i></span>';
+			html += '<span class="delete delete-url" data-id="sitemap-url-id-' + url_id + '">[DEL]</span>';
 			
 			html += '<select name="sitemap-url-action-' + url_id + '">';
 			var action_checked = "";

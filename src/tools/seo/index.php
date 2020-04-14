@@ -45,7 +45,6 @@ class WoodkitToolSEO extends WoodkitTool{
 	
 	public function get_config_fields(){
 		return array(
-				'opengraph-active',
 				'xmlsitemap-active',
 				'xmlsitemap-notification-active',
 				'default-description',
@@ -58,7 +57,6 @@ class WoodkitToolSEO extends WoodkitTool{
 	public function get_config_default_values(){
 		return array(
 				'active' => 'on',
-				'opengraph-active' => 'on',
 				'xmlsitemap-active' => 'on',
 				'xmlsitemap-notification-active' => 'on',
 				'default-description' => null,
@@ -75,20 +73,6 @@ class WoodkitToolSEO extends WoodkitTool{
 				<?php _e("General", 'woodkit'); ?>
 			</h2>
 			<div class="section-content">
-				<div class="field checkbox">
-					<div class="field-content">
-						<?php
-						$value = $this->get_option('opengraph-active');
-						$checked = '';
-						if ($value == 'on'){
-							$checked = ' checked="checked"';
-						}
-						?>
-						<input type="checkbox" id="opengraph-active" name="opengraph-active" <?php echo $checked; ?> />
-						<label for="opengraph-active"><?php _e("Opengraph active", 'woodkit'); ?></label>
-					</div>
-					<p class="description"><?php _e('Social network publication management', 'woodkit'); ?></p>
-				</div>
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
@@ -251,10 +235,8 @@ class WoodkitToolSEO extends WoodkitTool{
 	
 	public function save_config_fields($values){
 		// -- general
-		$opengraph_active = isset($_POST['opengraph-active']) ? sanitize_text_field($_POST['opengraph-active']) : 'off';
 		$xmlsitemap_active = isset($_POST['xmlsitemap-active']) ? sanitize_text_field($_POST['xmlsitemap-active']) : 'off';
 		$xmlsitemap_notification_active = isset($_POST['xmlsitemap-notification-active']) ? sanitize_text_field($_POST['xmlsitemap-notification-active']) : 'off';
-		$values['opengraph-active'] = $opengraph_active;
 		$values['xmlsitemap-active'] = $xmlsitemap_active;
 		$values['xmlsitemap-notification-active'] = $xmlsitemap_notification_active;
 		

@@ -45,7 +45,7 @@
 			 * Html structure
 			 */
 			$googleanalyticseventsmanager_container = $('<div class="multiple-items-manager googleanalyticseventsmanager-container"></div>').appendTo($('<div class="googleanalyticseventsmanager-wrapper"></div>').appendTo($googleanalyticseventsmanager));
-			$googleanalyticseventsmanager_container_add = $('<div class="woodkit-btn add-event add"><span>' + settings['label_add_event'] + '</span></div>').appendTo(
+			$googleanalyticseventsmanager_container_add = $('<div class="wk-btn add-event add"><span>' + settings['label_add_event'] + '</span></div>').appendTo(
 					$googleanalyticseventsmanager);
 
 			/**

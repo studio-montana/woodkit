@@ -34,7 +34,7 @@ wp_register_script('woodkit-js-login', locate_web_ressource(WOODKIT_PLUGIN_TEMPL
 /**
  * Style dependencies
  */
-wp_register_style('woodkit-css-icomoon', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FONTS_FOLDER.'icomoon-v1.0/style.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
+wp_register_style('woodkit-css-fa', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FONTS_FOLDER.'fontawesome-free-5.10.3-web/css/all.min.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 wp_register_style('woodkit-css-front', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_CSS_FOLDER.'woodkit-front.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 wp_register_style('woodkit-css-admin', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_CSS_FOLDER.'woodkit-admin.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 wp_register_style('woodkit-css-login', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_CSS_FOLDER.'woodkit-login.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
@@ -73,8 +73,8 @@ add_action('wp_enqueue_scripts', 'woodkit_scripts_styles');
 */
 function woodkit_admin_scripts_styles() {
 
-	// Loads Icomoon FontIcon
-	wp_enqueue_style('woodkit-css-icomoon');
+	// Loads FontAwesome fonticon
+	wp_enqueue_style('woodkit-css-fa');
 
 	// Loads our main template stylesheet
 	wp_enqueue_style('woodkit-css-admin');

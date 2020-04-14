@@ -213,7 +213,7 @@ abstract class WoodkitTool{
 				$this->display_config_fields();
 				?>
 				<div class="form-row form-row-submit">
-					<button type="submit" class="woodkit-btn primary save">
+					<button type="submit" class="wk-btn primary save">
 						<?php _e("Save", 'woodkit'); ?>
 					</button>
 				</div>
