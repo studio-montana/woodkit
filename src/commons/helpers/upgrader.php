@@ -41,8 +41,7 @@ function woodkit_upgrader_admin_init(){
 add_action('admin_init', 'woodkit_upgrader_admin_init');
 
 /**
- * Migrate all old tool seo's meta-data to new format
- * since Gutenberg support which impose meta prefixed by _
+ * Upgrade to Woodkit 2.0.0
  */
 function woodkitsupport_upgrader_version_2_0_0(){
 	trace_info("==============================================================");
@@ -50,6 +49,8 @@ function woodkitsupport_upgrader_version_2_0_0(){
 	
 	/**
 	 * Tool SEO
+	 * Migrate all old tool seo's meta-data to new format
+	 * since Gutenberg support which impose meta prefixed by _
 	 */
 	$meta_parses = array(
 			'seo-meta-title' => '_seo_meta_title',
@@ -75,13 +76,37 @@ function woodkitsupport_upgrader_version_2_0_0(){
 				$meta_value = @get_post_meta($post->ID, $old_key, true);
 				if (!empty($meta_value)) {
 					update_post_meta($post->ID, $new_key, $meta_value);
-					trace_info("post upgrade meta - [{$post->ID}] (".get_post_type($post).") [{$old_key} => {$new_key}]" . $meta_value);
+					delete_post_meta($post->ID, $old_key);
+					trace_info("post migrate meta - [{$post->ID}] (".get_post_type($post).") [{$old_key} => {$new_key}]" . $meta_value);
 				}
 			}
 		}
 	}
 
-	// TODO update_option => set_term_meta... migration
+	/**
+	 * Tool SEO
+	 * Migrate all old tool seo's meta-data to new format
+	 * since Gutenberg support which impose meta prefixed by _
+	 * in addition, term's SEO meta was saved in wp_options data table instead of wp_term_meta and it was a mistake
+	 */
+	$taxs = get_taxonomies();
+	if (!empty($taxs)) {
+		foreach ($taxs as $tax) {
+			$terms = get_terms(array('taxonomy' => $tax, 'hide_empty' => false));
+			if (!empty($terms)) {
+				foreach ($terms as $term) {
+					foreach ($meta_parses as $old_key => $new_key) {
+						$meta_value = get_option("term_".$term->term_id."_".$old_key);
+						if (!empty($meta_value)) {
+							update_term_meta($term->term_id, $new_key, $meta_value);
+							delete_option("term_".$term->term_id."_".$old_key);
+							trace_info("term migrate meta - [{$term->term_id}] ({$tax}) [{$old_key} => {$new_key}]" . $meta_value);
+						}
+					}
+				}
+			}
+		}
+	}
 	
 	/**
 	 * Tool Event
