@@ -22,10 +22,7 @@
  */
 defined('ABSPATH') or die("Go Away!");
 
-/**
- * ajoute le post-type 'event'
-*/
-function tool_event_add_event_post_type(){
+function tool_event_add_post_types(){
 	// post type
 	$labels = array(
 			'name'               => __('Events', 'woodkit'),
@@ -81,7 +78,7 @@ function tool_event_add_event_post_type(){
 	
 	do_action("tool_event_add_post_type_after", "event");
 }
-add_action('init', 'tool_event_add_event_post_type');
+add_action('init', 'tool_event_add_post_types');
 
 /**
  * woodkit listing columns

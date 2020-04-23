@@ -74,13 +74,13 @@ function tool_private_get_node($post_type, $posts, $is_hierarchical = false){
 			</tr>
 			<tr valign="top" class="private-options private-options-1 private-options-2">
 				<th class="metabox_label_column" align="left" valign="middle"><label
-					for="<?php echo TOOL_PRIVATE_OPTIONS_MESSAGE."-".get_current_lang(); ?>"><?php _e("Message", 'woodkit'); ?> : </label>
+					for="<?php echo TOOL_PRIVATE_OPTIONS_MESSAGE."-".woodkit_get_current_lang(); ?>"><?php _e("Message", 'woodkit'); ?> : </label>
 				</th>
 				<td valign="middle">
 					<?php 
-					$meta = get_option(TOOL_PRIVATE_OPTIONS_MESSAGE."-".get_current_lang(), "");
+					$meta = get_option(TOOL_PRIVATE_OPTIONS_MESSAGE."-".woodkit_get_current_lang(), "");
 					?>
-					<input type="text" id="<?php echo TOOL_PRIVATE_OPTIONS_MESSAGE."-".get_current_lang(); ?>" name="<?php echo TOOL_PRIVATE_OPTIONS_MESSAGE."-".get_current_lang(); ?>" value="<?php echo esc_attr($meta); ?>" size="40" placeholder="<?php _e("Private area"); ?>..." />
+					<input type="text" id="<?php echo TOOL_PRIVATE_OPTIONS_MESSAGE."-".woodkit_get_current_lang(); ?>" name="<?php echo TOOL_PRIVATE_OPTIONS_MESSAGE."-".get_current_lang(); ?>" value="<?php echo esc_attr($meta); ?>" size="40" placeholder="<?php _e("Private area"); ?>..." />
 				</td>
 				<td valign="middle"></td>
 			</tr>

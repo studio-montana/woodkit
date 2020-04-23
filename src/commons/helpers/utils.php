@@ -26,7 +26,7 @@ defined('ABSPATH') or die("Go Away!");
  * String cleaning : remove accents, remove "de", "le", "la", "l'", etc., transform to lowercase, special characters
  * Great for search form
  */
-function woodkit_str_cleaning($str){
+function woodkit_str_search_cleaning($str){
 	$str = strtolower($str);
 	$str = woodkit_remove_accent($str);
 	$str = woodkit_remove_contracted_articles($str);
@@ -98,7 +98,6 @@ function woodkit_remove_accent($str, $is_html = false){
 	return $str;
 }
 
-if (!function_exists("woodkit_get_request_param")):
 /**
  * Retrieve param from REQUEST if exists
  *
@@ -122,9 +121,7 @@ function woodkit_get_request_param($key, $default = null, $sanitize = true) {
 		return sanitize_text_field($value);
 	return $value;
 }
-endif;
 
-if (!function_exists("woodkit_get_image_id_for_url")):
 /**
  * retrieve image id for image url
 * @param unknown $image_url
@@ -137,7 +134,6 @@ function woodkit_get_image_id_for_url($image_url) {
 		return $attachment[0];
 	return null;
 }
-endif;
 
 if (!function_exists("locate_web_ressource")):
 /**
@@ -439,57 +435,6 @@ function get_emails_from_string($string){
 }
 endif;
 
-if (! function_exists ( "get_post_types_by_type" )) :
-	/**
-	 * retrieve specified post-types
-	 * 
-	 * @param string $meta_args
-	 *        	: permet de filtrer sur les post_meta
-	 * @return array
-	 *
-	 */
-	function get_post_types_by_type($type, $meta_args = null, $args = array()) {
-		// parse args array and set default values
-		$args ['post_type'] = $type;
-		if (empty ( $args ['orderby'] ))
-			$args ['orderby'] = "title";
-		if (empty ( $args ['order'] ))
-			$args ['order'] = 'ASC';
-		if (empty ( $args ['numberposts'] ))
-			$args ['numberposts'] = - 1;
-		if (empty ( $args ['suppress_filters'] ))
-			$args ['suppress_filters'] = FALSE; // pour n'avoir que les items de la langue courante (compatibilité WPML)
-		
-		$posts = get_posts ( $args );
-		$posts_fin = array ();
-		
-		// meta filters
-		if ($meta_args && count ( $meta_args ) > 0) {
-			foreach ( $posts as $post ) {
-				$add = true;
-				foreach ( $meta_args as $meta_key => $meta_value ) {
-					if (isset ( $args ['fields'] ) && $args ['fields'] === 'ids') {
-						$post_id = $post;
-					} else {
-						$post_id = $post->ID;
-					}
-					if (get_post_meta ( $post_id, $meta_key, true ) != $meta_value) {
-						$add = false;
-					}
-				}
-				if ($add == true) {
-					array_push ( $posts_fin, $post );
-				}
-			}
-		} else {
-			$posts_fin = $posts;
-		}
-		
-		return $posts_fin;
-	}
-
-endif;
-
 if (!function_exists("get_timestamp_from_mysql")):
 /**
  * Converts a mysql datetime value into a unix timestamp
@@ -548,18 +493,6 @@ function get_oldest_ancestor($id_post){
 }
 endif;
 
-if (!function_exists('get_current_lang')) :
-/**
- * please use woodkit_get_current_lang()
-* @deprecated since 1.3.5
-* @since Woodkit 1.0
-* @return void
-*/
-function get_current_lang() {
-	return woodkit_get_current_lang();
-}
-endif;
-if (!function_exists('woodkit_get_current_lang')) :
 /**
  * Retrieve current lang (WPML support)
 * @since Woodkit 1.0
@@ -580,7 +513,6 @@ function woodkit_get_current_lang() {
 	// inconnu
 	return "";
 }
-endif;
 
 if (!function_exists("get_video_embed_code")):
 /**

@@ -75,7 +75,7 @@ global $private_tool_errors;
 					<div id="content" class="site-content" role="main">
 					
 						<?php 
-						$private_message = get_option(TOOL_PRIVATE_OPTIONS_MESSAGE."-".get_current_lang(), "");
+						$private_message = get_option(TOOL_PRIVATE_OPTIONS_MESSAGE."-".woodkit_get_current_lang(), "");
 						if (!empty($private_message)){
 							?>
 							<h2><?php echo $private_message; ?></h2>

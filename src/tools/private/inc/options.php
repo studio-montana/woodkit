@@ -76,7 +76,7 @@ function tool_private_settings_save() {
 	}
 
 	// TOOL_PRIVATE_OPTIONS_ITEMS
-	$key = TOOL_PRIVATE_OPTIONS_ITEMS."-".get_current_lang();
+	$key = TOOL_PRIVATE_OPTIONS_ITEMS."-".woodkit_get_current_lang();
 	$items = "";
 	foreach ($_POST as $k => $v){
 		if (startsWith($k, "tool-private-item-")){
@@ -98,7 +98,7 @@ function tool_private_settings_save() {
 	}
 	
 	// TOOL_PRIVATE_OPTIONS_MESSAGE
-	$key = TOOL_PRIVATE_OPTIONS_MESSAGE."-".get_current_lang();
+	$key = TOOL_PRIVATE_OPTIONS_MESSAGE."-".woodkit_get_current_lang();
 	if (isset($_POST[$key]) && !empty($_POST[$key])){
 		if (!get_option($key))
 			add_option($key, sanitize_text_field($_POST[$key]));

@@ -64,7 +64,7 @@ function tool_private_is_private_post($post_id){
 	if ($go_private && $go_private == "1"){
 		return true;
 	}else if ($go_private && $go_private == "2"){
-		$private_items = get_option(TOOL_PRIVATE_OPTIONS_ITEMS."-".get_current_lang());
+		$private_items = get_option(TOOL_PRIVATE_OPTIONS_ITEMS."-".woodkit_get_current_lang());
 		if (!empty($private_items)){
 			$parent_ids = get_post_ancestors($post_id);
 			$private_items = explode(",", $private_items);

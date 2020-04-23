@@ -61,7 +61,7 @@ function woodkit_customizer_add_control($customizer_obj, $control_slug, $setting
 function woodkit_customizer_get_value($slug, $default = '', $multilingual = true, $lang = ''){
 	if ($multilingual){
 		if (empty($lang)){
-			$lang = get_current_lang();
+			$lang = woodkit_get_current_lang();
 		}
 		return get_theme_mod($slug.$lang, $default);
 	}else{
@@ -83,7 +83,7 @@ function woodkit_customizer_get_langs(){
 				$woodkit_customizer_langs[] = strtolower($code);
 			}
 		}else{
-			$woodkit_customizer_langs[] = strtolower(get_current_lang());
+			$woodkit_customizer_langs[] = strtolower(woodkit_get_current_lang());
 		}
 	}
 	return $woodkit_customizer_langs;
