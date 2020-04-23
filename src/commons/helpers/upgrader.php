@@ -33,7 +33,7 @@ function woodkit_upgrader_admin_init(){
 		 * Upgrade to 2.0.0
 		 */
 		if (version_compare($upgrader_version, "2.0.0") < 0){
-			woodkitsupport_upgrader_version_2_0_0();
+			woodkit_upgrader_version_2_0_0();
 			update_option("woodkit-upgrader-version", "2.0.0");
 		}
 	}
@@ -42,8 +42,10 @@ add_action('admin_init', 'woodkit_upgrader_admin_init');
 
 /**
  * Upgrade to Woodkit 2.0.0
+ * IMPORTANT : note that this function maybe already used by woodkit's websites and will not be used again,
+ * so any update may not be applyed on their website.
  */
-function woodkitsupport_upgrader_version_2_0_0(){
+function woodkit_upgrader_version_2_0_0(){
 	trace_info("==============================================================");
 	trace_info("=================WOODKIT UPGRADE 2.0.0========================");
 	
@@ -110,8 +112,37 @@ function woodkitsupport_upgrader_version_2_0_0(){
 	
 	/**
 	 * Tool Event
+	 * Migrate all old tool event's meta-data to new format
+	 * since Gutenberg support which impose meta prefixed by _
 	 */
-	
+	$meta_parses = array(
+			'meta_event_date_begin' => '_event_meta_date_begin',
+			'meta_event_date_end' => '_event_meta_date_end',
+			'meta_event_locate_address' => '_event_meta_locate_address',
+			'meta_event_locate_cp' => '_event_meta_locate_cp',
+			'meta_event_locate_city' => '_event_meta_locate_city',
+			'meta_event_locate_country' => '_event_meta_locate_country',
+	);
+	$posts_args = array(
+			'posts_per_page'	=> -1,
+			'post_type'			=> 'event',
+			'post_status'		=> 'any',
+			'suppress_filters'	=> true,
+	);
+	$get_posts = new WP_Query;
+	$posts = $get_posts->query($posts_args);
+	if (!empty($posts)) {
+		foreach ($posts as $post) {
+			foreach ($meta_parses as $old_key => $new_key) {
+				$meta_value = @get_post_meta($post->ID, $old_key, true);
+				if (!empty($meta_value)) {
+					update_post_meta($post->ID, $new_key, $meta_value);
+					delete_post_meta($post->ID, $old_key);
+					trace_info("post migrate meta - [{$post->ID}] (".get_post_type($post).") [{$old_key} => {$new_key}]" . $meta_value);
+				}
+			}
+		}
+	}
 
 	trace_info("=================END WOODKIT UPGRADE 2.0.0====================");
 	trace_info("==============================================================");
