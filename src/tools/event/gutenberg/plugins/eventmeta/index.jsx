@@ -12,7 +12,7 @@ registerPlugin('wkg-plugin-eventmeta', {
   icon: 'calendar',
   render: (props) => {
     return (
-      <PluginDocumentSettingPanel name="wkg-plugin-eventmeta" title={__('Définition de l\'évènement', 'woodkit')} className="wkg-document-setting-panel wkg-plugin-eventmeta">
+      <PluginDocumentSettingPanel name="wkg-plugin-eventmeta" title={__('Event attributes', 'woodkit')} className="wkg-document-setting-panel wkg-plugin-eventmeta">
           <PluginComponent />
       </PluginDocumentSettingPanel>
     )
@@ -35,13 +35,13 @@ class PluginComponent_Base extends Component {
 		return (
 			<Fragment>
         <PanelRow>
-          <span>{__('Début', 'woodkit')}</span>
+          <span>{__('Begin', 'woodkit')}</span>
           <Button isLink onClick={() => this.setState({editDateBegin: !this.state.editDateBegin})}>
             {this.prettyDate(this.props._event_meta_date_begin)}<br />
           </Button>
           {this.state.editDateBegin && (
             <Popover onClose={(e) => this.setState({editDateBegin: false})}>
-              <DateTimePicker label={__('Date de début', 'woodkit')} currentDate={this.props._event_meta_date_begin} onChange={(date) => this.props.on_meta_change({'_event_meta_date_begin': (new Date(date).getTime() / 1000)}) } />
+              <DateTimePicker label={__('Begin date', 'woodkit')} currentDate={this.props._event_meta_date_begin} onChange={(date) => this.props.on_meta_change({'_event_meta_date_begin': (new Date(date).getTime() / 1000)}) } />
             </Popover>
           )}
         </PanelRow>
@@ -51,26 +51,26 @@ class PluginComponent_Base extends Component {
             if (this.state.useDateEnd === true) {
               this.props.on_meta_change({'_event_meta_date_end': null})
             } else {
-              this.props.on_meta_change({'_event_meta_date_end': (new Date() / 1000)})
+              this.props.on_meta_change({'_event_meta_date_end': ((this.props._event_meta_date_begin.getTime() / 1000) + 3600)})
             }
-          }} label={__('définir une date de fin', 'woodkit')} />
+          }} label={__('set end date', 'woodkit')} />
         </PanelRow>
         {this.state.useDateEnd && (
           <PanelRow>
-            <span>{__('Fin', 'woodkit')}</span>
+            <span>{__('End', 'woodkit')}</span>
             <Button isLink onClick={() => this.setState({editDateEnd: !this.state.editDateEnd})}>
               {this.prettyDate(this.props._event_meta_date_end)}<br />
             </Button>
             {this.state.editDateEnd && (
               <Popover onClose={(e) => this.setState({editDateEnd: false})}>
-                <DateTimePicker label={__('Date de fin', 'woodkit')} currentDate={this.props._event_meta_date_end} onChange={(date) => this.props.on_meta_change({'_event_meta_date_end': (new Date(date).getTime() / 1000)}) } />
+                <DateTimePicker label={__('End date', 'woodkit')} currentDate={this.props._event_meta_date_end} onChange={(date) => this.props.on_meta_change({'_event_meta_date_end': (new Date(date).getTime() / 1000)}) } />
               </Popover>
             )}
           </PanelRow>
         )}
         <hr />
         <PanelRow>
-          <span>{__('Adresse', 'woodkit')}</span>
+          <span>{__('Address', 'woodkit')}</span>
           <TextControl value={this.props._event_meta_locate_address} onChange={value => this.props.on_meta_change({'_event_meta_locate_address': value})} />
         </PanelRow>
         <PanelRow>
@@ -78,11 +78,11 @@ class PluginComponent_Base extends Component {
           <TextControl value={this.props._event_meta_locate_cp} onChange={value => this.props.on_meta_change({'_event_meta_locate_cp': value})} />
         </PanelRow>
         <PanelRow>
-          <span>{__('Ville', 'woodkit')}</span>
+          <span>{__('City', 'woodkit')}</span>
           <TextControl value={this.props._event_meta_locate_city} onChange={value => this.props.on_meta_change({'_event_meta_locate_city': value})} />
         </PanelRow>
         <PanelRow>
-          <span>{__('Pays', 'woodkit')}</span>
+          <span>{__('Country', 'woodkit')}</span>
           <TextControl value={this.props._event_meta_locate_country} onChange={value => this.props.on_meta_change({'_event_meta_locate_country': value})} />
         </PanelRow>
 			</Fragment>

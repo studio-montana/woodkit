@@ -28,6 +28,16 @@ defined('ABSPATH') or die("Go Away!");
 define('SECURE_FAILTOBAN_FIELD', 'secure-failtoban-field');
 
 /**
+ * called to generate WP head
+ */
+function secure_failtoban_wp_head () {}
+
+/**
+ * called to generate WP login head
+ */
+function secure_failtoban_login_head () {}
+
+/**
  * called to generate WP login form
 */
 function secure_failtoban_login_form($display = true){
@@ -36,6 +46,13 @@ function secure_failtoban_login_form($display = true){
 		echo $field;
 	else
 		return $field;
+}
+
+/**
+ * called to generate WP lost password form
+ */
+function secure_failtoban_lostpassword_form(){
+	echo secure_failtoban_generate_field();
 }
 
 /**
@@ -72,12 +89,21 @@ function secure_failtoban_validate_login_form($args){
 }
 
 /**
+ * called to validate WP lost password form
+ */
+function secure_failtoban_validate_lostpassword_form(){
+	if (secure_is_failtoban()){
+		wp_die(__("Too many tries - please wait 1min", 'woodkit'));
+	}
+}
+
+/**
  * called to validate WP registration form
  */
 function secure_failtoban_validate_register_form($errors){
 	if (isset($_POST['user_login']) && isset($_POST['user_email'])){
 		if (secure_is_failtoban()){
-			$errors->add('faltoban-error', "<strong>".__("ERROR", 'woodkit')." : </strong>".__("invalid captcha", 'woodkit'));
+			$errors->add('faltoban-error', "<strong>".__("ERROR", 'woodkit')." : </strong>".__("Too many tries - please wait 1min", 'woodkit'));
 		}
 	}
 	return $errors;

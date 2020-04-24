@@ -46,6 +46,9 @@ class WoodkitToolSecure extends WoodkitTool{
 	public function get_config_fields(){
 		return array(
 				'captcha-active',
+				'captcha-type',
+				'captcha-google-key-public',
+				'captcha-google-key-private',
 				'failtoban-active',
 				'headers-nosniff',
 				'headers-xss',
@@ -54,7 +57,7 @@ class WoodkitToolSecure extends WoodkitTool{
 				'headers-poweredby',
 				'headers-server',
 				'headers-corswhitelist',
-				/* - have to add their options in next version
+				/* - have to add these options in next version
 				 'headers-hsts-time',
 				 'headers-hsts-subdomains',
 				 'headers-hsts-preload',
@@ -72,6 +75,7 @@ class WoodkitToolSecure extends WoodkitTool{
 		return array(
 				'active' => "on",
 				'captcha-active' => "on",
+				'captcha-type' => "numeric",
 				'failtoban-active' => "on",
 				'headers-nosniff' => "on",
 				'headers-xss' => "on",
@@ -86,47 +90,70 @@ class WoodkitToolSecure extends WoodkitTool{
 	public function display_config_fields(){
 		?>
 		<div class="section">
-			<h2 class="section-title">
-				<?php _e("General", 'woodkit'); ?>
-			</h2>
 			<div class="section-content">
+				<h3><?php _e("Captcha", 'woodkit'); ?></h3>
 				<div class="field checkbox">
 					<div class="field-content">
-						<?php
-						$value = $this->get_option('captcha-active');
+						<?php $value = $this->get_option('captcha-active');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
-						}
-						?>
+						} ?>
 						<input type="checkbox" id="captcha-active" name="captcha-active" <?php echo $checked; ?> />
 						<label for="captcha-active"><?php _e("Captcha active", 'woodkit'); ?></label>
 					</div>
-					<p class="description"><?php _e('Add captcha on login, register and comment forms (Woocommerce supported)', 'woodkit'); ?></p>
+					<p class="description"><?php _e('Add captcha on login, register and comment forms (Woocommerce/ContactForm7 supported)', 'woodkit'); ?></p>
 				</div>
+				<div class="field select" data-config="captcha-type" style="display: none;">
+					<div class="field-content">
+						<label for="captcha-type"><?php _e("Captcha type", 'woodkit'); ?></label>
+						<?php $value = $this->get_option('captcha-type'); ?>
+						<select id="captcha-type" name="captcha-type">
+							<?php $selected = (empty($value) || $value == 'numeric' ? 'selected="selected"' : ''); ?>
+							<option value="numeric" <?php echo $selected; ?>><?php _e("Numeric", 'woodkit'); ?></option>
+							<?php $selected = (!empty($value) && $value == 'google-v2' ? 'selected="selected"' : ''); ?>
+							<option value="google-v2" <?php echo $selected; ?>><?php _e("Google Recaptcha V2", 'woodkit'); ?></option>
+						</select>
+					</div>
+				</div>
+				<div class="field text" data-config="captcha-google-key" style="display: none;">
+					<div class="field-content">
+						<?php $value = $this->get_option('captcha-google-key-public'); ?>
+						<label for="captcha-google-key-public"><?php _e("Google Recaptcha public key", 'woodkit'); ?></label>
+						<input type="text" id="captcha-google-key-public" name="captcha-google-key-public" value="<?php echo $value; ?>" />
+					</div>
+				</div>
+				<div class="field text" data-config="captcha-google-key" style="display: none;">
+					<div class="field-content">
+						<?php $value = $this->get_option('captcha-google-key-private'); ?>
+						<label for="captcha-google-key-private"><?php _e("Google Recaptcha private key", 'woodkit'); ?></label>
+						<input type="text" id="captcha-google-key-private" name="captcha-google-key-private" value="<?php echo $value; ?>" />
+					</div>
+					<p class="description"><?php _e('To get these keys, please visit : ', 'woodkit'); ?><a href="https://www.google.com/recaptcha/admin/" target="_blank">Google Recaptcha admin</a></p>
+				</div>
+				<hr />
+				<h3><?php _e("Blocking", 'woodkit'); ?></h3>
 				<div class="field checkbox">
 					<div class="field-content">
-						<?php
-						$value = $this->get_option('failtoban-active');
+						<?php $value = $this->get_option('failtoban-active');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
-						}
-						?>
+						} ?>
 						<input type="checkbox" id="failtoban-active" name="failtoban-active" <?php echo $checked; ?> />
 						<label for="failtoban-active"><?php _e("Failtoban active", 'woodkit'); ?></label>
 					</div>
 					<p class="description"><?php _e('Block gross power hacking on login, register and comment forms (Woocommerce supported)', 'woodkit'); ?></p>
 				</div>
+				<hr />
+				<h3><?php _e("Headers", 'woodkit'); ?></h3>
 				<div class="field checkbox">
 					<div class="field-content">
-						<?php
-						$value = $this->get_option('headers-nosniff');
+						<?php $value = $this->get_option('headers-nosniff');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
-						}
-						?>
+						} ?>
 						<input type="checkbox" id="headers-nosniff" name="headers-nosniff" <?php echo $checked; ?> />
 						<label for="headers-nosniff"><?php _e("No sniff", 'woodkit'); ?></label>
 					</div>
@@ -134,13 +161,11 @@ class WoodkitToolSecure extends WoodkitTool{
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
-						<?php
-						$value = $this->get_option('headers-xss');
+						<?php $value = $this->get_option('headers-xss');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
-						}
-						?>
+						} ?>
 						<input type="checkbox" id="headers-xss" name="headers-xss" <?php echo $checked; ?> />
 						<label for="headers-xss"><?php _e("XSS protection", 'woodkit'); ?></label>
 					</div>
@@ -148,13 +173,11 @@ class WoodkitToolSecure extends WoodkitTool{
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
-						<?php
-						$value = $this->get_option('headers-frame');
+						<?php $value = $this->get_option('headers-frame');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
-						}
-						?>
+						} ?>
 						<input type="checkbox" id="headers-frame" name="headers-frame" <?php echo $checked; ?> />
 						<label for="headers-frame"><?php _e("Restrict framing", 'woodkit'); ?></label>
 					</div>
@@ -162,13 +185,11 @@ class WoodkitToolSecure extends WoodkitTool{
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
-						<?php
-						$value = $this->get_option('headers-poweredby');
+						<?php $value = $this->get_option('headers-poweredby');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
-						}
-						?>
+						} ?>
 						<input type="checkbox" id="headers-poweredby" name="headers-poweredby" <?php echo $checked; ?> />
 						<label for="headers-poweredby"><?php _e("Hide 'powered by' info", 'woodkit'); ?></label>
 					</div>
@@ -176,13 +197,11 @@ class WoodkitToolSecure extends WoodkitTool{
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
-						<?php
-						$value = $this->get_option('headers-server');
+						<?php $value = $this->get_option('headers-server');
 						$checked = '';
 						if ($value == 'on'){
 							$checked = ' checked="checked"';
-						}
-						?>
+						} ?>
 						<input type="checkbox" id="headers-server" name="headers-server" <?php echo $checked; ?> />
 						<label for="headers-server"><?php _e("Hide 'Server' info", 'woodkit'); ?></label>
 					</div>
@@ -190,9 +209,7 @@ class WoodkitToolSecure extends WoodkitTool{
 				</div>
 				<div class="field select">
 					<div class="field-content">
-						<?php 
-						$value = $this->get_option('headers-referrer');
-						?>
+						<?php $value = $this->get_option('headers-referrer'); ?>
 						<select id="headers-referrer" name="headers-referrer">
 							<?php $selected = (!empty($value) && $value == 'no-referrer' ? 'selected="selected"' : ''); ?>
 							<option value="no-referrer" <?php echo $selected; ?>><?php _e("Omit entirely", 'woodkit'); ?></option>
@@ -216,15 +233,47 @@ class WoodkitToolSecure extends WoodkitTool{
 				</div>
 				<div class="field select">
 					<div class="field-content">
-						<?php 
-						$value = $this->get_option('headers-corswhitelist');
-						?>
+						<?php $value = $this->get_option('headers-corswhitelist'); ?>
 						<textarea id="headers-corswhitelist" name="headers-corswhitelist" rows="10" placeholder="<?php echo esc_attr(__("CORS domains whitelist", 'woodkit')); ?>"><?php echo $value; ?></textarea>
 					</div>
 					<p class="description"><?php _e('Set CORS whitelist - one domain per line', 'woodkit'); ?></p>
 				</div>
 				<div class="section-info"><?php _e("You can view your headers and evaluate your website security", 'woodkit'); ?> : <a href="https://securityheaders.io/" target="_blank">https://securityheaders.io/</a></div>
 			</div>
+			<script type="text/javascript">
+			(function($) {
+				$(document).ready(function(){
+					// -----------------------------------------------------
+					// Captcha UI controllers
+					function tool_secure_option__captcha_ctrl_() {
+						tool_secure_option__captcha_type();
+						tool_secure_option__captcha_google_key();
+					}
+					function tool_secure_option__captcha_type() {
+						if ($("input[name='captcha-active']").is(':checked')) {
+							$("*[data-config='captcha-type']").fadeIn(0);
+						} else {
+							$("*[data-config='captcha-type']").fadeOut(0);
+						}
+					}
+					function tool_secure_option__captcha_google_key() {
+						if ($("input[name='captcha-active']").is(':checked')) {
+							if ($("select[name='captcha-type']").val() === 'google-v2') {
+								$("*[data-config='captcha-google-key']").fadeIn(0);
+							} else {
+								$("*[data-config='captcha-google-key']").fadeOut(0);
+							}
+						} else {
+							$("*[data-config='captcha-google-key']").fadeOut(0);
+						}
+					}
+					tool_secure_option__captcha_ctrl_();
+					$("input[name='captcha-active']").on("change", function(e){ tool_secure_option__captcha_ctrl_(); });
+					$("select[name='captcha-type']").on("change", function(e){ tool_secure_option__captcha_ctrl_(); });
+					// -----------------------------------------------------
+				});
+			})(jQuery);
+			</script>
 		</div>
 		<?php
 	}

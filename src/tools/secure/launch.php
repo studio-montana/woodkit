@@ -36,7 +36,7 @@ require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'
 /**
  * Force login/password authentication (user can not use email)
  */
-remove_filter( 'authenticate', 'wp_authenticate_email_password', 20 );
+remove_filter('authenticate', 'wp_authenticate_email_password', 20);
 
 /**
  * Hide WP version in HTML meta data
@@ -55,10 +55,66 @@ add_filter('the_generator', function(){
  * @return boolean
 */
 function secure_is_captcha_active(){
-	$captcha_active = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "captcha-active");
-	if (!empty($captcha_active) && $captcha_active == "on")
-		return true;
-	return false;
+	static $res = -1;
+	if ($res === -1) {
+		$res = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, 'captcha-active');
+		$res = !empty($res) && $res == "on";
+	}
+	return $res;
+}
+
+/**
+ * Retrieve captcha type
+ * @return boolean
+*/
+function secure_get_captcha_type(){
+	static $res = -1;
+	if ($res === -1) {
+		$res = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, 'captcha-type');
+	}
+	return $res;
+}
+
+/**
+ * Is secure captcha numeric (default)
+ * @return boolean
+*/
+function secure_is_captcha_type_numeric(){
+	$captcha_type = secure_get_captcha_type(); 
+	return !empty($captcha_type) && $captcha_type === 'numeric';
+}
+
+/**
+ * Is secure captcha Google Recaptcha V2
+ * @return boolean
+*/
+function secure_is_captcha_type_google_v2(){
+	$captcha_type = secure_get_captcha_type(); 
+	return !empty($captcha_type) && $captcha_type === 'google-v2';
+}
+
+/**
+ * Retrieve Google Recaptcha public key
+ * @return string
+*/
+function secure_get_captcha_google_public_key(){
+	static $res = -1;
+	if ($res === -1) {
+		$res = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, 'captcha-google-key-public');
+	}
+	return $res;
+}
+
+/**
+ * Retrieve Google Recaptcha private key
+ * @return string
+*/
+function secure_get_captcha_google_private_key(){
+	static $res = -1;
+	if ($res === -1) {
+		$res = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, 'captcha-google-key-private');
+	}
+	return $res;
 }
 
 /**
@@ -66,24 +122,41 @@ function secure_is_captcha_active(){
  * @return boolean
  */
 function secure_is_failtoban_active(){
-	$failtoban_active = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "failtoban-active");
-	if (!empty($failtoban_active) && $failtoban_active == "on")
-		return true;
-	return false;
+	static $res = -1;
+	if ($res === -1) {
+		$res = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, "failtoban-active");
+		$res = !empty($res) && $res == "on";
+	}
+	return $res;
 }
 
 /**
  * Add captchanum to Contact Form 7 plugin
  */
-if (secure_is_captcha_active() && class_exists("WPCF7_ContactForm")){
+if (secure_is_captcha_active() && secure_is_captcha_type_numeric() && class_exists("WPCF7_ContactForm")){
 	require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/inc/contactform7/captchanum.php');
 }
+
+/**
+ * WP head
+ */
+add_action('wp_head', 'secure_wp_head');
+
+/**
+ * WP login head
+ */
+add_action('login_head', 'secure_login_head');
 
 /**
  * WP uses this action to generate login form
  */
 add_action('login_form', 'secure_login_form');
 add_filter('login_form_middle', 'secure_login_form_filter', 10, 1);
+
+/**
+ * WP uses this action to generate lost password form
+ */
+add_action('lostpassword_form', 'secure_lostpassword_form');
 
 /**
  * WooCommerce uses this action to generate login form
@@ -104,6 +177,11 @@ add_action('register_form', 'secure_register_form');
  * WP uses this action during login process
 */
 add_action('wp_authenticate', 'secure_validate_login_form', 1, 1);
+
+/**
+ * WP uses this action during lost password process
+ */
+add_action('lostpassword_post', 'secure_validate_lostpassword_form', 10);
 
 /**
  * WP uses this action during registration process
@@ -141,6 +219,30 @@ add_filter('tool_contactform7_captchanum_field', 'secure_contactform7_form_field
 add_filter('tool_contactform7_captchanum_validatation', 'secure_contactform7_form_validate', 1, 1);
 
 /**
+ * called to generate WP head
+*/
+function secure_wp_head() {
+	if (secure_is_failtoban_active()){
+		secure_failtoban_wp_head();
+	}
+	if (secure_is_captcha_active()){
+		secure_captcha_wp_head();
+	}
+}
+
+/**
+ * called to generate WP login head
+*/
+function secure_login_head(){
+	if (secure_is_failtoban_active()){
+		secure_failtoban_login_head();
+	}
+	if (secure_is_captcha_active()){
+		secure_captcha_login_head();
+	}
+}
+
+/**
  * called to generate WP login form
 */
 function secure_login_form(){
@@ -164,6 +266,18 @@ function secure_login_form_filter(){
 		$field .= secure_captcha_login_form(false);
 	}
 	return $field;
+}
+
+/**
+ * called by filter to generate WP lost password form
+ */
+function secure_lostpassword_form(){
+	if (secure_is_failtoban_active()){
+		secure_failtoban_lostpassword_form();
+	}
+	if (secure_is_captcha_active()){
+		secure_captcha_lostpassword_form();
+	}
 }
 
 /**
@@ -211,6 +325,15 @@ function secure_validate_login_form($args){
 	}
 	if (secure_is_captcha_active()){
 		secure_captcha_validate_login_form($args);
+	}
+}
+
+function secure_validate_lostpassword_form() {
+	if (secure_is_failtoban_active()){
+		secure_failtoban_validate_lostpassword_form();
+	}
+	if (secure_is_captcha_active()){
+		secure_captcha_validate_lostpassword_form();
 	}
 }
 

@@ -27,12 +27,31 @@ defined('ABSPATH') or die("Go Away!");
  */
 define('SECURE_CAPTCHA_FIELD', 'secure-captcha-field');
 define('SECURE_CAPTCHA_RESULT', 'secure-captcha-result');
+define('SECURE_CAPTCHA_RECAPTCHA_API_JS', 'https://www.recaptcha.net/recaptcha/api.js');
+
+/**
+ * called to generate WP head
+ */
+function secure_captcha_wp_head () {
+	if (secure_is_captcha_type_google_v2()) {
+		?><script src="<?php echo SECURE_CAPTCHA_RECAPTCHA_API_JS; ?>" async defer></script><?php
+	}
+}
+
+/**
+ * called to generate WP login head
+ */
+function secure_captcha_login_head () {
+	if (secure_is_captcha_type_google_v2()) {
+		?><script src="<?php echo SECURE_CAPTCHA_RECAPTCHA_API_JS; ?>" async defer></script><?php
+	}
+}
 
 /**
  * called to generate WP login form
 */
 function secure_captcha_login_form($display = true){
-	$field = secure_captcha_generate_field(SECURE_CAPTCHA_FIELD.'-login');
+	$field = secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-login'));
 	if ($display)
 		echo $field;
 	else
@@ -40,11 +59,18 @@ function secure_captcha_login_form($display = true){
 }
 
 /**
+ * called to generate WP lost password form
+ */
+function secure_captcha_lostpassword_form() {
+	echo secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-lostpassword'));
+}
+
+/**
  * called to generate WooCommerce login form
  */
 function secure_captcha_woocommerce_login_form(){
 	echo '<p class="form-row form-row-wide">';
-	echo secure_captcha_generate_field(SECURE_CAPTCHA_FIELD.'-woocommerce-login');
+	echo secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-woocommerce-login'));
 	echo '</p>';
 }
 
@@ -54,7 +80,7 @@ function secure_captcha_woocommerce_login_form(){
 function secure_captcha_woocommerce_checkout_registration_form(){
 	echo '<p class="form-row form-row form-row-wide address-field validate-required" id="billing_captcha_field" data-o_class="form-row form-row form-row-wide address-field validate-required">';
 	echo '<label for="'.SECURE_CAPTCHA_FIELD.'-register" class="">'.__("Captcha", 'woodkit').'<abbr class="required" title="requis">*</abbr></label>';
-	echo secure_captcha_generate_field(SECURE_CAPTCHA_FIELD.'-register');
+	echo secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-register'));
 	echo '</p>';
 }
 
@@ -63,7 +89,7 @@ function secure_captcha_woocommerce_checkout_registration_form(){
  */
 function secure_captcha_register_form(){
 	echo '<p class="form-row form-row-wide">';
-	echo secure_captcha_generate_field(SECURE_CAPTCHA_FIELD.'-register');
+	echo secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-register'));
 	echo '</p>';
 }
 
@@ -72,7 +98,7 @@ function secure_captcha_register_form(){
  */
 function secure_captcha_validate_login_form($args){
 	if (isset($_POST['log']) && isset($_POST['pwd'])){
-		if (!secure_captcha_validate_result(SECURE_CAPTCHA_FIELD.'-login')){
+		if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-login'))){
 			$redirect_to = "";
 			if (isset($_REQUEST['redirect_to']))
 				$redirect_to = $_REQUEST['redirect_to'];
@@ -83,11 +109,21 @@ function secure_captcha_validate_login_form($args){
 }
 
 /**
+ * called to validate WP lost password form
+ */
+function secure_captcha_validate_lostpassword_form($errors){
+	$recaptcha_valid = inside_secure_recaptcha_is_valid(array('field_name' => SECURE_CAPTCHA_FIELD.'-lostpassword'));
+	if ($recaptcha_valid !== true){
+		wp_die("Captcha invalide");
+	}
+}
+
+/**
  * called to validate WP registration form
  */
 function secure_captcha_validate_register_form($errors){
 	if (isset($_POST['user_login']) && isset($_POST['user_email'])){
-		if (!secure_captcha_validate_result(SECURE_CAPTCHA_FIELD.'-register')){
+		if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-register'))){
 			$errors->add('captcha-error', "<strong>".__("ERROR", 'woodkit')." : </strong>".__("invalid captcha", 'woodkit'));
 		}
 	}
@@ -98,7 +134,7 @@ function secure_captcha_validate_register_form($errors){
  * called to validate WooCommerce login form
  */
 function secure_captcha_validate_woocommerce_login_form($validation_error, $user, $password){
-	if (!secure_captcha_validate_result(SECURE_CAPTCHA_FIELD.'-woocommerce-login')){
+	if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-woocommerce-login'))){
 		$validation_error = new WP_Error('captcha-error', __("invalid captcha", 'woodkit'));
 	}
 	return $validation_error;
@@ -108,7 +144,7 @@ function secure_captcha_validate_woocommerce_login_form($validation_error, $user
  * called to validate WooCommerce register form
  */
 function secure_captcha_validate_woocommerce_register_form($validation_error, $username, $email){
-	if (!secure_captcha_validate_result(SECURE_CAPTCHA_FIELD.'-register')){
+	if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-register'))){
 		$validation_error = new WP_Error('captcha-error', __("invalid captcha", 'woodkit'));
 	}
 	return $validation_error;
@@ -118,7 +154,7 @@ function secure_captcha_validate_woocommerce_register_form($validation_error, $u
  * called when WP constructs fields for comment form
  */
 function secure_captcha_comment_form_field($fields){
-	$fields[SECURE_CAPTCHA_FIELD.'-comment'] = secure_captcha_generate_field(SECURE_CAPTCHA_FIELD.'-comment');
+	$fields[SECURE_CAPTCHA_FIELD.'-comment'] = secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-comment'));
 	return $fields;
 }
 
@@ -126,7 +162,7 @@ function secure_captcha_comment_form_field($fields){
  * called when WP attemps to insert new comment
  */
 function secure_captcha_comment_validate($comment_post_ID){
-	if (!secure_captcha_validate_result(SECURE_CAPTCHA_FIELD.'-comment')){
+	if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-comment'))){
 		wp_die(__('<strong>ERROR</strong>: invalid captcha', 'woodkit'), 200);
 	}
 }
@@ -136,7 +172,7 @@ function secure_captcha_comment_validate($comment_post_ID){
  */
 function secure_captcha_generic_form_field($field_name = "", $display = true, $use_placeholder = true, $use_label = false){
 	if (empty($field_name)) $field_name = SECURE_CAPTCHA_FIELD;
-	$field = secure_captcha_generate_field($field_name, $use_placeholder, $use_label);
+	$field = secure_captcha_generate_field(array('field_name' => $field_name, 'use_placeholder' => $use_placeholder, 'use_label' => $use_label));
 	if ($display)
 		echo $field;
 	else
@@ -148,16 +184,55 @@ function secure_captcha_generic_form_field($field_name = "", $display = true, $u
  */
 function secure_captcha_generic_form_validate($field_name = "", $errors = array()){
 	if (empty($field_name)) $field_name = SECURE_CAPTCHA_FIELD;
-	if (!secure_captcha_validate_result($field_name)){
+	if (!secure_captcha_validate_result(array('field_name' => $field_name))){
 		$errors[] = new WP_Error('captcha-error', __("invalid captcha", 'woodkit'));
 	}
 	return $errors;
 }
 
+/********************************************************************************************************
+ * Captcha field generation
+ *******************************************************************************************************/
+
 /**
- * generate captcha field
+ * Main
  */
-function secure_captcha_generate_field($field_name, $use_placeholder = true, $use_label = false){
+function secure_captcha_generate_field($args = array()){
+	$args = wp_parse_args($args, array(
+			'field_name' => '',
+			'use_placeholder' => true,
+			'use_label' => false
+	));
+	if (secure_is_captcha_type_numeric()) {
+		return secure_captcha_generate_field__numeric($args['field_name'], $args['use_placeholder'], $args['use_label']);
+	} else if (secure_is_captcha_type_google_v2()) {
+		return secure_captcha_generate_field__google_v2($args['field_name']);
+	}
+}
+
+/**
+ * Retrieve Google Recaptcha field
+ */
+function secure_captcha_generate_field__google_v2($field_name){
+	$res = '';
+	$google_public_key = secure_get_captcha_google_public_key();
+	$google_private_key = secure_get_captcha_google_private_key();
+	if (empty($google_public_key) || empty($google_private_key)) {
+		return __("Google Recaptcha keys are missed", 'woodkit');
+	}
+	$error = WoodkitSession::get($field_name.'-error', "");
+	WoodkitSession::set($field_name.'-error', ""); // clear captcha error in session (otherwise, captcha-error appear when form is not submited)
+	if (!empty($error)){
+		$res .= '<p class="error captcha-error">'.$error.'</p>';
+	}
+	$res .= '<div class="g-recaptcha" data-size="normal" data-theme="light" data-sitekey="'.$google_public_key.'"></div>';
+	return $res;
+}
+
+/**
+ * Retrieve numeric captcha field
+ */
+function secure_captcha_generate_field__numeric($field_name, $use_placeholder = true, $use_label = false){
 	$field = "";
 	$is_validated = WoodkitSession::get($field_name.'-validate', "");
 	$old_result = WoodkitSession::get($field_name.'-result', "");
@@ -196,10 +271,48 @@ function secure_captcha_generate_field($field_name, $use_placeholder = true, $us
 	return $field;
 }
 
+/********************************************************************************************************
+ * Captcha field validation
+ *******************************************************************************************************/
+
 /**
- * validate captcha result for specified field
+ * Main
  */
-function secure_captcha_validate_result($field_name){
+function secure_captcha_validate_result($args){
+	$args = wp_parse_args($args, array(
+			'field_name' => ''
+	));
+	if (secure_is_captcha_type_numeric()) {
+		return secure_captcha_validate_result__numeric($args['field_name']);
+	} else if (secure_is_captcha_type_google_v2()) {
+		return secure_captcha_validate_result__google_v2($args['field_name']);
+	}
+}
+
+/**
+ * validate google recaptcha for specified field
+ */
+function secure_captcha_validate_result__google_v2($field_name){
+	require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_ASSETS_FOLDER.'github.google.recaptcha/autoload.php');
+	$valid = false;
+	$google_private_key = secure_get_captcha_google_private_key();
+	if (!empty($google_private_key)) {
+		$recaptcha = new \ReCaptcha\ReCaptcha($google_private_key);
+		$resp = $recaptcha->verify($_POST['g-recaptcha-response']);
+		$valid = $resp->isSuccess();
+	}
+	if ($valid) {
+		WoodkitSession::set($field_name.'-error', "");
+	}else{
+		WoodkitSession::set($field_name.'-error', __("invalid captcha", 'woodkit'));
+	}
+	return $valid;
+}
+
+/**
+ * validate numeric captcha result for specified field
+ */
+function secure_captcha_validate_result__numeric($field_name){
 	WoodkitSession::set($field_name.'-validate', 1);
 	$valid = false;
 	if (isset($_POST[$field_name])){
@@ -212,9 +325,10 @@ function secure_captcha_validate_result($field_name){
 	}else{ // no submition
 		$valid = true;
 	}
-	if ($valid)
+	if ($valid) {
 		WoodkitSession::set($field_name.'-error', "");
-	else
+	}else{
 		WoodkitSession::set($field_name.'-error', __("invalid captcha", 'woodkit'));
+	}
 	return $valid;
 }
