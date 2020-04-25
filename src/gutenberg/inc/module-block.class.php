@@ -13,21 +13,15 @@ abstract class WKG_Module_Block extends WKG_Module {
 
 	function __construct($slug, $args = array()) {
 
-		parent::__construct();
-		
-		// determine slug with base
-		$this->slug = 'wkg/' . $slug;
-
-		// parse args
-		$this->args = wp_parse_args($args, array(
+		parent::__construct('wkg/' . $slug, wp_parse_args($args, array(
 			'is_dynamic' => true,
 			'script_dependencies' => array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api', 'wp-data', 'wp-edit-post'),
 			'css_dependencies' => array(),
 			'before_init' => null,
 			'after_init' => null,
 			'block_post_types_template' => array(),
-		));
-
+		)));
+		
 		// init
 		add_action('init', array($this, 'init'), 10);
 	}
@@ -79,9 +73,9 @@ abstract class WKG_Module_Block extends WKG_Module {
 		if (!empty($this->args['block_post_types_template'])) {
 			foreach ($this->args['block_post_types_template'] as $post_type) {
 				$post_type_object = get_post_type_object($post_type);
-		    $post_type_object->template = array(
-		        array($this->slug),
-		    );
+		    	$post_type_object->template = array(
+			        array($this->slug),
+			    );
 			}
 		}
 

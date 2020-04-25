@@ -36,17 +36,6 @@ function wip_customize_register($wp_customize_manager) {
 			'title' => __( 'Work In Progress', 'woodkit' ),
 	) );
 
-	// wip active
-	$wp_customize_manager->add_setting('wip_state', array('type' => 'theme_mod'));
-	$wp_customize_manager->add_control('wip_state',	array(
-			'type' => 'checkbox',
-			'label' => __('Active', 'woodkit' ),
-			'description' => __('only logged in user can look you site', 'woodkit' ),
-			'section' => 'wip_customizer',
-			'settings'   => 'wip_state',
-	)
-	);
-
 	// wip message
 	$wp_customize_manager->add_setting('wip_message', array('type' => 'theme_mod'));
 	$wp_customize_manager->add_control('wip_message', array(
