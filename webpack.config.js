@@ -4,7 +4,6 @@ const path = require('path');
 let gutenberg_modules = [
 	{'slug': 'wall', 'path': 'tools/wall/gutenberg/blocks/wall/'},
 	{'slug': 'seometa', 'path': 'tools/seo/gutenberg/plugins/seometa/'},
-	{'slug': 'eventmeta', 'path': 'tools/event/gutenberg/plugins/eventmeta/'},
 ];
 
 /** all configurations */

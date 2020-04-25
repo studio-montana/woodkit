@@ -100,7 +100,7 @@ class WKG_REST_Commons extends WKG_REST {
 	 * @return WP_Error|WP_REST_Response
 	 */
 	public function get_icons( $request ) {
-		$icons = wkg_get_icons();
+		$icons = woodkit_get_fonticons_set();
 		return new WP_REST_Response( $icons, 200 );
 	}
 }

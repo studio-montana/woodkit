@@ -81,6 +81,7 @@ if(!class_exists('Woodkit')){
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'comparators.php');
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'utils.php');
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'customizer.php');
+			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'icons.php');
 
 			/** upgrader */
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'upgrader.php');
@@ -156,6 +157,8 @@ if(!class_exists('Woodkit')){
 			require_once (WOODKIT_PLUGIN_PATH.'src/init.php');
 
 			do_action("woodkit_after_init");
+			
+			$icons = woodkit_get_fonticons_set();
 		}
 
 	}
