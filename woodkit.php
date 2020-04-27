@@ -157,8 +157,6 @@ if(!class_exists('Woodkit')){
 			require_once (WOODKIT_PLUGIN_PATH.'src/init.php');
 
 			do_action("woodkit_after_init");
-			
-			$icons = woodkit_get_fonticons_set();
 		}
 
 	}

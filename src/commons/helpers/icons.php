@@ -28,14 +28,18 @@ function woodkit_get_fonticons_set () {
 		$fonticons_set = array();
 		
 		/** Load classic JSONs */
-		$json_files = apply_filters('woodkit_fonticons_set_files', array(WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TEMPLATES_FONTS_FOLDER.'dashicons/icons.json'));
+		$json_files = apply_filters('woodkit_fonticons_set_files', array('dashicons' => WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TEMPLATES_FONTS_FOLDER.'dashicons/icons.json'));
 		if (!empty($json_files)) {
-			foreach ($json_files as $json_file) {
+			foreach ($json_files as $json_file_slug => $json_file) {
 				$json_file_content = file_get_contents($json_file);
 				if ($json_file_content) {
 					$json = json_decode($json_file_content, true);
 					if ($json) {
-						$fonticons_set[] = $json;
+						if ($json_file_slug == 'fontawesome') {
+							$fonticons_set[] = woodkit_parse_fontawesome_icons_json($json);
+						} else {
+							$fonticons_set[] = $json;
+						}
 					}
 				}
 			}
@@ -45,4 +49,12 @@ function woodkit_get_fonticons_set () {
 		// TODO
 	}
 	return $fonticons_set;
+}
+
+function woodkit_parse_fontawesome_icons_json ($json) {
+	$res = array();
+	if ($json) {
+		
+	}
+	return $res;
 }

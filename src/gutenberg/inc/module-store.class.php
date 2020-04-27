@@ -24,7 +24,7 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
- * Extend this class to register Gutenberg Plugin
+ * Extend this class to register Gutenberg Store
  *
  * Registers all block assets so that they can be enqueued through Gutenberg in
  * the corresponding context.
@@ -33,25 +33,24 @@ defined('ABSPATH') or die("Go Away!");
  * @author sebc
  *
  */
-abstract class WKG_Module_Plugin extends WKG_Module {
+abstract class WKG_Module_Store extends WKG_Module {
 
 	function __construct ($slug, $args = array()) {
 
-		parent::__construct('wkg-plugins-' . $slug, wp_parse_args($args, array(
-			'script_dependencies' => array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api', 'wp-data', 'wp-plugins', 'wp-edit-post'),
-			'css_dependencies' => array(),
-			'post_types' => array(),
+		parent::__construct('wkg-store-' . $slug, wp_parse_args($args, array(
+				'post_types' => array(),
+				'script_dependencies' => array()
 		)));
-
-		add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_editor_assets'));
+		
+		add_action('admin_enqueue_scripts', array($this, 'enqueue_store'));
 	}
 
-	public function enqueue_block_editor_assets () {
+	public function enqueue_store () {
 		// Skip block registration if Gutenberg is not enabled/merged.
 		if (!function_exists('register_block_type')) {
 			return;
 		}
-		
+
 		$enqueue = false;
 		if (!empty($this->args['post_types'])) {
 			$screen = get_current_screen();
@@ -75,7 +74,7 @@ abstract class WKG_Module_Plugin extends WKG_Module {
 		
 		// before hook
 		$this->before_enqueue();
-
+		
 		// enqueue script
 		$build_js = 'build.js';
 		wp_enqueue_script($this->slug . '-build', $this->uri.$build_js, $this->args['script_dependencies'], filemtime($this->path.$build_js));

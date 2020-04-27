@@ -52,6 +52,10 @@ if (!class_exists('WOODKITGUTEN')) {
 			require_once (WOODKITGUTEN_SRC_PATH.'inc/module.class.php');
 			require_once (WOODKITGUTEN_SRC_PATH.'inc/module-block.class.php');
 			require_once (WOODKITGUTEN_SRC_PATH.'inc/module-plugin.class.php');
+			require_once (WOODKITGUTEN_SRC_PATH.'inc/module-store.class.php');
+			
+			/** Main stores */
+			require_once (WOODKITGUTEN_SRC_PATH.'stores/commons/index.php');
 
 			/** admin scripts / styles */
 			add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
@@ -65,10 +69,6 @@ if (!class_exists('WOODKITGUTEN')) {
 			if (!function_exists('register_block_type')) {
 				return;
 			}
-			// Enqueue Stores
-			$stores_uri = WOODKITGUTEN_SRC_URI . 'stores/build.js';
-			$stores_path = WOODKITGUTEN_SRC_PATH . 'stores/build.js';
-			wp_enqueue_script('wkg-general-stores', $stores_uri, array(), filemtime($stores_path));
 			// Enqueue Editor styles
 			$style_uri = WOODKITGUTEN_SRC_URI . 'assets-css/editor.css';
 			$style_path = WOODKITGUTEN_SRC_PATH . 'assets-css/editor.css';
