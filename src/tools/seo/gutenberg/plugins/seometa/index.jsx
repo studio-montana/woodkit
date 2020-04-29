@@ -80,7 +80,6 @@ const applyWithDispatch = withDispatch(dispatch => {
   let core_editor_store = dispatch('core/editor')
   return {
     on_meta_change: (meta) => {
-      console.log('update meta - ', meta)
       core_editor_store.editPost({meta})
     },
   }
