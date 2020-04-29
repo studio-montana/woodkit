@@ -3,7 +3,6 @@ const path = require('path');
 /** gutenberg modules declaration */
 let gutenberg_modules = [
 	{'entry': 'index.js', 'name': 'commons', 'path': 'gutenberg/stores/commons/'}, // commons store
-	{'entry': 'index.jsx', 'name': 'wall', 'path': 'tools/wall/gutenberg/blocks/wall/'}, // wall tool's block
 	{'entry': 'index.jsx', 'name': 'seometa', 'path': 'tools/seo/gutenberg/plugins/seometa/', 'entry': 'index.jsx'}, // seo tool's metabox
 ];
 

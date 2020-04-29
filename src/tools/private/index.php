@@ -43,6 +43,10 @@ class WoodkitToolPrivate extends WoodkitTool{
 			));
 	}
 	
+	public function launch() {
+		require_once ($this->path.'/launch.php');
+	}
+	
 	public function get_config_default_values(){
 		return array(
 				'active' => 'off'

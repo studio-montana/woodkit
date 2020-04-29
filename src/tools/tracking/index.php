@@ -43,6 +43,10 @@ class WoodkitToolTracking extends WoodkitTool{
 			));
 	}
 	
+	public function launch() {
+		require_once ($this->path.'/launch.php');
+	}
+	
 	public function get_config_fields(){
 		return array(
 				'googleanalytics-code',

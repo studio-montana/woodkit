@@ -53,7 +53,6 @@ abstract class WoodkitTool{
 		$this->has_config = $args['has_config'];
 		$this->add_config_in_menu = $args['add_config_in_menu'];
 		$this->documentation_url = $args['documentation'];
-		$this->documentation_url = $args['documentation'];
 		$this->config_nonce_name = 'woodkit-tool-'.$this->slug.'-config-nonce';
 		/** calculate class path from child class */
 		$rc = new ReflectionClass(get_class($this));
@@ -66,17 +65,7 @@ abstract class WoodkitTool{
 		return $this->path;
 	}
 	
-	public function launch(){
-		if (file_exists($this->path.'/launch.php')){
-			require_once ($this->path.'/launch.php');
-		}
-	}
-	
-	public function launch_widgets(){
-		if (file_exists($this->path.'/launch-widgets.php')){
-			require_once ($this->path.'/launch-widgets.php');
-		}
-	}
+	public abstract function launch();
 	
 	/**
 	 * Proceed to tool activation

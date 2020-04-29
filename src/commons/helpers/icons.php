@@ -89,6 +89,7 @@ function woodkit_get_fonticons_set () {
  * Parse le fichier icons.json de FontAwesome
  * On ne s'emmerde pas avec un parsing manuel, FA nous fournit sont icons.json (dans le zip/metadata/)
  * On le parse pour créer le format qui nous intéresse (et surtout on l'allège)
+ * Pour en savoir plus sur ces fichiers : https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself
  */
 function woodkit_parse_fontawesome_icons_json ($json) {
 	$res = array();
