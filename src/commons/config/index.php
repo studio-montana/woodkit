@@ -174,7 +174,7 @@ if (is_admin()){
 		add_action ( 'admin_menu', function () {
 			$page_name = __ ( "Woodkit", 'woodkit' );
 			$menu_name = __ ( "Woodkit", 'woodkit' );
-			add_menu_page ( $page_name, $menu_name, "manage_options", "woodkit_options", "woodkit_plugin_menu_config_callback", 'dashicons-schedule');
+			add_menu_page ( $page_name, $menu_name, "manage_options", "woodkit_options", "woodkit_plugin_menu_config_callback", get_woodkit_icon('logo-plain', true, true));
 		});
 
 			/**

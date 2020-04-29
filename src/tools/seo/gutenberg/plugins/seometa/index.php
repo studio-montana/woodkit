@@ -60,7 +60,7 @@ class WKG_Module_Plugin_seometa extends WKG_Module_Plugin {
 		register_post_meta('', '_seo_meta_og_image', array(
 			'show_in_rest' => true,
 			'single' => true,
-			'type' => 'number',
+			'type' => 'integer',
 			'auth_callback' => function() {
 				return current_user_can('edit_posts');
 			}

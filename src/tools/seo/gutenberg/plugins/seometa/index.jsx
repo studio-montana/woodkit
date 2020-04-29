@@ -6,9 +6,10 @@ const { compose } = wp.compose
 const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost
 const { PanelBody, PanelRow, TextControl } = wp.components
 import WKG_Media_Selector from 'wkgcomponents/media-selector'
+import WKG_Icons from 'wkgcomponents/icons'
 
 registerPlugin('wkg-plugin-seometa', {
-  icon: 'megaphone',
+  icon: WKG_Icons.seo,
   render: (props) => {
     return (
       <Fragment>
@@ -54,7 +55,7 @@ class PluginComponent_Base extends Component {
             <div className="wkg-info">{__('Par défaut, la description utilisée pour les moteurs de recherche sera utilisé.', 'woodkit')}</div>
           </PanelRow>
           <PanelRow className="wkg-plugin-panelrow">
-            <WKG_Media_Selector show label={__('Image', 'woodkit')} value={this.props.meta_og_image} onChange={(media) => this.props.on_meta_change({'_seo_meta_og_image': media.id})} />
+            <WKG_Media_Selector show label={__('Image', 'woodkit')} value={this.props.meta_og_image && this.props.meta_og_image !== 0 ? this.props.meta_og_image : null} onChange={(media) => this.props.on_meta_change({'_seo_meta_og_image': media && media.id ? media.id : 0})} />
             <div className="wkg-info">{__('Par défaut, l\'image mise en avant de la publication sera utilisée.', 'woodkit')}</div>
           </PanelRow>
 				</PanelBody>
@@ -79,6 +80,7 @@ const applyWithDispatch = withDispatch(dispatch => {
   let core_editor_store = dispatch('core/editor')
   return {
     on_meta_change: (meta) => {
+      console.log('update meta - ', meta)
       core_editor_store.editPost({meta})
     },
   }
