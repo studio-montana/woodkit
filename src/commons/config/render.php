@@ -169,8 +169,14 @@ class WoodkitConfig {
 											<p><?php echo $tool->description; ?></p>
 										</div>
 									</td>
-									<td class="column-information">
-										<div class="plugin-documentation"><?php if (!$tool->is_core) {  _e("Addons", 'woodkit');  } else { echo 'Woodkit'; } ?></div>
+									<td class="column-source">
+										<div class="plugin-source">
+											<?php if (!$tool->is_core) {
+												echo !empty($tool->context) ? 'addons (' . $tool->context . ')' : 'addons (unknown)';
+											} else {
+												echo !empty($tool->context) ? 'Woodkit (' . $tool->context . ')' : 'Woodkit';
+											} ?>
+										</div>
 									</td>
 									<td class="column-documentation">
 										<div class="plugin-documentation">

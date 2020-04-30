@@ -30,7 +30,7 @@ define('SECURE_TOOL_NAME', 'secure');
 /**
  * Tool instance
  */
-class WoodkitToolSecure extends WoodkitTool{
+class WK_Tool_Secure extends WK_Tool{
 	
 	public function __construct(){
 		parent::__construct(array(
@@ -44,7 +44,7 @@ class WoodkitToolSecure extends WoodkitTool{
 	}
 	
 	public function launch() {
-		require_once ($this->path.'/launch.php');
+		require_once ($this->path.'launch.php');
 	}
 	
 	public function get_config_fields(){
@@ -301,6 +301,6 @@ class WoodkitToolSecure extends WoodkitTool{
 	}
 }
 add_filter("woodkit-register-tool", function($tools){
-	$tools[] = new WoodkitToolSecure();
+	$tools[] = new WK_Tool_Secure();
 	return $tools;
 });

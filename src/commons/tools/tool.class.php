@@ -26,7 +26,7 @@ defined('ABSPATH') or die("Go Away!");
  * Tool class - must be overriden by each tool
  * @author sebc
  */
-abstract class WoodkitTool{
+abstract class WK_Tool{
 
 	public $slug; // string
 	public $name; // string
@@ -35,17 +35,22 @@ abstract class WoodkitTool{
 	public $add_config_in_menu; // boolean
 	public $documentation_url; // string
 	public $is_core;  // boolean
+	public $context;  // string
 	protected $config_nonce_name; // string
 	protected $path;
+	protected $uri;
 
 	public function __construct($args){
 		$args = wp_parse_args($args, array(
+				'path' => null, // optional, only needed if you are using symbolic link outside woodkit plugin context and if you don't specify 'uri' arg
+				'uri' => null, // optional, only needed if you are using symbolic link outside woodkit plugin context and if you don't specify 'path' arg
 				'slug' => '',
 				'name' => '',
 				'description' => '',
 				'has_config' => false,
 				'add_config_in_menu' => false,
 				'documentation' => '',
+				'context' => '',
 		));
 		$this->slug = $args['slug'];
 		$this->name = $args['name'];
@@ -53,10 +58,42 @@ abstract class WoodkitTool{
 		$this->has_config = $args['has_config'];
 		$this->add_config_in_menu = $args['add_config_in_menu'];
 		$this->documentation_url = $args['documentation'];
+		$this->context = $args['context'];
 		$this->config_nonce_name = 'woodkit-tool-'.$this->slug.'-config-nonce';
-		/** calculate class path from child class */
-		$rc = new ReflectionClass(get_class($this));
-		$this->path = dirname($rc->getFileName());
+		
+		if (!isset($args['path'])) {
+			/**
+			 * Calculate PATH
+			 * NOTE : ReflectionClass render real path to class file (not a symbolic link)
+			 */
+			$rc = new ReflectionClass(get_class($this));
+			$this->path = trailingslashit(dirname($rc->getFileName()));
+		} else {
+			$this->path = $args['path'];
+		}
+		
+		if (!isset($args['uri'])) {
+			/** 
+			 * Calculate URI from PATH
+			 * IMPORTANT : this code does not support symbolic link - it's impossible to calculate URI from PATH if this path is not in WP context
+			 * To calculate URI, this code is based on PATH, so the context must be in WP plugins or themes (or directly inside Woodkit plugin)
+			 * If you are using symbolic link for any reason, you must specify 'uri' args when you instanciate this class
+			 */
+			if (startsWith($this->path, WP_PLUGIN_DIR)) {
+				$this->uri = trailingslashit(plugin_dir_url(str_replace(WP_PLUGIN_DIR, '', $this->path) . 'index.jsx'));
+			} else if (startsWith($this->path, WOODKIT_PLUGIN_PATH)) {
+				$this->uri = trailingslashit(plugin_dir_url(str_replace(WOODKIT_PLUGIN_PATH, 'woodkit/', $this->path) . 'index.jsx'));
+			} else if (startsWith($this->path, get_template_directory())) {
+				$this->uri = trailingslashit(dirname(get_theme_file_uri(str_replace(get_template_directory(), '', $this->path) . 'index.jsx')));
+			} else if (startsWith($this->path, get_stylesheet_directory())) {
+				$this->uri = trailingslashit(dirname(get_theme_file_uri(str_replace(get_stylesheet_directory(), '', $this->path) . 'index.jsx')));
+			} else {
+				throw new Exception('URI can not be determined from PATH : WK_Tool must be instanciated in WP plugins or themes (symbolic link not supported excepted inside Woodkit plugin) - you can specify \'uri\' explicitly - actual path : ' . $this->path);
+			}
+		} else {
+			$this->uri = $args['uri'];
+		}
+		
 		/** calculate if it's core source (path comparison) */
 		$this->is_core = startsWith($this->path, WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER);
 	}

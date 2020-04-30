@@ -30,7 +30,7 @@ define('SEO_TOOL_NAME', 'seo');
 /**
  * Tool instance
  */
-class WoodkitToolSEO extends WoodkitTool{
+class WK_Tool_SEO extends WK_Tool{
 	
 	public function __construct(){
 		parent::__construct(array(
@@ -44,7 +44,7 @@ class WoodkitToolSEO extends WoodkitTool{
 	}
 	
 	public function launch() {
-		require_once ($this->path.'/launch.php');
+		require_once ($this->path.'launch.php');
 	}
 	
 	public function get_config_fields(){
@@ -286,6 +286,6 @@ class WoodkitToolSEO extends WoodkitTool{
 	}
 }
 add_filter("woodkit-register-tool", function($tools){
-	$tools[] = new WoodkitToolSEO();
+	$tools[] = new WK_Tool_SEO();
 	return $tools;
 });

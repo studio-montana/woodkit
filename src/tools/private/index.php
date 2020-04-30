@@ -30,7 +30,7 @@ define('PRIVATE_TOOL_NAME', 'private');
 /**
  * Tool instance
  */
-class WoodkitToolPrivate extends WoodkitTool{
+class WK_Tool_Private extends WK_Tool{
 	
 	public function __construct(){
 		parent::__construct(array(
@@ -44,7 +44,7 @@ class WoodkitToolPrivate extends WoodkitTool{
 	}
 	
 	public function launch() {
-		require_once ($this->path.'/launch.php');
+		require_once ($this->path.'launch.php');
 	}
 	
 	public function get_config_default_values(){
@@ -55,6 +55,6 @@ class WoodkitToolPrivate extends WoodkitTool{
 	
 }
 add_filter("woodkit-register-tool", function($tools){
-	$tools[] = new WoodkitToolPrivate();
+	// $tools[] = new WK_Tool_Private();
 	return $tools;
 });

@@ -30,7 +30,7 @@ define('TRACKING_TOOL_NAME', 'tracking');
 /**
  * Tool instance
  */
-class WoodkitToolTracking extends WoodkitTool{
+class WK_Tool_Tracking extends WK_Tool{
 	
 	public function __construct(){
 		parent::__construct(array(
@@ -44,7 +44,7 @@ class WoodkitToolTracking extends WoodkitTool{
 	}
 	
 	public function launch() {
-		require_once ($this->path.'/launch.php');
+		require_once ($this->path.'launch.php');
 	}
 	
 	public function get_config_fields(){
@@ -167,6 +167,6 @@ class WoodkitToolTracking extends WoodkitTool{
 	}
 }
 add_filter("woodkit-register-tool", function($tools){
-	$tools[] = new WoodkitToolTracking();
+	$tools[] = new WK_Tool_Tracking();
 	return $tools;
 });
