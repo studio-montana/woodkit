@@ -6,7 +6,7 @@ const { compose } = wp.compose
 const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost
 const { PanelBody, PanelRow, TextControl } = wp.components
 import WKG_Media_Selector from 'wkgcomponents/media-selector'
-import WKG_Icons from 'wkgcomponents/icons'
+import WKG_Icons from 'wkgassets/icons'
 
 registerPlugin('wkg-plugin-seometa', {
   icon: WKG_Icons.seo,

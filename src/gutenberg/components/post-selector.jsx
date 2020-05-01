@@ -1,16 +1,17 @@
 const { Component } = wp.element
+const { __ } = wp.i18n
 const { Button, SelectControl } = wp.components
 const { compose } = wp.compose
 const { withSelect, withDispatch } = wp.data
 
- class WKG_Post_Selector extends Component {
+class WKG_Post_Selector extends Component {
 
-   constructor (props) {
-     super(props)
- 		this.state = {
- 			selected: null
- 		}
-   }
+  constructor (props) {
+    super(props)
+    this.state = {
+      selected: null
+    }
+  }
 
  	componentDidMount () {
  		this.setState({
@@ -32,16 +33,22 @@ const { withSelect, withDispatch } = wp.data
 
 	render () {
     let options = []
-		if (this.props.posts) {
-			options.push({value: 0, label: this.props.label_none ? this.props.label_none : 'Aucune sélection'})
-			this.props.posts.forEach((page) => {
-				options.push({value: page.id, label: page.title.rendered})
-			})
-		} else {
-			options.push({value: 0, label: this.props.label_loading ? this.props.label_loading : 'Chargement...', disabled: true})
-		}
+    if (this.props.types) {
+      for (var type of this.props.types) {
+        if (this.props.posts && this.props.posts[type.slug]) {
+          options.push({value: 0, label: type.name, disabled: true})
+          this.props.posts[type.slug].forEach((post) => {
+    				options.push({value: post.id, label: post.title.rendered, disabled: false})
+    			})
+        } else {
+          options.push({value: 0, label: type.name+' '+__('loading...', 'wooden'), disabled: true})
+        }
+      }
+    } else {
+      options.push({value: 0, label: this.props.label_loading ? this.props.label_loading : 'Chargement...', disabled: true})
+    }
   	return (
-			<div style={styles.selector}>
+			<div className="wkg-post-selector">
 				<SelectControl
           label={this.props.label}
 					options={options}
@@ -54,7 +61,19 @@ const { withSelect, withDispatch } = wp.data
 }
 
 const applyWithSelect = withSelect((select, props) => {
-		const { getEntityRecords } = select('core')
+		const { getEntityRecords, getPostTypes } = select('core')
+
+    /** parse types */
+    let types = getPostTypes()
+    if (types) {
+      if (props.post_types) {
+        types = types.filter(type => props.post_types.includes(type.slug))
+      } // exclude media (please use WKG_Media_Selector) and gutenberg blocks
+      types = types.filter(type => type.slug !== 'attachment' && type.slug !== 'wp_block')
+    }
+
+    /** retrieve posts */
+    let posts = []
     let query = {...{
       per_page : -1, // set -1 to display ALL
       // exclude : 50, // or pass multiple values in an array, e.g. [ 1, 9098 ]
@@ -66,18 +85,14 @@ const applyWithSelect = withSelect((select, props) => {
       // tags : 4, // tag ID, you can pass multiple too [ 4, 7 ]
       // search : 'search query',
     }, ...props.query}
-    return { posts: getEntityRecords('postType', props.post_type ? props.post_type : 'post', query) }
+    if (types) {
+      for (var type of types) {
+        posts[type.slug] = getEntityRecords('postType', type.slug, query)
+      }
+    }
+    return { posts, types}
 })
 
 export default compose(
     applyWithSelect,
 )(WKG_Post_Selector)
-
-const styles = {
-	selector: {
-		width: '100%',
-		height: '100%',
-    position: 'relative',
-		padding: '12px',
-	}
-}

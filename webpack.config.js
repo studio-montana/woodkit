@@ -23,8 +23,9 @@ var config = {
 	resolve: {
 		alias: {
 		  wkgcomponents: path.resolve(__dirname, 'src/gutenberg/components/'), // import ... from 'wkgcomponents/...'
+		  wkgassets: path.resolve(__dirname, 'src/gutenberg/assets/'), // import ... from 'wkgassets/...'
 		},
-    	extensions: ['.js', '.jsx'], // import without extension
+    extensions: ['.js', '.jsx'], // import without extension
 	}
 };
 

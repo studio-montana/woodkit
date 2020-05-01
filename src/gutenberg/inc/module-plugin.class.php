@@ -75,6 +75,10 @@ abstract class WKG_Module_Plugin extends WKG_Module {
 		
 		// before hook
 		$this->before_enqueue();
+		
+		// enqueue style
+		$style_css = 'style.css';
+		wp_enqueue_style($this->slug . '-style', $this->uri.$style_css, $this->args['css_dependencies'], filemtime($this->path.$style_css), 'all');
 
 		// enqueue script
 		$build_js = 'build.js';
