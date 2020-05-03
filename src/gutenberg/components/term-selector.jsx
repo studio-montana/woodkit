@@ -24,8 +24,7 @@ class WKG_Term_Selector extends Component {
  			this.setState({
  				selected: value
  			})
- 			let terms = this.props.terms.filter(p => p.id === parseInt(value))
- 			this.props.onChange(parseInt(value), terms.length > 0 ? terms[0] : null)
+ 			this.props.onChange(parseInt(value))
  		} else {
  			console.warn('WKG_Term_Selector doit recevoir la propriété \'onChange={value, term => func()}\'')
  		}
@@ -33,15 +32,16 @@ class WKG_Term_Selector extends Component {
 
 	render () {
     let options = []
-    if (this.props.taxonomies) {
-      for (var tax of this.props.taxonomies) {
-        if (this.props.terms && this.props.terms[tax.slug]) {
-          options.push({value: 0, label: tax.name, disabled: true})
-          this.props.terms[tax.slug].forEach((term) => {
-    				options.push({value: term.id, label: term.name, disabled: false})
-    			})
-        } else {
-          options.push({value: 0, label: tax.name+' '+__('loading...', 'wooden'), disabled: true})
+    if (this.props.terms_options) {
+      for (const taxonomy in this.props.terms_options) {
+        const taxonomy_options = this.props.terms_options[taxonomy]
+        if (taxonomy_options) {
+          options.push({value: 0, label: taxonomy_options.taxonomy_label, disabled: true})
+          if (taxonomy_options.options) {
+            for (var taxonomy_option of taxonomy_options.options) {
+              options.push({value: taxonomy_option.value, label: taxonomy_option.label, disabled: taxonomy_option.disabled})
+            }
+          }
         }
       }
     } else {
@@ -61,39 +61,21 @@ class WKG_Term_Selector extends Component {
 }
 
 const applyWithSelect = withSelect((select, props) => {
-		const { getEntityRecords, getTaxonomies } = select('core')
+  const { getTaxonomies } = select('core')
+  const { getTermsOptions } = select('wkg/commons')
 
-    /** parse taxonomies */
+  /********************************************************/
+  /* GET TERMS OPTIONS                                    */
+  /********************************************************/
+  if (!props.taxonomies) {
+    // default taxonomies
     let taxonomies = getTaxonomies()
     if (taxonomies) {
-      if (props.tax) {
-        taxonomies = taxonomies.filter(tax => props.tax.includes(tax.slug))
-      } // exclude media (please use WKG_Media_Selector) and gutenberg blocks
-      taxonomies = taxonomies.filter(tax => tax.slug !== 'attachment' && tax.slug !== 'wp_block')
+      props.taxonomies = taxonomies.map(tax => tax.slug)
     }
-
-    /** retrieve terms */
-    let terms = []
-    let query = {...{
-      per_page: -1, //	Maximum number of items to be returned in result set.
-      // hide_empty: true, //	Whether to hide terms not assigned to any posts. Note: to set false, do not passes this parameter
-      // page: 1, //	Current page of the collection.
-      // search: 10, //	Limit results to those matching a string.
-      // exclude: [], //	Ensure result set excludes specific IDs.
-      // include: [], //	Limit result set to specific IDs.
-      // offset: 1, //	Offset the result set by a specific number of items.
-      // order: 'asc', //	Order sort attribute ascending or descending. One of: asc, desc
-      // orderby: 'name', //	Sort collection by term attribute. One of: id, include, name, slug, include_slugs, term_group, description, count
-      // post: 'post', //	Limit result set to terms assigned to a specific post
-      // slug: '', // Limit result set to terms with one or more specific slugs.
-    }, ...props.query}
-    if (taxonomies) {
-      for (var tax of taxonomies) {
-        terms[tax.slug] = getEntityRecords('taxonomy', tax.slug, query)
-      }
-    }
-
-    return { terms, taxonomies }
+  }
+  let terms_options = getTermsOptions(props.taxonomies)
+  return { terms_options }
 })
 
 export default compose(

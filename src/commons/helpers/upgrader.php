@@ -26,6 +26,7 @@ defined('ABSPATH') or die("Go Away!");
  * Upgrade if necessary Woodkit - this function is only called in admin area
  */
 function woodkit_upgrader_admin_init(){
+	get_displayed_post_types();
 	if (!defined('DOING_AJAX') && !defined('DOING_AUTOSAVE')){
 		$upgrader_version = get_option("woodkit-upgrader-version", "0.0.0");
 		
@@ -139,6 +140,56 @@ function woodkit_upgrader_version_2_0_0(){
 					update_post_meta($post->ID, $new_key, $meta_value);
 					delete_post_meta($post->ID, $old_key);
 					trace_info("post migrate meta - [{$post->ID}] (".get_post_type($post).") [{$old_key} => {$new_key}]" . $meta_value);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Tool Breadcrumb
+	 * Migrate all old tool breadcrumb's meta-data to new format
+	 * since Gutenberg support which impose meta prefixed by _
+	 */
+	$meta_parses = array(
+			'meta_breadcrumb_type' => '_breadcrumb_meta_type',
+			'meta_breadcrumb_custom_items' => '_breadcrumb_meta_items',
+	);
+	$available_posttypes = get_displayed_post_types();
+	$available_posttypes = apply_filters("tool_breadcrumb_available_posttypes", $available_posttypes);
+	$posts_args = array(
+			'posts_per_page'	=> -1,
+			'post_type'			=> $available_posttypes,
+			'post_status'		=> 'any',
+			'suppress_filters'	=> true,
+	);
+	$get_posts = new WP_Query;
+	$posts = $get_posts->query($posts_args);
+	if (!empty($posts)) {
+		foreach ($posts as $post) {
+			foreach ($meta_parses as $old_key => $new_key) {
+				$meta_value = @get_post_meta($post->ID, $old_key, true);
+				if ($old_key === 'meta_breadcrumb_custom_items' && !empty($meta_value)) {
+					$new_value = array();
+					$parsed_meta_value = json_decode($meta_value, true);
+					if (!empty($parsed_meta_value)){
+						$key = 0;
+						foreach ($parsed_meta_value as $val){
+							$parts = explode("|", $val);
+							if (count($parts) == 3){
+								$type = $parts[0];
+								$type_slug = $parts[1];
+								$id = $parts[2];
+								$new_value[] = array('type' => $type === 'tax' ? 'term' : $type, 'id' => intval($id), 'key' => intval($key));
+								$key ++;
+							}
+						}
+					}
+					$meta_value = $new_value;
+				}
+				if (!empty($meta_value)) {
+					update_post_meta($post->ID, $new_key, $meta_value);
+					// delete_post_meta($post->ID, $old_key);
+					trace_info("post migrate meta - [{$post->ID}] (".get_post_type($post).") [{$old_key} => {$new_key}]" . var_export($meta_value, true));
 				}
 			}
 		}

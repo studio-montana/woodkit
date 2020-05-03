@@ -200,7 +200,6 @@ function woodkit_seo_get_image () {
 			if ($_queried_post && isset($_queried_post->ID)){
 				$image = null;
 				$image_id = get_post_meta ($_queried_post->ID, '_seo_meta_og_image', true);
-				trace_info("_seo_meta_og_image : " . $image_id);
 				if (!empty($image_id) && is_numeric($image_id)) {
 					$image = wp_get_attachment_image_src($image_id, SEO_TOOL_IMAGE_SIZE);
 				}

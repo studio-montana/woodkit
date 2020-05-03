@@ -78,7 +78,12 @@ class WKG_REST_Commons extends WKG_REST {
 	 * @return WP_Error|WP_REST_Response
 	 */
 	public function get_posts_options( $request ) {
-		$options = wkg_get_all_posts_options();
+		$params = $request->get_params();
+		if (isset($params['post_type']) && !empty($params['post_type'])) {
+			$options = wkg_get_all_posts_options(explode(',', sanitize_text_field($params['post_type'])));
+		} else {
+			$options = wkg_get_all_posts_options();
+		}
 		return new WP_REST_Response( $options, 200 );
 	}
 
@@ -89,7 +94,12 @@ class WKG_REST_Commons extends WKG_REST {
 	 * @return WP_Error|WP_REST_Response
 	 */
 	public function get_terms_options( $request ) {
-		$options = wkg_get_all_terms_options();
+		$params = $request->get_params();
+		if (isset($params['taxonomies']) && !empty($params['taxonomies'])) {
+			$options = wkg_get_all_terms_options(explode(',', sanitize_text_field($params['taxonomies'])));
+		} else {
+			$options = wkg_get_all_terms_options();
+		}
 		return new WP_REST_Response( $options, 200 );
 	}
 

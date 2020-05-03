@@ -192,22 +192,16 @@ if (!function_exists("get_displayed_post_types")):
 * @return array:
 */
 function get_displayed_post_types($sort = false, $only_public = true, $exclude = array("attachment", "revision", "nav_menu_item")){
-	$displayed_post_types = array();
-	foreach (get_post_types() as $post_type){
-		if (!in_array($post_type, $exclude)){
-			$post_type_object = get_post_type_object($post_type);
-			if ($only_public == true){
-				if ($post_type_object->public == 1){
-					$displayed_post_types[] = $post_type;
-				}
-			}else{
-				$displayed_post_types[] = $post_type;
-			}
-		}
+	$post_types = get_post_types(array(
+			'public' => $only_public,
+	));
+	if (!empty($exclude)) {
+		$post_types = array_diff($post_types, $exclude);
 	}
-	if ($sort == true)
-		usort($displayed_post_types, "woodkit_cmp_posttypes");
-	return $displayed_post_types;
+	if ($sort == true){
+		usort($post_types, "woodkit_cmp_posttypes");
+	}
+	return $post_types;
 }
 endif;
 

@@ -24,7 +24,7 @@ defined('ABSPATH') or die("Go Away!");
 
 if (!function_exists("woodkit_cmp_posttypes")):
 /**
- * Comparator for post_types string
+ * Comparator for post_types string by their label
 */
 function woodkit_cmp_posttypes($post_type_1, $post_type_2) {
 	$current_post_type_label_1 = get_post_type_labels(get_post_type_object($post_type_1));

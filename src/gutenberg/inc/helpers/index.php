@@ -36,18 +36,23 @@ function wkg_parse_args($args, $defaults = '', $slice_additionnals = false) {
 	Posts Options
 **********************************************************************************************************/
 
-function wkg_get_all_posts_options () {
+function wkg_get_all_posts_options ($post_types = null) {
 	$options = array();
-	if (function_exists('get_displayed_post_types')) {
-		$available_post_types = get_displayed_post_types(true); // woodkit dependency
-		if (!empty($available_post_types)) {
-			foreach ($available_post_types as $postype) {
-				$posts_options = wkg_get_posts_options($postype);
-				if (!empty($posts_options)) {
-					$post_type_label = get_post_type_labels(get_post_type_object($postype));
-					$options[] = array('value' => $postype, 'label' => $post_type_label->name, 'disabled' => true);
-					$options = array_merge($options, $posts_options);
-				}
+	if ($post_types === null) {
+		if (function_exists('get_displayed_post_types')) {
+			$post_types = get_displayed_post_types(true); // woodkit dependency
+		}
+	}
+	if (!empty($post_types)) {
+		foreach ($post_types as $post_type) {
+			$posts_options = wkg_get_posts_options($post_type);
+			if (!empty($posts_options)) {
+				$post_type_label = get_post_type_labels(get_post_type_object($post_type));
+				$options[$post_type] = array(
+						'post_type' => $post_type,
+						'post_type_label' => $post_type_label->name,
+						'options' => $posts_options
+				);
 			}
 		}
 	}
@@ -104,15 +109,32 @@ function wkg_add_post_option(&$options, $post, $level = 0){
 	Terms Options
 **********************************************************************************************************/
 
-function wkg_get_all_terms_options () {
+function wkg_get_all_terms_options ($taxonomies = null) {
 	$options = array();
-	$taxonomies = get_taxonomies(array('public' => true), 'objects', 'and');
+	if ($taxonomies !== null) {
+		/** retrieve taxonomies objects if not set */
+		$taxonomies_temp = $taxonomies;
+		$taxonomies = array();
+		foreach ($taxonomies_temp as $tax) {
+			if (is_object($tax)) {
+				$taxonomies[] = $tax;
+			} else {
+				$taxonomies[] = get_taxonomy($tax);
+			}
+		}
+	}
+	if (empty($taxonomies)) {
+		$taxonomies = get_taxonomies(array('public' => true), 'objects', 'and');
+	}
 	if (!empty($taxonomies)) {
 		foreach ($taxonomies as $tax) {
 			$terms_options = wkg_get_terms_options(array('taxonomy' => $tax->name));
 			if (!empty($terms_options)) {
-				$options[] = array('value' => $tax->name, 'label' => $tax->label, 'disabled' => true);
-				$options = array_merge($options, $terms_options);
+				$options[$tax->name] = array(
+						'taxonomy' => $tax->name,
+						'taxonomy_label' => $tax->label,
+						'options' => $terms_options
+				);
 			}
 		}
 	}

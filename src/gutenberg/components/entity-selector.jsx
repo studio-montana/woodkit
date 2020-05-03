@@ -67,6 +67,7 @@ export default class WKG_Entity_Selector extends Component {
         <div className="item">
           { selected_type.slug === 'post' &&
             <WKG_Post_Selector
+              post_types={this.props.post_types}
               label={this.props.display_entity_selector_label ? selected_type.label : null}
               value={this.props.value && this.props.value.id ? this.props.value.id : null}
               onChange={value => this._onIdChange(value)}
@@ -74,6 +75,7 @@ export default class WKG_Entity_Selector extends Component {
           }
           { selected_type.slug === 'term' &&
             <WKG_Term_Selector
+              taxonomies={this.props.taxonomies}
               label={this.props.display_entity_selector_label ? selected_type.label : null}
               value={this.props.value && this.props.value.id ? this.props.value.id : null}
               onChange={value => this._onIdChange(value)}

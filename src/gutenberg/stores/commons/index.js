@@ -5,7 +5,7 @@ const DEFAULT_STATE = {
 	posts_options: null,
 	terms_options: null,
 	cf7_options: null,
-	icons: null
+	icons: null,
 }
 
 const actions = {
@@ -35,16 +35,18 @@ const actions = {
 		}
 	},
 	/** sets *******/
-	setPostsOptions (posts_options) {
+	setPostsOptions (posts_options, post_types) {
 		return {
 			type: 'SET_POSTS_OPTIONS',
 			posts_options,
+			post_types,
 		}
 	},
-	setTermsOptions (terms_options) {
+	setTermsOptions (terms_options, taxonomies) {
 		return {
 			type: 'SET_TERMS_OPTIONS',
 			terms_options,
+			taxonomies,
 		}
 	},
 	setCf7Options (cf7_options) {
@@ -68,15 +70,29 @@ registerStore('wkg/commons', {
 	reducer ( state = DEFAULT_STATE, action ) {
 		switch ( action.type ) {
 			case 'SET_POSTS_OPTIONS':
-				return {
-					...state,
-					posts_options: action.posts_options,
+				let posts_options = state.posts_options
+				if (!action.post_types) {
+					posts_options = action.posts_options
+				} else {
+					posts_options = {...posts_options, ...action.posts_options}
 				}
+				state = {
+					...state,
+					posts_options
+				}
+				return state
 			case 'SET_TERMS_OPTIONS':
-				return {
-					...state,
-					terms_options: action.terms_options,
+				let terms_options = state.terms_options
+				if (!action.taxonomies) {
+					terms_options = action.terms_options
+				} else {
+					terms_options = {...terms_options, ...action.terms_options}
 				}
+				state = {
+					...state,
+					terms_options
+				}
+				return state
 			case 'SET_CF7_OPTIONS':
 				return {
 					...state,
@@ -95,7 +111,7 @@ registerStore('wkg/commons', {
 	 */
 	controls: {
 		FETCH_POSTS_OPTIONS (action) {
-			return apiFetch({ path: action.path })
+			return apiFetch({ path: action.path  })
 		},
 		FETCH_TERMS_OPTIONS (action) {
 			return apiFetch({ path: action.path })
@@ -110,14 +126,15 @@ registerStore('wkg/commons', {
 	/**
 	 * Private Store's Getters
 	 * Played when selector is called, just before
+	 * They proceed to ASYNCH calls (like REST API calls !)
 	 */
 	resolvers: {
-		* getPostsOptions () {
-			const posts_options = yield actions.fetchPostsOptions('/wkg/v1/commons/posts_options/')
-			return actions.setPostsOptions(posts_options)
+		* getPostsOptions (post_types = null) {
+			const posts_options = yield actions.fetchPostsOptions('/wkg/v1/commons/posts_options/' + (post_types ? '?post_types='+post_types.join(',') : ''))
+			return actions.setPostsOptions(posts_options, post_types)
 		},
-		* getTermsOptions () {
-			const terms_options = yield actions.fetchTermsOptions('/wkg/v1/commons/terms_options/')
+		* getTermsOptions (taxonomies = null) {
+			const terms_options = yield actions.fetchTermsOptions('/wkg/v1/commons/terms_options/' + (taxonomies ? '?taxonomies='+taxonomies.join(',') : ''))
 			return actions.setTermsOptions(terms_options)
 		},
 		* getCf7Options () {
@@ -137,10 +154,24 @@ registerStore('wkg/commons', {
 	 * Public Store's Getters
 	 */
 	selectors: {
-		getPostsOptions(state) {
+		getPostsOptions(state, post_types) {
+			if (post_types) {
+				let res = []
+				for (var post_type of post_types) {
+					res[post_type] = state.posts_options ? state.posts_options[post_type] : null
+				}
+				return res
+			}
 			return state.posts_options
 		},
-		getTermsOptions(state) {
+		getTermsOptions(state, taxonomies) {
+			if (taxonomies) {
+				let res = []
+				for (var tax of taxonomies) {
+					res[tax] = state.terms_options ? state.terms_options[tax] : null
+				}
+				return res
+			}
 			return state.terms_options
 		},
 		getCf7Options (state) {
