@@ -77,6 +77,7 @@ class WoodkitPluginUploader {
 			$url = add_query_arg(array("api-key-package" => 'woodkit'), $url); // depends woodkit
 			$url = add_query_arg(array("api-key" => $key), $url);
 			$remote_result = wp_remote_retrieve_body(wp_remote_get($url));
+			trace_info("Woodkit check latestrelease for package [{$this->package}] : " . var_export($remote_result, true));
 			if (!empty($remote_result)) {
 				$this->APIResult = @json_decode($remote_result);
 				// update release

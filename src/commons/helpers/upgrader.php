@@ -188,7 +188,7 @@ function woodkit_upgrader_version_2_0_0(){
 				}
 				if (!empty($meta_value)) {
 					update_post_meta($post->ID, $new_key, $meta_value);
-					// delete_post_meta($post->ID, $old_key);
+					delete_post_meta($post->ID, $old_key);
 					trace_info("post migrate meta - [{$post->ID}] (".get_post_type($post).") [{$old_key} => {$new_key}]" . var_export($meta_value, true));
 				}
 			}

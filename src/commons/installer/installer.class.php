@@ -26,7 +26,7 @@ class WoodkitInstaller {
 	
 	public static $API_URL = 'https://lab.studio-montana.com/woodapi';
 	public static $API_ZIP_PACKAGE_BASE = 'studio-montana';
-	public static $API_INTERVAL = 'PT1H';
+	public static $API_INTERVAL = 'PT5S'; // 1h : PT1H - 5sec : PT5S
 	
 	public static function init () {
 		if (is_admin()) {
@@ -47,7 +47,8 @@ class WoodkitInstaller {
 		 * IMPORTANT : do not check !is_defined('DOING_AJAX') or !is_defined('AUTOSAVE') => it breaks theme rename after update
 		 */
 		require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER.'theme-uploader.class.php');
-		new WoodkitThemeUploader('woody', 'wooden');
+		new WoodkitThemeUploader('woody');
+		new WoodkitThemeUploader('wooden');
 		
 		/**
 		 * Plugin install
