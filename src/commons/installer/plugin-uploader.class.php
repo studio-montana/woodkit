@@ -218,7 +218,7 @@ class WoodkitPluginUploader {
 		// Get plugin information
 		$this->initPluginData();
 
-		// check if updated theme is our theme - name like : studio-montana-THEMENAME-HASH
+		// check if updated plugin is our plugin - name like : studio-montana-THEMENAME-HASH
 		if (isset($result['destination_name']) && strpos($result['destination_name'], WoodkitInstaller::$API_ZIP_PACKAGE_BASE.'-'.$this->package.'-') !== false){
 
 			// Remember if our plugin was previously activated

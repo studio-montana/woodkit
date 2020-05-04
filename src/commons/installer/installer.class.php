@@ -26,7 +26,7 @@ class WoodkitInstaller {
 	
 	public static $API_URL = 'https://lab.studio-montana.com/woodapi';
 	public static $API_ZIP_PACKAGE_BASE = 'studio-montana';
-	public static $API_INTERVAL = 'PT5S'; // 1h : PT1H - 5sec : PT5S
+	public static $API_INTERVAL = 'PT1H'; // 1h : PT1H - 5sec : PT5S
 	
 	public static function init () {
 		if (is_admin()) {
@@ -41,6 +41,7 @@ class WoodkitInstaller {
 		 */
 		require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_INSTALLER_FOLDER.'plugin-uploader.class.php');
 		new WoodkitPluginUploader('woodkit', WP_PLUGIN_DIR.'/woodkit/woodkit.php');
+		new WoodkitPluginUploader('woodmanager', WP_PLUGIN_DIR.'/woodmanager/woodmanager.php');
 		
 		/**
 		 * Theme uploader

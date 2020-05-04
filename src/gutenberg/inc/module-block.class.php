@@ -45,7 +45,7 @@ abstract class WKG_Module_Block extends WKG_Module {
 			'after_init' => null,
 			'block_post_types_template' => array(),
 		)));
-		
+
 		// init
 		add_action('init', array($this, 'init'), 10);
 	}
@@ -61,6 +61,13 @@ abstract class WKG_Module_Block extends WKG_Module {
 
 		$build_js = 'build.js';
 		wp_enqueue_script($this->slug . '-block-editor', $this->uri.$build_js, $this->args['script_dependencies'], filemtime($this->path.$build_js));
+		wp_localize_script(
+		    $this->slug . '-block-editor',
+		    'wkg_data', [
+		        'base_uri'       => $this->uri,
+				    'base_path'       => $this->path,
+		    ]
+		);
 
 		$editor_css = 'editor.css';
 		wp_register_style($this->slug . '-block-editor', $this->uri.$editor_css, $this->args['css_dependencies'], filemtime($this->path.$editor_css));
