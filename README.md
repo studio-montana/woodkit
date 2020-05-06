@@ -1,6 +1,11 @@
-# Woodkit v2
+# Woodkit v2 - les nouveautés
 
-Woodkit v2 nécessite Wordpress > v5 avec Gutenberg d'activé
+* Woodkit devient plus robuste
+* Woodkit gère les tools dans les thèmes (notamment Wooden)
+* Woodkit prend en charge Gutenberg (toutes les metaboxes ont été migrées en ReactJS)
+* Le fameux Wall a été migré dans Wooden et devient un Block Gutenberg extraordinaire !
+
+**Note :** Woodkit v2 nécessite Wordpress > v5 avec Gutenberg d'activé
 
 # Migration
 
