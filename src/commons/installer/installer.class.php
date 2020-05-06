@@ -108,7 +108,7 @@ class WoodkitInstaller {
 				$url = self::$API_URL . '/active';
 				$url = add_query_arg(array("package" => 'woodkit'), $url);
 				$url = add_query_arg(array("host" => get_site_url()), $url);
-				$url = add_query_arg(array("api-key" => $key), $url);
+				$url = add_query_arg(array("key" => $key), $url);
 				$request_body = wp_remote_retrieve_body(wp_remote_get($url));
 				if (!empty($request_body)) {
 					$request_body = @json_decode($request_body);
