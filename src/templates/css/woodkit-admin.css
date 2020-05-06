@@ -1,0 +1,547 @@
+@CHARSET "UTF-8";
+
+/*****************************************************************
+ * WK General (WoodKit CSS framework)
+ *****************************************************************/
+[class^="wkg-"].shadow, [class*=" wkg-"].shadow {
+	-webkit-box-shadow: 0px 0px 6px 0px rgba(50,50,50,0.40);
+	-moz-box-shadow: 0px 0px 6px 0px rgba(50,50,50,0.40);
+	box-shadow: 0px 0px 6px 0px rgba(50,50,50,0.40);
+}
+[class^="wkg-"].rounded, [class*=" wkg-"].rounded {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+[class^="wkg-"].round, [class*=" wkg-"].round {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+::-webkit-input-placeholder {
+	color: rgba(174, 174, 174, 1);
+	font-weight: lighter;
+	text-transform: lowercase;
+}
+:-moz-placeholder {
+	color: rgba(174, 174, 174, 1);
+	font-weight: lighter;c
+	text-transform: lowercase;
+}
+::-moz-placeholder {
+	color: rgba(174, 174, 174, 1);
+	font-weight: lighter;
+	opacity: 1;
+	text-transform: lowercase;
+}
+:-ms-input-placeholder {
+	color: rgba(174, 174, 174, 1);
+	font-weight: lighter;
+	text-transform: lowercase;
+}
+
+/*****************************************************************
+ * WK Card
+ *****************************************************************/
+.wk-card {
+  background: #ffffff;
+	border: 1px solid #eeeeee;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+  position: relative;
+}
+.wk-card .header {
+	padding: 6px 12px;
+	background: #f8f8f8;
+	border-bottom: 1px solid #dddddd;
+}
+.wk-card .content {
+	padding: 6px 12px;
+}
+.wk-card .footer {
+	padding: 3px 12px;
+	background: #fcfcfc;
+	border-top: 1px solid #f8f8f8;
+	font-size: 12px;
+}
+
+/*****************************************************************
+ * WK Button
+ *****************************************************************/
+.wk-btn {
+	display: inline-block;
+	cursor: pointer;
+  color: inherit;
+  background: #ffffff;
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+  padding: 1px 12px 0 12px;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  height: 36px;
+  line-height: 36px;
+  position: relative;
+  text-shadow: none;
+  overflow: hidden;
+  transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+}
+.wk-btn.small {
+	padding: 1px 6px 0 6px;
+	font-size: 12px;
+	height: 24px;
+	line-height: 24px;
+}
+.wk-btn.large {
+	padding: 1px 18px 0 18px;
+	font-size: 16px;
+	height: 48px;
+	line-height: 48px;
+}
+.wk-btn:hover,
+.wk-btn:focus,
+.wk-btn:active {
+	outline: inherit;
+  background: #f5f5f5;
+}
+/* text with icon */
+.wk-btn > i.before {
+ margin-right: 9px;
+}
+.wk-btn > i.after {
+ margin-left: 9px;
+}
+/* icon only */
+.wk-btn.icon {
+	padding: 1px 11px 0 11px;
+}
+.wk-btn.icon.small {
+	padding: 1px 6px 0 6px;
+}
+.wk-btn.icon.large {
+ 	padding: 1px 16px 0 16px;
+}
+/* primary */
+.wk-btn.primary {
+  background-color: #1989c1;
+	color: #FFFFFF;
+}
+.wk-btn.primary:hover, .wk-btn.primary:focus, .wk-btn.primary:active {
+  background-color: #1a7cad;
+}
+/* secondary */
+.wk-btn.secondary {
+  background-color: #eeeeee;
+}
+.wk-btn.secondary:hover, .wk-btn.secondary:focus, .wk-btn.secondary:active {
+  background-color: #dddddd;
+}
+/* valid */
+.wk-btn.valid {
+  background-color: #00C3AA;
+	color: #FFFFFF;
+}
+.wk-btn.valid:hover, .wk-btn.valid:focus, .wk-btn.valid:active {
+  background-color: #0aa692;
+}
+/* cancel */
+.wk-btn.cancel {
+  background-color: #878d94;
+	color: #FFFFFF;
+}
+.wk-btn.cancel:hover, .wk-btn.cancel:focus, .wk-btn.cancel:active {
+  background-color: #697078;
+}
+/* delete */
+.wk-btn.delete {
+  background-color: #db4650;
+	color: #FFFFFF;
+}
+.wk-btn.delete:hover, .wk-btn.delete:focus, .wk-btn.delete:active {
+  background-color: #b8353e;
+}
+/* delete */
+.wk-btn.warning {
+  background-color: #fcee4c;
+	color: #000000;
+}
+.wk-btn.warning:hover, .wk-btn.warning:focus, .wk-btn.warning:active {
+  background-color: #f0e34d;
+}
+/* dark */
+.wk-btn.dark {
+  background-color: #222222;
+	color: #ffffff;
+}
+.wk-btn.dark:hover, .wk-btn.dark:focus, .wk-btn.dark:active {
+  background-color: #333333;
+}
+/* light */
+.wk-btn.light {
+  background-color: #F1F1F1;
+}
+.wk-btn.light:hover, .wk-btn.light:focus, .wk-btn.light:active {
+  background-color: #E1E1E1;
+}
+/* link */
+.wk-btn.link {
+	color: #1989c1;
+}
+.wk-btn.link:hover, .wk-btn.link:focus, .wk-btn.link:active {
+	text-decoration: underline;
+  background-color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * MODAL BOX
+ */
+.woodkit-modal-box {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 100000;
+}
+.woodkit-modal-box-content {
+	position: fixed;
+	top: 30px;
+	left: 30px;
+	right: 30px;
+	bottom: 73px;
+	background: #fff;
+	padding: 12px;
+	z-index: 101000;
+	overflow: scroll;
+}
+.woodkit-modal-box-content .column-left {
+	position: fixed;
+	top: 30px;
+	left: 30px;
+	bottom: 30px;
+	width: 200px;
+	border-right: 1px solid #ccc;
+	background: #f3f3f3;
+	overflow: auto;
+	outline: 0;
+}
+.woodkit-modal-box-content .column-right {
+	position: fixed;
+	top: 30px;
+	left: 230px;
+	right: 30px;
+	bottom: 73px;
+	padding: 12px;
+	overflow: auto;
+	outline: 0;
+}
+.woodkit-modal-box-footer {
+	position: fixed;
+	height: 30px;
+	left: 30px;
+	right: 30px;
+	bottom: 30px;
+	padding: 6px;
+	border-top: 1px solid #ccc;
+	background: #f3f3f3;
+	z-index: 102000;
+}
+.woodkit-modal-box-footer .button {
+	float: right;
+	margin-left: 6px;
+}
+.woodkit-modal-box-close {
+	position: fixed;
+	top: 30px;
+	right: 30px;
+	padding: 12px;
+	color: #666;
+	cursor: pointer;
+	font-size: 1rem;
+	z-index: 102000;
+}
+
+/**
+ * PRIVATE TOOL
+ */
+#tool-private-settings ul {
+	margin: 0 0 0 12px;
+}
+#tool-private-settings ul li {
+	margin: 6px 0;
+}
+
+/**
+ * Tool Options Pages
+ */
+.woodkit-tool-page-options {
+	padding: 0 18px 0 0;
+}
+.woodkit-tool-page-options h1 i{
+	display: inline-block;
+	margin: 0 9px 0 12px;
+}
+.woodkit-tool-page-options input[type='text'],
+.woodkit-tool-page-options input[type='number'],
+.woodkit-tool-page-options input[type='email'],
+.woodkit-tool-page-options input[type='password'],
+.woodkit-tool-page-options select,
+.woodkit-tool-page-options textarea {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin-left: 0;
+    -webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+    box-shadow: none;
+    background: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 17px;
+    color: #000;
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+	-webkit-transition: background .1s;
+    -moz-transition: background .1s;
+    transition: background .1s;
+	border: 1px solid #ececec;
+}
+.woodkit-tool-page-options input[type='text'].large,
+.woodkit-tool-page-options input[type='number'].large,
+.woodkit-tool-page-options input[type='email'].large,
+.woodkit-tool-page-options input[type='password'].large,
+.woodkit-tool-page-options select.large,
+.woodkit-tool-page-options textarea.large {
+	max-width: 400px;
+}
+.woodkit-tool-page-options input[type='text'].xlarge,
+.woodkit-tool-page-options input[type='number'].xlarge,
+.woodkit-tool-page-options input[type='email'].xlarge,
+.woodkit-tool-page-options input[type='password'].xlarge,
+.woodkit-tool-page-options select.xlarge,
+.woodkit-tool-page-options textarea.xlarge {
+	max-width: 600px;
+}
+.woodkit-tool-page-options select {
+    height: 29px;
+}
+.woodkit-tool-page-options input[type='checkbox']{
+	display: inline-block;
+}
+.woodkit-tool-page-options input[type='text']:focus,
+.woodkit-tool-page-options input[type='number']:focus,
+.woodkit-tool-page-options input[type='email']:focus,
+.woodkit-tool-page-options input[type='password']:focus,
+.woodkit-tool-page-options select:focus,
+.woodkit-tool-page-options textarea:focus,
+.woodkit-tool-page-options select:focus {
+	background-color: #f6f6f6;
+}
+.woodkit-tool-page-options .section{
+	padding: 9px 18px 18px 18px;
+	margin: 18px 0;
+	background: #ffffff;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+   	-webkit-box-shadow: 	0 1px 1px 0 rgba(0,0,0,.1);
+    -moz-box-shadow: 	0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 		0 1px 1px 0 rgba(0,0,0,.1);
+}
+.woodkit-tool-page-options .section .section-title{
+	margin: 9px 0 18px 0;
+}
+.woodkit-tool-page-options .section .field-content{
+	min-height: 31px;
+	padding: 2px 0 2px 2px;
+	margin: 0 0 3px 0;
+	position: relative;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: #F1F1F1;
+	/*border: 1px solid #E9E9E9;*/
+	/*border-left: 36px solid #00C3AA; */
+	border-left: 36px solid #d9d9d9;
+	-webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.woodkit-tool-page-options .section .field.checkbox .field-content{
+	padding-left: 12px;
+}
+.woodkit-tool-page-options .section .field label {
+	display: inline-block;
+	margin: 0 6px 0 3px;
+	max-width: 200px;
+	width: 100%;
+	color: #555;
+	line-height: 31px;
+}
+.woodkit-tool-page-options .section .field label.small {
+	max-width: 100px;
+}
+.woodkit-tool-page-options .section .field label.large {
+	max-width: 300px;
+}
+.woodkit-tool-page-options .section .field.checkbox label {
+	width: auto;
+	max-width: none;
+}
+.woodkit-tool-page-options .section .field table{
+	width: 100%;
+}
+.woodkit-tool-page-options .section .field .description {
+	font-size: 10px;
+	color: #999;
+}
+.woodkit-tool-page-options .section .section-info{
+	margin: 12px 0;
+	font-size: 12px;
+	font-style: italic;
+	color: #999;
+}
+.woodkit-tool-page-options .section .section-info code{
+	font-size: 11px;
+	color: #0073aa;
+	letter-spacing: 0.06em;
+}
+/* textarea */
+.woodkit-tool-page-options .section .field.textarea label,
+.woodkit-tool-page-options .section .field.textarea textarea{
+	display: block;
+}
+/* key */
+.woodkit-tool-page-options .section .field .valid-key,
+.woodkit-tool-page-options .section .field .invalid-key {
+	display: inline-block;
+	margin-left: 6px;
+}
+.woodkit-tool-page-options .section .field .valid-key i,
+.woodkit-tool-page-options .section .field .invalid-key i {
+	margin-right: 6px;
+}
+.woodkit-tool-page-options .section .field .valid-key {
+	color: #00C3AA;
+}
+.woodkit-tool-page-options .section .field .invalid-key {
+	color: red;
+}
+
+/**
+ * Multiple Items Manager (options)
+ */
+.multiple-items-manager .item{
+	min-height: 31px;
+	padding: 2px 0 2px 2px;
+	margin: 0 0 3px 0;
+	position: relative;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: #F1F1F1;
+	/*border: 1px solid #E9E9E9;*/
+	/*border-left: 36px solid #00C3AA;*/
+	/*border-right: 36px solid #00C3AA;*/
+	border-left: 36px solid #d9d9d9;
+	border-right: 36px solid #d9d9d9;
+	-webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.multiple-items-manager.sortable .item{
+	cursor: move;
+}
+.multiple-items-manager.sortable .sortable-placeholder{
+	height: 30px;
+	margin: 0 0 3px 0;
+	background: #fff;
+	position: relative;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.multiple-items-manager .item .move{
+	font-size: 15px;
+    font-weight: 400;
+    height: 36px;
+    line-height: 37px;
+	color: #fff;
+	padding: 0 16px;
+	position: absolute;
+	top: 0;
+	left: -36px;
+}
+.multiple-items-manager .item .move i{
+	-webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.multiple-items-manager .item .move:hover i{
+}
+.multiple-items-manager .item .delete{
+	cursor: pointer;
+	font-size: 12px;
+    font-weight: 400;
+    height: 36px;
+    line-height: 36px;
+	color: #fff;
+	padding: 0 14px;
+	position: absolute;
+	top: 0;
+	right: -36px;
+}
+.multiple-items-manager .item .delete i{
+	-webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.multiple-items-manager .item .delete:hover i{
+	-ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.multiple-items-manager.sortable .item .label{
+	margin: 0 6px;
+}

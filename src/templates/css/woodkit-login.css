@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+#login {
+	background: rgba(220,220,220, 0.7);
+	padding-bottom: 24px;
+}
+
+/**
+ * Tool Secure
+ */
+.tool-secure-input-wrapper {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+.login .tool-secure-input-wrapper {
+	padding-bottom: 0;
+}
+.tool-secure-input-wrapper .tool-secure-input {
+	
+}
+.tool-secure-input-wrapper .tool-secure-show-info {
+	position: absolute;
+	display: block;
+	top: 1px;
+	right: 5px;
+	bottom: 1px;
+	background-color: transparent;
+	cursor: pointer;
+	width: 50px;
+	text-align: center;
+	padding: 17px 0 0 0;
+	color: rgb(109, 109, 109);
+	font-size: 1.5rem;
+}
+.login .tool-secure-input-wrapper .tool-secure-show-info {
+	padding: 11px 0 0 0;
+	font-size: 1.3rem;
+}
+.login .tool-secure-input-wrapper .tool-secure-info-text {
+	color: #000000;
+	padding-bottom: 3px;
+	text-align: center;
+	font-style: italic;
+	font-size: 12px;
+	display: none;
+}
+.login .tool-secure-input-wrapper .tool-secure-info-text.visible{
+	display: block;
+}

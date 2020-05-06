@@ -4,3 +4,5 @@ log/*
 # exclude mac files
 .DS_Store
 
+# exclud node_modules
+node_modules/*

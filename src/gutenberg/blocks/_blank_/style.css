@@ -1,0 +1,20 @@
+/**
+ * Block styles for front, editor or both
+ *
+ */
+
+/*************************************************/
+/** applied both on the front and in the editor **/
+/*************************************************/
+.wp-block-wkg-_blank_{
+}
+/**************************************************/
+/** applied on the front only                    **/
+/**************************************************/
+.wkg-front.wp-block-wkg-_blank_{
+}
+/**************************************************/
+/** applied in the editor only                   **/
+/**************************************************/
+.wkg-editor.wp-block-wkg-_blank_{
+}

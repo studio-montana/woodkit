@@ -1,0 +1,156 @@
+@CHARSET "UTF-8";
+
+/****************************
+ * Tools
+ ***************************/
+
+/**
+ * Tool legal
+ */
+.tool-legal-box {
+	position: fixed;
+	z-index: 200000;
+    top: auto;
+    left: auto;
+    right: 12px;
+    bottom: 12px;
+	background: #000;
+	color: #fff;
+	font-size: 1em;
+	font-weight: normal;
+    max-width: 500px;
+	width: 100%;
+	height: auto;
+	padding: 18px 80px 18px 18px;
+}
+.tool-legal-box .accept {
+	position: absolute;
+    right: 14px;
+    top: 14px;
+    bottom: 14px;
+    padding: 7px 12px 5px 12px;
+    font-size: 1em;
+    font-weight: normal;
+	background: #fff;
+	color: #000;
+    border: none;
+    cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.tool-legal-box .accept:hover {
+	background: #fff;
+	color: #000;
+}
+.tool-legal-box a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+/**
+ * Tool Private
+ */
+.private-logout {
+    position: fixed;
+    right: 12px;
+    top: 12px;
+    z-index: 1000;
+}
+body.admin-bar .private-logout {
+    top: 44px;
+}
+
+/**
+ * Tool Secure
+ */
+.woocommerce-billing-fields .captcha-error { /** do not display captcha-error field on woocommerce checkout-register form (double message) */
+	display: none;
+}
+
+.wpcf7 .captcha-error { /** do not display captcha-error field on contact form 7 (double message) */
+	display: none;
+}
+.tool-secure-input-wrapper {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+.login .tool-secure-input-wrapper {
+	padding-bottom: 0;
+}
+.tool-secure-input-wrapper .tool-secure-input {
+	
+}
+.tool-secure-input-wrapper .tool-secure-show-info {
+	position: absolute;
+	display: none;
+	top: 1px;
+	right: 10px;
+	bottom: 1px;
+	background-color: transparent;
+	cursor: pointer;
+	width: 50px;
+	text-align: center;
+	padding: 17px 0 0 0;
+	color: rgb(109, 109, 109);
+	font-size: 1.5rem;
+}
+.login .tool-secure-input-wrapper .tool-secure-show-info {
+	padding: 20px 0 0 0;
+	font-size: 1.3rem;
+}
+.tool-secure-input-wrapper .tool-secure-info-text {
+	display: none;
+}
+.login .tool-secure-input-wrapper .tool-secure-info-text {
+	color: #fff;
+	padding-bottom: 3px;
+}
+
+/**
+ * Tool Wip
+ */
+body.wip {
+	margin: 0;
+	text-align: center;
+	font-family: Helvetica;
+	background: #000;
+}
+#wip-page {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #000;
+	color: #fff;
+	/* flex */
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+}
+#wip-page-content{
+	margin: 0 auto;
+	max-width: 348px;
+	padding: 24px;
+    /* flex */
+    -webkit-align-self: center;
+    -moz-align-self: center;
+    -ms-align-self: center;
+    align-self: center;
+}
+#wip-page-content h1 {
+	font-size: 20px;
+	margin: 0 0 1.2rem 0;
+	color: #fff;
+}
+#wip-page-content .wip-message {
+	font-size: 14px;
+	margin: 24px 0;
+}

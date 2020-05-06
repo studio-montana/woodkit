@@ -1,0 +1,96 @@
+/*****************************************************************
+ * WKG General (WoodKit Gutenberg CSS framework)
+ *****************************************************************/
+.wkg-item {
+	padding: 12px 0;
+}
+*[data-align='full'] .wkg-item {
+	padding: 12px;
+}
+.wkg-item .wkg-title {
+	margin-bottom: 6px;
+	font-size: 14px !important;
+	text-transform: uppercase;
+	color: #bbbbbb !important;
+}
+.wkg-item .wkg-info {
+	position: relative;
+	margin-bottom: 6px;
+	font-size: 11px !important;
+	color: #999999 !important;
+	font-style: italic;
+}
+.wkg-item .wkg-title .wkg-info {
+	text-transform: none !important;
+	margin-left: 6px;
+	color: #bbbbbb !important;
+}
+.wkg-item .wkg-info i{
+	font-size: 11px !important;
+	margin-right: 6px;
+}
+.wkg-item .wkg-content {}
+/*****************************************************************
+ * WKG Block InspectorControls
+ *****************************************************************/
+.wkg-ic {
+
+}
+.wkg-ic-panelbody {
+	position: relative;
+}
+.wkg-ic-panelrow {
+	display: block;
+}
+.wkg-ic-panelrow .wkg-info {
+	position: relative;
+	margin-bottom: 6px;
+	color: #999999 !important;
+	font-style: italic;
+}
+.wkg-ic-panelrow .components-range-control .components-base-control__field {
+	display: block;
+}
+/*****************************************************************
+ * WKG Plugin Component
+ *****************************************************************/
+.wkg-plugin-panelbody {
+	position: relative;
+}
+.wkg-plugin-panelrow {
+	display: block;
+}
+.wkg-plugin-panelrow .wkg-info {
+	position: relative;
+	margin-bottom: 6px;
+	color: #999999 !important;
+	font-style: italic;
+}
+/*****************************************************************
+ * WKG Card
+ *****************************************************************/
+.wkg-card {
+  background: #ffffff;
+	border: 1px solid #eeeeee;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+  position: relative;
+}
+.wkg-card .header {
+	padding: 6px 12px;
+	background: #f8f8f8;
+	border-bottom: 1px solid #dddddd;
+}
+.wkg-card .content {
+	padding: 6px 12px;
+}
+.wkg-card .footer {
+	padding: 3px 12px;
+	background: #fcfcfc;
+	border-top: 1px solid #f8f8f8;
+	font-size: 12px;
+}
