@@ -2,7 +2,12 @@
 
 Woodkit v2 nécessite Wordpress > v5 avec Gutenberg d'activé
 
-**NOTE 1 :** lors du passage de Woodkit v1 (ou Woodkitsupport) à Woodkit v2, les metadata et options changent de key/slug, on ne peut donc plus revenir en arrière.
+# Migration
+
+* avant de migrer de Woodkit v1 à la v2, vous devez vous assurer que votre Worpress est en >v5 et que Gutenberg est activé.
+* vous devez bien avoir consciences des tools que vous utilisez peut-être et qui ne sont plus supportés.
+* la plupart des tools abandonnés par Woodkit ont été migrés vers le thème Wooden.
+* lors du passage de Woodkit v1 à la v2, les metadata et options changent de key/slug, on ne peut donc plus revenir en arrière.
 
 **Pour continuer à utiliser Woodkit v1, utilisez la branche v1 de ce dépôt.**
 
