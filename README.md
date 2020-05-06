@@ -1,3 +1,11 @@
+# Woodkit v2
+
+Woodkit v2 nécessite Wordpress > v5 avec Gutenberg d'activé
+
+IMPORTANT : lors du passage de Woodkit v1 (ou Woodkitsupport) à Woodkit v2, les metadata et options changent de key/slug, on ne peut donc plus revenir en arrière.
+
+# Context Gutenberg
+
 Pour ajouter un block
 * dupliquer le dossier 'woodblocks/blocks/_blank_' au même niveau et le renommer avec un nouveau slug
 * dans ce dossier, faire un rechercher/remplacer global dans ce nouveau dossier sur "_blank_" par le slug de votre block
