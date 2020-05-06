@@ -4,6 +4,10 @@
 * Woodkit gère les tools dans les thèmes (notamment Wooden)
 * Woodkit prend en charge Gutenberg (toutes les metaboxes ont été migrées en ReactJS)
 * Le fameux Wall a été migré dans Wooden et devient un Block Gutenberg extraordinaire !
+* La sécurité est améliorée, notamment avec l'intégration du Google Recaptcha (plus aprécié parfois que le captcha numérique)
+* Suppression de réglages et outils obsolètes ou inutilisés
+* Certains tools ont été abandonnés car il n'étaient plus pertinent ou devait être pris en charge par un thème.
+* Le nouveau thème Wooden a vu le jour pour venir compléter Woodkit v2 pour une expérience optimale, ce thème est voué à être surchargé (par défaut il ne propose aucun style) mais propose un contexte de développement pour Gutenberg et des tools !
 
 **Note :** Woodkit v2 nécessite Wordpress > v5 avec Gutenberg d'activé
 
