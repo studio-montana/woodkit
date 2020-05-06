@@ -2,13 +2,15 @@
 
 Woodkit v2 nécessite Wordpress > v5 avec Gutenberg d'activé
 
-*IMPORTANT :* lors du passage de Woodkit v1 (ou Woodkitsupport) à Woodkit v2, les metadata et options changent de key/slug, on ne peut donc plus revenir en arrière.
+**NOTE 1 :** lors du passage de Woodkit v1 (ou Woodkitsupport) à Woodkit v2, les metadata et options changent de key/slug, on ne peut donc plus revenir en arrière.
 
-Pour continuer à utiliser Woodkit v1, utilisez la branche v1 de ce dépôt.
+**Pour continuer à utiliser Woodkit v1, utilisez la branche v1 de ce dépôt.**
 
-*NOTE 1 :* les releases doivent être gérées avec un numéro de version au format x.x.x (où x est numérique) afin d'être gérée par Woodmanager (gestionnaire de nos packages).
+# Les releases
 
-*NOTE 2 :* les releases doivent être gérées avec un numéro de version majeur cohérent. En effet, Woodmanager sépare les versions majeures de Woodkit. Ainsi les sites en 1.x.x reste en 1.x.x et les sites en 2.x.x restent en 2.x.x. Donc les releases de Woodkit v2 doivent avoir une version du format 2.x.x. Les releases de la v1 doivent êtres faites depuis la branche v1 avec la version au format 1.x.x.
+* les releases doivent être gérées avec un numéro de version au format x.x.x (où x est numérique) afin d'être gérée par Woodmanager (gestionnaire de nos packages).
+
+* les releases doivent être gérées avec un numéro de version majeur cohérent. En effet, Woodmanager sépare les versions majeures de Woodkit. Ainsi les sites en 1.x.x reste en 1.x.x et les sites en 2.x.x restent en 2.x.x. Donc les releases de Woodkit v2 doivent avoir une version du format 2.x.x. Les releases de la v1 doivent êtres faites depuis la branche v1 avec la version au format 1.x.x.
 
 # Context Gutenberg
 
