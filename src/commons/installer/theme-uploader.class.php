@@ -41,7 +41,7 @@ class WoodkitThemeUploader {
 		}
 	}
 
-	// Get information regarding our plugin from WordPress
+	// Get information regarding our theme from WordPress
 	private function initThemeData() {
 		$this->themeData = wp_get_theme($this->slug);
 	}
@@ -69,10 +69,10 @@ class WoodkitThemeUploader {
 		if ($reload){
 			$key = woodkit_get_option("key-activation");
 			$url = WoodkitInstaller::$API_URL . '/latestrelease';
-			$url = add_query_arg(array("api-package" => $this->slug), $url);
-			$url = add_query_arg(array("api-key-host" => get_site_url()), $url);
-			$url = add_query_arg(array("api-key-package" => 'woodkit'), $url); // depends woodkit
-			$url = add_query_arg(array("api-key" => $key), $url);
+			$url = add_query_arg(array("package" => $this->slug), $url);
+			$url = add_query_arg(array("host" => get_site_url()), $url);
+			$url = add_query_arg(array("key" => $key), $url);
+			$url = add_query_arg(array("version" => $this->themeData->get('Version')), $url);
 			$remote_result = wp_remote_retrieve_body(wp_remote_get($url));
 			// trace_info("Woodkit check latestrelease for package [{$this->slug}] : " . var_export($remote_result, true));
 			if (!empty($remote_result)) {
@@ -94,20 +94,31 @@ class WoodkitThemeUploader {
 	// Push in theme version information to get the update notification
 	public function setTransitent($transient) {
 
-		if(empty($transient->checked[$this->slug]))
+		if(empty($transient->checked[$this->slug])) {
 			return $transient;
+		}
 
-		if (!is_object($transient))
+		if (!is_object($transient)) {
 			return $transient;
+		}
 
-		if (!WoodkitInstaller::is_registered())
+		if (!WoodkitInstaller::is_registered()) {
 			return $transient;
+		}
 
-		if (!isset($transient->response) || !is_array($transient->response))
-			$transient->response = array();
-
-		// Get plugin & GitHub release information
+		// Theme informations
 		$this->initThemeData();
+		if (!$this->themeData || is_wp_error($this->themeData)) {
+			// maybe theme is not installed on this website
+			trace_err("Woodkit Theme Installer - setTransitent - Theme [{$this->slug}] not available ");
+			return $transient;
+		}
+
+		if (!isset($transient->response) || !is_array($transient->response)) {
+			$transient->response = array();
+		}
+		
+		// GitHub release informations
 		$this->getRepoReleaseInfo();
 
 		// Check the versions if we need to do an update

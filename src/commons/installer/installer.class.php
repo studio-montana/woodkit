@@ -65,9 +65,9 @@ class WoodkitInstaller {
 			}
 			if (!$install){
 				$url = self::$API_URL . '/install';
-				$url = add_query_arg(array("api-package" => 'woodkit'), $url);
-				$url = add_query_arg(array("api-host" => get_site_url()), $url);
-				$url = add_query_arg(array("api-version" => $plugin_data["Version"]), $url);
+				$url = add_query_arg(array("package" => 'woodkit'), $url);
+				$url = add_query_arg(array("host" => get_site_url()), $url);
+				$url = add_query_arg(array("version" => $plugin_data["Version"]), $url);
 				$request_body = wp_remote_retrieve_body(wp_remote_get($url));
 				if (!empty($request_body)) {
 					$request_body = @json_decode($request_body);
@@ -84,51 +84,49 @@ class WoodkitInstaller {
 		static $ac = -1;
 		if ($ac === -1 || $force_reload) {
 			$ac = false;
-			$key = woodkit_get_option("key-activation");
-			if (!empty($key)){
-				$reload = true;
-				$already_activated = false;
-				$key_changed = false;
-				$last_update = get_option('woodkit-activated-update', null);
-				$now = new DateTime();
+			$reload = true;
+			$already_activated = false;
+			$key_changed = false;
+			$last_update = get_option('woodkit-activated-update', null);
+			$now = new DateTime();
+			if ($last_update != null){
+				$last_update->add(new DateInterval(self::$API_INTERVAL));
+				if ($last_update > $now){
+					$already_activated = true;
+				}
+			}
+			$key = woodkit_get_option("key-activation", "");
+			$old_key = get_option('woodkit-old-key-activation', null);
+			if (empty($old_key) || $old_key != $key){
+				$key_changed = true;
+			}
+			if (!$key_changed && $already_activated){
+				$reload = false;
+			}
+			if ($reload){
+				$ac = false;
+				$url = self::$API_URL . '/active';
+				$url = add_query_arg(array("package" => 'woodkit'), $url);
+				$url = add_query_arg(array("host" => get_site_url()), $url);
+				$url = add_query_arg(array("api-key" => $key), $url);
+				$request_body = wp_remote_retrieve_body(wp_remote_get($url));
+				if (!empty($request_body)) {
+					$request_body = @json_decode($request_body);
+					if (isset($request_body->active) && $request_body->active == true)
+						$ac = true;
+				}
 				if ($last_update != null){
-					$last_update->add(new DateInterval(self::$API_INTERVAL));
-					if ($last_update > $now){
-						$already_activated = true;
-					}
+					delete_option('woodkit-activated-update');
 				}
-				$old_key = get_option('woodkit-old-key-activation', null);
-				if (empty($old_key) || $old_key != $key){
-					$key_changed = true;
+				if ($ac) {
+					add_option('woodkit-activated-update', $now, '', 'no');
 				}
-				if (!$key_changed && $already_activated){
-					$reload = false;
+				if ($old_key != null) {
+					delete_option('woodkit-old-key-activation');
 				}
-				if ($reload){
-					$ac = false;
-					$url = self::$API_URL . '/active';
-					$url = add_query_arg(array("api-key-package" => 'woodkit'), $url);
-					$url = add_query_arg(array("api-key-host" => get_site_url()), $url);
-					$url = add_query_arg(array("api-key" => $key), $url);
-					$request_body = wp_remote_retrieve_body(wp_remote_get($url));
-					if (!empty($request_body)) {
-						$request_body = @json_decode($request_body);
-						if (isset($request_body->active) && $request_body->active == true)
-							$ac = true;
-					}
-					if ($last_update != null){
-						delete_option('woodkit-activated-update');
-					}
-					if ($ac) {
-						add_option('woodkit-activated-update', $now, '', false);
-					}
-					if ($old_key != null) {
-						delete_option('woodkit-old-key-activation');
-					}
-					add_option('woodkit-old-key-activation', $key, '', false);
-				}else{
-					$ac = $already_activated;
-				}
+				add_option('woodkit-old-key-activation', $key, '', 'no');
+			}else{
+				$ac = $already_activated;
 			}
 		}
 		return $ac;
@@ -136,9 +134,9 @@ class WoodkitInstaller {
 	
 	public static function after_auto_update ($package, $version) {
 		$url = self::$API_URL . '/update';
-		$url = add_query_arg(array("api-package" => $package), $url);
-		$url = add_query_arg(array("api-host" => get_site_url()), $url);
-		$url = add_query_arg(array("api-version" => $version), $url);
+		$url = add_query_arg(array("package" => $package), $url);
+		$url = add_query_arg(array("host" => get_site_url()), $url);
+		$url = add_query_arg(array("version" => $version), $url);
 		wp_remote_get($url);
 	}
 	
