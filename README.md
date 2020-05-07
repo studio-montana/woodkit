@@ -53,9 +53,18 @@
 * Commencez à developper
 * Pour builder en production : lancez un *$ npm run build*
 
-Pour ajouter un store :
-* Dans le dossier 'woodblocks/stores/', ajoutez le fichier JS représentant votre store
-* Dans le fichier 'woodblocks/stores/index.js', ajoutez la dépendance à votre nouveau store (avec un import)
+**Pour ajouter un store :**
+
+*Définition : un store permet de gérer les états des blocks/plugins de façon globale*
+
+* Dupliquer le dossier *src/gutenberg/stores/_blank_* dans le dossier de votre choix sous *src/* (afin de profiter du context Webpack) et renommer ce nouveau dossier avec 'votre_slug' (Important : nommage en snake_case)
+* Dans ce nouveau dossier, faire un rechercher/remplacer global dans ce nouveau dossier sur "_blank_" par 'votre_slug'
+* Faites en sorte d'appeller le fichier présent dans votre nouveau dossier index.php
+* Ouvrir webpack.config.js qui est à la racine du projet et ajouter la référence à votre nouveau block comme ceci : 
+  * {'entry': 'index.jsx', 'name': 'votre_slug', 'path': 'PATH_TO_YOUR_STORE_DIR', 'entry': 'index.jsx'},
+* Lancez *$ npm run dev* (si webpack est déjà en route, vous devez le redémarrer)
+* Commencez à developper
+* Pour builder en production : lancez un *$ npm run build*
 
 **Les composants/assets Woodkit**
 
