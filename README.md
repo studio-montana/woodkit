@@ -6,17 +6,17 @@
 * Le fameux Wall a été migré dans Wooden et devient un Block Gutenberg extraordinaire !
 * La sécurité est améliorée, notamment avec l'intégration du Google Recaptcha (plus aprécié parfois que le captcha numérique)
 * Suppression de réglages et outils obsolètes ou inutilisés
-* Certains tools ont été abandonnés car il n'étaient plus pertinent ou devait être pris en charge par un thème.
-* Le nouveau thème Wooden a vu le jour pour venir compléter Woodkit v2 pour une expérience optimale, ce thème est voué à être surchargé (par défaut il ne propose aucun style) mais propose un contexte de développement pour Gutenberg et des tools !
+* Certains tools ont été abandonnés par manque de pertinence ou prise en charge par un thème.
+* Le nouveau thème Wooden a vu le jour pour venir compléter Woodkit v2 pour une expérience optimale, ce thème propose un contexte de développement pour Gutenberg et des outils "maison". Ce thème est voué à être surchargé (par défaut il ne propose aucun style).
 
-**Note :** Woodkit v2 nécessite Wordpress > v5 avec Gutenberg d'activé
+**Note :** Woodkit v2 nécessite Wordpress > v5 avec l'édieur Gutenberg activé.
 
 # Migration
 
-* avant de migrer de Woodkit v1 à la v2, vous devez vous assurer que votre Worpress est en >v5 et que Gutenberg est activé.
-* vous devez bien avoir consciences des tools que vous utilisez peut-être et qui ne sont plus supportés.
-* la plupart des tools abandonnés par Woodkit ont été migrés vers le thème Wooden.
-* lors du passage de Woodkit v1 à la v2, les metadata et options changent de key/slug, on ne peut donc plus revenir en arrière.
+* Avant de migrer de Woodkit v1 à la v2, vous devez vous assurer que votre version de Worpress est > v5 et que Gutenberg est activé.
+* Vous devez bien avoir consciences des tools que vous utilisez peut-être et qui ne sont plus supportés.
+* La plupart des tools abandonnés par Woodkit ont été migrés vers le thème Wooden.
+* Lors du passage de Woodkit v1 à la v2, les metadata et options changent de key/slug, on ne peut donc plus revenir en arrière.
 
 **Pour continuer à utiliser Woodkit v1, utilisez la branche v1 de ce dépôt.**
 
@@ -28,14 +28,14 @@
 
 # Context Gutenberg
 
-Pour ajouter un block
-* dupliquer le dossier 'woodblocks/blocks/_blank_' au même niveau et le renommer avec un nouveau slug
-* dans ce dossier, faire un rechercher/remplacer global dans ce nouveau dossier sur "_blank_" par le slug de votre block
-* ajoutez l'import de ce block dans 'woodblocks/blocks/index.php : require_once (WOODBLOCKS_PATH.'blocks/[NEW_SLUG]/index.php');
-* ouvrir webpack.config.js et ajouter le slug de votre nouveau block à la liste blocks
-* lancez $ npm run dev (si webpack est déjà en route, vous devez le redémarrer)
-* commencez à developper
+Pour ajouter un block :
+* Dupliquer le dossier 'woodblocks/blocks/_blank_' au même niveau et le renommer avec un nouveau slug
+* Dans ce dossier, faire un rechercher/remplacer global dans ce nouveau dossier sur "_blank_" par le slug de votre block
+* Ajoutez l'import de ce block dans 'woodblocks/blocks/index.php : require_once (WOODBLOCKS_PATH.'blocks/[NEW_SLUG]/index.php');
+* Ouvrir webpack.config.js et ajouter le slug de votre nouveau block à la liste blocks
+* Lancez $ npm run dev (si webpack est déjà en route, vous devez le redémarrer)
+* Commencez à developper
 
 Pour ajouter un store
-* dans le dossier 'woodblocks/stores/', ajoutez le fichier JS représentant votre store
-* dans le fichier 'woodblocks/stores/index.js', ajoutez la dépendance à votre nouveau store (avec un import)
+* Dans le dossier 'woodblocks/stores/', ajoutez le fichier JS représentant votre store
+* Dans le fichier 'woodblocks/stores/index.js', ajoutez la dépendance à votre nouveau store (avec un import)
