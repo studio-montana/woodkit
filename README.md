@@ -27,13 +27,15 @@
 
 # Context Gutenberg
 
-Pour ajouter un block :
-* Dupliquer le dossier 'woodblocks/blocks/_blank_' au même niveau et le renommer avec un nouveau slug
-* Dans ce dossier, faire un rechercher/remplacer global dans ce nouveau dossier sur "_blank_" par le slug de votre block
-* Ajoutez l'import de ce block dans 'woodblocks/blocks/index.php : require_once (WOODBLOCKS_PATH.'blocks/[NEW_SLUG]/index.php');
-* Ouvrir webpack.config.js et ajouter le slug de votre nouveau block à la liste blocks
-* Lancez $ npm run dev (si webpack est déjà en route, vous devez le redémarrer)
+**Pour ajouter un block :**
+* Dupliquer le dossier *src/gutenberg/blocks/_blank_* dans le dossier de votre choix sous *src/* (afin de profiter du context Webpack) et renommer ce nouveau dossier avec 'votre_slug' (Important : nommage en snake_case)
+* Dans ce nouveau dossier, faire un rechercher/remplacer global dans ce nouveau dossier sur "_blank_" par 'votre_slug'
+* Faites en sorte d'appeller le fichier présent dans votre nouveau dossier index.php
+* Ouvrir webpack.config.js qui est à la racine du projet et ajouter la référence à votre nouveau block comme ceci : 
+  * {'entry': 'index.jsx', 'name': 'votre_slug', 'path': 'PATH_TO_YOUR_BLOCK_DIR', 'entry': 'index.jsx'},
+* Lancez *$ npm run dev* (si webpack est déjà en route, vous devez le redémarrer)
 * Commencez à developper
+* Pour builder en production : lancez un *$ npm run build*
 
 Pour ajouter un store :
 * Dans le dossier 'woodblocks/stores/', ajoutez le fichier JS représentant votre store
