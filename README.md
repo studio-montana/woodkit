@@ -69,6 +69,6 @@
 **Les composants/assets Woodkit**
 
 * les composants React proposés par Woodkit sont accessible via *import COMPONENT_NAME from 'wkgcomponents/....'
- * exemple : import WKG_Media_Selector from 'wkgcomponents/media-selector'
+  * exemple : import WKG_Media_Selector from 'wkgcomponents/media-selector'
 * les assets React proposés par Woodkit sont accessible via *import ASSET_NAME  from 'wkgassets/...'*
- * exemple : import WKG_Icons from 'wkgassets/icons'
+  * exemple : import WKG_Icons from 'wkgassets/icons'
