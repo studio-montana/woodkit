@@ -22,9 +22,8 @@
 
 # Les releases
 
-* les releases doivent être gérées avec un numéro de version au format x.x.x (où x est numérique) afin d'être gérée par Woodmanager (gestionnaire de nos packages).
-
-* les releases doivent être gérées avec un numéro de version majeur cohérent. En effet, Woodmanager sépare les versions majeures de Woodkit. Ainsi les sites en 1.x.x reste en 1.x.x et les sites en 2.x.x restent en 2.x.x. Donc les releases de Woodkit v2 doivent avoir une version du format 2.x.x. Les releases de la v1 doivent êtres faites depuis la branche v1 avec la version au format 1.x.x.
+* Les releases doivent être gérées avec un numéro de version au format x.x.x (où x est numérique) afin d'être gérée par Woodmanager (gestionnaire de nos packages).
+* Les releases doivent être gérées avec un numéro de version majeur cohérent. En effet, Woodmanager sépare les versions majeures de Woodkit. Ainsi les sites en 1.x.x reste en 1.x.x et les sites en 2.x.x restent en 2.x.x. Donc les releases de Woodkit v2 doivent avoir une version du format 2.x.x. Les releases de la v1 doivent êtres faites depuis la branche v1 avec la version au format 1.x.x.
 
 # Context Gutenberg
 
@@ -36,6 +35,6 @@ Pour ajouter un block :
 * Lancez $ npm run dev (si webpack est déjà en route, vous devez le redémarrer)
 * Commencez à developper
 
-Pour ajouter un store
+Pour ajouter un store :
 * Dans le dossier 'woodblocks/stores/', ajoutez le fichier JS représentant votre store
 * Dans le fichier 'woodblocks/stores/index.js', ajoutez la dépendance à votre nouveau store (avec un import)
