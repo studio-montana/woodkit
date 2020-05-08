@@ -45,7 +45,7 @@ class WKG_Post_Selector extends Component {
         }
       }
     } else {
-      options.push({value: 0, label: this.props.label_loading ? this.props.label_loading : 'Chargement...', disabled: true})
+      options.push({value: 0, label: this.props.label_loading ? this.props.label_loading : __("Chargement...", 'woodkit'), disabled: true})
     }
   	return (
 			<div className="wkg-post-selector">
