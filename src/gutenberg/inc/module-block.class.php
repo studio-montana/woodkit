@@ -68,6 +68,10 @@ abstract class WKG_Module_Block extends WKG_Module {
 				    'base_path'       => $this->path,
 		    ]
 		);
+		// i18n
+		if ( function_exists('wp_set_script_translations') ) {
+			wp_set_script_translations($this->slug . '-block-editor', 'woodkit');
+		}
 
 		$editor_css = 'editor.css';
 		wp_register_style($this->slug . '-block-editor', $this->uri.$editor_css, $this->args['css_dependencies'], filemtime($this->path.$editor_css));
