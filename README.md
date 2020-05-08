@@ -1,4 +1,6 @@
-# Woodkit v2 - les nouveautés
+# Woodkit - multitool Wordpress plugin
+
+## les nouveautés de la v2
 
 * Woodkit devient plus robuste
 * Woodkit gère les tools dans les thèmes (notamment Wooden)
