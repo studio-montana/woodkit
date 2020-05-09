@@ -73,8 +73,9 @@ class WoodkitThemeUploader {
 			$url = add_query_arg(array("host" => get_site_url()), $url);
 			$url = add_query_arg(array("key" => $key), $url);
 			$url = add_query_arg(array("version" => $this->themeData->get('Version')), $url);
+			// trace_info("Woodkit check latestrelease - API url : " . var_export($url, true));
 			$remote_result = wp_remote_retrieve_body(wp_remote_get($url));
-			// trace_info("Woodkit check latestrelease for package [{$this->slug}] : " . var_export($remote_result, true));
+			// trace_info("WoodkitThemeUploader check latestrelease for package [{$this->slug}] : " . var_export($remote_result, true));
 			if (!empty($remote_result)) {
 				$this->APIResult = @json_decode($remote_result);
 				// update release
@@ -125,6 +126,8 @@ class WoodkitThemeUploader {
 		$doUpdate = 0;
 		if (isset($this->APIResult->error)){
 			trace_err("Woodkit Theme Installer - setTransitent - APIResult Error : ".var_export($this->APIResult->error, true));
+		}else if (empty($this->APIResult)){
+			// trace_info("Woodkit Theme Installer - setTransitent - no release for package[{$this->slug}]");
 		}else if (isset($this->APIResult->tag_name) && !empty($this->APIResult)){
 			$doUpdate = version_compare($this->APIResult->tag_name, $this->themeData->get('Version'));
 		}

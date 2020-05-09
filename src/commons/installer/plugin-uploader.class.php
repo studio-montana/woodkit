@@ -76,18 +76,15 @@ class WoodkitPluginUploader {
 			$url = add_query_arg(array("host" => get_site_url()), $url);
 			$url = add_query_arg(array("key" => $key), $url);
 			$url = add_query_arg(array("version" => $this->pluginData["Version"]), $url);
+			// trace_info("WoodkitPluginUploader check latestrelease for package [{$this->slug}] : " . var_export($remote_result, true));
 			$remote_result = wp_remote_retrieve_body(wp_remote_get($url));
 			trace_info("Woodkit check latestrelease for package [{$this->package}] : " . var_export($remote_result, true));
 			if (!empty($remote_result)) {
 				$this->APIResult = @json_decode($remote_result);
 				// update release
-				if ($latestrelease != null)
-					delete_option($this->package.'-latest-release');
-				add_option($this->package.'-latest-release', $remote_result);
+				update_option($this->package.'-latest-release', $remote_result);
 				// update date
-				if ($last_update != null)
-					delete_option($this->package.'-last-update-latest-release');
-				add_option($this->package.'-last-update-latest-release', $now);
+				update_option($this->package.'-last-update-latest-release', $now);
 			}
 		}else{
 			$this->APIResult = @json_decode($latestrelease);
@@ -131,6 +128,8 @@ class WoodkitPluginUploader {
 		$doUpdate = 0;
 		if (isset($this->APIResult->error)){
 			trace_err("Woodkit Plugin Installer - setTransitent - APIResult Error : ".var_export($this->APIResult->error, true));
+		}else if (empty($this->APIResult)){
+			// trace_info("Woodkit Plugin Installer - setTransitent - no release for package[{$this->slug}]");
 		}else if (isset($this->APIResult->tag_name) && !empty($this->APIResult)){
 			$doUpdate = version_compare($this->APIResult->tag_name, $this->pluginData["Version"]);
 		}
