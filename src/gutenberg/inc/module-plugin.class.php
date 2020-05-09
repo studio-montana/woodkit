@@ -82,7 +82,11 @@ abstract class WKG_Module_Plugin extends WKG_Module {
 
 		// enqueue script
 		$build_js = 'build.js';
-		wp_enqueue_script($this->slug . '-build', $this->uri.$build_js, $this->args['script_dependencies'], filemtime($this->path.$build_js));
+		if (file_exists($this->path.$build_js)) {
+			wp_enqueue_script($this->slug . '-build', $this->uri.$build_js, $this->args['script_dependencies'], filemtime($this->path.$build_js));
+		} else {
+			trace_err("WKG_Module_Plugin - no build for plugin ['{$this->slug}']");
+		}
 		
 		// after hook
 		$this->after_enqueue();

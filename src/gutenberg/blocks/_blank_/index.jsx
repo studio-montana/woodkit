@@ -1,5 +1,7 @@
 const { registerBlockType } = wp.blocks
 const { Component } = wp.element
+const { InspectorControls } = wp.blockEditor
+const { PanelBody, PanelRow } = wp.components
 
 registerBlockType('wkg/_blank_', {
 	title: 'WKG _blank_',

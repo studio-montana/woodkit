@@ -2,8 +2,11 @@ const path = require('path');
 
 /** gutenberg modules declaration */
 let gutenberg_modules = [
+	// {'entry': 'index.jsx', 'name': 'fake_block', 'path': 'gutenberg/blocks/fake_block/'}, // Block declaration example
+	// {'entry': 'index.jsx', 'name': 'fake_plugin', 'path': 'gutenberg/plugins/fake_plugin/'}, // Plugin declaration example
+	// {'entry': 'index.js', 'name': 'fake_store', 'path': 'gutenberg/stores/fake_store/'}, // Store declaration example
 	{'entry': 'index.js', 'name': 'commons', 'path': 'gutenberg/stores/commons/'}, // commons store
-	{'entry': 'index.jsx', 'name': 'seometa', 'path': 'tools/seo/gutenberg/plugins/seometa/', 'entry': 'index.jsx'}, // seo tool's metabox
+	{'entry': 'index.jsx', 'name': 'seometa', 'path': 'tools/seo/gutenberg/plugins/seometa/'}, // seo tool's metabox
 ];
 
 /** all configurations */

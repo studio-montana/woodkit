@@ -93,6 +93,10 @@ class WoodkitPluginUploader {
 
 	// Push in plugin version information to get the update notification
 	public function setTransitent($transient) {
+
+		trace_info("******************************************************************");
+		trace_info("setTransitent - transient : " . var_export($transient, true));
+		
 		if(empty($transient->checked[$this->slug])) {
 			return $transient;
 		}
@@ -147,6 +151,10 @@ class WoodkitPluginUploader {
 			$response->upgrade_notice = '';
 			$response->url = $this->pluginData["PluginURI"];
 			$response->package = $this->APIResult->zipball_url;
+			$response->icons = [
+					'2x' => WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TEMPLATES_FOLDER.'img/woodkit-logo.svg',
+					'1x' => WOODKIT_PLUGIN_URI.WOODKIT_PLUGIN_TEMPLATES_FOLDER.'img/woodkit-logo.svg',
+			];
 			$transient->response[$this->slug] = $response;
 
 		}
