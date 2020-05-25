@@ -84,13 +84,23 @@ class WoodkitConfig {
 	private function display(){
 		?>
 		<div class="wrap woodkit-page-options woodkit-tool-page-options">
-    		<h1><?php _e("Woodkit setup", 'woodkit'); ?></h1>
+    		
+    		<div class="wk-panel">
+				<div class="woodkit-credits">
+					<div class="logo"><?php echo get_woodkit_icon("logo"); ?></div>
+					<div class="text">
+						<h1 class="title"><?php _e("Woodkit"); ?><sup class="copy"> &copy;</sup></h1>
+						<p class="desc"><?php _e("Un outil robuste complétant Wordpress en terme de SEO, de sécurité et d'outils sur-mesure dédiés à votre site Web."); ?><br />L'idée est qu'un outil simple, répondant uniquement aux besoins essentiels, dure dans le temps.</p>
+						<p class="credit">Développé et maintenu depuis 2016 par <a href="https://www.seb-c.com" target="_blank">Sébastien Chandonay</a> & <a href="https://www.cyriltissot.com" target="_blank">Cyril Tissot</a> pour <a href="https://www.studio-montana.com" target="_blank">Studio Montana</a></p>
+					</div>
+				</div>
+			</div>
     		
     		<form method="post" action="<?php echo $this->self_url; ?>">
     			<input type="hidden" name="<?php echo self::$nonce_name; ?>" value="<?php echo $this->nonce_action; ?>" />
-	    		<div class="section">
-					<h2 class="section-title"><?php _e("General", 'woodkit'); ?></h2>
-					<div class="section-content">
+	    		<div class="wk-panel">
+					<h2 class="wk-panel-title"><?php _e("Activation", 'woodkit'); ?></h2>
+					<div class="wk-panel-content">
 						<div class="field">
 							<div class="field-content">
 								<?php 
@@ -118,9 +128,9 @@ class WoodkitConfig {
     		</form>
     		
     		
-    		<div class="section">
-				<h2 class="section-title"><?php _e("Woodkit tools", 'woodkit'); ?></h2>
-				<div class="section-content">
+    		<div class="wk-panel">
+				<h2 class="wk-panel-title"><?php _e("Outils", 'woodkit'); ?></h2>
+				<div class="wk-panel-content">
     				<table class="wp-list-table widefat plugins">
 						<thead>
 							<tr>

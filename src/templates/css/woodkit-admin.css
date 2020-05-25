@@ -41,6 +41,26 @@
 }
 
 /*****************************************************************
+ * WK Panel
+ *****************************************************************/
+.wk-panel {
+	padding: 18px;
+	margin: 18px 0;
+	background: #ffffff;
+	box-sizing: 		border-box;
+	-moz-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+   	-webkit-box-shadow: 	0 1px 1px 0 rgba(0,0,0,.2);
+    -moz-box-shadow: 		0 1px 1px 0 rgba(0,0,0,.2);
+    box-shadow: 			0 1px 1px 0 rgba(0,0,0,.2);
+}
+.wk-panel-title {
+	margin-top: 0;
+}
+.wk-panel-content {
+}
+
+/*****************************************************************
  * WK Card
  *****************************************************************/
 .wk-card {
@@ -203,25 +223,32 @@
   background-color: #ffffff;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * SPECIAL Woodkit config page
+ */
+.woodkit-credits {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.woodkit-credits .title .copy {
+	font-size: 12px;
+}
+.woodkit-credits .logo{
+	max-width: 120px;
+	width: 100%;
+	max-height: 114px;
+	height: 100%;
+}
+.woodkit-credits .text{
+	padding: 0 24px;
+}
+.woodkit-credits .text .desc{
+}
+.woodkit-credits .text .credit{
+	font-size: 11px;
+	color: #777777;
+}
 
 /**
  * MODAL BOX
@@ -370,21 +397,7 @@
 .woodkit-tool-page-options select:focus {
 	background-color: #f6f6f6;
 }
-.woodkit-tool-page-options .section{
-	padding: 9px 18px 18px 18px;
-	margin: 18px 0;
-	background: #ffffff;
-	box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-   	-webkit-box-shadow: 	0 1px 1px 0 rgba(0,0,0,.1);
-    -moz-box-shadow: 	0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 		0 1px 1px 0 rgba(0,0,0,.1);
-}
-.woodkit-tool-page-options .section .section-title{
-	margin: 9px 0 18px 0;
-}
-.woodkit-tool-page-options .section .field-content{
+.woodkit-tool-page-options .field-content{
 	min-height: 31px;
 	padding: 2px 0 2px 2px;
 	margin: 0 0 3px 0;
@@ -402,10 +415,10 @@
     -ms-transition: all 200ms linear;
     transition: all 200ms linear;
 }
-.woodkit-tool-page-options .section .field.checkbox .field-content{
+.woodkit-tool-page-options .field.checkbox .field-content{
 	padding-left: 12px;
 }
-.woodkit-tool-page-options .section .field label {
+.woodkit-tool-page-options .field label {
 	display: inline-block;
 	margin: 0 6px 0 3px;
 	max-width: 200px;
@@ -413,53 +426,53 @@
 	color: #555;
 	line-height: 31px;
 }
-.woodkit-tool-page-options .section .field label.small {
+.woodkit-tool-page-options .field label.small {
 	max-width: 100px;
 }
-.woodkit-tool-page-options .section .field label.large {
+.woodkit-tool-page-options .field label.large {
 	max-width: 300px;
 }
-.woodkit-tool-page-options .section .field.checkbox label {
+.woodkit-tool-page-options .field.checkbox label {
 	width: auto;
 	max-width: none;
 }
-.woodkit-tool-page-options .section .field table{
+.woodkit-tool-page-options .field table{
 	width: 100%;
 }
-.woodkit-tool-page-options .section .field .description {
+.woodkit-tool-page-options .field .description {
 	font-size: 10px;
 	color: #999;
 }
-.woodkit-tool-page-options .section .section-info{
+.woodkit-tool-page-options .section-info{
 	margin: 12px 0;
 	font-size: 12px;
 	font-style: italic;
 	color: #999;
 }
-.woodkit-tool-page-options .section .section-info code{
+.woodkit-tool-page-options .section-info code{
 	font-size: 11px;
 	color: #0073aa;
 	letter-spacing: 0.06em;
 }
 /* textarea */
-.woodkit-tool-page-options .section .field.textarea label,
-.woodkit-tool-page-options .section .field.textarea textarea{
+.woodkit-tool-page-options .field.textarea label,
+.woodkit-tool-page-options .field.textarea textarea{
 	display: block;
 }
 /* key */
-.woodkit-tool-page-options .section .field .valid-key,
-.woodkit-tool-page-options .section .field .invalid-key {
+.woodkit-tool-page-options .field .valid-key,
+.woodkit-tool-page-options .field .invalid-key {
 	display: inline-block;
 	margin-left: 6px;
 }
-.woodkit-tool-page-options .section .field .valid-key i,
-.woodkit-tool-page-options .section .field .invalid-key i {
+.woodkit-tool-page-options .field .valid-key i,
+.woodkit-tool-page-options .field .invalid-key i {
 	margin-right: 6px;
 }
-.woodkit-tool-page-options .section .field .valid-key {
+.woodkit-tool-page-options .field .valid-key {
 	color: #00C3AA;
 }
-.woodkit-tool-page-options .section .field .invalid-key {
+.woodkit-tool-page-options .field .invalid-key {
 	color: red;
 }
 

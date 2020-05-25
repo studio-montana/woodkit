@@ -34,7 +34,7 @@ wp_register_script('woodkit-js-login', locate_web_ressource(WOODKIT_PLUGIN_TEMPL
 /**
  * Style dependencies
  */
-wp_register_style('woodkit-css-fa', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FONTS_FOLDER.'fontawesome-free-5.10.3-web/css/all.min.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
+wp_register_style('woodkit-css-fa', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_FONTS_FOLDER.'fontawesome-free-5.13.0-web/css/all.min.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 wp_register_style('woodkit-css-front', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_CSS_FOLDER.'woodkit-front.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 wp_register_style('woodkit-css-admin', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_CSS_FOLDER.'woodkit-admin.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);
 wp_register_style('woodkit-css-login', locate_web_ressource(WOODKIT_PLUGIN_TEMPLATES_CSS_FOLDER.'woodkit-login.css'), array(), WOODKIT_PLUGIN_WEB_CACHE_VERSION);

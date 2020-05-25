@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom\n"
-"POT-Creation-Date: 2020-05-06 21:34+0200\n"
-"PO-Revision-Date: 2020-05-06 21:53+0200\n"
+"POT-Creation-Date: 2020-05-11 14:12+0200\n"
+"PO-Revision-Date: 2020-05-11 15:30+0200\n"
 "Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
 "Language-Team: Sébastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
 "com artcyril@gmail.com>\n"
@@ -12,12 +12,68 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Projecustom-Id-Version: Bancassurances Theme WP\n"
 "X-Generator: Poedit 2.3\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;R\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Référencement"
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Moteurs de recherche"
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Titre"
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Par défaut, le titre de la publication sera utilisé."
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+#: src/commons/config/render.php:129 src/commons/config/render.php:196
+msgid "Description"
+msgstr "Description"
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Par défaut, le résumé de la publication sera utilisé."
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Mots-clés"
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Séparez les mots-clés par une virgule."
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Réseaux sociaux"
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid ""
+"Par défaut, le titre utilisé pour les moteurs de recherche sera utilisé."
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid ""
+"Par défaut, la description utilisée pour les moteurs de recherche sera "
+"utilisé."
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Image"
+msgstr ""
+
+#: src/tools/seo/gutenberg/plugins/seometa/build.js:1
+msgid "Par défaut, l'image mise en avant de la publication sera utilisée."
+msgstr ""
 
 #: src/commons/config/index.php:166 src/commons/config/render.php:145
 msgid "Setup"
@@ -70,10 +126,6 @@ msgstr "Outils Woodkit"
 #: src/commons/config/render.php:128 src/commons/config/render.php:195
 msgid "Tool name"
 msgstr "Nom du tool"
-
-#: src/commons/config/render.php:129 src/commons/config/render.php:196
-msgid "Description"
-msgstr "Description"
 
 #: src/commons/config/render.php:130 src/commons/config/render.php:197
 msgid "Source"
@@ -851,7 +903,7 @@ msgstr "sélecteur css"
 
 #: src/tools/tracking/index.php:110
 msgid "event label"
-msgstr "Nom de l’événement"
+msgstr "nom de l’événement"
 
 #: src/tools/tracking/index.php:111
 msgid "action name"
@@ -859,7 +911,7 @@ msgstr ""
 
 #: src/tools/tracking/index.php:112
 msgid "category name"
-msgstr "Nom de catégory"
+msgstr "nom de catégorie"
 
 #: src/tools/tracking/index.php:113
 msgid "Do you realy want remove this event ?"

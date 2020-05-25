@@ -38,12 +38,16 @@ abstract class WKG_Module_Block extends WKG_Module {
 	function __construct($slug, $args = array()) {
 
 		parent::__construct('wkg/' . $slug, wp_parse_args($args, array(
-			'is_dynamic' => true,
-			'script_dependencies' => array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api', 'wp-data', 'wp-edit-post'),
-			'css_dependencies' => array(),
-			'before_init' => null,
-			'after_init' => null,
-			'block_post_types_template' => array(),
+				'is_dynamic' => true,
+				'script_dependencies' => array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api', 'wp-data', 'wp-edit-post'),
+				'css_dependencies' => array(),
+				'before_init' => null,
+				'after_init' => null,
+				'block_post_types_template' => array(),
+				'i18n' => array(
+						'domain' => 'woodkit',
+						'path' => WOODKIT_PLUGIN_PATH.'lang/'
+				),
 		)));
 
 		// init
@@ -66,13 +70,13 @@ abstract class WKG_Module_Block extends WKG_Module {
 			wp_localize_script(
 			    $this->slug . '-block-editor',
 			    'wkg_data', [
-			        'base_uri'       => $this->uri,
+			        	'base_uri'       => $this->uri,
 					    'base_path'       => $this->path,
 			    ]
 			);
 			// i18n
-			if ( function_exists('wp_set_script_translations') ) {
-				wp_set_script_translations($this->slug . '-block-editor', 'woodkit');
+			if (function_exists('wp_set_script_translations') && isset($this->args['i18n'])) {
+				wp_set_script_translations($this->slug . '-block-editor', $this->args['i18n']['domain'], $this->args['i18n']['path']);
 			}
 	
 			$editor_css = 'editor.css';

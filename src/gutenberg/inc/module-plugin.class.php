@@ -38,9 +38,13 @@ abstract class WKG_Module_Plugin extends WKG_Module {
 	function __construct ($slug, $args = array()) {
 
 		parent::__construct('wkg-plugins-' . $slug, wp_parse_args($args, array(
-			'script_dependencies' => array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api', 'wp-data', 'wp-plugins', 'wp-edit-post'),
-			'css_dependencies' => array(),
-			'post_types' => array(),
+				'script_dependencies' => array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api', 'wp-data', 'wp-plugins', 'wp-edit-post'),
+				'css_dependencies' => array(),
+				'post_types' => array(),
+				'i18n' => array(
+						'domain' => 'woodkit',
+						'path' => WOODKIT_PLUGIN_PATH.'lang/'
+				)
 		)));
 
 		add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_editor_assets'));
@@ -84,6 +88,10 @@ abstract class WKG_Module_Plugin extends WKG_Module {
 		$build_js = 'build.js';
 		if (file_exists($this->path.$build_js)) {
 			wp_enqueue_script($this->slug . '-build', $this->uri.$build_js, $this->args['script_dependencies'], filemtime($this->path.$build_js));
+			// i18n
+			if (function_exists('wp_set_script_translations') && isset($this->args['i18n'])) {
+				wp_set_script_translations($this->slug . '-build', $this->args['i18n']['domain'], $this->args['i18n']['path']);
+			}
 		} else {
 			trace_err("WKG_Module_Plugin - no build for plugin ['{$this->slug}']");
 		}

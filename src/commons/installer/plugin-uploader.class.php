@@ -93,9 +93,6 @@ class WoodkitPluginUploader {
 
 	// Push in plugin version information to get the update notification
 	public function setTransitent($transient) {
-
-		trace_info("******************************************************************");
-		trace_info("setTransitent - transient : " . var_export($transient, true));
 		
 		if(empty($transient->checked[$this->slug])) {
 			return $transient;
