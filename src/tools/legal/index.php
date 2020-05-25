@@ -37,6 +37,7 @@ class WK_Tool_Legal extends WK_Tool{
 				'slug' => 'legal',
 				'name' => __("Legal", 'woodkit'),
 				'description' => __("Add legal advice on front of your website, cookies and rgpd.", 'woodkit'),
+				'customizer' => add_query_arg(array('autofocus[section]' => 'legal_customizer'), admin_url('customize.php')),
 			));
 	}
 	

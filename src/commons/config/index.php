@@ -168,19 +168,19 @@ if (is_admin()){
 		return $links;
 	});
 
-		/**
-		 * Add Plugin option page entry to Menu
-		 */
-		add_action ( 'admin_menu', function () {
-			$page_name = __ ( "Woodkit", 'woodkit' );
-			$menu_name = __ ( "Woodkit", 'woodkit' );
-			add_menu_page ( $page_name, $menu_name, "manage_options", "woodkit_options", "woodkit_plugin_menu_config_callback", get_woodkit_icon('logo-plain', true, true));
-		});
+	/**
+	 * Add Plugin option page entry to Menu
+	 */
+	add_action ( 'admin_menu', function () {
+		$page_name = __ ( "Woodkit", 'woodkit' );
+		$menu_name = __ ( "Woodkit", 'woodkit' );
+		add_menu_page ( $page_name, $menu_name, "manage_options", "woodkit_options", "woodkit_plugin_menu_config_callback", get_woodkit_icon('logo-plain', true, true));
+	});
 
-			/**
-			 * Display plugin option page
-			 */
-			function woodkit_plugin_menu_config_callback() {
-				new WoodkitConfig();
-			}
+	/**
+	 * Display plugin option page
+	 */
+	function woodkit_plugin_menu_config_callback() {
+		new WoodkitConfig();
+	}
 }

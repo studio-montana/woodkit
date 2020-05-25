@@ -155,6 +155,15 @@ class WoodkitConfig {
 												<a href="<?php echo menu_page_url("woodkit_options_tool_".$tool->slug, false); ?>"><?php _e("Setup", 'woodkit'); ?></a> |
 												<?php } ?> 
 											</span>
+											<span class="0">
+												<?php if ($active == true && $tool->customizer !== false){
+													if ($tool->customizer === true) { ?>
+														<a href="<?php echo esc_url(admin_url('customize.php')); ?>"><?php _e("Customize", 'woodkit'); ?></a> |
+													<?php } else { ?>
+														<a href="<?php echo $tool->customizer; ?>"><?php _e("Customize", 'woodkit'); ?></a> |
+													<?php }
+												} ?> 
+											</span>
 											<?php 
 											if ($active == true){
 												?>

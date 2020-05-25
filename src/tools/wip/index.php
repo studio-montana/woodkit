@@ -37,9 +37,7 @@ class WK_Tool_Wip extends WK_Tool{
 				'slug' => 'wip', 
 				'name' => __("WIP", 'woodkit'),
 				'description' => __("Add work in progress page on your website", 'woodkit'),
-				'has_config' => false,
-				'add_config_in_menu' => false,
-				'documentation' => WOODKIT_URL_DOCUMENTATION.'/wip'
+				'customizer' => add_query_arg(array('autofocus[section]' => 'wip_customizer'), admin_url('customize.php')),
 			));
 	}
 	

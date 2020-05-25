@@ -47,7 +47,7 @@ wp_register_style('woodkit-css-login', locate_web_ressource(WOODKIT_PLUGIN_TEMPL
 function woodkit_scripts_styles() {
 
 	// Dashicons
-	wp_enqueue_style('dashicons');
+	// wp_enqueue_style('dashicons');
 
 	// Front styles
 	wp_enqueue_style('woodkit-css-front');

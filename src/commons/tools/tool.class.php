@@ -33,6 +33,7 @@ abstract class WK_Tool{
 	public $description; // string
 	public $has_config; // boolean
 	public $add_config_in_menu; // boolean
+	public $customizer; // boolean|string - see : https://gist.github.com/slushman/6f08885853d4a7ef31ebceafd9e0c180
 	public $documentation_url; // string
 	public $is_core;  // boolean
 	public $context;  // string
@@ -49,6 +50,7 @@ abstract class WK_Tool{
 				'description' => '',
 				'has_config' => false,
 				'add_config_in_menu' => false,
+				'customizer' => false,
 				'documentation' => '',
 				'context' => '',
 		));
@@ -57,6 +59,7 @@ abstract class WK_Tool{
 		$this->description = $args['description'];
 		$this->has_config = $args['has_config'];
 		$this->add_config_in_menu = $args['add_config_in_menu'];
+		$this->customizer = $args['customizer'];
 		$this->documentation_url = $args['documentation'];
 		$this->context = $args['context'];
 		$this->config_nonce_name = 'woodkit-tool-'.$this->slug.'-config-nonce';
