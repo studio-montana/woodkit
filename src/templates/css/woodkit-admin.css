@@ -59,6 +59,17 @@
 }
 .wk-panel-content {
 }
+.wk-panel-info {
+	margin: 12px 0;
+	font-size: 12px;
+	font-style: italic;
+	color: #999;
+}
+.wk-panel-code {
+	font-size: 11px;
+	color: #0073aa;
+	letter-spacing: 0.06em;
+}
 
 /*****************************************************************
  * WK Card
@@ -442,17 +453,6 @@
 .woodkit-tool-page-options .field .description {
 	font-size: 10px;
 	color: #999;
-}
-.woodkit-tool-page-options .section-info{
-	margin: 12px 0;
-	font-size: 12px;
-	font-style: italic;
-	color: #999;
-}
-.woodkit-tool-page-options .section-info code{
-	font-size: 11px;
-	color: #0073aa;
-	letter-spacing: 0.06em;
 }
 /* textarea */
 .woodkit-tool-page-options .field.textarea label,

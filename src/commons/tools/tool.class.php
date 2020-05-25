@@ -29,8 +29,6 @@ defined('ABSPATH') or die("Go Away!");
 abstract class WK_Tool{
 
 	public $slug; // string
-	public $name; // string
-	public $description; // string
 	public $has_config; // boolean
 	public $add_config_in_menu; // boolean
 	public $customizer; // boolean|string - see : https://gist.github.com/slushman/6f08885853d4a7ef31ebceafd9e0c180
@@ -46,8 +44,6 @@ abstract class WK_Tool{
 				'path' => null, // optional, only needed if you are using symbolic link outside woodkit plugin context and if you don't specify 'uri' arg
 				'uri' => null, // optional, only needed if you are using symbolic link outside woodkit plugin context and if you don't specify 'path' arg
 				'slug' => '',
-				'name' => '',
-				'description' => '',
 				'has_config' => false,
 				'add_config_in_menu' => false,
 				'customizer' => false,
@@ -55,8 +51,6 @@ abstract class WK_Tool{
 				'context' => '',
 		));
 		$this->slug = $args['slug'];
-		$this->name = $args['name'];
-		$this->description = $args['description'];
 		$this->has_config = $args['has_config'];
 		$this->add_config_in_menu = $args['add_config_in_menu'];
 		$this->customizer = $args['customizer'];
@@ -105,7 +99,23 @@ abstract class WK_Tool{
 		return $this->path;
 	}
 	
+	/**
+	 * Called when tool is lauched (if activated)
+	 */
 	public abstract function launch();
+	
+	/**
+	 * Tool name must be get by function to support i18n
+	 * --> because of contructor is called before any filters which load textdomain - ex. : for tool's theme support
+	 */
+	public abstract function get_name();
+
+
+	/**
+	 * Tool description must be get by function to support i18n
+	 * --> because of contructor is called before any filters which load textdomain - ex. : for tool's theme support
+	 */
+	public abstract function get_description();
 	
 	/**
 	 * Proceed to tool activation
@@ -233,7 +243,7 @@ abstract class WK_Tool{
 		?>
 		<div class="wrap woodkit-page-options woodkit-tool-page-options woodkit-tool-<?php echo $this->slug; ?>-page-options">
 			<h1>
-				<?php echo __("Woodkit tools", 'woodkit'); ?><i class="fa fa-angle-right"></i><?php echo $this->name; ?>
+				<?php echo __("Woodkit tools", 'woodkit'); ?><i class="fa fa-angle-right"></i><?php echo $this->get_name(); ?>
 				<a href="<?php menu_page_url("woodkit_options", true); ?>" class="all-tools page-title-action"><?php _e("View all tools", 'woodkit'); ?></a>
 			</h1>
 			<form method="post" action="<?php echo get_current_url(true); ?>">

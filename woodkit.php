@@ -74,7 +74,7 @@ if(!class_exists('Woodkit')){
 			self::$_this = $this;
 
 			/** plugin textdomain */
-			load_plugin_textdomain('woodkit', false, WOODKIT_PLUGIN_PATH.'lang/');
+			load_plugin_textdomain('woodkit', false, 'woodkit/lang/');
 
 			/** helpers */
 			require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_COMMONS_HELPERS_FOLDER.'session.php');

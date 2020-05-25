@@ -29,7 +29,7 @@ if (!function_exists("woodkit_cmp_posttypes")):
 function woodkit_cmp_posttypes($post_type_1, $post_type_2) {
 	$current_post_type_label_1 = get_post_type_labels(get_post_type_object($post_type_1));
 	$current_post_type_label_2 = get_post_type_labels(get_post_type_object($post_type_2));
-	return strcmp($current_post_type_label_1->name, $current_post_type_label_2->name);
+	return strcmp($current_post_type_label_1->get_name(), $current_post_type_label_2->get_name());
 }
 endif;
 
@@ -60,7 +60,7 @@ function woodkit_cmp_options_sorted($item_1, $item_2){
  * @return number
  */
 function woodkit_cmp_tools_by_name($tool_1, $tool_2){
-	$tool_1_name = !empty($tool_1->name) ? woodkit_remove_accent($tool_1->name) : '';
-	$tool_2_name = !empty($tool_2->name) ? woodkit_remove_accent($tool_2->name) : '';
+	$tool_1_name = !empty($tool_1->get_name()) ? woodkit_remove_accent($tool_1->get_name()) : '';
+	$tool_2_name = !empty($tool_2->get_name()) ? woodkit_remove_accent($tool_2->get_name()) : '';
 	return strcmp($tool_1_name, $tool_2_name);
 }

@@ -143,9 +143,9 @@ class ToolsManager {
 			foreach ($this->tools_activated as $tool) {
 				if ($tool->has_config){
 					if ($tool->add_config_in_menu){
-						add_submenu_page("woodkit_options", $tool->name, '<span style="margin: 0 6px 0 3px;">-</span>'.$tool->name, "manage_options", "woodkit_options_tool_".$tool->slug, array($tool, 'render_config'));
+						add_submenu_page("woodkit_options", $tool->get_name(), '<span style="margin: 0 6px 0 3px;">-</span>'.$tool->get_name(), "manage_options", "woodkit_options_tool_".$tool->slug, array($tool, 'render_config'));
 					}else{
-						add_submenu_page(null, $tool->name, $tool->name, "manage_options", "woodkit_options_tool_".$tool->slug, array($tool, 'render_config'));
+						add_submenu_page(null, $tool->get_name(), $tool->get_name(), "manage_options", "woodkit_options_tool_".$tool->slug, array($tool, 'render_config'));
 					}
 				}
 			}

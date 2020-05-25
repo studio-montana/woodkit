@@ -35,12 +35,18 @@ class WK_Tool_SEO extends WK_Tool{
 	public function __construct(){
 		parent::__construct(array(
 				'slug' => 'seo', 
-				'name' => __("SEO", 'woodkit'),
-				'description' => __("Optimize your site SEO and manage your social publications", 'woodkit'),
 				'has_config' => true,
 				'add_config_in_menu' => true,
 				'documentation' => WOODKIT_URL_DOCUMENTATION.'/seo-referencement'
 			));
+	}
+	
+	public function get_name() { 
+		return __("SEO", 'wooden');
+	}
+	
+	public function get_description() { 
+		return __("Optimize your site SEO and manage your social publications", 'wooden');
 	}
 	
 	public function launch() {
@@ -72,11 +78,11 @@ class WK_Tool_SEO extends WK_Tool{
 	
 	public function display_config_fields(){
 		?>
-		<div class="section">
-			<h2 class="section-title">
+		<div class="wk-panel">
+			<h2 class="wk-panel-title">
 				<?php _e("General", 'woodkit'); ?>
 			</h2>
-			<div class="section-content">
+			<div class="wk-panel-content">
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
@@ -107,11 +113,11 @@ class WK_Tool_SEO extends WK_Tool{
 				</div>
 			</div>
 		</div>
-		<div class="section">
-			<h2 class="section-title">
+		<div class="wk-panel">
+			<h2 class="wk-panel-title">
 				<?php _e("Default values", 'woodkit'); ?>
 			</h2>
-			<div class="section-content">
+			<div class="wk-panel-content">
 				<div class="field" data-type="text">
 					<div class="field-content">
 						<?php
@@ -139,12 +145,12 @@ class WK_Tool_SEO extends WK_Tool{
 		$xmlsitemap_active = $this->get_option("xmlsitemap-active");
 		if ($xmlsitemap_active == "on"){
 			?>
-			<div class="section">
-				<h3 class="section-title">
+			<div class="wk-panel">
+				<h3 class="wk-panel-title">
 					<?php _e("Sitemap options", 'woodkit'); ?>
 				</h3>
-				<div class="section-content">
-					<div class="section-info"><?php _e("Your sitemap.xml is automaticaly generated, however you can add URLs manualy  or exclude generated URLs.", 'woodkit'); ?>&nbsp;<a href="<?php echo woodkit_seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('View sitemap.xml', 'woodkit'); ?></a></div>
+				<div class="wk-panel-content">
+					<div class="wk-panel-info"><?php _e("Your sitemap.xml is automaticaly generated, however you can add URLs manualy  or exclude generated URLs.", 'woodkit'); ?>&nbsp;<a href="<?php echo woodkit_seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('View sitemap.xml', 'woodkit'); ?></a></div>
 					<div class="seourls-manager"></div>
 					<script type="text/javascript">
 						jQuery(document).ready(function($){
@@ -182,8 +188,8 @@ class WK_Tool_SEO extends WK_Tool{
 			<?php 
 		} ?>
 		
-		<div class="section">
-			<h3 class="section-title">
+		<div class="wk-panel">
+			<h3 class="wk-panel-title">
 				<?php _e("301 Redirects", 'woodkit'); ?>
 			</h3>
 			<?php
@@ -192,8 +198,8 @@ class WK_Tool_SEO extends WK_Tool{
 			if ($has_redirect_loop == true){ ?>
 			<h4 style="background-color: #ECA400; color: #fff; padding: 12px;"><?php _e("WARNING : one or more rules may generate loop - this may crash your website", 'woodkit'); ?></h4>
 			<?php } ?>
-			<div class="section-content">
-				<div class="section-info"><?php _e("Here you can add your 301 permanent redirects and order theme by drag & drop.", 'woodkit'); ?>&nbsp;<a href="https://blog.hubspot.com/blog/tabid/6307/bid/7430/what-is-a-301-redirect-and-why-should-you-care.aspx" target="_blank"><?php _e("What is a 301 permanent redirect ?", 'woodkit'); ?></a></div>
+			<div class="wk-panel-content">
+				<div class="wk-panel-info"><?php _e("Here you can add your 301 permanent redirects and order theme by drag & drop.", 'woodkit'); ?>&nbsp;<a href="https://blog.hubspot.com/blog/tabid/6307/bid/7430/what-is-a-301-redirect-and-why-should-you-care.aspx" target="_blank"><?php _e("What is a 301 permanent redirect ?", 'woodkit'); ?></a></div>
 
 				<div class="redirects-manager"></div>
 				

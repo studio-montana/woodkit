@@ -35,12 +35,18 @@ class WK_Tool_Secure extends WK_Tool{
 	public function __construct(){
 		parent::__construct(array(
 				'slug' => 'secure', 
-				'name' => __("Security", 'woodkit'),
-				'description' => __("Secures your website", 'woodkit'),
 				'has_config' => true,
 				'add_config_in_menu' => true,
 				'documentation' => WOODKIT_URL_DOCUMENTATION.'/secure'
 			));
+	}
+	
+	public function get_name() { 
+		return __("Security", 'wooden');
+	}
+	
+	public function get_description() { 
+		return __("Secures your website", 'wooden');
 	}
 	
 	public function launch() {
@@ -93,8 +99,8 @@ class WK_Tool_Secure extends WK_Tool{
 	
 	public function display_config_fields(){
 		?>
-		<div class="section">
-			<div class="section-content">
+		<div class="wk-panel">
+			<div class="wk-panel-content">
 				<h3><?php _e("Captcha", 'woodkit'); ?></h3>
 				<div class="field checkbox">
 					<div class="field-content">
@@ -242,7 +248,7 @@ class WK_Tool_Secure extends WK_Tool{
 					</div>
 					<p class="description"><?php _e('Set CORS whitelist - one domain per line', 'woodkit'); ?></p>
 				</div>
-				<div class="section-info"><?php _e("You can view your headers and evaluate your website security", 'woodkit'); ?> : <a href="https://securityheaders.io/" target="_blank">https://securityheaders.io/</a></div>
+				<div class="wk-panel-info"><?php _e("You can view your headers and evaluate your website security", 'woodkit'); ?> : <a href="https://securityheaders.io/" target="_blank">https://securityheaders.io/</a></div>
 			</div>
 			<script type="text/javascript">
 			(function($) {

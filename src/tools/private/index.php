@@ -35,12 +35,16 @@ class WK_Tool_Private extends WK_Tool{
 	public function __construct(){
 		parent::__construct(array(
 				'slug' => 'private', 
-				'name' => __("Private", 'woodkit'),
-				'description' => __("Make your site, or just few pages, private (Intranet)", 'woodkit'),
-				'has_config' => false,
-				'add_config_in_menu' => false,
 				'documentation' => WOODKIT_URL_DOCUMENTATION.'/private'
 			));
+	}
+	
+	public function get_name() { 
+		return __("Private", 'wooden');
+	}
+	
+	public function get_description() { 
+		return __("Make your site, or just few pages, private (Intranet)", 'wooden');
 	}
 	
 	public function launch() {

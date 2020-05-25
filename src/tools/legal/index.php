@@ -35,10 +35,16 @@ class WK_Tool_Legal extends WK_Tool{
 	public function __construct(){
 		parent::__construct(array(
 				'slug' => 'legal',
-				'name' => __("Legal", 'woodkit'),
-				'description' => __("Add legal advice on front of your website, cookies and rgpd.", 'woodkit'),
 				'customizer' => add_query_arg(array('autofocus[section]' => 'legal_customizer'), admin_url('customize.php')),
 			));
+	}
+	
+	public function get_name() { 
+		return __("Legal", 'wooden');
+	}
+	
+	public function get_description() { 
+		return __("Add legal advice on front of your website, cookies and rgpd.", 'wooden');
 	}
 	
 	public function launch() {

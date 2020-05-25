@@ -35,12 +35,18 @@ class WK_Tool_Tracking extends WK_Tool{
 	public function __construct(){
 		parent::__construct(array(
 				'slug' => 'tracking', 
-				'name' => __("Tracking", 'woodkit'),
-				'description' => __("Manage your website tracking (Google Analytics, Google Tag Manager)", 'woodkit'),
 				'has_config' => true,
 				'add_config_in_menu' => true,
 				'documentation' => WOODKIT_URL_DOCUMENTATION.'/tracking'
 			));
+	}
+	
+	public function get_name() { 
+		return __("Tracking", 'wooden');
+	}
+	
+	public function get_description() { 
+		return __("Manage your website tracking (Google Analytics, Google Tag Manager)", 'wooden');
 	}
 	
 	public function launch() {
@@ -66,12 +72,12 @@ class WK_Tool_Tracking extends WK_Tool{
 	
 	public function display_config_fields(){
 		?>
-		<div class="section">
-			<h2 class="section-title">
+		<div class="wk-panel">
+			<h2 class="wk-panel-title">
 				<?php _e("Google Codes", 'woodkit'); ?>
 			</h2>
-			<div class="section-content">
-				<div class="section-info"><?php _e("Google Analytics code isn't needed if you use Google Tag Manager", 'woodkit'); ?></div>
+			<div class="wk-panel-content">
+				<div class="wk-panel-info"><?php _e("Google Analytics code isn't needed if you use Google Tag Manager", 'woodkit'); ?></div>
 				<div class="field">
 					<div class="field-content">
 						<?php
@@ -92,15 +98,15 @@ class WK_Tool_Tracking extends WK_Tool{
 				</div>
 			</div>
 		</div>
-		<div class="section">
-			<h3 class="section-title">
+		<div class="wk-panel">
+			<h3 class="wk-panel-title">
 				<?php _e("Google Analytics Event's tracking", 'woodkit'); ?>
 			</h3>
-			<div class="section-content">
+			<div class="wk-panel-content">
 				<?php if (empty($googleanalytics_code)){ ?>
-				<div class="section-info" style="color: red;"><?php _e("To use Google Analytics Event manager, please set GA key.", 'woodkit'); ?></div>
+				<div class="wk-panel-info" style="color: red;"><?php _e("To use Google Analytics Event manager, please set GA key.", 'woodkit'); ?></div>
 				<?php } ?>
-				<div class="section-info"><?php _e("You can add some Google Analytics Event rules based on CSS Selector - please don't use them when you are using Google Tag Manager.", 'woodkit'); ?></div>
+				<div class="wk-panel-info"><?php _e("You can add some Google Analytics Event rules based on CSS Selector - please don't use them when you are using Google Tag Manager.", 'woodkit'); ?></div>
 				<div class="googleanalyticsevents-manager"></div>
 				<script type="text/javascript">
 					jQuery(document).ready(function($){
@@ -131,7 +137,7 @@ class WK_Tool_Tracking extends WK_Tool{
 						?>
 					});
 				</script>
-				<div class="section-info"><?php _e("Selector example", 'woodkit'); ?> : <code>body.home .header &gt; a.logo</code></div>
+				<div class="wk-panel-info"><?php _e("Selector example", 'woodkit'); ?> : <code>body.home .header &gt; a.logo</code></div>
 			</div>
 		</div>
 		<?php

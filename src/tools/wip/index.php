@@ -35,10 +35,16 @@ class WK_Tool_Wip extends WK_Tool{
 	public function __construct(){
 		parent::__construct(array(
 				'slug' => 'wip', 
-				'name' => __("WIP", 'woodkit'),
-				'description' => __("Add work in progress page on your website", 'woodkit'),
 				'customizer' => add_query_arg(array('autofocus[section]' => 'wip_customizer'), admin_url('customize.php')),
 			));
+	}
+	
+	public function get_name() { 
+		return __("WIP", 'wooden');
+	}
+	
+	public function get_description() { 
+		return __("Add work in progress page on your website", 'wooden');
 	}
 	
 	public function launch() {

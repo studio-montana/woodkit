@@ -50,7 +50,7 @@ function wip_customize_register($wp_customize_manager) {
 	$wp_customize_manager->add_setting('wip_page', array('type' => 'theme_mod', 'sanitize_callback' => 'absint'));
 	$wp_customize_manager->add_control('wip_page', array(
 			'type'     		=> 'dropdown-pages',
-			'label'      	=> __('Page spécifique', 'woodkit' ),
+			'label'      	=> __('Specific page', 'woodkit' ),
 			'section'    	=> 'wip_customizer',
 			'settings'   	=> 'wip_page',
 			'description'	=> 'Affiche cette page au visiteurs non connectés',
