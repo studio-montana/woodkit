@@ -34,6 +34,18 @@ class WK_Tutorials {
 		<div class="fw-page">
 			<h1><?php _e('Tutorials', 'woodkit'); ?></h1>
 			<hr />
+			
+			<div class="wk-panel">
+				<div class="woodkit-credits">
+					<div class="logo"><?php echo get_woodkit_icon("bear"); ?></div>
+					<div class="text">
+						<h1 class="title"><?php _e("Studio Montana"); ?><sup class="copy"> &copy;</sup></h1>
+						<p class="desc"><?php _e("Studio Montana vous propose une série de vidéos tutoriels."); ?><br />Avec ça vous ne pouvez que booster votre site Web !</p>
+						<p class="credit"><a href="https://www.seb-c.com" target="_blank">Sébastien Chandonay</a> & <a href="https://www.cyriltissot.com" target="_blank">Cyril Tissot</a> pour <a href="https://www.studio-montana.com" target="_blank">Studio Montana</a></p>
+					</div>
+				</div>
+			</div>
+			
 			<?php $sections = array(
 					array(
 						'title' => "Découverte de Gutenberg",
