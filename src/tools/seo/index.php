@@ -80,6 +80,14 @@ class WK_Tool_SEO extends WK_Tool{
 		?>
 		<div class="wk-panel">
 			<h2 class="wk-panel-title">
+				<span class="dashicons dashicons-format-video" style="margin-right: 6px;"></span><?php _e("Tutorials", 'woodkit'); ?>
+			</h2>
+			<div class="wk-panel-content">
+				<a href="<?php echo esc_url(get_admin_url(null, 'admin.php?page=woodkit-tutorials-page&video=woodkit-seo')); ?>"><?php _e("See video tutorial and learn more about SEO management.", 'woodkit'); ?></a>
+			</div>
+		</div>
+		<div class="wk-panel">
+			<h2 class="wk-panel-title">
 				<?php _e("General", 'woodkit'); ?>
 			</h2>
 			<div class="wk-panel-content">

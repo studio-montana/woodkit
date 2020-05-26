@@ -100,6 +100,14 @@ class WK_Tool_Secure extends WK_Tool{
 	public function display_config_fields(){
 		?>
 		<div class="wk-panel">
+			<h2 class="wk-panel-title">
+				<span class="dashicons dashicons-format-video" style="margin-right: 6px;"></span><?php _e("Tutorials", 'woodkit'); ?>
+			</h2>
+			<div class="wk-panel-content">
+				<a href="<?php echo esc_url(get_admin_url(null, 'admin.php?page=woodkit-tutorials-page&video=woodkit-secure')); ?>"><?php _e("See video tutorial and learn more about security management.", 'woodkit'); ?></a>
+			</div>
+		</div>
+		<div class="wk-panel">
 			<div class="wk-panel-content">
 				<h3><?php _e("Captcha", 'woodkit'); ?></h3>
 				<div class="field checkbox">

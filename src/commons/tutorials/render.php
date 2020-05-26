@@ -50,11 +50,18 @@ class WK_Tutorials {
 							array('target' => 'embed', 'url' => 'https://www.youtube.com/embed/2CxoRFwKYSE', 'title' => "Les blocs réutilisables", 'profil' => 'confirmé'),
 					)),
 					array(
-						'title' => "Woodkit",
+						'title' => "SEO (Woodkit) <em>[bientôt disponible...]</em>",
 						'icon' => 'dashicons dashicons-format-video',
 						'tutos' => array(
-							array('target' => 'embed', 'url' => '', 'title' => "Améliorer le référencement naturel de votre site [bientôt disponible...]", 'profil' => 'débutant'),
-							array('target' => 'embed', 'url' => '', 'title' => "Sécuriser votre site [bientôt disponible...]", 'profil' => 'confirmé'),
+							array('target' => 'embed', 'url' => '', 'title' => "Améliorer le référencement naturel de votre site", 'profil' => 'débutant'),
+							array('target' => 'embed', 'url' => '', 'title' => "Gérer les redirection 301", 'profil' => 'confirmé'),
+							array('target' => 'embed', 'url' => '', 'title' => "Gérer le sitemap.xml", 'profil' => 'confirmé'),
+					)),
+					array(
+						'title' => "Sécurité (Woodkit) <em>[bientôt disponible...]</em>",
+						'icon' => 'dashicons dashicons-format-video',
+						'tutos' => array(
+							array('target' => 'embed', 'url' => '', 'title' => "réglages du captcha", 'profil' => 'confirmé'),
 					)),
 			);
 			$sections = apply_filters('woodkit_tutorials', $sections, $this->internal_base_url);
