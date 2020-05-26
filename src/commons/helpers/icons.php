@@ -22,7 +22,7 @@
 */
 defined('ABSPATH') or die("Go Away!");
 
-function get_woodkit_icon($icon_name, $base64 = false, $dataUri = false) {
+function get_woodkit_icon($icon_name = '', $base64 = false, $dataUri = false) {
 	$res = '';
 	switch ($icon_name) {
 		case 'bear': 
