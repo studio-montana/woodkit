@@ -1,3 +1,4 @@
+import { __ } from '@wordpress/i18n'
 const { registerPlugin } = wp.plugins
 const { Component, Fragment } = wp.element
 const { withSelect, withDispatch } = wp.data

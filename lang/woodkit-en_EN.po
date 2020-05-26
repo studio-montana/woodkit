@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Woodkit 2.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woodkit\n"
-"POT-Creation-Date: 2020-05-26T13:15:07+00:00\n"
-"PO-Revision-Date: 2020-05-26 15:20+0200\n"
+"POT-Creation-Date: 2020-05-26T13:59:30+00:00\n"
+"PO-Revision-Date: 2020-05-26 16:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_EN\n"
@@ -315,6 +315,15 @@ msgstr ""
 
 #: src/commons/tools/tool.class.php:247
 msgid "View all tools"
+msgstr ""
+
+#: src/commons/tutorials/index.php:31 src/commons/tutorials/index.php:32
+#: src/commons/tutorials/render.php:35
+msgid "Tutorials"
+msgstr ""
+
+#: src/commons/tutorials/render.php:123
+msgid "posted on"
 msgstr ""
 
 #: src/init.php:58 src/init.php:85
@@ -805,7 +814,7 @@ msgid "Specific page"
 msgstr ""
 
 #: src/gutenberg/components/post-selector.jsx:48
-msgid "Chargement..."
+msgid "Loading..."
 msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1

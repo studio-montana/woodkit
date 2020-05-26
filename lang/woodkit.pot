@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-05-26T13:15:07+00:00\n"
+"POT-Creation-Date: 2020-05-26T13:59:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: woodkit\n"
@@ -321,6 +321,16 @@ msgstr ""
 
 #: src/commons/tools/tool.class.php:247
 msgid "View all tools"
+msgstr ""
+
+#: src/commons/tutorials/index.php:31
+#: src/commons/tutorials/index.php:32
+#: src/commons/tutorials/render.php:35
+msgid "Tutorials"
+msgstr ""
+
+#: src/commons/tutorials/render.php:123
+msgid "posted on"
 msgstr ""
 
 #: src/init.php:58
@@ -804,7 +814,7 @@ msgid "Specific page"
 msgstr ""
 
 #: src/gutenberg/components/post-selector.jsx:48
-msgid "Chargement..."
+msgid "Loading..."
 msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1

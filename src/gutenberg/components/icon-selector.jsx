@@ -1,3 +1,4 @@
+import { __ } from '@wordpress/i18n'
 const { Component } = wp.element
 const { Button, TextControl } = wp.components
 const { compose } = wp.compose

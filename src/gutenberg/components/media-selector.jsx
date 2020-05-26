@@ -1,3 +1,4 @@
+import { __ } from '@wordpress/i18n'
 const { Component } = wp.element
 const { apiFetch } = wp
 const { Button, SelectControl, Placeholder } = wp.components

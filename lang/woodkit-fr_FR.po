@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Woodkit 2.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woodkit\n"
-"POT-Creation-Date: 2020-05-26T13:15:07+00:00\n"
-"PO-Revision-Date: 2020-05-26 15:19+0200\n"
+"POT-Creation-Date: 2020-05-26T13:59:30+00:00\n"
+"PO-Revision-Date: 2020-05-26 16:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -29,6 +29,8 @@ msgid ""
 "Multitool experience for WP | SEO, security, private area, tracking, "
 "legal, ..."
 msgstr ""
+"Outil multifonction pour Wordpress | SEO, securité, intranet, traceur, rgpd, "
+"…"
 
 #. Author of the plugin
 msgid "Studio Montana"
@@ -316,6 +318,15 @@ msgstr "Outils Woodkit"
 #: src/commons/tools/tool.class.php:247
 msgid "View all tools"
 msgstr "Voir tous les outils"
+
+#: src/commons/tutorials/index.php:31 src/commons/tutorials/index.php:32
+#: src/commons/tutorials/render.php:35
+msgid "Tutorials"
+msgstr "Tutoriels"
+
+#: src/commons/tutorials/render.php:123
+msgid "posted on"
+msgstr "publié le"
 
 #: src/init.php:58 src/init.php:85
 msgid "loading..."
@@ -832,8 +843,8 @@ msgid "Specific page"
 msgstr "Page spécifique"
 
 #: src/gutenberg/components/post-selector.jsx:48
-msgid "Chargement..."
-msgstr ""
+msgid "Loading..."
+msgstr "Chargement…"
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:16
@@ -884,7 +895,7 @@ msgstr "Titre"
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:51
 msgid "By default, title set for search engines will be used."
-msgstr "Par défaut, le titre fixé pour les moteurs de recherche sera utilisé"
+msgstr "Par défaut, le titre fixé pour les moteurs de recherche sera utilisé."
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:55

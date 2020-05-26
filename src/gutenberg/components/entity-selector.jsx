@@ -1,5 +1,5 @@
+import { __ } from '@wordpress/i18n'
 const { Component } = wp.element
-const { __ } = wp.i18n
 const { Button, SelectControl } = wp.components
 
 import WKG_Post_Selector from 'wkgcomponents/post-selector'

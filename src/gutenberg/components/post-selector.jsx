@@ -1,5 +1,5 @@
+import { __ } from '@wordpress/i18n'
 const { Component } = wp.element
-const { __ } = wp.i18n
 const { Button, SelectControl } = wp.components
 const { compose } = wp.compose
 const { withSelect, withDispatch } = wp.data
@@ -45,7 +45,7 @@ class WKG_Post_Selector extends Component {
         }
       }
     } else {
-      options.push({value: 0, label: this.props.label_loading ? this.props.label_loading : __("Chargement...", 'woodkit'), disabled: true})
+      options.push({value: 0, label: this.props.label_loading ? this.props.label_loading : __("Loading...", 'woodkit'), disabled: true})
     }
   	return (
 			<div className="wkg-post-selector">
