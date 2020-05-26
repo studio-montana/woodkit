@@ -80,7 +80,7 @@ abstract class WKG_Module_Store extends WKG_Module {
 		if (file_exists($this->path.$build_js)) {
 			wp_enqueue_script($this->slug . '-build', $this->uri.$build_js, $this->args['script_dependencies'], filemtime($this->path.$build_js));
 		} else {
-			trace_err("WKG_Module_Store - no build for store ['{$this->slug}']");
+			trace_warn("WKG_Module_Store - no build for store ['{$this->slug}']");
 		}
 		
 		// after hook

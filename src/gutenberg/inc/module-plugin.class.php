@@ -90,10 +90,15 @@ abstract class WKG_Module_Plugin extends WKG_Module {
 			wp_enqueue_script($this->slug . '-build', $this->uri.$build_js, $this->args['script_dependencies'], filemtime($this->path.$build_js));
 			// i18n
 			if (function_exists('wp_set_script_translations') && isset($this->args['i18n'])) {
-				wp_set_script_translations($this->slug . '-build', $this->args['i18n']['domain'], $this->args['i18n']['path']);
+				trace_info("translation path for WKG_Module_Plugin {$this->slug} : " . $this->args['i18n']['path']);
+				if (!wp_set_script_translations($this->slug . '-build', $this->args['i18n']['domain'], $this->args['i18n']['path'])) {
+					trace_warn("Translation file for WKG_Module_Plugin {$this->slug} not found !");
+				}
+			} else {
+				trace_warn("No translation file for WKG_Module_Plugin {$this->slug}");
 			}
 		} else {
-			trace_err("WKG_Module_Plugin - no build for plugin ['{$this->slug}']");
+			trace_warn("WKG_Module_Plugin - no build for plugin ['{$this->slug}']");
 		}
 		
 		// after hook

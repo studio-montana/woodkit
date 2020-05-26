@@ -29,6 +29,9 @@ var config = {
 		  wkgassets: path.resolve(__dirname, 'src/gutenberg/assets/'), // import ... from 'wkgassets/...'
 		},
     extensions: ['.js', '.jsx'], // import without extension
+	},
+	externals: {
+		'@wordpress/i18n': 'wp.i18n'
 	}
 };
 

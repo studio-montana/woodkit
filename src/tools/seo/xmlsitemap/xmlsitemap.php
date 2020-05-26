@@ -139,7 +139,7 @@ function woodkit_seo_update_xmlsitemap($availables_post_types){
 			woodkit_seo_notify_searchengines();
 
 		}else{
-			trace_err("Impossible d'écrire le fichier : ".trailingslashit(get_home_path())."sitemap.xml");
+			trace_warn("Impossible d'écrire le fichier : ".trailingslashit(get_home_path())."sitemap.xml");
 		}
 	}
 	return $success;

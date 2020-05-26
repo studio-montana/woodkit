@@ -69,7 +69,7 @@ if(!class_exists('Woodkit')){
 
 			// Don't allow more than one instance of the class
 			if (isset(self::$_this)) {
-				wp_die(sprintf(esc_html__( '%s is a singleton class and you cannot create a second instance.', 'woodkit' ), get_class($this)));
+				wp_die('Woodkit is a singleton class and you cannot create a second instance.');
 			}
 			self::$_this = $this;
 

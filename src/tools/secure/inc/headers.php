@@ -40,7 +40,7 @@ add_filter('allowed_http_origins', function($origins) {
 
 function woodkit_tool_secure_headers() {
 	if (headers_sent()){
-		trace_err("Headers already sent. Woodkit secure tool unable to process");
+		trace_warn("Headers already sent. Woodkit secure tool unable to process");
 	}
 
 	// TODO HSTS

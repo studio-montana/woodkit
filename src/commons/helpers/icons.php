@@ -98,7 +98,7 @@ function woodkit_get_fonticons_set () {
 							fwrite($fp, json_encode($json_data));
 							fclose($fp);
 						} else {
-							trace_err("Impossible de mettre en cache la police d'icônes car le dossier cible n'existe pas et il n'est impossible de le créer.");
+							trace_warn("Impossible de mettre en cache la police d'icônes car le dossier cible n'existe pas et il n'est impossible de le créer.");
 						}
 					}
 				}

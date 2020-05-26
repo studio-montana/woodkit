@@ -114,7 +114,7 @@ class WoodkitPluginUploader {
 		$this->initPluginData();
 		if (!$this->pluginData || is_wp_error($this->pluginData)) {
 			// maybe plugin is not installed on this website
-			trace_err("Woodkit Plugin Installer - setTransitent - Plugin [{$this->slug}] not available ");
+			trace_warn("Woodkit Plugin Installer - setTransitent - Plugin [{$this->slug}] not available ");
 			return $transient;
 		}
 
@@ -128,7 +128,7 @@ class WoodkitPluginUploader {
 		// Check the versions if we need to do an update
 		$doUpdate = 0;
 		if (isset($this->APIResult->error)){
-			trace_err("Woodkit Plugin Installer - setTransitent - APIResult Error : ".var_export($this->APIResult->error, true));
+			trace_warn("Woodkit Plugin Installer - setTransitent - APIResult Error : ".var_export($this->APIResult->error, true));
 		}else if (empty($this->APIResult)){
 			// trace_info("Woodkit Plugin Installer - setTransitent - no release for package[{$this->slug}]");
 		}else if (isset($this->APIResult->tag_name) && !empty($this->APIResult)){

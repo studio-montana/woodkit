@@ -111,7 +111,7 @@ class WoodkitThemeUploader {
 		$this->initThemeData();
 		if (!$this->themeData || is_wp_error($this->themeData)) {
 			// maybe theme is not installed on this website
-			trace_err("Woodkit Theme Installer - setTransitent - Theme [{$this->slug}] not available ");
+			trace_warn("Woodkit Theme Installer - setTransitent - Theme [{$this->slug}] not available ");
 			return $transient;
 		}
 
@@ -125,7 +125,7 @@ class WoodkitThemeUploader {
 		// Check the versions if we need to do an update
 		$doUpdate = 0;
 		if (isset($this->APIResult->error)){
-			trace_err("Woodkit Theme Installer - setTransitent - APIResult Error : ".var_export($this->APIResult->error, true));
+			trace_warn("Woodkit Theme Installer - setTransitent - APIResult Error : ".var_export($this->APIResult->error, true));
 		}else if (empty($this->APIResult)){
 			// trace_info("Woodkit Theme Installer - setTransitent - no release for package[{$this->slug}]");
 		}else if (isset($this->APIResult->tag_name) && !empty($this->APIResult)){

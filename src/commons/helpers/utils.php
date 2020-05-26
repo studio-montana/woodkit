@@ -275,9 +275,9 @@ if (!function_exists("trace_err")):
 */
 function trace_err($log){
 	if (is_array($log) || is_object($log)) {
-		return error_log("PHP Error:\t".print_r($log, true));
+		return trigger_error(print_r($log, true), E_USER_ERROR);
 	} else {
-		return error_log("PHP Error:\t".$log);
+		return trigger_error($log, E_USER_ERROR);
 	}
 }
 endif;
@@ -289,9 +289,9 @@ if (!function_exists("trace_warn")):
 */
 function trace_warn($log){
 	if (is_array($log) || is_object($log)) {
-		return error_log("PHP Warning:\t".print_r($log, true));
+		return trigger_error(print_r($log, true), E_USER_WARNING);
 	} else {
-		return error_log("PHP Warning:\t".$log);
+		return trigger_error($log, E_USER_WARNING);
 	}
 	return false;
 }
@@ -305,9 +305,9 @@ if (!function_exists("trace_info")):
 function trace_info($log){
 	if (true === WP_DEBUG) {
 		if (is_array($log) || is_object($log)) {
-			return error_log("PHP Info:\t".print_r($log, true));
+			return trigger_error(print_r($log, true), E_USER_NOTICE);
 		} else {
-			return error_log("PHP Info:\t".$log);
+			return trigger_error($log, E_USER_NOTICE);
 		}
 	}
 	return false;

@@ -5,10 +5,10 @@ msgstr ""
 "Project-Id-Version: Woodkit 2.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woodkit\n"
 "POT-Creation-Date: 2020-05-26T13:15:07+00:00\n"
-"PO-Revision-Date: 2020-05-26 15:19+0200\n"
+"PO-Revision-Date: 2020-05-26 15:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: fr_FR\n"
+"Language: en_EN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,11 +18,11 @@ msgstr ""
 #. Plugin Name of the plugin
 #: src/commons/config/index.php:175 src/commons/config/index.php:176
 msgid "Woodkit"
-msgstr "Woodkit"
+msgstr ""
 
 #. Plugin URI of the plugin
 msgid "http://www.studio-montana.com/product/woodkit"
-msgstr "http://www.studio-montana.com/product/woodkit"
+msgstr ""
 
 #. Description of the plugin
 msgid ""
@@ -32,416 +32,410 @@ msgstr ""
 
 #. Author of the plugin
 msgid "Studio Montana"
-msgstr "Studio Montana"
+msgstr ""
 
 #. Author URI of the plugin
 msgid "http://www.studio-montana.com/"
-msgstr "http://www.studio-montana.com/"
+msgstr ""
 
 #: src/commons/config/index.php:166 src/commons/config/render.php:155
 msgid "Setup"
-msgstr "Réglages"
+msgstr ""
 
 #: src/commons/config/render.php:102
 msgid "Activation"
-msgstr "Activation"
+msgstr ""
 
 #: src/commons/config/render.php:112
 msgid "Woodkit key activation"
-msgstr "Clé d’activation de Woodkit"
+msgstr ""
 
 #: src/commons/config/render.php:113
 msgid "YOUR KEY"
-msgstr "VOTRE CLÉ"
+msgstr ""
 
 #: src/commons/config/render.php:115
 msgid "Your key is invalid"
-msgstr "Votre clé est invalide"
+msgstr ""
 
 #: src/commons/config/render.php:116
 msgid "Get key"
-msgstr "Obtenir une clé"
+msgstr ""
 
 #: src/commons/config/render.php:118
 msgid "Your site is registered"
-msgstr "Votre site est enregistré"
+msgstr ""
 
 #: src/commons/config/render.php:121
 msgid "Setup your key to get woodkit updates"
-msgstr "Renseignez votre clé pour obtenir les mises à jour Woodkit"
+msgstr ""
 
 #: src/commons/config/render.php:125 src/commons/tools/tool.class.php:256
 msgid "Save"
-msgstr "Sauvegarder"
+msgstr ""
 
 #: src/commons/config/render.php:132
 msgid "Tools"
-msgstr "Outils"
+msgstr ""
 
 #: src/commons/config/render.php:138 src/commons/config/render.php:214
 msgid "Tool name"
-msgstr "Nom du tool"
+msgstr ""
 
 #: src/commons/config/render.php:139 src/commons/config/render.php:215
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:39
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:54
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
 #: src/commons/config/render.php:140 src/commons/config/render.php:216
 msgid "Source"
-msgstr "Source"
+msgstr ""
 
 #: src/commons/config/render.php:141 src/commons/config/render.php:217
 msgid "Doc."
-msgstr "Doc."
+msgstr ""
 
 #: src/commons/config/render.php:161 src/commons/config/render.php:163
 msgid "Customize"
-msgstr "Personnaliser"
+msgstr ""
 
 #: src/commons/config/render.php:172
 msgid "Deactivate"
-msgstr "Désactiver"
+msgstr ""
 
 #: src/commons/config/render.php:179
 msgid "Activate"
-msgstr "Activer"
+msgstr ""
 
 #: src/commons/helpers/utils.php:522
 msgid "Invalid URL..."
-msgstr "URL invalide…"
+msgstr ""
 
 #: src/commons/helpers/utils.php:593
 msgid "Invalid Format..."
-msgstr "Format invalide…"
+msgstr ""
 
 #: src/commons/helpers/utils.php:593
 msgid "are supported"
-msgstr "sont supportés"
+msgstr ""
 
 #: src/commons/helpers/utils.php:610
 msgid "january"
-msgstr "janvier"
+msgstr ""
 
 #: src/commons/helpers/utils.php:612
 msgid "february"
-msgstr "février"
+msgstr ""
 
 #: src/commons/helpers/utils.php:614
 msgid "march"
-msgstr "mars"
+msgstr ""
 
 #: src/commons/helpers/utils.php:616
 msgid "april"
-msgstr "avril"
+msgstr ""
 
 #: src/commons/helpers/utils.php:618 src/commons/helpers/utils.php:729
 msgid "may"
-msgstr "mai"
+msgstr ""
 
 #: src/commons/helpers/utils.php:620
 msgid "june"
-msgstr "juin"
+msgstr ""
 
 #: src/commons/helpers/utils.php:622
 msgid "july"
-msgstr "juillet"
+msgstr ""
 
 #: src/commons/helpers/utils.php:624
 msgid "august"
-msgstr "août"
+msgstr ""
 
 #: src/commons/helpers/utils.php:626
 msgid "september"
-msgstr "septembre"
+msgstr ""
 
 #: src/commons/helpers/utils.php:628
 msgid "october"
-msgstr "octobre"
+msgstr ""
 
 #: src/commons/helpers/utils.php:630
 msgid "november"
-msgstr "novembre"
+msgstr ""
 
 #: src/commons/helpers/utils.php:632
 msgid "december"
-msgstr "décembre"
+msgstr ""
 
 #: src/commons/helpers/utils.php:647
 msgid "January"
-msgstr "Janvier"
+msgstr ""
 
 #: src/commons/helpers/utils.php:649
 msgid "February"
-msgstr "Février"
+msgstr ""
 
 #: src/commons/helpers/utils.php:651
 msgid "March"
-msgstr "Mars"
+msgstr ""
 
 #: src/commons/helpers/utils.php:653
 msgid "April"
-msgstr "Avril"
+msgstr ""
 
 #: src/commons/helpers/utils.php:655
 msgid "May"
-msgstr "Mai"
+msgstr ""
 
 #: src/commons/helpers/utils.php:657
 msgid "June"
-msgstr "Juin"
+msgstr ""
 
 #: src/commons/helpers/utils.php:659
 msgid "July"
-msgstr "Juillet"
+msgstr ""
 
 #: src/commons/helpers/utils.php:661
 msgid "August"
-msgstr "Août"
+msgstr ""
 
 #: src/commons/helpers/utils.php:663
 msgid "September"
-msgstr "Septembre"
+msgstr ""
 
 #: src/commons/helpers/utils.php:665
 msgid "October"
-msgstr "Octobre"
+msgstr ""
 
 #: src/commons/helpers/utils.php:667
 msgid "November"
-msgstr "Novembre"
+msgstr ""
 
 #: src/commons/helpers/utils.php:669
 msgid "December"
-msgstr "Décembre"
+msgstr ""
 
 #: src/commons/helpers/utils.php:684
 msgid "JANUARY"
-msgstr "JANVIER"
+msgstr ""
 
 #: src/commons/helpers/utils.php:686
 msgid "FEBRUARY"
-msgstr "FÉVRIER"
+msgstr ""
 
 #: src/commons/helpers/utils.php:688
 msgid "MARCH"
-msgstr "MARS"
+msgstr ""
 
 #: src/commons/helpers/utils.php:690
 msgid "APRIL"
-msgstr "AVRIL"
+msgstr ""
 
 #: src/commons/helpers/utils.php:692
 msgid "MAY"
-msgstr "MAI"
+msgstr ""
 
 #: src/commons/helpers/utils.php:694
 msgid "JUNE"
-msgstr "JUIN"
+msgstr ""
 
 #: src/commons/helpers/utils.php:696
 msgid "JULY"
-msgstr "JUILLET"
+msgstr ""
 
 #: src/commons/helpers/utils.php:698
 msgid "AOUT"
-msgstr "AOÛT"
+msgstr ""
 
 #: src/commons/helpers/utils.php:700
 msgid "SEPTEMBER"
-msgstr "SEPTEMBRE"
+msgstr ""
 
 #: src/commons/helpers/utils.php:702
 msgid "OCTOBER"
-msgstr "OCTOBRE"
+msgstr ""
 
 #: src/commons/helpers/utils.php:704
 msgid "NOVEMBER"
-msgstr "NOVEMBRE"
+msgstr ""
 
 #: src/commons/helpers/utils.php:706
 msgid "DECEMBER"
-msgstr "DÉCEMBRE"
+msgstr ""
 
 #: src/commons/helpers/utils.php:721
 msgid "jan"
-msgstr "jan"
+msgstr ""
 
 #: src/commons/helpers/utils.php:723
 msgid "feb"
-msgstr "fév"
+msgstr ""
 
 #: src/commons/helpers/utils.php:725
 msgid "mar"
-msgstr "mar"
+msgstr ""
 
 #: src/commons/helpers/utils.php:727
 msgid "apr"
-msgstr "avr"
+msgstr ""
 
 #: src/commons/helpers/utils.php:731
 msgid "jun"
-msgstr "juin"
+msgstr ""
 
 #: src/commons/helpers/utils.php:733
 msgid "jul"
-msgstr "juil"
+msgstr ""
 
 #: src/commons/helpers/utils.php:735
 msgid "aug"
-msgstr "aout"
+msgstr ""
 
 #: src/commons/helpers/utils.php:737
 msgid "sept"
-msgstr "sept"
+msgstr ""
 
 #: src/commons/helpers/utils.php:739
 msgid "oct"
-msgstr "oct"
+msgstr ""
 
 #: src/commons/helpers/utils.php:741
 msgid "nov"
-msgstr "nov"
+msgstr ""
 
 #: src/commons/helpers/utils.php:743
 msgid "dec"
-msgstr "déc"
+msgstr ""
 
 #: src/commons/tools/tool.class.php:246
 msgid "Woodkit tools"
-msgstr "Outils Woodkit"
+msgstr ""
 
 #: src/commons/tools/tool.class.php:247
 msgid "View all tools"
-msgstr "Voir tous les outils"
+msgstr ""
 
 #: src/init.php:58 src/init.php:85
 msgid "loading..."
-msgstr "chargement…"
+msgstr ""
 
 #: src/tools/legal/inc/customizer.php:36
 msgid "Legal"
-msgstr "Légal"
+msgstr ""
 
 #: src/tools/legal/inc/customizer.php:41
 msgid "Text"
-msgstr "Texte"
+msgstr ""
 
 #: src/tools/legal/inc/customizer.php:48
 msgid "More link Text"
-msgstr "Texte du lien en lire plus"
+msgstr ""
 
 #: src/tools/legal/inc/customizer.php:55
 msgid "More link URL"
-msgstr "Lien"
+msgstr ""
 
 #: src/tools/legal/inc/customizer.php:58
 msgid "Display RDPG link if configured by default."
 msgstr ""
-"Afficher le lien vers la page de politique de confidentialité si elle est "
-"configurée."
 
 #: src/tools/legal/inc/customizer.php:63
 msgid "Button text"
-msgstr "Lien en lire plus"
+msgstr ""
 
 #: src/tools/legal/launch.php:56
 msgid "Read our privacy policy."
-msgstr "Lire notre politique de confidentialité."
+msgstr ""
 
 #: src/tools/legal/launch.php:58
 msgid "More details here."
-msgstr "Plus de détails ici."
+msgstr ""
 
 #: src/tools/legal/launch.php:64
 msgid ""
 "By continuing to visit our website, you are agreeing to our privacy policy, "
 "the use of cookies and similar technology."
 msgstr ""
-"En continuant votre visite sur notre site Web, vous acceptez notre politique "
-"de confidentialité, l'utilisation de cookies et autres traceurs."
 
 #: src/tools/legal/launch.php:66
 msgid ""
 "By continuing to visit our website, you are agreeing to the use of cookies "
 "and similar technology."
 msgstr ""
-"En continuant votre visite sur notre site Web, vous acceptez l'utilisation "
-"de cookies et autres traceurs."
 
 #: src/tools/private/inc/options-fields.php:55
 #: src/tools/private/inc/options.php:37
 msgid "Private settings"
-msgstr "Paramètres espace privé"
+msgstr ""
 
 #: src/tools/private/inc/options-fields.php:61
 msgid "You want to"
-msgstr "Vous voulez"
+msgstr ""
 
 #: src/tools/private/inc/options-fields.php:68
 msgid "do nothing"
-msgstr "ne rien faire"
+msgstr ""
 
 #: src/tools/private/inc/options-fields.php:69
 msgid "go private this site"
-msgstr "rendre ce site privé"
+msgstr ""
 
 #: src/tools/private/inc/options-fields.php:70
 msgid "go private few elements"
-msgstr "rendre privé quelques éléments"
+msgstr ""
 
 #: src/tools/private/inc/options-fields.php:77
 #: src/tools/wip/inc/customizer.php:43
 msgid "Message"
-msgstr "Message"
+msgstr ""
 
 #: src/tools/private/inc/options.php:37
 msgid "Private site"
-msgstr "Site privé"
+msgstr ""
 
 #: src/tools/private/launch.php:111 src/tools/private/launch.php:112
 msgid "sign out"
-msgstr "déconnexion"
+msgstr ""
 
 #: src/tools/private/templates/tool-private-template.php:86
 msgid "sign in"
-msgstr "connexion"
+msgstr ""
 
 #: src/tools/secure/inc/captcha.php:82 src/tools/secure/index.php:104
 msgid "Captcha"
-msgstr "Captcha"
+msgstr ""
 
 #: src/tools/secure/inc/captcha.php:127 src/tools/secure/inc/failtoban.php:106
 msgid "ERROR"
-msgstr "ERREUR"
+msgstr ""
 
 #: src/tools/secure/inc/captcha.php:127 src/tools/secure/inc/captcha.php:138
 #: src/tools/secure/inc/captcha.php:148 src/tools/secure/inc/captcha.php:188
 #: src/tools/secure/inc/captcha.php:307 src/tools/secure/inc/captcha.php:331
 msgid "invalid captcha"
-msgstr "captcha invalide"
+msgstr ""
 
 #: src/tools/secure/inc/captcha.php:166
 msgid "<strong>ERROR</strong>: invalid captcha"
-msgstr "<strong>ERREUR</strong>: captcha invalide"
+msgstr ""
 
 #: src/tools/secure/inc/captcha.php:221
 msgid "Google Recaptcha keys are missed"
-msgstr "Les clés Google Recaptcha sont manquantes"
+msgstr ""
 
 #: src/tools/secure/inc/captcha.php:269
 msgid "Please solve the problem. This is an anti-spam security check."
-msgstr "Saisissez le résultat de l'addition. Ceci est une sécurité anti-spam."
+msgstr ""
 
 #: src/tools/secure/inc/contactform7/captchanum.php:106
 msgid "numeric captcha"
-msgstr "captcha numéric"
+msgstr ""
 
 #: src/tools/secure/inc/contactform7/captchanum.php:113
 msgid "Generate a form-tag for a numeric captcha."
-msgstr "Génère un captcha numérique."
+msgstr ""
 
 #: src/tools/secure/inc/failtoban.php:96 src/tools/secure/inc/failtoban.php:106
 #: src/tools/secure/inc/failtoban.php:117
@@ -449,107 +443,103 @@ msgstr "Génère un captcha numérique."
 #: src/tools/secure/inc/failtoban.php:165
 #: src/tools/secure/inc/failtoban.php:219
 msgid "Too many tries - please wait 1min"
-msgstr "Trop de tentatives - merci d'attendre 1min"
+msgstr ""
 
 #: src/tools/secure/inc/failtoban.php:145
 msgid "<strong>ERROR</strong>: Too many tries - please wait 1min"
-msgstr "<strong>ERREUR</strong>: Trop de tentatives - merci d'attendre 1min"
+msgstr ""
 
 #: src/tools/secure/index.php:113
 msgid "Captcha active"
-msgstr "Captcha activé"
+msgstr ""
 
 #: src/tools/secure/index.php:115
 msgid ""
 "Add captcha on login, register and comment forms (Woocommerce/ContactForm7 "
 "supported)"
 msgstr ""
-"Ajoute un captcha sur les formulaires de login, d'inscription et de "
-"commentaire (Woocommerce/ContactForm7 supporté)"
 
 #: src/tools/secure/index.php:119
 msgid "Captcha type"
-msgstr "Type de captcha"
+msgstr ""
 
 #: src/tools/secure/index.php:123
 msgid "Numeric"
-msgstr "Numérique"
+msgstr ""
 
 #: src/tools/secure/index.php:125
 msgid "Google Recaptcha V2"
-msgstr "Google Recaptcha V2"
+msgstr ""
 
 #: src/tools/secure/index.php:132
 msgid "Google Recaptcha public key"
-msgstr "Clé publique Google Recaptcha"
+msgstr ""
 
 #: src/tools/secure/index.php:139
 msgid "Google Recaptcha private key"
-msgstr "Clé privée Google Recaptcha"
+msgstr ""
 
 #: src/tools/secure/index.php:142
 msgid "To get these keys, please visit : "
-msgstr "Pour obtenir ces clés, aller sur : "
+msgstr ""
 
 #: src/tools/secure/index.php:145
 msgid "Blocking"
-msgstr "Bloquant"
+msgstr ""
 
 #: src/tools/secure/index.php:154
 msgid "Failtoban active"
-msgstr "FailToBan activé"
+msgstr ""
 
 #: src/tools/secure/index.php:156
 msgid ""
 "Block gross power hacking on login, register and comment forms (Woocommerce "
 "supported)"
 msgstr ""
-"Bloque les attaque par force brute sur les formulaires de login, "
-"d'inscription et de commentaire (Woocommerce supporté)"
 
 #: src/tools/secure/index.php:159
 msgid "Headers"
-msgstr "Entêtes"
+msgstr ""
 
 #: src/tools/secure/index.php:168
 msgid "No sniff"
-msgstr "No sniff"
+msgstr ""
 
 #: src/tools/secure/index.php:170
 msgid "Disable content sniffing"
-msgstr "Empêcher le content sniffing"
+msgstr ""
 
 #: src/tools/secure/index.php:180
 msgid "XSS protection"
-msgstr "XSS protection"
+msgstr ""
 
 #: src/tools/secure/index.php:182
 msgid "Enabled web broswer XSS protection"
-msgstr "Activer la protection XSS de votre navigateur"
+msgstr ""
 
 #: src/tools/secure/index.php:192
 msgid "Restrict framing"
-msgstr "Restreindre les frames"
+msgstr ""
 
 #: src/tools/secure/index.php:194
 msgid "Enabled clickjacking protection"
-msgstr "Activer la protection contre le clickjacking"
+msgstr ""
 
 #: src/tools/secure/index.php:204
 msgid "Hide 'powered by' info"
-msgstr "Cacher l’information ‘powered by’"
+msgstr ""
 
 #: src/tools/secure/index.php:206
 msgid "Hide powered by info (php version)"
-msgstr "Cacher l’information ‘powered by’ (version php)"
+msgstr ""
 
 #: src/tools/secure/index.php:216
 msgid "Hide 'Server' info"
-msgstr "Cacher l’information ‘server’"
+msgstr ""
 
 #: src/tools/secure/index.php:218
 msgid "Hide server info (server name/version)"
-msgstr "Cacher l’information ‘server’ (nom/version du serveur)"
+msgstr ""
 
 #: src/tools/secure/index.php:225
 msgid "Omit entirely"
@@ -598,214 +588,197 @@ msgstr ""
 
 #: src/tools/secure/index.php:251
 msgid "You can view your headers and evaluate your website security"
-msgstr "Vous pouvez voir vos entêtes et évaluer la sécurité de votre site Web"
+msgstr ""
 
 #: src/tools/seo/custom-fields/seo-term.php:75
 msgid "Meta-title"
-msgstr "Meta-titre"
+msgstr ""
 
 #: src/tools/seo/custom-fields/seo-term.php:84
 msgid "Meta-description"
-msgstr "Meta-description"
+msgstr ""
 
 #: src/tools/seo/custom-fields/seo-term.php:93
 msgid "Meta-keyword"
-msgstr "Meta-mot-clé"
+msgstr ""
 
 #: src/tools/seo/index.php:83
 msgid "General"
-msgstr "Général"
+msgstr ""
 
 #: src/tools/seo/index.php:96
 msgid "Enable sitemap.xml generator"
-msgstr "Active la génération du sitemap.xml de votre site"
+msgstr ""
 
 #: src/tools/seo/index.php:98
 msgid "view your sitemap.xml"
-msgstr "voir le sitemap.xml"
+msgstr ""
 
 #: src/tools/seo/index.php:110
 msgid "Enable search engine notifications"
-msgstr "Active la notification au moteurs de recherche"
+msgstr ""
 
 #: src/tools/seo/index.php:112
 msgid "Notify Google, Yahoo, Bing, Ask when your sitemap.xml is updated"
 msgstr ""
-"Notifie Google, Yahoo, Bing, Ask quand votre sitemap.xml est mis à jour"
 
 #: src/tools/seo/index.php:118
 msgid "Default values"
-msgstr "Valeurs par défaut"
+msgstr ""
 
 #: src/tools/seo/index.php:126
 msgid "Default description"
-msgstr "Description par défaut"
+msgstr ""
 
 #: src/tools/seo/index.php:129
 msgid "Used as default meta description in your website"
 msgstr ""
-"Utilisée comme description par défaut lorsque qu’aucune valeur n’est "
-"indiquée sur vos pages"
 
 #: src/tools/seo/index.php:136
 msgid "Default keywords"
-msgstr "Mots-clés par défaut"
+msgstr ""
 
 #: src/tools/seo/index.php:139
 msgid "Used as default meta keywords in your website"
 msgstr ""
-"Utilisés comme mots-clés par défaut lorsqu’aucune valeur n’est indiquée sur "
-"vos pages"
 
 #: src/tools/seo/index.php:150
 msgid "Sitemap options"
-msgstr "Options du sitemap"
+msgstr ""
 
 #: src/tools/seo/index.php:153
 msgid ""
 "Your sitemap.xml is automaticaly generated, however you can add URLs "
 "manualy  or exclude generated URLs."
 msgstr ""
-"Votre sitemap.xml est automatiquement généré, cependant vous pouvez ajouter "
-"ou exclure des URLs spécifiques."
 
 #: src/tools/seo/index.php:153
 msgid "View sitemap.xml"
-msgstr "Voir le sitemap.xml"
+msgstr ""
 
 #: src/tools/seo/index.php:158
 msgid "Add sitemap rule"
-msgstr "Ajouter une règle de sitemap"
+msgstr ""
 
 #: src/tools/seo/index.php:159
 msgid "Do you realy want remove this url ?"
-msgstr "Voulez-vous vraiment supprimer cette url ?"
+msgstr ""
 
 #: src/tools/seo/index.php:160
 msgid "http://www.website.com"
-msgstr "http://www.website.com"
+msgstr ""
 
 #: src/tools/seo/index.php:161
 msgid "exclude"
-msgstr "exclure"
+msgstr ""
 
 #: src/tools/seo/index.php:162
 msgid "add"
-msgstr "ajouter"
+msgstr ""
 
 #: src/tools/seo/index.php:163
 msgid "exclude if equals"
-msgstr "exclure si égal"
+msgstr ""
 
 #: src/tools/seo/index.php:164
 msgid "exclude if contains"
-msgstr "exclure si contient"
+msgstr ""
 
 #: src/tools/seo/index.php:165
 msgid "exclude if matches regexp"
-msgstr "exclure si correspond à la regexp"
+msgstr ""
 
 #: src/tools/seo/index.php:193
 msgid "301 Redirects"
-msgstr "Redirections 301"
+msgstr ""
 
 #: src/tools/seo/index.php:199
 msgid ""
 "WARNING : one or more rules may generate loop - this may crash your website"
 msgstr ""
-"ATTENTION : une ou plusieurs redirections génèrent une boucle - cela va "
-"planter votre site"
 
 #: src/tools/seo/index.php:202
 msgid ""
 "Here you can add your 301 permanent redirects and order theme by drag & drop."
 msgstr ""
-"Vous pouvez ici ajouter er ordonner en drag & drop vos redirections 301."
 
 #: src/tools/seo/index.php:202
 msgid "What is a 301 permanent redirect ?"
-msgstr "Qu’est-ce qu’une redirection 301 ?"
+msgstr ""
 
 #: src/tools/seo/index.php:209
 msgid "Add redirection"
-msgstr "Ajouter une redirection"
+msgstr ""
 
 #: src/tools/seo/index.php:210
 msgid "Do you realy want remove this redirection ?"
-msgstr "Voulez-vous vraiment supprimer cette redirection ?"
+msgstr ""
 
 #: src/tools/seo/index.php:211
 msgid "disable"
-msgstr "désactiver"
+msgstr ""
 
 #: src/tools/seo/index.php:212
 msgid "redirects to"
-msgstr "redirige vers"
+msgstr ""
 
 #: src/tools/seo/index.php:213
 msgid "/my-old-page"
-msgstr "/mon-ancienne-page"
+msgstr ""
 
 #: src/tools/seo/index.php:214
 msgid "/my-new-page"
-msgstr "/ma-nouvelle-page"
+msgstr ""
 
 #: src/tools/seo/index.php:215
 msgid "URL that equals"
-msgstr "URL qui est égale à"
+msgstr ""
 
 #: src/tools/seo/index.php:216
 msgid "URL that matches (regexp)"
-msgstr "URL qui correspond à la regexp"
+msgstr ""
 
 #: src/tools/tracking/index.php:77
 msgid "Google Codes"
-msgstr "Clés Google"
+msgstr ""
 
 #: src/tools/tracking/index.php:80
 msgid "Google Analytics code isn't needed if you use Google Tag Manager"
 msgstr ""
-"La clé GoogleAnalytics n’est pas nécessaire lorsque vous utilisez "
-"GoogleTagManager"
 
 #: src/tools/tracking/index.php:86
 msgid "Google Analytics code"
-msgstr "Clé Google Analytics"
+msgstr ""
 
 #: src/tools/tracking/index.php:95
 msgid "Google Tag Manager code"
-msgstr "Clé Google Tag Manager"
+msgstr ""
 
 #: src/tools/tracking/index.php:103
 msgid "Google Analytics Event's tracking"
-msgstr "Évènements Google Analytics"
+msgstr ""
 
 #: src/tools/tracking/index.php:107
 msgid "To use Google Analytics Event manager, please set GA key."
 msgstr ""
-"Pour utiliser les évènement Google Analytics, merci de renseigner votre clé "
-"d’API."
 
 #: src/tools/tracking/index.php:109
 msgid ""
 "You can add some Google Analytics Event rules based on CSS Selector - please "
 "don't use them when you are using Google Tag Manager."
 msgstr ""
-"Vous pouvez ajoutez des règles de détection d’évènements Google Analytics "
-"basées sur les sélecteur CSS - ne pas utiliser si vous avez activé Google "
-"Tag Manager."
 
 #: src/tools/tracking/index.php:114
 msgid "Add Google Analytics Event"
-msgstr "Ajouter un évènement Google Analytics"
+msgstr ""
 
 #: src/tools/tracking/index.php:115
 msgid "css selector"
-msgstr "sélecteur css"
+msgstr ""
 
 #: src/tools/tracking/index.php:116
 msgid "event label"
-msgstr "nom de l’événement"
+msgstr ""
 
 #: src/tools/tracking/index.php:117
 msgid "action name"
@@ -813,23 +786,23 @@ msgstr ""
 
 #: src/tools/tracking/index.php:118
 msgid "category name"
-msgstr "nom de catégorie"
+msgstr ""
 
 #: src/tools/tracking/index.php:119
 msgid "Do you realy want remove this event ?"
-msgstr "Voulez-vous vraiment supprimer cet évènement ?"
+msgstr ""
 
 #: src/tools/tracking/index.php:140
 msgid "Selector example"
-msgstr "Exemple de sélecteur"
+msgstr ""
 
 #: src/tools/wip/inc/customizer.php:36
 msgid "Work In Progress"
-msgstr "Site en maintenance"
+msgstr ""
 
 #: src/tools/wip/inc/customizer.php:53
 msgid "Specific page"
-msgstr "Page spécifique"
+msgstr ""
 
 #: src/gutenberg/components/post-selector.jsx:48
 msgid "Chargement..."
@@ -839,134 +812,64 @@ msgstr ""
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:16
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:17
 msgid "Search engine optimisation"
-msgstr "Référencement"
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:33
 msgid "Search engines"
-msgstr "Moteurs de recherche"
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:35
 msgid "Title"
-msgstr "Titre"
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:36
 msgid "By default, publication title will be used."
-msgstr "Par défaut, le titre de la publication sera utilisé."
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:40
 msgid "By default, publication excerpt will be used."
-msgstr "Par défaut, le résumé de la publication sera utilisé."
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:43
 msgid "Keywords"
-msgstr "Mots-clés"
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:44
 msgid "Separate keywords by comma."
-msgstr "Séparer les mots-clés par une virgule."
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:48
 msgid "Social networks"
-msgstr "Réseaux sociaux"
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:50
 msgid "Titre"
-msgstr "Titre"
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:51
 msgid "By default, title set for search engines will be used."
-msgstr "Par défaut, le titre fixé pour les moteurs de recherche sera utilisé"
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:55
 msgid "By default, description set for search engines will be used."
 msgstr ""
-"Par défaut, la description fixée pour les moteurs de recherche sera utilisée."
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:58
 msgid "Image"
-msgstr "Image"
+msgstr ""
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:59
 msgid "By default, publication featured image will be used."
-msgstr "Par défaut, l’image mise en avant de la publication sera utilisée."
-
-#~ msgid "Add legal advice on front of your website, cookies and rgpd."
-#~ msgstr ""
-#~ "Ajoute les mentions légales obligatoire relatives à la politique de "
-#~ "confidentialité à votre site."
-
-#~ msgid "Private area"
-#~ msgstr "Zone privée"
-
-#~ msgid "Private"
-#~ msgstr "Privé"
-
-#~ msgid "Make your site, or just few pages, private (Intranet)"
-#~ msgstr "Rendre votre site privé (Intranet) ou simplement certaines pages"
-
-#~ msgid "Name"
-#~ msgstr "Nom"
-
-#~ msgid "Use placeholder"
-#~ msgstr "Utiliser des placehoders"
-
-#~ msgid "Use label"
-#~ msgstr "Utiliser un label"
-
-#~ msgid "Insert Tag"
-#~ msgstr "Insérer de champ"
-
-#, php-format
-#~ msgid ""
-#~ "To use the value input through this field in a mail field, you need to "
-#~ "insert the corresponding mail-tag (%s) into the field on the Mail tab."
-#~ msgstr ""
-#~ "Pour utiliser cette valeur dans les champ du mail, vous devez insérer le "
-#~ "tag (%s) dans le corps du mail de l'onglet Mail."
-
-#~ msgid "Security"
-#~ msgstr "Securité"
-
-#~ msgid "Secures your website"
-#~ msgstr "Sécurise votre site Web"
-
-#~ msgid "SEO"
-#~ msgstr "SEO"
-
-#~ msgid "Optimize your site SEO and manage your social publications"
-#~ msgstr ""
-#~ "Optimiser le référencement de votre site et maitriser les publications "
-#~ "sur les réseaux sociaux"
-
-#~ msgid "Tracking"
-#~ msgstr "Tracking"
-
-#~ msgid "Manage your website tracking (Google Analytics, Google Tag Manager)"
-#~ msgstr "Gestion des traceurs (Google Analytics, Google Tag Manager)"
-
-#~ msgid "WIP"
-#~ msgstr "WIP"
-
-#~ msgid "Add work in progress page on your website"
-#~ msgstr "Ajoute une page workinprogress à votre site"
-
-#~ msgid "Réseaux sociaux"
-#~ msgstr "Réseaux sociaux"
-
-#~ msgid "Page spécifique"
-#~ msgstr "Page spécifique"
-
-#~ msgid "Woodkit setup"
-#~ msgstr "Réglages Woodkit"
+msgstr ""

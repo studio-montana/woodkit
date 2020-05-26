@@ -76,7 +76,11 @@ abstract class WKG_Module_Block extends WKG_Module {
 			);
 			// i18n
 			if (function_exists('wp_set_script_translations') && isset($this->args['i18n'])) {
-				wp_set_script_translations($this->slug . '-block-editor', $this->args['i18n']['domain'], $this->args['i18n']['path']);
+				if (!wp_set_script_translations($this->slug . '-block-editor', $this->args['i18n']['domain'], $this->args['i18n']['path'])) {
+					trigger_error("Translation file for WKG_Module_Block {$this->slug} not found !", E_USER_WARNING);
+				}
+			} else {
+				trigger_error("No translation file for WKG_Module_Block {$this->slug}", E_USER_WARNING);
 			}
 	
 			$editor_css = 'editor.css';
@@ -116,7 +120,7 @@ abstract class WKG_Module_Block extends WKG_Module {
 				}
 			}
 		} else {
-			trace_err("WKG_Module_Block - no build for block ['{$this->slug}']");
+			trace_warn("WKG_Module_Block - no build for block ['{$this->slug}']");
 		}
 
 		// after init hook
