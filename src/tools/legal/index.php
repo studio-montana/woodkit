@@ -40,11 +40,11 @@ class WK_Tool_Legal extends WK_Tool{
 	}
 	
 	public function get_name() { 
-		return __("Legal", 'wooden');
+		return __("Legal", 'woodkit');
 	}
 	
 	public function get_description() { 
-		return __("Add legal advice on front of your website, cookies and rgpd.", 'wooden');
+		return __("Add legal advice on front of your website, cookies and rgpd.", 'woodkit');
 	}
 	
 	public function launch() {

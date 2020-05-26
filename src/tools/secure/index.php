@@ -42,11 +42,11 @@ class WK_Tool_Secure extends WK_Tool{
 	}
 	
 	public function get_name() { 
-		return __("Security", 'wooden');
+		return __("Security", 'woodkit');
 	}
 	
 	public function get_description() { 
-		return __("Secures your website", 'wooden');
+		return __("Secures your website", 'woodkit');
 	}
 	
 	public function launch() {

@@ -42,11 +42,11 @@ class WK_Tool_Tracking extends WK_Tool{
 	}
 	
 	public function get_name() { 
-		return __("Tracking", 'wooden');
+		return __("Tracking", 'woodkit');
 	}
 	
 	public function get_description() { 
-		return __("Manage your website tracking (Google Analytics, Google Tag Manager)", 'wooden');
+		return __("Manage your website tracking (Google Analytics, Google Tag Manager)", 'woodkit');
 	}
 	
 	public function launch() {

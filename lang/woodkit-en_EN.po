@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Woodkit 2.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woodkit\n"
-"POT-Creation-Date: 2020-05-26T13:59:30+00:00\n"
-"PO-Revision-Date: 2020-05-26 16:00+0200\n"
+"POT-Creation-Date: 2020-05-26T16:00:03+00:00\n"
+"PO-Revision-Date: 2020-05-26 18:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_EN\n"
@@ -318,11 +318,12 @@ msgid "View all tools"
 msgstr ""
 
 #: src/commons/tutorials/index.php:31 src/commons/tutorials/index.php:32
-#: src/commons/tutorials/render.php:35
+#: src/commons/tutorials/render.php:35 src/tools/secure/index.php:104
+#: src/tools/seo/index.php:83
 msgid "Tutorials"
 msgstr ""
 
-#: src/commons/tutorials/render.php:123
+#: src/commons/tutorials/render.php:130
 msgid "posted on"
 msgstr ""
 
@@ -330,7 +331,7 @@ msgstr ""
 msgid "loading..."
 msgstr ""
 
-#: src/tools/legal/inc/customizer.php:36
+#: src/tools/legal/inc/customizer.php:36 src/tools/legal/index.php:43
 msgid "Legal"
 msgstr ""
 
@@ -352,6 +353,10 @@ msgstr ""
 
 #: src/tools/legal/inc/customizer.php:63
 msgid "Button text"
+msgstr ""
+
+#: src/tools/legal/index.php:47
+msgid "Add legal advice on front of your website, cookies and rgpd."
 msgstr ""
 
 #: src/tools/legal/launch.php:56
@@ -404,6 +409,14 @@ msgstr ""
 msgid "Private site"
 msgstr ""
 
+#: src/tools/private/index.php:43
+msgid "Private"
+msgstr ""
+
+#: src/tools/private/index.php:47
+msgid "Make your site, or just few pages, private (Intranet)"
+msgstr ""
+
 #: src/tools/private/launch.php:111 src/tools/private/launch.php:112
 msgid "sign out"
 msgstr ""
@@ -412,7 +425,7 @@ msgstr ""
 msgid "sign in"
 msgstr ""
 
-#: src/tools/secure/inc/captcha.php:82 src/tools/secure/index.php:104
+#: src/tools/secure/inc/captcha.php:82 src/tools/secure/index.php:112
 msgid "Captcha"
 msgstr ""
 
@@ -458,144 +471,156 @@ msgstr ""
 msgid "<strong>ERROR</strong>: Too many tries - please wait 1min"
 msgstr ""
 
-#: src/tools/secure/index.php:113
+#: src/tools/secure/index.php:45
+msgid "Security"
+msgstr ""
+
+#: src/tools/secure/index.php:49
+msgid "Secures your website"
+msgstr ""
+
+#: src/tools/secure/index.php:107
+msgid "See video tutorial and learn more about security management."
+msgstr ""
+
+#: src/tools/secure/index.php:121
 msgid "Captcha active"
 msgstr ""
 
-#: src/tools/secure/index.php:115
+#: src/tools/secure/index.php:123
 msgid ""
 "Add captcha on login, register and comment forms (Woocommerce/ContactForm7 "
 "supported)"
 msgstr ""
 
-#: src/tools/secure/index.php:119
+#: src/tools/secure/index.php:127
 msgid "Captcha type"
 msgstr ""
 
-#: src/tools/secure/index.php:123
+#: src/tools/secure/index.php:131
 msgid "Numeric"
 msgstr ""
 
-#: src/tools/secure/index.php:125
+#: src/tools/secure/index.php:133
 msgid "Google Recaptcha V2"
 msgstr ""
 
-#: src/tools/secure/index.php:132
+#: src/tools/secure/index.php:140
 msgid "Google Recaptcha public key"
 msgstr ""
 
-#: src/tools/secure/index.php:139
+#: src/tools/secure/index.php:147
 msgid "Google Recaptcha private key"
 msgstr ""
 
-#: src/tools/secure/index.php:142
+#: src/tools/secure/index.php:150
 msgid "To get these keys, please visit : "
 msgstr ""
 
-#: src/tools/secure/index.php:145
+#: src/tools/secure/index.php:153
 msgid "Blocking"
 msgstr ""
 
-#: src/tools/secure/index.php:154
+#: src/tools/secure/index.php:162
 msgid "Failtoban active"
 msgstr ""
 
-#: src/tools/secure/index.php:156
+#: src/tools/secure/index.php:164
 msgid ""
 "Block gross power hacking on login, register and comment forms (Woocommerce "
 "supported)"
 msgstr ""
 
-#: src/tools/secure/index.php:159
+#: src/tools/secure/index.php:167
 msgid "Headers"
 msgstr ""
 
-#: src/tools/secure/index.php:168
+#: src/tools/secure/index.php:176
 msgid "No sniff"
 msgstr ""
 
-#: src/tools/secure/index.php:170
+#: src/tools/secure/index.php:178
 msgid "Disable content sniffing"
 msgstr ""
 
-#: src/tools/secure/index.php:180
+#: src/tools/secure/index.php:188
 msgid "XSS protection"
 msgstr ""
 
-#: src/tools/secure/index.php:182
+#: src/tools/secure/index.php:190
 msgid "Enabled web broswer XSS protection"
 msgstr ""
 
-#: src/tools/secure/index.php:192
+#: src/tools/secure/index.php:200
 msgid "Restrict framing"
 msgstr ""
 
-#: src/tools/secure/index.php:194
+#: src/tools/secure/index.php:202
 msgid "Enabled clickjacking protection"
 msgstr ""
 
-#: src/tools/secure/index.php:204
+#: src/tools/secure/index.php:212
 msgid "Hide 'powered by' info"
 msgstr ""
 
-#: src/tools/secure/index.php:206
+#: src/tools/secure/index.php:214
 msgid "Hide powered by info (php version)"
 msgstr ""
 
-#: src/tools/secure/index.php:216
+#: src/tools/secure/index.php:224
 msgid "Hide 'Server' info"
 msgstr ""
 
-#: src/tools/secure/index.php:218
+#: src/tools/secure/index.php:226
 msgid "Hide server info (server name/version)"
 msgstr ""
 
-#: src/tools/secure/index.php:225
+#: src/tools/secure/index.php:233
 msgid "Omit entirely"
 msgstr ""
 
-#: src/tools/secure/index.php:227
+#: src/tools/secure/index.php:235
 msgid "(Browser default) omit referrer on downgrade to HTTP"
 msgstr ""
 
-#: src/tools/secure/index.php:229
+#: src/tools/secure/index.php:237
 msgid "Only send the origin ( https://www.example.com/ )"
 msgstr ""
 
-#: src/tools/secure/index.php:231
+#: src/tools/secure/index.php:239
 msgid "Full URL to current origin, but just origin to other sites"
 msgstr ""
 
-#: src/tools/secure/index.php:233
+#: src/tools/secure/index.php:241
 msgid "Omit referrer for cross origin requests"
 msgstr ""
 
-#: src/tools/secure/index.php:235
+#: src/tools/secure/index.php:243
 msgid "Send only the origin, or nothing on downgrade (HTTPS->HTTP)"
 msgstr ""
 
-#: src/tools/secure/index.php:237
+#: src/tools/secure/index.php:245
 msgid ""
 "Omit on downgrade, just origin on cross-origin, and full to current origin"
 msgstr ""
 
-#: src/tools/secure/index.php:239
+#: src/tools/secure/index.php:247
 msgid "Always send the whole URL"
 msgstr ""
 
-#: src/tools/secure/index.php:242
+#: src/tools/secure/index.php:250
 msgid "Set referrer policy option"
 msgstr ""
 
-#: src/tools/secure/index.php:247
+#: src/tools/secure/index.php:255
 msgid "CORS domains whitelist"
 msgstr ""
 
-#: src/tools/secure/index.php:249
+#: src/tools/secure/index.php:257
 msgid "Set CORS whitelist - one domain per line"
 msgstr ""
 
-#: src/tools/secure/index.php:251
+#: src/tools/secure/index.php:259
 msgid "You can view your headers and evaluate your website security"
 msgstr ""
 
@@ -611,140 +636,160 @@ msgstr ""
 msgid "Meta-keyword"
 msgstr ""
 
-#: src/tools/seo/index.php:83
+#: src/tools/seo/index.php:45
+msgid "SEO"
+msgstr ""
+
+#: src/tools/seo/index.php:49
+msgid "Optimize your site SEO and manage your social publications"
+msgstr ""
+
+#: src/tools/seo/index.php:86
+msgid "See video tutorial and learn more about SEO management."
+msgstr ""
+
+#: src/tools/seo/index.php:91
 msgid "General"
 msgstr ""
 
-#: src/tools/seo/index.php:96
+#: src/tools/seo/index.php:104
 msgid "Enable sitemap.xml generator"
 msgstr ""
 
-#: src/tools/seo/index.php:98
+#: src/tools/seo/index.php:106
 msgid "view your sitemap.xml"
 msgstr ""
 
-#: src/tools/seo/index.php:110
+#: src/tools/seo/index.php:118
 msgid "Enable search engine notifications"
 msgstr ""
 
-#: src/tools/seo/index.php:112
+#: src/tools/seo/index.php:120
 msgid "Notify Google, Yahoo, Bing, Ask when your sitemap.xml is updated"
 msgstr ""
 
-#: src/tools/seo/index.php:118
+#: src/tools/seo/index.php:126
 msgid "Default values"
 msgstr ""
 
-#: src/tools/seo/index.php:126
+#: src/tools/seo/index.php:134
 msgid "Default description"
 msgstr ""
 
-#: src/tools/seo/index.php:129
+#: src/tools/seo/index.php:137
 msgid "Used as default meta description in your website"
 msgstr ""
 
-#: src/tools/seo/index.php:136
+#: src/tools/seo/index.php:144
 msgid "Default keywords"
 msgstr ""
 
-#: src/tools/seo/index.php:139
+#: src/tools/seo/index.php:147
 msgid "Used as default meta keywords in your website"
 msgstr ""
 
-#: src/tools/seo/index.php:150
+#: src/tools/seo/index.php:158
 msgid "Sitemap options"
 msgstr ""
 
-#: src/tools/seo/index.php:153
+#: src/tools/seo/index.php:161
 msgid ""
 "Your sitemap.xml is automaticaly generated, however you can add URLs "
 "manualy  or exclude generated URLs."
 msgstr ""
 
-#: src/tools/seo/index.php:153
+#: src/tools/seo/index.php:161
 msgid "View sitemap.xml"
 msgstr ""
 
-#: src/tools/seo/index.php:158
+#: src/tools/seo/index.php:166
 msgid "Add sitemap rule"
 msgstr ""
 
-#: src/tools/seo/index.php:159
+#: src/tools/seo/index.php:167
 msgid "Do you realy want remove this url ?"
 msgstr ""
 
-#: src/tools/seo/index.php:160
+#: src/tools/seo/index.php:168
 msgid "http://www.website.com"
 msgstr ""
 
-#: src/tools/seo/index.php:161
+#: src/tools/seo/index.php:169
 msgid "exclude"
 msgstr ""
 
-#: src/tools/seo/index.php:162
+#: src/tools/seo/index.php:170
 msgid "add"
 msgstr ""
 
-#: src/tools/seo/index.php:163
+#: src/tools/seo/index.php:171
 msgid "exclude if equals"
 msgstr ""
 
-#: src/tools/seo/index.php:164
+#: src/tools/seo/index.php:172
 msgid "exclude if contains"
 msgstr ""
 
-#: src/tools/seo/index.php:165
+#: src/tools/seo/index.php:173
 msgid "exclude if matches regexp"
 msgstr ""
 
-#: src/tools/seo/index.php:193
+#: src/tools/seo/index.php:201
 msgid "301 Redirects"
 msgstr ""
 
-#: src/tools/seo/index.php:199
+#: src/tools/seo/index.php:207
 msgid ""
 "WARNING : one or more rules may generate loop - this may crash your website"
 msgstr ""
 
-#: src/tools/seo/index.php:202
+#: src/tools/seo/index.php:210
 msgid ""
 "Here you can add your 301 permanent redirects and order theme by drag & drop."
 msgstr ""
 
-#: src/tools/seo/index.php:202
+#: src/tools/seo/index.php:210
 msgid "What is a 301 permanent redirect ?"
 msgstr ""
 
-#: src/tools/seo/index.php:209
+#: src/tools/seo/index.php:217
 msgid "Add redirection"
 msgstr ""
 
-#: src/tools/seo/index.php:210
+#: src/tools/seo/index.php:218
 msgid "Do you realy want remove this redirection ?"
 msgstr ""
 
-#: src/tools/seo/index.php:211
+#: src/tools/seo/index.php:219
 msgid "disable"
 msgstr ""
 
-#: src/tools/seo/index.php:212
+#: src/tools/seo/index.php:220
 msgid "redirects to"
 msgstr ""
 
-#: src/tools/seo/index.php:213
+#: src/tools/seo/index.php:221
 msgid "/my-old-page"
 msgstr ""
 
-#: src/tools/seo/index.php:214
+#: src/tools/seo/index.php:222
 msgid "/my-new-page"
 msgstr ""
 
-#: src/tools/seo/index.php:215
+#: src/tools/seo/index.php:223
 msgid "URL that equals"
 msgstr ""
 
-#: src/tools/seo/index.php:216
+#: src/tools/seo/index.php:224
 msgid "URL that matches (regexp)"
+msgstr ""
+
+#: src/tools/tracking/index.php:45
+msgid "Tracking"
+msgstr ""
+
+#: src/tools/tracking/index.php:49
+msgid "Manage your website tracking (Google Analytics, Google Tag Manager)"
 msgstr ""
 
 #: src/tools/tracking/index.php:77
@@ -811,6 +856,14 @@ msgstr ""
 
 #: src/tools/wip/inc/customizer.php:53
 msgid "Specific page"
+msgstr ""
+
+#: src/tools/wip/index.php:43
+msgid "WIP"
+msgstr ""
+
+#: src/tools/wip/index.php:47
+msgid "Add work in progress page on your website"
 msgstr ""
 
 #: src/gutenberg/components/post-selector.jsx:48

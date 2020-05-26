@@ -40,11 +40,11 @@ class WK_Tool_Wip extends WK_Tool{
 	}
 	
 	public function get_name() { 
-		return __("WIP", 'wooden');
+		return __("WIP", 'woodkit');
 	}
 	
 	public function get_description() { 
-		return __("Add work in progress page on your website", 'wooden');
+		return __("Add work in progress page on your website", 'woodkit');
 	}
 	
 	public function launch() {

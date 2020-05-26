@@ -40,11 +40,11 @@ class WK_Tool_Private extends WK_Tool{
 	}
 	
 	public function get_name() { 
-		return __("Private", 'wooden');
+		return __("Private", 'woodkit');
 	}
 	
 	public function get_description() { 
-		return __("Make your site, or just few pages, private (Intranet)", 'wooden');
+		return __("Make your site, or just few pages, private (Intranet)", 'woodkit');
 	}
 	
 	public function launch() {

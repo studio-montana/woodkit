@@ -42,11 +42,11 @@ class WK_Tool_SEO extends WK_Tool{
 	}
 	
 	public function get_name() { 
-		return __("SEO", 'wooden');
+		return __("SEO", 'woodkit');
 	}
 	
 	public function get_description() { 
-		return __("Optimize your site SEO and manage your social publications", 'wooden');
+		return __("Optimize your site SEO and manage your social publications", 'woodkit');
 	}
 	
 	public function launch() {
