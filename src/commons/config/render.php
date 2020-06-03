@@ -36,21 +36,21 @@ class WoodkitConfig {
 	public function __construct(){
 		// Self URL
 		$this->self_url = menu_page_url('woodkit_options', false);
-		
+
 		// Nonce
 		$this->nonce_action = wp_create_nonce(self::$nonce_name);
-		
+
 		// set options
 		$this->options = woodkit_get_options(true);
-		
+
 		// is registered
 		$this->site_registered = WoodkitInstaller::is_registered();
-		
+
 		// display page
 		$this->display();
-		
+
 	}
-	
+
 	/**
 	 * This method is called by 'init' hook action (before this Class is intanciated) - be careful to check correct nonce
 	 * (called in woodkit.php on 'init' action)
@@ -80,11 +80,11 @@ class WoodkitConfig {
 			}
 		}
 	}
-	
+
 	private function display(){
 		?>
 		<div class="wrap woodkit-page-options woodkit-tool-page-options">
-    		
+
     		<div class="wk-panel">
 				<div class="woodkit-credits">
 					<div class="logo"><?php echo get_woodkit_icon('paw'); ?></div>
@@ -95,7 +95,7 @@ class WoodkitConfig {
 					</div>
 				</div>
 			</div>
-    		
+
     		<form method="post" action="<?php echo $this->self_url; ?>">
     			<input type="hidden" name="<?php echo self::$nonce_name; ?>" value="<?php echo $this->nonce_action; ?>" />
 	    		<div class="wk-panel">
@@ -103,13 +103,13 @@ class WoodkitConfig {
 					<div class="wk-panel-content">
 						<div class="field">
 							<div class="field-content">
-								<?php 
+								<?php
 								$value = "";
 								if (isset($this->options['key-activation'])){
 									$value = $this->options['key-activation'];
 								}
 								?>
-								<label for="key-activation"><?php _e("Woodkit key activation", 'woodkit'); ?></label>
+								<label for="key-activation"><?php _e("Woodkit activation key", 'woodkit'); ?></label>
 								<input placeholder="<?php _e("YOUR KEY", 'woodkit'); ?>" type="password" id="key-activation" name="<?php echo WOODKIT_CONFIG_OPTIONS.'[key-activation]'; ?>" value="<?php echo esc_attr($value); ?>" />
 								<?php if (!$this->site_registered){ ?>
 									<span class="invalid-key"><i class="fa fa-times"></i><?php _e("Your key is invalid", 'woodkit'); ?></span>
@@ -126,8 +126,8 @@ class WoodkitConfig {
 					</button>
 				</div>
     		</form>
-    		
-    		
+
+
     		<div class="wk-panel">
 				<h2 class="wk-panel-title"><?php _e("Tools", 'woodkit'); ?></h2>
 				<div class="wk-panel-content">
@@ -153,7 +153,7 @@ class WoodkitConfig {
 											<span class="0">
 												<?php if ($active == true && $tool->has_config){ ?>
 												<a href="<?php echo menu_page_url("woodkit_options_tool_".$tool->slug, false); ?>"><?php _e("Setup", 'woodkit'); ?></a> |
-												<?php } ?> 
+												<?php } ?>
 											</span>
 											<span class="0">
 												<?php if ($active == true && $tool->customizer !== false){
@@ -162,9 +162,9 @@ class WoodkitConfig {
 													<?php } else { ?>
 														<a href="<?php echo $tool->customizer; ?>"><?php _e("Customize", 'woodkit'); ?></a> |
 													<?php }
-												} ?> 
+												} ?>
 											</span>
-											<?php 
+											<?php
 											if ($active == true){
 												?>
 												<span class="deactivate">
@@ -205,7 +205,7 @@ class WoodkitConfig {
 										</div>
 									</td>
 								</tr>
-								<?php 
+								<?php
 							} ?>
 						</tbody>
 						<tfoot>
