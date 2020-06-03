@@ -31,10 +31,8 @@ class WK_Tutorials {
 	}
 
 	private function display() { ?>
-		<div class="fw-page">
-			<h1><?php _e('Tutorials', 'woodkit'); ?></h1>
-			<hr />
-			
+		<div class="fw-page woodkit-tool-page-options">
+
 			<div class="wk-panel">
 				<div class="woodkit-credits">
 					<div class="logo"><?php echo get_woodkit_icon('paw'); ?></div>
@@ -45,7 +43,9 @@ class WK_Tutorials {
 					</div>
 				</div>
 			</div>
-			
+
+			<h1><span class="dashicons dashicons-welcome-learn-more"></span><?php _e('Tutorials', 'woodkit'); ?></h1>
+
 			<?php $sections = array(
 					array(
 						'title' => "Découverte de Gutenberg",
@@ -82,8 +82,8 @@ class WK_Tutorials {
 					$this->display_section($section);
 				}
 			} ?>
-			
-			<!-- 
+
+			<!--
 			<div class="fw-section">
 				<h3 class="fw-section-title">Une autre section</h3>
 				<div class="fw-section-content">
@@ -101,7 +101,7 @@ class WK_Tutorials {
 				</div>
 			</div>
 			 -->
-		
+
 			<script type="text/javascript">
 			(function($) {
 				$(document).ready(function(){
@@ -124,7 +124,7 @@ class WK_Tutorials {
 			</script>
 		</div>
 	<?php }
-	
+
 	private function display_section($section) { ?>
 		<div class="fw-section">
 			<h3 class="fw-section-title">
@@ -150,4 +150,3 @@ class WK_Tutorials {
 		</div>
 	<?php }
 }
-

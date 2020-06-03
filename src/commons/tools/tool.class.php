@@ -57,7 +57,7 @@ abstract class WK_Tool{
 		$this->documentation_url = $args['documentation'];
 		$this->context = $args['context'];
 		$this->config_nonce_name = 'woodkit-tool-'.$this->slug.'-config-nonce';
-		
+
 		if (!isset($args['path'])) {
 			/**
 			 * Calculate PATH
@@ -68,9 +68,9 @@ abstract class WK_Tool{
 		} else {
 			$this->path = $args['path'];
 		}
-		
+
 		if (!isset($args['uri'])) {
-			/** 
+			/**
 			 * Calculate URI from PATH
 			 * IMPORTANT : this code does not support symbolic link - it's impossible to calculate URI from PATH if this path is not in WP context
 			 * To calculate URI, this code is based on PATH, so the context must be in WP plugins or themes (or directly inside Woodkit plugin)
@@ -90,20 +90,20 @@ abstract class WK_Tool{
 		} else {
 			$this->uri = $args['uri'];
 		}
-		
+
 		/** calculate if it's core source (path comparison) */
 		$this->is_core = startsWith($this->path, WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER);
 	}
-	
+
 	public function get_path () {
 		return $this->path;
 	}
-	
+
 	/**
 	 * Called when tool is lauched (if activated)
 	 */
 	public abstract function launch();
-	
+
 	/**
 	 * Tool name must be get by function to support i18n
 	 * --> because of contructor is called before any filters which load textdomain - ex. : for tool's theme support
@@ -116,7 +116,7 @@ abstract class WK_Tool{
 	 * --> because of contructor is called before any filters which load textdomain - ex. : for tool's theme support
 	 */
 	public abstract function get_description();
-	
+
 	/**
 	 * Proceed to tool activation
 	 */
@@ -132,12 +132,12 @@ abstract class WK_Tool{
 		$this->set_option('active', 'off');
 		$this->on_deactivate();
 	}
-	
+
 	/**
 	 * Called when tool is activated
 	 */
 	protected function on_activate(){}
-	
+
 	/**
 	 * Called when tool is deactivated
 	 */
@@ -151,11 +151,11 @@ abstract class WK_Tool{
 		$tool_active = $this->get_option('active');
 		return !empty($tool_active) && $tool_active == 'on';
 	}
-	
+
 	public function get_options () {
 		return woodkit_get_option('tool-'.$this->slug);
 	}
-	
+
 	/**
 	 * Retrieve tool's option for specified name
 	 * @param string $name
@@ -170,7 +170,7 @@ abstract class WK_Tool{
 		$default_value = $this->get_config_default_value($name);
 		return $default_value != null ? $default_value : $default;
 	}
-	
+
 	/**
 	 * Set tool's option
 	 * @param string $name
@@ -184,13 +184,13 @@ abstract class WK_Tool{
 		$options[$name] = $value;
 		woodkit_save_option('tool-'.$this->slug, $options);
 	}
-	
+
 	/**
 	 * Set tool's options
 	 * @param string $name
 	 * @param any $value
 	 */
-	
+
 	/**
 	 * Set tool's options
 	 * @param array $options
@@ -203,7 +203,7 @@ abstract class WK_Tool{
 		}
 		woodkit_save_option('tool-'.$this->slug, $options);
 	}
-	
+
 	/**
 	 * retrieve all config fields<br />
 	 * <strong>IMPORTANT</strong> : never add 'active' field by this way - 'active' field is used to set active tools and it's automaticaly managed by Woodkit - tools don't have to do that
@@ -229,12 +229,12 @@ abstract class WK_Tool{
 		$defaults = $this->get_config_default_values();
 		return !empty($defaults) && isset($defaults[$name]) ? $defaults[$name] : null;
 	}
-	
+
 	/**
 	 * display config fields
 	 */
 	public function display_config_fields(){}
-	
+
 	/**
 	 * display config page
 	 * IMPORTANT : you don't have to override this method
@@ -242,6 +242,18 @@ abstract class WK_Tool{
 	public function render_config(){
 		?>
 		<div class="wrap woodkit-page-options woodkit-tool-page-options woodkit-tool-<?php echo $this->slug; ?>-page-options">
+
+			<div class="wk-panel">
+			<div class="woodkit-credits">
+				<div class="logo"><?php echo get_woodkit_icon('paw'); ?></div>
+				<div class="text">
+					<h1 class="title"><?php _e("Woodkit"); ?><sup class="copy"> &copy;</sup></h1>
+					<p class="desc"><?php _e("Un outil robuste complétant Wordpress en terme de SEO, de sécurité et d'outils sur-mesure dédiés à votre site Web."); ?><br />L'idée est qu'un outil simple, répondant uniquement aux besoins essentiels, dure dans le temps.</p>
+					<p class="credit">Développé et maintenu depuis 2016 par <a href="https://www.seb-c.com" target="_blank">Sébastien Chandonay</a> & <a href="https://www.cyriltissot.com" target="_blank">Cyril Tissot</a> pour <a href="https://www.studio-montana.com" target="_blank">Studio Montana</a></p>
+				</div>
+			</div>
+		</div>
+
 			<h1>
 				<?php echo __("Woodkit tools", 'woodkit'); ?><i class="fa fa-angle-right"></i><?php echo $this->get_name(); ?>
 				<a href="<?php menu_page_url("woodkit_options", true); ?>" class="all-tools page-title-action"><?php _e("View all tools", 'woodkit'); ?></a>
@@ -260,7 +272,7 @@ abstract class WK_Tool{
 		</div>
 		<?php
 	}
-	
+
 	/**
 	 * Retrieve all specified config fields and their values from Form - you can override this method
 	 * @param unknown $values
@@ -283,19 +295,19 @@ abstract class WK_Tool{
 		}
 		return $values;
 	}
-	
+
 	/**
 	 * Called before save (only when form is submited)
 	 * @param array $options
 	 */
 	public function before_save_config($new_options, $old_options){}
-	
+
 	/**
 	 * Called after save (only when form is submited)
 	 * @param array $options
 	 */
 	public function after_save_config($new_options, $old_options){}
-	
+
 	/**
 	 * Save tool's options - <strong>IMPORTANT</strong> : override all current tool's options
 	 * IMPORTANT : you don't have to override this method
