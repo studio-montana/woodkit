@@ -31,32 +31,32 @@ define('COOKIES_TOOL_NAME', 'legal');
  * Tool instance
  */
 class WK_Tool_Legal extends WK_Tool{
-	
+
 	public function __construct(){
 		parent::__construct(array(
 				'slug' => 'legal',
 				'customizer' => add_query_arg(array('autofocus[section]' => 'legal_customizer'), admin_url('customize.php')),
 			));
 	}
-	
-	public function get_name() { 
+
+	public function get_name() {
 		return __("Legal", 'woodkit');
 	}
-	
-	public function get_description() { 
-		return __("Add legal advice on front of your website, cookies and rgpd.", 'woodkit');
+
+	public function get_description() {
+		return __("Display legal notice (Privacy & Cookies Policy - GDPR) in front of your website", 'woodkit');
 	}
-	
+
 	public function launch() {
 		require_once ($this->path.'launch.php');
 	}
-	
+
 	public function get_config_default_values(){
 		return array(
 				'active' => 'on',
 		);
 	}
-	
+
 }
 add_filter("woodkit-register-tool", function($tools){
 	$tools[] = new WK_Tool_Legal();

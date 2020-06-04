@@ -31,32 +31,32 @@ define('PRIVATE_TOOL_NAME', 'private');
  * Tool instance
  */
 class WK_Tool_Private extends WK_Tool{
-	
+
 	public function __construct(){
 		parent::__construct(array(
-				'slug' => 'private', 
+				'slug' => 'private',
 				'documentation' => WOODKIT_URL_DOCUMENTATION.'/private'
 			));
 	}
-	
-	public function get_name() { 
+
+	public function get_name() {
 		return __("Private", 'woodkit');
 	}
-	
-	public function get_description() { 
-		return __("Make your site, or just few pages, private (Intranet)", 'woodkit');
+
+	public function get_description() {
+		return __("Make your site private (Intranet), or just few pages", 'woodkit');
 	}
-	
+
 	public function launch() {
 		require_once ($this->path.'launch.php');
 	}
-	
+
 	public function get_config_default_values(){
 		return array(
 				'active' => 'off'
 		);
 	}
-	
+
 }
 add_filter("woodkit-register-tool", function($tools){
 	// $tools[] = new WK_Tool_Private();

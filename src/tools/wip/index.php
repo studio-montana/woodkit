@@ -31,32 +31,32 @@ define('WIP_TOOL_NAME', 'wip');
  * Tool instance
  */
 class WK_Tool_Wip extends WK_Tool{
-	
+
 	public function __construct(){
 		parent::__construct(array(
-				'slug' => 'wip', 
+				'slug' => 'wip',
 				'customizer' => add_query_arg(array('autofocus[section]' => 'wip_customizer'), admin_url('customize.php')),
 			));
 	}
-	
-	public function get_name() { 
+
+	public function get_name() {
 		return __("WIP", 'woodkit');
 	}
-	
-	public function get_description() { 
-		return __("Add work in progress page on your website", 'woodkit');
+
+	public function get_description() {
+		return __("Enable 'Work In Progress' page", 'woodkit');
 	}
-	
+
 	public function launch() {
 		require_once ($this->path.'launch.php');
 	}
-	
+
 	public function get_config_default_values(){
 		return array(
 				'active' => 'on'
 		);
 	}
-	
+
 }
 add_filter("woodkit-register-tool", function($tools){
 	$tools[] = new WK_Tool_Wip();

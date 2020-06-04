@@ -31,28 +31,28 @@ define('SECURE_TOOL_NAME', 'secure');
  * Tool instance
  */
 class WK_Tool_Secure extends WK_Tool{
-	
+
 	public function __construct(){
 		parent::__construct(array(
-				'slug' => 'secure', 
+				'slug' => 'secure',
 				'has_config' => true,
 				'add_config_in_menu' => true,
 				'documentation' => WOODKIT_URL_DOCUMENTATION.'/secure'
 			));
 	}
-	
-	public function get_name() { 
+
+	public function get_name() {
 		return __("Security", 'woodkit');
 	}
-	
-	public function get_description() { 
-		return __("Secures your website", 'woodkit');
+
+	public function get_description() {
+		return __("Secure your website", 'woodkit');
 	}
-	
+
 	public function launch() {
 		require_once ($this->path.'launch.php');
 	}
-	
+
 	public function get_config_fields(){
 		return array(
 				'captcha-active',
@@ -80,7 +80,7 @@ class WK_Tool_Secure extends WK_Tool{
 				 */
 		);
 	}
-	
+
 	public function get_config_default_values(){
 		return array(
 				'active' => "on",
@@ -96,7 +96,7 @@ class WK_Tool_Secure extends WK_Tool{
 				'headers-corswhitelist' => "",
 		);
 	}
-	
+
 	public function display_config_fields(){
 		?>
 		<div class="wk-panel">
@@ -295,7 +295,7 @@ class WK_Tool_Secure extends WK_Tool{
 		</div>
 		<?php
 	}
-	
+
 	public function save_config_fields($values){
 		$fields = $this->get_config_fields();
 		if (!empty($fields)){

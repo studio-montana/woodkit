@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -43,7 +43,7 @@ function wip_customize_register($wp_customize_manager) {
 			'label'      	=> __('Message', 'woodkit' ),
 			'section'    	=> 'wip_customizer',
 			'settings'   	=> 'wip_message',
-			'description'	=> 'Affiche ce message au visiteurs non connectés (s\'il n\'y a pas de page spécifique)',
+			'description'	=> 'Display this message for unlogged visitors <br> (only if there is no specific page)',
 	));
 
 	// wip message
@@ -53,7 +53,7 @@ function wip_customize_register($wp_customize_manager) {
 			'label'      	=> __('Specific page', 'woodkit' ),
 			'section'    	=> 'wip_customizer',
 			'settings'   	=> 'wip_page',
-			'description'	=> 'Affiche cette page au visiteurs non connectés',
+			'description'	=> 'Display this page for unlogged visitors',
 	));
 
 }

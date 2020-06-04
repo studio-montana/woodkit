@@ -45,17 +45,17 @@ function legal_customize_register($wp_customize_manager) {
 
 	// legal text
 	woodkit_customizer_add_control($wp_customize_manager, 'legal_link_text', array('default' => '', 'transport'=>'theme_mod'), array(
-			'label'      => __('More link Text', 'woodkit' ),
+			'label'      => __('\'Read more\' link text', 'woodkit' ),
 			'section'    => 'legal_customizer',
 			'settings'   => 'legal_link_text',
 	));
 
 	// legal more link url
 	woodkit_customizer_add_control($wp_customize_manager, 'legal_link_url', array('default' => '', 'transport'=>'theme_mod'), array(
-			'label'      => __('More link URL', 'woodkit' ),
+			'label'      => __('\'Read more\' link URL', 'woodkit' ),
 			'section'    => 'legal_customizer',
 			'settings'   => 'legal_link_url',
-			'description' => __('Display RDPG link if configured by default.', 'woodkit'),
+			'description' => __('Display GDPR link by default.', 'woodkit'),
 	));
 
 	// legal button text
