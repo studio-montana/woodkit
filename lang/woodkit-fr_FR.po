@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Woodkit 2.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woodkit\n"
-"POT-Creation-Date: 2020-05-26T16:00:03+00:00\n"
-"PO-Revision-Date: 2020-05-26 18:03+0200\n"
+"POT-Creation-Date: 2020-06-11T14:56:18+00:00\n"
+"PO-Revision-Date: 2020-06-11 16:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -49,7 +49,9 @@ msgid "Activation"
 msgstr "Activation"
 
 #: src/commons/config/render.php:112
-msgid "Woodkit key activation"
+#, fuzzy
+#| msgid "Woodkit key activation"
+msgid "Woodkit activation key"
 msgstr "Clé d’activation de Woodkit"
 
 #: src/commons/config/render.php:113
@@ -72,7 +74,7 @@ msgstr "Votre site est enregistré"
 msgid "Setup your key to get woodkit updates"
 msgstr "Renseignez votre clé pour obtenir les mises à jour Woodkit"
 
-#: src/commons/config/render.php:125 src/commons/tools/tool.class.php:256
+#: src/commons/config/render.php:125 src/commons/tools/tool.class.php:268
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -311,21 +313,21 @@ msgstr "nov"
 msgid "dec"
 msgstr "déc"
 
-#: src/commons/tools/tool.class.php:246
+#: src/commons/tools/tool.class.php:258
 msgid "Woodkit tools"
 msgstr "Outils Woodkit"
 
-#: src/commons/tools/tool.class.php:247
+#: src/commons/tools/tool.class.php:259
 msgid "View all tools"
 msgstr "Voir tous les outils"
 
 #: src/commons/tutorials/index.php:31 src/commons/tutorials/index.php:32
-#: src/commons/tutorials/render.php:35 src/tools/secure/index.php:104
+#: src/commons/tutorials/render.php:47 src/tools/secure/index.php:104
 #: src/tools/seo/index.php:83
 msgid "Tutorials"
 msgstr "Tutoriels"
 
-#: src/commons/tutorials/render.php:130
+#: src/commons/tutorials/render.php:142
 msgid "posted on"
 msgstr "publié le"
 
@@ -342,15 +344,21 @@ msgid "Text"
 msgstr "Texte"
 
 #: src/tools/legal/inc/customizer.php:48
-msgid "More link Text"
+#, fuzzy
+#| msgid "More link Text"
+msgid "'Read more' link text"
 msgstr "Texte du lien en lire plus"
 
 #: src/tools/legal/inc/customizer.php:55
-msgid "More link URL"
+#, fuzzy
+#| msgid "More link URL"
+msgid "'Read more' link URL"
 msgstr "Lien"
 
 #: src/tools/legal/inc/customizer.php:58
-msgid "Display RDPG link if configured by default."
+#, fuzzy
+#| msgid "Display RDPG link if configured by default."
+msgid "Display GDPR link by default."
 msgstr ""
 "Afficher le lien vers la page de politique de confidentialité si elle est "
 "configurée."
@@ -360,10 +368,10 @@ msgid "Button text"
 msgstr "Lien en lire plus"
 
 #: src/tools/legal/index.php:47
-msgid "Add legal advice on front of your website, cookies and rgpd."
+msgid ""
+"Display legal notice (Privacy & Cookies Policy - GDPR) in front of your "
+"website"
 msgstr ""
-"Ajoute les mentions légales obligatoire relatives à la politique de "
-"confidentialité à votre site."
 
 #: src/tools/legal/launch.php:56
 msgid "Read our privacy policy."
@@ -424,7 +432,9 @@ msgid "Private"
 msgstr "Privé"
 
 #: src/tools/private/index.php:47
-msgid "Make your site, or just few pages, private (Intranet)"
+#, fuzzy
+#| msgid "Make your site, or just few pages, private (Intranet)"
+msgid "Make your site private (Intranet), or just few pages"
 msgstr "Rendre votre site privé (Intranet) ou simplement certaines pages"
 
 #: src/tools/private/launch.php:111 src/tools/private/launch.php:112
@@ -486,7 +496,9 @@ msgid "Security"
 msgstr "Securité"
 
 #: src/tools/secure/index.php:49
-msgid "Secures your website"
+#, fuzzy
+#| msgid "Secures your website"
+msgid "Secure your website"
 msgstr "Sécurise votre site Web"
 
 #: src/tools/secure/index.php:107
@@ -896,8 +908,10 @@ msgid "WIP"
 msgstr "WIP"
 
 #: src/tools/wip/index.php:47
-msgid "Add work in progress page on your website"
-msgstr "Ajoute une page workinprogress à votre site"
+#, fuzzy
+#| msgid "Work In Progress"
+msgid "Enable 'Work In Progress' page"
+msgstr "Site en maintenance"
 
 #: src/gutenberg/components/post-selector.jsx:48
 msgid "Loading..."
@@ -969,6 +983,14 @@ msgstr "Image"
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:59
 msgid "By default, publication featured image will be used."
 msgstr "Par défaut, l’image mise en avant de la publication sera utilisée."
+
+#~ msgid "Add legal advice on front of your website, cookies and rgpd."
+#~ msgstr ""
+#~ "Ajoute les mentions légales obligatoire relatives à la politique de "
+#~ "confidentialité à votre site."
+
+#~ msgid "Add work in progress page on your website"
+#~ msgstr "Ajoute une page workinprogress à votre site"
 
 #~ msgid "Private area"
 #~ msgstr "Zone privée"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-05-26T16:00:03+00:00\n"
+"POT-Creation-Date: 2020-06-11T14:56:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: woodkit\n"
@@ -46,7 +46,7 @@ msgid "Activation"
 msgstr ""
 
 #: src/commons/config/render.php:112
-msgid "Woodkit key activation"
+msgid "Woodkit activation key"
 msgstr ""
 
 #: src/commons/config/render.php:113
@@ -70,7 +70,7 @@ msgid "Setup your key to get woodkit updates"
 msgstr ""
 
 #: src/commons/config/render.php:125
-#: src/commons/tools/tool.class.php:256
+#: src/commons/tools/tool.class.php:268
 msgid "Save"
 msgstr ""
 
@@ -315,23 +315,23 @@ msgstr ""
 msgid "dec"
 msgstr ""
 
-#: src/commons/tools/tool.class.php:246
+#: src/commons/tools/tool.class.php:258
 msgid "Woodkit tools"
 msgstr ""
 
-#: src/commons/tools/tool.class.php:247
+#: src/commons/tools/tool.class.php:259
 msgid "View all tools"
 msgstr ""
 
 #: src/commons/tutorials/index.php:31
 #: src/commons/tutorials/index.php:32
-#: src/commons/tutorials/render.php:35
+#: src/commons/tutorials/render.php:47
 #: src/tools/secure/index.php:104
 #: src/tools/seo/index.php:83
 msgid "Tutorials"
 msgstr ""
 
-#: src/commons/tutorials/render.php:130
+#: src/commons/tutorials/render.php:142
 msgid "posted on"
 msgstr ""
 
@@ -350,15 +350,15 @@ msgid "Text"
 msgstr ""
 
 #: src/tools/legal/inc/customizer.php:48
-msgid "More link Text"
+msgid "'Read more' link text"
 msgstr ""
 
 #: src/tools/legal/inc/customizer.php:55
-msgid "More link URL"
+msgid "'Read more' link URL"
 msgstr ""
 
 #: src/tools/legal/inc/customizer.php:58
-msgid "Display RDPG link if configured by default."
+msgid "Display GDPR link by default."
 msgstr ""
 
 #: src/tools/legal/inc/customizer.php:63
@@ -366,7 +366,7 @@ msgid "Button text"
 msgstr ""
 
 #: src/tools/legal/index.php:47
-msgid "Add legal advice on front of your website, cookies and rgpd."
+msgid "Display legal notice (Privacy & Cookies Policy - GDPR) in front of your website"
 msgstr ""
 
 #: src/tools/legal/launch.php:56
@@ -420,7 +420,7 @@ msgid "Private"
 msgstr ""
 
 #: src/tools/private/index.php:47
-msgid "Make your site, or just few pages, private (Intranet)"
+msgid "Make your site private (Intranet), or just few pages"
 msgstr ""
 
 #: src/tools/private/launch.php:111
@@ -489,7 +489,7 @@ msgid "Security"
 msgstr ""
 
 #: src/tools/secure/index.php:49
-msgid "Secures your website"
+msgid "Secure your website"
 msgstr ""
 
 #: src/tools/secure/index.php:107
@@ -865,7 +865,7 @@ msgid "WIP"
 msgstr ""
 
 #: src/tools/wip/index.php:47
-msgid "Add work in progress page on your website"
+msgid "Enable 'Work In Progress' page"
 msgstr ""
 
 #: src/gutenberg/components/post-selector.jsx:48
