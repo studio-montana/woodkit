@@ -1,4 +1,4 @@
-if (wp !== undefined) {
+if (typeof wp !== 'undefined' && typeof wp.blocks !== 'undefined') { // block editor (Gutenberg) is active
 	const { apiFetch } = wp
 	const { registerStore } = wp.data
 	
