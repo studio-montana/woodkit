@@ -5,14 +5,14 @@ msgstr ""
 "Project-Id-Version: Woodkit 2.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woodkit\n"
 "POT-Creation-Date: 2020-06-11T14:56:18+00:00\n"
-"PO-Revision-Date: 2020-06-11 16:57+0200\n"
+"PO-Revision-Date: 2020-06-12 12:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Domain: woodkit\n"
 
 #. Plugin Name of the plugin
@@ -29,8 +29,8 @@ msgid ""
 "Multitool experience for WP | SEO, security, private area, tracking, "
 "legal, ..."
 msgstr ""
-"Outil multifonction pour Wordpress | SEO, securité, intranet, traceur, rgpd, "
-"…"
+"Outil multifonctions pour Wordpress | SEO, sécurité, intranet, traceur, "
+"cookies…"
 
 #. Author of the plugin
 msgid "Studio Montana"
@@ -49,8 +49,6 @@ msgid "Activation"
 msgstr "Activation"
 
 #: src/commons/config/render.php:112
-#, fuzzy
-#| msgid "Woodkit key activation"
 msgid "Woodkit activation key"
 msgstr "Clé d’activation de Woodkit"
 
@@ -344,34 +342,29 @@ msgid "Text"
 msgstr "Texte"
 
 #: src/tools/legal/inc/customizer.php:48
-#, fuzzy
-#| msgid "More link Text"
 msgid "'Read more' link text"
-msgstr "Texte du lien en lire plus"
+msgstr "Texte du lien ‘En savoir plus’"
 
 #: src/tools/legal/inc/customizer.php:55
-#, fuzzy
-#| msgid "More link URL"
 msgid "'Read more' link URL"
-msgstr "Lien"
+msgstr "URL du lien ’En savoir plus’"
 
 #: src/tools/legal/inc/customizer.php:58
-#, fuzzy
-#| msgid "Display RDPG link if configured by default."
 msgid "Display GDPR link by default."
 msgstr ""
-"Afficher le lien vers la page de politique de confidentialité si elle est "
-"configurée."
+"Par défaut, affiche le lien vers la page de politique de confidentialité."
 
 #: src/tools/legal/inc/customizer.php:63
 msgid "Button text"
-msgstr "Lien en lire plus"
+msgstr "Texte du bouton"
 
 #: src/tools/legal/index.php:47
 msgid ""
 "Display legal notice (Privacy & Cookies Policy - GDPR) in front of your "
 "website"
 msgstr ""
+"Afficher la mention légale sur les cookies et la politiques de "
+"confidentialité (RGPD) à l’ouverture de votre site."
 
 #: src/tools/legal/launch.php:56
 msgid "Read our privacy policy."
@@ -400,7 +393,7 @@ msgstr ""
 #: src/tools/private/inc/options-fields.php:55
 #: src/tools/private/inc/options.php:37
 msgid "Private settings"
-msgstr "Paramètres espace privé"
+msgstr "Paramètres"
 
 #: src/tools/private/inc/options-fields.php:61
 msgid "You want to"
@@ -432,10 +425,8 @@ msgid "Private"
 msgstr "Privé"
 
 #: src/tools/private/index.php:47
-#, fuzzy
-#| msgid "Make your site, or just few pages, private (Intranet)"
 msgid "Make your site private (Intranet), or just few pages"
-msgstr "Rendre votre site privé (Intranet) ou simplement certaines pages"
+msgstr "Rendre votre site privé (Intranet) ou seulement certaines pages"
 
 #: src/tools/private/launch.php:111 src/tools/private/launch.php:112
 msgid "sign out"
@@ -473,7 +464,7 @@ msgstr "Saisissez le résultat de l'addition. Ceci est une sécurité anti-spam.
 
 #: src/tools/secure/inc/contactform7/captchanum.php:106
 msgid "numeric captcha"
-msgstr "captcha numéric"
+msgstr "captcha numérique"
 
 #: src/tools/secure/inc/contactform7/captchanum.php:113
 msgid "Generate a form-tag for a numeric captcha."
@@ -485,25 +476,23 @@ msgstr "Génère un captcha numérique."
 #: src/tools/secure/inc/failtoban.php:165
 #: src/tools/secure/inc/failtoban.php:219
 msgid "Too many tries - please wait 1min"
-msgstr "Trop de tentatives - merci d'attendre 1min"
+msgstr "Trop de tentatives - merci d'attendre 1 min"
 
 #: src/tools/secure/inc/failtoban.php:145
 msgid "<strong>ERROR</strong>: Too many tries - please wait 1min"
-msgstr "<strong>ERREUR</strong>: Trop de tentatives - merci d'attendre 1min"
+msgstr "<strong>ERREUR</strong> : Trop de tentatives - merci d'attendre 1 min"
 
 #: src/tools/secure/index.php:45
 msgid "Security"
 msgstr "Securité"
 
 #: src/tools/secure/index.php:49
-#, fuzzy
-#| msgid "Secures your website"
 msgid "Secure your website"
-msgstr "Sécurise votre site Web"
+msgstr "Sécuriser votre site Web"
 
 #: src/tools/secure/index.php:107
 msgid "See video tutorial and learn more about security management."
-msgstr "Voir les video et en apprendre plus sur la gestion de la sécurité."
+msgstr "Voir les videos et en apprendre plus sur la gestion de la sécurité."
 
 #: src/tools/secure/index.php:121
 msgid "Captcha active"
@@ -514,7 +503,7 @@ msgid ""
 "Add captcha on login, register and comment forms (Woocommerce/ContactForm7 "
 "supported)"
 msgstr ""
-"Ajoute un captcha sur les formulaires de login, d'inscription et de "
+"Ajouter un captcha sur les formulaires de login, d'inscription et de "
 "commentaire (Woocommerce/ContactForm7 supporté)"
 
 #: src/tools/secure/index.php:127
@@ -554,7 +543,7 @@ msgid ""
 "Block gross power hacking on login, register and comment forms (Woocommerce "
 "supported)"
 msgstr ""
-"Bloque les attaque par force brute sur les formulaires de login, "
+"Bloquer les attaque par force brute sur les formulaires de login, "
 "d'inscription et de commentaire (Woocommerce supporté)"
 
 #: src/tools/secure/index.php:167
@@ -603,15 +592,17 @@ msgstr "Cacher l’information ‘server’ (nom/version du serveur)"
 
 #: src/tools/secure/index.php:233
 msgid "Omit entirely"
-msgstr ""
+msgstr "Omettre entièrement"
 
 #: src/tools/secure/index.php:235
 msgid "(Browser default) omit referrer on downgrade to HTTP"
 msgstr ""
+"(Navigateur par défaut) omettre le référent lors de la rétrogradation vers "
+"HTTP"
 
 #: src/tools/secure/index.php:237
 msgid "Only send the origin ( https://www.example.com/ )"
-msgstr ""
+msgstr "Envoyer uniquement l’origine (https://www.example.com/)"
 
 #: src/tools/secure/index.php:239
 msgid "Full URL to current origin, but just origin to other sites"
@@ -619,7 +610,7 @@ msgstr ""
 
 #: src/tools/secure/index.php:241
 msgid "Omit referrer for cross origin requests"
-msgstr ""
+msgstr "Omettre le référent pour les requêtes d’origines croisées"
 
 #: src/tools/secure/index.php:243
 msgid "Send only the origin, or nothing on downgrade (HTTPS->HTTP)"
@@ -632,11 +623,11 @@ msgstr ""
 
 #: src/tools/secure/index.php:247
 msgid "Always send the whole URL"
-msgstr ""
+msgstr "Toujours envoyer l’URL entière"
 
 #: src/tools/secure/index.php:250
 msgid "Set referrer policy option"
-msgstr ""
+msgstr "Définir l’option de stratégie du référent"
 
 #: src/tools/secure/index.php:255
 msgid "CORS domains whitelist"
@@ -674,7 +665,7 @@ msgstr ""
 
 #: src/tools/seo/index.php:86
 msgid "See video tutorial and learn more about SEO management."
-msgstr "Voir les video et en apprendre plus sur le SEO."
+msgstr "Voir les videos et en apprendre plus sur le SEO."
 
 #: src/tools/seo/index.php:91
 msgid "General"
@@ -708,8 +699,8 @@ msgstr "Description par défaut"
 #: src/tools/seo/index.php:137
 msgid "Used as default meta description in your website"
 msgstr ""
-"Utilisée comme description par défaut lorsque qu’aucune valeur n’est "
-"indiquée sur vos pages"
+"Utilisée comme description par défaut lorsqu’aucune valeur n’est spécifiée "
+"sur vos pages"
 
 #: src/tools/seo/index.php:144
 msgid "Default keywords"
@@ -718,7 +709,7 @@ msgstr "Mots-clés par défaut"
 #: src/tools/seo/index.php:147
 msgid "Used as default meta keywords in your website"
 msgstr ""
-"Utilisés comme mots-clés par défaut lorsqu’aucune valeur n’est indiquée sur "
+"Utilisés comme mots-clés par défaut lorsqu’aucune valeur n’est spécifiée sur "
 "vos pages"
 
 #: src/tools/seo/index.php:158
@@ -777,8 +768,8 @@ msgstr "Redirections 301"
 msgid ""
 "WARNING : one or more rules may generate loop - this may crash your website"
 msgstr ""
-"ATTENTION : une ou plusieurs redirections génèrent une boucle - cela va "
-"planter votre site"
+"ATTENTION : une ou plusieurs redirections génèrent une boucle - ceci peut "
+"endommager votre site"
 
 #: src/tools/seo/index.php:210
 msgid ""
@@ -881,7 +872,7 @@ msgstr "nom de l’événement"
 
 #: src/tools/tracking/index.php:117
 msgid "action name"
-msgstr ""
+msgstr "nom de l’action"
 
 #: src/tools/tracking/index.php:118
 msgid "category name"
@@ -908,10 +899,8 @@ msgid "WIP"
 msgstr "WIP"
 
 #: src/tools/wip/index.php:47
-#, fuzzy
-#| msgid "Work In Progress"
 msgid "Enable 'Work In Progress' page"
-msgstr "Site en maintenance"
+msgstr "Activer la page ‘Site en maintenance’"
 
 #: src/gutenberg/components/post-selector.jsx:48
 msgid "Loading..."
@@ -966,13 +955,15 @@ msgstr "Titre"
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:51
 msgid "By default, title set for search engines will be used."
-msgstr "Par défaut, le titre fixé pour les moteurs de recherche sera utilisé."
+msgstr ""
+"Par défaut, le titre défini pour les moteurs de recherche sera utilisé."
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:55
 msgid "By default, description set for search engines will be used."
 msgstr ""
-"Par défaut, la description fixée pour les moteurs de recherche sera utilisée."
+"Par défaut, la description définie pour les moteurs de recherche sera "
+"utilisée."
 
 #: src/tools/seo/gutenberg/plugins/seometa/build.js:1
 #: src/tools/seo/gutenberg/plugins/seometa/index.jsx:58

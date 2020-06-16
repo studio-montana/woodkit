@@ -4,7 +4,7 @@
  * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
  * License: GPL2
  * Text Domain: woodkit
- * 
+ *
  * Copyright 2016 Sébastien Chandonay (email : please contact me from my website)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -266,7 +266,7 @@ function secure_captcha_generate_field__numeric($field_name, $use_placeholder = 
 	}
 	$field .= '<input class="'.$input_classes.'" size="20" type="number" id="'.$field_name.'" name="'.$field_name.'" '.$placeholder.' autocomplete="off" />';
 	$field .= '<span class="fa fa-question-circle tool-secure-show-info"></span>';
-	$field .= '<span class="tool-secure-info-text">'.__("Please solve the problem. This is an anti-spam security check.", 'woodkit').'</span>';
+	$field .= '<span class="tool-secure-info-text">'.__("Please solve the equation. This is an anti-spam security check.", 'woodkit').'</span>';
 	$field .= '</span>';
 	return $field;
 }
