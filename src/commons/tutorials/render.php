@@ -44,7 +44,9 @@ class WK_Tutorials {
 				</div>
 			</div>
 
-			<h1><span class="dashicons dashicons-welcome-learn-more"></span><?php _e('Tutorials', 'woodkit'); ?></h1>
+			<div class="wk-panel">
+				<h1><span class="dashicons dashicons-welcome-learn-more"></span><?php _e('Tutorials', 'woodkit'); ?></h1>
+			</div>
 
 			<?php $sections = array(
 					array(
@@ -83,25 +85,6 @@ class WK_Tutorials {
 				}
 			} ?>
 
-			<!--
-			<div class="fw-section">
-				<h3 class="fw-section-title">Une autre section</h3>
-				<div class="fw-section-content">
-					<em>Encore d'aurtes vidéos.. autant qu'il en faut</em>
-					<ul class="tutorials">
-						<li class="tuto internal"><a href="<?php echo $this->internal_base_url; ?>/menus.mov">Gérer les menus du site <em style="font-size: 10px;">(confirmé)</em></a></li>
-						<li class="tuto external"><a href="https://youtu.be/v-PZ96l1obQ" target="_blank">External movie <em style="font-size: 10px;">(profil débutant)</em></a></li>
-						<li class="tuto external"><a href="https://youtu.be/v-PZ96l1obQ" target="_blank">External movie <em style="font-size: 10px;">(profil débutant)</em></a></li>
-						<li class="tuto external"><a href="https://youtu.be/v-PZ96l1obQ" target="_blank">External movie <em style="font-size: 10px;">(profil débutant)</em></a></li>
-						<li class="tuto embed"><a href="https://www.youtube.com/embed/JdKCkteheWo">Embed movie <em style="font-size: 10px;">(profil confirmé)</em></a></li>
-						<li class="tuto embed"><a href="https://www.youtube.com/embed/JdKCkteheWo">Embed movie <em style="font-size: 10px;">(profil confirmé)</em></a></li>
-						<li class="tuto embed"><a href="https://www.youtube.com/embed/JdKCkteheWo">Embed movie <em style="font-size: 10px;">(profil confirmé)</em></a></li>
-						<li class="tuto embed"><a href="https://www.youtube.com/embed/JdKCkteheWo">Embed movie <em style="font-size: 10px;">(profil confirmé)</em></a></li>
-					</ul>
-				</div>
-			</div>
-			 -->
-
 			<script type="text/javascript">
 			(function($) {
 				$(document).ready(function(){
@@ -111,12 +94,12 @@ class WK_Tutorials {
 						if (video_width > 1000){
 							video_width = 1000;
 						}
-						$.fw_modalbox.open({content : '<video width="'+video_width+'" height="'+(video_width / 1.618)+'" controls><source src="'+$(this).attr('href')+'" type="video/mp4"></video>'});
+						$.wk_modalbox.open({content : '<video width="'+video_width+'" height="'+(video_width / 1.618)+'" controls><source src="'+$(this).attr('href')+'" type="video/mp4"></video>'});
 						return false;
 					});
 					$(".tuto.embed a").on('click', function(e){
 						e.preventDefault();
-						$.fw_modalbox.open({content : '<iframe width="700" height="400" src="'+$(this).attr('href')+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'});
+						$.wk_modalbox.open({content : '<iframe width="700" height="400" src="'+$(this).attr('href')+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'});
 						return false;
 					});
 				});
@@ -126,12 +109,12 @@ class WK_Tutorials {
 	<?php }
 
 	private function display_section($section) { ?>
-		<div class="fw-section">
-			<h3 class="fw-section-title">
+		<div class="wk-panel">
+			<h3 class="wk-panel-title">
 				<?php if (isset($section['icon'])) { ?><span class="<?php echo esc_attr($section['icon']); ?>" style="margin-right: 6px;"></span><?php } ?>
 				<?php echo $section['title']; ?>
 			</h3>
-			<div class="fw-section-content">
+			<div class="wk-panel-content">
 				<ul class="tutorials">
 					<?php if (isset($section['tutos'])){
 						foreach ($section['tutos'] as $tuto) { ?>
