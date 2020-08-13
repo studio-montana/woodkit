@@ -29,14 +29,16 @@ define ('SEO_TOOL_IMAGE_SIZE', 'medium');
  * REQUIREMENTS
  */
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/custom-fields/seo-term.php');
-require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/xmlsitemap/xmlsitemap.php');
+// Since WP 5.5, sitemap is automatically generated
+// require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/xmlsitemap/xmlsitemap.php');
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/gutenberg/plugins/seometa/index.php');
 
 /**
  * Enqueue scripts/styles for the back end.
  */
 add_action('admin_enqueue_scripts', function () {
-	wp_enqueue_script ( 'tool-seo-seourlsmanager-js', locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-seourlsmanager/js/admin-seourlsmanager.js' ), array ('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true );
+	// Since WP 5.5, sitemap is automatically generated
+	// wp_enqueue_script ( 'tool-seo-seourlsmanager-js', locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-seourlsmanager/js/admin-seourlsmanager.js' ), array ('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true );
 	wp_enqueue_script ( 'tool-redirectsmanager-js', locate_web_ressource ( WOODKIT_PLUGIN_TOOLS_FOLDER . SEO_TOOL_NAME . '/js-redirectsmanager/js/admin-redirectsmanager.js' ), array ('jquery'), WOODKIT_PLUGIN_WEB_CACHE_VERSION, true );
 }, 100);
 

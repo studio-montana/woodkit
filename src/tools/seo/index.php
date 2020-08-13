@@ -67,7 +67,7 @@ class WK_Tool_SEO extends WK_Tool{
 	public function get_config_default_values(){
 		return array(
 				'active' => 'on',
-				'xmlsitemap-active' => 'on',
+				'xmlsitemap-active' => 'off', // Since WP 5.5, sitemap is automatically generated
 				'xmlsitemap-notification-active' => 'on',
 				'default-description' => null,
 				'default-keywords' => null,
@@ -86,11 +86,13 @@ class WK_Tool_SEO extends WK_Tool{
 				<a href="<?php echo esc_url(get_admin_url(null, 'admin.php?page=woodkit-tutorials-page&video=woodkit-seo')); ?>"><?php _e("See video tutorial and learn more about SEO management.", 'woodkit'); ?></a>
 			</div>
 		</div>
+		<!-- Since WP 5.5, sitemap is automatically generated
 		<div class="wk-panel">
 			<h2 class="wk-panel-title">
 				<?php _e("General", 'woodkit'); ?>
 			</h2>
 			<div class="wk-panel-content">
+				
 				<div class="field checkbox">
 					<div class="field-content">
 						<?php
@@ -103,7 +105,7 @@ class WK_Tool_SEO extends WK_Tool{
 						<input type="checkbox" id="xmlsitemap-active" name="xmlsitemap-active" <?php echo $checked; ?> />
 						<label for="xmlsitemap-active"><?php _e("Enable sitemap.xml generator", 'woodkit'); ?></label>
 					</div>
-					<p class="description"><a href="<?php echo woodkit_seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('view your sitemap.xml', 'woodkit'); ?></a></p>
+					<p class="description"><a href="<?php // echo woodkit_seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('view your sitemap.xml', 'woodkit'); ?></a></p>
 				</div>
 				<div class="field checkbox">
 					<div class="field-content">
@@ -121,6 +123,7 @@ class WK_Tool_SEO extends WK_Tool{
 				</div>
 			</div>
 		</div>
+		-->
 		<div class="wk-panel">
 			<h2 class="wk-panel-title">
 				<?php _e("Default values", 'woodkit'); ?>
@@ -150,6 +153,7 @@ class WK_Tool_SEO extends WK_Tool{
 		</div>
 		
 		<?php 
+		/* Since WP 5.5, sitemap is automatically generated
 		$xmlsitemap_active = $this->get_option("xmlsitemap-active");
 		if ($xmlsitemap_active == "on"){
 			?>
@@ -194,7 +198,7 @@ class WK_Tool_SEO extends WK_Tool{
 				</div>
 			</div>
 			<?php 
-		} ?>
+		} */ ?>
 		
 		<div class="wk-panel">
 			<h3 class="wk-panel-title">
