@@ -82,12 +82,13 @@ class WoodkitConfig {
 	}
 
 	private function display(){
+		global $_wp_admin_css_colors;
 		?>
 		<div class="wrap woodkit-page-options woodkit-tool-page-options">
 
     		<div class="wk-panel">
 				<div class="woodkit-credits">
-					<div class="logo"><?php echo get_woodkit_icon('paw'); ?></div>
+					<div class="logo"><?php echo get_woodkit_icon('paw', false, false, array('style' => 'fill: '.woodkit_get_admin_color().';')); ?></div>
 					<div class="text">
 						<h1 class="title"><?php _e("Woodkit"); ?><sup class="copy"> &copy;</sup></h1>
 						<p class="desc"><?php _e("Un outil robuste complétant Wordpress en terme de SEO, de sécurité et d'outils sur-mesure dédiés à votre site Web."); ?><br />L'idée est qu'un outil simple, répondant uniquement aux besoins essentiels, dure dans le temps.</p>

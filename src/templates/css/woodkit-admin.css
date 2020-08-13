@@ -366,7 +366,7 @@ body.wp-admin .wk-modalbox{
 	height: 100%;
 }
 .woodkit-credits .logo svg{
-	fill: #00C3AA; /*#33ffcc;*/
+	/* fill: #00C3AA; */ /*#33ffcc;*/
 }
 .woodkit-credits .text{
 	padding: 0 24px;

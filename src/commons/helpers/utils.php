@@ -23,6 +23,20 @@
 defined('ABSPATH') or die("Go Away!");
 
 /**
+ * Retrieve hexadecimal code of user admin theme's color
+ * @param number $choice, default is 2 - (0 => dark, 1 => dark focused, 2 => light, 3 => light focused)
+ * @return string
+ */
+function woodkit_get_admin_color ($choice = 2) {
+	global $_wp_admin_css_colors;
+	$current_color = get_user_option( 'admin_color' );
+	if (!empty($_wp_admin_css_colors) && !empty($current_color) && isset($_wp_admin_css_colors[$current_color])) {
+		return $_wp_admin_css_colors[$current_color]->colors[$choice];
+	}
+	return '#000000';
+}
+
+/**
  * String cleaning : remove accents, remove "de", "le", "la", "l'", etc., transform to lowercase, special characters
  * Great for search form
  */
