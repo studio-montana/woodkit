@@ -25,7 +25,7 @@ defined('ABSPATH') or die("Go Away!");
 function get_woodkit_icon($icon_name = '', $base64 = false, $dataUri = false, $args = array()) {
 	$res = '';
 	switch ($icon_name) {
-		case 'bear': 
+		case 'bear':
 			$res = '<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 114" style="enable-background:new 0 0 120 114;'.(isset($args['style']) ? ' '.$args['style'] : '').'" xml:space="preserve"><g><path d="M107.1,25.7l-0.2-0.7c5.1-1.7,8.8-6.5,8.8-12.1C115.7,8.6,110,0,102.9,0c-4.9,0-9,2.7-11.2,6.7C84.1,3.4,73.2,0,60,0S35.9,3.4,28.4,6.7C26.2,2.7,22,0,17.1,0C10,0,4.3,8.6,4.3,12.9c0,5.7,3.7,10.4,8.8,12.1l-0.2,0.7L0,68.6c0,0,0,32.6,60,45.4c60-12.9,60-45.4,60-45.4L107.1,25.7z M60,64.3c0,0-25.7,0-21.4-21.5C43.7,17.3,60,17.1,60,17.1s16.3,0.2,21.4,25.8C85.7,64.3,60,64.3,60,64.3z"/><path d="M69.1,41.8c-2.7-1.4-5.4-1.9-7.9-2v-5.5c0-2.5,5.5-3.1,7.4-3.1c0.7,0,1.2-0.5,1.2-1.2c0-3.4-2-9.8-9.8-9.8c-3.4,0-9.8,2-9.8,9.8c0,0.7,0.5,1.2,1.2,1.2c1.9,0,7.4,0.6,7.4,3.1v5.5c-4.5,0.3-7.7,1.9-7.9,2c-0.6,0.3-0.8,1-0.5,1.6s1,0.8,1.6,0.5c0.1,0,8.2-4,16.1,0c0.2,0.1,0.4,0.1,0.5,0.1c0.4,0,0.9-0.2,1.1-0.7C70,42.8,69.7,42.1,69.1,41.8z"/></g></svg>';
 		break;
 		case 'bear-plain':
@@ -45,7 +45,7 @@ function get_woodkit_icon($icon_name = '', $base64 = false, $dataUri = false, $a
 	return $res;
 }
 
-function woodkit_get_fonticons_set () {
+function woodkit_get_fonticons_set ($families = null) {
 	static $fonticons_set = -1;
 	if ($fonticons_set == -1) {
 		$fonticons_set = array();
@@ -62,6 +62,16 @@ function woodkit_get_fonticons_set () {
 				)
 		);
 		$json_sources = apply_filters('woodkit_fonticons_json_sources', $json_sources);
+
+		if ($families && !empty($families)) {
+			$json_sources = array_filter($json_sources, function ($source_key) use ($families) {
+				return in_array($source_key, $families);
+			}, ARRAY_FILTER_USE_KEY);
+		}
+
+		trace_info("families : " . var_export($families, true));
+		trace_info("json_sources : " . var_export($json_sources, true));
+
 		if (!empty($json_sources)) {
 			foreach ($json_sources as $source) {
 				$json_file = isset($source['file']) ? $source['file'] : false;
@@ -120,7 +130,7 @@ function woodkit_parse_fontawesome_icons_json ($json) {
 		$set = array();
 		foreach ($json as $icon_slug => $icon) {
 			$icon_data = array(
-					'value' => $icon_slug,
+					'value' => 'fa-'.$icon_slug,
 					'label' => isset($icon['label']) ? $icon['label'] : 'Unknown',
 					'search' => isset($icon['search']) && isset($icon['search']['terms']) ? $icon['search']['terms'] : array()
 			);
@@ -128,6 +138,13 @@ function woodkit_parse_fontawesome_icons_json ($json) {
 			foreach ($styles as $style) {
 				if (!isset($set[$style])) {
 					$set[$style] = array();
+				}
+				if ($style == 'brands') {
+					$icon_data['value'] = 'fab fa-'.$icon_slug;
+				} else if ($style == 'regular') {
+					$icon_data['value'] = 'far fa-'.$icon_slug;
+				} else if ($style == 'solid') {
+					$icon_data['value'] = 'fas fa-'.$icon_slug;
 				}
 				$set[$style][] = $icon_data;
 			}

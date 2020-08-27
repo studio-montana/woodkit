@@ -110,7 +110,12 @@ class WKG_REST_Commons extends WKG_REST {
 	 * @return WP_Error|WP_REST_Response
 	 */
 	public function get_icons( $request ) {
-		$icons = woodkit_get_fonticons_set();
+		$params = $request->get_params();
+		if (isset($params['families']) && !empty($params['families'])) {
+			$icons = woodkit_get_fonticons_set(explode(',', sanitize_text_field($params['families'])));
+		} else {
+			$icons = woodkit_get_fonticons_set();
+		}
 		return new WP_REST_Response( $icons, 200 );
 	}
 }

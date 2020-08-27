@@ -123,8 +123,8 @@ class WKG_Icon_Selector extends Component {
   }
 }
 
-export default compose(withSelect(select => {
-		const default_icons = select('wkg/commons').getIcons()
+export default compose(withSelect((select, props) => {
+		const default_icons = select('wkg/commons').getIcons(props.families)
 	  return { default_icons }
 	}))(WKG_Icon_Selector)
 

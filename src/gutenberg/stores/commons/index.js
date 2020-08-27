@@ -1,14 +1,14 @@
 if (typeof wp !== 'undefined' && typeof wp.blocks !== 'undefined') { // block editor (Gutenberg) is active
 	const { apiFetch } = wp
 	const { registerStore } = wp.data
-	
+
 	const DEFAULT_STATE = {
 		posts_options: null,
 		terms_options: null,
 		cf7_options: null,
 		icons: null,
 	}
-	
+
 	const actions = {
 		/** fetchs *******/
 		fetchPostsOptions (path) {
@@ -63,7 +63,7 @@ if (typeof wp !== 'undefined' && typeof wp.blocks !== 'undefined') { // block ed
 			}
 		}
 	}
-	
+
 	registerStore('wkg/commons', {
 		/***********************************************
 		 * Private Store's Setters
@@ -100,10 +100,17 @@ if (typeof wp !== 'undefined' && typeof wp.blocks !== 'undefined') { // block ed
 						cf7_options: action.cf7_options,
 					}
 				case 'SET_ICONS':
-					return {
-						...state,
-						icons: action.icons,
+					let icons = state.icons
+					if (!action.families) {
+						icons = action.icons
+					} else {
+						icons = {...icons, ...action.icons}
 					}
+					state = {
+						...state,
+						icons
+					}
+					return state
 			}
 			return state
 		},
@@ -142,8 +149,8 @@ if (typeof wp !== 'undefined' && typeof wp.blocks !== 'undefined') { // block ed
 				const cf7_options = yield actions.fetchCf7Options('/contact-form-7/v1/contact-forms/')
 				return actions.setCf7Options(cf7_options)
 			},
-			* getIcons () {
-				const icons = yield actions.fetchIcons('/wkg/v1/commons/icons/')
+			* getIcons (families) {
+				const icons = yield actions.fetchIcons('/wkg/v1/commons/icons/' + (families ? '?families='+families.join(',') : ''))
 				return actions.setIcons(icons)
 			},
 		},
