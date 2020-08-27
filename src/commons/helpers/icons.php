@@ -69,9 +69,6 @@ function woodkit_get_fonticons_set ($families = null) {
 			}, ARRAY_FILTER_USE_KEY);
 		}
 
-		trace_info("families : " . var_export($families, true));
-		trace_info("json_sources : " . var_export($json_sources, true));
-
 		if (!empty($json_sources)) {
 			foreach ($json_sources as $source) {
 				$json_file = isset($source['file']) ? $source['file'] : false;
