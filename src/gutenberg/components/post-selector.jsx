@@ -33,6 +33,9 @@ class WKG_Post_Selector extends Component {
 	render () {
     let options = []
     if (this.props.posts_options) {
+      if (this.props.no_selection_enabled) {
+        options.push({value: 0, label: this.props.no_selection_label ? this.props.no_selection_label : __("No selection", 'woodkit')})
+      }
       for (const post_type in this.props.posts_options) {
         const post_options = this.props.posts_options[post_type]
         if (post_options) {
