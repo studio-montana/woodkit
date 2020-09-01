@@ -40,7 +40,6 @@ export default class WKG_Media_Selector extends Component {
 		// load media
 		if (id && Number.isInteger(id)) {
 			apiFetch({ path: '/wp/v2/media/' + parseInt(id) }).then(res => {
-				console.log('Media : ', res)
 				this.setState({ready: true, media: res, id, url: this.getMediaUrlForSize(res, size), size})
 				if (!preventFire) {
 					this.onChange()
@@ -130,7 +129,7 @@ export default class WKG_Media_Selector extends Component {
 			}
 			if (size_options && size_options.length > 1) {
 				return (
-					<div style={styles.size_controler}>
+					<div class="media_controls" style={styles.size_controler}>
 							<SelectControl
 								options={size_options}
 								onChange={size => this.setMedia(null, size)}
