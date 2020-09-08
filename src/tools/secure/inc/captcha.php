@@ -75,12 +75,11 @@ function secure_captcha_woocommerce_login_form(){
 }
 
 /**
- * called to generate WooCommerce checkout registration form
+ * called to generate WooCommerce register form
  */
-function secure_captcha_woocommerce_checkout_registration_form(){
-	echo '<p class="form-row form-row form-row-wide address-field validate-required" id="billing_captcha_field" data-o_class="form-row form-row form-row-wide address-field validate-required">';
-	echo '<label for="'.SECURE_CAPTCHA_FIELD.'-register" class="">'.__("Captcha", 'woodkit').'<abbr class="required" title="requis">*</abbr></label>';
-	echo secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-register'));
+function secure_captcha_woocommerce_register_form(){
+	echo '<p class="form-row form-row-wide">';
+	echo secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-woocommerce-register'));
 	echo '</p>';
 }
 
@@ -143,11 +142,11 @@ function secure_captcha_validate_woocommerce_login_form($validation_error, $user
 /**
  * called to validate WooCommerce register form
  */
-function secure_captcha_validate_woocommerce_register_form($validation_error, $username, $email){
-	if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-register'))){
-		$validation_error = new WP_Error('captcha-error', __("invalid captcha", 'woodkit'));
+function secure_captcha_validate_woocommerce_register_form($validation_errors){
+	if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-woocommerce-register'))){
+		$validation_errors->add('captcha-error', __("invalid captcha", 'woodkit'));
 	}
-	return $validation_error;
+	return $validation_errors;
 }
 
 /**

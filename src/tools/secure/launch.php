@@ -171,9 +171,9 @@ add_action('lostpassword_form', 'secure_lostpassword_form');
 add_action('woocommerce_login_form', 'secure_woocommerce_login_form');
 
 /**
- * WooCommerce uses this action to generate checkout registration form
-*/
-add_action('woocommerce_after_checkout_registration_form', 'secure_woocommerce_checkout_registration_form');
+ * WooCommerce uses this action to generate register form
+ */
+add_action('woocommerce_register_form', 'secure_woocommerce_register_form');
 
 /**
  * WP and WooCommerce uses this action to generate registration form
@@ -202,8 +202,8 @@ add_action('woocommerce_process_login_errors', 'secure_validate_woocommerce_logi
 
 /**
  * WooCommerce uses this action during register process
-*/
-add_action('woocommerce_registration_errors', 'secure_validate_woocommerce_register_form', 1, 3);
+ */
+add_action('woocommerce_register_post', 'secure_validate_woocommerce_register_form', 10, 3);
 
 /**
  * WP uses this filter to accepts new fields in comment form - old : add_filter('comment_form_default_fields', 'secure_comment_form_field', 10, 1);
@@ -310,14 +310,14 @@ function secure_woocommerce_login_form(){
 }
 
 /**
- * called to generate WooCommerce checkout registration form
+ * called to generate WooCommerce login form
  */
-function secure_woocommerce_checkout_registration_form(){
+function secure_woocommerce_register_form(){
 	if (secure_is_failtoban_active()){
-		secure_failtoban_woocommerce_checkout_registration_form();
+		secure_failtoban_woocommerce_register_form();
 	}
 	if (secure_is_captcha_active()){
-		secure_captcha_woocommerce_checkout_registration_form();
+		secure_captcha_woocommerce_register_form();
 	}
 }
 
@@ -392,18 +392,14 @@ function secure_validate_woocommerce_login_form($validation_error, $user, $passw
 /**
  * called to validate WooCommerce register form
  */
-function secure_validate_woocommerce_register_form($validation_error, $user, $email){
-	if (!$validation_error->get_error_code()){
-		if (secure_is_failtoban_active()){
-			$validation_error = secure_failtoban_validate_woocommerce_register_form($validation_error, $user, $email);
-		}
-		if (!$validation_error->get_error_code()){
-			if (secure_is_captcha_active()){
-				$validation_error = secure_captcha_validate_woocommerce_register_form($validation_error, $user, $email);
-			}
-		}
+function secure_validate_woocommerce_register_form ($username, $email, $validation_errors) {
+	if (secure_is_failtoban_active()){
+		$validation_errors = secure_failtoban_validate_woocommerce_register_form($validation_errors);
 	}
-	return $validation_error;
+	if (secure_is_captcha_active()){
+		$validation_errors = secure_captcha_validate_woocommerce_register_form($validation_errors);
+	}
+	return $validation_errors;
 }
 
 /**

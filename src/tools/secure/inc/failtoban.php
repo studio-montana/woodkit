@@ -63,14 +63,14 @@ function secure_failtoban_woocommerce_login_form(){
 }
 
 /**
- * called to generate WooCommerce checkout registration form
+ * called to generate WooCommerce register form
  */
-function secure_failtoban_woocommerce_checkout_registration_form(){
+function secure_failtoban_woocommerce_register_form(){
 	echo secure_failtoban_generate_field();
 }
 
 /**
- * called to generate WP and WooCommerce registration form
+ * called to generate WP registration form
  */
 function secure_failtoban_register_form(){
 	echo secure_failtoban_generate_field();
@@ -122,11 +122,11 @@ function secure_failtoban_validate_woocommerce_login_form($validation_error, $us
 /**
  * called to validate WooCommerce register form
  */
-function secure_failtoban_validate_woocommerce_register_form($validation_error, $user, $email){
+function secure_failtoban_validate_woocommerce_register_form($validation_errors){
 	if (secure_is_failtoban()){
-		$validation_error = new WP_Error('faltoban-error', __("Too many tries - please wait 1min", 'woodkit'));
+		$validation_errors->add('faltoban-error', __("Too many tries - please wait 1min", 'woodkit'));
 	}
-	return $validation_error;
+	return $validation_errors;
 }
 
 /**
