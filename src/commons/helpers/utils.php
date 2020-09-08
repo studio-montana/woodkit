@@ -319,9 +319,9 @@ if (!function_exists("trace_info")):
 function trace_info($log){
 	if (true === WP_DEBUG) {
 		if (is_array($log) || is_object($log)) {
-			return trigger_error(print_r($log, true), E_USER_NOTICE);
+			return error_log(print_r($log, true));
 		} else {
-			return trigger_error($log, E_USER_NOTICE);
+			return error_log($log);
 		}
 	}
 	return false;
