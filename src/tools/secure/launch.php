@@ -138,6 +138,13 @@ if (secure_is_captcha_active() && secure_is_captcha_type_numeric() && class_exis
 }
 
 /**
+ * Add Google Recaptcha V2 to Contact Form 7 plugin
+ */
+if (secure_is_captcha_active() && secure_is_captcha_type_google_v2() && class_exists("WPCF7_ContactForm")){
+	require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'/inc/contactform7/googlerecaptchav2.php');
+}
+
+/**
  * WP head
  */
 add_action('wp_head', 'secure_wp_head');
@@ -214,9 +221,19 @@ add_action('pre_comment_on_post', 'secure_comment_validate', 1, 1);
 add_filter('tool_contactform7_captchanum_field', 'secure_contactform7_form_field', 1, 3);
 
 /**
+ * CONTACTFORM7 TOOL uses this action to display Google Recaptcha V2
+*/
+add_filter('tool_contactform7_googlerecaptchav2_field', 'secure_contactform7_form_field', 1, 3);
+
+/**
  * CONTACTFORM7 TOOL uses this action to validate captchanum field
 */
 add_filter('tool_contactform7_captchanum_validatation', 'secure_contactform7_form_validate', 1, 1);
+
+/**
+ * CONTACTFORM7 TOOL uses this action to validate Google Recaptcha V2
+*/
+add_filter('tool_contactform7_googlerecaptchav2_validatation', 'secure_contactform7_form_validate', 1, 1);
 
 /**
  * called to generate WP head
