@@ -35,7 +35,7 @@ class WK_Tutorials {
 
 			<div class="wk-panel">
 				<div class="woodkit-credits">
-					<div class="logo"><?php echo get_woodkit_icon('paw'); ?></div>
+					<div class="logo"><?php echo get_woodkit_icon('paw', false, false, array('style' => 'fill: '.woodkit_get_admin_color().';')); ?></div>
 					<div class="text">
 						<h1 class="title"><?php _e("Studio Montana"); ?><sup class="copy"> &copy;</sup></h1>
 						<p class="desc"><?php _e("Studio Montana vous propose une série de vidéos tutoriels."); ?><br />Avec ça vous ne pouvez que booster votre site Web !</p>
