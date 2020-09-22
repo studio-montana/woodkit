@@ -346,6 +346,38 @@ body.wp-admin .wk-modalbox{
 }
 
 /**
+ * Notice message
+ */
+.wk-notice{
+	padding: 12px;
+	margin: 12px 0;
+	background: #ffffff;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.wk-notice-box{
+	padding: 12px;
+	margin: 12px 0;
+	background: #ffffff;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	-moz-box-shadow:    0 1px 1px 0 rgba(0,0,0,.1);
+	box-shadow: 		0 1px 1px 0 rgba(0,0,0,.1);
+}
+.wk-notice-box.wk-error{
+	border-left: 6px solid #d84a43;
+}
+.wk-notice-box.wk-warning{
+	border-left: 6px solid #f4e542;
+}
+.wk-notice-box.wk-success{
+	border-left: 6px solid #00C3AA;
+}
+
+/**
  * SPECIAL Woodkit config page
  */
 .woodkit-credits {

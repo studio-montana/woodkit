@@ -1,6 +1,5 @@
 <?php
 /**
- Theme Name: BETTI
 Author: S. Chandonay - C. Tissot
 Author URI: https://www.seb-c.com
 License: GNU General Public License v2 or later
