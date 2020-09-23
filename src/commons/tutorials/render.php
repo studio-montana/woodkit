@@ -68,7 +68,7 @@ class WK_Tutorials {
 						'tutos' => array(
 							array('target' => 'embed', 'url' => 'https://www.youtube.com/embed/8Sjb3mXz4_Q', 'title' => "Améliorer le référencement naturel de votre site", 'profil' => 'débutant'),
 							array('target' => 'embed', 'url' => 'https://www.youtube.com/embed/UvpIXhB3-d8', 'title' => "Gérer les redirections 301", 'profil' => 'confirmé'),
-							array('target' => 'embed', 'url' => '', 'title' => "Gérer le sitemap.xml <em>[bientôt disponible...]</em>", 'profil' => 'confirmé'),
+							array('target' => 'embed', 'url' => 'https://www.youtube.com/embed/C65V0pn_VEE', 'title' => "Gérer le sitemap.xml", 'profil' => 'confirmé'),
 					)),
 					array(
 						'title' => "Sécurité (Woodkit)</em>",
