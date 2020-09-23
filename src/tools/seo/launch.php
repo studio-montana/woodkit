@@ -29,8 +29,7 @@ define ('SEO_TOOL_IMAGE_SIZE', 'medium');
  * REQUIREMENTS
  */
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/custom-fields/seo-term.php');
-// Since WP 5.5, sitemap is automatically generated
-// require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/xmlsitemap/xmlsitemap.php');
+require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/xmlsitemap/index.php');
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SEO_TOOL_NAME.'/gutenberg/plugins/seometa/index.php');
 
 /**

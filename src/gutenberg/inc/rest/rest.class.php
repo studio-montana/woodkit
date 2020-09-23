@@ -40,6 +40,14 @@ abstract class WKG_REST extends WP_REST_Controller {
 	protected function is_method_deletable($request){
 		return $this->is_method_($request, WP_REST_Server::DELETABLE);
 	}
+	
+	/**
+	 * Return Schema permission
+	 * @return boolean
+	 */
+	public function get_schema_permissions_check() {
+		return true;
+	}
 
 	/**
 	 * Check if current request is $handler method

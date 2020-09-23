@@ -55,11 +55,10 @@ class WK_Tool_SEO extends WK_Tool{
 	
 	public function get_config_fields(){
 		return array(
-				'xmlsitemap-active',
-				'xmlsitemap-notification-active',
 				'default-description',
 				'default-keywords',
-				'options-sitemap-urls',
+				'xmlsitemap-excluded-posttypes',
+				'xmlsitemap-excluded-taxonomies',
 				'options-redirects',
 		);
 	}
@@ -67,11 +66,10 @@ class WK_Tool_SEO extends WK_Tool{
 	public function get_config_default_values(){
 		return array(
 				'active' => 'on',
-				'xmlsitemap-active' => 'off', // Since WP 5.5, sitemap is automatically generated
-				'xmlsitemap-notification-active' => 'on',
 				'default-description' => null,
 				'default-keywords' => null,
-				'options-sitemap-urls' => null,
+				'xmlsitemap-excluded-posttypes' => array(),
+				'xmlsitemap-excluded-taxonomies' => array(),
 				'options-redirects' => null,
 		);
 	}
@@ -86,44 +84,6 @@ class WK_Tool_SEO extends WK_Tool{
 				<a href="<?php echo esc_url(get_admin_url(null, 'admin.php?page=woodkit-tutorials-page&video=woodkit-seo')); ?>"><?php _e("See video tutorial and learn more about SEO management.", 'woodkit'); ?></a>
 			</div>
 		</div>
-		<!-- Since WP 5.5, sitemap is automatically generated
-		<div class="wk-panel">
-			<h2 class="wk-panel-title">
-				<?php _e("General", 'woodkit'); ?>
-			</h2>
-			<div class="wk-panel-content">
-				
-				<div class="field checkbox">
-					<div class="field-content">
-						<?php
-						$value = $this->get_option('xmlsitemap-active');
-						$checked = '';
-						if ($value == 'on'){
-							$checked = ' checked="checked"';
-						}
-						?>
-						<input type="checkbox" id="xmlsitemap-active" name="xmlsitemap-active" <?php echo $checked; ?> />
-						<label for="xmlsitemap-active"><?php _e("Enable sitemap.xml generator", 'woodkit'); ?></label>
-					</div>
-					<p class="description"><a href="<?php // echo woodkit_seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('view your sitemap.xml', 'woodkit'); ?></a></p>
-				</div>
-				<div class="field checkbox">
-					<div class="field-content">
-						<?php
-						$value = $this->get_option('xmlsitemap-notification-active');
-						$checked = '';
-						if ($value == 'on'){
-							$checked = ' checked="checked"';
-						}
-						?>
-						<input type="checkbox" id="xmlsitemap-notification-active" name="xmlsitemap-notification-active" <?php echo $checked; ?> />
-						<label for="xmlsitemap-notification-active"><?php _e("Enable search engine notifications", 'woodkit'); ?></label>
-					</div>
-					<p class="description"><?php _e("Notify Google, Yahoo, Bing, Ask when your sitemap.xml is updated", 'woodkit');?></p>
-				</div>
-			</div>
-		</div>
-		-->
 		<div class="wk-panel">
 			<h2 class="wk-panel-title">
 				<?php _e("Default values", 'woodkit'); ?>
@@ -152,54 +112,70 @@ class WK_Tool_SEO extends WK_Tool{
 			</div>
 		</div>
 		
-		<?php 
-		/* Since WP 5.5, sitemap is automatically generated
-		$xmlsitemap_active = $this->get_option("xmlsitemap-active");
-		if ($xmlsitemap_active == "on"){
-			?>
-			<div class="wk-panel">
-				<h3 class="wk-panel-title">
-					<?php _e("Sitemap options", 'woodkit'); ?>
-				</h3>
-				<div class="wk-panel-content">
-					<div class="wk-panel-info"><?php _e("Your sitemap.xml is automaticaly generated, however you can add URLs manualy  or exclude generated URLs.", 'woodkit'); ?>&nbsp;<a href="<?php echo woodkit_seo_get_xmlsitemap_url(); ?>" target="_blank"><?php _e('View sitemap.xml', 'woodkit'); ?></a></div>
-					<div class="seourls-manager"></div>
-					<script type="text/javascript">
-						jQuery(document).ready(function($){
-							var seourls_manager = $(".seourls-manager").seourlsmanager({
-									label_add_item : "<?php _e("Add sitemap rule", 'woodkit'); ?>",
-									label_confirm_remove_item : "<?php _e("Do you realy want remove this url ?", 'woodkit'); ?>",
-									label_url : "<?php _e("http://www.website.com", 'woodkit'); ?>",
-									label_url_exclude : "<?php _e("exclude", 'woodkit'); ?>",
-									label_action_add : "<?php _e("add", 'woodkit'); ?>",
-									label_action_exclude_if_equals : "<?php _e("exclude if equals", 'woodkit'); ?>",
-									label_action_exclude_if_contains : "<?php _e("exclude if contains", 'woodkit'); ?>",
-									label_action_exclude_if_regexp : "<?php _e("exclude if matches regexp", 'woodkit'); ?>",
-								});
-							<?php 
-							$urls = $this->get_option("options-sitemap-urls");
-							if (!empty($urls)){
-								$urls_js = "{";
-								foreach ($urls as $k => $item){
-									$id = !empty($item['id']) ? esc_attr($item['id']) : 1;
-									$url = !empty($item['url']) ? esc_attr($item['url']) : "";
-									$action = !empty($item['action']) ? esc_attr($item['action']) : "";
-									$urls_js .= intval($k).":{id: \"".$id."\", url: \"".$url."\", action:\"".$action."\"},";
-								}
-								$urls_js .= "}";
-								?>
-								seourls_manager.set_data(<?php echo $urls_js; ?>);
-								<?php
-							}
-							?>
-						});
-					</script>
-	
-				</div>
+		<?php /* Since WP 5.5, sitemap is automatically generated */ ?>
+		<div class="wk-panel">
+			<h3 class="wk-panel-title">
+				<?php _e("XML sitemap options", 'woodkit'); ?>
+			</h3>
+			<div class="wk-panel-content">
+				<div class="wk-panel-info"><?php _e("Wordpress generate automatically your website's XML sitemap, you can setup some features.", 'woodkit'); ?>&nbsp;<a href="<?php echo get_sitemap_url('index'); ?>" target="_blank"><?php _e("View your website's XML sitemap", 'woodkit'); ?></a></div>
+				
+				<h4><?php _e('Excluded providers'); ?></h4>
+				<div class="wk-panel-info"><?php _e("Select providers you want to exclude from XML sitemap.", 'woodkit'); ?></div>
+				<?php $xmlsitemap_excluded_providers = $this->get_option("xmlsitemap-excluded-providers");
+				// il aurait été pas mal de faire une boucle générique sur wp_get_sitemap_providers() mais l'attribut 'name' de la class WP_Sitemaps_Provider est protected, donc impossible !
+				$providers = array(
+						array('name' => 'posts', 'label' => 'Post types'), // WP_Sitemaps_Posts
+						array('name' => 'taxonomies', 'label' => 'Taxonomies'), // WP_Sitemaps_Taxonomies
+						array('name' => 'users', 'label' => 'Utilisateurs'), // WP_Sitemaps_Users
+				);
+				if (!empty($providers)) {
+					foreach ($providers as $provider) {
+						$checked = (is_array($xmlsitemap_excluded_providers) && isset($xmlsitemap_excluded_providers[$provider['name']]) && $xmlsitemap_excluded_providers[$provider['name']] == 'on') ? ' checked="checked"' : ''; ?>
+						<div class="field" data-type="checkbox">
+							<div class="field-content">
+								<label><input type="checkbox" class="" name="xmlsitemap-excluded-providers[<?php echo $provider['name']; ?>]"<?php echo $checked; ?> /><span><?php echo $provider['label']; ?></span></label>
+							</div>
+						</div>
+					<?php }
+				} ?>
+				
+				<h4><?php _e('Excluded post types'); ?></h4>
+				<div class="wk-panel-info"><?php _e("Select post types you want to exclude from XML sitemap.", 'woodkit'); ?></div>
+				<?php $xmlsitemap_excluded_posttypes = $this->get_option("xmlsitemap-excluded-posttypes");
+				$post_types = get_post_types(array(
+						'public' => true,
+				), 'objects');
+				if (!empty($post_types)) {
+					foreach ($post_types as $post_type) {
+						$checked = (is_array($xmlsitemap_excluded_posttypes) && isset($xmlsitemap_excluded_posttypes[$post_type->name]) && $xmlsitemap_excluded_posttypes[$post_type->name] == 'on') ? ' checked="checked"' : ''; ?>
+						<div class="field" data-type="checkbox">
+							<div class="field-content">
+								<label><input type="checkbox" class="" name="xmlsitemap-excluded-posttypes[<?php echo $post_type->name; ?>]"<?php echo $checked; ?> /><span><?php echo $post_type->label; ?></span></label>
+							</div>
+						</div>
+					<?php }
+				} ?>
+				
+				<h4><?php _e('Excluded taxonomies'); ?></h4>
+				<div class="wk-panel-info"><?php _e("Select taxonomies you want to exclude from XML sitemap.", 'woodkit'); ?></div>
+				<?php $xmlsitemap_excluded_taxonomies = $this->get_option("xmlsitemap-excluded-taxonomies");
+				$taxonomies = get_taxonomies(array(
+						'public' => true,
+				), 'objects');
+				if (!empty($taxonomies)) {
+					foreach ($taxonomies as $taxonomy) {
+						$checked = (is_array($xmlsitemap_excluded_taxonomies) && isset($xmlsitemap_excluded_taxonomies[$taxonomy->name]) && $xmlsitemap_excluded_taxonomies[$taxonomy->name] == 'on') ? ' checked="checked"' : ''; ?>
+						<div class="field" data-type="checkbox">
+							<div class="field-content">
+								<label><input type="checkbox" class="" name="xmlsitemap-excluded-taxonomies[<?php echo $taxonomy->name; ?>]"<?php echo $checked; ?> /><span><?php echo $taxonomy->label; ?></span></label>
+							</div>
+						</div>
+					<?php }
+				} ?>
 			</div>
-			<?php 
-		} */ ?>
-		
+		</div>
+			
 		<div class="wk-panel">
 			<h3 class="wk-panel-title">
 				<?php _e("301 Redirects", 'woodkit'); ?>
@@ -267,20 +243,14 @@ class WK_Tool_SEO extends WK_Tool{
 		$default_keywords = isset($_POST['default-keywords']) ? sanitize_text_field($_POST['default-keywords']) : '';
 		$values['default-description'] = $default_description;
 		$values['default-keywords'] = $default_keywords;
-			
-		// -- save sitemap urls
-		$urls = array();
-		foreach ($_POST as $k => $v){
-			if (startsWith($k, "sitemap-url-id-")){
-				$url = isset($_POST['sitemap-url-'.$v]) ? sanitize_text_field($_POST['sitemap-url-'.$v]) : "";
-				$action = isset($_POST['sitemap-url-action-'.$v]) ? sanitize_text_field($_POST['sitemap-url-action-'.$v]) : "add";
-				if (!empty($url)){
-					$urls[] = array("id" => $v, "url" => $url, "action" => $action);
-				}
-			}
-		}
-		//highlight_string("var : " . var_export($urls, true)."\n");
-		$values['options-sitemap-urls'] = $urls;
+		
+		// -- XML sitemap excluded items
+		$xmlsitemap_excluded_posttypes = isset($_POST['xmlsitemap-excluded-posttypes']) ? $_POST['xmlsitemap-excluded-posttypes'] : '';
+		$xmlsitemap_excluded_taxonomies = isset($_POST['xmlsitemap-excluded-taxonomies']) ? $_POST['xmlsitemap-excluded-taxonomies'] : '';
+		$xmlsitemap_excluded_providers = isset($_POST['xmlsitemap-excluded-providers']) ? $_POST['xmlsitemap-excluded-providers'] : '';
+		$values['xmlsitemap-excluded-posttypes'] = $xmlsitemap_excluded_posttypes;
+		$values['xmlsitemap-excluded-taxonomies'] = $xmlsitemap_excluded_taxonomies;
+		$values['xmlsitemap-excluded-providers'] = $xmlsitemap_excluded_providers;
 			
 		// -- save redirects
 		$redirects = array();
