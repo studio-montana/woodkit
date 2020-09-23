@@ -63,18 +63,18 @@ class WK_Tutorials {
 							array('target' => 'embed', 'url' => 'https://www.youtube.com/embed/2CxoRFwKYSE', 'title' => "Les blocs réutilisables", 'profil' => 'confirmé'),
 					)),
 					array(
-						'title' => "SEO (Woodkit) <em>[bientôt disponible...]</em>",
+						'title' => "SEO - optimisation du référencement (Woodkit)",
 						'icon' => 'dashicons dashicons-format-video',
 						'tutos' => array(
-							array('target' => 'embed', 'url' => '', 'title' => "Améliorer le référencement naturel de votre site", 'profil' => 'débutant'),
-							array('target' => 'embed', 'url' => '', 'title' => "Gérer les redirection 301", 'profil' => 'confirmé'),
-							array('target' => 'embed', 'url' => '', 'title' => "Gérer le sitemap.xml", 'profil' => 'confirmé'),
+							array('target' => 'embed', 'url' => 'https://www.youtube.com/embed/8Sjb3mXz4_Q', 'title' => "Améliorer le référencement naturel de votre site", 'profil' => 'débutant'),
+							array('target' => 'embed', 'url' => 'https://www.youtube.com/embed/UvpIXhB3-d8', 'title' => "Gérer les redirections 301", 'profil' => 'confirmé'),
+							array('target' => 'embed', 'url' => '', 'title' => "Gérer le sitemap.xml <em>[bientôt disponible...]</em>", 'profil' => 'confirmé'),
 					)),
 					array(
-						'title' => "Sécurité (Woodkit) <em>[bientôt disponible...]</em>",
+						'title' => "Sécurité (Woodkit)</em>",
 						'icon' => 'dashicons dashicons-format-video',
 						'tutos' => array(
-							array('target' => 'embed', 'url' => '', 'title' => "réglages du captcha", 'profil' => 'confirmé'),
+							array('target' => 'embed', 'url' => 'https://www.youtube.com/embed/MIHwxnrxpAs', 'title' => "réglages principaux", 'profil' => 'confirmé'),
 					)),
 			);
 			$sections = apply_filters('woodkit_tutorials', $sections, $this->internal_base_url);
