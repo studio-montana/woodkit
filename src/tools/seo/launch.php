@@ -823,7 +823,7 @@ function woodkit_seo_get_robots() {
 			}
 		}
 		// Force override to respect the WP settings.
-		if ('0' !== (string) get_option('blog_public') || isset($_GET['replytocom'])){
+		if ( '0' === (string) get_option('blog_public') || isset($_GET['replytocom'])){
 			$values['index'] = 'noindex';
 		}
 		$res = implode(',', $values);
