@@ -35,12 +35,15 @@ defined('ABSPATH') or die("Go Away!");
  */
 abstract class WKG_Module_Block extends WKG_Module {
 
+	protected static $native_script_dependencies = array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api', 'wp-data', 'wp-edit-post');
+	protected static $native_css_dependencies = array();
+	
 	function __construct($slug, $args = array()) {
-
+	
 		parent::__construct('wkg/' . $slug, wp_parse_args($args, array(
 				'is_dynamic' => true,
-				'script_dependencies' => array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api', 'wp-data', 'wp-edit-post'),
-				'css_dependencies' => array(),
+				'script_dependencies' => self::$native_script_dependencies,
+				'css_dependencies' => self::$native_css_dependencies,
 				'before_init' => null,
 				'after_init' => null,
 				'block_post_types_template' => array(),
@@ -49,7 +52,7 @@ abstract class WKG_Module_Block extends WKG_Module {
 						'path' => WOODKIT_PLUGIN_PATH.'lang/'
 				),
 		)));
-
+	
 		// init
 		add_action('init', array($this, 'init'), 10);
 	}
