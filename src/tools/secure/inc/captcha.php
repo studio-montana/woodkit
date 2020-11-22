@@ -110,11 +110,11 @@ function secure_captcha_validate_login_form($args){
 /**
  * called to validate WP lost password form
  */
-function secure_captcha_validate_lostpassword_form($errors){
-	$recaptcha_valid = inside_secure_recaptcha_is_valid(array('field_name' => SECURE_CAPTCHA_FIELD.'-lostpassword'));
-	if ($recaptcha_valid !== true){
-		wp_die("Captcha invalide");
+function secure_captcha_validate_lostpassword_form($errors, $user_data){
+	if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-lostpassword'))){
+		$errors->add('captcha-error', "<strong>".__("ERROR", 'woodkit')." : </strong>".__("invalid captcha", 'woodkit'));
 	}
+	return $errors;
 }
 
 /**

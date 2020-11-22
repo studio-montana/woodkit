@@ -188,7 +188,7 @@ add_action('wp_authenticate', 'secure_validate_login_form', 1, 1);
 /**
  * WP uses this action during lost password process
  */
-add_action('lostpassword_post', 'secure_validate_lostpassword_form', 10);
+add_action('lostpassword_post', 'secure_validate_lostpassword_form', 10, 2);
 
 /**
  * WP uses this action during registration process
@@ -345,12 +345,12 @@ function secure_validate_login_form($args){
 	}
 }
 
-function secure_validate_lostpassword_form() {
+function secure_validate_lostpassword_form($errors, $user_data) {
 	if (secure_is_failtoban_active()){
-		secure_failtoban_validate_lostpassword_form();
+		secure_failtoban_validate_lostpassword_form($errors, $user_data);
 	}
 	if (secure_is_captcha_active()){
-		secure_captcha_validate_lostpassword_form();
+		secure_captcha_validate_lostpassword_form($errors, $user_data);
 	}
 }
 

@@ -91,10 +91,11 @@ function secure_failtoban_validate_login_form($args){
 /**
  * called to validate WP lost password form
  */
-function secure_failtoban_validate_lostpassword_form(){
+function secure_failtoban_validate_lostpassword_form($errors, $user_data){
 	if (secure_is_failtoban()){
-		wp_die(__("Too many tries - please wait 1min", 'woodkit'));
+		$errors->add('faltoban-error', "<strong>".__("ERROR", 'woodkit')." : </strong>".__("Too many tries - please wait 1min", 'woodkit'));
 	}
+	return $errors;
 }
 
 /**
