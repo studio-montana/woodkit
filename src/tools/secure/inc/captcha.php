@@ -84,6 +84,15 @@ function secure_captcha_woocommerce_register_form(){
 }
 
 /**
+ * called to generate WooCommerce lostpassword form
+ */
+function secure_captcha_woocommerce_lostpassword_form(){
+	echo '<p class="form-row form-row-wide">';
+	echo secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-lostpassword'));
+	echo '</p>';
+}
+
+/**
  * called to generate WP registration and WooCommerce registration/checkout registration form
  */
 function secure_captcha_register_form(){
@@ -110,7 +119,7 @@ function secure_captcha_validate_login_form($args){
 /**
  * called to validate WP lost password form
  */
-function secure_captcha_validate_lostpassword_form($errors, $user_data){
+function secure_captcha_validate_lostpassword_form($errors){
 	if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-lostpassword'))){
 		$errors->add('captcha-error', "<strong>".__("ERROR", 'woodkit')." : </strong>".__("invalid captcha", 'woodkit'));
 	}

@@ -176,6 +176,11 @@ add_action('woocommerce_login_form', 'secure_woocommerce_login_form');
 add_action('woocommerce_register_form', 'secure_woocommerce_register_form');
 
 /**
+ * WooCommerce uses this action to generate lost password form
+ */
+add_action('woocommerce_lostpassword_form', 'secure_woocommerce_lostpassword_form', 10);
+
+/**
  * WP and WooCommerce uses this action to generate registration form
 */
 add_action('register_form', 'secure_register_form');
@@ -186,9 +191,9 @@ add_action('register_form', 'secure_register_form');
 add_action('wp_authenticate', 'secure_validate_login_form', 1, 1);
 
 /**
- * WP uses this action during lost password process
+ * WP / WooCommerce uses this action during lost password process
  */
-add_action('lostpassword_post', 'secure_validate_lostpassword_form', 10, 2);
+add_action('lostpassword_post', 'secure_validate_lostpassword_form', 10, 1);
 
 /**
  * WP uses this action during registration process
@@ -322,6 +327,18 @@ function secure_woocommerce_register_form(){
 }
 
 /**
+ * called to generate WooCommerce lost password form
+ */
+function secure_woocommerce_lostpassword_form(){
+	if (secure_is_failtoban_active()){
+		secure_failtoban_woocommerce_lostpassword_form();
+	}
+	if (secure_is_captcha_active()){
+		secure_captcha_woocommerce_lostpassword_form();
+	}
+}
+
+/**
  * called to generate WP and WooCommerce registration form
  */
 function secure_register_form(){
@@ -345,12 +362,12 @@ function secure_validate_login_form($args){
 	}
 }
 
-function secure_validate_lostpassword_form($errors, $user_data) {
+function secure_validate_lostpassword_form($errors) {
 	if (secure_is_failtoban_active()){
-		secure_failtoban_validate_lostpassword_form($errors, $user_data);
+		secure_failtoban_validate_lostpassword_form($errors);
 	}
 	if (secure_is_captcha_active()){
-		secure_captcha_validate_lostpassword_form($errors, $user_data);
+		secure_captcha_validate_lostpassword_form($errors);
 	}
 }
 

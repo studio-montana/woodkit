@@ -70,6 +70,13 @@ function secure_failtoban_woocommerce_register_form(){
 }
 
 /**
+ * called to generate WooCommerce lostpassword form
+ */
+function secure_failtoban_woocommerce_lostpassword_form(){
+	echo secure_failtoban_generate_field();
+}
+
+/**
  * called to generate WP registration form
  */
 function secure_failtoban_register_form(){
@@ -91,7 +98,7 @@ function secure_failtoban_validate_login_form($args){
 /**
  * called to validate WP lost password form
  */
-function secure_failtoban_validate_lostpassword_form($errors, $user_data){
+function secure_failtoban_validate_lostpassword_form($errors){
 	if (secure_is_failtoban()){
 		$errors->add('faltoban-error', "<strong>".__("ERROR", 'woodkit')." : </strong>".__("Too many tries - please wait 1min", 'woodkit'));
 	}
