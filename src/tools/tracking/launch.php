@@ -38,8 +38,21 @@ add_action('admin_enqueue_scripts', function () {
 */
 function tool_tracking_wp_head() {
 	$googleanalytics_code = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'googleanalytics-code');
+	$googleanalytics_gtag_code = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'gtag-code');
 	$googleanalytics_googletagmanager_code = $GLOBALS['woodkit']->tools->get_tool_option(TRACKING_TOOL_NAME, 'googletagmanager-code');
-	if (!empty($googleanalytics_googletagmanager_code)){
+	if (!empty($googleanalytics_gtag_code)){
+		?>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $googleanalytics_gtag_code; ?>"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', '<?php echo $googleanalytics_gtag_code; ?>');
+		</script>
+		<!-- End Global site tag (gtag.js) - Google Analytics -->
+		<?php
+	}else if (!empty($googleanalytics_googletagmanager_code)){
 		?>
 		<!-- Google Tag Manager -->
 		<script>

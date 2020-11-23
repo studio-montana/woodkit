@@ -58,6 +58,7 @@ class WK_Tool_Tracking extends WK_Tool{
 				'googleanalytics-code',
 				'googleanalytics-events',
 				'googletagmanager-code',
+				'gtag-code',
 		);
 	}
 	
@@ -67,6 +68,7 @@ class WK_Tool_Tracking extends WK_Tool{
 				'googleanalytics-code' => null,
 				'googleanalytics-events' => null,
 				'googletagmanager-code' => null,
+				'gtag-code' => null,
 		);
 	}
 	
@@ -77,21 +79,25 @@ class WK_Tool_Tracking extends WK_Tool{
 				<?php _e("Google Codes", 'woodkit'); ?>
 			</h2>
 			<div class="wk-panel-content">
+				<div class="wk-panel-info"><?php _e("Global site tag (most recent integration)", 'woodkit'); ?></div>
+				<div class="field">
+					<div class="field-content">
+						<?php $gtag_code = $this->get_option('gtag-code'); ?>
+						<label for="gtag-code"><?php _e("Global site tag code", 'woodkit'); ?></label>
+						<input type="text" id="gtag-code" name="gtag-code" value="<?php echo esc_attr($gtag_code); ?>" />
+					</div>
+				</div>
 				<div class="wk-panel-info"><?php _e("Google Analytics code isn't needed if you use Google Tag Manager", 'woodkit'); ?></div>
 				<div class="field">
 					<div class="field-content">
-						<?php
-						$googleanalytics_code = $this->get_option('googleanalytics-code');
-						?>
+						<?php $googleanalytics_code = $this->get_option('googleanalytics-code'); ?>
 						<label for="googleanalytics-code"><?php _e("Google Analytics code", 'woodkit'); ?></label>
 						<input type="text" id="googleanalytics-code" name="googleanalytics-code" value="<?php echo esc_attr($googleanalytics_code); ?>" />
 					</div>
 				</div>
 				<div class="field">
 					<div class="field-content">
-						<?php
-						$googletagmanager_code = $this->get_option('googletagmanager-code');
-						?>
+						<?php $googletagmanager_code = $this->get_option('googletagmanager-code'); ?>
 						<label for="googletagmanager-code"><?php _e("Google Tag Manager code", 'woodkit'); ?></label>
 						<input type="text" id="googletagmanager-code" name="googletagmanager-code" value="<?php echo esc_attr($googletagmanager_code); ?>" />
 					</div>
@@ -152,6 +158,11 @@ class WK_Tool_Tracking extends WK_Tool{
 		// -- googletagmanager-code
 		if (isset($_POST['googletagmanager-code'])){
 			$values['googletagmanager-code'] = woodkit_get_request_param('googletagmanager-code', '');
+		}
+		
+		// -- gtag-code
+		if (isset($_POST['gtag-code'])){
+			$values['gtag-code'] = woodkit_get_request_param('gtag-code', '');
 		}
 		
 		// -- googleanalytics-events
