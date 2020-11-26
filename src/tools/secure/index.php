@@ -55,6 +55,7 @@ class WK_Tool_Secure extends WK_Tool{
 
 	public function get_config_fields(){
 		return array(
+				'authenticate-email-password',
 				'captcha-active',
 				'captcha-type',
 				'captcha-google-key-public',
@@ -84,6 +85,7 @@ class WK_Tool_Secure extends WK_Tool{
 	public function get_config_default_values(){
 		return array(
 				'active' => "on",
+				'authenticate-email-password' => "off",
 				'captcha-active' => "on",
 				'captcha-type' => "numeric",
 				'failtoban-active' => "on",
@@ -109,6 +111,19 @@ class WK_Tool_Secure extends WK_Tool{
 		</div>
 		<div class="wk-panel">
 			<div class="wk-panel-content">
+				<h3><?php _e("authentication", 'woodkit'); ?></h3>
+				<div class="field checkbox">
+					<div class="field-content">
+						<?php $value = $this->get_option('authenticate-email-password');
+						$checked = '';
+						if ($value == 'on'){
+							$checked = ' checked="checked"';
+						} ?>
+						<input type="checkbox" id="authenticate-email-password" name="authenticate-email-password" <?php echo $checked; ?> />
+						<label for="authenticate-email-password"><?php _e("Accept email as login during user authentication", 'woodkit'); ?></label>
+					</div>
+					<p class="description"><?php _e('Checking this option, user can use email or login during authentication, otherwise login only can be used.', 'woodkit'); ?></p>
+				</div>
 				<h3><?php _e("Captcha", 'woodkit'); ?></h3>
 				<div class="field checkbox">
 					<div class="field-content">

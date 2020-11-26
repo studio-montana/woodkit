@@ -36,7 +36,10 @@ require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.SECURE_TOOL_NAME.'
 /**
  * Force login/password authentication (user can not use email)
  */
-remove_filter('authenticate', 'wp_authenticate_email_password', 20);
+$enable_authenticate_email_password = $GLOBALS['woodkit']->tools->get_tool_option(SECURE_TOOL_NAME, 'authenticate-email-password');
+if ($enable_authenticate_email_password !== 'on') {
+	remove_filter('authenticate', 'wp_authenticate_email_password', 20);
+}
 
 /**
  * Hide WP version in HTML meta data
