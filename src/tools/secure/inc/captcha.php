@@ -93,6 +93,15 @@ function secure_captcha_woocommerce_lostpassword_form(){
 }
 
 /**
+ * called to generate WooCommerce checkout account form
+ */
+function secure_captcha_woocommerce_checkout_account_fields_form(){
+	echo '<p class="form-row form-row-wide">';
+	echo secure_captcha_generate_field(array('field_name' => SECURE_CAPTCHA_FIELD.'-woocommerce-checkout'));
+	echo '</p>';
+}
+
+/**
  * called to generate WP registration and WooCommerce registration/checkout registration form
  */
 function secure_captcha_register_form(){
@@ -152,6 +161,7 @@ function secure_captcha_validate_woocommerce_login_form($validation_error, $user
  * called to validate WooCommerce register form
  */
 function secure_captcha_validate_woocommerce_register_form($validation_errors){
+	// TODO tester si c'est une inscription à la volée...
 	if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-woocommerce-register'))){
 		$validation_errors->add('captcha-error', __("invalid captcha", 'woodkit'));
 	}
@@ -170,8 +180,10 @@ function secure_captcha_comment_form_field($fields){
  * called when WP attemps to insert new comment
  */
 function secure_captcha_comment_validate($comment_post_ID){
-	if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-comment'))){
-		wp_die(__('<strong>ERROR</strong>: invalid captcha', 'woodkit'), 200);
+	if (!is_user_logged_in()) { // le formulaire WP de commentaire n'affiche pas de champs autres que le textarea lorsque l'utilisateur est connecté, on ne test donc pas.
+		if (!secure_captcha_validate_result(array('field_name' => SECURE_CAPTCHA_FIELD.'-comment'))){
+			wp_die(__('<strong>ERROR</strong>: invalid captcha', 'woodkit'), 200);
+		}
 	}
 }
 

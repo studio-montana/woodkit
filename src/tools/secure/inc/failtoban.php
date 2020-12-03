@@ -77,6 +77,13 @@ function secure_failtoban_woocommerce_lostpassword_form(){
 }
 
 /**
+ * called to generate WooCommerce checkout account form
+ */
+function secure_failtoban_woocommerce_checkout_account_fields_form(){
+	echo secure_failtoban_generate_field();
+}
+
+/**
  * called to generate WP registration form
  */
 function secure_failtoban_register_form(){

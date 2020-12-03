@@ -184,6 +184,11 @@ add_action('woocommerce_register_form', 'secure_woocommerce_register_form');
 add_action('woocommerce_lostpassword_form', 'secure_woocommerce_lostpassword_form', 10);
 
 /**
+ * WooCommerce uses this action to generate checkout form fields
+ */
+add_filter('woocommerce_checkout_fields', 'secure_woocommerce_checkout_fields', 10);
+
+/**
  * WP and WooCommerce uses this action to generate registration form
 */
 add_action('register_form', 'secure_register_form');
@@ -214,7 +219,7 @@ add_action('woocommerce_process_login_errors', 'secure_validate_woocommerce_logi
 add_action('woocommerce_register_post', 'secure_validate_woocommerce_register_form', 10, 3);
 
 /**
- * WP uses this filter to accepts new fields in comment form - old : add_filter('comment_form_default_fields', 'secure_comment_form_field', 10, 1);
+ * WP uses this filter to accepts new fields in comment form (used by WP & WooCommerce)
 */
 add_filter('comment_form_fields', 'secure_comment_form_field', 10, 1);
 
@@ -340,6 +345,25 @@ function secure_woocommerce_lostpassword_form(){
 		secure_captcha_woocommerce_lostpassword_form();
 	}
 }
+
+/**
+ * called to generate WooCommerce checkout form fields
+ */
+function secure_woocommerce_checkout_fields($checkout_fields){
+	if (secure_is_failtoban_active()){
+		$checkout_fields['account'][] = array('type' => 'woodkitfailtoban'); /** will be catched by woocommerce_form_field_woodkitfailtoban filter */
+	}
+	if (secure_is_captcha_active()){
+		$checkout_fields['account'][] = array('type' => 'woodkitcaptcha'); /** will be catched by woocommerce_form_field_woodkitcaptcha filter */
+	}
+	return $checkout_fields;
+}
+add_filter('woocommerce_form_field_woodkitfailtoban', function ($field, $key, $args, $value) {
+	return secure_failtoban_woocommerce_checkout_account_fields_form();
+}, 10, 4);
+add_filter('woocommerce_form_field_woodkitcaptcha', function ($field, $key, $args, $value) {
+	return secure_captcha_woocommerce_checkout_account_fields_form();
+}, 10, 4);
 
 /**
  * called to generate WP and WooCommerce registration form
