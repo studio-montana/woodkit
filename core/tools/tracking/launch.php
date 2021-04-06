@@ -54,39 +54,108 @@ add_action('woodkit_admin_enqueue_styles_tools', 'tool_tracking_woodkit_admin_en
 function tool_tracking_wp_head() {
 	$googleanalytics_code = woodkit_get_tool_option(TRACKING_TOOL_NAME, 'googleanalytics-code');
 	$googleanalytics_googletagmanager_code = woodkit_get_tool_option(TRACKING_TOOL_NAME, 'googletagmanager-code');
-	if (!empty($googleanalytics_googletagmanager_code)){
+	
+	if (!empty($googleanalytics_code) || !empty($googleanalytics_googletagmanager_code)){
 		?>
-		<!-- Google Tag Manager -->
+		<!-- Woodkit Tracking Helpers - based on RGPD cookie compliance -->
 		<script>
-			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','<?php echo $googleanalytics_googletagmanager_code; ?>');
+			const woodkit_tool_tracking_cookies = {
+					'cookies-accept-condition' : 'true', // RGPD cookie compliance from Woodkit plugin
+					'cookielawinfo-checkbox-analytics' : 'yes', // RGPD cookie compliance from GDPR Cookie Concent plugin
+			}
+			let woodkit_tool_tracking_launched = false;
+	
+			function woodkit_tool_tracking_launch() {
+				if (!woodkit_tool_tracking_launched) {
+					woodkit_tool_tracking_launched = true;
+					<?php if(!empty($googleanalytics_code)) { ?>
+						console.log('woodkit launch GA');
+						(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+						(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+						m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+						})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+						ga('create', '<?php echo $googleanalytics_code; ?>', 'auto');
+						ga('send', 'pageview');
+					<?php } else if (!empty($googleanalytics_googletagmanager_code)){ ?>
+						console.log('woodkit launch GTM');
+						(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+						new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+						j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+						'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+						})(window,document,'script','dataLayer','<?php echo $googleanalytics_googletagmanager_code; ?>');
+					<?php } ?>
+				}
+			}			
+	
+			function woodkit_tool_tracking_listen_cookie_change(callback, interval = 1000) {
+				let lastCookie = document.cookie;
+				setInterval(()=> {
+					let cookie = document.cookie;
+					if (cookie !== lastCookie) {
+						try {
+							callback({oldValue: lastCookie, newValue: cookie});
+						} finally {
+							lastCookie = cookie;
+						}
+					}
+				}, interval);
+			}
+	
+			function woodkit_tool_tracking_get_cookie(cname) {
+				var name = cname + "=";
+				var decodedCookie = decodeURIComponent(document.cookie);
+				var ca = decodedCookie.split(';');
+				for(var i = 0; i <ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+
+			function woodkit_tool_tracking_is_allowed_by_cookie() {
+				let allowed = false;
+				for (const cookie_name in woodkit_tool_tracking_cookies) {
+					// console.log('woodkit_tool_tracking_cookie \''+cookie_name+'\' : ', woodkit_tool_tracking_get_cookie(cookie_name));
+					if (woodkit_tool_tracking_get_cookie(cookie_name) == woodkit_tool_tracking_cookies[cookie_name]) {
+						allowed = true;
+						break;
+					}
+				}
+				return allowed;
+			}
 		</script>
 		<!-- End Google Tag Manager -->
 		<?php
-	}else if (!empty($googleanalytics_code)){
-		?>
-		<!-- Google Analytics -->
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			ga('create', '<?php echo $googleanalytics_code; ?>', 'auto');
-			ga('send', 'pageview');
-			
-			/**
-			 * Google Analytics Event Tracking
-			 */
-			function woodkit_tool_tracking_event_tracking(eventCategory, eventAction, eventLabel){
-				ga('send', 'event', eventCategory, eventAction, eventLabel);
-			}
-		</script>
-		<!-- End Google Analytics -->
-		<?php
-	}
+	} ?>
+	
+	<!-- Google Analytics / Google Tag Manager -->
+	<script>
+
+		if (woodkit_tool_tracking_is_allowed_by_cookie()) {
+			woodkit_tool_tracking_launch();
+		} else {
+			woodkit_tool_tracking_listen_cookie_change(({oldValue, newValue})=> {
+				if (woodkit_tool_tracking_is_allowed_by_cookie()) {
+					woodkit_tool_tracking_launch();
+				}
+			}, 1000);
+		}
+
+		<?php if (!empty($googleanalytics_code)){ ?>
+		/** Google Analytics Event Tracking */
+		function woodkit_tool_tracking_event_tracking(eventCategory, eventAction, eventLabel){
+			ga('send', 'event', eventCategory, eventAction, eventLabel);
+		}
+		<?php } ?>
+	</script>
+	<!-- End Google Analytics / Google Tag Manager -->
+	
+	<?php
 	/** FaceBook Pixel */
 	$facebook_pixel = woodkit_clean_php_to_javascript_var(woodkit_get_tool_option(TRACKING_TOOL_NAME, 'facebook-pixel'));
 	if (!empty($facebook_pixel)){
