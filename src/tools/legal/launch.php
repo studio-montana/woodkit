@@ -27,6 +27,13 @@ defined('ABSPATH') or die("Go Away!");
 */
 require_once (WOODKIT_PLUGIN_PATH.WOODKIT_PLUGIN_TOOLS_FOLDER.COOKIES_TOOL_NAME.'/inc/customizer.php');
 
+/*************************************************
+ * TODO : https://tarteaucitron.io/fr/install/
+ * ATTENTION : il y a des bug avec tarte au citron et WP_Rocket rencontrés sur les sites https://www.emmental-de-savoie.com/ & https://www.raclette-de-savoie.fr/
+ * Lorsque l'on active le chargement différé, la variable tarteaucitron est undefined et si on ajoute l'eventListener document.addEventListener("DOMContentLoaded", function(event) { //do work });
+ * pour attendre le chargement du script tarteaucitron.js, on a des merdes sur les fichiers chargés par tarteaucitron.js... bref à bien tester donc avec WP_Rocket.
+ *************************************************/
+
 /**
  * WP_Footer hook
  *

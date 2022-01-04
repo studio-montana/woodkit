@@ -44,7 +44,7 @@ class WK_Tool_Legal extends WK_Tool{
 	}
 
 	public function get_description() {
-		return __("Display legal notice (Privacy & Cookies Policy - GDPR) in front of your website", 'woodkit');
+		return __("Display legal notice (Privacy & Cookies Policy - GDPR) in front of your website & manage your cookies", 'woodkit');
 	}
 
 	public function launch() {

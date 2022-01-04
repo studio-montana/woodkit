@@ -3,7 +3,7 @@
  * Plugin Name: Woodkit
  * Plugin URI: http://www.studio-montana.com/product/woodkit
  * Description: Multitool experience for WP | SEO, security, private area, tracking, legal, ...
- * Version: 2.0.7
+ * Version: 2.0.8
  * Author: Studio Montana
  * Author URI: http://www.studio-montana.com/
  * License: GPL2
@@ -34,7 +34,7 @@ defined('ABSPATH') or die("Go Away!");
 define('WOODKIT_PLUGIN_FILE', __FILE__);
 define('WOODKIT_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('WOODKIT_PLUGIN_URI', plugin_dir_url(__FILE__));
-define('WOODKIT_PLUGIN_WEB_CACHE_VERSION', '2.0.7');
+define('WOODKIT_PLUGIN_WEB_CACHE_VERSION', '2.0.8');
 
 define('WOODKIT_PLUGIN_COMMONS_FOLDER', 'src/commons/');
 define('WOODKIT_PLUGIN_COMMONS_ASSETS_FOLDER', WOODKIT_PLUGIN_COMMONS_FOLDER.'assets/');
@@ -134,11 +134,6 @@ if(!class_exists('Woodkit')){
 		 * Init
 		 */
 		public function init() {
-
-			/** start PHP session (maybe used by tools) */
-			if (class_exists('WoodkitSession')) {
-				WoodkitSession::start();
-			}
 
 			if (class_exists('WoodkitInstaller')) {
 				WoodkitInstaller::init();

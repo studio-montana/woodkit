@@ -27,7 +27,7 @@ class WoodkitSession {
 	/**
 	 * start the session, after this call the PHP $_SESSION super global is available
 	 */
-	static function start() {
+	private static function start() {
 		if(!session_id()) {
 			session_start();
 		}
@@ -36,7 +36,7 @@ class WoodkitSession {
 	/**
 	 * destroy the session
 	 */
-	static function destroy() {
+	private static function destroy() {
 		session_destroy();
 	}
 	
@@ -59,6 +59,9 @@ class WoodkitSession {
 	 * @param type $value the value to set
 	 */
 	static function set($key, $value) {
+		if(!session_id()) {
+			self::start();
+		}
 		$_SESSION[$key] = $value;
 	}
 	
