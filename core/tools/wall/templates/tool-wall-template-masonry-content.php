@@ -52,7 +52,7 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 				if (!empty($template)){
 					include($template);
 				}else{
-					?>
+					$excerpt = get_the_excerpt(); ?>
 					<?php if (function_exists("woodkit_display_badge")) woodkit_display_badge(); ?>
 					<div class="has-mask">
 						<?php if (function_exists("woodkit_display_thumbnail")){
@@ -61,7 +61,7 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 							?><div class="thumb"><?php the_post_thumbnail($wall_args['image_size']); ?></div><?php 
 						}?>
 						<?php echo $title; ?>
-						<div class="excerpt"><?php the_excerpt(); ?></div>
+						<div class="excerpt"><?php echo $excerpt; ?></div>
 					</div>
 					<div class="has-infos">
 						<?php if (function_exists("woodkit_display_thumbnail")){
@@ -70,7 +70,7 @@ $link_blank = wall_get_wall_item_link_blank(get_the_ID(), $wall_args);
 							?><div class="thumb"><?php the_post_thumbnail($wall_args['image_size']); ?></div><?php 
 						}?>
 						<?php echo $title; ?>
-						<div class="excerpt"><?php the_excerpt(); ?></div>
+						<div class="excerpt"><?php echo $excerpt; ?></div>
 					</div>
 					<?php 
 				}
