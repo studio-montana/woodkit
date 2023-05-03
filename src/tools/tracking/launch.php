@@ -49,6 +49,13 @@ function tool_tracking_wp_head() {
 		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
 		  gtag('config', '<?php echo $googleanalytics_gtag_code; ?>');
+			
+		  /**
+		   * GTAG Event Tracking
+		   */
+		  function woodkit_tool_tracking_event_tracking(eventCategory, eventAction, eventLabel){
+			gtag('send', 'event', eventCategory, eventAction, eventLabel);
+		  }
 		</script>
 		<!-- End Global site tag (gtag.js) - Google Analytics -->
 		<?php
