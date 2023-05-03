@@ -56,7 +56,10 @@ function tool_tracking_wp_head() {
 	$googleanalytics_googletagmanager_code = woodkit_get_tool_option(TRACKING_TOOL_NAME, 'googletagmanager-code');
 	
 	if (!empty($googleanalytics_code) || !empty($googleanalytics_googletagmanager_code)){
-		?>
+		$is_gtag = startsWith($googleanalytics_code, 'G-');
+		if ($is_gtag) { ?>
+			<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $googleanalytics_code; ?>"></script>
+		<?php } ?>
 		<!-- Woodkit Tracking Helpers - based on RGPD cookie compliance -->
 		<script>
 			const woodkit_tool_tracking_cookies = {
@@ -68,7 +71,14 @@ function tool_tracking_wp_head() {
 			function woodkit_tool_tracking_launch() {
 				if (!woodkit_tool_tracking_launched) {
 					woodkit_tool_tracking_launched = true;
-					<?php if(!empty($googleanalytics_code)) { ?>
+					<?php if(!empty($googleanalytics_code) && $is_gtag) { ?>
+						console.log('woodkit launch GTAG');
+						<!-- Google tag (gtag.js) -->
+						  window.dataLayer = window.dataLayer || [];
+						  function gtag(){dataLayer.push(arguments);}
+						  gtag('js', new Date());
+						  gtag('config', '<?php echo $googleanalytics_code; ?>');
+					<?php } else if (!empty($googleanalytics_code)) { ?>
 						console.log('woodkit launch GA');
 						(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 						(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
