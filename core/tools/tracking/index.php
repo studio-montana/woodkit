@@ -79,6 +79,7 @@ class WoodkitToolTracking extends WoodkitTool{
 						?>
 						<label for="googleanalytics-code"><?php _e("Google Analytics code", 'woodkit'); ?></label>
 						<input type="text" id="googleanalytics-code" name="googleanalytics-code" value="<?php echo esc_attr($googleanalytics_code); ?>" />
+						<p class="description">Vous pouvez intégrer le code GA4 (Gtag) commançant par G-</p>
 					</div>
 				</div>
 				<div class="field">
