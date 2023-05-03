@@ -156,7 +156,12 @@ function tool_tracking_wp_head() {
 			}, 1000);
 		}
 
-		<?php if (!empty($googleanalytics_code)){ ?>
+		<?php if (!empty($googleanalytics_code) && $is_gtag){ ?>
+		/** GTAG Event Tracking */
+		function woodkit_tool_tracking_event_tracking(eventCategory, eventAction, eventLabel){
+			gtag('send', 'event', eventCategory, eventAction, eventLabel);
+		}
+		<?php } else if (!empty($googleanalytics_code)){ ?>
 		/** Google Analytics Event Tracking */
 		function woodkit_tool_tracking_event_tracking(eventCategory, eventAction, eventLabel){
 			ga('send', 'event', eventCategory, eventAction, eventLabel);
